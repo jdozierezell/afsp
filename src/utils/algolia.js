@@ -1,3 +1,4 @@
+// graphql query for algolia
 const articleQuery = `{
   articles: allDatoCmsArticle {
     edges {
@@ -23,16 +24,17 @@ const articleQuery = `{
     }
   }
 }`
+// function to flatten data into one-dimensional arrays
 const flatten = arr => {
   arr.forEach(edge => {
     let { article, author, seo, slug, tags, title } = edge.node
     // title and slug are already flat; no need to do anything there
-    // article flattening
     const copyArray = [],
       authorArray = [],
       imageArray = [],
       descriptionArray = [],
       tagsArray = []
+    // article flattening and capping at 9000 characters
     article.forEach((article, index) => {
       const { __typename } = article
       if (__typename === 'DatoCmsBody') {
@@ -48,14 +50,16 @@ const flatten = arr => {
     })
     // author flattening
     author.forEach(author => authorArray.push(author.authorName))
-    // seo filtering and flattening
+    // seo flattening to break out image and description
     seo.tags.forEach(tag => {
       if (tag.hasOwnProperty('attributes')) {
         const attrs = tag.attributes
+        // if the property property exists and contains an image, add to imageArray
         if (attrs.hasOwnProperty('property')) {
           if (attrs.property === 'og:image')
             imageArray.push(tag.attributes.content)
         }
+        // if the name property exists and contains a description, add to descriptionArray
         if (attrs.hasOwnProperty('name')) {
           if (attrs.name === 'description')
             descriptionArray.push(tag.attributes.content)
@@ -75,7 +79,6 @@ const flatten = arr => {
       title,
     })
   })
-  return arr
   return arr
 }
 const settings = { attributesToSnippet: [`article:20`] }

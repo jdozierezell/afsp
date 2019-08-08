@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "algoliasearch": "^3.33.0",
+    "axios": "^0.19.0",
     "dotenv": "^8.0.0",
     "gatsby": "^2.13.42",
     "gatsby-image": "^2.2.7",
@@ -25,6 +26,8 @@
     "react-instantsearch-dom": "^5.7.0"
   },
   "devDependencies": {
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-react": "^7.14.3",
     "prettier": "^1.18.2"
   },
   "keywords": [
