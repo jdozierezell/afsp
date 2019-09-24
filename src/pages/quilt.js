@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
@@ -29,33 +29,70 @@ export const GET_QUILTS = gql`
     quilts: allQuiltSquares(skip: $skip) {
       id
       title
+      quiltImage {
+        url
+      }
     }
   }
 `
 // style quilt squares
-const squareCSS = css`
-  font-size: 0.5rem;
+const sectionCSS = css`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  div {
+    margin: 0;
+    padding: 0;
+  }
+  img {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
 `
 // component to display quilt squares
 const QuiltSquares = () => {
-  const { data, loading, error, fetchMore } = useQuery(GET_QUILTS)
+  const [loadMore, setLoadMore] = useState(0)
+  const { data, loading, error, fetchMore } = useQuery(GET_QUILTS, {
+    variables: {
+      skip: 0,
+    },
+  })
 
   if (loading) return 'Loading...'
   if (error) return `ERROR ${error.message}`
 
   return (
     <>
-      {data.quilts &&
-        data.quilts.map(quilt => {
-          return (
-            <div key={quilt.id} css={squareCSS}>
-              {quilt.title}
-            </div>
-          ) // displays quilt squares
-        })}
+      <section css={sectionCSS}>
+        {data.quilts &&
+          data.quilts.map(quilt => {
+            return (
+              <div
+                key={quilt.id}
+                onClick={() => {
+                  // update the window history to provide a deep link to quilt square
+                  window.history.pushState(
+                    { id: quilt.id }, // give history state an id
+                    `Memory Quilt | ${quilt.title}`, // give page a title
+                    `?q=${quilt.id}` // create the new url with variables to base on render
+                  )
+                }}
+              >
+                <img
+                  src={`${quilt.quiltImage.url}?w=200&h=200&fit=crop&crop=faces`}
+                  alt=""
+                />
+              </div>
+            ) // displays quilt squares
+          })}
+      </section>
       {data.quilts && (
         <button
-          onClick={() =>
+          onClick={() => {
+            setLoadMore(loadMore + 1)
             // adds quilt squares to query on click
             fetchMore({
               variables: {
@@ -73,9 +110,9 @@ const QuiltSquares = () => {
                 return returnQuilts
               },
             })
-          }
+          }}
         >
-          Load More
+          {`Load More - ${loadMore}`}
         </button>
       )}
     </>
