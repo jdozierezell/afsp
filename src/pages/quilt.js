@@ -126,7 +126,6 @@ const QuiltSquares = () => {
 
   if (quiltsLoading) return 'Loading...'
   if (quiltsError) return `ERROR ${quiltsError.message}`
-  console.log(selectedCSS)
   return (
     <>
       <section css={sectionCSS}>
@@ -156,7 +155,6 @@ const QuiltSquares = () => {
                   ...prev,
                   quilts: [...prev.quilts, ...fetchMoreResult.quilts],
                 }
-                console.log(returnQuilts)
                 return returnQuilts
               },
             })
