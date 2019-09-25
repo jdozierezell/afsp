@@ -23,10 +23,24 @@ const client = new ApolloClient({
     },
   }),
 })
-// create query
+
+// create query for squares
 export const GET_QUILTS = gql`
   query($skip: IntType) {
     quilts: allQuiltSquares(skip: $skip) {
+      id
+      title
+      quiltImage {
+        url
+      }
+    }
+  }
+`
+
+// create query for selected square
+export const GET_SELECTED = gql`
+  query($id: ItemId) {
+    selected: quiltSquare(filter: { id: { eq: $id } }) {
       id
       title
       quiltImage {
@@ -42,65 +56,101 @@ const sectionCSS = css`
   justify-content: flex-start;
   align-items: stretch;
   align-content: flex-start;
-  div {
-    margin: 0;
-    padding: 0;
-  }
-  img {
-    display: block;
-    margin: 0;
-    padding: 0;
-  }
 `
+
+const squareCSS = css`
+  margin: 0;
+  padding: 0;
+`
+
+const imageCSS = css`
+  display: block;
+  margin: 0;
+  padding: 0;
+`
+
+const selectedCSS = css`
+  display: none;
+`
+
+// component that builds quilt square
+const QuiltSquare = ({ quilt, selected }) => {
+  const [isSelected, setSelected] = useState(selected)
+  return (
+    <div
+      css={isSelected ? selectedCSS : imageCSS}
+      key={quilt.id}
+      id={quilt.id}
+      onClick={() => {
+        // update the window history to provide a deep link to quilt square
+        window.history.pushState(
+          { id: quilt.id }, // give history state an id
+          `Memory Quilt | ${quilt.title}`, // give page a title
+          `?q=${quilt.id}` // create the new url with variables to base on render
+        )
+      }}
+    >
+      <img
+        onClick={() => setSelected(!isSelected)}
+        src={`${quilt.quiltImage.url}?w=200&h=200&fit=crop&crop=faces`}
+        alt=""
+      />
+    </div>
+  )
+}
+
 // component to display quilt squares
 const QuiltSquares = () => {
+  const urlParams = new URLSearchParams(window.location.search)
+  const quiltParam = urlParams.has('q') ? urlParams.get('q') : null
   const [loadMore, setLoadMore] = useState(0)
-  const { data, loading, error, fetchMore } = useQuery(GET_QUILTS, {
+
+  const selectedQuilt = useQuery(GET_SELECTED, {
+    variables: {
+      id: '1518465',
+    },
+  })
+  const selectedData = selectedQuilt.data,
+    selectedLoading = selectedQuilt.loading,
+    selectedError = selectedQuilt.error,
+    selectedFetchMore = selectedQuilt.fetchMore
+  const quilts = useQuery(GET_QUILTS, {
     variables: {
       skip: 0,
     },
   })
+  const quiltsData = quilts.data,
+    quiltsLoading = quilts.loading,
+    quiltsError = quilts.error,
+    quiltsFetchMore = quilts.fetchMore
 
-  if (loading) return 'Loading...'
-  if (error) return `ERROR ${error.message}`
-
+  if (quiltsLoading) return 'Loading...'
+  if (quiltsError) return `ERROR ${quiltsError.message}`
+  console.log(selectedCSS)
   return (
     <>
       <section css={sectionCSS}>
-        {data.quilts &&
-          data.quilts.map(quilt => {
+        {quiltsData.quilts &&
+          quiltsData.quilts.map(quilt => {
             return (
-              <div
+              <QuiltSquare
                 key={quilt.id}
-                onClick={() => {
-                  // update the window history to provide a deep link to quilt square
-                  window.history.pushState(
-                    { id: quilt.id }, // give history state an id
-                    `Memory Quilt | ${quilt.title}`, // give page a title
-                    `?q=${quilt.id}` // create the new url with variables to base on render
-                  )
-                }}
-              >
-                <img
-                  src={`${quilt.quiltImage.url}?w=200&h=200&fit=crop&crop=faces`}
-                  alt=""
-                />
-              </div>
+                quilt={quilt}
+                selected={quilt.id === quiltParam}
+              />
             ) // displays quilt squares
           })}
       </section>
-      {data.quilts && (
+      {quiltsData.quilts && (
         <button
           onClick={() => {
             setLoadMore(loadMore + 1)
             // adds quilt squares to query on click
-            fetchMore({
+            quiltsFetchMore({
               variables: {
-                skip: data.quilts.length,
+                skip: quiltsData.quilts.length,
               },
               updateQuery: (prev, { fetchMoreResult, ...rest }) => {
-                console.log(prev.quilts)
-                console.log(fetchMoreResult.quilts)
                 if (!fetchMoreResult) return prev
                 const returnQuilts = {
                   ...prev,
