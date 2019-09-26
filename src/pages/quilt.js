@@ -74,11 +74,10 @@ const selectedCSS = css`
 `
 
 // component that builds quilt square
-const QuiltSquare = ({ quilt, selected }) => {
-  const [isSelected, setSelected] = useState(selected)
+const QuiltSquare = ({ quilt, selected, handleClick }) => {
   return (
     <div
-      css={isSelected ? selectedCSS : imageCSS}
+      css={quilt.id === selected ? selectedCSS : squareCSS}
       key={quilt.id}
       id={quilt.id}
       onClick={() => {
@@ -91,7 +90,11 @@ const QuiltSquare = ({ quilt, selected }) => {
       }}
     >
       <img
-        onClick={() => setSelected(!isSelected)}
+        css={imageCSS}
+        onClick={() => {
+          // handleClick lets parent know which element was clicked on
+          handleClick(quilt.id)
+        }}
         src={`${quilt.quiltImage.url}?w=200&h=200&fit=crop&crop=faces`}
         alt=""
       />
@@ -104,16 +107,17 @@ const QuiltSquares = () => {
   const urlParams = new URLSearchParams(window.location.search)
   const quiltParam = urlParams.has('q') ? urlParams.get('q') : null
   const [loadMore, setLoadMore] = useState(0)
+  const [selected, setSelected] = useState(quiltParam)
 
-  const selectedQuilt = useQuery(GET_SELECTED, {
+  const selectedQuiltQuery = useQuery(GET_SELECTED, {
     variables: {
-      id: '1518465',
+      id: selected,
     },
   })
-  const selectedData = selectedQuilt.data,
-    selectedLoading = selectedQuilt.loading,
-    selectedError = selectedQuilt.error,
-    selectedFetchMore = selectedQuilt.fetchMore
+  const selectedData = selectedQuiltQuery.data,
+    selectedLoading = selectedQuiltQuery.loading,
+    selectedError = selectedQuiltQuery.error,
+    selectedFetchMore = selectedQuiltQuery.fetchMore
   const quilts = useQuery(GET_QUILTS, {
     variables: {
       skip: 0,
@@ -124,6 +128,10 @@ const QuiltSquares = () => {
     quiltsError = quilts.error,
     quiltsFetchMore = quilts.fetchMore
 
+  const handleClick = id => {
+    // sets selected element for each click
+    setSelected(id)
+  }
   if (quiltsLoading) return 'Loading...'
   if (quiltsError) return `ERROR ${quiltsError.message}`
   return (
@@ -133,9 +141,11 @@ const QuiltSquares = () => {
           quiltsData.quilts.map(quilt => {
             return (
               <QuiltSquare
+                // css={}
                 key={quilt.id}
                 quilt={quilt}
-                selected={quilt.id === quiltParam}
+                selected={selected}
+                handleClick={handleClick}
               />
             ) // displays quilt squares
           })}
