@@ -61,6 +61,7 @@ const sectionCSS = css`
 const squareCSS = css`
   margin: 0;
   padding: 0;
+  width: 10%;
 `
 
 const imageCSS = css`
@@ -70,14 +71,15 @@ const imageCSS = css`
 `
 
 const selectedCSS = css`
-  display: none;
+  width: 100%;
 `
 
 // component that builds quilt square
 const QuiltSquare = ({ quilt, selected, handleClick }) => {
+  const isSelected = quilt.id === selected
   return (
     <div
-      css={quilt.id === selected ? selectedCSS : squareCSS}
+      css={isSelected ? [squareCSS, selectedCSS] : squareCSS}
       key={quilt.id}
       id={quilt.id}
       onClick={() => {
