@@ -13,6 +13,8 @@ const megaCSS = css`
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: repeat(3, 1fr);
 	padding: ${styles.scale.px50};
+	position: absolute;
+	top: 100%;
 `
 
 const featuredCSS = css`
@@ -29,12 +31,16 @@ const DeskMenuMega = ({
 	return (
 		<>
 			{activeItem && (
-				<div css={megaCSS}>
+				<div
+					css={megaCSS}
+					handleMouseEnter={handleMouseEnter(activeItem)}
+					handleMouseLeave={handleMouseLeave(activeItem)}
+				>
 					{items.map(item => {
-						console.log(item.id, activeItem)
+						console.log(activeItem)
 						if (item.id === activeItem) {
-							return item.links.map(link => (
-								<div>{link.name}</div>
+							return item.links.map((link, index) => (
+								<div key={index}>{link.name}</div>
 							))
 						}
 					})}

@@ -23,6 +23,7 @@ const navTopCSS = css`
 	justify-content: space-between;
 	align-items: center;
 	margin: 0 0 50px;
+	position: relative;
 	@media (hover: hover) {
 		:hover {
 			background-color: ${styles.colors.white};
@@ -69,6 +70,7 @@ const hamburgerCSS = css`
 	border: none;
 `
 const Navigation = () => {
+	const [isNavActive, setNavActive] = useState(false)
 	const [isMenuActive, setMenuActive] = useState(false)
 	const [isSearchActive, setSearchActive] = useState(false)
 	const [navColor, setNavColor] = useState('transparent')
@@ -89,15 +91,19 @@ const Navigation = () => {
 	}
 
 	const handleMouseLeave = id => {
-		setActiveMegaMenu('')
+		if (isNavActive === false) {
+			setActiveMegaMenu('')
+		}
 	}
-
+	console.log(isNavActive)
 	return (
 		<div
 			css={css`
 				${navTopCSS};
 				background-color: ${navColor};
 			`}
+			onMouseEnter={() => setNavActive(true)}
+			onMouseLeave={() => setNavActive(false)}
 		>
 			<div css={logoCSS}>
 				<LogoColor />
