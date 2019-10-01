@@ -70,7 +70,6 @@ const hamburgerCSS = css`
 	border: none;
 `
 const Navigation = () => {
-	const [isNavActive, setNavActive] = useState(false)
 	const [isMenuActive, setMenuActive] = useState(false)
 	const [isSearchActive, setSearchActive] = useState(false)
 	const [navColor, setNavColor] = useState('transparent')
@@ -91,19 +90,14 @@ const Navigation = () => {
 	}
 
 	const handleMouseLeave = id => {
-		if (isNavActive === false) {
-			setActiveMegaMenu('')
-		}
+		setActiveMegaMenu('')
 	}
-	console.log(isNavActive)
 	return (
 		<div
 			css={css`
 				${navTopCSS};
 				background-color: ${navColor};
 			`}
-			onMouseEnter={() => setNavActive(true)}
-			onMouseLeave={() => setNavActive(false)}
 		>
 			<div css={logoCSS}>
 				<LogoColor />
@@ -111,6 +105,7 @@ const Navigation = () => {
 			{width > styles.screens.mobile && (
 				<DeskMenuItems
 					items={menuItems}
+					activeItem={activeMegaMenu}
 					handleMouseEnter={handleMouseEnter}
 					handleMouseLeave={handleMouseLeave}
 				/>
@@ -138,14 +133,14 @@ const Navigation = () => {
 			</div>
 			{width <= styles.screens.mobile && isSearchActive && <SearchBar />}
 			{width <= styles.screens.mobile && isMenuActive && <MobileMenu />}
-			{width > styles.screens.mobile && (
+			{/* {width > styles.screens.mobile && (
 				<DeskMenuMega
 					items={menuItems}
 					activeItem={activeMegaMenu}
 					handleMouseEnter={handleMouseEnter}
 					handleMouseLeave={handleMouseLeave}
 				/>
-			)}
+			)} */}
 		</div>
 	)
 }

@@ -8,7 +8,7 @@ const menuCSS = css`
 	margin: 0;
 	padding: 0;
 	flex-grow: 1;
-	li {
+	& > li {
 		display: table-cell;
 		vertical-align: middle;
 		height: 100px;
@@ -26,7 +26,42 @@ const menuCSS = css`
 	}
 `
 
-const MenuItems = ({ items, handleMouseEnter, handleMouseLeave }) => {
+const megaCSS = css`
+	width: 100%;
+	background-color: ${styles.colors.blue};
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	padding: ${styles.scale.px50};
+	position: absolute;
+	top: 100%;
+	right: 0;
+	margin: 0;
+	font-size: ${styles.scale.px17};
+	font-family: ${styles.fonts.avenirRegular};
+`
+
+const megaLinkCSS = css`
+	list-style: none;
+	a {
+		font-family: ${styles.fonts.avenirDemi};
+		text-decoration: underline;
+	}
+`
+
+const featuredCSS = css`
+	grid-area: 1 / 3 / 4 / 5;
+	background: white;
+	list-style: none;
+	color: ${styles.colors.darkGray};
+`
+
+const MenuItems = ({
+	items,
+	activeItem,
+	handleMouseEnter,
+	handleMouseLeave,
+}) => {
 	return (
 		<>
 			<ul css={menuCSS}>
@@ -39,6 +74,20 @@ const MenuItems = ({ items, handleMouseEnter, handleMouseLeave }) => {
 							onMouseLeave={() => handleMouseLeave(item.id)}
 						>
 							<a href="#">{item.name}</a>
+							{activeItem === item.id && (
+								<>
+									<ul css={megaCSS}>
+										{item.links.map((link, index) => (
+											<li css={megaLinkCSS} key={index}>
+												<a href={link.url}>
+													{link.name}
+												</a>
+											</li>
+										))}
+										<li css={featuredCSS}>{activeItem}</li>
+									</ul>
+								</>
+							)}
 						</li>
 					)
 				})}
