@@ -2,9 +2,9 @@ import React, { useState, useRef, useEffect } from 'react'
 import { css } from '@emotion/core'
 import { useSpring, animated } from 'react-spring'
 
-import CaretIcon from './IconCaret'
+import CaretIcon from '../SVGs/IconCaret'
 
-import { styles } from '../css/css'
+import { styles } from '../../css/css'
 
 const menuTitleCSS = css`
 	display: flex;
@@ -68,7 +68,7 @@ const MenuSection = ({ title }) => {
 	}, [listRef])
 
 	return (
-		<div>
+		<>
 			<div css={menuTitleCSS}>
 				<h2>{title}</h2>
 				<animated.button
@@ -103,7 +103,7 @@ const MenuSection = ({ title }) => {
 					margin: ${styles.scale.px30} 0;
 				`}
 			/>
-		</div>
+		</>
 	)
 }
 

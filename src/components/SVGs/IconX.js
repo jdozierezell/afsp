@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 
-import { styles } from '../css/css'
+import { styles } from '../../css/css'
 
 const CaretIcon = ({ color }) => {
 	return (

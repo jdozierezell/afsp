@@ -1,9 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { css } from '@emotion/core'
 
-import IconX from './IconX'
+import IconX from '../SVGs/IconX'
 
-import { styles } from '../css/css'
+import { styles } from '../../css/css'
 
 const searchCSS = css`
 	background-color: ${styles.colors.blue};

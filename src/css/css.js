@@ -22,6 +22,7 @@ export const styles = {
 		npx10: '-10px',
 		px2: '2px',
 		px5: '5px',
+		px7: '7px',
 		px14: '14px',
 		px16: '16px',
 		px17: '17px',
@@ -44,6 +45,10 @@ export const styles = {
 		px56: '56px',
 		px60: '60px',
 		px62: '62px',
+		px70: '70px',
 		px75: '75px',
+	},
+	screens: {
+		mobile: 414,
 	},
 }

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { css } from '@emotion/core'
 
-import { styles } from '../css/css'
+import { styles } from '../../css/css'
 
 const lifesaverCSS = css`
 	fill: ${styles.colors.blue};

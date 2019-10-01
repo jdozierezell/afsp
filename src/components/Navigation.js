@@ -1,52 +1,70 @@
 import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 
-import LogoColor from './LogoColor'
-import Menu from './Menu'
-import IconHamburger from './IconHamburger'
-import IconX from './IconX'
-import IconSearch from './IconSearch'
-import SearchBar from './SearchBar'
+import LogoColor from './SVGs/LogoColor'
+import MobileMenu from './Navigation/MobileMenu'
+import DeskMenuItems from './Navigation/DeskMenuItems'
+import DeskMenuMega from './Navigation/DeskMenuMega'
+import IconHamburger from './SVGs/IconHamburger'
+import IconX from './SVGs/IconX'
+import IconSearch from './SVGs/IconSearch'
+import SearchBar from './Navigation/SearchBar'
 import { useWindowDimensions } from './WindowDimensionsProvider'
+import MenuCTA from './Navigation/MenuCTA'
 
-import '../css/hamburger.css'
+import menuItems from './Navigation/MenuItems'
+
 import { styles } from '../css/css'
 
-const navCSS = css`
+const navTopCSS = css`
+	display: flex;
+	flex-flow: row wrap;
+	padding: ${styles.scale.px14} 0;
+	justify-content: space-between;
+	align-items: center;
 	margin: 0 0 50px;
 	@media (hover: hover) {
 		:hover {
 			background-color: ${styles.colors.white};
 		}
 	}
-`
-
-const navTopCSS = css`
-	display: grid;
-	grid-template-columns: repeat(8, 1fr);
-	padding: 14px 24px;
+	@media (min-width: ${styles.screens.mobile}px) {
+		padding: 0;
+		margin: 0;
+	}
 `
 
 const logoCSS = css`
 	min-width: 110px;
 	max-width: 150px;
-	grid-column: 1 / 3;
+	padding-left: ${styles.scale.px24};
+	@media (min-width: ${styles.screens.mobile}px) {
+		margin: 0 ${styles.scale.px70} 0 ${styles.scale.px50};
+		padding: 0;
+		width: 127px;
+	}
+`
+
+const navButtons = css`
+	display: flex;
+	min-width: 100px;
+	max-width: 215px;
+	justify-content: space-between;
+	padding-right: ${styles.scale.px24};
 `
 
 const searchCSS = css`
-	grid-column: 7 / 8;
-	background-color: transparent;
+	margin: 0 ${styles.scale.px22} 0 0;
+	padding: ${styles.scale.px7} 0 0;
+	width: ${styles.scale.px24};
+	background: transparent;
 	border: none;
-	width: 50px;
-	justify-self: end;
 `
 
 const hamburgerCSS = css`
 	margin: 0;
-	padding: 0;
-	grid-column: 8 / 9;
+	padding: ${styles.scale.px7} 0 0;
 	width: ${styles.scale.px24};
-	justify-self: end;
 	background: transparent;
 	border: none;
 `
@@ -54,10 +72,9 @@ const Navigation = () => {
 	const [isMenuActive, setMenuActive] = useState(false)
 	const [isSearchActive, setSearchActive] = useState(false)
 	const [navColor, setNavColor] = useState('transparent')
+	const [activeMegaMenu, setActiveMegaMenu] = useState('')
 
 	const { width } = useWindowDimensions()
-
-	console.log(width)
 
 	useEffect(() => {
 		if (isMenuActive || isSearchActive) {
@@ -67,36 +84,62 @@ const Navigation = () => {
 		}
 	})
 
+	const handleMouseEnter = id => {
+		setActiveMegaMenu(id)
+	}
+
+	const handleMouseLeave = id => {
+		setActiveMegaMenu('')
+	}
+
 	return (
-		<div css={navCSS}>
-			<div
-				css={css`
-					${navTopCSS};
-					background-color: ${navColor};
-				`}
-			>
-				<div css={logoCSS}>
-					<LogoColor />
-				</div>
+		<div
+			css={css`
+				${navTopCSS};
+				background-color: ${navColor};
+			`}
+		>
+			<div css={logoCSS}>
+				<LogoColor />
+			</div>
+			{width > styles.screens.mobile && (
+				<DeskMenuItems
+					items={menuItems}
+					handleMouseEnter={handleMouseEnter}
+					handleMouseLeave={handleMouseLeave}
+				/>
+			)}
+			<div css={navButtons}>
 				<button
 					css={searchCSS}
 					onClick={() => setSearchActive(!isSearchActive)}
 				>
-					<IconSearch />
+					<IconSearch color={styles.colors.darkGray} />
 				</button>
-				<button
-					css={hamburgerCSS}
-					onClick={() => setMenuActive(!isMenuActive)}
-				>
-					{isMenuActive ? (
-						<IconX />
-					) : (
-						<IconHamburger color={styles.colors.darkGray} />
-					)}
-				</button>
+				{width <= styles.screens.mobile && (
+					<button
+						css={hamburgerCSS}
+						onClick={() => setMenuActive(!isMenuActive)}
+					>
+						{isMenuActive ? (
+							<IconX />
+						) : (
+							<IconHamburger color={styles.colors.darkGray} />
+						)}
+					</button>
+				)}
+				{width > styles.screens.mobile && <MenuCTA />}
 			</div>
-			{isSearchActive && <SearchBar />}
-			{isMenuActive && <Menu />}
+			{width <= styles.screens.mobile && isSearchActive && <SearchBar />}
+			{width <= styles.screens.mobile && isMenuActive && <MobileMenu />}
+			{width > styles.screens.mobile && (
+				<DeskMenuMega
+					items={menuItems}
+					activeItem={activeMegaMenu}
+					handleMouseEnter={handleMouseEnter}
+					handleMouseLeave={handleMouseLeave}
+				/>
+			)}
 		</div>
 	)
 }
