@@ -5,12 +5,12 @@ import { styles } from '../css/css'
 
 const headerAsideCSS = css`
 	background-color: ${styles.colors.yellow};
-	margin-bottom: ${styles.scale.px14};
 	p {
 		font-family: ${styles.fonts.avenirRegular};
 		text-align: center;
 		padding: ${styles.scale.px14} ${styles.scale.px24};
 		line-height: ${styles.scale.px20};
+		margin: 0;
 	}
 `
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
 import Header from './Header'
+import WindowDimensionsProvider from './WindowDimensionsProvider'
 
 import '../css/layout.css'
 import '../css/global.css'
@@ -19,7 +20,7 @@ const Layout = ({ children }) => {
 	`)
 
 	return (
-		<>
+		<WindowDimensionsProvider>
 			<Header />
 			<main>{children}</main>
 			<footer>
@@ -27,7 +28,7 @@ const Layout = ({ children }) => {
 				{` `}
 				<a href="https://www.gatsbyjs.org">Gatsby</a>
 			</footer>
-		</>
+		</WindowDimensionsProvider>
 	)
 }
 

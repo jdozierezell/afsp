@@ -18,3 +18,7 @@ p {
 strong {
 	font-family: 'AvenirNextLTPro-Demi', Arial, sans-serif;
 }
+
+body {
+	background: black;
+}

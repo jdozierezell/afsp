@@ -21,7 +21,8 @@ export const styles = {
 	scale: {
 		npx10: '-10px',
 		px2: '2px',
-		px5: '5 px',
+		px5: '5px',
+		px14: '14px',
 		px16: '16px',
 		px17: '17px',
 		px18: '18px',

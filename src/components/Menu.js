@@ -33,7 +33,7 @@ const MenuItems = () => {
 		<div css={menuCSS}>
 			<MenuSection title="Real Stories" />
 			<MenuSection title="Real Stories" />
-			<button css={ctaButtonCSS}>Donate</button>
+			<button css={ctaButtonCSS}>Walk with Us</button>
 		</div>
 	)
 }

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { css } from '@emotion/core'
 import { useSpring, animated } from 'react-spring'
 
-import CaretIcon from './CaretIcon'
+import CaretIcon from './IconCaret'
 
 import { styles } from '../css/css'
 
