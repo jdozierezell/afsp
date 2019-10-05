@@ -4,13 +4,13 @@ import { css } from '@emotion/core'
 
 import { styles } from '../../css/css'
 
-const lifesaverCSS = css`
-	fill: ${styles.colors.blue};
+const logoCSS = css`
+	fill: ${styles.colors.white};
 `
 
 const LogoColor = css => {
 	return (
-		<svg viewBox="0 0 588 239">
+		<svg viewBox="0 0 588 239" css={logoCSS}>
 			<g>
 				<g>
 					<g>
@@ -236,7 +236,6 @@ const LogoColor = css => {
 					/>
 				</g>
 				<path
-					css={lifesaverCSS}
 					d="M229.15,77.37c-24.6-59.38-92.91-87.68-152.3-63.08c-59.38,24.6-87.68,92.92-63.08,152.3
 		c11.92,28.77,34.32,51.17,63.08,63.09c14.38,5.96,29.5,8.94,44.61,8.94c15.11,0,30.22-2.98,44.61-8.94
 		c28.77-11.91,51.17-34.32,63.09-63.08C241.07,137.82,241.07,106.13,229.15,77.37z M68.94,143.73c-5.81-14.03-5.81-29.48,0-43.51

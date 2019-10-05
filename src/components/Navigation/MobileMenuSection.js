@@ -81,19 +81,19 @@ const MenuSection = ({ title }) => {
 			</div>
 			<animated.ul css={MenuListCSS} style={showList} ref={listRef}>
 				<li>
-					<a href="#">Foo</a>
+					<a href="https://example.com">Foo</a>
 				</li>
 				<li>
-					<a href="#">Bar</a>
+					<a href="https://example.com">Bar</a>
 				</li>
 				<li>
-					<a href="#">Maj</a>
+					<a href="https://example.com">Maj</a>
 				</li>
 				<li>
-					<a href="#">Apt</a>
+					<a href="https://example.com">Apt</a>
 				</li>
 				<li>
-					<a href="#">Foo</a>
+					<a href="https://example.com">Foo</a>
 				</li>
 			</animated.ul>
 			<hr

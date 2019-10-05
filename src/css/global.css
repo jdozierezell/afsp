@@ -11,7 +11,9 @@ h6 {
 	font-family: 'PaulGroteskSoft-Bold' Arial sans-serif;
 }
 
-p {
+p,
+a,
+input {
 	font-family: 'AvenirNextLTPro-Regular', Arial, sans-serif;
 }
 

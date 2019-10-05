@@ -34,7 +34,6 @@ export const styles = {
 		px28: '28px',
 		px30: '30px',
 		px36: '35px',
-		px36: '36px',
 		px40: '40px',
 		px42: '42px',
 		px44: '44px',
@@ -47,8 +46,14 @@ export const styles = {
 		px62: '62px',
 		px70: '70px',
 		px75: '75px',
+		px80: '80px',
+		px90: '90px',
+		px126: '126px',
 	},
 	screens: {
-		mobile: 414,
+		mobile: 415,
+		tablet: 769,
+		navigation: 1300,
+		footer: 1100,
 	},
 }

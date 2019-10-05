@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { css } from '@emotion/core'
 
 import IconX from '../SVGs/IconX'
@@ -8,13 +8,13 @@ import { styles } from '../../css/css'
 const searchCSS = css`
 	background-color: ${styles.colors.blue};
 	padding: ${styles.scale.px50} ${styles.scale.px24} ${styles.scale.px35};
+	width: 100%;
 	position: relative;
 	input {
 		width: 100%;
-		border-radius: 5px;
+		border-radius: ${styles.scale.px5};
 		border: none;
 		padding: ${styles.scale.px14};
-		font-family: ${styles.fonts.avenirRegular};
 		font-size: ${styles.scale.px17};
 	}
 	button {

@@ -24,6 +24,11 @@ const menuItems = [
 				url: 'https://example.com',
 			},
 		],
+		featured: {
+			name: 'Foo',
+			url: 'https://example.com',
+			img: 'https://placekitten.com/623/252',
+		},
 	},
 	{
 		name: 'Find Support',
@@ -34,6 +39,11 @@ const menuItems = [
 				url: 'https://example.com',
 			},
 		],
+		featured: {
+			name: 'Foo',
+			url: 'https://example.com',
+			img: 'https://placekitten.com/623/252',
+		},
 	},
 	{
 		name: 'Make a Difference',
@@ -44,6 +54,11 @@ const menuItems = [
 				url: 'https://example.com',
 			},
 		],
+		featured: {
+			name: 'Foo',
+			url: 'https://example.com',
+			img: 'https://placekitten.com/623/252',
+		},
 	},
 	{
 		name: 'Join a Local Chapter',
@@ -54,6 +69,11 @@ const menuItems = [
 				url: 'https://example.com',
 			},
 		],
+		featured: {
+			name: 'Foo',
+			url: 'https://example.com',
+			img: 'https://placekitten.com/623/252',
+		},
 	},
 	{
 		name: 'Learn the Facts',
@@ -64,6 +84,11 @@ const menuItems = [
 				url: 'https://example.com',
 			},
 		],
+		featured: {
+			name: 'Foo',
+			url: 'https://example.com',
+			img: 'https://placekitten.com/623/252',
+		},
 	},
 ]
 

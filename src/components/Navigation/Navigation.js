@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 
-import LogoColor from './SVGs/LogoColor'
-import MobileMenu from './Navigation/MobileMenu'
-import DeskMenuItems from './Navigation/DeskMenuItems'
-import DeskMenuMega from './Navigation/DeskMenuMega'
-import IconHamburger from './SVGs/IconHamburger'
-import IconX from './SVGs/IconX'
-import IconSearch from './SVGs/IconSearch'
-import SearchBar from './Navigation/SearchBar'
-import { useWindowDimensions } from './WindowDimensionsProvider'
-import MenuCTA from './Navigation/MenuCTA'
+import LogoColor from '../SVGs/LogoColor'
+import MobileMenu from './MobileMenu'
+import DeskMenu from './DeskMenu'
+import IconHamburger from '../SVGs/IconHamburger'
+import IconX from '../SVGs/IconX'
+import IconSearch from '../SVGs/IconSearch'
+import SearchBar from './SearchBar'
+import { useWindowDimensions } from '../WindowDimensionsProvider'
+import MenuCTA from './MenuCTA'
 
-import menuItems from './Navigation/MenuItems'
+import menuItems from './MenuItems'
 
-import { styles } from '../css/css'
+import { styles } from '../../css/css'
 
 const navTopCSS = css`
 	display: flex;
@@ -29,7 +28,7 @@ const navTopCSS = css`
 			background-color: ${styles.colors.white};
 		}
 	}
-	@media (min-width: ${styles.screens.mobile}px) {
+	@media (min-width: ${styles.screens.navigation}px) {
 		padding: 0;
 		margin: 0;
 	}
@@ -39,10 +38,10 @@ const logoCSS = css`
 	min-width: 110px;
 	max-width: 150px;
 	padding-left: ${styles.scale.px24};
-	@media (min-width: ${styles.screens.mobile}px) {
-		margin: 0 ${styles.scale.px70} 0 ${styles.scale.px50};
+	@media (min-width: ${styles.screens.navigation}px) {
+		margin: 0 ${styles.scale.px50} 0 ${styles.scale.px50};
 		padding: 0;
-		width: 127px;
+		width: 126px;
 	}
 `
 
@@ -102,8 +101,8 @@ const Navigation = () => {
 			<div css={logoCSS}>
 				<LogoColor />
 			</div>
-			{width > styles.screens.mobile && (
-				<DeskMenuItems
+			{width > styles.screens.navigation && (
+				<DeskMenu
 					items={menuItems}
 					activeItem={activeMegaMenu}
 					handleMouseEnter={handleMouseEnter}
@@ -117,7 +116,7 @@ const Navigation = () => {
 				>
 					<IconSearch color={styles.colors.darkGray} />
 				</button>
-				{width <= styles.screens.mobile && (
+				{width <= styles.screens.navigation && (
 					<button
 						css={hamburgerCSS}
 						onClick={() => setMenuActive(!isMenuActive)}
@@ -129,11 +128,13 @@ const Navigation = () => {
 						)}
 					</button>
 				)}
-				{width > styles.screens.mobile && <MenuCTA />}
+				{width > styles.screens.navigation && <MenuCTA />}
 			</div>
-			{width <= styles.screens.mobile && isSearchActive && <SearchBar />}
-			{width <= styles.screens.mobile && isMenuActive && <MobileMenu />}
-			{/* {width > styles.screens.mobile && (
+			{isSearchActive && <SearchBar />}
+			{width <= styles.screens.navigation && isMenuActive && (
+				<MobileMenu />
+			)}
+			{/* {width > styles.screens.navigation && (
 				<DeskMenuMega
 					items={menuItems}
 					activeItem={activeMegaMenu}

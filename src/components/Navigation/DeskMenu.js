@@ -19,7 +19,6 @@ const menuCSS = css`
 	}
 	a {
 		font-size: ${styles.scale.px17};
-		font-family: ${styles.fonts.avenirRegular};
 		text-decoration: none;
 		color: inherit;
 		padding: 0 20px;
@@ -38,11 +37,12 @@ const megaCSS = css`
 	right: 0;
 	margin: 0;
 	font-size: ${styles.scale.px17};
-	font-family: ${styles.fonts.avenirRegular};
+	min-height: 350px;
 `
 
 const megaLinkCSS = css`
 	list-style: none;
+	margin: 0 0 ${styles.scale.px50};
 	a {
 		font-family: ${styles.fonts.avenirDemi};
 		text-decoration: underline;
@@ -51,9 +51,23 @@ const megaLinkCSS = css`
 
 const featuredCSS = css`
 	grid-area: 1 / 3 / 4 / 5;
-	background: white;
 	list-style: none;
-	color: ${styles.colors.darkGray};
+	position: relative;
+	color: ${styles.colors.white};
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	h5 {
+		margin: ${styles.scale.px35} ${styles.scale.px25} ${styles.scale.px25};
+		font-size: ${styles.scale.px18};
+	}
+	h3 {
+		margin: 0 ${styles.scale.px25} ${styles.scale.px60};
+	}
+	a {
+		font-size: ${styles.scale.px18};
+		font-family: ${styles.fonts.avenirDemi};
+	}
 `
 
 const MenuItems = ({
@@ -66,6 +80,7 @@ const MenuItems = ({
 		<>
 			<ul css={menuCSS}>
 				{items.map(item => {
+					const featuredImage = item.featured.img
 					return (
 						<li
 							key={item.id}
@@ -73,7 +88,7 @@ const MenuItems = ({
 							onMouseEnter={() => handleMouseEnter(item.id)}
 							onMouseLeave={() => handleMouseLeave(item.id)}
 						>
-							<a href="#">{item.name}</a>
+							<a href="https://example.com">{item.name}</a>
 							{activeItem === item.id && (
 								<>
 									<ul css={megaCSS}>
@@ -84,7 +99,18 @@ const MenuItems = ({
 												</a>
 											</li>
 										))}
-										<li css={featuredCSS}>{activeItem}</li>
+										<li
+											css={css`
+												${featuredCSS};
+												background-image: url(${featuredImage});
+											`}
+										>
+											<h5>Featured</h5>
+											<h3>{item.featured.name}</h3>
+											<a href="https://example.com">
+												Learn more
+											</a>
+										</li>
 									</ul>
 								</>
 							)}

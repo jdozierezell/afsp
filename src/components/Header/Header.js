@@ -1,7 +1,7 @@
 import React from 'react'
 
 import HeaderAside from './HeaderAside'
-import Navigation from './Navigation'
+import Navigation from '../Navigation/Navigation'
 
 const Header = () => (
 	<header>

@@ -1,11 +1,14 @@
 import React from 'react'
 import { css } from '@emotion/core'
 
-import { styles } from '../../css/css'
-
 const CaretIcon = ({ color }) => {
 	return (
-		<svg viewBox="0 0 15.755 15.75">
+		<svg
+			viewBox="0 0 15.755 15.75"
+			css={css`
+				fill: ${color};
+			`}
+		>
 			<path
 				id="Icon_ionic-ios-close"
 				data-name="Icon ionic-ios-close"

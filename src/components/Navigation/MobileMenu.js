@@ -3,7 +3,6 @@ import { css } from '@emotion/core'
 
 import MobileMenuSection from './MobileMenuSection'
 import MenuCTA from './MenuCTA'
-import { useWindowDimensions } from '../WindowDimensionsProvider'
 
 import { styles } from '../../css/css'
 
@@ -14,8 +13,6 @@ const menuCSS = css`
 `
 
 const MenuItems = () => {
-	const { width } = useWindowDimensions()
-
 	return (
 		<div css={menuCSS}>
 			<MobileMenuSection title="Real Stories" />
