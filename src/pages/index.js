@@ -14,7 +14,7 @@ function App() {
 			<ChannelContainer />
 			<FeaturedResourcesContainer />
 			<FeaturedProgramsContainer />
-			<StoriesContainer />
+			<StoriesContainer header="Stories" more="stories" />
 		</Layout>
 	)
 }
