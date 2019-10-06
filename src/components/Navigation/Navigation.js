@@ -21,7 +21,7 @@ const navTopCSS = css`
 	padding: ${styles.scale.px14} 0;
 	justify-content: space-between;
 	align-items: center;
-	margin: 0 0 50px;
+	min-height: 100px;
 	position: relative;
 	@media (hover: hover) {
 		:hover {

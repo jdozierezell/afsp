@@ -4,11 +4,9 @@ import { css } from '@emotion/core'
 import { styles } from '../../css/css'
 
 const channelCSS = css`
-	margin: 0 0 ${styles.scale.px80};
 	text-align: center;
 	@media (min-width: ${styles.screens.tablet}px) {
 		text-align: left;
-		margin-right: ${styles.scale.px50};
 	}
 	img {
 		border-radius: 50%;
@@ -19,12 +17,6 @@ const channelCSS = css`
 	h2 {
 		margin: ${styles.scale.px30} 0;
 		font-size: ${styles.scale.px20};
-	}
-	p {
-		font-size: ${styles.scale.px17};
-	}
-	a {
-		color: ${styles.colors.poppy};
 	}
 `
 

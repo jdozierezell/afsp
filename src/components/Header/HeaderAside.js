@@ -15,6 +15,9 @@ const headerAsideCSS = css`
 		line-height: ${styles.scale.px24};
 		margin: 0;
 	}
+	a {
+		color: ${styles.colors.darkGray};
+	}
 `
 
 const HeaderAside = () => {

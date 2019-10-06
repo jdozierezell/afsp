@@ -8,6 +8,7 @@ import { styles } from '../../css/css'
 
 const headerCSS = css`
 	font-size: ${styles.scale.px16};
+	color: ${styles.colors.white};
 `
 
 const linkListCSS = css`

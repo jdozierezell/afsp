@@ -14,11 +14,11 @@ const menuCSS = css`
 
 const MenuItems = () => {
 	return (
-		<div css={menuCSS}>
+		<nav css={menuCSS}>
 			<MobileMenuSection title="Real Stories" />
 			<MobileMenuSection title="Real Stories" />
 			<MenuCTA width="100%" margin={`${styles.scale.px45} 0 0`} />
-		</div>
+		</nav>
 	)
 }
 

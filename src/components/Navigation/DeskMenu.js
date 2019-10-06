@@ -77,7 +77,7 @@ const MenuItems = ({
 	handleMouseLeave,
 }) => {
 	return (
-		<>
+		<nav>
 			<ul css={menuCSS}>
 				{items.map(item => {
 					const featuredImage = item.featured.img
@@ -118,7 +118,7 @@ const MenuItems = ({
 					)
 				})}
 			</ul>
-		</>
+		</nav>
 	)
 }
 
