@@ -17,6 +17,8 @@ export const styles = {
 		avenirRegularIt: 'AvenirNextLTPro-It, Arial, sans-serif',
 		avenirDemi: 'AvenirNextLTPro-Demi, Arial, sans-serif',
 		avenirDemiIt: 'AvenirNextLTPro-DemiIt, Arial, sans-serif',
+		avenirBold: 'AvenirNextLTPro-Bold, Arial, sans-serif',
+		avenirBoldIt: 'AvenirNextLTPro-BoldIt, Arial, sans-serif',
 		paul: 'PaulGroteskSoft-Bold, Arial, sans-serif',
 	},
 	scale: {

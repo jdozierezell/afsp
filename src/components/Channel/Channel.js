@@ -16,6 +16,7 @@ const channelCSS = css`
 	}
 	h2 {
 		margin: ${styles.scale.px30} 0;
+		font-family: ${styles.fonts.avenirBold};
 		font-size: ${styles.scale.px20};
 	}
 `

@@ -14,6 +14,7 @@ const emailCSS = css`
 		padding: ${styles.scale.px50};
 		text-align: left;
 		align-items: center;
+		grid-column-gap: ${styles.scale.px20};
 	}
 	h2 {
 		font-size: ${styles.scale.px36};
@@ -23,10 +24,26 @@ const emailCSS = css`
 		margin: 0;
 		font-size: ${styles.scale.px17};
 	}
+`
+
+const subscribeCSS = css`
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: center;
+	@media (min-width: ${styles.screens.tablet}px) {
+		justify-content: space-between;
+	}
 	input {
-		margin: 40px ${styles.scale.px24} 40px 0;
 		flex-grow: 1;
 		flex-shrink: 1;
+		flex-basis: 100%;
+		margin: ${styles.scale.px40} 0;
+		@media (min-width: ${styles.screens.tablet}px) {
+			margin: ${styles.scale.px40} ${styles.scale.px24}
+				${styles.scale.px40} 0;
+			flex-basis: initial;
+		}
 	}
 `
 
@@ -37,14 +54,7 @@ const EmailSignup = () => {
 				<h2>Sign up for email alerts</h2>
 				<p>Join our network and be the first to take action</p>
 			</div>
-			<div
-				css={css`
-					display: flex;
-					flex-flow: row wrap;
-					align-items: center;
-					justify-content: space-between;
-				`}
-			>
+			<div css={subscribeCSS}>
 				<input placeholder="Email address" type="text" />
 				<button className="secondary-button">Subscribe</button>
 			</div>

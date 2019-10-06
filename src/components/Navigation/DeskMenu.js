@@ -44,7 +44,7 @@ const megaLinkCSS = css`
 	list-style: none;
 	margin: 0 0 ${styles.scale.px50};
 	a {
-		font-family: ${styles.fonts.avenirDemi};
+		font-family: ${styles.fonts.avenirBold};
 		text-decoration: underline;
 	}
 `

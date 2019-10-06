@@ -8,7 +8,7 @@ const ctaButtonCSS = css`
 	border: none;
 	padding: 0 ${styles.scale.px18};
 	color: ${styles.colors.white};
-	font-family: ${styles.fonts.avenirDemi};
+	font-family: ${styles.fonts.avenirBold};
 	font-size: ${styles.scale.px18};
 	line-height: ${styles.scale.px50};
 	border-radius: ${styles.scale.px25};
