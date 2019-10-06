@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 
-import Channel from './Channel'
+import FeaturedResources from './FeaturedResources'
 
 import { styles } from '../../css/css'
 
@@ -14,14 +14,14 @@ const containerCSS = css`
 	}
 `
 
-const ChannelContainer = () => {
+const FeaturedResourcesContainer = () => {
 	return (
-		<div css={containerCSS}>
-			<Channel />
-			<Channel />
-			<Channel />
+		<div>
+			<FeaturedResources />
+			<FeaturedResources />
+			<FeaturedResources />
 		</div>
 	)
 }
 
-export default ChannelContainer
+export default FeaturedResourcesContainer

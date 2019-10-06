@@ -2,13 +2,13 @@ import React from 'react'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import ChannelContainer from '../components/Channel/ChannelContainer'
+import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
 
 function App() {
 	return (
 		<Layout>
 			<SEO title="American Foundation for Suicide Prevention" />
-			<ChannelContainer />
+			<FeaturedResourcesContainer />
 		</Layout>
 	)
 }

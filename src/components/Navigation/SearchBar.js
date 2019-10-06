@@ -12,10 +12,7 @@ const searchCSS = css`
 	position: relative;
 	input {
 		width: 100%;
-		border-radius: ${styles.scale.px5};
 		border: none;
-		padding: ${styles.scale.px14};
-		font-size: ${styles.scale.px17};
 	}
 	button {
 		position: absolute;
