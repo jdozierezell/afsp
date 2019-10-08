@@ -4,10 +4,18 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 
 const WindowDimensionsCtx = createContext(null)
 
+let defaultHeight
+let defaultWidth
+
+if (typeof window !== `undefined`) {
+	defaultWidth = window.innerWidth
+	defaultHeight = window.innerHeight
+}
+
 const WindowDimensionsProvider = ({ children }) => {
 	const [dimensions, setDimensions] = useState({
-		width: window.innerWidth,
-		height: window.innerHeight,
+		width: defaultWidth,
+		height: defaultHeight,
 	})
 	useEffect(() => {
 		const handleResize = () => {
