@@ -48,7 +48,7 @@ const logoCSS = css`
 const navButtons = css`
 	display: flex;
 	min-width: 100px;
-	max-width: 215px;
+	max-width: 225px;
 	justify-content: space-between;
 	padding-right: ${styles.scale.px24};
 `
@@ -134,14 +134,6 @@ const Navigation = () => {
 			{width <= styles.screens.navigation && isMenuActive && (
 				<MobileMenu />
 			)}
-			{/* {width > styles.screens.navigation && (
-				<DeskMenuMega
-					items={menuItems}
-					activeItem={activeMegaMenu}
-					handleMouseEnter={handleMouseEnter}
-					handleMouseLeave={handleMouseLeave}
-				/>
-			)} */}
 		</div>
 	)
 }

@@ -60,9 +60,11 @@ const featuredCSS = css`
 	h5 {
 		margin: ${styles.scale.px35} ${styles.scale.px25} ${styles.scale.px25};
 		font-size: ${styles.scale.px18};
+		color: ${styles.colors.white};
 	}
 	h3 {
 		margin: 0 ${styles.scale.px25} ${styles.scale.px60};
+		color: ${styles.colors.white};
 	}
 	a {
 		font-size: ${styles.scale.px18};
