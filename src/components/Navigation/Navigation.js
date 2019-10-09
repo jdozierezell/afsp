@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 
 import LogoColor from '../SVGs/LogoColor'
+import LogoWhite from '../SVGs/LogoWhite'
 import MobileMenu from './MobileMenu'
 import DeskMenu from './DeskMenu'
 import IconHamburger from '../SVGs/IconHamburger'
@@ -18,16 +19,13 @@ import { styles } from '../../css/css'
 const navTopCSS = css`
 	display: flex;
 	flex-flow: row wrap;
-	padding: ${styles.scale.px14} 0;
+	padding: ${styles.scale.px24} 0;
 	justify-content: space-between;
 	align-items: center;
 	min-height: 100px;
-	position: relative;
-	@media (hover: hover) {
-		:hover {
-			background-color: ${styles.colors.white};
-		}
-	}
+	position: absolute;
+	left: 0;
+	right: 0;
 	@media (min-width: ${styles.screens.navigation}px) {
 		padding: 0;
 		margin: 0;
@@ -48,9 +46,12 @@ const logoCSS = css`
 const navButtons = css`
 	display: flex;
 	min-width: 100px;
-	max-width: 225px;
+	max-width: 250px;
 	justify-content: space-between;
 	padding-right: ${styles.scale.px24};
+	@media (min-width: ${styles.screens.tablet}px) {
+		padding-right: ${styles.scale.px50};
+	}
 `
 
 const searchCSS = css`
@@ -71,16 +72,21 @@ const hamburgerCSS = css`
 const Navigation = () => {
 	const [isMenuActive, setMenuActive] = useState(false)
 	const [isSearchActive, setSearchActive] = useState(false)
-	const [navColor, setNavColor] = useState('transparent')
+	const [isHover, setHover] = useState(false)
+	const [navBackground, setNavBackground] = useState('transparent')
+	const [navColor, setNavColor] = useState(styles.colors.white)
 	const [activeMegaMenu, setActiveMegaMenu] = useState('')
 
 	const { width } = useWindowDimensions()
 
 	useEffect(() => {
-		if (isMenuActive || isSearchActive) {
-			setNavColor(styles.colors.white)
+		console.log(isHover)
+		if (isMenuActive || isSearchActive || isHover) {
+			setNavBackground(styles.colors.white)
+			setNavColor(styles.colors.darkGray)
 		} else {
-			setNavColor('transparent')
+			setNavBackground('transparent')
+			setNavColor(styles.colors.white)
 		}
 	})
 
@@ -95,11 +101,14 @@ const Navigation = () => {
 		<div
 			css={css`
 				${navTopCSS};
-				background-color: ${navColor};
+				background-color: ${navBackground};
+				color: ${navColor};
 			`}
+			onMouseEnter={() => setHover(true)}
+			onMouseLeave={() => setHover(false)}
 		>
 			<div css={logoCSS}>
-				<LogoColor />
+				{isHover || isMenuActive ? <LogoColor /> : <LogoWhite />}
 			</div>
 			{width > styles.screens.navigation && (
 				<DeskMenu
@@ -114,7 +123,13 @@ const Navigation = () => {
 					css={searchCSS}
 					onClick={() => setSearchActive(!isSearchActive)}
 				>
-					<IconSearch color={styles.colors.darkGray} />
+					<IconSearch
+						color={
+							isHover
+								? styles.colors.darkGray
+								: styles.colors.white
+						}
+					/>
 				</button>
 				{width <= styles.screens.navigation && (
 					<button
@@ -124,7 +139,13 @@ const Navigation = () => {
 						{isMenuActive ? (
 							<IconX />
 						) : (
-							<IconHamburger color={styles.colors.darkGray} />
+							<IconHamburger
+								color={
+									isHover
+										? styles.colors.darkGray
+										: styles.colors.white
+								}
+							/>
 						)}
 					</button>
 				)}

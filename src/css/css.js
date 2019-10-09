@@ -57,7 +57,11 @@ export const styles = {
 	screens: {
 		mobile: 415,
 		tablet: 769,
-		navigation: 1300,
+		navigation: 1325,
 		footer: 1100,
+	},
+	gridGap: {
+		mobile: '10px',
+		desktop: '20px',
 	},
 }

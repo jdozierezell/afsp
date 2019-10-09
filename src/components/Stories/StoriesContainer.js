@@ -25,7 +25,7 @@ const storiesCSS = css`
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-row-gap: ${styles.scale.px50};
-	grid-column-gap: ${styles.scale.px20};
+	grid-column-gap: ${styles.gridGap.desktop};
 	@media (min-width: ${styles.screens.tablet}px) {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);

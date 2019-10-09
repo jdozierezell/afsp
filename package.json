@@ -8,6 +8,7 @@
 		"@apollo/react-hooks": "^3.1.1",
 		"@emotion/core": "^10.0.17",
 		"@emotion/styled": "^10.0.17",
+		"@glidejs/glide": "^3.4.1",
 		"algoliasearch": "^3.33.0",
 		"apollo-cache-inmemory": "^1.6.3",
 		"apollo-client": "^2.6.4",
@@ -37,6 +38,7 @@
 		"react-dom": "^16.8.6",
 		"react-helmet": "^5.2.1",
 		"react-instantsearch-dom": "^5.7.0",
+		"react-slick": "^0.25.2",
 		"react-spring": "^8.0.27"
 	},
 	"devDependencies": {

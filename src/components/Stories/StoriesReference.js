@@ -72,6 +72,7 @@ const StoriesReference = ({ videoURL, videoTitle }) => {
 				preload="metadata"
 				css={videoCSS}
 				src={videoURL}
+				poster="https://placekitten.com/720"
 			></video>
 			<h2 css={videoTitleCSS}>{videoTitle}</h2>
 			<div css={referenceCSS}>

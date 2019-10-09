@@ -19,6 +19,7 @@ const menuCSS = css`
 	}
 	a {
 		font-size: ${styles.scale.px17};
+		font-family: ${styles.fonts.avenirBold};
 		text-decoration: none;
 		color: inherit;
 		padding: 0 20px;

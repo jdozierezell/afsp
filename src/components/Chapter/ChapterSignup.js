@@ -9,20 +9,15 @@ const emailCSS = css`
 	color: ${styles.colors.black};
 	text-align: center;
 	@media (min-width: ${styles.screens.tablet}px) {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		padding: ${styles.scale.px50};
 		text-align: left;
-		align-items: center;
-		grid-column-gap: ${styles.gridGap.desktop};
+		padding: ${styles.scale.px60} ${styles.scale.px50};
 	}
 	h2 {
 		font-size: ${styles.scale.px36};
 		margin-bottom: ${styles.scale.px30};
-	}
-	p {
-		margin: 0;
-		font-size: ${styles.scale.px17};
+		@media (min-width: ${styles.screens.tablet}px) {
+			margin-bottom: 0;
+		}
 	}
 `
 
@@ -40,20 +35,17 @@ const subscribeCSS = css`
 		flex-basis: 100%;
 		margin: ${styles.scale.px40} 0;
 		@media (min-width: ${styles.screens.tablet}px) {
-			margin: ${styles.scale.px40} ${styles.scale.px24}
-				${styles.scale.px40} 0;
+			margin: ${styles.scale.px40} 0 ${styles.scale.px20};
 			flex-basis: initial;
+			width: 100%;
 		}
 	}
 `
 
-const EmailSignup = () => {
+const ChapterSignup = () => {
 	return (
 		<div css={emailCSS}>
-			<div>
-				<h2>Sign up for email alerts</h2>
-				<p>Join our network and be the first to take action</p>
-			</div>
+			<h2>Sign up for chapter news</h2>
 			<div css={subscribeCSS}>
 				<input placeholder="Email address" type="text" />
 				<button className="secondary-button">Subscribe</button>
@@ -62,4 +54,4 @@ const EmailSignup = () => {
 	)
 }
 
-export default EmailSignup
+export default ChapterSignup
