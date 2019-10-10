@@ -36,9 +36,9 @@ const logoCSS = css`
 	min-width: 110px;
 	max-width: 150px;
 	padding-left: ${styles.scale.px24};
-	@media (min-width: ${styles.screens.navigation}px) {
+	@media (min-width: ${styles.screens.mobile}px) {
 		margin: 0 ${styles.scale.px50} 0 ${styles.scale.px50};
-		padding: 0;
+		padding-left: 0;
 		width: 126px;
 	}
 `
@@ -49,7 +49,7 @@ const navButtons = css`
 	max-width: 250px;
 	justify-content: space-between;
 	padding-right: ${styles.scale.px24};
-	@media (min-width: ${styles.screens.tablet}px) {
+	@media (min-width: ${styles.screens.mobile}px) {
 		padding-right: ${styles.scale.px50};
 	}
 `

@@ -14,7 +14,8 @@ h6 {
 
 p,
 a,
-input {
+input,
+li {
 	font-family: AvenirNextLTPro-Regular, Arial, sans-serif;
 }
 

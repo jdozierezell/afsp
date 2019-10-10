@@ -81,6 +81,7 @@ const Footer = () => {
 							: index * 2 + 2
 					return (
 						<div
+							key={index}
 							css={css`
 								grid-area: 1 / ${leftEdge} / 2 / ${rightEdge};
 							`}

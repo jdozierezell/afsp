@@ -38,6 +38,7 @@
 		"react-dom": "^16.8.6",
 		"react-helmet": "^5.2.1",
 		"react-instantsearch-dom": "^5.7.0",
+		"react-map-gl": "^5.0.12",
 		"react-slick": "^0.25.2",
 		"react-spring": "^8.0.27"
 	},

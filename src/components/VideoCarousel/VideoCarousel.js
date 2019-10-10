@@ -114,9 +114,10 @@ const VideoCarousel = () => {
 			<div className="glide">
 				<div data-glide-el="track">
 					<ul className="glide__slides">
-						{videoTempData.map(video => {
+						{videoTempData.map((video, index) => {
 							return (
 								<VideoComponent
+									key={index}
 									title={video.title}
 									src={video.src}
 								/>

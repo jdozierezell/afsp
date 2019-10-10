@@ -6,6 +6,7 @@ import Navigation from '../Navigation/Navigation'
 
 const navCSS = css`
 	position: relative;
+	z-index: 1000;
 `
 
 const Header = () => (

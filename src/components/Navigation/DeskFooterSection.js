@@ -21,17 +21,16 @@ const linkListCSS = css`
 `
 
 const DeskFooterSection = ({ item, index, length }) => {
-	console.log(item)
 	return (
 		<>
 			<h3 css={headerCSS}>{item.name}</h3>
-			{item.links.map(link => (
-				<ul css={linkListCSS}>
-					<li>
+			<ul css={linkListCSS}>
+				{item.links.map((link, index) => (
+					<li key={index}>
 						<a href={link.url}>{link.name}</a>
 					</li>
-				</ul>
-			))}
+				))}
+			</ul>
 			{index + 1 >= length && (
 				<>
 					<FooterAside />
