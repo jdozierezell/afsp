@@ -3,18 +3,50 @@ import { css } from '@emotion/core'
 
 import { styles } from '../../css/css'
 
-const cardCSS = css``
+const cardCSS = css`
+	position: relative;
+	background-color: ${styles.colors.white};
+	border-radius: ${styles.scale.px5};
+	padding: ${styles.scale.px30} ${styles.scale.px30} ${styles.scale.px150};
+	@media (min-width: ${styles.screens.mobile}px) {
+		padding: ${styles.scale.px40} ${styles.scale.px40} ${styles.scale.px150};
+	}
+	p {
+		:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+`
 
-const Card = ({ externalCSS }) => {
+const titleCSS = css`
+	font-size: ${styles.scale.px17};
+	font-family: ${styles.fonts.avenirDemi};
+	@media (min-width: ${styles.screens.mobile}px) {
+		margin-bottom: ${styles.scale.px60};
+	}
+`
+
+const subtitleCSS = css`
+	font-size: ${styles.scale.px20};
+	font-family: ${styles.fonts.avenirDemi};
+	@media (min-width: ${styles.screens.mobile}px) {
+		margin-bottom: ${styles.scale.px30};
+	}
+`
+
+const ctaCSS = css`
+	position: absolute;
+	bottom: ${styles.scale.px40};
+	@media (min-width: ${styles.screens.mobile}px) {
+		bottom: ${styles.scale.px60};
+	}
+`
+
+const Card = ({ title, cta }) => {
 	return (
-		<div
-			css={css`
-				${cardCSS};
-				${externalCSS};
-			`}
-		>
-			<h2>Grant Type</h2>
-			<h3>Subtitle about grant type</h3>
+		<div css={cardCSS}>
+			<h2 css={titleCSS}>{title}</h2>
+			<h3 css={subtitleCSS}>Subtitle about grant type</h3>
 			<div>
 				<p>
 					Each year our research department requests applications for
@@ -36,6 +68,13 @@ const Card = ({ externalCSS }) => {
 					<a href="https://example.com">Download Policy Document</a>
 				</p>
 			</div>
+			<a
+				href="https://example.com"
+				className="secondary-button"
+				css={ctaCSS}
+			>
+				{cta}
+			</a>
 		</div>
 	)
 }
