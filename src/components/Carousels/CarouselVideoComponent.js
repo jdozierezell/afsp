@@ -17,7 +17,7 @@ const videoComponentCSS = css`
 	}
 `
 
-const VideoComponent = ({ src, title }) => {
+const CarouselVideoComponent = ({ src, title }) => {
 	return (
 		<div
 			css={videoComponentCSS}
@@ -30,4 +30,4 @@ const VideoComponent = ({ src, title }) => {
 	)
 }
 
-export default VideoComponent
+export default CarouselVideoComponent

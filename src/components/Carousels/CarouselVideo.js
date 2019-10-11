@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Glide from '@glidejs/glide'
 import { css } from '@emotion/core'
 
-import VideoComponent from './VideoComponent'
+import CarouselVideoComponent from './CarouselVideoComponent'
 
 import { styles } from '../../css/css'
 
@@ -90,7 +90,7 @@ const videoTempData = [
 	},
 ]
 
-const VideoCarousel = () => {
+const CarouselVideo = () => {
 	useEffect(() => {
 		new Glide('.glide', {
 			perView: 3,
@@ -116,7 +116,7 @@ const VideoCarousel = () => {
 					<ul className="glide__slides">
 						{videoTempData.map((video, index) => {
 							return (
-								<VideoComponent
+								<CarouselVideoComponent
 									key={index}
 									title={video.title}
 									src={video.src}
@@ -135,4 +135,4 @@ const VideoCarousel = () => {
 	)
 }
 
-export default VideoCarousel
+export default CarouselVideo
