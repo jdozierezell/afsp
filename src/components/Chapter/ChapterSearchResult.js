@@ -130,7 +130,9 @@ const ChapterSearchResult = () => {
 					<br />
 					<a href="tel:16462845790">(646) 284-5790</a>
 				</address>
-				<button className="secondary-button">More info</button>
+				<a className="secondary-button" href="https://example.com">
+					More info
+				</a>
 			</div>
 		</div>
 	)

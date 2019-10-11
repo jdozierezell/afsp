@@ -42,9 +42,9 @@ const CommentContainer = () => {
 				<Comment />
 				<Comment />
 			</div>
-			<button className="secondary-button">
+			<a className="secondary-button" href="https://example.com">
 				Join the conversation on Facebook
-			</button>
+			</a>
 		</aside>
 	)
 }

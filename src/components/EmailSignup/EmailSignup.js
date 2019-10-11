@@ -56,7 +56,9 @@ const EmailSignup = () => {
 			</div>
 			<div css={subscribeCSS}>
 				<input placeholder="Email address" type="text" />
-				<button className="secondary-button">Subscribe</button>
+				<a className="secondary-button" href="https://example.com">
+					Subscribe
+				</a>
 			</div>
 		</div>
 	)

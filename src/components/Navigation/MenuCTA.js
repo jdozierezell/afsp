@@ -12,6 +12,9 @@ const ctaButtonCSS = css`
 	font-size: ${styles.scale.px18};
 	line-height: ${styles.scale.px50};
 	border-radius: ${styles.scale.px25};
+	display: inline-block;
+	text-decoration: none;
+	text-align: center;
 	@media (hover: hover) {
 		:hover {
 			background-color: ${styles.colors.poppyHover};
@@ -21,15 +24,16 @@ const ctaButtonCSS = css`
 
 const MenuCTA = ({ width, margin }) => {
 	return (
-		<button
+		<a
 			css={css`
 				${ctaButtonCSS};
 				width: ${width};
 				margin: ${margin};
 			`}
+			href="https://example.com"
 		>
 			Walk with Us
-		</button>
+		</a>
 	)
 }
 

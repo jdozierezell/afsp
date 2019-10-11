@@ -54,9 +54,9 @@ const StoriesContainer = ({ header, more }) => {
 			</div>
 			{more && (
 				<div css={moreButtonCSS}>
-					<button className="secondary-button">
+					<a className="secondary-button" href="https://example.com">
 						Load more {more}
-					</button>
+					</a>
 				</div>
 			)}
 		</section>

@@ -3,13 +3,15 @@ import { css } from '@emotion/core'
 
 import { styles } from '../../css/css'
 
-const videoHeroCSS = css`
+const videoCTACSS = css`
 	overflow: hidden;
-	margin-bottom: ${styles.scale.px50};
 	position: relative;
-	max-height: 600px;
+	min-height: 500px;
+	max-height: 580px;
+	line-height: 0;
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin-bottom: 0;
+		line-height: initial;
 	}
 `
 
@@ -17,8 +19,8 @@ const videoCoverCSS = css`
 	position: relative;
 	line-height: 0;
 	height: calc(100vw / 1.78);
-	min-height: 275px;
-	max-height: 600px;
+	min-height: 500px;
+	max-height: 580px;
 	width: 100%;
 	object-fit: cover;
 	@media (min-width: ${styles.screens.tablet}px) {
@@ -27,7 +29,10 @@ const videoCoverCSS = css`
 `
 
 const videoDescriptionCSS = css`
-	margin: ${styles.scale.px40} ${styles.scale.px24} 0;
+	position: absolute;
+	top: 50px;
+	left: 24px;
+	right: 24px;
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin: 0;
 		padding: 0 ${styles.scale.px50};
@@ -36,9 +41,9 @@ const videoDescriptionCSS = css`
 		max-width: 600px;
 		bottom: 195px;
 		width: 50vw;
-		top: 0;
-		left: 0;
-		bottom: 0;
+		top: 0px;
+		left: 0px;
+		bottom: 0px;
 		background: linear-gradient(
 			90deg,
 			rgba(38, 38, 38, 0.7) 0%,
@@ -46,8 +51,11 @@ const videoDescriptionCSS = css`
 		);
 	}
 	p {
+		display: none;
+		@media (min-width: ${styles.screens.tablet}px) {
+			display: block;
+		}
 		:last-of-type {
-			margin-bottom: ${styles.scale.px40};
 			@media (min-width: ${styles.screens.tablet}px) {
 				margin-bottom: ${styles.scale.px60};
 				color: ${styles.colors.white};
@@ -55,32 +63,23 @@ const videoDescriptionCSS = css`
 		}
 	}
 	h2 {
-		font-size: ${styles.scale.px46};
+		font-size: ${styles.scale.px36};
 		color: ${styles.colors.white};
+		margin-bottom: ${styles.scale.px40};
 		width: 220px;
-		position: absolute;
-		top: 125px;
-		@media (min-width: ${styles.screens.tablet}px) {
-			position: initial;
-		}
-		span {
-			box-shadow: 0 0 0 10px ${styles.colors.blue};
-			background-color: ${styles.colors.blue};
-			box-decoration-break: clone;
-		}
 	}
 `
 
 const descriptionWrapperCSS = css`
 	@media (min-width: ${styles.screens.tablet}px) {
 		position: absolute;
-		bottom: ${styles.scale.px80};
+		top: ${styles.scale.px80};
 	}
 `
 
-const HeroVideo = () => {
+const CTAVideo = () => {
 	return (
-		<section css={videoHeroCSS}>
+		<section css={videoCTACSS}>
 			<video
 				autoPlay
 				muted
@@ -90,9 +89,7 @@ const HeroVideo = () => {
 			></video>
 			<div css={videoDescriptionCSS}>
 				<div css={descriptionWrapperCSS}>
-					<h2>
-						<span>You're not alone</span>
-					</h2>
+					<h2>Walk to fight suicide</h2>
 					<p>
 						Banjo franzen palo santo pour-over artisan organic.
 						Fashion axe brunch messenger bag chartreuse jianbing
@@ -108,4 +105,4 @@ const HeroVideo = () => {
 	)
 }
 
-export default HeroVideo
+export default CTAVideo
