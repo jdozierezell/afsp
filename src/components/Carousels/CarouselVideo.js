@@ -126,7 +126,7 @@ const CarouselVideo = () => {
 					</ul>
 				</div>
 				<div data-glide-el="controls[nav]" css={carouselButtonsCSS}>
-					{videoTempData.map((video, index) => {
+					{videoTempData.map((__, index) => {
 						return <button data-glide-dir={`=${index}`}></button>
 					})}
 				</div>
