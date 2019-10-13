@@ -26,6 +26,7 @@ export const styles = {
 		px2: '2px',
 		px5: '5px',
 		px7: '7px',
+		px12: '12px',
 		px14: '14px',
 		px16: '16px',
 		px17: '17px',
