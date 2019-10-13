@@ -2,29 +2,19 @@ import React, { useEffect } from 'react'
 import Glide from '@glidejs/glide'
 import { css } from '@emotion/core'
 
-import CarouselChapter from './CarouselChapter'
+import CarouselInstagram from './CarouselInstagram'
+import IconInstagram from '../SVGs/IconInstagram'
 
 import { styles } from '../../css/css'
 
 import '@glidejs/glide/dist/css/glide.core.min.css'
 
 const carouselCSS = css`
-	padding: ${styles.scale.px25} ${styles.scale.px24};
+	padding: ${styles.scale.px50} ${styles.scale.px24} ${styles.scale.px25};
 	overflow: hidden;
+	background-color: ${styles.colors.lightGray};
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px80} ${styles.scale.px50} ${styles.scale.px35};
-		background-color: ${styles.colors.lightGray};
-	}
-	h2 {
-		font-size: ${styles.scale.px36};
-		line-height: ${styles.scale.px42};
-		margin-bottom: ${styles.scale.px45};
-	}
-	p {
-		margin-bottom: ${styles.scale.px30};
-		@media (min-width: ${styles.screens.mobile}px) {
-			margin: 0 0 ${styles.scale.px30};
-		}
 	}
 	.glide__slides {
 		margin: 0;
@@ -35,11 +25,27 @@ const carouselCSS = css`
 `
 
 const carouselHeaderWrapperCSS = css`
-	@media (min-width: ${styles.screens.tablet}px) {
-		display: flex;
-		flex-flow: row nowrap;
-		justify-content: space-between;
-		align-items: center;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	margin-bottom: ${styles.scale.px35};
+	@media (min-width: ${styles.screens.mobile}px) {
+		margin-bottom: ${styles.scale.px60};
+	}
+	h2 {
+		font-size: ${styles.scale.px24};
+		margin: 0 0 0 ${styles.scale.px24};
+		@media (min-width: ${styles.screens.mobile}px) {
+			font-size: ${styles.scale.px36};
+		}
+	}
+`
+
+const carouselIconCSS = css`
+	height: ${styles.scale.px24};
+	@media (min-width: ${styles.screens.mobile}px) {
+		height: ${styles.scale.px36};
 	}
 `
 
@@ -75,7 +81,7 @@ const chapterTempData = [
 	{
 		title: 'bar',
 		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
+		src: 'https://placekitten.com/316/516',
 	},
 	{
 		title: 'yay',
@@ -104,9 +110,9 @@ const chapterTempData = [
 	},
 ]
 
-const CarouselChapterContainer = ({ location }) => {
+const CarouselInstagramContainer = ({ location }) => {
 	useEffect(() => {
-		new Glide('.glide-chapter', {
+		new Glide('.glide-instagram', {
 			perView: 3,
 			peek: { before: 0, after: styles.scale.px24 },
 			breakpoints: {
@@ -124,23 +130,19 @@ const CarouselChapterContainer = ({ location }) => {
 	return (
 		<div css={carouselCSS}>
 			<div css={carouselHeaderWrapperCSS}>
-				<h2>Connection makes the difference</h2>
-				<a href="https://example.com" className="secondary-button">
-					Find a chapter
-				</a>
+				<IconInstagram
+					color={styles.colors.darkGray}
+					iconCSS={carouselIconCSS}
+				/>
+				<h2>@afspnational</h2>
 			</div>
-			<p>
-				Local chapters near <strong>{location}</strong>
-			</p>
-			<div className="glide-chapter">
+			<div className="glide-instagram">
 				<div data-glide-el="track">
 					<ul className="glide__slides">
 						{chapterTempData.map((chapter, index) => {
 							return (
-								<CarouselChapter
+								<CarouselInstagram
 									key={index}
-									title={chapter.title}
-									titleHref={chapter.titleHref}
 									src={chapter.src}
 								/>
 							)
@@ -157,4 +159,4 @@ const CarouselChapterContainer = ({ location }) => {
 	)
 }
 
-export default CarouselChapterContainer
+export default CarouselInstagramContainer

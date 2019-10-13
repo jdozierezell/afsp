@@ -2,11 +2,12 @@ import React from 'react'
 
 import { css } from '@emotion/core'
 
-const IconLinkedIn = ({ color }) => {
+const IconLinkedIn = ({ color, iconCSS }) => {
 	return (
 		<svg
 			viewBox="0 0 30.057 30"
 			css={css`
+				${iconCSS};
 				fill: ${color};
 			`}
 		>

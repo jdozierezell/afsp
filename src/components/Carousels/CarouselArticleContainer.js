@@ -2,23 +2,27 @@ import React, { useEffect } from 'react'
 import Glide from '@glidejs/glide'
 import { css } from '@emotion/core'
 
-import CarouselChapter from './CarouselChapter'
+import CarouselArticle from './CarouselArticle'
 
 import { styles } from '../../css/css'
 
 import '@glidejs/glide/dist/css/glide.core.min.css'
 
 const carouselCSS = css`
-	padding: ${styles.scale.px25} ${styles.scale.px24};
+	background-color: ${styles.colors.blue};
+	padding: ${styles.scale.px50} ${styles.scale.px24} ${styles.scale.px25};
 	overflow: hidden;
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px80} ${styles.scale.px50} ${styles.scale.px35};
-		background-color: ${styles.colors.lightGray};
 	}
 	h2 {
 		font-size: ${styles.scale.px36};
 		line-height: ${styles.scale.px42};
-		margin-bottom: ${styles.scale.px45};
+		margin-bottom: ${styles.scale.px35};
+		color: ${styles.colors.white};
+		@media (min-width: ${styles.screens.mobile}px) {
+			margin-bottom: ${styles.scale.px60};
+		}
 	}
 	p {
 		margin-bottom: ${styles.scale.px30};
@@ -34,15 +38,6 @@ const carouselCSS = css`
 	}
 `
 
-const carouselHeaderWrapperCSS = css`
-	@media (min-width: ${styles.screens.tablet}px) {
-		display: flex;
-		flex-flow: row nowrap;
-		justify-content: space-between;
-		align-items: center;
-	}
-`
-
 const carouselButtonsCSS = css`
 	text-align: center;
 	margin: ${styles.scale.px45} 0 0;
@@ -52,7 +47,7 @@ const carouselButtonsCSS = css`
 		margin: ${styles.scale.px35} 0 0;
 	}
 	button {
-		background: hsla(0, 0%, 14.9%, 0.5);
+		background: hsla(0, 0%, 100%, 0.5);
 		border: none;
 		margin: 0 5px;
 		padding: 0;
@@ -62,7 +57,7 @@ const carouselButtonsCSS = css`
 		border-radius: 50%;
 	}
 	.glide__bullet--active {
-		background: hsla(0, 0%, 14.9%, 1);
+		background: hsla(0, 0%, 100%, 1);
 	}
 `
 
@@ -104,9 +99,9 @@ const chapterTempData = [
 	},
 ]
 
-const CarouselChapterContainer = ({ location }) => {
+const CarouselArticleContainer = ({ title }) => {
 	useEffect(() => {
-		new Glide('.glide-chapter', {
+		new Glide('.glide-article', {
 			perView: 3,
 			peek: { before: 0, after: styles.scale.px24 },
 			breakpoints: {
@@ -123,21 +118,13 @@ const CarouselChapterContainer = ({ location }) => {
 	}, [])
 	return (
 		<div css={carouselCSS}>
-			<div css={carouselHeaderWrapperCSS}>
-				<h2>Connection makes the difference</h2>
-				<a href="https://example.com" className="secondary-button">
-					Find a chapter
-				</a>
-			</div>
-			<p>
-				Local chapters near <strong>{location}</strong>
-			</p>
-			<div className="glide-chapter">
+			<h2>{title}</h2>
+			<div className="glide-article">
 				<div data-glide-el="track">
 					<ul className="glide__slides">
 						{chapterTempData.map((chapter, index) => {
 							return (
-								<CarouselChapter
+								<CarouselArticle
 									key={index}
 									title={chapter.title}
 									titleHref={chapter.titleHref}
@@ -157,4 +144,4 @@ const CarouselChapterContainer = ({ location }) => {
 	)
 }
 
-export default CarouselChapterContainer
+export default CarouselArticleContainer

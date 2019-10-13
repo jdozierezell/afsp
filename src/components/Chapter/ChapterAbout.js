@@ -19,9 +19,14 @@ const aboutCSS = css`
 	}
 `
 
-const ChapterAbout = ({ chapterName }) => {
+const ChapterAbout = ({ chapterName, addCSS }) => {
 	return (
-		<div css={aboutCSS}>
+		<div
+			css={css`
+				${aboutCSS};
+				${addCSS};
+			`}
+		>
 			<h2>About the AFSP {chapterName} Chapter</h2>
 			<div>
 				<p>

@@ -1,11 +1,12 @@
 import React from 'react'
 import { css } from '@emotion/core'
 
-const CaretIcon = ({ color }) => {
+const IconX = ({ color, iconCSS }) => {
 	return (
 		<svg
 			viewBox="0 0 15.755 15.75"
 			css={css`
+				${iconCSS};
 				fill: ${color};
 			`}
 		>
@@ -19,4 +20,4 @@ const CaretIcon = ({ color }) => {
 	)
 }
 
-export default CaretIcon
+export default IconX

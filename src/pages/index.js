@@ -2,15 +2,15 @@ import React from 'react'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import HeroSolid from '../components/Hero/HeroSolid'
-import CardContainer from '../components/Cards/CardContainer'
+import HeroVideo from '../components/Hero/HeroVideo'
+import CTASingle from '../components/CTAs/CTASingle'
 
 function App() {
 	return (
 		<Layout>
 			<SEO title="American Foundation for Suicide Prevention" />
-			<HeroSolid />
-			<CardContainer title="Grant types" />
+			<HeroVideo src="https://player.vimeo.com/external/364075680.hd.mp4?s=9f70c5f518934c9aea34dc6b49045d7977fd7ac1&profile_id=175" />
+			<CTASingle />
 		</Layout>
 	)
 }

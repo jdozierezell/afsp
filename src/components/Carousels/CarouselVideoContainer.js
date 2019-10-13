@@ -90,9 +90,9 @@ const videoTempData = [
 	},
 ]
 
-const CarouselVideo = () => {
+const CarouselVideoContainer = () => {
 	useEffect(() => {
-		new Glide('.glide', {
+		new Glide('.glide-video', {
 			perView: 3,
 			peek: { before: 0, after: styles.scale.px126 },
 			breakpoints: {
@@ -102,7 +102,7 @@ const CarouselVideo = () => {
 				},
 				768: {
 					perView: 1,
-					peek: { before: 0, after: styles.scale.px126 },
+					peek: { before: 0, after: styles.scale.px70 },
 				},
 			},
 		}).mount()
@@ -111,7 +111,7 @@ const CarouselVideo = () => {
 	return (
 		<section css={carouselCSS}>
 			<p>Cronut pabst whatever artisan vape banh</p>
-			<div className="glide">
+			<div className="glide-video">
 				<div data-glide-el="track">
 					<ul className="glide__slides">
 						{videoTempData.map((video, index) => {
@@ -135,4 +135,4 @@ const CarouselVideo = () => {
 	)
 }
 
-export default CarouselVideo
+export default CarouselVideoContainer

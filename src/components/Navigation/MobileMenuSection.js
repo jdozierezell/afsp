@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { css } from '@emotion/core'
 import { useSpring, animated } from 'react-spring'
 
-import CaretIcon from '../SVGs/IconCaret'
+import IconCaret from '../SVGs/IconCaret'
 
 import { styles } from '../../css/css'
 
@@ -17,7 +17,7 @@ const menuTitleCSS = css`
 	}
 `
 
-const caretIconCSS = css`
+const iconCaretCSS = css`
 	background-color: transparent;
 	border: none;
 	padding: 0;
@@ -26,7 +26,7 @@ const caretIconCSS = css`
 	}
 `
 
-const MenuListCSS = css`
+const menuListCSS = css`
 	list-style: none;
 	margin: 0px 0px;
 	position: relative;
@@ -72,14 +72,14 @@ const MenuSection = ({ title }) => {
 			<div css={menuTitleCSS}>
 				<h2>{title}</h2>
 				<animated.button
-					css={caretIconCSS}
+					css={iconCaretCSS}
 					style={flipCaret}
 					onClick={() => setCaretFlipped(!isCaretFlipped)}
 				>
-					<CaretIcon color={styles.colors.white} />
+					<IconCaret color={styles.colors.white} />
 				</animated.button>
 			</div>
-			<animated.ul css={MenuListCSS} style={showList} ref={listRef}>
+			<animated.ul css={menuListCSS} style={showList} ref={listRef}>
 				<li>
 					<a href="https://example.com">Foo</a>
 				</li>

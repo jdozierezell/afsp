@@ -2,11 +2,12 @@ import React from 'react'
 
 import { css } from '@emotion/core'
 
-const IconTwitter = ({ color }) => {
+const IconTwitter = ({ color, iconCSS }) => {
 	return (
 		<svg
 			viewBox="0 0 30 30"
 			css={css`
+				${iconCSS};
 				fill: ${color};
 			`}
 		>

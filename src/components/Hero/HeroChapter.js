@@ -4,6 +4,7 @@ import { css } from '@emotion/core'
 import { styles } from '../../css/css'
 
 const videoHeroCSS = css`
+	margin-bottom: ${styles.scale.px50};
 	position: relative;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -16,7 +17,7 @@ const videoHeroCSS = css`
 	}
 `
 
-const videoCoverCSS = css`
+const videoImageCoverCSS = css`
 	line-height: 0;
 	height: calc(100vw / 1.78);
 	min-height: 300px;
@@ -45,11 +46,11 @@ const descriptionBackgroundCSS = css`
 	}
 `
 
-const videoHeaderCSS = css`
+const chapterNameCSS = css`
 	grid-area: 2 / 1 / 3 / 2;
 	font-size: ${styles.scale.px46};
 	color: ${styles.colors.white};
-	margin: 0 ${styles.scale.px60} 0 ${styles.scale.px24};
+	margin: 0 ${styles.scale.px24};
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin: 0 ${styles.scale.px60};
 	}
@@ -60,7 +61,7 @@ const videoHeaderCSS = css`
 	}
 `
 
-const videoDescriptionCSS = css`
+const chapterDescriptionCSS = css`
 	margin: 0 ${styles.scale.px24};
 	max-width: 500px;
 	@media (min-width: ${styles.screens.tablet}px) {
@@ -68,53 +69,67 @@ const videoDescriptionCSS = css`
 		margin: 0 ${styles.scale.px50};
 	}
 	:first-of-type {
-		margin-top: ${styles.scale.px25};
+		margin-top: ${styles.scale.px40};
 	}
 	:last-of-type {
 		margin-bottom: ${styles.scale.px40};
 		@media (min-width: ${styles.screens.tablet}px) {
-			color: ${styles.colors.white};
-		}
-		@media (min-width: ${styles.screens.video}px) {
 			margin-bottom: ${styles.scale.px60};
+			color: ${styles.colors.white};
 		}
 	}
 `
 
 const buttonWrapperCSS = css`
-	margin: 0 ${styles.scale.px24} ${styles.scale.px50};
-	@media (min-width: ${styles.screens.tablet}px) {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: ${styles.gridGap.mobile};
+	margin: 0 ${styles.scale.px24};
+	@media (min-width: ${styles.screens.video}px) {
 		grid-area: 4 / 1 / 5 / 2;
 		margin: 0 ${styles.scale.px50} ${styles.scale.px50};
 	}
 `
 
-const HeroVideo = () => {
+const HeroChapter = ({ chapter, type, src }) => {
 	return (
 		<section css={videoHeroCSS}>
-			<video
-				autoPlay
-				muted
-				loop
-				css={videoCoverCSS}
-				src="https://player.vimeo.com/external/364075680.hd.mp4?s=9f70c5f518934c9aea34dc6b49045d7977fd7ac1&profile_id=175"
-			></video>
+			{type === 'video' && (
+				<video
+					autoPlay
+					muted
+					loop
+					css={videoImageCoverCSS}
+					src={src}
+				></video>
+			)}
+			{type === 'image' && (
+				<img css={videoImageCoverCSS} src={src} alt=""></img>
+			)}
 			<div css={descriptionBackgroundCSS}></div>
-			<h2 css={videoHeaderCSS}>
-				<span>You're not alone</span>
+			<h2 css={chapterNameCSS}>
+				<span>AFSP {chapter}</span>
 			</h2>
-			<p css={videoDescriptionCSS}>
-				Banjo franzen palo santo pour-over artisan organic. Fashion axe
-				brunch messenger bag chartreuse jianbing poutine. Organic hella
-				thundercats next level.
+			<p css={chapterDescriptionCSS}>
+				It doesn’t take much to make a big difference, and there are
+				opportunities for all levels of commitment.
 			</p>
 			<div css={buttonWrapperCSS}>
 				<a className="secondary-button" href="https://example.com">
-					Learn more
+					Volunteer
+				</a>
+				<a className="secondary-button" href="https://example.com">
+					Events
+				</a>
+				<a className="secondary-button" href="https://example.com">
+					Programs
+				</a>
+				<a className="secondary-button" href="https://example.com">
+					News
 				</a>
 			</div>
 		</section>
 	)
 }
 
-export default HeroVideo
+export default HeroChapter

@@ -1,6 +1,6 @@
 export const styles = {
 	colors: {
-		blue: 'hsla(224, 100%, 61.2%, 1)',
+		blue: 'hsla(224, 100%, 60%, 1)',
 		darkGray: 'hsla(0, 0%, 14.9%, 1)',
 		lightGray: 'hsla(0, 0%, 91.8%, 1)',
 		yellow: 'hsla(48, 100%, 51.6%, 1)',
@@ -8,7 +8,7 @@ export const styles = {
 		poppy: 'hsla(355, 84.3%, 50%, 1)',
 		poppyHover: 'hsla(355, 84.3%, 45%, 1)',
 		green: 'hsla(156, 69%, 50.6%, 1)',
-		fuchsia: 'hsla(326, 75.3%, 52.4%, 1)',
+		fuchsia: 'hsla(326, 75%, 49%, 1)',
 		white: 'hsla(0, 0%, 100%, 1)',
 		black: 'hsla(0, 0%, 0%, 1)',
 	},
