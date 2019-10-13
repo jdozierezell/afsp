@@ -14,8 +14,6 @@ const solidHeroCSS = css`
 			${styles.scale.px160};
 	}
 	h1,
-	p,
-	label,
 	span {
 		color: ${styles.colors.white};
 	}
@@ -27,16 +25,14 @@ const solidHeroCSS = css`
 			margin: ${styles.scale.px40} 0;
 		}
 	}
-	label,
 	span {
 		font-family: ${styles.fonts.avenirRegular};
+		font-size: ${styles.scale.px18};
 		display: inline-block;
-	}
-	label {
-		margin: ${styles.scale.px35} 0 ${styles.scale.px40};
-	}
-	span {
 		margin: ${styles.scale.px20} 0;
+		@media (min-width: ${styles.screens.tablet}px) {
+			padding: 0 ${styles.gridGap.desktop};
+		}
 	}
 	form {
 		position: relative;
@@ -45,15 +41,36 @@ const solidHeroCSS = css`
 	select {
 		border: none;
 		width: 100%;
+		@media (min-width: ${styles.screens.tablet}px) {
+			width: initial;
+			display: initial;
+		}
 	}
 	.secondary-button {
-		margin-top: ${styles.scale.px40};
+		margin: ${styles.scale.px40} 0 0;
 		width: 100%;
+		@media (min-width: ${styles.screens.tablet}px) {
+			width: initial;
+			margin: 0 0 0 ${styles.scale.px20};
+		}
+	}
+`
+
+const subHeaderCSS = css`
+	margin: ${styles.scale.px35} 0 ${styles.scale.px40};
+	color: ${styles.colors.white};
+	font-family: ${styles.fonts.avenirRegular};
+	font-size: ${styles.scale.px18};
+	@media (min-width: ${styles.screens.tablet}px) {
+		margin: ${styles.scale.px40} 0 ${styles.scale.px60};
 	}
 `
 
 const inputCSS = css`
 	position: relative;
+	@media (min-width: ${styles.screens.tablet}px) {
+		display: inline-block;
+	}
 `
 
 const dropDownCSS = css`
@@ -61,7 +78,7 @@ const dropDownCSS = css`
 	display: block;
 	background-image: url(${SolidArrow});
 	background-repeat: no-repeat;
-	background-position: right ${styles.scale.px16} top ${styles.scale.px16};
+	background-position: right ${styles.scale.px16} top ${styles.scale.px14};
 	background-size: ${styles.scale.px24};
 	color: ${styles.colors.darkGray};
 	font-size: 18px;
@@ -71,6 +88,9 @@ const dropDownCSS = css`
 	padding: 0 ${styles.scale.px16};
 	font-family: ${styles.fonts.avenirRegular};
 	appearance: none;
+	@media (min-width: ${styles.screens.tablet}px) {
+		padding: 0 ${styles.scale.px56} 0 ${styles.scale.px16};
+	}
 `
 
 const actionButtonCSS = css`
@@ -88,8 +108,8 @@ const HeroSolid = () => {
 	return (
 		<div css={solidHeroCSS}>
 			<h1>Find a local chapter</h1>
+			<h3 css={subHeaderCSS}>Find a chapter in your community</h3>
 			<form action="">
-				<label>Find a chapter in your community</label>
 				<div css={inputCSS}>
 					<input type="text" placeholder="Search by zip" />
 					<button css={actionButtonCSS}>
