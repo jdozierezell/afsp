@@ -2,14 +2,14 @@ import React from 'react'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import HeroChapterSearch from '../components/Hero/HeroChapterSearch'
+import HeroStories from '../components/Hero/HeroStories'
 import CTASingle from '../components/CTAs/CTASingle'
 
 function App() {
 	return (
-		<Layout>
+		<Layout isLogoColor={false}>
 			<SEO title="American Foundation for Suicide Prevention" />
-			<HeroChapterSearch />
+			<HeroStories />
 			<CTASingle />
 		</Layout>
 	)

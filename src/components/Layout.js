@@ -10,7 +10,7 @@ import '../css/layout.css'
 import '../css/global.css'
 import '../fonts/gatsby-afsp.css'
 
-const Layout = ({ children }) => {
+const Layout = ({ isLogoColor, children }) => {
 	// const data = useStaticQuery(graphql`
 	// 	query SiteTitleQuery {
 	// 		site {
@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
 
 	return (
 		<WindowDimensionsProvider>
-			<Header />
+			<Header isLogoColor={isLogoColor} />
 			<main>{children}</main>
 			<EmailSignup />
 			<Footer />
