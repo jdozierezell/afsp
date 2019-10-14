@@ -71,25 +71,39 @@ const hamburgerCSS = css`
 	border: none;
 `
 const Navigation = () => {
+	const { width } = useWindowDimensions()
+	const headerContext = useHeaderContext()
+
+	const [isMobileLight, setMobileLight] = useState(
+		width <= styles.screens.tablet && headerContext.mobile === 'light'
+	)
+	const [isDesktopLight, setDesktopLight] = useState(
+		width > styles.screens.tablet && headerContext.desktop === 'light'
+	)
 	const [isMenuActive, setMenuActive] = useState(false)
 	const [isSearchActive, setSearchActive] = useState(false)
 	const [isHover, setHover] = useState(false)
 	const [navBackground, setNavBackground] = useState('transparent')
 	const [navColor, setNavColor] = useState(
-		headerContext === 'light' ? styles.colors.white : styles.colors.darkGray
+		isMobileLight || isDesktopLight
+			? styles.colors.white
+			: styles.colors.darkGray
 	)
 	const [activeMegaMenu, setActiveMegaMenu] = useState('')
 
-	const { width } = useWindowDimensions()
-	const headerContext = useHeaderContext()
-
 	useEffect(() => {
+		setMobileLight(
+			width <= styles.screens.tablet && headerContext.mobile === 'light'
+		)
+		setDesktopLight(
+			width > styles.screens.tablet && headerContext.desktop === 'light'
+		)
 		if (isMenuActive || isSearchActive || isHover) {
 			setNavBackground(styles.colors.white)
 			setNavColor(styles.colors.darkGray)
 		} else {
 			setNavBackground('transparent')
-			if (headerContext === 'light') {
+			if (isMobileLight || isDesktopLight) {
 				setNavColor(styles.colors.white)
 			}
 		}
@@ -114,7 +128,9 @@ const Navigation = () => {
 		>
 			<div css={logoCSS}>
 				{/* if headerContext is light, logo defaults to white otherwise color; logo is color on hover in all contexts */}
-				{headerContext === 'light' && !isHover && !isMenuActive ? (
+				{(isMobileLight || isDesktopLight) &&
+				!isHover &&
+				!isMenuActive ? (
 					<LogoWhite />
 				) : (
 					<LogoColor />
@@ -133,11 +149,12 @@ const Navigation = () => {
 					css={searchCSS}
 					onClick={() => setSearchActive(!isSearchActive)}
 				>
+					{/* set icon color to white on hover or on light theme */}
 					<IconSearch
 						color={
-							isHover
-								? styles.colors.darkGray
-								: styles.colors.white
+							(isMobileLight || isDesktopLight) && !isHover
+								? styles.colors.white
+								: styles.colors.darkGray
 						}
 					/>
 				</button>
@@ -149,11 +166,13 @@ const Navigation = () => {
 						{isMenuActive ? (
 							<IconX />
 						) : (
+							{/* set icon color to white on hover or on light theme */}
 							<IconHamburger
 								color={
-									isHover
-										? styles.colors.darkGray
-										: styles.colors.white
+									(isMobileLight || isDesktopLight) &&
+									!isHover
+										? styles.colors.white
+										: styles.colors.darkGray
 								}
 							/>
 						)}

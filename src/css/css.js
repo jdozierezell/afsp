@@ -70,7 +70,21 @@ export const styles = {
 		desktop: '20px',
 	},
 	logo: {
-		light: 'light',
-		dark: 'dark',
+		mobileDarkDesktopDark: {
+			mobile: 'dark',
+			desktop: 'dark',
+		},
+		mobileDarkDesktopLight: {
+			mobile: 'dark',
+			desktop: 'light',
+		},
+		mobileLightDesktopDark: {
+			mobile: 'light',
+			desktop: 'dark',
+		},
+		mobileLightDesktopLight: {
+			mobile: 'light',
+			desktop: 'light',
+		},
 	},
 }

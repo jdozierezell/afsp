@@ -9,7 +9,7 @@ import { styles } from '../css/css'
 
 function App() {
 	return (
-		<Layout logo={styles.logo.dark}>
+		<Layout logo={styles.logo.mobileDarkDesktopLight}>
 			<SEO title="American Foundation for Suicide Prevention" />
 			<HeroStories />
 			<CTASingle />
