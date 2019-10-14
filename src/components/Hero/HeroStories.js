@@ -93,6 +93,7 @@ const previousStoryCSS = css`
 	display: none;
 	@media (min-width: ${styles.screens.tablet}px) {
 		display: block;
+		margin: 0 ${styles.scale.px24};
 		p {
 			color: ${styles.colors.white};
 		}
@@ -103,6 +104,7 @@ const followingStoryCSS = css`
 	display: none;
 	@media (min-width: ${styles.screens.tablet}px) {
 		display: block;
+		margin: 0 ${styles.scale.px24};
 		p {
 			color: ${styles.colors.white};
 		}
