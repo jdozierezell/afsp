@@ -110,7 +110,7 @@ const chapterTempData = [
 	},
 ]
 
-const CarouselInstagramContainer = ({ location }) => {
+const CarouselInstagramContainer = ({ handle }) => {
 	useEffect(() => {
 		new Glide('.glide-instagram', {
 			perView: 3,
@@ -134,7 +134,7 @@ const CarouselInstagramContainer = ({ location }) => {
 					color={styles.colors.darkGray}
 					iconCSS={carouselIconCSS}
 				/>
-				<h2>@afspnational</h2>
+				<h2>@{handle}</h2>
 			</div>
 			<div className="glide-instagram">
 				<div data-glide-el="track">
