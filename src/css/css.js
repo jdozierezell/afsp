@@ -69,4 +69,8 @@ export const styles = {
 		mobile: '10px',
 		desktop: '20px',
 	},
+	logo: {
+		light: 'light',
+		dark: 'dark',
+	},
 }

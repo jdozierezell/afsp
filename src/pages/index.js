@@ -5,9 +5,11 @@ import SEO from '../components/SEO'
 import HeroStories from '../components/Hero/HeroStories'
 import CTASingle from '../components/CTAs/CTASingle'
 
+import { styles } from '../css/css'
+
 function App() {
 	return (
-		<Layout isLogoColor={false}>
+		<Layout logo={styles.logo.dark}>
 			<SEO title="American Foundation for Suicide Prevention" />
 			<HeroStories />
 			<CTASingle />

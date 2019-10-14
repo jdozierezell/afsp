@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { css } from '@emotion/core'
 
 import LogoColor from '../SVGs/LogoColor'
@@ -10,6 +10,7 @@ import IconX from '../SVGs/IconX'
 import IconSearch from '../SVGs/IconSearch'
 import SearchBar from './SearchBar'
 import { useWindowDimensions } from '../WindowDimensionsProvider'
+import { useHeaderContext } from '../HeaderContextProvider'
 import MenuCTA from './MenuCTA'
 
 import menuItems from './MenuItems'
@@ -74,19 +75,23 @@ const Navigation = () => {
 	const [isSearchActive, setSearchActive] = useState(false)
 	const [isHover, setHover] = useState(false)
 	const [navBackground, setNavBackground] = useState('transparent')
-	const [navColor, setNavColor] = useState(styles.colors.white)
+	const [navColor, setNavColor] = useState(
+		headerContext === 'light' ? styles.colors.white : styles.colors.darkGray
+	)
 	const [activeMegaMenu, setActiveMegaMenu] = useState('')
 
 	const { width } = useWindowDimensions()
+	const headerContext = useHeaderContext()
 
 	useEffect(() => {
-		console.log(isHover)
 		if (isMenuActive || isSearchActive || isHover) {
 			setNavBackground(styles.colors.white)
 			setNavColor(styles.colors.darkGray)
 		} else {
 			setNavBackground('transparent')
-			setNavColor(styles.colors.white)
+			if (headerContext === 'light') {
+				setNavColor(styles.colors.white)
+			}
 		}
 	})
 
@@ -108,7 +113,12 @@ const Navigation = () => {
 			onMouseLeave={() => setHover(false)}
 		>
 			<div css={logoCSS}>
-				{isHover || isMenuActive ? <LogoColor /> : <LogoWhite />}
+				{/* if headerContext is light, logo defaults to white otherwise color; logo is color on hover in all contexts */}
+				{headerContext === 'light' && !isHover && !isMenuActive ? (
+					<LogoWhite />
+				) : (
+					<LogoColor />
+				)}
 			</div>
 			{width > styles.screens.navigation && (
 				<DeskMenu

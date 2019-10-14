@@ -19,11 +19,7 @@ const videoComponentCSS = css`
 
 const CarouselVideo = ({ src, title }) => {
 	return (
-		<div
-			css={videoComponentCSS}
-			draggable
-			onDrag={() => console.log('dragging')}
-		>
+		<div css={videoComponentCSS} draggable>
 			<video controls src={src}></video>
 			<h2>{title}</h2>
 		</div>
