@@ -166,7 +166,7 @@ const Navigation = () => {
 						{isMenuActive ? (
 							<IconX />
 						) : (
-							{/* set icon color to white on hover or on light theme */}
+							// set icon color to white on hover or on light theme
 							<IconHamburger
 								color={
 									(isMobileLight || isDesktopLight) &&
