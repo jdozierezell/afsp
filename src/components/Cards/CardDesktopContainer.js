@@ -8,6 +8,8 @@ import { styles } from '../../css/css'
 const cardContainerCSS = css`
 	padding: ${styles.scale.px80} ${styles.scale.px50};
 	background-color: ${styles.colors.lightGray};
+	position: relative;
+	z-index: 500;
 `
 
 const cardListCSS = css`

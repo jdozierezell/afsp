@@ -4,12 +4,15 @@ import { css } from '@emotion/core'
 import { styles } from '../../css/css'
 
 const tableWrapperCSS = css`
-	margin: ${styles.scale.px50} 0 ${styles.scale.px50} ${styles.scale.px24};
+	padding: ${styles.scale.px50} 0 ${styles.scale.px50} ${styles.scale.px24};
+	background: ${styles.colors.white};
 	width: 100vw - ${styles.scale.px24};
 	overflow: scroll hidden;
+	position: relative;
+	z-index: 500;
 	@media (min-width: ${styles.screens.tablet}px) {
 		width: 100vw - (${styles.scale.px50} * 2);
-		margin: ${styles.scale.px80} ${styles.scale.px50};
+		padding: ${styles.scale.px80} ${styles.scale.px50};
 	}
 `
 
