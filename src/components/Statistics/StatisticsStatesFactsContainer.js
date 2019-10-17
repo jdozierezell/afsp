@@ -1,69 +1,57 @@
 import React, { useEffect } from 'react'
 
-import CardMobileContainer from './CardMobileContainer'
-import CardDesktopContainer from './CardDesktopContainer'
+import StatisticsStatesFactsMobileContainer from './StatisticsStatesFactsMobileContainer'
+import StatisticsStatesFactsDesktopContainer from './StatisticsStatesFactsDesktopContainer'
 import { useWindowDimensions } from '../../components/WindowDimensionsProvider'
 
 import { styles } from '../../css/css'
 
 const chapterTempData = [
 	{
-		title: 'foo',
+		title: 'Minnesota',
 		titleHref: 'https://example.com',
 		src: 'https://placekitten.com/516/316',
 	},
 	{
-		title: 'bar',
+		title: 'Rhode Island',
 		titleHref: 'https://example.com',
 		src: 'https://placekitten.com/516/316',
 	},
 	{
-		title: 'yay',
+		title: 'New York',
 		titleHref: 'https://example.com',
 		src: 'https://placekitten.com/516/316',
 	},
 	{
-		title: 'hip',
+		title: 'California',
 		titleHref: 'https://example.com',
 		src: 'https://placekitten.com/516/316',
 	},
 	{
-		title: 'hooray',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'hooray',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'hooray',
+		title: 'New Jersey',
 		titleHref: 'https://example.com',
 		src: 'https://placekitten.com/516/316',
 	},
 ]
 
-const CardContainer = ({ title, subtitle }) => {
+const StatisticsStatesFactsContainer = ({ title, cardCSS }) => {
 	const { width } = useWindowDimensions()
 	return (
 		<section>
 			{width <= styles.screens.tablet && (
-				<CardMobileContainer
-					title={title}
-					subtitle={subtitle}
+				<StatisticsStatesFactsMobileContainer
 					data={chapterTempData}
+					cardCSS={cardCSS}
 				/>
 			)}
 			{width > styles.screens.tablet && (
-				<CardDesktopContainer
-					title={title}
-					subtitle={subtitle}
+				<StatisticsStatesFactsDesktopContainer
 					data={chapterTempData}
+					cardCSS={cardCSS}
 				/>
 			)}
 		</section>
 	)
 }
 
-export default CardContainer
+export default StatisticsStatesFactsContainer

@@ -3,7 +3,7 @@ import { css } from '@emotion/core'
 
 import { styles } from '../../css/css'
 
-const cardCSS = css`
+const defaultCardCSS = css`
 	position: relative;
 	background-color: ${styles.colors.white};
 	border-radius: ${styles.scale.px5};
@@ -42,11 +42,16 @@ const ctaCSS = css`
 	}
 `
 
-const Card = ({ title, cta }) => {
+const Card = ({ title, subtitle, cta, cardCSS }) => {
 	return (
-		<div css={cardCSS}>
+		<div
+			css={css`
+				${defaultCardCSS};
+				${cardCSS};
+			`}
+		>
 			<h2 css={titleCSS}>{title}</h2>
-			<h3 css={subtitleCSS}>Subtitle about grant type</h3>
+			{subtitle && <h3 css={subtitleCSS}>Subtitle about grant type</h3>}
 			<div>
 				<p>
 					Each year our research department requests applications for

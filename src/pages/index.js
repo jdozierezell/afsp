@@ -3,10 +3,7 @@ import React from 'react'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import HeroSolid from '../components/Hero/HeroSolid'
-import NavigationSide from '../components/Navigation/NavigationSide'
-import Table from '../components/Table/Table'
-import CardContainer from '../components/Cards/CardContainer'
-import ContentGeneric from '../components/Content/ContentGeneric'
+import StatisticsContainer from '../components/Statistics/StatisticsContainer'
 
 import { styles } from '../css/css'
 
@@ -15,10 +12,7 @@ function App() {
 		<Layout logo={styles.logo.mobileLightDesktopLight}>
 			<SEO title="American Foundation for Suicide Prevention" />
 			<HeroSolid />
-			<NavigationSide />
-			<Table />
-			<CardContainer />
-			<ContentGeneric />
+			<StatisticsContainer />
 		</Layout>
 	)
 }
