@@ -13,12 +13,6 @@ const storyHeroCSS = css`
 		margin: 0;
 		align-items: center;
 		text-align: center;
-		background-image: linear-gradient(
-				to right,
-				${styles.colors.darkGray},
-				${styles.colors.darkGray}
-			),
-			url('https://placekitten.com/1080/1920');
 		background-blend-mode: soft-light;
 		background-size: cover;
 		background-position: center;
@@ -40,9 +34,9 @@ const storyMetaCSS = css`
 		}
 	}
 	h3,
-	span,
+	li,
 	a {
-		font-size: ${styles.scale.px17};
+		font-size: ${styles.scale.px18};
 		font-family: ${styles.fonts.avenirDemi};
 		@media (min-width: ${styles.screens.tablet}px) {
 			font-size: ${styles.scale.px18};
@@ -55,8 +49,16 @@ const storyMetaCSS = css`
 			margin-bottom: 0;
 		}
 	}
-	span {
+	ul {
+		list-style: none;
+		margin: 0;
+		display: inline-block;
+		margin-left: ${styles.scale.px5};
+	}
+	li {
 		color: ${styles.colors.poppy};
+		display: inline-block;
+		margin-right: ${styles.scale.px5};
 	}
 `
 
@@ -75,17 +77,6 @@ const byLineCSS = css`
 	@media (min-width: ${styles.screens.tablet}px) {
 		color: ${styles.colors.white};
 		font-size: ${styles.scale.px18};
-	}
-`
-
-const headerImageCSS = css`
-	object-fit: cover;
-	height: 305px;
-	width: 100%;
-	display: block;
-	margin: 0;
-	@media (min-width: ${styles.screens.tablet}px) {
-		display: none;
 	}
 `
 
@@ -118,30 +109,46 @@ const storyButtonCSS = css`
 	margin-bottom: ${styles.scale.px30};
 `
 
-const HeroStories = () => {
+const HeroStories = ({ article }) => {
+	console.log(article)
+	const { title, publicationDate, author, tags, coverImage } = article
 	return (
-		<section css={storyHeroCSS}>
+		<section
+			css={css`
+				${storyHeroCSS};
+				background-image: linear-gradient(
+						to right,
+						${styles.colors.darkGray},
+						${styles.colors.darkGray}
+					),
+					url(${coverImage.fluid.src});
+			`}
+		>
 			<div css={storyMetaCSS}>
-				<h1>
-					Tattooed paleo cloud bread yuccie, tilde swag actually deep
-				</h1>
-				<p css={dateLineCSS}>18 Jul 2018 — 15min read</p>
-				<p css={byLineCSS}>BY DESIREE WOODLAND</p>
+				<h1>{title}</h1>
+				<p css={dateLineCSS}>{publicationDate} — 15min read</p>
+				<p css={byLineCSS}>
+					BY{' '}
+					{author.map((author, index) => {
+						return index + 1 < author.length
+							? `${author.authorName}, `
+							: author.authorName
+					})}
+				</p>
 				<h3>
 					Tagged{' '}
-					<span>
-						<a href="#">#StopSuicide</a>,{' '}
-						<a href="#">Loss and Healing</a>,{' '}
-						<a href="#">Loss Survivors</a>,{' '}
-						<a href="#">Personal Stories</a>
-					</span>
+					<ul>
+						{tags.map((tag, index) => {
+							return (
+								<li key={index}>
+									<a href="#">{tag.tag}</a>
+									{index + 1 < tags.length ? ',' : null}
+								</li>
+							)
+						})}
+					</ul>
 				</h3>
 			</div>
-			<img
-				src="https://placekitten.com/1080/1920"
-				alt=""
-				css={headerImageCSS}
-			/>
 			<div css={previousStoryCSS}>
 				<button css={storyButtonCSS}>
 					<IconArrow color={styles.colors.white} direction="left" />
