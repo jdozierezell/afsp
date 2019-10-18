@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { css } from '@emotion/core'
 import {
 	XYPlot,
@@ -8,8 +8,6 @@ import {
 	YAxis,
 	LineSeries,
 } from 'react-vis'
-
-import { useWindowDimensions } from '../WindowDimensionsProvider'
 
 import { styles } from '../../css/css'
 
@@ -29,33 +27,13 @@ const statisticsStatesGraphContainerCSS = css`
 	}
 `
 
-const StatisticsStatesGraph = () => {
-	const { width } = useWindowDimensions()
-
-	const [visWidth, setVisWidth] = useState(
-		width <= styles.screens.tablet ? width - 32 : width - 170 // account for margins and padding
-	)
-	const [height, setHeight] = useState(
-		width <= styles.screens.tablet ? visWidth / 1.62 : 400
-	)
-
-	const handleWindowResize = () => {
-		setVisWidth(width <= styles.screens.tablet ? width - 32 : width - 170) // account for margins and padding
-		setHeight(width <= styles.screens.tablet ? visWidth / 1.62 : 400)
-	}
-
-	useEffect(() => {
-		window.addEventListener('resize', handleWindowResize)
-		console.log(`${visWidth} ${height}`)
-		return () => window.removeEventListener('resize', handleWindowResize)
-	}, [visWidth])
-
+const StatisticsStatesGraph = ({ width, height }) => {
 	return (
 		<div
 			css={statisticsStatesGraphContainerCSS}
 			id="states-graph-container"
 		>
-			<XYPlot width={visWidth} height={height}>
+			<XYPlot width={width} height={height}>
 				{/* <HorizontalGridLines
 					style={{ stroke: styles.colors.darkGray }}
 				/>

@@ -85,7 +85,7 @@ const statisticsStatesFactsContainerCSS = css`
 	}
 `
 
-const StatisticsStatesContainer = () => {
+const StatisticsStatesContainer = ({ width, height }) => {
 	return (
 		<div css={statisticsStatesContainerCSS}>
 			<h2>Suicide Rates in the United States</h2>
@@ -116,7 +116,7 @@ const StatisticsStatesContainer = () => {
 					</li>
 				</ul>
 			</div>
-			<StatisticsStatesGraph />
+			<StatisticsStatesGraph width={width} height={height} />
 			<ul css={searchStateKeyCSS}>
 				<li>
 					<div></div> Minnesota

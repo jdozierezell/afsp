@@ -11,7 +11,7 @@ const cardContainerCSS = css`
 	position: relative;
 	z-index: 500;
 	@media (min-width: ${styles.screens.tablet}px) {
-		padding: ${styles.scale.px60} 0;
+		padding: ${styles.scale.px60} 0 ${styles.scale.px80};
 	}
 `
 

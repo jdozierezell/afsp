@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { css } from '@emotion/core'
 import {
 	XYPlot,
@@ -10,12 +10,16 @@ import {
 	RadialChart,
 } from 'react-vis'
 
-import { useWindowDimensions } from '../WindowDimensionsProvider'
-
 import { styles } from '../../css/css'
 
 const statisticsNationalGraphCSS = css`
 	margin: ${styles.scale.px40} ${styles.scale.px24} ${styles.scale.px36};
+	@media (min-width: ${styles.screens.tablet}px) {
+		margin: ${styles.scale.px40} ${styles.scale.px50} ${styles.scale.px36};
+		display: grid;
+		grid-template-columns: 1fr 2fr 100px;
+		grid-column-gap: ${styles.scale.px40};
+	}
 	h3 {
 		font-size: ${styles.scale.px20};
 		font-family: ${styles.fonts.avenirBold};
@@ -35,7 +39,7 @@ const statisticsNationalGraphContainerCSS = css`
 	@media (min-width: ${styles.screens.tablet}px) {
 		width: auto;
 		position: initial;
-		padding: ${styles.scale.px35};
+		padding: 0;
 	}
 	svg {
 		fill: none;
@@ -64,27 +68,17 @@ const keyCSS = css`
 	}
 `
 
-const StatisticsNationalGraph = ({ data, graphType }) => {
-	const { width } = useWindowDimensions()
-
-	const [visWidth, setVisWidth] = useState(
-		width <= styles.screens.tablet ? width - 32 : width - 170 // account for margins and padding
-	)
-	const [height, setHeight] = useState(
-		width <= styles.screens.tablet ? visWidth / 1.62 : 400
-	)
-
-	const handleWindowResize = () => {
-		setVisWidth(width <= styles.screens.tablet ? width - 32 : width - 170) // account for margins and padding
-		setHeight(width <= styles.screens.tablet ? visWidth / 1.62 : 400)
+const StatisticsNationalGraph = ({
+	data,
+	graphType,
+	width,
+	height,
+	tabWidth,
+}) => {
+	if (tabWidth > styles.screens.tablet) {
+		const fractionWidth = (width - 100) / 3
+		width = fractionWidth * 2 // add 50 to width to account for removed padding
 	}
-
-	useEffect(() => {
-		window.addEventListener('resize', handleWindowResize)
-		console.log(`${visWidth} ${height}`)
-		return () => window.removeEventListener('resize', handleWindowResize)
-	}, [visWidth])
-	console.log(visWidth)
 	return (
 		<div css={statisticsNationalGraphCSS}>
 			<p>
@@ -95,77 +89,83 @@ const StatisticsNationalGraph = ({ data, graphType }) => {
 				adults. In 2017, adolescents and young adults aged 15 to 24 had
 				a suicide rate of 14.46.
 			</p>
-			<h3>Suicide rates by age from 2000 to 2017</h3>
-			<div css={statisticsNationalGraphContainerCSS}>
-				{graphType === 'line' && (
-					<XYPlot width={width} height={height}>
-						{/* <HorizontalGridLines
+			<div>
+				<h3>Suicide rates by age from 2000 to 2017</h3>
+				<div css={statisticsNationalGraphContainerCSS}>
+					{graphType === 'line' && (
+						<XYPlot width={width} height={height}>
+							{/* <HorizontalGridLines
 					style={{ stroke: styles.colors.darkGray }}
 				/>
 				<VerticalGridLines style={{ stroke: styles.colors.darkGray }} /> */}
-						<XAxis
-							title="X Axis"
-							tickSize={0}
-							style={{
-								line: { stroke: styles.colors.darkGray },
-								text: {
-									stroke: 'none',
-									fill: styles.colors.darkGray,
-									fontWeight: 600,
-								},
-							}}
+							<XAxis
+								title="X Axis"
+								tickSize={0}
+								style={{
+									line: { stroke: styles.colors.darkGray },
+									text: {
+										stroke: 'none',
+										fill: styles.colors.darkGray,
+										fontWeight: 600,
+									},
+								}}
+							/>
+							<YAxis
+								title="Y Axis"
+								tickSize={0}
+								style={{
+									line: { stroke: styles.colors.darkGray },
+									text: {
+										stroke: 'none',
+										fill: styles.colors.darkGray,
+										fontWeight: 600,
+									},
+								}}
+							/>
+							<LineSeries
+								className="first-series"
+								data={[
+									{ x: 1, y: 3 },
+									{ x: 2, y: 5 },
+									{ x: 3, y: 15 },
+									{ x: 4, y: 12 },
+								]}
+								style={{
+									strokeLinejoin: 'round',
+									strokeWidth: 4,
+								}}
+							/>
+							<LineSeries className="second-series" data={null} />
+							<LineSeries
+								className="third-series"
+								curve={'curveMonotoneX'}
+								data={[
+									{ x: 1, y: 10 },
+									{ x: 2, y: 4 },
+									{ x: 3, y: 2 },
+									{ x: 4, y: 15 },
+								]}
+								strokeDasharray="7, 3"
+							/>
+							<LineSeries
+								className="fourth-series"
+								data={[
+									{ x: 1, y: 7 },
+									{ x: 2, y: 11 },
+									{ x: 3, y: 9 },
+									{ x: 4, y: 2 },
+								]}
+							/>
+						</XYPlot>
+					)}
+					{graphType === 'radial' && (
+						<RadialChart
+							data={data}
+							width={width}
+							height={height}
 						/>
-						<YAxis
-							title="Y Axis"
-							tickSize={0}
-							style={{
-								line: { stroke: styles.colors.darkGray },
-								text: {
-									stroke: 'none',
-									fill: styles.colors.darkGray,
-									fontWeight: 600,
-								},
-							}}
-						/>
-						<LineSeries
-							className="first-series"
-							data={[
-								{ x: 1, y: 3 },
-								{ x: 2, y: 5 },
-								{ x: 3, y: 15 },
-								{ x: 4, y: 12 },
-							]}
-							style={{
-								strokeLinejoin: 'round',
-								strokeWidth: 4,
-							}}
-						/>
-						<LineSeries className="second-series" data={null} />
-						<LineSeries
-							className="third-series"
-							curve={'curveMonotoneX'}
-							data={[
-								{ x: 1, y: 10 },
-								{ x: 2, y: 4 },
-								{ x: 3, y: 2 },
-								{ x: 4, y: 15 },
-							]}
-							strokeDasharray="7, 3"
-						/>
-						<LineSeries
-							className="fourth-series"
-							data={[
-								{ x: 1, y: 7 },
-								{ x: 2, y: 11 },
-								{ x: 3, y: 9 },
-								{ x: 4, y: 2 },
-							]}
-						/>
-					</XYPlot>
-				)}
-				{graphType === 'radial' && (
-					<RadialChart data={data} width={width} height={height} />
-				)}
+					)}
+				</div>
 			</div>
 			<div>
 				<h4>Age range</h4>
