@@ -10,6 +10,9 @@ const cardContainerCSS = css`
 	background-color: ${styles.colors.lightGray};
 	position: relative;
 	z-index: 500;
+	@media (min-width: ${styles.screens.tablet}px) {
+		padding: ${styles.scale.px60} 0;
+	}
 `
 
 const cardListCSS = css`

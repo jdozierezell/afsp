@@ -21,6 +21,7 @@ const iconCaretCSS = css`
 	background-color: transparent;
 	border: none;
 	padding: 0;
+	cursor: pointer;
 	svg {
 		width: ${styles.scale.px18};
 	}

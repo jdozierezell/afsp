@@ -9,6 +9,8 @@ import {
 	LineSeries,
 } from 'react-vis'
 
+import { useWindowDimensions } from '../WindowDimensionsProvider'
+
 import { styles } from '../../css/css'
 
 const statisticsStatesGraphContainerCSS = css`
@@ -17,32 +19,43 @@ const statisticsStatesGraphContainerCSS = css`
 	left: -${styles.scale.px24};
 	background-color: ${styles.colors.white};
 	padding: ${styles.scale.px16};
+	@media (min-width: ${styles.screens.tablet}px) {
+		width: auto;
+		position: initial;
+		padding: ${styles.scale.px35};
+	}
 	svg {
 		fill: none;
 	}
 `
 
 const StatisticsStatesGraph = () => {
-	const [width, setWidth] = useState(382)
-	const [height, setHeight] = useState(width / 1.62)
+	const { width } = useWindowDimensions()
+
+	const [visWidth, setVisWidth] = useState(
+		width <= styles.screens.tablet ? width - 32 : width - 170 // account for margins and padding
+	)
+	const [height, setHeight] = useState(
+		width <= styles.screens.tablet ? visWidth / 1.62 : 400
+	)
 
 	const handleWindowResize = () => {
-		setWidth(document.getElementById('states-graph-container').offsetWidth)
+		setVisWidth(width <= styles.screens.tablet ? width - 32 : width - 170) // account for margins and padding
+		setHeight(width <= styles.screens.tablet ? visWidth / 1.62 : 400)
 	}
 
 	useEffect(() => {
 		window.addEventListener('resize', handleWindowResize)
-		setHeight(width / 1.626)
-		console.log(`${width} ${height}`)
+		console.log(`${visWidth} ${height}`)
 		return () => window.removeEventListener('resize', handleWindowResize)
-	}, [width])
+	}, [visWidth])
 
 	return (
 		<div
 			css={statisticsStatesGraphContainerCSS}
 			id="states-graph-container"
 		>
-			<XYPlot width={width} height={height}>
+			<XYPlot width={visWidth} height={height}>
 				{/* <HorizontalGridLines
 					style={{ stroke: styles.colors.darkGray }}
 				/>
