@@ -3,6 +3,7 @@ import { css } from '@emotion/core'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import IconArrow from '../SVGs/IconArrow'
+import readTime from '../../utils/readTime'
 
 import { styles } from '../../css/css'
 
@@ -114,6 +115,21 @@ const storyButtonCSS = css`
 
 const HeroStories = ({ article, prev, next }) => {
 	const { title, publicationDate, author, tags, coverImage } = article
+
+	let fullArticle = ''
+	article.article.forEach(article => {
+		if (article.__typename === 'DatoCmsBody') {
+			fullArticle += article.copy
+		}
+		if (article.__typename === 'DatoCmsImage') {
+			article.images.forEach(image => {
+				fullArticle += `<img src=${image.url} />`
+			})
+		}
+	})
+
+	const timeToRead = readTime(fullArticle)
+
 	return (
 		<section
 			css={css`
@@ -128,7 +144,9 @@ const HeroStories = ({ article, prev, next }) => {
 		>
 			<div css={storyMetaCSS}>
 				<h1>{title}</h1>
-				<p css={dateLineCSS}>{publicationDate} — 15min read</p>
+				<p css={dateLineCSS}>
+					{publicationDate} — {timeToRead.humanizedDuration} min read
+				</p>
 				<p css={byLineCSS}>
 					BY{' '}
 					{author.map((author, index) => {
