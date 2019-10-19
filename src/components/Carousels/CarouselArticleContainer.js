@@ -122,21 +122,24 @@ const CarouselArticleContainer = ({ title }) => {
 			<div className="glide-article">
 				<div data-glide-el="track">
 					<ul className="glide__slides">
-						{chapterTempData.map((chapter, index) => {
-							return (
-								<CarouselArticle
-									key={index}
-									title={chapter.title}
-									titleHref={chapter.titleHref}
-									src={chapter.src}
-								/>
-							)
-						})}
+						{chapterTempData.map((chapter, index) => (
+							<CarouselArticle
+								key={index}
+								title={chapter.title}
+								titleHref={chapter.titleHref}
+								src={chapter.src}
+							/>
+						))}
 					</ul>
 				</div>
 				<div data-glide-el="controls[nav]" css={carouselButtonsCSS}>
 					{chapterTempData.map((__, index) => {
-						return <button data-glide-dir={`=${index}`}></button>
+						return (
+							<button
+								key={index}
+								data-glide-dir={`=${index}`}
+							></button>
+						)
 					})}
 				</div>
 			</div>
