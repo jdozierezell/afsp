@@ -103,14 +103,16 @@ const followingStoryCSS = css`
 `
 
 const storyButtonCSS = css`
+	display: inline-block;
 	background: transparent;
 	border: 0;
 	width: ${styles.scale.px40};
 	margin-bottom: ${styles.scale.px30};
+	text-align: center;
 `
 
-const HeroStories = ({ article }) => {
-	console.log(article)
+const HeroStories = ({ article, prev, next }) => {
+	console.log(next)
 	const { title, publicationDate, author, tags, coverImage } = article
 	return (
 		<section
@@ -150,16 +152,16 @@ const HeroStories = ({ article }) => {
 				</h3>
 			</div>
 			<div css={previousStoryCSS}>
-				<button css={storyButtonCSS}>
+				<a href="https://example.com" css={storyButtonCSS}>
 					<IconArrow color={styles.colors.white} direction="left" />
-				</button>
-				<p>Lorem ipsum</p>
+				</a>
+				<p>{prev.title}</p>
 			</div>
 			<div css={followingStoryCSS}>
-				<button css={storyButtonCSS}>
+				<a href="https://example.com" css={storyButtonCSS}>
 					<IconArrow color={styles.colors.white} direction="right" />
-				</button>
-				<p>Lorem ipsum</p>
+				</a>
+				<p>{next.title}</p>
 			</div>
 		</section>
 	)

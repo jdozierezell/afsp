@@ -7,12 +7,11 @@ import HeroStories from '../components/Hero/HeroStories'
 
 import { styles } from '../css/css'
 
-const article = ({ data: { article }, pageContext }) => {
-	console.log(pageContext)
+const article = ({ data: { article }, pageContext: { prev, next } }) => {
 	return (
 		<Layout logo={styles.logo.mobileLightDesktopLight}>
 			<SEO title="American Foundation for Suicide Prevention" />
-			<HeroStories article={article} />
+			<HeroStories article={article} prev={prev} next={next} />
 		</Layout>
 	)
 }

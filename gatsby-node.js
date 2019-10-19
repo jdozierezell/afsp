@@ -11,10 +11,13 @@ exports.createPages = async ({ graphql, actions }) => {
 	const { createPage, createRedirect } = actions
 	const { data } = await graphql(`
 		query {
-			articles: allDatoCmsArticle {
+			articles: allDatoCmsArticle(
+				sort: { fields: publicationDate, order: DESC }
+			) {
 				edges {
 					node {
 						slug
+						title
 					}
 				}
 			}
