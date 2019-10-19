@@ -41,7 +41,8 @@ const storyContentCSS = css`
 	}
 `
 
-const ContentStory = () => {
+const ContentStory = ({ article }) => {
+	console.log(article)
 	const { width } = useWindowDimensions()
 	return (
 		<section css={storyContentCSS}>
@@ -56,49 +57,40 @@ const ContentStory = () => {
 				</aside>
 			)}
 			<div>
-				<p>
-					Sriracha squid activated charcoal hell of vice chillwave
-					fanny pack williamsburg. Edison bulb migas cold-pressed four
-					dollar toast, sartorial lyft tilde organic letterpress
-					aesthetic polaroid ennui. Mustache organic kickstarter
-					master cleanse activated charcoal franzen tumeric pabst
-					heirloom literally keytar hot chicken. Vexillologist
-					waistcoat jianbing master cleanse PBR&B palo santo deep v
-					tacos la croix.
-				</p>
-				<p>
-					Snackwave asymmetrical tumblr, food truck truffaut poutine
-					iceland raclette. Bespoke keffiyeh photo booth lomo tbh
-					kickstarter. Leggings distillery ethical, stumptown air
-					plant ugh normcore polaroid venmo. Viral mixtape direct
-					trade knausgaard, taiyaki subway tile hexagon occupy
-					dreamcatcher brooklyn artisan single-origin coffee sriracha.
-				</p>
-				<p>
-					Direct trade ennui unicorn sriracha, meggings selvage austin
-					ramps YOLO edison bulb. Meh franzen waistcoat, prism
-					skateboard pour-over synth forage pok pok raclette
-					dreamcatcher vice twee raw denim hell of.
-				</p>
-				<p>
-					Cronut pabst whatever artisan vape banh mi tacos
-					lumbersexual leggings roof party cornhole man bun cred tote
-					bag. Selfies vice iPhone, helvetica tumblr whatever tofu.
-				</p>
-				<p>
-					Gastropub activated charcoal venmo echo park cornhole umami
-					street art yuccie VHS green juice. Irony craft beer truffaut
-					squid schlitz migas vexillologist umami hella stumptown
-					godard put a bird on it YOLO bitters lumbersexual.
-					Microdosing affogato squid hell of.
-				</p>
-				<p>
-					La croix bespoke kickstarter pop-up tousled ethical
-					slow-carb. Four dollar toast single-origin coffee tbh viral
-					retro. Fam aesthetic neutra, hot chicken listicle offal
-					vinyl forage taiyaki synth single-origin coffee helvetica
-					glossier four dollar toast organic.
-				</p>
+				{article.article.map(copy => {
+					if (copy.__typename === 'DatoCmsBody') {
+						return (
+							<div
+								key={copy.id}
+								dangerouslySetInnerHTML={{ __html: copy.copy }}
+							></div>
+						)
+					} else if (copy.__typename === 'DatoCmsImage') {
+						return (
+							<div key="copy.id">
+								{copy.images.map(image => {
+									if (copy.images.length === 1) {
+										return (
+											<img
+												key={image.id}
+												src={image.url}
+												alt={image.alt}
+											/>
+										)
+									} else if (copy.images.length > 1) {
+										return (
+											<img
+												key={image.id}
+												src={image.url}
+												alt={image.alt}
+											/>
+										)
+									}
+								})}
+							</div>
+						)
+					}
+				})}
 			</div>
 		</section>
 	)

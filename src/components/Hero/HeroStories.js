@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import IconArrow from '../SVGs/IconArrow'
 
@@ -112,7 +113,6 @@ const storyButtonCSS = css`
 `
 
 const HeroStories = ({ article, prev, next }) => {
-	console.log(next)
 	const { title, publicationDate, author, tags, coverImage } = article
 	return (
 		<section
@@ -152,15 +152,15 @@ const HeroStories = ({ article, prev, next }) => {
 				</h3>
 			</div>
 			<div css={previousStoryCSS}>
-				<a href="https://example.com" css={storyButtonCSS}>
+				<AniLink fade to={`/article/${prev.slug}`} css={storyButtonCSS}>
 					<IconArrow color={styles.colors.white} direction="left" />
-				</a>
+				</AniLink>
 				<p>{prev.title}</p>
 			</div>
 			<div css={followingStoryCSS}>
-				<a href="https://example.com" css={storyButtonCSS}>
+				<AniLink fade to={`/article/${next.slug}`} css={storyButtonCSS}>
 					<IconArrow color={styles.colors.white} direction="right" />
-				</a>
+				</AniLink>
 				<p>{next.title}</p>
 			</div>
 		</section>

@@ -11,6 +11,7 @@ module.exports = {
 	plugins: [
 		`gatsby-plugin-emotion`,
 		`gatsby-plugin-react-helmet`,
+		`gatsby-plugin-transition-link`,
 		`gatsby-plugin-playground`,
 		{
 			resolve: `gatsby-source-filesystem`,
