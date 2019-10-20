@@ -107,7 +107,16 @@ const Navigation = () => {
 				setNavColor(styles.colors.white)
 			}
 		}
-	})
+	}, [
+		width,
+		headerContext.mobile,
+		headerContext.desktop,
+		isMenuActive,
+		isSearchActive,
+		isHover,
+		isMobileLight,
+		isDesktopLight,
+	])
 
 	const handleMouseEnter = id => {
 		setActiveMegaMenu(id)

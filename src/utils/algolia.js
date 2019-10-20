@@ -1,7 +1,7 @@
 // graphql query for algolia
 
-const articleQuery = `{
-  articles: allDatoCmsArticle {
+const storyQuery = `{
+  stories: allDatoCmsStory {
     edges {
       node {
         slug
@@ -9,7 +9,7 @@ const articleQuery = `{
         author {
           authorName
         }
-        article {
+        story {
           __typename
           ...on DatoCmsBody {
           copy
@@ -28,19 +28,19 @@ const articleQuery = `{
 // function to flatten data into one-dimensional arrays
 const flatten = arr => {
 	arr.forEach(edge => {
-		let { article, author, seo, slug, tags, title } = edge.node
+		let { story, author, seo, slug, tags, title } = edge.node
 		// title and slug are already flat; no need to do anything there
 		const copyArray = [],
 			authorArray = [],
 			imageArray = [],
 			descriptionArray = [],
 			tagsArray = []
-		// article flattening and capping at 9000 characters
-		article.forEach((article, index) => {
-			const { __typename } = article
+		// story flattening and capping at 9000 characters
+		story.forEach((story, index) => {
+			const { __typename } = story
 			if (__typename === 'DatoCmsBody') {
-				// get the actual article copy
-				const { copy } = article
+				// get the actual story copy
+				const { copy } = story
 				// limit the character count of each array
 				const characters = 4500
 				for (let i = 0; i < copy.length; i += characters) {
@@ -85,9 +85,9 @@ const flatten = arr => {
 const settings = { attributesToSnippet: [`article:20`] }
 const queries = [
 	{
-		query: articleQuery,
-		transformer: ({ data }) => flatten(data.articles.edges),
-		indexName: `Articles`,
+		query: storyQuery,
+		transformer: ({ data }) => flatten(data.stories.edges),
+		indexName: `Stories`,
 		settings,
 	},
 ]

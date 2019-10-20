@@ -67,7 +67,7 @@ const carouselButtonsCSS = css`
 	}
 `
 
-const ContentStory = ({ article }) => {
+const ContentStory = ({ story }) => {
 	const { width } = useWindowDimensions()
 	useEffect(() => {
 		const hasImages = document.getElementsByClassName('glide-image')
@@ -89,7 +89,7 @@ const ContentStory = ({ article }) => {
 				</aside>
 			)}
 			<div>
-				{article.article.map((copy, index) => {
+				{story.article.map((copy, index) => {
 					if (copy.__typename === 'DatoCmsBody') {
 						return (
 							<div
@@ -102,7 +102,7 @@ const ContentStory = ({ article }) => {
 							<div key={index}>
 								{copy.images.length === 1 && (
 									<img
-										key={copy.images[0].id}
+										key={index}
 										src={copy.images[0].url}
 										alt={copy.images[0].alt}
 									/>
@@ -122,6 +122,7 @@ const ContentStory = ({ article }) => {
 														<img
 															key={index}
 															src={image.url}
+															alt={image.alt}
 															css={css`
 																max-height: 500px;
 																width: auto !important;
@@ -149,6 +150,7 @@ const ContentStory = ({ article }) => {
 							</div>
 						)
 					}
+					return ''
 				})}
 			</div>
 		</section>

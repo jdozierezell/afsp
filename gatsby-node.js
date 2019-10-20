@@ -11,12 +11,19 @@ exports.createPages = async ({ graphql, actions }) => {
 	const { createPage, createRedirect } = actions
 	const { data } = await graphql(`
 		query {
-			articles: allDatoCmsArticle(
+			stories: allDatoCmsStory(
 				sort: { fields: publicationDate, order: DESC }
 			) {
 				edges {
 					node {
-						id
+						slug
+						title
+					}
+				}
+			}
+			details: allDatoCmsDetail {
+				edges {
+					node {
 						slug
 						title
 					}
@@ -32,22 +39,36 @@ exports.createPages = async ({ graphql, actions }) => {
 			}
 		}
 	`)
-	const articles = data.articles.edges
-	articles.forEach(({ node }, index) => {
+	const stories = data.stories.edges
+	const details = data.details.edges
+	const redirects = data.redirects.edges
+
+	stories.forEach(({ node }, index) => {
 		createPage({
-			path: `article/${node.slug}`,
-			component: path.resolve('./src/templates/article.js'),
+			path: `story/${node.slug}`,
+			component: path.resolve('./src/templates/story.js'),
 			context: {
 				slug: node.slug,
-				prev: index === 0 ? null : articles[index - 1].node,
+				prev: index === 0 ? null : stories[index - 1].node,
 				next:
-					index === articles.length - 1
+					index === stories.length - 1
 						? null
-						: articles[index + 1].node,
+						: stories[index + 1].node,
 			},
 		})
 	})
-	data.redirects.edges.forEach(({ node }) => {
+
+	details.forEach(({ node }) => {
+		createPage({
+			path: `detail/${node.slug}`,
+			component: path.resolve('./src/templates/detail.js'),
+			context: {
+				slug: node.slug,
+			},
+		})
+	})
+
+	redirects.forEach(({ node }) => {
 		createRedirect({
 			fromPath: node.aliasUrl,
 			toPath: node.destinationUrl,

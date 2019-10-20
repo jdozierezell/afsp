@@ -27,7 +27,7 @@ const carouselLinkCSS = css`
 	text-decoration: underline;
 `
 
-const CarouselArticle = ({ title, href }) => {
+const CarouselStory = ({ title, href }) => {
 	return (
 		<div css={carouselComponentCSS}>
 			<h3 css={carouselMessageCSS}>Message</h3>
@@ -38,4 +38,4 @@ const CarouselArticle = ({ title, href }) => {
 	)
 }
 
-export default CarouselArticle
+export default CarouselStory

@@ -1,27 +1,28 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Transition, config } from 'react-spring'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import HeroStories from '../components/Hero/HeroStories'
 import ContentStory from '../components/Content/ContentStory'
+import CarouselStoryContainer from '../components/Carousels/CarouselStoryContainer'
 
 import { styles } from '../css/css'
 
-const article = ({ data: { article }, pageContext: { prev, next } }) => {
+const story = ({ data: { story }, pageContext: { prev, next } }) => {
 	return (
 		<Layout logo={styles.logo.mobileLightDesktopLight}>
 			<SEO title="American Foundation for Suicide Prevention" />
-			<HeroStories article={article} prev={prev} next={next} />
-			<ContentStory article={article} />
+			<HeroStories story={story} prev={prev} next={next} />
+			<ContentStory story={story} />
+			<CarouselStoryContainer />
 		</Layout>
 	)
 }
 
 export const query = graphql`
 	query($slug: String) {
-		article: datoCmsArticle(slug: { eq: $slug }) {
+		story: datoCmsStory(slug: { eq: $slug }) {
 			title
 			publicationDate(formatString: "D MMM YYYY")
 			author {
@@ -50,7 +51,6 @@ export const query = graphql`
 				}
 				... on DatoCmsImage {
 					images {
-						id
 						url
 						alt
 					}
@@ -60,4 +60,4 @@ export const query = graphql`
 	}
 `
 
-export default article
+export default story

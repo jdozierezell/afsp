@@ -78,7 +78,6 @@ const StatisticsNationalContainer = ({ width, height, tabWidth }) => {
 	const [isCaretFlipped, setCaretFlipped] = useState(false)
 	const [childrenHeight, setChildrenHeight] = useState(0)
 	const [focusedArea, setFocusedArea] = useState(age)
-	const [activeTab, setActiveTab] = useState()
 	const listRef = useRef(null)
 	const ageRef = useRef(null)
 	const raceRef = useRef(null)
@@ -136,7 +135,7 @@ const StatisticsNationalContainer = ({ width, height, tabWidth }) => {
 			raceRef.current.setAttribute('style', ``)
 			ageRef.current.setAttribute('style', ``)
 		}
-	}, [listRef, focusedArea])
+	}, [listRef, focusedArea, width])
 
 	return (
 		<div css={statisticsNationalGraphCSS}>

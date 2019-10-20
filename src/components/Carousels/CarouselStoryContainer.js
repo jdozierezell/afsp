@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Glide from '@glidejs/glide'
 import { css } from '@emotion/core'
 
-import CarouselArticle from './CarouselArticle'
+import CarouselStory from './CarouselStory'
 
 import { styles } from '../../css/css'
 
@@ -99,9 +99,9 @@ const chapterTempData = [
 	},
 ]
 
-const CarouselArticleContainer = ({ title }) => {
+const CarouselStoryContainer = ({ title }) => {
 	useEffect(() => {
-		new Glide('.glide-article', {
+		new Glide('.glide-story', {
 			perView: 3,
 			peek: { before: 0, after: styles.scale.px24 },
 			breakpoints: {
@@ -119,11 +119,11 @@ const CarouselArticleContainer = ({ title }) => {
 	return (
 		<div css={carouselCSS}>
 			<h2>{title}</h2>
-			<div className="glide-article">
+			<div className="glide-story">
 				<div data-glide-el="track">
 					<ul className="glide__slides">
 						{chapterTempData.map((chapter, index) => (
-							<CarouselArticle
+							<CarouselStory
 								key={index}
 								title={chapter.title}
 								titleHref={chapter.titleHref}
@@ -147,4 +147,4 @@ const CarouselArticleContainer = ({ title }) => {
 	)
 }
 
-export default CarouselArticleContainer
+export default CarouselStoryContainer

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { css } from '@emotion/core'
 
 import StatisticsStatesContainer from './StatisticsStatesContainer'
@@ -22,15 +22,15 @@ const StatisticsContainer = () => {
 		width <= styles.screens.tablet ? visWidth / 1.62 : 400
 	)
 
-	const handleWindowResize = () => {
+	const handleWindowResize = useCallback(() => {
 		setVisWidth(width <= styles.screens.tablet ? width - 32 : width - 170) // account for margins and padding
 		setHeight(width <= styles.screens.tablet ? visWidth / 1.62 : 400)
-	}
+	}, [width, visWidth])
 
 	useEffect(() => {
 		window.addEventListener('resize', handleWindowResize)
 		return () => window.removeEventListener('resize', handleWindowResize)
-	}, [visWidth])
+	}, [visWidth, handleWindowResize])
 	return (
 		<section css={statisticsContainerCSS}>
 			<StatisticsStatesContainer width={visWidth} height={height} />

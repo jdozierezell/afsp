@@ -113,22 +113,22 @@ const storyButtonCSS = css`
 	text-align: center;
 `
 
-const HeroStories = ({ article, prev, next }) => {
-	const { title, publicationDate, author, tags, coverImage } = article
+const HeroStories = ({ story, prev, next }) => {
+	const { title, publicationDate, author, tags, coverImage } = story
 
-	let fullArticle = ''
-	article.article.forEach(article => {
-		if (article.__typename === 'DatoCmsBody') {
-			fullArticle += article.copy
+	let fullStory = ''
+	story.article.forEach(story => {
+		if (story.__typename === 'DatoCmsBody') {
+			fullStory += story.copy
 		}
-		if (article.__typename === 'DatoCmsImage') {
-			article.images.forEach(image => {
-				fullArticle += `<img src=${image.url} />`
+		if (story.__typename === 'DatoCmsImage') {
+			story.images.forEach(image => {
+				fullStory += `<img src=${image.url} />`
 			})
 		}
 	})
 
-	const timeToRead = readTime(fullArticle)
+	const timeToRead = readTime(fullStory)
 
 	return (
 		<section
@@ -170,13 +170,13 @@ const HeroStories = ({ article, prev, next }) => {
 				</h3>
 			</div>
 			<div css={previousStoryCSS}>
-				<AniLink fade to={`/article/${prev.slug}`} css={storyButtonCSS}>
+				<AniLink fade to={`/story/${prev.slug}`} css={storyButtonCSS}>
 					<IconArrow color={styles.colors.white} direction="left" />
 				</AniLink>
 				<p>{prev.title}</p>
 			</div>
 			<div css={followingStoryCSS}>
-				<AniLink fade to={`/article/${next.slug}`} css={storyButtonCSS}>
+				<AniLink fade to={`/story/${next.slug}`} css={storyButtonCSS}>
 					<IconArrow color={styles.colors.white} direction="right" />
 				</AniLink>
 				<p>{next.title}</p>

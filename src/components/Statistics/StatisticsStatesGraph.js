@@ -1,13 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import {
-	XYPlot,
-	VerticalGridLines,
-	HorizontalGridLines,
-	XAxis,
-	YAxis,
-	LineSeries,
-} from 'react-vis'
+import { XYPlot, XAxis, YAxis, LineSeries } from 'react-vis'
 
 import { styles } from '../../css/css'
 
