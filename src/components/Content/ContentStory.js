@@ -10,11 +10,12 @@ import { useWindowDimensions } from '../WindowDimensionsProvider'
 import { styles } from '../../css/css'
 
 import '@glidejs/glide/dist/css/glide.core.min.css'
+import CarouselStoryContainer from '../Carousels/CarouselStoryContainer'
 
 const storyContentCSS = css`
-	margin: ${styles.scale.px50} ${styles.scale.px24};
+	margin: ${styles.scale.px50} 0;
 	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px80} ${styles.scale.px50};
+		margin: ${styles.scale.px80} 0;
 	}
 	@media (min-width: ${styles.screens.tablet}px) {
 		display: grid;
@@ -24,6 +25,7 @@ const storyContentCSS = css`
 	> aside {
 		@media (min-width: ${styles.screens.tablet}px) {
 			grid-column: 1 / 2;
+			margin-left: ${styles.scale.px50};
 		}
 		div {
 			max-width: ${styles.scale.px30};
@@ -35,12 +37,13 @@ const storyContentCSS = css`
 			font-size: ${styles.scale.px18};
 		}
 	}
-	> div {
+	.storyContent {
+		margin: ${styles.scale.px50} ${styles.scale.px24};
 		@media (min-width: ${styles.screens.tablet}px) {
+			grid-column: 2 / 3;
+			max-width: 623px;
+			margin: ${styles.scale.px80} auto;
 		}
-		grid-column: 2 / 3;
-		max-width: 623px;
-		margin: 0 auto;
 	}
 `
 
@@ -88,71 +91,85 @@ const ContentStory = ({ story }) => {
 					</div>
 				</aside>
 			)}
-			<div>
-				{story.article.map((copy, index) => {
-					if (copy.__typename === 'DatoCmsBody') {
-						return (
-							<div
-								key={index}
-								dangerouslySetInnerHTML={{ __html: copy.copy }}
-							></div>
-						)
-					} else if (copy.__typename === 'DatoCmsImage') {
-						return (
-							<div key={index}>
-								{copy.images.length === 1 && (
-									<img
-										key={index}
-										src={copy.images[0].url}
-										alt={copy.images[0].alt}
-									/>
-								)}
-								{copy.images.length > 1 && (
-									<div
-										className="glide-image"
-										css={css`
-											overflow: hidden;
-											margin: ${styles.scale.px36} 0;
-										`}
-									>
-										<div data-glide-el="track">
-											<div className="glide__slides">
-												{copy.images.map(
-													(image, index) => (
-														<img
-															key={index}
-															src={image.url}
-															alt={image.alt}
-															css={css`
-																max-height: 500px;
-																width: auto !important;
-															`}
-														/>
-													)
-												)}
-											</div>
-										</div>
-										<div
-											data-glide-el="controls[nav]"
-											css={carouselButtonsCSS}
-										>
-											{copy.images.map((__, index) => {
-												return (
-													<button
+			{story.article.map((article, index) => {
+				if (article.__typename === 'DatoCmsBody') {
+					return (
+						<div
+							key={index}
+							className="storyContent"
+							dangerouslySetInnerHTML={{
+								__html: article.copy,
+							}}
+						></div>
+					)
+				} else if (article.__typename === 'DatoCmsImage') {
+					return (
+						<div key={index} className="storyContent">
+							{article.images.length === 1 && (
+								<img
+									key={index}
+									src={article.images[0].url}
+									alt={article.images[0].alt}
+								/>
+							)}
+							{article.images.length > 1 && (
+								<div
+									className="glide-image"
+									css={css`
+										overflow: hidden;
+										margin: ${styles.scale.px36} 0;
+									`}
+								>
+									<div data-glide-el="track">
+										<div className="glide__slides">
+											{article.images.map(
+												(image, index) => (
+													<img
 														key={index}
-														data-glide-dir={`=${index}`}
-													></button>
+														src={image.url}
+														alt={image.alt}
+														css={css`
+															max-height: 500px;
+															width: auto !important;
+														`}
+													/>
 												)
-											})}
+											)}
 										</div>
 									</div>
-								)}
-							</div>
-						)
-					}
-					return ''
-				})}
-			</div>
+									<div
+										data-glide-el="controls[nav]"
+										css={carouselButtonsCSS}
+									>
+										{article.images.map((__, index) => {
+											return (
+												<button
+													key={index}
+													data-glide-dir={`=${index}`}
+												></button>
+											)
+										})}
+									</div>
+								</div>
+							)}
+						</div>
+					)
+				} else if (article.__typename === 'DatoCmsDetailExcerpt') {
+					return (
+						<div
+							css={css`
+								grid-column: 1 / 4;
+							`}
+						>
+							<CarouselStoryContainer
+								key={index}
+								content={article.detailPage}
+							/>
+						</div>
+					)
+				}
+				return ''
+			})}
 		</section>
 	)
 }

@@ -5,6 +5,8 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import IconArrow from '../SVGs/IconArrow'
 import readTime from '../../utils/readTime'
 
+import { useWindowDimensions } from '../../components/WindowDimensionsProvider'
+
 import { styles } from '../../css/css'
 
 const storyHeroCSS = css`
@@ -114,7 +116,15 @@ const storyButtonCSS = css`
 `
 
 const HeroStories = ({ story, prev, next }) => {
-	const { title, publicationDate, author, tags, coverImage } = story
+	const { width } = useWindowDimensions()
+	const {
+		title,
+		publicationDate,
+		author,
+		tags,
+		mobileCover,
+		desktopCover,
+	} = story
 
 	let fullStory = ''
 	story.article.forEach(story => {
@@ -134,12 +144,14 @@ const HeroStories = ({ story, prev, next }) => {
 		<section
 			css={css`
 				${storyHeroCSS};
-				background-image: linear-gradient(
-						to right,
-						${styles.colors.darkGray},
-						${styles.colors.darkGray}
-					),
-					url(${coverImage.fluid.src});
+				@media (min-width: ${styles.screens.tablet}px) {
+					background-image: linear-gradient(
+							to right,
+							${styles.colors.darkGray},
+							${styles.colors.darkGray}
+						),
+						url(${desktopCover.fluid.src});
+				}
 			`}
 		>
 			<div css={storyMetaCSS}>
@@ -168,6 +180,9 @@ const HeroStories = ({ story, prev, next }) => {
 						})}
 					</ul>
 				</h3>
+				{width <= styles.screens.tablet && (
+					<img src={mobileCover.fluid.src} alt="" />
+				)}
 			</div>
 			<div css={previousStoryCSS}>
 				<AniLink fade to={`/story/${prev.slug}`} css={storyButtonCSS}>

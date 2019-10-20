@@ -32,6 +32,7 @@ const carouselCSS = css`
 	}
 	.glide__slides {
 		margin: 0;
+		white-space: initial;
 	}
 	.secondary-button {
 		margin-bottom: ${styles.scale.px56};
@@ -61,45 +62,8 @@ const carouselButtonsCSS = css`
 	}
 `
 
-const chapterTempData = [
-	{
-		title: 'foo',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'bar',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'yay',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'hip',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'hooray',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'hooray',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'hooray',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-]
-
-const CarouselStoryContainer = ({ title }) => {
+const CarouselStoryContainer = ({ content: { details, title, slug } }) => {
+	let count = 0
 	useEffect(() => {
 		new Glide('.glide-story', {
 			perView: 3,
@@ -122,24 +86,32 @@ const CarouselStoryContainer = ({ title }) => {
 			<div className="glide-story">
 				<div data-glide-el="track">
 					<ul className="glide__slides">
-						{chapterTempData.map((chapter, index) => (
-							<CarouselStory
-								key={index}
-								title={chapter.title}
-								titleHref={chapter.titleHref}
-								src={chapter.src}
-							/>
-						))}
+						{details.map((section, index) => {
+							if (section.__typename === 'DatoCmsContent') {
+								return (
+									<CarouselStory
+										key={index}
+										content={section.contentHeading}
+										baseUrl={slug}
+									/>
+								)
+							}
+							return ''
+						})}
 					</ul>
 				</div>
 				<div data-glide-el="controls[nav]" css={carouselButtonsCSS}>
-					{chapterTempData.map((__, index) => {
-						return (
-							<button
-								key={index}
-								data-glide-dir={`=${index}`}
-							></button>
-						)
+					{details.map((section, index) => {
+						if (section.__typename === 'DatoCmsContent') {
+							count++
+							return (
+								<button
+									key={index}
+									data-glide-dir={`=${count - 1}`}
+								></button>
+							)
+						}
+						return ''
 					})}
 				</div>
 			</div>

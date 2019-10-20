@@ -5,17 +5,15 @@ import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import HeroStories from '../components/Hero/HeroStories'
 import ContentStory from '../components/Content/ContentStory'
-import CarouselStoryContainer from '../components/Carousels/CarouselStoryContainer'
 
 import { styles } from '../css/css'
 
 const story = ({ data: { story }, pageContext: { prev, next } }) => {
 	return (
-		<Layout logo={styles.logo.mobileLightDesktopLight}>
+		<Layout logo={styles.logo.mobileDarkDesktopLight}>
 			<SEO title="American Foundation for Suicide Prevention" />
 			<HeroStories story={story} prev={prev} next={next} />
 			<ContentStory story={story} />
-			<CarouselStoryContainer />
 		</Layout>
 	)
 }
@@ -31,7 +29,21 @@ export const query = graphql`
 			tags {
 				tag
 			}
-			coverImage {
+			mobileCover: coverImage {
+				fluid(
+					maxWidth: 769
+					imgixParams: {
+						fm: "jpg"
+						fit: "crop"
+						crop: "faces"
+						w: "769"
+						h: "475"
+					}
+				) {
+					...GatsbyDatoCmsFluid_tracedSVG
+				}
+			}
+			desktopCover: coverImage {
 				fluid(
 					maxWidth: 1920
 					imgixParams: {
@@ -53,6 +65,18 @@ export const query = graphql`
 					images {
 						url
 						alt
+					}
+				}
+				... on DatoCmsDetailExcerpt {
+					detailPage {
+						details {
+							... on DatoCmsContent {
+								id
+								contentHeading
+							}
+						}
+						title
+						slug
 					}
 				}
 			}
