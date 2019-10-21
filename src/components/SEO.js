@@ -6,83 +6,134 @@
  */
 
 import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby'
 
-function SEO({ description, lang, meta, title }) {
-	const { site } = useStaticQuery(
-		graphql`
-			query {
-				site {
-					siteMetadata {
-						title
-						description
-						author
-					}
-				}
+function SEO({ lang, meta }) {
+	const tags = meta.tags
+	let title,
+		description,
+		ogTitle,
+		ogDescription,
+		ogType,
+		ogLocale,
+		ogSiteName,
+		ogImage,
+		articleModifiedTime,
+		articlePublishedTime,
+		articlePublisher,
+		twitterCard,
+		twitterTitle,
+		twitterDescription,
+		twitterImage = ''
+
+	tags.forEach(tag => {
+		if (tag.tagName === 'title') {
+			title = tag.content
+		} else if (tag.tagName === 'meta') {
+			if (tag.attributes.property === 'og:title') {
+				ogTitle = tag.attributes.content
+			} else if (tag.attributes.property === 'og:description') {
+				ogDescription = tag.attributes.content
+			} else if (tag.attributes.property === 'og:type') {
+				ogType = tag.attributes.content
+			} else if (tag.attributes.property === 'og:locale') {
+				ogLocale = tag.attributes.content
+			} else if (tag.attributes.property === 'og:site_name') {
+				ogSiteName = tag.attributes.content
+			} else if (tag.attributes.property === 'og:image') {
+				ogImage = tag.attributes.content
+			} else if (tag.attributes.property === 'article:modified_time') {
+				articleModifiedTime = tag.attributes.content
+			} else if (tag.attributes.property === 'article:published_time') {
+				articlePublishedTime = tag.attributes.content
+			} else if (tag.attributes.property === 'article:publisher') {
+				articlePublisher = tag.attributes.content
 			}
-		`
-	)
 
-	const metaDescription = description || site.siteMetadata.description
-
+			if (tag.attributes.name === 'description') {
+				description = tag.attributes.content
+			} else if (tag.attributes.name === 'twitter:card') {
+				twitterCard = tag.attributes.content
+			} else if (tag.attributes.name === 'twitter:title') {
+				twitterTitle = tag.attributes.content
+			} else if (tag.attributes.name === 'twitter:description') {
+				twitterDescription = tag.attributes.content
+			} else if (tag.attributes.name === 'twitter:image') {
+				twitterImage = tag.attributes.content
+			}
+		}
+	})
 	return (
 		<Helmet
 			htmlAttributes={{
 				lang,
 			}}
 			title={title}
-			titleTemplate={`%s | ${site.siteMetadata.title}`}
+			// titleTemplate={`%s | ${site.siteMetadata.title}`}
 			meta={[
 				{
 					name: `description`,
-					content: metaDescription,
+					content: description,
 				},
 				{
 					property: `og:title`,
-					content: title,
+					content: ogTitle,
 				},
 				{
 					property: `og:description`,
-					content: metaDescription,
+					content: ogDescription,
 				},
 				{
 					property: `og:type`,
-					content: `website`,
+					content: ogType,
+				},
+				{
+					property: `og:locale`,
+					content: ogLocale,
+				},
+				{
+					property: `og:site_name`,
+					content: ogSiteName,
+				},
+				{
+					property: `og:image`,
+					content: ogImage,
+				},
+				{
+					property: `article:modified_time`,
+					content: articleModifiedTime,
+				},
+				{
+					property: `article:published_time`,
+					content: articlePublishedTime,
+				},
+				{
+					property: `article:publisher`,
+					content: articlePublisher,
 				},
 				{
 					name: `twitter:card`,
-					content: `summary`,
+					content: twitterCard,
 				},
 				{
 					name: `twitter:creator`,
-					content: site.siteMetadata.author,
+					content: `@afspnational`,
 				},
 				{
 					name: `twitter:title`,
-					content: title,
+					content: twitterTitle,
 				},
 				{
 					name: `twitter:description`,
-					content: metaDescription,
+					content: twitterDescription,
+				},
+				{
+					name: `twitter:image`,
+					content: twitterImage,
 				},
 			].concat(meta)}
 		/>
 	)
-}
-
-SEO.defaultProps = {
-	lang: `en`,
-	meta: [],
-	description: ``,
-}
-
-SEO.propTypes = {
-	description: PropTypes.string,
-	lang: PropTypes.string,
-	meta: PropTypes.arrayOf(PropTypes.object),
-	title: PropTypes.string.isRequired,
 }
 
 export default SEO

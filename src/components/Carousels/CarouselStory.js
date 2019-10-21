@@ -2,6 +2,8 @@ import React from 'react'
 import { css } from '@emotion/core'
 import { graphql, useStaticQuery } from 'gatsby'
 
+import createAnchor from '../../utils/createAnchor'
+
 import { styles } from '../../css/css'
 
 const carouselComponentCSS = css`
@@ -31,9 +33,7 @@ const carouselLinkCSS = css`
 `
 
 const CarouselStory = ({ baseUrl, content }) => {
-	const message = content
-	const dashed = content.replace(/\s/g, '-')
-	const anchor = dashed.replace(/\?/g, '')
+	const anchor = createAnchor(content)
 	const data = useStaticQuery(graphql`
 		query {
 			site {
@@ -45,11 +45,9 @@ const CarouselStory = ({ baseUrl, content }) => {
 	`)
 	return (
 		<div css={carouselComponentCSS}>
-			<h3 css={carouselMessageCSS}>{message}</h3>
+			<h3 css={carouselMessageCSS}>{content}</h3>
 			<a
-				href={`${
-					data.site.siteMetadata.siteUrl
-				}/detail/${baseUrl}/#${anchor.toLowerCase()}`}
+				href={`${data.site.siteMetadata.siteUrl}/detail/${baseUrl}/#${anchor}`}
 				css={carouselLinkCSS}
 			>
 				Learn more

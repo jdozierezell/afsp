@@ -44,6 +44,7 @@ const carouselButtonsCSS = css`
 	margin: ${styles.scale.px45} 0 0;
 	padding: 0;
 	line-height: 0;
+	width: 100vw;
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin: ${styles.scale.px35} 0 0;
 	}
@@ -66,8 +67,8 @@ const CarouselStoryContainer = ({ content: { details, title, slug } }) => {
 	let count = 0
 	useEffect(() => {
 		new Glide('.glide-story', {
-			perView: 3,
-			peek: { before: 0, after: styles.scale.px24 },
+			perView: 4,
+			gap: styles.gridGap.desktop,
 			breakpoints: {
 				1080: {
 					perView: 2,

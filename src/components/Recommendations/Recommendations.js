@@ -7,7 +7,7 @@ const recommendationsCSS = css`
 	background-color: ${styles.colors.blue};
 	padding: ${styles.scale.px50} ${styles.scale.px24};
 	@media (min-width: ${styles.screens.tablet}px) {
-		padding: ${styles.scale.px80} ${styles.scale.px50} ${styles.scale.px80}
+		padding: ${styles.scale.px36} ${styles.scale.px50} ${styles.scale.px36}
 			${styles.scale.px24};
 	}
 	h2 {
@@ -37,22 +37,23 @@ const storyCSS = css`
 	}
 `
 
-const Recommendations = () => {
+const Recommendations = ({ data }) => {
 	return (
 		<div css={recommendationsCSS}>
 			<h2>Real stories of hope</h2>
-			<div css={storyCSS}>
-				<h3>Street art tousled occupy sriracha kale</h3>
-				<h4>By Example</h4>
-			</div>
-			<div css={storyCSS}>
-				<h3>Street art tousled occupy sriracha kale</h3>
-				<h4>By Example</h4>
-			</div>
-			<div css={storyCSS}>
-				<h3>Street art tousled occupy sriracha kale</h3>
-				<h4>By Example</h4>
-			</div>
+			{data.map((story, index) => (
+				<div key={index} css={storyCSS}>
+					<h3>{story.title}</h3>
+					<h4>
+						By{' '}
+						{story.author.map((author, index) =>
+							index + 1 < story.author.length
+								? `${author.authorName}, `
+								: author.authorName
+						)}
+					</h4>
+				</div>
+			))}
 		</div>
 	)
 }

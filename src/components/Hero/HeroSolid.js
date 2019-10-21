@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import { styles } from '../../css/css'
 
@@ -26,6 +27,9 @@ const solidHeroCSS = css`
 				content: ' > ';
 			}
 		}
+		a {
+			color: ${styles.colors.white};
+		}
 	}
 	h1 {
 		margin: ${styles.scale.px35} 0;
@@ -40,20 +44,32 @@ const solidHeroCSS = css`
 	}
 `
 
-const HeroSolid = () => {
+const HeroSolid = ({ data, parents }) => {
+	const { title, brief } = data
+
 	return (
 		<div css={solidHeroCSS}>
-			<ul>
-				<li>Find support</li>
-				<li>I've lost someone</li>
-				<li>Practical information for immediately after a loss</li>
-			</ul>
-			<h1>Practical information for immediately after a loss</h1>
-			<p>
-				You are not alone. Read real stories from others who have shared
-				their personal experiences around struggling with suicide or
-				coping with the loss of a loved one.
-			</p>
+			{parents && parents.length > 1 && (
+				<ul>
+					{parents.map((parent, index) => {
+						console.log(parent)
+						return (
+							<li key={index}>
+								<AniLink fade to={`/${parent.parentPath}`}>
+									{parent.parentTitle}
+								</AniLink>
+							</li>
+						)
+					})}
+					<li>{title}</li>
+				</ul>
+			)}
+			<h1>{title}</h1>
+			<div
+				dangerouslySetInnerHTML={{
+					__html: brief,
+				}}
+			></div>
 		</div>
 	)
 }

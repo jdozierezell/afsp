@@ -11,9 +11,9 @@ import { styles } from '../css/css'
 const story = ({ data: { story }, pageContext: { prev, next } }) => {
 	return (
 		<Layout logo={styles.logo.mobileDarkDesktopLight}>
-			<SEO title="American Foundation for Suicide Prevention" />
-			<HeroStories story={story} prev={prev} next={next} />
-			<ContentStory story={story} />
+			<SEO meta={story.seoMetaTags} />
+			<HeroStories data={story} prev={prev} next={next} />
+			<ContentStory data={story} />
 		</Layout>
 	)
 }
@@ -22,12 +22,16 @@ export const query = graphql`
 	query($slug: String) {
 		story: datoCmsStory(slug: { eq: $slug }) {
 			title
+			seoMetaTags {
+				tags
+			}
 			publicationDate(formatString: "D MMM YYYY")
 			author {
 				authorName
 			}
 			tags {
 				tag
+				slug
 			}
 			mobileCover: coverImage {
 				fluid(

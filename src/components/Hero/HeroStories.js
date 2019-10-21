@@ -115,7 +115,7 @@ const storyButtonCSS = css`
 	text-align: center;
 `
 
-const HeroStories = ({ story, prev, next }) => {
+const HeroStories = ({ data, prev, next }) => {
 	const { width } = useWindowDimensions()
 	const {
 		title,
@@ -124,10 +124,10 @@ const HeroStories = ({ story, prev, next }) => {
 		tags,
 		mobileCover,
 		desktopCover,
-	} = story
+	} = data
 
 	let fullStory = ''
-	story.article.forEach(story => {
+	data.article.forEach(story => {
 		if (story.__typename === 'DatoCmsBody') {
 			fullStory += story.copy
 		}
@@ -173,7 +173,9 @@ const HeroStories = ({ story, prev, next }) => {
 						{tags.map((tag, index) => {
 							return (
 								<li key={index}>
-									<a href="#">{tag.tag}</a>
+									<AniLink fade to={`/tag/${tag.slug}`}>
+										{tag.tag}
+									</AniLink>
 									{index + 1 < tags.length ? ',' : null}
 								</li>
 							)

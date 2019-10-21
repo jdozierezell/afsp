@@ -70,7 +70,7 @@ const carouselButtonsCSS = css`
 	}
 `
 
-const ContentStory = ({ story }) => {
+const ContentStory = ({ data }) => {
 	const { width } = useWindowDimensions()
 	useEffect(() => {
 		const hasImages = document.getElementsByClassName('glide-image')
@@ -91,7 +91,7 @@ const ContentStory = ({ story }) => {
 					</div>
 				</aside>
 			)}
-			{story.article.map((article, index) => {
+			{data.article.map((article, index) => {
 				if (article.__typename === 'DatoCmsBody') {
 					return (
 						<div

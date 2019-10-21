@@ -21,11 +21,11 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
-			details: allDatoCmsDetail {
+			tags: allDatoCmsTag {
 				edges {
 					node {
 						slug
-						title
+						tag
 					}
 				}
 			}
@@ -37,11 +37,32 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
+			pages: allDatoCmsPage(filter: { root: { eq: true } }) {
+				edges {
+					node {
+						slug
+						title
+						treeChildren {
+							slug
+							title
+							treeChildren {
+								slug
+								title
+								treeChildren {
+									slug
+									title
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	`)
 	const stories = data.stories.edges
-	const details = data.details.edges
+	const tags = data.tags.edges
 	const redirects = data.redirects.edges
+	const pages = data.pages.edges
 
 	stories.forEach(({ node }, index) => {
 		createPage({
@@ -58,10 +79,10 @@ exports.createPages = async ({ graphql, actions }) => {
 		})
 	})
 
-	details.forEach(({ node }) => {
+	tags.forEach(({ node }) => {
 		createPage({
-			path: `detail/${node.slug}`,
-			component: path.resolve('./src/templates/detail.js'),
+			path: `tag/${node.slug}`,
+			component: path.resolve('./src/templates/tag.js'),
 			context: {
 				slug: node.slug,
 			},
@@ -74,5 +95,88 @@ exports.createPages = async ({ graphql, actions }) => {
 			toPath: node.destinationUrl,
 			isPermanent: true,
 		})
+	})
+
+	pages.forEach(({ node }) => {
+		createPage({
+			path: `${node.slug}`,
+			component: path.resolve('./src/templates/detail.js'),
+			context: {
+				slug: node.slug,
+			},
+		})
+		if (node.treeChildren) {
+			node.treeChildren.forEach(child => {
+				const fullPath = `${node.slug}/${child.slug}`
+				createPage({
+					path: fullPath,
+					component: path.resolve('./src/templates/detail.js'),
+					context: {
+						slug: child.slug,
+						fullPath: fullPath,
+						parents: [
+							{
+								parentTitle: node.title,
+								parentPath: `${node.slug}`,
+							},
+						],
+					},
+				})
+				if (child.treeChildren) {
+					child.treeChildren.forEach(grandchild => {
+						const fullPath = `${node.slug}/${child.slug}/${grandchild.slug}`
+						createPage({
+							path: fullPath,
+							component: path.resolve(
+								'./src/templates/detail.js'
+							),
+							context: {
+								slug: grandchild.slug,
+								fullPath: fullPath,
+								parents: [
+									{
+										parentTitle: node.title,
+										parentPath: node.slug,
+									},
+									{
+										parentTitle: child.title,
+										parentPath: `${node.slug}/${child.slug}`,
+									},
+								],
+							},
+						})
+						if (grandchild.treeChildren) {
+							grandchild.treeChildren.forEach(greatGrandchild => {
+								const fullPath = `${node.slug}/${child.slug}/${grandchild.slug}/${greatGrandchild.slug}`
+								createPage({
+									path: fullPath,
+									component: path.resolve(
+										'./src/templates/detail.js'
+									),
+									context: {
+										slug: greatGrandchild.slug,
+										fullPath: fullPath,
+										parents: [
+											{
+												parentTitle: node.title,
+												parentPath: node.slug,
+											},
+											{
+												parentTitle: child.title,
+												parentPath: `${node.slug}/${child.slug}`,
+											},
+											{
+												parentTitle: grandchild.title,
+												parentPath: `${node.slug}/${child.slug}/${grandchild.slug}`,
+											},
+										],
+									},
+								})
+							})
+						}
+					})
+				}
+			})
+		}
 	})
 }

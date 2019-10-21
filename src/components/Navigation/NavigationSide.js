@@ -1,5 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { css } from '@emotion/core'
+import { Link } from 'gatsby'
+
+import createAnchor from '../../utils/createAnchor'
 
 import { styles } from '../../css/css'
 
@@ -36,7 +39,15 @@ const sideNavigationCSS = css`
 	}
 `
 
-const NavigationSide = () => {
+const NavigationSide = ({ data, fullPath }) => {
+	let headings = []
+	data.details.map(detail => {
+		if (detail.__typename === 'DatoCmsContent') {
+			const anchor = createAnchor(detail.contentHeading)
+			headings.push({ heading: detail.contentHeading, anchor: anchor })
+		}
+		return headings
+	})
 	const asideRef = useRef(null)
 	const [position, setPosition] = useState('absolute')
 	const [top, setTop] = useState('220px')
@@ -69,32 +80,13 @@ const NavigationSide = () => {
 		>
 			<h2>In this section</h2>
 			<ul>
-				<li>
-					<a href="">Do the police have to get involved?</a>
-				</li>
-				<li>
-					<a href="">Can I/do I have to view the body?</a>
-				</li>
-				<li>
-					<a href="">Will there to be an autopsy?</a>
-				</li>
-				<li>
-					<a href="">What do I tell people about what happened?</a>
-				</li>
-				<li>
-					<a href="">What do I tell my children?</a>
-				</li>
-				<li>
-					<a href="">
-						What do I need to know about planning the funeral?
-					</a>
-				</li>
-				<li>
-					<a href="">
-						In my loved one’s obituary, do I have to say the death
-						was a suicide?
-					</a>
-				</li>
+				{headings.map((heading, index) => (
+					<li key={index}>
+						<Link to={`/${fullPath}#${heading.anchor}`}>
+							{heading.heading}
+						</Link>
+					</li>
+				))}
 			</ul>
 		</aside>
 	)
