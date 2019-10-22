@@ -17,6 +17,7 @@ const footerCSS = css`
 	padding: ${styles.scale.px50} ${styles.screens.px24};
 	color: ${styles.colors.white};
 	font-family: ${styles.fonts.avenirRegular};
+	position: relative;
 	@media (min-width: ${styles.screens.footer}px) {
 		display: grid;
 		grid-template-columns: repeat(6, 1fr) 320px;

@@ -3,6 +3,7 @@ import { css } from '@emotion/core'
 
 import RecommendationsVideoStories from '../Recommendations/RecommendationsVideoStories'
 import Table from '../Table/Table'
+import CardContainer from '../Cards/CardContainer'
 
 import { styles } from '../../css/css'
 import createAnchor from '../../utils/createAnchor'
@@ -64,6 +65,14 @@ const ContentGeneric = ({ data }) => {
 							tableBody={
 								detail.tableBodyNode.childMarkdownRemark.html
 							}
+						/>
+					)
+				} else if (detail.__typename === 'DatoCmsCardContainer') {
+					return (
+						<CardContainer
+							key={index}
+							cards={detail.cardContainerList}
+							heading={detail.cardContainerHeading}
 						/>
 					)
 				}

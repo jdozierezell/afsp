@@ -9,6 +9,8 @@ import { styles } from '../../css/css'
 const sideNavigationCSS = css`
 	padding: ${styles.scale.px50} ${styles.scale.px24};
 	background-color: ${styles.colors.lightGray};
+	max-height: 100vh;
+	overflow: auto;
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px50} ${styles.scale.px50};
 		background-color: ${styles.colors.white};
@@ -45,10 +47,12 @@ const NavigationSide = ({ data, fullPath }) => {
 		if (detail.__typename === 'DatoCmsContent') {
 			const anchor = createAnchor(detail.contentHeading)
 			headings.push({ heading: detail.contentHeading, anchor })
-		}
-		if (detail.__typename === 'DatoCmsTable') {
+		} else if (detail.__typename === 'DatoCmsTable') {
 			const anchor = createAnchor(detail.tableHeading)
 			headings.push({ heading: detail.tableHeading, anchor })
+		} else if (detail.__typename === 'DatoCmsCardContainer') {
+			const anchor = createAnchor(detail.cardContainerHeading)
+			headings.push({ heading: detail.cardContainerHeading, anchor })
 		}
 		return headings
 	})

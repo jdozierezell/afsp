@@ -10,6 +10,7 @@ const tableWrapperCSS = css`
 	overflow: auto hidden;
 	position: relative;
 	z-index: 500;
+	pointer-events: none;
 	@media (min-width: ${styles.screens.tablet}px) {
 		width: calc(100vw - (${styles.scale.px50} * 2));
 		padding: ${styles.scale.px80} 0;
@@ -27,6 +28,7 @@ const tableHeaderCSS = css`
 const tableCSS = css`
 	background: ${styles.colors.white};
 	padding: ${styles.scale.px24} 0;
+	pointer-events: auto;
 	table {
 		font-family: ${styles.fonts.avenirRegular};
 		border-collapse: collapse;

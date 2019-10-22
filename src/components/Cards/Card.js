@@ -11,11 +11,6 @@ const defaultCardCSS = css`
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px40} ${styles.scale.px40} ${styles.scale.px150};
 	}
-	p {
-		:last-of-type {
-			margin-bottom: 0;
-		}
-	}
 `
 
 const titleCSS = css`
@@ -26,11 +21,19 @@ const titleCSS = css`
 	}
 `
 
-const subtitleCSS = css`
+const cardCategoryCSS = css`
 	font-size: ${styles.scale.px20};
 	font-family: ${styles.fonts.avenirDemi};
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin-bottom: ${styles.scale.px30};
+	}
+`
+
+const cardBodyCSS = css`
+	p {
+		:last-of-type {
+			margin-bottom: 0;
+		}
 	}
 `
 
@@ -42,7 +45,15 @@ const ctaCSS = css`
 	}
 `
 
-const Card = ({ title, subtitle, cta, cardCSS }) => {
+const Card = ({ card, cardCSS }) => {
+	const {
+		cardCategory,
+		cardHeading,
+		cardBodyNode,
+		cardButtonCta,
+		cardButtonUrl,
+	} = card
+	const cardBody = cardBodyNode.internal.content
 	return (
 		<div
 			css={css`
@@ -50,35 +61,14 @@ const Card = ({ title, subtitle, cta, cardCSS }) => {
 				${cardCSS};
 			`}
 		>
-			<h2 css={titleCSS}>{title}</h2>
-			{subtitle && <h3 css={subtitleCSS}>Subtitle about grant type</h3>}
-			<div>
-				<p>
-					Each year our research department requests applications for
-					innovative, high-risk, potentially high-yield projects that
-					focuses on a specific area of suicide prevention. These
-					areas have been determined by AFSP and its Scientific
-					Council, and reviewed and updated annually.
-				</p>
-				<p>
-					<strong>
-						Applications must submit a Letter of Intent by August
-						1st to be eligible to apply.
-					</strong>
-				</p>
-				<p>
-					<a href="https://example.com">Learn more about ...</a>
-				</p>
-				<p>
-					<a href="https://example.com">Download Policy Document</a>
-				</p>
-			</div>
-			<a
-				href="https://example.com"
-				className="secondary-button"
-				css={ctaCSS}
-			>
-				{cta}
+			{cardCategory && <p css={cardCategoryCSS}>{cardCategory}</p>}
+			<h2 css={titleCSS}>{cardHeading}</h2>
+			<div
+				css={cardBodyCSS}
+				dangerouslySetInnerHTML={{ __html: cardBody }}
+			></div>
+			<a href={cardButtonUrl} className="secondary-button" css={ctaCSS}>
+				{cardButtonCta}
 			</a>
 		</div>
 	)

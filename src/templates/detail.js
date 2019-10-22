@@ -49,6 +49,20 @@ export const query = graphql`
 						}
 					}
 				}
+				... on DatoCmsCardContainer {
+					cardContainerHeading
+					cardContainerList {
+						cardCategory
+						cardHeading
+						cardBodyNode {
+							internal {
+								content
+							}
+						}
+						cardButtonCta
+						cardButtonUrl
+					}
+				}
 			}
 			seoMetaTags {
 				tags

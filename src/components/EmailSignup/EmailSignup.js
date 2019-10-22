@@ -8,6 +8,7 @@ const emailCSS = css`
 	padding: ${styles.scale.px50} ${styles.scale.px24};
 	color: ${styles.colors.black};
 	text-align: center;
+	position: relative;
 	@media (min-width: ${styles.screens.tablet}px) {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);

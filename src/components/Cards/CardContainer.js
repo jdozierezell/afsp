@@ -6,61 +6,15 @@ import { useWindowDimensions } from '../../components/WindowDimensionsProvider'
 
 import { styles } from '../../css/css'
 
-const chapterTempData = [
-	{
-		title: 'foo',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'bar',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'yay',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'hip',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'hooray',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'hooray',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'hooray',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-]
-
-const CardContainer = ({ title, subtitle }) => {
+const CardContainer = ({ cards, heading }) => {
 	const { width } = useWindowDimensions()
 	return (
 		<section>
 			{width <= styles.screens.tablet && (
-				<CardMobileContainer
-					title={title}
-					subtitle={subtitle}
-					data={chapterTempData}
-				/>
+				<CardMobileContainer cards={cards} heading={heading} />
 			)}
 			{width > styles.screens.tablet && (
-				<CardDesktopContainer
-					title={title}
-					subtitle={subtitle}
-					data={chapterTempData}
-				/>
+				<CardDesktopContainer cards={cards} heading={heading} />
 			)}
 		</section>
 	)

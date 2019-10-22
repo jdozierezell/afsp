@@ -10,6 +10,8 @@ const cardContainerCSS = css`
 	background-color: ${styles.colors.lightGray};
 	position: relative;
 	z-index: 500;
+	width: 100vw;
+	margin-left: -${styles.scale.px50};
 `
 
 const cardListCSS = css`
@@ -19,15 +21,13 @@ const cardListCSS = css`
 	margin: 0;
 `
 
-const CardContainer = ({ title, data }) => {
+const CardContainer = ({ cards, heading }) => {
 	return (
 		<section css={cardContainerCSS}>
-			<h2>{title}</h2>
+			<h2>{heading}</h2>
 			<ul css={cardListCSS}>
-				{data.map((chapter, index) => {
-					return (
-						<Card key={index} title="Grant type" cta="Apply now" />
-					)
+				{cards.map((card, index) => {
+					return <Card key={index} card={card} />
 				})}
 			</ul>
 		</section>

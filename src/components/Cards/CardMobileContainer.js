@@ -12,8 +12,11 @@ const carouselCSS = css`
 	padding: ${styles.scale.px50} ${styles.scale.px24} 0;
 	overflow: hidden;
 	background-color: ${styles.colors.lightGray};
+	width: 100vw;
+	margin-left: -${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px80} ${styles.scale.px50} ${styles.scale.px35};
+		margin-left: -${styles.scale.px50};
 	}
 	.glide__slides {
 		margin: 0;
@@ -49,7 +52,7 @@ const carouselButtonsCSS = css`
 	}
 `
 
-const CardMobileContainer = ({ title, data }) => {
+const CardMobileContainer = ({ cards, heading }) => {
 	useEffect(() => {
 		new Glide('.glide', {
 			perView: 3,
@@ -68,24 +71,23 @@ const CardMobileContainer = ({ title, data }) => {
 	}, [])
 	return (
 		<div css={carouselCSS}>
-			<h2 css={carouselHeaderTitleCSS}>{title}</h2>
+			<h2 css={carouselHeaderTitleCSS}>{heading}</h2>
 			<div className="glide">
 				<div data-glide-el="track">
 					<ul className="glide__slides">
-						{data.map((chapter, index) => {
-							return (
-								<Card
-									key={index}
-									title="Grant type"
-									cta="Apply now"
-								/>
-							)
+						{cards.map((card, index) => {
+							return <Card key={index} card={card} />
 						})}
 					</ul>
 				</div>
 				<div data-glide-el="controls[nav]" css={carouselButtonsCSS}>
-					{data.map((__, index) => {
-						return <button data-glide-dir={`=${index}`}></button>
+					{cards.map((__, index) => {
+						return (
+							<button
+								key={index}
+								data-glide-dir={`=${index}`}
+							></button>
+						)
 					})}
 				</div>
 			</div>
