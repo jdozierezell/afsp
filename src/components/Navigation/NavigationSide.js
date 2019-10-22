@@ -44,7 +44,11 @@ const NavigationSide = ({ data, fullPath }) => {
 	data.details.map(detail => {
 		if (detail.__typename === 'DatoCmsContent') {
 			const anchor = createAnchor(detail.contentHeading)
-			headings.push({ heading: detail.contentHeading, anchor: anchor })
+			headings.push({ heading: detail.contentHeading, anchor })
+		}
+		if (detail.__typename === 'DatoCmsTable') {
+			const anchor = createAnchor(detail.tableHeading)
+			headings.push({ heading: detail.tableHeading, anchor })
 		}
 		return headings
 	})

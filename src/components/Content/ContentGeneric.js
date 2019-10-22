@@ -25,9 +25,7 @@ const contentHeadingCSS = css`
 `
 
 const ContentGeneric = ({ data }) => {
-	const [page, markdown] = data
-	const { details } = page
-	let markdownIndex = 0
+	const { details } = data
 	return (
 		<section css={storyContentCSS}>
 			{details.map((detail, index) => {
@@ -59,10 +57,13 @@ const ContentGeneric = ({ data }) => {
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsTable') {
-					markdownIndex += 1
 					return (
 						<Table
-							table={markdown.edges[markdownIndex - 1].node.html}
+							key={index}
+							tableHeading={detail.tableHeading}
+							tableBody={
+								detail.tableBodyNode.childMarkdownRemark.html
+							}
 						/>
 					)
 				}

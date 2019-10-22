@@ -2,32 +2,36 @@ import React from 'react'
 import { css } from '@emotion/core'
 
 import { styles } from '../../css/css'
+import createAnchor from '../../utils/createAnchor'
 
 const tableWrapperCSS = css`
-	padding: ${styles.scale.px50} 0 ${styles.scale.px50} ${styles.scale.px24};
-	background: ${styles.colors.white};
-	width: 100vw - ${styles.scale.px24};
-	overflow: scroll hidden;
+	padding: ${styles.scale.px50} 0;
+	width: calc(100vw - ${styles.scale.px24});
+	overflow: auto hidden;
 	position: relative;
 	z-index: 500;
 	@media (min-width: ${styles.screens.tablet}px) {
-		width: 100vw - (${styles.scale.px50} * 2);
-		padding: ${styles.scale.px80} ${styles.scale.px50};
+		width: calc(100vw - (${styles.scale.px50} * 2));
+		padding: ${styles.scale.px80} 0;
 	}
 `
 
 const tableHeaderCSS = css`
 	font-size: ${styles.scale.px36};
-	margin-bottom: ${styles.scale.px45};
+	margin-bottom: ${styles.scale.px22};
 	@media (min-width: ${styles.screens.tablet}px) {
-		margin-bottom: ${styles.scale.px80};
+		margin-bottom: ${styles.scale.px56};
 	}
 `
 
 const tableCSS = css`
-	font-family: ${styles.fonts.avenirRegular};
-	border-collapse: collapse;
-	font-size: ${styles.scale.px17};
+	background: ${styles.colors.white};
+	padding: ${styles.scale.px24} 0;
+	table {
+		font-family: ${styles.fonts.avenirRegular};
+		border-collapse: collapse;
+		font-size: ${styles.scale.px17};
+	}
 	thead {
 		font-family: ${styles.fonts.avenirBold};
 		background-color: ${styles.colors.green};
@@ -66,54 +70,15 @@ const tableCSS = css`
 	}
 `
 
-const Table = () => {
+const Table = ({ tableHeading, tableBody }) => {
 	return (
-		<section css={tableWrapperCSS}>
-			<h2 css={tableHeaderCSS}>Lorem ipsum</h2>
-			<table css={tableCSS}>
-				<thead>
-					<tr>
-						<th>Review Cycle</th>
-						<th>Letter of Intent Due</th>
-						<th>Due Date</th>
-						<th>Review Dates</th>
-						<th>Funding Decisions</th>
-						<th>Earliest Start Date</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Innovation Grants (6 categories: see below)</td>
-						<td>
-							None *Excluding Linked Standard Research Grants (See
-							below)
-						</td>
-						<td>Nov.15, 2019</td>
-						<td>Spring 2020</td>
-						<td>End of May 2020</td>
-						<td>
-							July 2020 (Postdoc)
-							<br />
-							<br />
-							October 2020 (All others)
-						</td>
-					</tr>
-					<tr>
-						<td>Focus Grants</td>
-						<td>Aug.1, 2019</td>
-						<td>Dec. 7 2019</td>
-						<td>Spring 2020</td>
-						<td>End of May 2020</td>
-						<td>
-							July 2020 (Postdoc)
-							<br />
-							<br />
-							October 2020 (All others)
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
+		<div css={tableWrapperCSS} id={createAnchor(tableHeading)}>
+			<h2 css={tableHeaderCSS}>{tableHeading}</h2>
+			<div
+				css={tableCSS}
+				dangerouslySetInnerHTML={{ __html: tableBody }}
+			></div>
+		</div>
 	)
 }
 
