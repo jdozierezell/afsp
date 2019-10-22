@@ -52,7 +52,6 @@ const HeroSolid = ({ data, parents }) => {
 			{parents && parents.length > 1 && (
 				<ul>
 					{parents.map((parent, index) => {
-						console.log(parent)
 						return (
 							<li key={index}>
 								<AniLink fade to={`/${parent.parentPath}`}>

@@ -30,6 +30,7 @@
 		"gatsby-plugin-web-font-loader": "^1.0.4",
 		"gatsby-source-datocms": "^2.1.11",
 		"gatsby-source-filesystem": "^2.1.6",
+		"gatsby-transformer-remark": "^2.6.30",
 		"gatsby-transformer-sharp": "^2.2.5",
 		"graphql-tag": "^2.10.1",
 		"gsap": "^2.1.3",

@@ -10,19 +10,26 @@ import ContentGeneric from '../components/Content/ContentGeneric'
 import { styles } from '../css/css'
 
 const detail = ({ data, pageContext }) => {
-	const { page } = data
+	const { page, markdown } = data
 	return (
 		<Layout logo={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={page.seoMetaTags} />
 			<HeroSolid data={page} parents={pageContext.parents} />
 			<NavigationSide data={page} fullPath={pageContext.fullPath} />
-			<ContentGeneric data={page} />
+			<ContentGeneric data={[page, markdown]} />
 		</Layout>
 	)
 }
 
 export const query = graphql`
 	query($slug: String) {
+		markdown: allMarkdownRemark {
+			edges {
+				node {
+					html
+				}
+			}
+		}
 		page: datoCmsPage(slug: { eq: $slug }) {
 			title
 			brief
@@ -38,6 +45,13 @@ export const query = graphql`
 						title
 						author {
 							authorName
+						}
+					}
+				}
+				... on DatoCmsTable {
+					tableBodyNode {
+						internal {
+							content
 						}
 					}
 				}

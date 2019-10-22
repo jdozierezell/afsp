@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 
 import RecommendationsVideoStories from '../Recommendations/RecommendationsVideoStories'
+import Table from '../Table/Table'
 
 import { styles } from '../../css/css'
 import createAnchor from '../../utils/createAnchor'
@@ -24,7 +25,9 @@ const contentHeadingCSS = css`
 `
 
 const ContentGeneric = ({ data }) => {
-	const { details } = data
+	const [page, markdown] = data
+	const { details } = page
+	let markdownIndex = 0
 	return (
 		<section css={storyContentCSS}>
 			{details.map((detail, index) => {
@@ -53,6 +56,13 @@ const ContentGeneric = ({ data }) => {
 								url: detail.videoUrl,
 							}}
 							storyData={detail.storyRecommendation}
+						/>
+					)
+				} else if (detail.__typename === 'DatoCmsTable') {
+					markdownIndex += 1
+					return (
+						<Table
+							table={markdown.edges[markdownIndex - 1].node.html}
 						/>
 					)
 				}
