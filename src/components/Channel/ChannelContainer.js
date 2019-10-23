@@ -11,7 +11,9 @@ const containerCSS = css`
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-row-gap: ${styles.scale.px80};
-	grid-column-gap: ${styles.gridGap.desktop};
+	grid-column-gap: ${styles.scale.px44};
+	max-width: 1500px;
+	margin: 0 auto;
 	@media (min-width: ${styles.screens.tablet}px) {
 		padding: ${styles.scale.px80} ${styles.scale.px50};
 		background-color: ${styles.colors.white};
@@ -19,12 +21,12 @@ const containerCSS = css`
 	}
 `
 
-const ChannelContainer = () => {
+const ChannelContainer = ({ channelList }) => {
 	return (
 		<section css={containerCSS}>
-			<Channel />
-			<Channel />
-			<Channel />
+			{channelList.map((channel, index) => (
+				<Channel key={index} channel={channel} />
+			))}
 		</section>
 	)
 }

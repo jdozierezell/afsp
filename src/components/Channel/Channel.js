@@ -13,6 +13,9 @@ const channelCSS = css`
 		margin: 0;
 		display: inline-block;
 		width: 100px;
+		@media (min-width: ${styles.screens.tablet}px) {
+			width: 125px;
+		}
 	}
 	h2 {
 		margin: ${styles.scale.px30} 0;
@@ -21,17 +24,16 @@ const channelCSS = css`
 	}
 `
 
-const Channel = () => {
+const Channel = ({ channel }) => {
+	const { image, heading, briefNode, linkText, link } = channel
 	return (
 		<div css={channelCSS}>
-			<img src="https://placekitten.com/200" alt="" />
-			<h2>Foo</h2>
-			<p>
-				Blog gastropub next level actually vexillologist sriracha kale
-				chips. Street art tousled occupy, godard pabst shoreditch trust
-				fund locavore 8-bit hella crucifix mumblecore.{' '}
-			</p>
-			<a href="https://example.com">Find support</a>
+			<img src={image.fluid.src} alt="" />
+			<h2>{heading}</h2>
+			<div
+				dangerouslySetInnerHTML={{ __html: briefNode.internal.content }}
+			></div>
+			<a href={link.slug}>{linkText}</a>
 		</div>
 	)
 }

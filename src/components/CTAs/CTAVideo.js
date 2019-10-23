@@ -77,7 +77,8 @@ const descriptionWrapperCSS = css`
 	}
 `
 
-const CTAVideo = () => {
+const CTAVideo = ({ cta }) => {
+	const { videoUrl, heading, briefNode, linkText, linkUrl } = cta
 	return (
 		<section css={videoCTACSS}>
 			<video
@@ -85,19 +86,18 @@ const CTAVideo = () => {
 				muted
 				loop
 				css={videoCoverCSS}
-				src="https://player.vimeo.com/external/364075680.hd.mp4?s=9f70c5f518934c9aea34dc6b49045d7977fd7ac1&profile_id=175"
+				src={videoUrl}
 			></video>
 			<div css={videoDescriptionCSS}>
 				<div css={descriptionWrapperCSS}>
-					<h2>Walk to fight suicide</h2>
-					<p>
-						Banjo franzen palo santo pour-over artisan organic.
-						Fashion axe brunch messenger bag chartreuse jianbing
-						poutine. Organic hammock hashtag bespoke meggings.
-						Keffiyeh banh mi raclette hella thundercats next level.
-					</p>
-					<a className="secondary-button" href="https://example.com">
-						View all stories
+					<h2>{heading}</h2>
+					<div
+						dangerouslySetInnerHTML={{
+							__html: briefNode.internal.content,
+						}}
+					></div>
+					<a className="secondary-button" href={linkUrl}>
+						{linkText}
 					</a>
 				</div>
 			</div>

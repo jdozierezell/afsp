@@ -17,10 +17,11 @@ const featuredCSS = css`
 	}
 `
 
-const FeaturedResources = () => {
+const FeaturedResources = ({ data }) => {
+	console.log(data)
 	return (
 		<div css={featuredCSS}>
-			<img src="https://placekitten.com/409/250" alt="" />
+			<img src={'https://placekitten.com/409/250'} alt="" />
 			<h2>Street art tousled occupy</h2>
 			<p>
 				Blog gastropub next level actually vexillologist sriracha kale

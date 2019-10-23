@@ -27,15 +27,16 @@ const titleCTACSS = css`
 	}
 `
 
-const CTATitle = () => {
+const CTANoDescription = ({ cta }) => {
+	const { heading, linkText, linkUrl } = cta
 	return (
 		<div css={titleCTACSS}>
-			<h2>International Survivors of Suicide Loss Day</h2>
-			<a href="https://example.com" className="secondary-button">
-				Learn more
+			<h2>{heading}</h2>
+			<a href={linkUrl} className="secondary-button">
+				{linkText}
 			</a>
 		</div>
 	)
 }
 
-export default CTATitle
+export default CTANoDescription

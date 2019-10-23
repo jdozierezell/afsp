@@ -30,27 +30,28 @@ const titleCTACSS = css`
 		margin-right: auto;
 		:last-of-type {
 			margin-bottom: ${styles.scale.px40};
-		@media (min-width: ${styles.screens.tablet}px) {
-            margin-bottom: ${styles.scale.px80};
+			@media (min-width: ${styles.screens.tablet}px) {
+				margin-bottom: ${styles.scale.px80};
+			}
 		}
 	}
 `
 
-const CTATitle = () => {
+const CTAWithDescription = ({ cta }) => {
+	const { heading, descriptionNode, linkText, linkUrl } = cta
 	return (
 		<div css={titleCTACSS}>
-			<h2>International Survivors of Suicide Loss Day</h2>
-			<p>
-				Poutine truffaut chillwave, activated charcoal chicharrones af
-				sriracha actually XOXO drinking vinegar vinyl taiyaki meggings
-				tattooed tilde. Unicorn synth XOXO photo booth lomo, vape
-				disrupt.
-			</p>
-			<a href="https://example.com" className="secondary-button">
-				Learn more
+			<h2>{heading}</h2>
+			<p
+				dangerouslySetInnerHTML={{
+					__html: descriptionNode.internal.content,
+				}}
+			></p>
+			<a href={linkUrl} className="secondary-button">
+				{linkText}
 			</a>
 		</div>
 	)
 }
 
-export default CTATitle
+export default CTAWithDescription

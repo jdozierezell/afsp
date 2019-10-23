@@ -76,6 +76,7 @@ const ContentGeneric = ({ data }) => {
 						/>
 					)
 				}
+				return ''
 			})}
 		</section>
 	)

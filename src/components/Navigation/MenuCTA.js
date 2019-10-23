@@ -32,7 +32,7 @@ const MenuCTA = ({ width, margin }) => {
 			`}
 			href="https://example.com"
 		>
-			Walk with Us
+			Donate
 		</a>
 	)
 }

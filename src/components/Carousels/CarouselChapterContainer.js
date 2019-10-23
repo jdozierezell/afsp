@@ -149,7 +149,12 @@ const CarouselChapterContainer = ({ location }) => {
 				</div>
 				<div data-glide-el="controls[nav]" css={carouselButtonsCSS}>
 					{chapterTempData.map((__, index) => {
-						return <button data-glide-dir={`=${index}`}></button>
+						return (
+							<button
+								key={index}
+								data-glide-dir={`=${index}`}
+							></button>
+						)
 					})}
 				</div>
 			</div>

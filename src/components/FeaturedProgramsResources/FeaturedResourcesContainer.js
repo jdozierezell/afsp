@@ -28,14 +28,14 @@ const containerCSS = css`
 	}
 `
 
-const FeaturedResourcesContainer = () => {
+const FeaturedResourcesContainer = ({ resources }) => {
 	return (
 		<section css={containerCSS}>
 			<p>Featured resources</p>
 			<div>
-				<FeaturedResources />
-				<FeaturedResources />
-				<FeaturedResources />
+				{resources.map((resource, index) => (
+					<FeaturedResources key={index} data={resource} />
+				))}
 			</div>
 		</section>
 	)

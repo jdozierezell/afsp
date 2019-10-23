@@ -79,6 +79,9 @@ const videoDescriptionCSS = css`
 			margin-bottom: ${styles.scale.px60};
 		}
 	}
+	p {
+		color: ${styles.colors.white};
+	}
 `
 
 const buttonWrapperCSS = css`
@@ -89,7 +92,7 @@ const buttonWrapperCSS = css`
 	}
 `
 
-const HeroVideo = () => {
+const HeroVideo = ({ videoUrl, heading, brief, buttonCta, buttonUrl }) => {
 	return (
 		<section css={videoHeroCSS}>
 			<video
@@ -97,20 +100,19 @@ const HeroVideo = () => {
 				muted
 				loop
 				css={videoCoverCSS}
-				src="https://player.vimeo.com/external/364075680.hd.mp4?s=9f70c5f518934c9aea34dc6b49045d7977fd7ac1&profile_id=175"
+				src={videoUrl}
 			></video>
 			<div css={descriptionBackgroundCSS}></div>
 			<h2 css={videoHeaderCSS}>
-				<span>You're not alone</span>
+				<span>{heading}</span>
 			</h2>
-			<p css={videoDescriptionCSS}>
-				Banjo franzen palo santo pour-over artisan organic. Fashion axe
-				brunch messenger bag chartreuse jianbing poutine. Organic hella
-				thundercats next level.
-			</p>
+			<div
+				css={videoDescriptionCSS}
+				dangerouslySetInnerHTML={{ __html: brief }}
+			></div>
 			<div css={buttonWrapperCSS}>
-				<a className="secondary-button" href="https://example.com">
-					Learn more
+				<a className="secondary-button" href={buttonUrl}>
+					{buttonCta}
 				</a>
 			</div>
 		</section>

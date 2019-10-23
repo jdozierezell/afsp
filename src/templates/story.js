@@ -54,8 +54,10 @@ export const query = graphql`
 						fm: "jpg"
 						fit: "crop"
 						crop: "faces"
+						ar: 2.5
 						w: "1920"
-						h: "1000"
+						blendMode: "hardlight"
+						blend: "555"
 					}
 				) {
 					...GatsbyDatoCmsFluid_tracedSVG

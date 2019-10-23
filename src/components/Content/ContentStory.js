@@ -14,9 +14,6 @@ import CarouselStoryContainer from '../Carousels/CarouselStoryContainer'
 
 const storyContentCSS = css`
 	margin: ${styles.scale.px50} 0;
-	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px80} 0;
-	}
 	@media (min-width: ${styles.screens.tablet}px) {
 		display: grid;
 		grid-template-columns: 1fr 2fr 1fr;
@@ -43,6 +40,9 @@ const storyContentCSS = css`
 			grid-column: 2 / 3;
 			max-width: 623px;
 			margin: ${styles.scale.px80} auto;
+		}
+		:first-of-type {
+			margin-top: 0;
 		}
 	}
 `
