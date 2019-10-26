@@ -82,11 +82,7 @@ export const query = graphql`
 				}
 			}
 			heroButtonCta
-			heroButtonLink {
-				... on DatoCmsPage {
-					slug
-				}
-			}
+			heroButtonLink
 			channelList {
 				image {
 					fluid(
@@ -110,7 +106,10 @@ export const query = graphql`
 				}
 				linkText
 				link {
-					slug
+					... on DatoCmsLanding {
+						title
+						slug
+					}
 				}
 			}
 			ctaResourceList {
@@ -148,8 +147,14 @@ export const query = graphql`
 				}
 				... on DatoCmsResourceList {
 					resource {
-						title
-						slug
+						... on DatoCmsDetail {
+							title
+							slug
+						}
+						... on DatoCmsLanding {
+							title
+							slug
+						}
 					}
 				}
 			}

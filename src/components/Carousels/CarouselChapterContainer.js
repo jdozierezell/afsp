@@ -124,7 +124,7 @@ const CarouselChapterContainer = ({ location }) => {
 	return (
 		<div css={carouselCSS}>
 			<div css={carouselHeaderWrapperCSS}>
-				<h2>Connection makes the difference</h2>
+				<h2>Connection makes a difference</h2>
 				<a href="https://example.com" className="secondary-button">
 					Find a chapter
 				</a>

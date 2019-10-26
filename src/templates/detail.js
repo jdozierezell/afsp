@@ -10,22 +10,23 @@ import ContentGeneric from '../components/Content/ContentGeneric'
 import { styles } from '../css/css'
 
 const detail = ({ data, pageContext }) => {
-	const { page } = data
+	const { detail } = data
 	return (
 		<Layout logo={styles.logo.mobileLightDesktopLight}>
-			<SEO meta={page.seoMetaTags} />
-			<HeroSolid data={page} parents={pageContext.parents} />
-			<NavigationSide data={page} fullPath={pageContext.fullPath} />
-			<ContentGeneric data={page} />
+			<SEO meta={detail.seoMetaTags} />
+			<HeroSolid data={detail} parents={pageContext.parents} />
+			<NavigationSide data={detail} />
+			<ContentGeneric data={detail} />
 		</Layout>
 	)
 }
 
 export const query = graphql`
 	query($slug: String) {
-		page: datoCmsPage(slug: { eq: $slug }) {
+		detail: datoCmsDetail(slug: { eq: $slug }) {
 			title
 			brief
+			slug
 			details {
 				... on DatoCmsContent {
 					contentHeading

@@ -41,7 +41,7 @@ const sideNavigationCSS = css`
 	}
 `
 
-const NavigationSide = ({ data, fullPath }) => {
+const NavigationSide = ({ data }) => {
 	let headings = []
 	data.details.map(detail => {
 		if (detail.__typename === 'DatoCmsContent') {
@@ -90,7 +90,7 @@ const NavigationSide = ({ data, fullPath }) => {
 			<ul>
 				{headings.map((heading, index) => (
 					<li key={index}>
-						<Link to={`/${fullPath}#${heading.anchor}`}>
+						<Link to={`/${data.slug}#${heading.anchor}`}>
 							{heading.heading}
 						</Link>
 					</li>
