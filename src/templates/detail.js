@@ -25,7 +25,6 @@ export const query = graphql`
 	query($slug: String) {
 		detail: datoCmsDetail(slug: { eq: $slug }) {
 			title
-			brief
 			slug
 			details {
 				... on DatoCmsContent {
@@ -67,6 +66,9 @@ export const query = graphql`
 			}
 			seoMetaTags {
 				tags
+				internal {
+					description
+				}
 			}
 		}
 	}

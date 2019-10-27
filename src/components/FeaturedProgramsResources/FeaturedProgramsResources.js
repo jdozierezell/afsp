@@ -1,9 +1,11 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import { styles } from '../../css/css'
 
 const featuredCSS = css`
+	position: relative;
 	img {
 		margin: 0;
 	}
@@ -13,22 +15,38 @@ const featuredCSS = css`
 		margin: ${styles.scale.px30} 0;
 	}
 	p {
-		margin-bottom: ${styles.scale.px35};
+		margin-bottom: ${styles.scale.px50};
+	}
+	.featured-link {
+		position: absolute;
+		bottom: 0;
 	}
 `
 
 const FeaturedResources = ({ data }) => {
 	console.log(data)
+	let slug = ''
+	switch (data.__typename) {
+		case 'DatoCmsDetail':
+			slug = `detail/${data.slug}`
+			break
+		case 'DatoCmsLanding':
+			slug = `landing/${data.slug}`
+			break
+	}
+
 	return (
 		<div css={featuredCSS}>
-			<img src={'https://placekitten.com/409/250'} alt="" />
-			<h2>Street art tousled occupy</h2>
-			<p>
-				Blog gastropub next level actually vexillologist sriracha kale
-				chips. Street art tousled occupy, godard pabst shoreditch trust
-				fund locavore 8-bit hella crucifix mumblecore.{' '}
-			</p>
-			<a href="https://example.com">Learn more</a>
+			<img src={data.seo.image.fluid.src} alt="" />
+			<h2>{data.title}</h2>
+			<p
+				dangerouslySetInnerHTML={{
+					__html: data.seo.description,
+				}}
+			></p>
+			<AniLink fade to={`/${slug}`} className="featured-link">
+				Learn more
+			</AniLink>
 		</div>
 	)
 }

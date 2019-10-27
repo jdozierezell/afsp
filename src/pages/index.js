@@ -6,9 +6,7 @@ import SEO from '../components/SEO'
 import HeroVideo from '../components/Hero/HeroVideo'
 import ChannelContainer from '../components/Channel/ChannelContainer'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
-import CTAVideo from '../components/CTAs/CTAVideo'
-import CTAWithDescription from '../components/CTAs/CTAWithDescription'
-import CTANoDescription from '../components/CTAs/CTANoDescription'
+import CTAContainer from '../components/CTAs/CTAContainer'
 import FeaturedResourcesContainer from '../components/FeaturedProgramsResources/FeaturedResourcesContainer'
 
 import { styles } from '../css/css'
@@ -28,30 +26,12 @@ function App({ data: { home } }) {
 			<CarouselChapterContainer />
 			{home.ctaResourceList.map((item, index) => {
 				if (item.__typename === 'DatoCmsCallToAction') {
-					const typeName = item.cta.callToAction[0].__typename
-					if (typeName === 'DatoCmsCtaVideo') {
-						return (
-							<CTAVideo
-								key={index}
-								cta={item.cta.callToAction[0]}
-							/>
-						)
-					} else if (typeName === 'DatoCmsCtaWithDescription') {
-						return (
-							<CTAWithDescription
-								key={index}
-								cta={item.cta.callToAction[0]}
-							/>
-						)
-					} else if (typeName === 'DatoCmsCtaNoDescription') {
-						return (
-							<CTANoDescription
-								key={index}
-								cta={item.cta.callToAction[0]}
-							/>
-						)
-					}
-					return ''
+					return (
+						<CTAContainer
+							key={index}
+							cta={item.cta.callToAction[0]}
+						/>
+					)
 				} else if (item.__typename === 'DatoCmsResourceList') {
 					return (
 						<FeaturedResourcesContainer
@@ -110,6 +90,10 @@ export const query = graphql`
 						title
 						slug
 					}
+					... on DatoCmsDetail {
+						title
+						slug
+					}
 				}
 			}
 			ctaResourceList {
@@ -129,7 +113,7 @@ export const query = graphql`
 							}
 							... on DatoCmsCtaWithDescription {
 								heading
-								descriptionNode {
+								briefNode {
 									internal {
 										content
 									}
@@ -150,10 +134,44 @@ export const query = graphql`
 						... on DatoCmsDetail {
 							title
 							slug
+							seo {
+								description
+								image {
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											fm: "jpg"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid_tracedSVG
+									}
+								}
+							}
 						}
 						... on DatoCmsLanding {
 							title
 							slug
+							seo {
+								description
+								image {
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											fm: "jpg"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid_tracedSVG
+									}
+								}
+							}
 						}
 					}
 				}

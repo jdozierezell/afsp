@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import { styles } from '../../css/css'
 
@@ -25,7 +26,16 @@ const channelCSS = css`
 `
 
 const Channel = ({ channel }) => {
-	const { image, heading, briefNode, linkText, link } = channel
+	const { image, heading, briefNode, linkText } = channel
+	let link = ''
+	switch (channel.link.__typename) {
+		case 'DatoCmsDetail':
+			link = `detail/${channel.link.slug}`
+			break
+		case 'DatoCmsLanding':
+			link = `landing/${channel.link.slug}`
+			break
+	}
 	return (
 		<div css={channelCSS}>
 			<img src={image.fluid.src} alt="" />
@@ -33,7 +43,9 @@ const Channel = ({ channel }) => {
 			<div
 				dangerouslySetInnerHTML={{ __html: briefNode.internal.content }}
 			></div>
-			<a href={link.slug}>{linkText}</a>
+			<AniLink fade to={`/${link}`}>
+				{linkText}
+			</AniLink>
 		</div>
 	)
 }

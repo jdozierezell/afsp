@@ -15,6 +15,7 @@ const containerCSS = css`
 		grid-template-columns: 1fr;
 		grid-row-gap: ${styles.scale.px50};
 		grid-column-gap: ${styles.gridGap.desktop};
+		align-items: stretch;
 		@media (min-width: ${styles.screens.tablet}px) {
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);

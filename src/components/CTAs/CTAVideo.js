@@ -91,11 +91,11 @@ const CTAVideo = ({ cta }) => {
 			<div css={videoDescriptionCSS}>
 				<div css={descriptionWrapperCSS}>
 					<h2>{heading}</h2>
-					<div
+					<p
 						dangerouslySetInnerHTML={{
 							__html: briefNode.internal.content,
 						}}
-					></div>
+					></p>
 					<a className="secondary-button" href={linkUrl}>
 						{linkText}
 					</a>
