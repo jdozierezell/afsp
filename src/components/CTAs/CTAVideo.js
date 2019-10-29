@@ -78,7 +78,7 @@ const descriptionWrapperCSS = css`
 `
 
 const CTAVideo = ({ cta }) => {
-	const { videoUrl, heading, briefNode, linkText, linkUrl } = cta
+	const { videoUrl, heading, brief, linkText, linkUrl } = cta
 	return (
 		<section css={videoCTACSS}>
 			<video
@@ -93,7 +93,7 @@ const CTAVideo = ({ cta }) => {
 					<h2>{heading}</h2>
 					<p
 						dangerouslySetInnerHTML={{
-							__html: briefNode.internal.content,
+							__html: brief,
 						}}
 					></p>
 					<a className="secondary-button" href={linkUrl}>

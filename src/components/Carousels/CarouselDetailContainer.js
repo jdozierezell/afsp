@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Glide from '@glidejs/glide'
 import { css } from '@emotion/core'
 
-import CarouselStory from './CarouselStory'
+import CarouselDetail from './CarouselDetail'
 
 import { styles } from '../../css/css'
 
@@ -63,7 +63,8 @@ const carouselButtonsCSS = css`
 	}
 `
 
-const CarouselStoryContainer = ({ content: { details, title, slug } }) => {
+const CarouselDetailContainer = ({ content: { details, title, slug } }) => {
+	console.log(details)
 	let count = 0
 	useEffect(() => {
 		new Glide('.glide-story', {
@@ -90,7 +91,7 @@ const CarouselStoryContainer = ({ content: { details, title, slug } }) => {
 						{details.map((section, index) => {
 							if (section.__typename === 'DatoCmsContent') {
 								return (
-									<CarouselStory
+									<CarouselDetail
 										key={index}
 										content={section.contentHeading}
 										baseUrl={slug}
@@ -120,4 +121,4 @@ const CarouselStoryContainer = ({ content: { details, title, slug } }) => {
 	)
 }
 
-export default CarouselStoryContainer
+export default CarouselDetailContainer

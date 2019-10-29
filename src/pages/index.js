@@ -18,13 +18,12 @@ function App({ data: { home } }) {
 			<HeroVideo
 				videoUrl={home.heroVideoUrl}
 				heading={home.heroHeading}
-				brief={home.heroBriefNode.internal.content}
+				brief={home.heroBriefNode}
 				buttonCta={home.heroButtonCta}
 				buttonUrl={home.heroButtonLink.slug}
 			/>
 			<ChannelContainer channelList={home.channelList} />
-			<CarouselChapterContainer />
-			{home.ctaResourceList.map((item, index) => {
+			{home.ctaChapterResourceList.map((item, index) => {
 				if (item.__typename === 'DatoCmsCallToAction') {
 					return (
 						<CTAContainer
@@ -32,6 +31,10 @@ function App({ data: { home } }) {
 							cta={item.cta.callToAction[0]}
 						/>
 					)
+				} else if (item.__typename === 'DatoCmsChapterConnection') {
+					if (item.showChapterConnection === true) {
+						return <CarouselChapterContainer key={index} />
+					}
 				} else if (item.__typename === 'DatoCmsResourceList') {
 					return (
 						<FeaturedResourcesContainer
@@ -56,11 +59,7 @@ export const query = graphql`
 			}
 			heroVideoUrl
 			heroHeading
-			heroBriefNode {
-				internal {
-					content
-				}
-			}
+			heroBrief
 			heroButtonCta
 			heroButtonLink
 			channelList {
@@ -79,11 +78,7 @@ export const query = graphql`
 					}
 				}
 				heading
-				briefNode {
-					internal {
-						content
-					}
-				}
+				brief
 				linkText
 				link {
 					... on DatoCmsLanding {
@@ -96,28 +91,20 @@ export const query = graphql`
 					}
 				}
 			}
-			ctaResourceList {
+			ctaChapterResourceList {
 				... on DatoCmsCallToAction {
 					cta {
 						callToAction {
 							... on DatoCmsCtaVideo {
 								videoUrl
 								heading
-								briefNode {
-									internal {
-										content
-									}
-								}
+								brief
 								linkText
 								linkUrl
 							}
 							... on DatoCmsCtaWithDescription {
 								heading
-								briefNode {
-									internal {
-										content
-									}
-								}
+								brief
 								linkText
 								linkUrl
 							}
@@ -128,6 +115,9 @@ export const query = graphql`
 							}
 						}
 					}
+				}
+				... on DatoCmsChapterConnection {
+					showChapterConnection
 				}
 				... on DatoCmsResourceList {
 					resource {

@@ -38,13 +38,13 @@ const titleCTACSS = css`
 `
 
 const CTAWithDescription = ({ cta }) => {
-	const { heading, briefNode, linkText, linkUrl } = cta
+	const { heading, brief, linkText, linkUrl } = cta
 	return (
 		<div css={titleCTACSS}>
 			<h2>{heading}</h2>
 			<p
 				dangerouslySetInnerHTML={{
-					__html: briefNode.internal.content,
+					__html: brief,
 				}}
 			></p>
 			<a href={linkUrl} className="secondary-button">

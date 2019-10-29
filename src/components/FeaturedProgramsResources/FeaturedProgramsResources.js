@@ -24,7 +24,6 @@ const featuredCSS = css`
 `
 
 const FeaturedResources = ({ data }) => {
-	console.log(data)
 	let slug = ''
 	switch (data.__typename) {
 		case 'DatoCmsDetail':
@@ -32,6 +31,8 @@ const FeaturedResources = ({ data }) => {
 			break
 		case 'DatoCmsLanding':
 			slug = `landing/${data.slug}`
+			break
+		default:
 			break
 	}
 

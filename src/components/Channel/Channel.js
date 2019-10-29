@@ -26,7 +26,7 @@ const channelCSS = css`
 `
 
 const Channel = ({ channel }) => {
-	const { image, heading, briefNode, linkText } = channel
+	const { image, heading, brief, linkText } = channel
 	let link = ''
 	switch (channel.link.__typename) {
 		case 'DatoCmsDetail':
@@ -35,14 +35,14 @@ const Channel = ({ channel }) => {
 		case 'DatoCmsLanding':
 			link = `landing/${channel.link.slug}`
 			break
+		default:
+			break
 	}
 	return (
 		<div css={channelCSS}>
 			<img src={image.fluid.src} alt="" />
 			<h2>{heading}</h2>
-			<div
-				dangerouslySetInnerHTML={{ __html: briefNode.internal.content }}
-			></div>
+			<div dangerouslySetInnerHTML={{ __html: brief }}></div>
 			<AniLink fade to={`/${link}`}>
 				{linkText}
 			</AniLink>

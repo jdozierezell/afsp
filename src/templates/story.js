@@ -73,8 +73,8 @@ export const query = graphql`
 						alt
 					}
 				}
-				... on DatoCmsDetailExcerpt {
-					detailPage {
+				... on DatoCmsDetailSquare {
+					detail {
 						details {
 							... on DatoCmsContent {
 								id

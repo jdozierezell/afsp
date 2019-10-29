@@ -28,7 +28,6 @@ const titleCTACSS = css`
 `
 
 const CTANoDescription = ({ cta }) => {
-	console.log(cta)
 	const { heading, linkText, linkUrl } = cta
 	return (
 		<div css={titleCTACSS}>

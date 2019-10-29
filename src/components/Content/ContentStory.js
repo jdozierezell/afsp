@@ -10,7 +10,7 @@ import { useWindowDimensions } from '../WindowDimensionsProvider'
 import { styles } from '../../css/css'
 
 import '@glidejs/glide/dist/css/glide.core.min.css'
-import CarouselStoryContainer from '../Carousels/CarouselStoryContainer'
+import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
 
 const storyContentCSS = css`
 	margin: ${styles.scale.px50} 0;
@@ -154,16 +154,16 @@ const ContentStory = ({ data }) => {
 							)}
 						</div>
 					)
-				} else if (article.__typename === 'DatoCmsDetailExcerpt') {
+				} else if (article.__typename === 'DatoCmsDetailSquare') {
 					return (
 						<div
 							css={css`
 								grid-column: 1 / 4;
 							`}
 						>
-							<CarouselStoryContainer
+							<CarouselDetailContainer
 								key={index}
-								content={article.detailPage}
+								content={article.detail}
 							/>
 						</div>
 					)
