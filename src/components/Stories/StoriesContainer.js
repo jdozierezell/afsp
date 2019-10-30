@@ -43,14 +43,15 @@ const moreButtonCSS = css`
 	}
 `
 
-const StoriesContainer = ({ header, more }) => {
+const StoriesContainer = ({ header, stories }) => {
+	const more = stories.length > 3 ? true : false
 	return (
 		<section css={containerCSS}>
 			{header && <h2>{header}</h2>}
 			<div css={storiesCSS}>
-				<Stories />
-				<Stories />
-				<Stories />
+				{stories.map(story => (
+					<Stories story={story} />
+				))}
 			</div>
 			{more && (
 				<div css={moreButtonCSS}>

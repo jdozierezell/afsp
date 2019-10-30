@@ -5,6 +5,7 @@ import { css } from '@emotion/core'
 import CarouselDetail from './CarouselDetail'
 
 import { styles } from '../../css/css'
+import createAnchor from '../../utils/createAnchor'
 
 import '@glidejs/glide/dist/css/glide.core.min.css'
 
@@ -15,7 +16,7 @@ const carouselCSS = css`
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px80} ${styles.scale.px50} ${styles.scale.px35};
 	}
-	h2 {
+	> h2 {
 		font-size: ${styles.scale.px36};
 		line-height: ${styles.scale.px42};
 		margin-bottom: ${styles.scale.px35};
@@ -63,7 +64,10 @@ const carouselButtonsCSS = css`
 	}
 `
 
-const CarouselDetailContainer = ({ content: { details, title, slug } }) => {
+const CarouselDetailContainer = ({
+	content: { details, title, slug },
+	addCSS,
+}) => {
 	let count = 0
 	useEffect(() => {
 		new Glide('.glide-story', {
@@ -89,11 +93,28 @@ const CarouselDetailContainer = ({ content: { details, title, slug } }) => {
 					<ul className="glide__slides">
 						{details.map((section, index) => {
 							if (section.__typename === 'DatoCmsContent') {
+								const anchor = `/detail/${slug}/#${createAnchor(
+									section.contentHeading
+								)}`
 								return (
 									<CarouselDetail
 										key={index}
 										content={section.contentHeading}
-										baseUrl={slug}
+										anchor={anchor}
+										addCSS={addCSS}
+									/>
+								)
+							} else if (
+								section.__typename === 'DonorDriveEvent'
+							) {
+								return (
+									<CarouselDetail
+										key={index}
+										content={section.date}
+										title={section.title}
+										externalAnchor={true}
+										anchor={section.url}
+										addCSS={addCSS}
 									/>
 								)
 							}

@@ -23,6 +23,7 @@ const titleCTACSS = css`
 			width: 70%;
 			text-align: left;
 			font-size: ${styles.scale.px56};
+			margin-bottom: 0;
 		}
 	}
 `

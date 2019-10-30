@@ -20,9 +20,15 @@ const carouselComponentCSS = css`
 `
 
 const carouselMessageCSS = css`
+	font-family: ${styles.fonts.avenirBold};
+	font-size: ${styles.scale.px17};
 	@media (min-width: ${styles.screens.mobile}px) {
 		font-size: ${styles.scale.px18};
 	}
+`
+
+const carouselTitleCSS = css`
+	color: ${styles.colors.darkGray};
 `
 
 const carouselLinkCSS = css`
@@ -32,14 +38,25 @@ const carouselLinkCSS = css`
 	text-decoration: underline;
 `
 
-const CarouselDetail = ({ baseUrl, content }) => {
-	const anchor = createAnchor(content)
+const CarouselDetail = ({ anchor, content, title, externalAnchor, addCSS }) => {
 	return (
-		<div css={carouselComponentCSS}>
-			<h3 css={carouselMessageCSS}>{content}</h3>
-			<Link to={`/detail/${baseUrl}/#${anchor}`} css={carouselLinkCSS}>
-				Learn more
-			</Link>
+		<div
+			css={css`
+				${carouselComponentCSS};
+				${addCSS};
+			`}
+		>
+			<p css={carouselMessageCSS}>{content}</p>
+			{title && <h2 css={carouselTitleCSS}>{title}</h2>}
+			{externalAnchor ? (
+				<a href={anchor} css={carouselLinkCSS}>
+					Learn more
+				</a>
+			) : (
+				<Link to={anchor} css={carouselLinkCSS}>
+					Learn more
+				</Link>
+			)}
 		</div>
 	)
 }

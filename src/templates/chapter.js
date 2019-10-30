@@ -1,14 +1,22 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-
-import { styles } from '../css/css'
+import { css } from '@emotion/core'
 
 import LayoutChapter from '../components/LayoutChapter'
 import SEO from '../components/SEO'
 import HeroChapter from '../components/Hero/HeroChapter'
 import ChapterAboutContact from '../components/Chapter/ChapterAboutContact'
+import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
+import FeaturedResourcesContainer from '../components/FeaturedProgramsResources/FeaturedResourcesContainer'
+import CTAWithDescription from '../components/CTAs/CTAWithDescription'
+import StoriesContainer from '../components/Stories/StoriesContainer'
+
+import { styles } from '../css/css'
+
+const eventCarouselCSS = css``
 
 const chapter = ({ data: { chapter } }) => {
+	console.log(chapter)
 	const {
 		title,
 		useVideoInHero,
@@ -19,7 +27,39 @@ const chapter = ({ data: { chapter } }) => {
 		staffTitle,
 		staffEmail,
 		staffPhone,
+		featuredResources,
+		volunteerSignupUrl,
+		chapterStoriesAndUpdates,
 	} = chapter
+	const eventsContainer = {
+		details: [
+			{
+				__typename: 'DonorDriveEvent',
+				title: 'Name of Event',
+				date: 'November 1',
+				url: 'https://nytimes.com',
+			},
+			{
+				__typename: 'DonorDriveEvent',
+				title: 'Name of Event',
+				date: 'November 1',
+				url: 'https://nytimes.com',
+			},
+			{
+				__typename: 'DonorDriveEvent',
+				title: 'Name of Event',
+				date: 'November 1',
+				url: 'https://nytimes.com',
+			},
+			{
+				__typename: 'DonorDriveEvent',
+				title: 'Name of Event',
+				date: 'November 1',
+				url: 'https://nytimes.com',
+			},
+		],
+		title: 'Upcoming events',
+	}
 	return (
 		<LayoutChapter logo={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={chapter.seoMetaTags} />
@@ -39,6 +79,22 @@ const chapter = ({ data: { chapter } }) => {
 					phone: staffPhone,
 				}}
 			/>
+			<CarouselDetailContainer
+				content={eventsContainer}
+				addCSS={eventCarouselCSS}
+			/>
+			<FeaturedResourcesContainer resources={featuredResources} />
+			<CTAWithDescription
+				cta={{
+					heading: `Join the AFSP ${title} Chapter`,
+					linkText: 'Volunteer',
+					linkUrl: volunteerSignupUrl,
+				}}
+			/>
+			<StoriesContainer
+				header="Stories and Updates"
+				stories={chapterStoriesAndUpdates}
+			/>
 		</LayoutChapter>
 	)
 }
@@ -55,6 +111,7 @@ export const query = graphql`
 			chapterHomePage
 			useVideoInHero
 			heroVideoUrl
+			volunteerSignupUrl
 			heroImage {
 				fluid(
 					maxWidth: 1920
@@ -79,6 +136,48 @@ export const query = graphql`
 			aboutTheChapterNode {
 				internal {
 					content
+				}
+			}
+			featuredResources {
+				title
+				slug
+				seo {
+					description
+					image {
+						fluid(
+							maxWidth: 600
+							imgixParams: {
+								fm: "jpg"
+								fit: "crop"
+								crop: "faces"
+								w: "600"
+								h: "370"
+							}
+						) {
+							...GatsbyDatoCmsFluid_tracedSVG
+						}
+					}
+				}
+			}
+			chapterStoriesAndUpdates {
+				title
+				slug
+				seo {
+					description
+					image {
+						fluid(
+							maxWidth: 600
+							imgixParams: {
+								fm: "jpg"
+								fit: "crop"
+								crop: "faces"
+								w: "600"
+								h: "370"
+							}
+						) {
+							...GatsbyDatoCmsFluid_tracedSVG
+						}
+					}
 				}
 			}
 		}

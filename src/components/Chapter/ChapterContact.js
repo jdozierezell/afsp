@@ -55,7 +55,7 @@ const ChapterSignup = ({ contact, addCSS }) => {
 				<br />
 				<a href={`mailto:${email}`}>{email}</a>
 				<br />
-				<a href="tel:(646) 284-5790">(646) 284-5790</a>
+				<a href={`tel:${phone}`}>{phone}</a>
 			</address>
 		</div>
 	)

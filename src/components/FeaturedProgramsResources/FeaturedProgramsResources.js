@@ -32,6 +32,9 @@ const FeaturedResources = ({ data }) => {
 		case 'DatoCmsLanding':
 			slug = `landing/${data.slug}`
 			break
+		case 'DatoCmsChapterPage':
+			slug = `chapter/${data.slug}`
+			break
 		default:
 			break
 	}
