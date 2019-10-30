@@ -28,19 +28,19 @@ const storyQuery = `{
 // function to flatten data into one-dimensional arrays
 const flatten = arr => {
 	arr.forEach(edge => {
-		let { story, author, seo, slug, tags, title } = edge.node
+		let { article, author, seo, slug, tags, title } = edge.node
 		// title and slug are already flat; no need to do anything there
 		const copyArray = [],
 			authorArray = [],
 			imageArray = [],
 			descriptionArray = [],
 			tagsArray = []
-		// story flattening and capping at 9000 characters
-		story.forEach((story, index) => {
-			const { __typename } = story
+		// article flattening and capping at 9000 characters
+		article.forEach((article, index) => {
+			const { __typename } = article
 			if (__typename === 'DatoCmsBody') {
-				// get the actual story copy
-				const { copy } = story
+				// get the actual article copy
+				const { copy } = article
 				// limit the character count of each array
 				const characters = 4500
 				for (let i = 0; i < copy.length; i += characters) {
