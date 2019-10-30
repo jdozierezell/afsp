@@ -9,7 +9,7 @@ const storyQuery = `{
         author {
           authorName
         }
-        story {
+        article {
           __typename
           ...on DatoCmsBody {
           copy

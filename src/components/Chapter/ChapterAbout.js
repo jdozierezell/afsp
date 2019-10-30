@@ -20,7 +20,6 @@ const aboutCSS = css`
 `
 
 const ChapterAbout = ({ title, about, addCSS }) => {
-	console.log(about)
 	return (
 		<div
 			css={css`

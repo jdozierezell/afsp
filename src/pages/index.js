@@ -31,7 +31,6 @@ const walkBar = css`
 `
 
 function App({ data: { home } }) {
-	console.log(home)
 	return (
 		<Layout logo={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={home.seoMetaTags} />

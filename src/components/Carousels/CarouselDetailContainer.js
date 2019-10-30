@@ -64,7 +64,6 @@ const carouselButtonsCSS = css`
 `
 
 const CarouselDetailContainer = ({ content: { details, title, slug } }) => {
-	console.log(details)
 	let count = 0
 	useEffect(() => {
 		new Glide('.glide-story', {
