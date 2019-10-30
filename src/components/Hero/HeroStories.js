@@ -170,34 +170,53 @@ const HeroStories = ({ data, prev, next }) => {
 				<h3>
 					Tagged{' '}
 					<ul>
-						{tags.map((tag, index) => {
-							return (
-								<li key={index}>
-									<AniLink fade to={`/tag/${tag.slug}`}>
-										{tag.tag}
-									</AniLink>
-									{index + 1 < tags.length ? ',' : null}
-								</li>
-							)
-						})}
+						{tags &&
+							tags.map((tag, index) => {
+								return (
+									<li key={index}>
+										<AniLink fade to={`/tag/${tag.slug}`}>
+											{tag.tag}
+										</AniLink>
+										{index + 1 < tags.length ? ',' : null}
+									</li>
+								)
+							})}
 					</ul>
 				</h3>
 				{width <= styles.screens.tablet && (
 					<img src={mobileCover.fluid.src} alt="" />
 				)}
 			</div>
-			<div css={previousStoryCSS}>
-				<AniLink fade to={`/story/${prev.slug}`} css={storyButtonCSS}>
-					<IconArrow color={styles.colors.white} direction="left" />
-				</AniLink>
-				<p>{prev.title}</p>
-			</div>
-			<div css={followingStoryCSS}>
-				<AniLink fade to={`/story/${next.slug}`} css={storyButtonCSS}>
-					<IconArrow color={styles.colors.white} direction="right" />
-				</AniLink>
-				<p>{next.title}</p>
-			</div>
+			{prev && (
+				<div css={previousStoryCSS}>
+					<AniLink
+						fade
+						to={`/story/${prev.slug}`}
+						css={storyButtonCSS}
+					>
+						<IconArrow
+							color={styles.colors.white}
+							direction="left"
+						/>
+					</AniLink>
+					<p>{prev.title}</p>
+				</div>
+			)}
+			{next && (
+				<div css={followingStoryCSS}>
+					<AniLink
+						fade
+						to={`/story/${next.slug}`}
+						css={storyButtonCSS}
+					>
+						<IconArrow
+							color={styles.colors.white}
+							direction="right"
+						/>
+					</AniLink>
+					<p>{next.title}</p>
+				</div>
+			)}
 		</section>
 	)
 }
