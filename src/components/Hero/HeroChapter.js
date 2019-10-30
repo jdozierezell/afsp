@@ -83,7 +83,8 @@ const chapterDescriptionCSS = css`
 const buttonWrapperCSS = css`
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-gap: ${styles.gridGap.mobile};
+	grid-template-rows: ${styles.scale.px54} ${styles.scale.px54};
+	grid-gap: ${styles.gridGap.desktop};
 	margin: 0 ${styles.scale.px24};
 	@media (min-width: ${styles.screens.video}px) {
 		grid-area: 4 / 1 / 5 / 2;
@@ -91,29 +92,27 @@ const buttonWrapperCSS = css`
 	}
 `
 
-const HeroChapter = ({ chapter, type, src }) => {
+const HeroChapter = ({ title, useVideo, src, poster, brief }) => {
 	return (
 		<section css={videoHeroCSS}>
-			{type === 'video' && (
+			{useVideo === true && (
 				<video
 					autoPlay
 					muted
 					loop
 					css={videoImageCoverCSS}
 					src={src}
+					poster={poster}
 				></video>
 			)}
-			{type === 'image' && (
+			{useVideo === false && (
 				<img css={videoImageCoverCSS} src={src} alt=""></img>
 			)}
 			<div css={descriptionBackgroundCSS}></div>
 			<h2 css={chapterNameCSS}>
-				<span>AFSP {chapter}</span>
+				<span>AFSP {title}</span>
 			</h2>
-			<p css={chapterDescriptionCSS}>
-				It doesn’t take much to make a big difference, and there are
-				opportunities for all levels of commitment.
-			</p>
+			<p css={chapterDescriptionCSS}>{brief}</p>
 			<div css={buttonWrapperCSS}>
 				<a className="secondary-button" href="https://example.com">
 					Volunteer

@@ -106,10 +106,10 @@ const HeroVideo = ({ videoUrl, heading, brief, buttonCta, buttonUrl }) => {
 			<h2 css={videoHeaderCSS}>
 				<span>{heading}</span>
 			</h2>
-			<div
+			<p
 				css={videoDescriptionCSS}
 				dangerouslySetInnerHTML={{ __html: brief }}
-			></div>
+			></p>
 			<div css={buttonWrapperCSS}>
 				<a className="secondary-button" href={buttonUrl}>
 					{buttonCta}

@@ -5,12 +5,13 @@ import Header from './Header/Header'
 import EmailSignupChapter from './EmailSignup/EmailSignupChapter'
 import Footer from './Footer/Footer'
 import WindowDimensionsProvider from './WindowDimensionsProvider'
+import HeaderContextProvider from './HeaderContextProvider'
 
 import '../css/layout.css'
 import '../css/global.css'
 import '../fonts/gatsby-afsp.css'
 
-const LayoutChapter = ({ children }) => {
+const LayoutChapter = ({ logo, children }) => {
 	// const data = useStaticQuery(graphql`
 	// 	query SiteTitleQuery {
 	// 		site {
@@ -23,7 +24,9 @@ const LayoutChapter = ({ children }) => {
 
 	return (
 		<WindowDimensionsProvider>
-			<Header />
+			<HeaderContextProvider value={logo}>
+				<Header />
+			</HeaderContextProvider>
 			<main>{children}</main>
 			<EmailSignupChapter />
 			<Footer />

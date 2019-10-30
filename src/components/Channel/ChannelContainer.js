@@ -10,9 +10,9 @@ const containerCSS = css`
 	background-color: ${styles.colors.lightGray};
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-row-gap: ${styles.scale.px80};
+	grid-row-gap: ${styles.scale.px90};
 	grid-column-gap: ${styles.scale.px44};
-	max-width: 1500px;
+	max-width: 1680px;
 	margin: 0 auto;
 	@media (min-width: ${styles.screens.tablet}px) {
 		padding: ${styles.scale.px80} ${styles.scale.px50};

@@ -8,7 +8,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-function SEO({ lang, meta }) {
+const SEO = ({ lang, meta }) => {
 	const tags = meta.tags
 	let title,
 		description,

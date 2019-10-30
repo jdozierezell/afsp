@@ -31,11 +31,11 @@ const contactCSS = css`
 	}
 `
 
-const ChapterAboutContact = ({ chapterName }) => {
+const ChapterAboutContact = ({ title, about, contact }) => {
 	return (
 		<section css={aboutContactCSS}>
-			<ChapterAbout chapterName={chapterName} addCSS={aboutCSS} />
-			<ChapterContact addCSS={contactCSS} />
+			<ChapterAbout title={title} about={about} addCSS={aboutCSS} />
+			<ChapterContact contact={contact} addCSS={contactCSS} />
 		</section>
 	)
 }

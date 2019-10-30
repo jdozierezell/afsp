@@ -46,6 +46,7 @@ export const styles = {
 		px46: '46px',
 		px50: '50px',
 		px52: '52px',
+		px54: '54px',
 		px56: '56px',
 		px60: '60px',
 		px62: '62px',

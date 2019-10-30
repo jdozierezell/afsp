@@ -38,7 +38,8 @@ const chapterContactCSS = css`
 	}
 `
 
-const ChapterSignup = ({ addCSS }) => {
+const ChapterSignup = ({ contact, addCSS }) => {
+	const { name, title, email, phone } = contact
 	return (
 		<div
 			css={css`
@@ -46,15 +47,15 @@ const ChapterSignup = ({ addCSS }) => {
 				${addCSS};
 			`}
 		>
-			<h3>Community contact:</h3>
+			<h3>Chapter contact:</h3>
 			<address>
-				<strong>Amy Monahan</strong>
+				<strong>{name}</strong>
 				<br />
-				New York City Area Director
+				{title}
 				<br />
-				<a href="mailto:amonahan@afsp.org">amonahan@afsp.org</a>
+				<a href={`mailto:${email}`}>{email}</a>
 				<br />
-				<a href="tel:16462845790">(646) 284-5790</a>
+				<a href="tel:(646) 284-5790">(646) 284-5790</a>
 			</address>
 		</div>
 	)

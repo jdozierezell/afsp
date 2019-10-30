@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
@@ -11,17 +12,40 @@ import FeaturedResourcesContainer from '../components/FeaturedProgramsResources/
 
 import { styles } from '../css/css'
 
+const walkBar = css`
+	background-color: ${styles.colors.blue};
+	text-align: center;
+	padding: ${styles.scale.px14} ${styles.scale.px50};
+	span,
+	a {
+		color: ${styles.colors.white};
+		font-family: ${styles.fonts.avenirDemi};
+		font-size: ${styles.scale.px20};
+		line-height: ${styles.scale.px30};
+		display: block;
+		@media (min-width: ${styles.screens.tablet}px) {
+			display: inline;
+			margin: 0 ${styles.scale.px14};
+		}
+	}
+`
+
 function App({ data: { home } }) {
+	console.log(home)
 	return (
 		<Layout logo={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={home.seoMetaTags} />
 			<HeroVideo
 				videoUrl={home.heroVideoUrl}
 				heading={home.heroHeading}
-				brief={home.heroBriefNode}
+				brief={home.heroBrief}
 				buttonCta={home.heroButtonCta}
 				buttonUrl={home.heroButtonLink.slug}
 			/>
+			<div css={walkBar}>
+				<span>Want to walk with us?</span>{' '}
+				<a href="">Find a walk near you</a>
+			</div>
 			<ChannelContainer channelList={home.channelList} />
 			{home.ctaChapterResourceList.map((item, index) => {
 				if (item.__typename === 'DatoCmsCallToAction') {
