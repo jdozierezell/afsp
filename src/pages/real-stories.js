@@ -5,13 +5,14 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import HeroVideo from '../components/Hero/HeroVideo'
+import CarouselVideoContainer from '../components/Carousels/CarouselVideoContainer'
+import StoriesContainer from '../components/Stories/StoriesContainer'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 
 import { styles } from '../css/css'
 
-const RealStories = ({ data: { real } }) => {
-	console.log(real)
+const RealStories = ({ data: { real, stories } }) => {
 	return (
 		<Layout logo={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={real.seoMetaTags} />
@@ -22,7 +23,18 @@ const RealStories = ({ data: { real } }) => {
 				buttonCta={real.heroButtonCta}
 				buttonUrl={real.heroButtonLink}
 			/>
+			<CarouselVideoContainer />
+			<StoriesContainer
+				header="Stories"
+				first={true}
+				stories={stories.edges}
+			/>
 			<CTAContainer cta={real.callToAction1.callToAction[0]} />
+			<StoriesContainer
+				offset={3}
+				more="stories"
+				stories={stories.edges}
+			/>
 			<CTAContainer cta={real.callToAction2.callToAction[0]} />
 			<CarouselChapterContainer />
 		</Layout>
@@ -86,6 +98,24 @@ export const query = graphql`
 						heading
 						linkText
 						linkUrl
+					}
+				}
+			}
+		}
+		stories: allDatoCmsStory {
+			totalCount
+			edges {
+				node {
+					title
+					slug
+					coverImage {
+						url
+					}
+					seo {
+						description
+						image {
+							url
+						}
 					}
 				}
 			}

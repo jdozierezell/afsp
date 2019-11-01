@@ -15,7 +15,7 @@ import { styles } from '../css/css'
 const walkBar = css`
 	background-color: ${styles.colors.blue};
 	text-align: center;
-	padding: ${styles.scale.px14} ${styles.scale.px50};
+	padding: ${styles.scale.px5} ${styles.scale.px50};
 	span,
 	a {
 		color: ${styles.colors.white};
@@ -26,6 +26,7 @@ const walkBar = css`
 		@media (min-width: ${styles.screens.tablet}px) {
 			display: inline;
 			margin: 0 ${styles.scale.px14};
+			line-height: initial;
 		}
 	}
 `

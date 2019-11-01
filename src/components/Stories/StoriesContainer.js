@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 
 import Stories from './Stories'
@@ -43,21 +43,41 @@ const moreButtonCSS = css`
 	}
 `
 
-const StoriesContainer = ({ header, stories }) => {
-	const more = stories.length > 3 ? true : false
+const StoriesContainer = ({ header, first, offset, more, stories }) => {
+	const [displayNumber, setDisplayNumber] = useState(3)
 	return (
 		<section css={containerCSS}>
 			{header && <h2>{header}</h2>}
-			<div css={storiesCSS}>
-				{stories.map(story => (
-					<Stories story={story} />
-				))}
-			</div>
-			{more && (
+			{first && (
+				<div css={storiesCSS}>
+					{stories.map(
+						(story, index) =>
+							index < displayNumber && (
+								<Stories key={index} story={story} />
+							)
+					)}
+				</div>
+			)}
+			{!first && (
+				<div css={storiesCSS}>
+					{stories
+						.slice(offset)
+						.map(
+							(story, index) =>
+								index < displayNumber && (
+									<Stories key={index} story={story} />
+								)
+						)}
+				</div>
+			)}
+			{more && stories.length > displayNumber && (
 				<div css={moreButtonCSS}>
-					<a className="secondary-button" href="https://example.com">
-						Load more {more}
-					</a>
+					<button
+						className="secondary-button"
+						onClick={() => setDisplayNumber(displayNumber + 6)}
+					>
+						Load more {more.toLowerCase()}
+					</button>
 				</div>
 			)}
 		</section>

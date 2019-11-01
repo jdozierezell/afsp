@@ -41,14 +41,13 @@ const featuredCSS = css`
 	}
 `
 
-const Stories = () => {
+const Stories = ({ story: { node } }) => {
+	console.log(node)
 	return (
 		<div css={featuredCSS}>
 			<img src="https://placekitten.com/409/250" alt="" />
 			<h2>
-				<a href="https://example.com">
-					Street art tousled occupy sriracha kale
-				</a>
+				<a href="https://example.com">{node.title}</a>
 			</h2>
 			<p>
 				Blog gastropub next level actually vexillologist sriracha kale
