@@ -1,41 +1,41 @@
-import values from 'object.values';
+import values from 'object.values'
 
-window.DatoCmsPlugin.init((plugin) => {
-  const slaveOnFields = plugin.parameters.instance.slaveOnFields.split(
-    /\s*,\s*/,
-  );
-  const masterField = plugin.field;
+window.DatoCmsPlugin.init(plugin => {
+	const slaveOnFields = plugin.parameters.instance.slaveOnFields.split(
+		/\s*,\s*/
+	)
+	const masterField = plugin.field
 
-  function toggleFields(value) {
-    slaveOnFields.forEach((slaveFieldApiKey) => {
-      const slaveField = values(plugin.fields).find(
-        field => field.attributes.api_key === slaveFieldApiKey,
-      );
+	function toggleFields(value) {
+		slaveOnFields.forEach(slaveFieldApiKey => {
+			const slaveField = values(plugin.fields).find(
+				field => field.attributes.api_key === slaveFieldApiKey
+			)
 
-      const slavePath = plugin.parentFieldId
-        ? `${plugin.fieldPath.replace(
-          /.[^.]*$/,
-          '',
+			const slavePath = plugin.parentFieldId
+				? `${plugin.fieldPath.replace(
+						/.[^.]*$/,
+						''
 				  )}.${slaveFieldApiKey}`
-        : slaveFieldApiKey;
+				: slaveFieldApiKey
 
-      if (masterField.attributes.localized) {
-        if (slaveField.attributes.localized) {
-          plugin.toggleField(`${slavePath}.${plugin.locale}`, value);
-        }
-      } else if (slaveField.attributes.localized) {
-        plugin.site.attributes.locales.forEach((locale) => {
-          plugin.toggleField(`${slavePath}.${locale}`, value);
-        });
-      } else {
-        plugin.toggleField(slavePath, value);
-      }
-    });
-  }
+			if (masterField.attributes.localized) {
+				if (slaveField.attributes.localized) {
+					plugin.toggleField(`${slavePath}.${plugin.locale}`, value)
+				}
+			} else if (slaveField.attributes.localized) {
+				plugin.site.attributes.locales.forEach(locale => {
+					plugin.toggleField(`${slavePath}.${locale}`, value)
+				})
+			} else {
+				plugin.toggleField(slavePath, value)
+			}
+		})
+	}
 
-  toggleFields(!!plugin.getFieldValue(plugin.fieldPath));
+	toggleFields(!!plugin.getFieldValue(plugin.fieldPath))
 
-  plugin.addFieldChangeListener(plugin.fieldPath, (value) => {
-    toggleFields(!!value);
-  });
-});
+	plugin.addFieldChangeListener(plugin.fieldPath, value => {
+		toggleFields(!!value)
+	})
+})
