@@ -43,7 +43,7 @@ const resourcesCSS = css`
 	}
 `
 
-const landing = ({ data: { landing } }) => {
+const Landing = ({ data: { landing } }) => {
 	return (
 		<Layout logo={styles.logo.mobileDarkDesktopDark}>
 			<SEO meta={landing.seoMetaTags} />
@@ -91,7 +91,7 @@ const landing = ({ data: { landing } }) => {
 	)
 }
 
-export default landing
+export default Landing
 
 export const query = graphql`
 	query($slug: String) {

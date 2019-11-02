@@ -9,7 +9,7 @@ import ContentGeneric from '../components/Content/ContentGeneric'
 
 import { styles } from '../css/css'
 
-const detail = ({ data, pageContext }) => {
+const Detail = ({ data, pageContext }) => {
 	const { detail } = data
 	return (
 		<Layout logo={styles.logo.mobileLightDesktopLight}>
@@ -20,6 +20,8 @@ const detail = ({ data, pageContext }) => {
 		</Layout>
 	)
 }
+
+export default Detail
 
 export const query = graphql`
 	query($slug: String) {
@@ -73,5 +75,3 @@ export const query = graphql`
 		}
 	}
 `
-
-export default detail

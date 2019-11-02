@@ -8,7 +8,7 @@ import ContentStory from '../components/Content/ContentStory'
 
 import { styles } from '../css/css'
 
-const story = ({ data: { story }, pageContext: { prev, next } }) => {
+const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 	return (
 		<Layout logo={styles.logo.mobileDarkDesktopLight}>
 			<SEO meta={story.seoMetaTags} />
@@ -17,6 +17,8 @@ const story = ({ data: { story }, pageContext: { prev, next } }) => {
 		</Layout>
 	)
 }
+
+export default Story
 
 export const query = graphql`
 	query($slug: String) {
@@ -89,5 +91,3 @@ export const query = graphql`
 		}
 	}
 `
-
-export default story

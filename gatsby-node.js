@@ -29,6 +29,14 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
+			authors: allDatoCmsAuthor {
+				edges {
+					node {
+						authorName
+						slug
+					}
+				}
+			}
 			redirects: allDatoCmsRedirect {
 				edges {
 					node {
@@ -65,6 +73,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	`)
 	const stories = data.stories.edges
 	const tags = data.tags.edges
+	const authors = data.authors.edges
 	const redirects = data.redirects.edges
 	const details = data.details.edges
 	const landings = data.landings.edges
@@ -89,6 +98,16 @@ exports.createPages = async ({ graphql, actions }) => {
 		createPage({
 			path: `tag/${node.slug}`,
 			component: path.resolve('./src/templates/tag.js'),
+			context: {
+				slug: node.slug,
+			},
+		})
+	})
+
+	authors.forEach(({ node }) => {
+		createPage({
+			path: `author/${node.slug}`,
+			component: path.resolve('./src/templates/author.js'),
 			context: {
 				slug: node.slug,
 			},

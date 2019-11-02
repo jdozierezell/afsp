@@ -25,9 +25,10 @@ const featuredCSS = css`
 	}
 	h3 {
 		margin-bottom: 0;
+		font-size: ${styles.scale.px17};
+		text-transform: uppercase;
 		a {
 			font-size: ${styles.scale.px17};
-			text-transform: uppercase;
 		}
 	}
 	a {
@@ -42,20 +43,19 @@ const featuredCSS = css`
 `
 
 const Stories = ({ story: { node } }) => {
-	console.log(node)
+	console.log(node.author)
 	return (
 		<div css={featuredCSS}>
-			<img src="https://placekitten.com/409/250" alt="" />
+			<img src={node.coverImage.fluid.src} alt="" />
 			<h2>
-				<a href="https://example.com">{node.title}</a>
+				<a href={`story/${node.slug}`}>{node.title}</a>
 			</h2>
-			<p>
-				Blog gastropub next level actually vexillologist sriracha kale
-				chips. Street art tousled occupy, godard pabst shoreditch trust
-				fund locavore 8-bit hella crucifix mumblecore.
-			</p>
+			<p>{node.seo.description}</p>
 			<h3>
-				<a href="https://example.com">By Example</a>
+				By{' '}
+				{node.author.map(author => (
+					<a href={`author/${author.slug}`}>{author.authorName}</a>
+				))}
 			</h3>
 		</div>
 	)

@@ -15,7 +15,7 @@ import { styles } from '../css/css'
 
 const eventCarouselCSS = css``
 
-const chapter = ({ data: { chapter } }) => {
+const Chapter = ({ data: { chapter } }) => {
 	console.log(chapter)
 	const {
 		title,
@@ -99,7 +99,7 @@ const chapter = ({ data: { chapter } }) => {
 	)
 }
 
-export default chapter
+export default Chapter
 
 export const query = graphql`
 	query {

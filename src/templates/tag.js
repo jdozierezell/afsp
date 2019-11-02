@@ -1,7 +1,7 @@
 import React from 'react'
 
-const tag = () => {
+const Tag = () => {
 	return <div>Hello from tag</div>
 }
 
-export default tag
+export default Tag
