@@ -31,7 +31,7 @@ const walkBar = css`
 	}
 `
 
-function App({ data: { home } }) {
+const App = ({ data: { home } }) => {
 	return (
 		<Layout logo={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={home.seoMetaTags} />

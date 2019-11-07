@@ -68,17 +68,7 @@ const carouselButtonsCSS = css`
 
 const chapterTempData = [
 	{
-		title: 'foo',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'bar',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'yay',
+		title: 'hip',
 		titleHref: 'https://example.com',
 		src: 'https://placekitten.com/516/316',
 	},
@@ -93,7 +83,12 @@ const chapterTempData = [
 		src: 'https://placekitten.com/516/316',
 	},
 	{
-		title: 'hooray',
+		title: 'hip',
+		titleHref: 'https://example.com',
+		src: 'https://placekitten.com/516/316',
+	},
+	{
+		title: 'hip',
 		titleHref: 'https://example.com',
 		src: 'https://placekitten.com/516/316',
 	},

@@ -3,6 +3,8 @@ import { css } from '@emotion/core'
 import { useSpring, animated } from 'react-spring'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
+import buildUrl from '../../utils/buildUrl'
+
 import IconCaret from '../SVGs/IconCaret'
 
 import { styles } from '../../css/css'
@@ -11,10 +13,12 @@ const menuTitleCSS = css`
 	display: flex;
 	justify-content: space-between;
 	height: ${styles.scale.px22};
-	h2 {
+	h2 > a {
 		color: ${styles.colors.white};
+		font-family: ${styles.fonts.paul};
 		font-size: ${styles.scale.px18};
 		margin: 0;
+		text-decoration: none;
 	}
 `
 
@@ -69,10 +73,15 @@ const MenuSection = ({ item }) => {
 		setChildrenHeight(children.length * childHeight)
 	}, [listRef])
 	if (!item) return <div ref={listRef}></div> // component is rendering extra empty return. this stops that.
+	const url = buildUrl(item.displayLink.__typename, item.displayLink.slug)
 	return (
 		<>
 			<div css={menuTitleCSS}>
-				<h2>{item.displayTitle}</h2>
+				<h2>
+					<AniLink fade duration={0.75} to={url}>
+						{item.displayTitle}
+					</AniLink>
+				</h2>
 				{item.navigationItem.length >= 1 && (
 					<animated.button
 						css={iconCaretCSS}
@@ -86,15 +95,10 @@ const MenuSection = ({ item }) => {
 			<animated.ul css={menuListCSS} style={showList} ref={listRef}>
 				{item.navigationItem.map(navItem => {
 					if (navItem.__typename === 'DatoCmsChildItem') {
-						let slug = ''
-						switch (navItem.childLink.__typename) {
-							case 'DatoCmsLanding':
-								slug = '/landing'
-								break
-							case 'DatoCmsDetail':
-								slug = '/detail'
-								break
-						}
+						const url = buildUrl(
+							navItem.childLink.__typename,
+							navItem.childLink.slug
+						)
 						return (
 							<li>
 								{navItem.childExternalLink !== '' ? (
@@ -102,9 +106,7 @@ const MenuSection = ({ item }) => {
 										{navItem.childHeading}
 									</a>
 								) : (
-									<AniLink
-										to={`${slug}/${navItem.childLink.slug}`}
-									>
+									<AniLink fade duration={0.75} to={url}>
 										{navItem.childHeading}
 									</AniLink>
 								)}

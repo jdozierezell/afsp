@@ -69,17 +69,15 @@ const legalCSS = css`
 		color: ${styles.colors.white};
 	}
 `
-const Footer = () => {
+const Footer = ({ nav }) => {
 	const { width } = useWindowDimensions()
 	return (
 		<footer css={footerCSS}>
 			{width > styles.screens.footer &&
-				footerItems.map((item, index) => {
+				nav.map((item, index) => {
 					const leftEdge = index * 2 + 1
 					const rightEdge =
-						index + 1 < footerItems.length
-							? index * 2 + 3
-							: index * 2 + 2
+						index + 1 < nav.length ? index * 2 + 3 : index * 2 + 2
 					return (
 						<div
 							key={index}
@@ -90,7 +88,7 @@ const Footer = () => {
 							<DeskFooterSection
 								item={item}
 								index={index}
-								length={footerItems.length}
+								length={nav.length}
 							/>
 						</div>
 					)

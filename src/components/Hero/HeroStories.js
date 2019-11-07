@@ -174,7 +174,11 @@ const HeroStories = ({ data, prev, next }) => {
 							tags.map((tag, index) => {
 								return (
 									<li key={index}>
-										<AniLink fade to={`/tag/${tag.slug}`}>
+										<AniLink
+											fade
+											duration={0.75}
+											to={`/tag/${tag.slug}`}
+										>
 											{tag.tag}
 										</AniLink>
 										{index + 1 < tags.length ? ',' : null}
@@ -191,6 +195,7 @@ const HeroStories = ({ data, prev, next }) => {
 				<div css={previousStoryCSS}>
 					<AniLink
 						fade
+						duration={0.75}
 						to={`/story/${prev.slug}`}
 						css={storyButtonCSS}
 					>
@@ -206,6 +211,7 @@ const HeroStories = ({ data, prev, next }) => {
 				<div css={followingStoryCSS}>
 					<AniLink
 						fade
+						duration={0.75}
 						to={`/story/${next.slug}`}
 						css={storyButtonCSS}
 					>

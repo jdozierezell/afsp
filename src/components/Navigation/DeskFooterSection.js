@@ -1,8 +1,11 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import FooterAside from '../Footer/FooterAside'
 import FooterSocials from '../Footer/FooterSocials'
+
+import buildUrl from '../../utils/buildUrl'
 
 import { styles } from '../../css/css'
 
@@ -23,13 +26,33 @@ const linkListCSS = css`
 const DeskFooterSection = ({ item, index, length }) => {
 	return (
 		<>
-			<h3 css={headerCSS}>{item.name}</h3>
+			<h3 css={headerCSS}>{item.displayTitle}</h3>
 			<ul css={linkListCSS}>
-				{item.links.map((link, index) => (
-					<li key={index}>
-						<a href={link.url}>{link.name}</a>
-					</li>
-				))}
+				{item.navigationItem.map((link, index) => {
+					console.log(link)
+					let url = ''
+					if (link.childLink) {
+						url = buildUrl(
+							link.childLink.__typename,
+							link.childLink.slug
+						)
+						return (
+							<li key={index}>
+								<AniLink fade duration={0.75} to={url}>
+									{link.childHeading}
+								</AniLink>
+							</li>
+						)
+					} else if (link.childExternalLink) {
+						url = link.childExternalLink
+						return (
+							<li key={index}>
+								<a href={url}>{link.childHeading}</a>
+							</li>
+						)
+					}
+					return ''
+				})}
 			</ul>
 			{index + 1 >= length && (
 				<>

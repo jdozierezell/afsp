@@ -48,7 +48,12 @@ const FeaturedResources = ({ data }) => {
 					__html: data.seo.description,
 				}}
 			></p>
-			<AniLink fade to={`/${slug}`} className="featured-link">
+			<AniLink
+				fade
+				duration={0.75}
+				to={`/${slug}`}
+				className="featured-link"
+			>
 				Learn more
 			</AniLink>
 		</div>

@@ -43,7 +43,7 @@ const Channel = ({ channel }) => {
 			<img src={image.fluid.src} alt="" />
 			<h2>{heading}</h2>
 			<div dangerouslySetInnerHTML={{ __html: brief }}></div>
-			<AniLink fade to={`/${link}`}>
+			<AniLink fade duration={0.75} to={`/${link}`}>
 				{linkText}
 			</AniLink>
 		</div>
