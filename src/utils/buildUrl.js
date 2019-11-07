@@ -7,6 +7,8 @@ const buildUrl = (typename, slug) => {
 		case 'DatoCmsDetail':
 			folder = '/detail'
 			break
+		default:
+			break
 	}
 	return `${folder}/${slug}`
 }

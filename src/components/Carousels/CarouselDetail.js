@@ -2,8 +2,6 @@ import React from 'react'
 import { css } from '@emotion/core'
 import { Link } from 'gatsby'
 
-import createAnchor from '../../utils/createAnchor'
-
 import { styles } from '../../css/css'
 
 const carouselComponentCSS = css`

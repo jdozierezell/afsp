@@ -6,22 +6,12 @@ import Content from './Content'
 import CardContainer from '../Cards/CardContainer'
 
 import { styles } from '../../css/css'
-import createAnchor from '../../utils/createAnchor'
 
 const storyContentCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin: ${styles.scale.px80} ${styles.scale.px50};
 		max-width: 623px;
-	}
-`
-
-const contentHeadingCSS = css`
-	font-size: ${styles.scale.px36};
-	margin: ${styles.scale.px50} 0 ${styles.scale.px35};
-	@media (min-width: ${styles.screens.mobile}px) {
-		${styles.scale.px44};
-		margin: ${styles.scale.px80} 0 ${styles.scale.px40};
 	}
 `
 

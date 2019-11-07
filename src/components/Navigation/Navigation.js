@@ -13,8 +13,6 @@ import { useWindowDimensions } from '../WindowDimensionsProvider'
 import { useHeaderContext } from '../HeaderContextProvider'
 import MenuCTA from './MenuCTA'
 
-import menuItems from './MenuItems'
-
 import { styles } from '../../css/css'
 
 const navTopCSS = css`

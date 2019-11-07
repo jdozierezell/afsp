@@ -78,7 +78,7 @@ const NavigationSide = ({ data }) => {
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll)
 		return () => window.removeEventListener('scroll', handleScroll)
-	}, [])
+	})
 	if (headings.length > 1) {
 		return (
 			<aside

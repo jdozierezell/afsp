@@ -8,8 +8,6 @@ import DeskFooterSection from '../Navigation/DeskFooterSection'
 import LogoWhite from '../SVGs/LogoWhite'
 import { useWindowDimensions } from '../WindowDimensionsProvider'
 
-import footerItems from '../Navigation/FooterItems'
-
 import { styles } from '../../css/css'
 
 const footerCSS = css`
