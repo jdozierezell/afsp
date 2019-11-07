@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { css } from '@emotion/core'
 import { useSpring, animated } from 'react-spring'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import IconCaret from '../SVGs/IconCaret'
 
@@ -42,7 +43,7 @@ const menuListCSS = css`
 	}
 `
 
-const MenuSection = ({ title }) => {
+const MenuSection = ({ item }) => {
 	const [isCaretFlipped, setCaretFlipped] = useState(false)
 	const [childrenHeight, setChildrenHeight] = useState(0)
 	const listRef = useRef(null)
@@ -67,35 +68,52 @@ const MenuSection = ({ title }) => {
 		}
 		setChildrenHeight(children.length * childHeight)
 	}, [listRef])
-
+	if (!item) return <div ref={listRef}></div> // component is rendering extra empty return. this stops that.
 	return (
 		<>
 			<div css={menuTitleCSS}>
-				<h2>{title}</h2>
-				<animated.button
-					css={iconCaretCSS}
-					style={flipCaret}
-					onClick={() => setCaretFlipped(!isCaretFlipped)}
-				>
-					<IconCaret color={styles.colors.white} />
-				</animated.button>
+				<h2>{item.displayTitle}</h2>
+				{item.navigationItem.length >= 1 && (
+					<animated.button
+						css={iconCaretCSS}
+						style={flipCaret}
+						onClick={() => setCaretFlipped(!isCaretFlipped)}
+					>
+						<IconCaret color={styles.colors.white} />
+					</animated.button>
+				)}
 			</div>
 			<animated.ul css={menuListCSS} style={showList} ref={listRef}>
-				<li>
-					<a href="https://example.com">Foo</a>
-				</li>
-				<li>
-					<a href="https://example.com">Bar</a>
-				</li>
-				<li>
-					<a href="https://example.com">Maj</a>
-				</li>
-				<li>
-					<a href="https://example.com">Apt</a>
-				</li>
-				<li>
-					<a href="https://example.com">Foo</a>
-				</li>
+				{item.navigationItem.map(navItem => {
+					if (navItem.__typename === 'DatoCmsChildItem') {
+						let slug = ''
+						switch (navItem.childLink.__typename) {
+							case 'DatoCmsLanding':
+								slug = '/landing'
+								break
+							case 'DatoCmsDetail':
+								slug = '/detail'
+								break
+						}
+						return (
+							<li>
+								{navItem.childExternalLink !== '' ? (
+									<a href={navItem.childExternalLink}>
+										{navItem.childHeading}
+									</a>
+								) : (
+									<AniLink
+										to={`${slug}/${navItem.childLink.slug}`}
+									>
+										{navItem.childHeading}
+									</AniLink>
+								)}
+							</li>
+						)
+					} else {
+						return ''
+					}
+				})}
 			</animated.ul>
 			<hr
 				css={css`

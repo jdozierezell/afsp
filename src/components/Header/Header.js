@@ -9,13 +9,15 @@ const navCSS = css`
 	z-index: 1000;
 `
 
-const Header = () => (
-	<header>
-		<HeaderAside />
-		<div css={navCSS}>
-			<Navigation />
-		</div>
-	</header>
-)
+const Header = ({ nav }) => {
+	return (
+		<header>
+			<HeaderAside />
+			<div css={navCSS}>
+				<Navigation nav={nav} />
+			</div>
+		</header>
+	)
+}
 
 export default Header

@@ -12,11 +12,16 @@ const menuCSS = css`
 	width: 100%;
 `
 
-const MenuItems = () => {
+const MenuItems = ({ items }) => {
+	items.forEach(item => {
+		if (item.__typename !== 0) {
+		}
+	})
 	return (
 		<nav css={menuCSS}>
-			<MobileMenuSection title="Real Stories" />
-			<MobileMenuSection title="Real Stories" />
+			{items.map(item => (
+				<MobileMenuSection key={item.id} item={item} />
+			))}
 			<MenuCTA width="100%" margin={`${styles.scale.px45} 0 0`} />
 		</nav>
 	)

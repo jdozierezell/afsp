@@ -70,7 +70,7 @@ const hamburgerCSS = css`
 	background: transparent;
 	border: none;
 `
-const Navigation = () => {
+const Navigation = ({ nav }) => {
 	const { width } = useWindowDimensions()
 	const headerContext = useHeaderContext()
 
@@ -147,7 +147,7 @@ const Navigation = () => {
 			</div>
 			{width > styles.screens.navigation && (
 				<DeskMenu
-					items={menuItems}
+					items={nav}
 					activeItem={activeMegaMenu}
 					handleMouseEnter={handleMouseEnter}
 					handleMouseLeave={handleMouseLeave}
@@ -191,7 +191,7 @@ const Navigation = () => {
 			</div>
 			{isSearchActive && <SearchBar />}
 			{width <= styles.screens.navigation && isMenuActive && (
-				<MobileMenu />
+				<MobileMenu items={nav} />
 			)}
 		</div>
 	)

@@ -61,7 +61,7 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
-			chapters: allDatoCmsChapterPage {
+			chapterHomes: allDatoCmsChapterHomePage {
 				edges {
 					node {
 						slug
@@ -77,7 +77,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	const redirects = data.redirects.edges
 	const details = data.details.edges
 	const landings = data.landings.edges
-	const chapters = data.chapters.edges
+	const chapterHomes = data.chapterHomes.edges
 
 	stories.forEach(({ node }, index) => {
 		createPage({
@@ -142,10 +142,10 @@ exports.createPages = async ({ graphql, actions }) => {
 		})
 	})
 
-	chapters.forEach(({ node }) => {
+	chapterHomes.forEach(({ node }) => {
 		createPage({
 			path: `chapter/${node.slug}`,
-			component: path.resolve('./src/templates/chapter.js'),
+			component: path.resolve('./src/templates/chapterHome.js'),
 			context: {
 				slug: node.slug,
 			},

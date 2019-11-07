@@ -45,8 +45,10 @@ const NavigationSide = ({ data }) => {
 	let headings = []
 	data.details.map(detail => {
 		if (detail.__typename === 'DatoCmsContent') {
-			const anchor = createAnchor(detail.contentHeading)
-			headings.push({ heading: detail.contentHeading, anchor })
+			if (detail.contentHeading) {
+				const anchor = createAnchor(detail.contentHeading)
+				headings.push({ heading: detail.contentHeading, anchor })
+			}
 		} else if (detail.__typename === 'DatoCmsTable') {
 			const anchor = createAnchor(detail.tableHeading)
 			headings.push({ heading: detail.tableHeading, anchor })
@@ -60,44 +62,50 @@ const NavigationSide = ({ data }) => {
 	const [position, setPosition] = useState('absolute')
 	const [top, setTop] = useState('220px')
 	const handleScroll = () => {
-		if (
-			asideRef.current.getBoundingClientRect().y <= 0 &&
-			window.scrollY >= 150
-		) {
-			setPosition('fixed')
-			setTop(0)
-		} else {
-			setPosition('absolute')
-			setTop('220px')
+		if (headings.length > 1) {
+			if (
+				asideRef.current.getBoundingClientRect().y <= 0 &&
+				window.scrollY >= 150
+			) {
+				setPosition('fixed')
+				setTop(0)
+			} else {
+				setPosition('absolute')
+				setTop('220px')
+			}
 		}
 	}
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll)
 		return () => window.removeEventListener('scroll', handleScroll)
 	}, [])
-	return (
-		<aside
-			css={css`
-				${sideNavigationCSS};
-				@media (min-width: ${styles.screens.navigation}px) {
-					position: ${position};
-					top: ${top};
-				}
-			`}
-			ref={asideRef}
-		>
-			<h2>In this section</h2>
-			<ul>
-				{headings.map((heading, index) => (
-					<li key={index}>
-						<Link to={`/${data.slug}#${heading.anchor}`}>
-							{heading.heading}
-						</Link>
-					</li>
-				))}
-			</ul>
-		</aside>
-	)
+	if (headings.length > 1) {
+		return (
+			<aside
+				css={css`
+					${sideNavigationCSS};
+					@media (min-width: ${styles.screens.navigation}px) {
+						position: ${position};
+						top: ${top};
+					}
+				`}
+				ref={asideRef}
+			>
+				<h2>In this section</h2>
+				<ul>
+					{headings.map((heading, index) => (
+						<li key={index}>
+							<Link to={`/detail/${data.slug}#${heading.anchor}`}>
+								{heading.heading}
+							</Link>
+						</li>
+					))}
+				</ul>
+			</aside>
+		)
+	} else {
+		return ''
+	}
 }
 
 export default NavigationSide

@@ -43,14 +43,6 @@ export const query = graphql`
 						}
 					}
 				}
-				... on DatoCmsTable {
-					tableHeading
-					tableBodyNode {
-						childMarkdownRemark {
-							html
-						}
-					}
-				}
 				... on DatoCmsCardContainer {
 					cardContainerHeading
 					cardContainerList {

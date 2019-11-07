@@ -43,7 +43,6 @@ const featuredCSS = css`
 `
 
 const Stories = ({ story: { node } }) => {
-	console.log(node.author)
 	return (
 		<div css={featuredCSS}>
 			<img src={node.coverImage.fluid.src} alt="" />

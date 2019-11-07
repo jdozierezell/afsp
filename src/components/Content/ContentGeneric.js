@@ -2,7 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 
 import RecommendationsVideoStories from '../Recommendations/RecommendationsVideoStories'
-import Table from '../Table/Table'
+import Content from './Content'
 import CardContainer from '../Cards/CardContainer'
 
 import { styles } from '../../css/css'
@@ -32,19 +32,11 @@ const ContentGeneric = ({ data }) => {
 			{details.map((detail, index) => {
 				if (detail.__typename === 'DatoCmsContent') {
 					return (
-						<div
+						<Content
 							key={index}
-							id={createAnchor(detail.contentHeading)}
-						>
-							<h2 css={contentHeadingCSS}>
-								{detail.contentHeading}
-							</h2>
-							<div
-								dangerouslySetInnerHTML={{
-									__html: detail.contentBody,
-								}}
-							></div>
-						</div>
+							contentHeading={detail.contentHeading}
+							contentBody={detail.contentBody}
+						/>
 					)
 				} else if (detail.__typename === 'DatoCmsRecommendation') {
 					return (
@@ -57,16 +49,16 @@ const ContentGeneric = ({ data }) => {
 							storyData={detail.storyRecommendation}
 						/>
 					)
-				} else if (detail.__typename === 'DatoCmsTable') {
-					return (
-						<Table
-							key={index}
-							tableHeading={detail.tableHeading}
-							tableBody={
-								detail.tableBodyNode.childMarkdownRemark.html
-							}
-						/>
-					)
+					// } else if (detail.__typename === 'DatoCmsTable') {
+					// 	return (
+					// 		<Table
+					// 			key={index}
+					// 			tableHeading={detail.tableHeading}
+					// 			tableBody={
+					// 				detail.tableBodyNode.childMarkdownRemark.html
+					// 			}
+					// 		/>
+					// 	)
 				} else if (detail.__typename === 'DatoCmsCardContainer') {
 					return (
 						<CardContainer

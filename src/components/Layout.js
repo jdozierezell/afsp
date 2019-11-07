@@ -1,5 +1,5 @@
 import React from 'react'
-// import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 
 import Header from './Header/Header'
 import EmailSignup from './EmailSignup/EmailSignup'
@@ -12,23 +12,89 @@ import '../css/global.css'
 import '../fonts/gatsby-afsp.css'
 
 const Layout = ({ logo, children }) => {
-	// const data = useStaticQuery(graphql`
-	// 	query SiteTitleQuery {
-	// 		site {
-	// 			siteMetadata {
-	// 				title
-	// 			}
-	// 		}
-	// 	}
-	// `)
+	const data = useStaticQuery(graphql`
+		query {
+			nav: allDatoCmsNavigation {
+				edges {
+					node {
+						id
+						inHeader
+						displayTitle
+						displayLink {
+							... on DatoCmsLanding {
+								slug
+							}
+							... on DatoCmsRealStory {
+								slug
+							}
+							... on DatoCmsChapterSearch {
+								slug
+							}
+						}
+						navigationItem {
+							... on DatoCmsChildItem {
+								childHeading
+								childLink {
+									... on DatoCmsLanding {
+										slug
+									}
+									... on DatoCmsDetail {
+										slug
+									}
+									... on DatoCmsChapterSearch {
+										slug
+									}
+								}
+								childExternalLink
+							}
+							... on DatoCmsFeaturedItem {
+								featuredHeading
+								featuredLink {
+									... on DatoCmsLanding {
+										slug
+										seo {
+											image {
+												fluid(
+													maxWidth: 1080
+													imgixParams: {
+														fm: "jpg"
+														fit: "crop"
+														crop: "faces"
+														ar: 1.67
+														w: "1080"
+													}
+												) {
+													...GatsbyDatoCmsFluid_tracedSVG
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	`)
+	const { nav } = data
+	let headerNav = []
+	let footerNav = []
+	nav.edges.forEach(({ node }) => {
+		if (node.inHeader === true) {
+			headerNav.push(node)
+		} else if (node.inHeader === false) {
+			footerNav.push(node)
+		}
+	})
 	return (
 		<WindowDimensionsProvider>
 			<HeaderContextProvider value={logo}>
-				<Header />
+				<Header nav={headerNav} />
 			</HeaderContextProvider>
 			<main>{children}</main>
 			<EmailSignup />
-			<Footer />
+			<Footer nav={footerNav} />
 		</WindowDimensionsProvider>
 	)
 }

@@ -16,7 +16,6 @@ import { styles } from '../css/css'
 const eventCarouselCSS = css``
 
 const Chapter = ({ data: { chapter } }) => {
-	console.log(chapter)
 	const {
 		title,
 		useVideoInHero,
@@ -103,7 +102,7 @@ export default Chapter
 
 export const query = graphql`
 	query {
-		chapter: datoCmsChapterPage {
+		chapter: datoCmsChapterHomePage {
 			seoMetaTags {
 				tags
 			}

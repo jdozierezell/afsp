@@ -1,5 +1,8 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
+
+import buildUrl from '../../utils/buildUrl'
 
 import { styles } from '../../css/css'
 
@@ -47,6 +50,7 @@ const megaLinkCSS = css`
 	a {
 		font-family: ${styles.fonts.avenirBold};
 		text-decoration: underline;
+		padding: 0;
 	}
 `
 
@@ -83,7 +87,10 @@ const MenuItems = ({
 		<nav>
 			<ul css={menuCSS}>
 				{items.map(item => {
-					const featuredImage = item.featured.img
+					const url = buildUrl(
+						item.displayLink.__typename,
+						item.displayLink.slug
+					)
 					return (
 						<li
 							key={item.id}
@@ -91,32 +98,76 @@ const MenuItems = ({
 							onMouseEnter={() => handleMouseEnter(item.id)}
 							onMouseLeave={() => handleMouseLeave(item.id)}
 						>
-							<a href="https://example.com">{item.name}</a>
-							{activeItem === item.id && (
-								<>
+							<AniLink fade to={url}>
+								{item.displayTitle}
+							</AniLink>
+							{activeItem === item.id &&
+								item.navigationItem.length >= 1 && (
 									<ul css={megaCSS}>
-										{item.links.map((link, index) => (
-											<li css={megaLinkCSS} key={index}>
-												<a href={link.url}>
-													{link.name}
-												</a>
-											</li>
-										))}
-										<li
-											css={css`
-												${featuredCSS};
-												background-image: url(${featuredImage});
-											`}
-										>
-											<h5>Featured</h5>
-											<h3>{item.featured.name}</h3>
-											<a href="https://example.com">
-												Learn more
-											</a>
-										</li>
+										{item.navigationItem.map(
+											(link, index) => {
+												if (
+													link.__typename ===
+													'DatoCmsChildItem'
+												) {
+													const url = buildUrl(
+														link.childLink
+															.__typename,
+														link.childLink.slug
+													)
+													return (
+														<li
+															css={megaLinkCSS}
+															key={index}
+														>
+															<AniLink
+																fade
+																to={url}
+															>
+																{
+																	link.childHeading
+																}
+															</AniLink>
+														</li>
+													)
+												} else if (
+													link.__typename ===
+													'DatoCmsFeaturedItem'
+												) {
+													const featuredImage =
+														link.featuredLink.seo
+															.image.fluid.src
+													return (
+														<li
+															css={css`
+																${featuredCSS};
+																background-image: url(${featuredImage});
+															`}
+														>
+															<h5>Featured</h5>
+															<h3>
+																{
+																	link.featuredHeading
+																}
+															</h3>
+															<a
+																href={
+																	link
+																		.featuredLink
+																		.slug
+																}
+															>
+																Learn more
+															</a>
+														</li>
+													)
+												} else {
+													return ''
+												}
+											}
+										)}
 									</ul>
-								</>
-							)}
+								)}
 						</li>
 					)
 				})}
