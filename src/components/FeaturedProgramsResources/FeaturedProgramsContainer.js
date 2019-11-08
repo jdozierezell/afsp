@@ -14,7 +14,7 @@ const containerCSS = css`
 		display: grid;
 		grid-template-columns: 1fr;
 		grid-row-gap: ${styles.scale.px50};
-		grid-column-gap: ${styles.gridGap.desktop};
+		grid-column-gap: ${styles.scale.px40};
 		@media (min-width: ${styles.screens.tablet}px) {
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
@@ -35,14 +35,19 @@ const containerCSS = css`
 	}
 `
 
-const FeaturedResourcesContainer = () => {
+const FeaturedResourcesContainer = ({ resources, addCSS }) => {
 	return (
-		<section css={containerCSS}>
+		<section
+			css={css`
+				${containerCSS};
+				${addCSS};
+			`}
+		>
 			<h2>Featured programs</h2>
 			<div>
-				<FeaturedResources />
-				<FeaturedResources />
-				<FeaturedResources />
+				{resources.map((resource, index) => (
+					<FeaturedResources key={index} data={resource} />
+				))}
 			</div>
 		</section>
 	)

@@ -13,6 +13,7 @@ const menuTitleCSS = css`
 	display: flex;
 	justify-content: space-between;
 	height: ${styles.scale.px22};
+	h2,
 	h2 > a {
 		color: ${styles.colors.white};
 		font-family: ${styles.fonts.paul};
@@ -73,14 +74,20 @@ const MenuSection = ({ item }) => {
 		setChildrenHeight(children.length * childHeight)
 	}, [listRef])
 	if (!item) return <div ref={listRef}></div> // component is rendering extra empty return. this stops that.
-	const url = buildUrl(item.displayLink.__typename, item.displayLink.slug)
+	const url = item.displayLink
+		? buildUrl(item.displayLink.__typename, item.displayLink.slug)
+		: null
 	return (
 		<>
 			<div css={menuTitleCSS}>
 				<h2>
-					<AniLink fade duration={0.75} to={url}>
-						{item.displayTitle}
-					</AniLink>
+					{url ? (
+						<AniLink fade duration={0.75} to={url}>
+							{item.displayTitle}
+						</AniLink>
+					) : (
+						item.displayTitle
+					)}
 				</h2>
 				{item.navigationItem.length >= 1 && (
 					<animated.button
@@ -94,27 +101,29 @@ const MenuSection = ({ item }) => {
 			</div>
 			<animated.ul css={menuListCSS} style={showList} ref={listRef}>
 				{item.navigationItem.map(navItem => {
-					if (navItem.__typename === 'DatoCmsChildItem') {
-						const url = buildUrl(
+					let url = ''
+					if (
+						navItem.__typename === 'DatoCmsChildItem' &&
+						navItem.childLink // this needs to be adjusted so that the variable doesn't fail but also allows for external urls
+					) {
+						url = buildUrl(
 							navItem.childLink.__typename,
 							navItem.childLink.slug
 						)
-						return (
-							<li>
-								{navItem.childExternalLink !== '' ? (
-									<a href={navItem.childExternalLink}>
-										{navItem.childHeading}
-									</a>
-								) : (
-									<AniLink fade duration={0.75} to={url}>
-										{navItem.childHeading}
-									</AniLink>
-								)}
-							</li>
-						)
-					} else {
-						return ''
 					}
+					return (
+						<li>
+							{navItem.childExternalLink !== '' ? (
+								<a href={navItem.childExternalLink}>
+									{navItem.childHeading}
+								</a>
+							) : (
+								<AniLink fade duration={0.75} to={url}>
+									{navItem.childHeading}
+								</AniLink>
+							)}
+						</li>
+					)
 				})}
 			</animated.ul>
 			<hr

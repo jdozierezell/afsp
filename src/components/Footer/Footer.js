@@ -94,7 +94,9 @@ const Footer = ({ nav }) => {
 			{width <= styles.screens.footer && (
 				<>
 					<FooterAside />
-					<MobileMenuSection title="Real Stories" />
+					{nav.map((item, index) => (
+						<MobileMenuSection key={index} item={item} />
+					))}
 					<FooterSocials />
 				</>
 			)}

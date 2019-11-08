@@ -50,7 +50,7 @@ const megaLinkCSS = css`
 	a {
 		font-family: ${styles.fonts.avenirBold};
 		text-decoration: underline;
-		padding: 0;
+		padding: 0 ${styles.scale.px24} 0 0;
 	}
 `
 
@@ -86,14 +86,14 @@ const MenuItems = ({
 	return (
 		<nav>
 			<ul css={menuCSS}>
-				{items.map(item => {
+				{items.map((item, index) => {
 					const url = buildUrl(
 						item.displayLink.__typename,
 						item.displayLink.slug
 					)
 					return (
 						<li
-							key={item.id}
+							key={index}
 							id={item.id}
 							onMouseEnter={() => handleMouseEnter(item.id)}
 							onMouseLeave={() => handleMouseLeave(item.id)}

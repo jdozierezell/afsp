@@ -25,18 +25,23 @@ const featuredCSS = css`
 
 const FeaturedResources = ({ data }) => {
 	let slug = ''
-	switch (data.__typename) {
-		case 'DatoCmsDetail':
-			slug = `detail/${data.slug}`
-			break
-		case 'DatoCmsLanding':
-			slug = `landing/${data.slug}`
-			break
-		case 'DatoCmsChapterPage':
-			slug = `chapter/${data.slug}`
-			break
-		default:
-			break
+	if (data.__typename) {
+		switch (data.__typename) {
+			case 'DatoCmsDetail':
+				slug = `detail/${data.slug}`
+				break
+			case 'DatoCmsLanding':
+				slug = `landing/${data.slug}`
+				break
+			case 'DatoCmsChapterPage':
+				slug = `chapter/${data.slug}`
+				break
+			default:
+				break
+		}
+	} else {
+		// right now the only single model option is for detail pages; this will need to be adjusted if that changes
+		slug = `detail/${data.slug}`
 	}
 
 	return (

@@ -7,7 +7,7 @@ import SEO from '../components/SEO'
 import HeroChapter from '../components/Hero/HeroChapter'
 import ChapterAboutContact from '../components/Chapter/ChapterAboutContact'
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
-import FeaturedResourcesContainer from '../components/FeaturedProgramsResources/FeaturedResourcesContainer'
+import FeaturedProgramsContainer from '../components/FeaturedProgramsResources/FeaturedProgramsContainer'
 import CTAWithDescription from '../components/CTAs/CTAWithDescription'
 import StoriesContainer from '../components/Stories/StoriesContainer'
 
@@ -26,7 +26,7 @@ const Chapter = ({ data: { chapter } }) => {
 		staffTitle,
 		staffEmail,
 		staffPhone,
-		featuredResources,
+		featuredPrograms,
 		volunteerSignupUrl,
 		chapterStoriesAndUpdates,
 	} = chapter
@@ -59,6 +59,16 @@ const Chapter = ({ data: { chapter } }) => {
 		],
 		title: 'Upcoming events',
 	}
+	let stories = []
+	chapterStoriesAndUpdates.forEach(story => {
+		const coverImage = story.seo.image
+		const title = story.title
+		const slug = story.slug
+		const seo = story.seo
+		const type = 'chapter'
+		const node = { node: { coverImage, title, slug, seo, type } }
+		stories.push(node)
+	})
 	return (
 		<LayoutChapter logo={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={chapter.seoMetaTags} />
@@ -82,7 +92,7 @@ const Chapter = ({ data: { chapter } }) => {
 				content={eventsContainer}
 				addCSS={eventCarouselCSS}
 			/>
-			<FeaturedResourcesContainer resources={featuredResources} />
+			<FeaturedProgramsContainer resources={featuredPrograms} />
 			<CTAWithDescription
 				cta={{
 					heading: `Join the AFSP ${title} Chapter`,
@@ -91,8 +101,9 @@ const Chapter = ({ data: { chapter } }) => {
 				}}
 			/>
 			<StoriesContainer
-				header="Stories and Updates"
-				stories={chapterStoriesAndUpdates}
+				header="Stories and updates"
+				first={true}
+				stories={stories}
 			/>
 		</LayoutChapter>
 	)
@@ -137,7 +148,7 @@ export const query = graphql`
 					content
 				}
 			}
-			featuredResources {
+			featuredPrograms {
 				title
 				slug
 				seo {

@@ -29,7 +29,6 @@ const DeskFooterSection = ({ item, index, length }) => {
 			<h3 css={headerCSS}>{item.displayTitle}</h3>
 			<ul css={linkListCSS}>
 				{item.navigationItem.map((link, index) => {
-					console.log(link)
 					let url = ''
 					if (link.childLink) {
 						url = buildUrl(

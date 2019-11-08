@@ -15,6 +15,7 @@ const ctaButtonCSS = css`
 	display: inline-block;
 	text-decoration: none;
 	text-align: center;
+	position: relative;
 	@media (hover: hover) {
 		:hover {
 			background-color: ${styles.colors.poppyHover};
@@ -30,7 +31,7 @@ const MenuCTA = ({ width, margin }) => {
 				width: ${width};
 				margin: ${margin};
 			`}
-			href="https://example.com"
+			href="https://afsp.donordrive.com/index.cfm?fuseaction=donate.event&eventID=1"
 		>
 			Donate
 		</a>

@@ -1,5 +1,5 @@
 import React from 'react'
-// import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 
 import Header from './Header/Header'
 import EmailSignupChapter from './EmailSignup/EmailSignupChapter'
@@ -12,24 +12,31 @@ import '../css/global.css'
 import '../fonts/gatsby-afsp.css'
 
 const LayoutChapter = ({ logo, children }) => {
-	// const data = useStaticQuery(graphql`
-	// 	query SiteTitleQuery {
-	// 		site {
-	// 			siteMetadata {
-	// 				title
-	// 			}
-	// 		}
-	// 	}
-	// `)
-
+	const data = useStaticQuery(graphql`
+		query {
+			nav: allDatoCmsNavigation {
+				...Navigation
+			}
+		}
+	`)
+	const { nav } = data
+	let headerNav = []
+	let footerNav = []
+	nav.edges.forEach(({ node }) => {
+		if (node.inHeader === true) {
+			headerNav.push(node)
+		} else if (node.inHeader === false) {
+			footerNav.push(node)
+		}
+	})
 	return (
 		<WindowDimensionsProvider>
 			<HeaderContextProvider value={logo}>
-				<Header />
+				<Header nav={headerNav} />
 			</HeaderContextProvider>
 			<main>{children}</main>
 			<EmailSignupChapter />
-			<Footer />
+			<Footer nav={footerNav} />
 		</WindowDimensionsProvider>
 	)
 }
