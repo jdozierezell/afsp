@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Glide from '@glidejs/glide'
 import { css } from '@emotion/core'
+import zipcodes from 'zipcodes'
 
 import CarouselChapter from './CarouselChapter'
 
@@ -116,6 +117,9 @@ const CarouselChapterContainer = ({ location }) => {
 			},
 		}).mount()
 	}, [])
+
+	console.log(zipcodes.radius(10034, 15))
+
 	return (
 		<div css={carouselCSS}>
 			<div css={carouselHeaderWrapperCSS}>

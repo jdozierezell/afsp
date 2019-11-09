@@ -44,7 +44,6 @@ const moreButtonCSS = css`
 `
 
 const StoriesContainer = ({ header, first, offset, more, stories }) => {
-	console.log(stories)
 	const [displayNumber, setDisplayNumber] = useState(3)
 	return (
 		<section css={containerCSS}>
