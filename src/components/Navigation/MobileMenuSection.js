@@ -100,7 +100,7 @@ const MenuSection = ({ item }) => {
 				)}
 			</div>
 			<animated.ul css={menuListCSS} style={showList} ref={listRef}>
-				{item.navigationItem.map(navItem => {
+				{item.navigationItem.map((navItem, index) => {
 					let url = ''
 					if (
 						navItem.__typename === 'DatoCmsChildItem' &&
@@ -112,7 +112,7 @@ const MenuSection = ({ item }) => {
 						)
 					}
 					return (
-						<li>
+						<li key={index}>
 							{navItem.childExternalLink !== '' ? (
 								<a href={navItem.childExternalLink}>
 									{navItem.childHeading}

@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
 import Glide from '@glidejs/glide'
 import { css } from '@emotion/core'
 import zipcodes from 'zipcodes'
@@ -68,77 +69,101 @@ const carouselButtonsCSS = css`
 	}
 `
 
-const chapterTempData = [
-	{
-		title: 'hip',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'hip',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'hooray',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'hip',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'hip',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-	{
-		title: 'hooray',
-		titleHref: 'https://example.com',
-		src: 'https://placekitten.com/516/316',
-	},
-]
-
 const CarouselChapterContainer = ({ location }) => {
+	const data = useStaticQuery(graphql`
+		query {
+			chapters: allDatoCmsChapterHomePage {
+				edges {
+					node {
+						title
+						slug
+						chapterZipCodes
+						heroImage {
+							fluid(
+								maxWidth: 600
+								imgixParams: {
+									fm: "jpg"
+									fit: "crop"
+									crop: "faces"
+									w: "600"
+									ar: 1.67
+								}
+							) {
+								...GatsbyDatoCmsFluid_tracedSVG
+							}
+						}
+					}
+				}
+			}
+		}
+	`)
+	const { chapters } = data
+
+	const updateChapters = response => {
+		const chapterArray = []
+		chapters.edges.forEach(chapter => {
+			if (chapter.node.chapterZipCodes) {
+				if (
+					chapter.node.chapterZipCodes.zips.includes(
+						response.primaryZip
+					)
+				) {
+					chapterArray.unshift(chapter.node)
+				} else if (
+					chapter.node.chapterZipCodes.zips.some(zip =>
+						response.otherZips.includes(zip)
+					)
+				) {
+					chapterArray.push(chapter.node)
+				}
+			}
+		})
+		return setDisplayChapters(chapterArray)
+	}
+
+	const [displayChapters, setDisplayChapters] = useState([])
+
 	useEffect(() => {
 		// ipapi.co and ipregistry.co are also nice options if pro.ip-api.com fails
-		const endpoint =
-			'https://pro.ip-api.com/json/?fields=zip&key=kk9BWBSYqm9ZTDj'
-		fetch(endpoint)
-			.then(res => res.json())
-			.then(
-				result => {
-					console.log(result)
-					console.log(zipcodes.radius(result.zip, 15))
-				},
-				error => {
-					console.log(error)
-				}
-			)
-
-		new Glide('.glide-chapter', {
-			perView: 3,
-			peek: { before: 0, after: styles.scale.px24 },
-			breakpoints: {
-				1080: {
-					perView: 2,
-					peek: {
-						before: 0,
-						after: styles.scale.px35,
+		if (displayChapters.length === 0) {
+			const endpoint =
+				'https://pro.ip-api.com/json/?fields=zip&key=kk9BWBSYqm9ZTDj'
+			fetch(endpoint)
+				.then(res => res.json())
+				.then(
+					result => {
+						updateChapters({
+							primaryZip: result.zip,
+							otherZips: zipcodes.radius(result.zip, 15),
+						})
+					},
+					error => {
+						console.log(error)
+					}
+				)
+		} else if (displayChapters.length >= 1) {
+			new Glide('.glide-chapter', {
+				perView: 3,
+				peek: { before: 0, after: styles.scale.px24 },
+				breakpoints: {
+					1080: {
+						perView: 2,
+						peek: {
+							before: 0,
+							after: styles.scale.px35,
+						},
+					},
+					768: {
+						perView: 1,
+						peek: {
+							before: 0,
+							after: styles.scale.px35,
+						},
 					},
 				},
-				768: {
-					perView: 1,
-					peek: {
-						before: 0,
-						after: styles.scale.px35,
-					},
-				},
-			},
-		}).mount()
-	}, [])
+			}).mount()
+		}
+	}, [displayChapters])
 
 	return (
 		<div css={carouselCSS}>
@@ -151,32 +176,34 @@ const CarouselChapterContainer = ({ location }) => {
 			<p>
 				Local chapters near <strong>{location}</strong>
 			</p>
-			<div className="glide-chapter">
-				<div data-glide-el="track">
-					<ul className="glide__slides">
-						{chapterTempData.map((chapter, index) => {
+			{displayChapters.length >= 1 && (
+				<div className="glide-chapter">
+					<div data-glide-el="track">
+						<ul className="glide__slides">
+							{displayChapters.map((chapter, index) => {
+								return (
+									<CarouselChapter
+										key={index}
+										title={chapter.title}
+										titleHref={chapter.slug}
+										src={chapter.heroImage.fluid.src}
+									/>
+								)
+							})}
+						</ul>
+					</div>
+					<div data-glide-el="controls[nav]" css={carouselButtonsCSS}>
+						{displayChapters.map((__, index) => {
 							return (
-								<CarouselChapter
+								<button
 									key={index}
-									title={chapter.title}
-									titleHref={chapter.titleHref}
-									src={chapter.src}
-								/>
+									data-glide-dir={`=${index}`}
+								></button>
 							)
 						})}
-					</ul>
+					</div>
 				</div>
-				<div data-glide-el="controls[nav]" css={carouselButtonsCSS}>
-					{chapterTempData.map((__, index) => {
-						return (
-							<button
-								key={index}
-								data-glide-dir={`=${index}`}
-							></button>
-						)
-					})}
-				</div>
-			</div>
+			)}
 		</div>
 	)
 }
