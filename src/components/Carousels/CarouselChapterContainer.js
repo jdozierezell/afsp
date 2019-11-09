@@ -103,10 +103,10 @@ const chapterTempData = [
 
 const CarouselChapterContainer = ({ location }) => {
 	useEffect(() => {
-		const ip = '144.121.92.18'
-		const access_key = '750056f9b4709aa520b8dd6002980e4d'
-		const url = `//api.ipstack.com/${ip}?access_key=${access_key}`
-		fetch(url)
+		// ipapi.co and ipregistry.co are also nice options if pro.ip-api.com fails
+		const endpoint =
+			'https://pro.ip-api.com/json/?fields=zip&key=kk9BWBSYqm9ZTDj'
+		fetch(endpoint)
 			.then(res => res.json())
 			.then(
 				result => {
@@ -124,11 +124,17 @@ const CarouselChapterContainer = ({ location }) => {
 			breakpoints: {
 				1080: {
 					perView: 2,
-					peek: { before: 0, after: styles.scale.px35 },
+					peek: {
+						before: 0,
+						after: styles.scale.px35,
+					},
 				},
 				768: {
 					perView: 1,
-					peek: { before: 0, after: styles.scale.px35 },
+					peek: {
+						before: 0,
+						after: styles.scale.px35,
+					},
 				},
 			},
 		}).mount()
