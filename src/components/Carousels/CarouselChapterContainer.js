@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import Glide from '@glidejs/glide'
 import { css } from '@emotion/core'
 import zipcodes from 'zipcodes'
+import fetch from 'isomorphic-fetch'
 
 import CarouselChapter from './CarouselChapter'
 
@@ -102,6 +103,21 @@ const chapterTempData = [
 
 const CarouselChapterContainer = ({ location }) => {
 	useEffect(() => {
+		const ip = '144.121.92.18'
+		const access_key = '750056f9b4709aa520b8dd6002980e4d'
+		const url = `//api.ipstack.com/${ip}?access_key=${access_key}`
+		fetch(url)
+			.then(res => res.json())
+			.then(
+				result => {
+					console.log(result)
+					console.log(zipcodes.radius(result.zip, 15))
+				},
+				error => {
+					console.log(error)
+				}
+			)
+
 		new Glide('.glide-chapter', {
 			perView: 3,
 			peek: { before: 0, after: styles.scale.px24 },
@@ -117,8 +133,6 @@ const CarouselChapterContainer = ({ location }) => {
 			},
 		}).mount()
 	}, [])
-
-	console.log(zipcodes.radius(10034, 15))
 
 	return (
 		<div css={carouselCSS}>
