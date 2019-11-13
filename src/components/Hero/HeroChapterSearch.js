@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { css } from '@emotion/core'
 
 import NavArrow from '../SVGs/IconNavArrow'
@@ -104,29 +104,49 @@ const actionButtonCSS = css`
 	height: ${styles.scale.px36};
 `
 
-const HeroSolid = () => {
+const HeroChapterSearch = ({ title, description }) => {
+	const [zip, setZip] = useState()
+	const [radius, setRadius] = useState(15)
+	const handleClick = e => {
+		e.preventDefault()
+		console.log(zip)
+		console.log(radius)
+	}
 	return (
 		<div css={solidHeroCSS}>
-			<h1>Find a local chapter</h1>
-			<h3 css={subHeaderCSS}>Find a chapter in your community</h3>
+			<h1>{title}</h1>
+			<h3 css={subHeaderCSS}>{description}</h3>
 			<form action="">
 				<div css={inputCSS}>
-					<input type="text" placeholder="Search by zip" />
+					<input
+						type="text"
+						placeholder="Search by zip"
+						onChange={e => setZip(e.target.value)}
+					/>
 					<button css={actionButtonCSS}>
 						<NavArrow />
 					</button>
 				</div>
 				<span>within</span>
-				<select css={dropDownCSS} name="radius">
+				<select
+					css={dropDownCSS}
+					name="radius"
+					onChange={e => setRadius(e.target.value)}
+				>
 					<option value="15">15 Miles</option>
-					<option value="15">25 Miles</option>
-					<option value="15">50 Miles</option>
-					<option value="15">100 Miles</option>
+					<option value="25">25 Miles</option>
+					<option value="50">50 Miles</option>
+					<option value="100">100 Miles</option>
 				</select>
-				<button className="secondary-button">Search</button>
+				<button
+					className="secondary-button"
+					onClick={e => handleClick(e)}
+				>
+					Search
+				</button>
 			</form>
 		</div>
 	)
 }
 
-export default HeroSolid
+export default HeroChapterSearch

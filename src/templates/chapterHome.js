@@ -118,7 +118,6 @@ export const query = graphql`
 				tags
 			}
 			title
-			chapterHomePage
 			useVideoInHero
 			heroVideoUrl
 			volunteerSignupUrl

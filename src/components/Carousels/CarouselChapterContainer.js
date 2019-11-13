@@ -73,27 +73,7 @@ const CarouselChapterContainer = ({ location }) => {
 	const data = useStaticQuery(graphql`
 		query {
 			chapters: allDatoCmsChapterHomePage {
-				edges {
-					node {
-						title
-						slug
-						chapterZipCodes
-						heroImage {
-							fluid(
-								maxWidth: 600
-								imgixParams: {
-									fm: "jpg"
-									fit: "crop"
-									crop: "faces"
-									w: "600"
-									ar: 1.67
-								}
-							) {
-								...GatsbyDatoCmsFluid_tracedSVG
-							}
-						}
-					}
-				}
+				...ChapterSearch
 			}
 		}
 	`)

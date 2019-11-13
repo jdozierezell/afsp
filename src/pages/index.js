@@ -117,28 +117,29 @@ export const query = graphql`
 			}
 			ctaChapterResourceList {
 				... on DatoCmsCallToAction {
-					cta {
-						callToAction {
-							... on DatoCmsCtaVideo {
-								videoUrl
-								heading
-								brief
-								linkText
-								linkUrl
-							}
-							... on DatoCmsCtaWithDescription {
-								heading
-								brief
-								linkText
-								linkUrl
-							}
-							... on DatoCmsCtaNoDescription {
-								heading
-								linkText
-								linkUrl
-							}
-						}
-					}
+					# cta {
+					# 	callToAction {
+					# 		... on DatoCmsCtaVideo {
+					# 			videoUrl
+					# 			heading
+					# 			brief
+					# 			linkText
+					# 			linkUrl
+					# 		}
+					# 		... on DatoCmsCtaWithDescription {
+					# 			heading
+					# 			brief
+					# 			linkText
+					# 			linkUrl
+					# 		}
+					# 		... on DatoCmsCtaNoDescription {
+					# 			heading
+					# 			linkText
+					# 			linkUrl
+					# 		}
+					# 	}
+					# }
+					...CTAs
 				}
 				... on DatoCmsChapterConnection {
 					showChapterConnection
