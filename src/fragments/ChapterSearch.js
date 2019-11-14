@@ -21,6 +21,10 @@ export const ChapterSearch = graphql`
 						...GatsbyDatoCmsFluid_tracedSVG
 					}
 				}
+				staffName
+				staffTitle
+				staffEmail
+				staffPhone
 			}
 		}
 	}

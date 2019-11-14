@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Glide from '@glidejs/glide'
 import { css } from '@emotion/core'
-import zipcodes from 'zipcodes'
-import fetch from 'isomorphic-fetch'
 
 import CarouselChapter from './CarouselChapter'
+
+import { fetchChapters } from '../../utils/chapterSearchResults'
 
 import { styles } from '../../css/css'
 
@@ -79,48 +79,12 @@ const CarouselChapterContainer = ({ location }) => {
 	`)
 	const { chapters } = data
 
-	const updateChapters = response => {
-		const chapterArray = []
-		chapters.edges.forEach(chapter => {
-			if (chapter.node.chapterZipCodes) {
-				if (
-					chapter.node.chapterZipCodes.zips.includes(
-						response.primaryZip
-					)
-				) {
-					chapterArray.unshift(chapter.node)
-				} else if (
-					chapter.node.chapterZipCodes.zips.some(zip =>
-						response.otherZips.includes(zip)
-					)
-				) {
-					chapterArray.push(chapter.node)
-				}
-			}
-		})
-		return setDisplayChapters(chapterArray)
-	}
-
 	const [displayChapters, setDisplayChapters] = useState([])
 
 	useEffect(() => {
 		// ipapi.co and ipregistry.co are also nice options if pro.ip-api.com fails
 		if (displayChapters.length === 0) {
-			const endpoint =
-				'https://pro.ip-api.com/json/?fields=zip&key=kk9BWBSYqm9ZTDj'
-			fetch(endpoint)
-				.then(res => res.json())
-				.then(
-					result => {
-						updateChapters({
-							primaryZip: result.zip,
-							otherZips: zipcodes.radius(result.zip, 15),
-						})
-					},
-					error => {
-						console.log(error)
-					}
-				)
+			fetchChapters(chapters, setDisplayChapters)
 		} else if (displayChapters.length >= 1) {
 			new Glide('.glide-chapter', {
 				perView: 3,

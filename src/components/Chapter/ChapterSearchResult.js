@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 import ReactMapGL from 'react-map-gl'
 import { useWindowDimensions } from '../WindowDimensionsProvider'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import { styles } from '../../css/css'
 
@@ -71,7 +72,7 @@ const searchInfoCSS = css`
 	}
 `
 
-const ChapterSearchResult = () => {
+const ChapterSearchResult = ({ chapter }) => {
 	const { width } = useWindowDimensions()
 	const [viewport, setViewport] = useState({
 		latitude: 37.7577,
@@ -98,7 +99,7 @@ const ChapterSearchResult = () => {
 			window.removeEventListener('resize', handleResize)
 		}
 	}, [])
-
+	console.log(chapter)
 	return (
 		<div css={searchResultCSS}>
 			<div
@@ -106,7 +107,7 @@ const ChapterSearchResult = () => {
 					${searchImageCSS};
 					width: ${mapWidth}px;
 					height: ${height};
-					background-image: url('https://placekitten.com/500');
+					background-image: url(${chapter.heroImage.fluid.src});
 					background-position: center;
 					background-size: cover;
 				`}
@@ -119,20 +120,29 @@ const ChapterSearchResult = () => {
 				onViewportChange={viewport => setViewport(viewport)}
 			/>
 			<div css={searchInfoCSS}>
-				<h2>AFSP New York City</h2>
+				<h2>AFSP {chapter.title}</h2>
 				<h3>Community contact:</h3>
 				<address>
-					<strong>Amy Monahan</strong>
+					<strong>{chapter.staffName}</strong>
 					<br />
-					New York City Area Director
+					{chapter.staffTitle}
 					<br />
-					<a href="mailto:amonahan@afsp.org">amonahan@afsp.org</a>
+					<a href={`mailto:${chapter.staffEmail}`}>
+						{chapter.staffEmail}
+					</a>
 					<br />
-					<a href="tel:16462845790">(646) 284-5790</a>
+					<a href={`tel:${chapter.staffPhone}`}>
+						{chapter.staffPhone}
+					</a>
 				</address>
-				<a className="secondary-button" href="https://example.com">
+				<AniLink
+					className="secondary-button"
+					fade
+					duration={0.75}
+					to={`/chapter/${chapter.slug}`}
+				>
 					More info
-				</a>
+				</AniLink>
 			</div>
 		</div>
 	)

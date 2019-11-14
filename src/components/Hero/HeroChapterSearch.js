@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 
 import NavArrow from '../SVGs/IconNavArrow'
@@ -104,14 +104,22 @@ const actionButtonCSS = css`
 	height: ${styles.scale.px36};
 `
 
-const HeroChapterSearch = ({ title, description }) => {
+const HeroChapterSearch = ({
+	title,
+	description,
+	handleClick,
+	radius,
+	updateRadius,
+}) => {
 	const [zip, setZip] = useState()
-	const [radius, setRadius] = useState(15)
-	const handleClick = e => {
-		e.preventDefault()
-		console.log(zip)
-		console.log(radius)
-	}
+	const [clicked, setClicked] = useState(false)
+
+	useEffect(() => {
+		if (clicked) {
+			handleClick(zip, radius)
+		}
+	}, [clicked, radius, zip])
+
 	return (
 		<div css={solidHeroCSS}>
 			<h1>{title}</h1>
@@ -121,7 +129,10 @@ const HeroChapterSearch = ({ title, description }) => {
 					<input
 						type="text"
 						placeholder="Search by zip"
-						onChange={e => setZip(e.target.value)}
+						onChange={e => {
+							setZip(e.target.value)
+							setClicked(false)
+						}}
 					/>
 					<button css={actionButtonCSS}>
 						<NavArrow />
@@ -131,7 +142,10 @@ const HeroChapterSearch = ({ title, description }) => {
 				<select
 					css={dropDownCSS}
 					name="radius"
-					onChange={e => setRadius(e.target.value)}
+					onChange={e => {
+						updateRadius(e.target.value)
+						setClicked(false)
+					}}
 				>
 					<option value="15">15 Miles</option>
 					<option value="25">25 Miles</option>
@@ -140,7 +154,11 @@ const HeroChapterSearch = ({ title, description }) => {
 				</select>
 				<button
 					className="secondary-button"
-					onClick={e => handleClick(e)}
+					id="search-button"
+					onClick={e => {
+						e.preventDefault()
+						setClicked(true)
+					}}
 				>
 					Search
 				</button>
