@@ -110,15 +110,16 @@ const HeroChapterSearch = ({
 	handleClick,
 	radius,
 	updateRadius,
+	zip,
+	updateZip,
 }) => {
-	const [zip, setZip] = useState()
 	const [clicked, setClicked] = useState(false)
 
 	useEffect(() => {
 		if (clicked) {
-			handleClick(zip, radius)
+			handleClick()
 		}
-	}, [clicked, radius, zip])
+	}, [clicked])
 
 	return (
 		<div css={solidHeroCSS}>
@@ -130,7 +131,7 @@ const HeroChapterSearch = ({
 						type="text"
 						placeholder="Search by zip"
 						onChange={e => {
-							setZip(e.target.value)
+							updateZip(e.target.value)
 							setClicked(false)
 						}}
 					/>

@@ -99,7 +99,7 @@ const ChapterSearchResult = ({ chapter }) => {
 			window.removeEventListener('resize', handleResize)
 		}
 	}, [])
-	console.log(chapter)
+	// console.log(chapter)
 	return (
 		<div css={searchResultCSS}>
 			<div
@@ -112,13 +112,13 @@ const ChapterSearchResult = ({ chapter }) => {
 					background-size: cover;
 				`}
 			></div>
-			<ReactMapGL
+			{/* <ReactMapGL
 				css={searchMapCSS}
 				{...viewport}
 				width={mapWidth}
 				height={height}
 				onViewportChange={viewport => setViewport(viewport)}
-			/>
+			/> */}
 			<div css={searchInfoCSS}>
 				<h2>AFSP {chapter.title}</h2>
 				<h3>Community contact:</h3>

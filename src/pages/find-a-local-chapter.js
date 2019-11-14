@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import zipcodes from 'zipcodes'
 import fetch from 'isomorphic-fetch'
+import { useQueryParams, NumberParam } from 'use-query-params'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
@@ -19,9 +20,17 @@ import { styles } from '../css/css'
 const FindALocalChapter = ({ data: { search, chapters } }) => {
 	// imported chapters, now need to implement filtering chapters based on zip and radius
 	const [radius, setRadius] = useState(15)
+	const [zip, setZip] = useState()
 	const [searchResults, setSearchResults] = useState([])
-	const [url, setUrl] = useState(window.location)
-	const handleSearchClick = (zip, radius) => {
+	const [query, setQuery] = useQueryParams({
+		zip: NumberParam,
+		radius: NumberParam,
+	})
+	const handleSearchClick = () => {
+		setQuery({
+			zip: zip,
+			radius: radius,
+		})
 		setSearchResults(
 			chapterSearchResults(chapters, {
 				primaryZip: zip,
@@ -30,6 +39,14 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 		)
 	}
 	const updateRadius = newRadius => setRadius(newRadius)
+	const updateZip = newZip => setZip(newZip)
+
+	useEffect(() => {
+		if (query.zip && query.radius) {
+			console.log(query.zip)
+			handleSearchClick(query.zip, query.radius)
+		}
+	}, [query])
 
 	return (
 		<Layout logo={styles.logo.mobileLightDesktopLight}>
@@ -38,13 +55,16 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 				title={search.title}
 				description={search.seo.description}
 				handleClick={handleSearchClick}
-				radius={radius}
+				radius={query.radius}
 				updateRadius={updateRadius}
+				zip={query.zip}
+				updateZip={updateZip}
 			/>
 			{searchResults.length >= 1 && (
 				<ChapterSearchResultContainer
 					chapters={searchResults}
-					radius={radius}
+					radius={query.radius}
+					zip={query.zip}
 				/>
 			)}
 			{search.callsToAction.map((item, index) => (

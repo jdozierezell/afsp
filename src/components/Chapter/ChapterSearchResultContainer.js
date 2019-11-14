@@ -16,11 +16,11 @@ const searchContainerCSS = css`
 	}
 `
 
-const ChapterSearchResultContainer = ({ chapters, radius }) => {
+const ChapterSearchResultContainer = ({ chapters, radius, zip }) => {
 	return (
 		<section css={searchContainerCSS}>
 			<p>
-				Showing results within {radius} miles of <strong>10034</strong>
+				Showing results within {radius} miles of <strong>{zip}</strong>
 			</p>
 			{chapters.map((chapter, index) => {
 				return <ChapterSearchResult key={index} chapter={chapter} />
