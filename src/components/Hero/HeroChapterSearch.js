@@ -125,7 +125,12 @@ const HeroChapterSearch = ({
 		<div css={solidHeroCSS}>
 			<h1>{title}</h1>
 			<h3 css={subHeaderCSS}>{description}</h3>
-			<form action="">
+			<form
+				onSubmit={e => {
+					e.preventDefault()
+					setClicked(true)
+				}}
+			>
 				<div css={inputCSS}>
 					<input
 						type="text"

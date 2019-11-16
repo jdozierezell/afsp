@@ -37,7 +37,11 @@ const DeskFooterSection = ({ item, index, length }) => {
 						)
 						return (
 							<li key={index}>
-								<AniLink fade duration={0.75} to={url}>
+								<AniLink
+									fade
+									duration={styles.duration}
+									to={url}
+								>
 									{link.childHeading}
 								</AniLink>
 							</li>

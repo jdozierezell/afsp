@@ -25,7 +25,7 @@ const RealStories = ({ data: { real, stories } }) => {
 				buttonCta={real.heroButtonCta}
 				buttonUrl={real.heroButtonLink}
 			/>
-			<CarouselVideoContainer />
+			<CarouselVideoContainer videos={real.featuredVideo} />
 			<StoriesContainer
 				header="Stories"
 				first={true}
@@ -59,6 +59,10 @@ export const query = graphql`
 			heroHeading
 			heroButtonCta
 			heroButtonLink
+			featuredVideo {
+				videoTitle
+				videoUrl
+			}
 			callToAction1 {
 				callToAction {
 					... on DatoCmsCtaVideo {

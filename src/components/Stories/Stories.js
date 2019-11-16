@@ -48,7 +48,11 @@ const Stories = ({ story: { node } }) => {
 		<div css={featuredCSS}>
 			<img src={node.coverImage.fluid.src} alt="" />
 			<h2>
-				<AniLink fade duration={0.75} to={`/${node.type}/${node.slug}`}>
+				<AniLink
+					fade
+					duration={styles.duration}
+					to={`/${node.type}/${node.slug}`}
+				>
 					{node.title}
 				</AniLink>
 			</h2>
@@ -56,11 +60,12 @@ const Stories = ({ story: { node } }) => {
 			{node.author && (
 				<h3>
 					By{' '}
-					{node.author.map(author => (
+					{node.author.map((author, index) => (
 						<AniLink
+							key={index}
 							fade
-							duration={0.75}
-							to={`author/${author.slug}`}
+							duration={styles.duration}
+							to={`/author/${author.slug}`}
 						>
 							{author.authorName}
 						</AniLink>

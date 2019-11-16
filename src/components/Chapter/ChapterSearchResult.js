@@ -98,7 +98,7 @@ const ChapterSearchResult = ({ chapter }) => {
 		return () => {
 			window.removeEventListener('resize', handleResize)
 		}
-	}, [])
+	}, [width])
 	// console.log(chapter)
 	return (
 		<div css={searchResultCSS}>
@@ -138,7 +138,7 @@ const ChapterSearchResult = ({ chapter }) => {
 				<AniLink
 					className="secondary-button"
 					fade
-					duration={0.75}
+					duration={styles.duration}
 					to={`/chapter/${chapter.slug}`}
 				>
 					More info

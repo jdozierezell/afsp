@@ -31,7 +31,7 @@ const storyContentCSS = css`
 	}
 `
 
-const StoriesReference = ({ videoURL, videoTitle }) => {
+const RecommendationsContentStories = ({ videoURL, videoTitle }) => {
 	return (
 		<section css={containerCSS}>
 			<div css={storyContentCSS}>
@@ -137,4 +137,4 @@ const StoriesReference = ({ videoURL, videoTitle }) => {
 	)
 }
 
-export default StoriesReference
+export default RecommendationsContentStories

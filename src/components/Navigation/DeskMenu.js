@@ -98,7 +98,7 @@ const MenuItems = ({
 							onMouseEnter={() => handleMouseEnter(item.id)}
 							onMouseLeave={() => handleMouseLeave(item.id)}
 						>
-							<AniLink fade duration={0.75} to={url}>
+							<AniLink fade duration={styles.duration} to={url}>
 								{item.displayTitle}
 							</AniLink>
 							{activeItem === item.id &&

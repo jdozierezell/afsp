@@ -82,7 +82,7 @@ const MenuSection = ({ item }) => {
 			<div css={menuTitleCSS}>
 				<h2>
 					{url ? (
-						<AniLink fade duration={0.75} to={url}>
+						<AniLink fade duration={styles.duration} to={url}>
 							{item.displayTitle}
 						</AniLink>
 					) : (
@@ -118,7 +118,11 @@ const MenuSection = ({ item }) => {
 									{navItem.childHeading}
 								</a>
 							) : (
-								<AniLink fade duration={0.75} to={url}>
+								<AniLink
+									fade
+									duration={styles.duration}
+									to={url}
+								>
 									{navItem.childHeading}
 								</AniLink>
 							)}

@@ -56,7 +56,7 @@ const HeroSolid = ({ data, parents }) => {
 							<li key={index}>
 								<AniLink
 									fade
-									duration={0.75}
+									duration={styles.duration}
 									to={`/${parent.parentPath}`}
 								>
 									{parent.parentTitle}

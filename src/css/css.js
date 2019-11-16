@@ -88,4 +88,5 @@ export const styles = {
 			desktop: 'light',
 		},
 	},
+	duration: 0.5,
 }

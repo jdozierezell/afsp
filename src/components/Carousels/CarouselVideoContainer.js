@@ -52,45 +52,7 @@ const carouselButtonsCSS = css`
 	}
 `
 
-const videoTempData = [
-	{
-		title: 'foo',
-		src:
-			'https://player.vimeo.com/external/290669663.hd.mp4?s=61350a37b7d8d9ce2c9a2af02008afcf59136d34&profile_id=175',
-	},
-	{
-		title: 'bar',
-		src:
-			'https://player.vimeo.com/external/290669663.hd.mp4?s=61350a37b7d8d9ce2c9a2af02008afcf59136d34&profile_id=175',
-	},
-	{
-		title: 'yay',
-		src:
-			'https://player.vimeo.com/external/290669663.hd.mp4?s=61350a37b7d8d9ce2c9a2af02008afcf59136d34&profile_id=175',
-	},
-	{
-		title: 'hip',
-		src:
-			'https://player.vimeo.com/external/290669663.hd.mp4?s=61350a37b7d8d9ce2c9a2af02008afcf59136d34&profile_id=175',
-	},
-	{
-		title: 'hooray',
-		src:
-			'https://player.vimeo.com/external/290669663.hd.mp4?s=61350a37b7d8d9ce2c9a2af02008afcf59136d34&profile_id=175',
-	},
-	{
-		title: 'hooray',
-		src:
-			'https://player.vimeo.com/external/290669663.hd.mp4?s=61350a37b7d8d9ce2c9a2af02008afcf59136d34&profile_id=175',
-	},
-	{
-		title: 'hooray',
-		src:
-			'https://player.vimeo.com/external/290669663.hd.mp4?s=61350a37b7d8d9ce2c9a2af02008afcf59136d34&profile_id=175',
-	},
-]
-
-const CarouselVideoContainer = () => {
+const CarouselVideoContainer = ({ videos }) => {
 	useEffect(() => {
 		new Glide('.glide-video', {
 			perView: 3,
@@ -107,27 +69,31 @@ const CarouselVideoContainer = () => {
 			},
 		}).mount()
 	}, [])
-
 	return (
 		<section css={carouselCSS}>
-			<p>Cronut pabst whatever artisan vape banh</p>
+			<p>Watch real stories of hope</p>
 			<div className="glide-video">
 				<div data-glide-el="track">
 					<ul className="glide__slides">
-						{videoTempData.map((video, index) => {
+						{videos.map((video, index) => {
 							return (
 								<CarouselVideo
 									key={index}
-									title={video.title}
-									src={video.src}
+									title={video.videoTitle}
+									src={video.videoUrl}
 								/>
 							)
 						})}
 					</ul>
 				</div>
 				<div data-glide-el="controls[nav]" css={carouselButtonsCSS}>
-					{videoTempData.map((__, index) => {
-						return <button data-glide-dir={`=${index}`}></button>
+					{videos.map((__, index) => {
+						return (
+							<button
+								key={index}
+								data-glide-dir={`=${index}`}
+							></button>
+						)
 					})}
 				</div>
 			</div>

@@ -55,7 +55,7 @@ const FeaturedResources = ({ data }) => {
 			></p>
 			<AniLink
 				fade
-				duration={0.75}
+				duration={styles.duration}
 				to={`/${slug}`}
 				className="featured-link"
 			>
