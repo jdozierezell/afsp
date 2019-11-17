@@ -2,6 +2,8 @@ import React from 'react'
 import { css } from '@emotion/core'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
+import Breadcrumbs from '../Breadcrumbs/Breadcrumbs'
+
 import { styles } from '../../css/css'
 
 const solidHeroCSS = css`
@@ -13,25 +15,13 @@ const solidHeroCSS = css`
 	}
 	li,
 	h1,
-	p {
+	div {
 		color: ${styles.colors.white};
-	}
-	ul {
-		list-style: none;
-		margin: 0;
-	}
-	li {
-		display: inline;
-		:not(:last-of-type) {
-			:after {
-				content: ' > ';
-			}
-		}
-		a {
-			color: ${styles.colors.white};
-		}
+		max-width: 700px;
+		font-family: ${styles.fonts.avenirRegular};
 	}
 	h1 {
+		font-family: ${styles.fonts.paul};
 		margin: ${styles.scale.px35} 0;
 		font-size: ${styles.scale.px36};
 		max-width: 700px;
@@ -39,33 +29,14 @@ const solidHeroCSS = css`
 			margin: ${styles.scale.px40} 0;
 		}
 	}
-	p {
-		max-width: 700px;
-	}
 `
 
-const HeroSolid = ({ data, parents }) => {
-	const { title, brief } = data
-
+const HeroSolid = ({ data }) => {
+	const { title, brief, parentPage } = data
 	return (
 		<div css={solidHeroCSS}>
-			{parents && parents.length > 1 && (
-				<ul>
-					{parents.map((parent, index) => {
-						return (
-							<li key={index}>
-								<AniLink
-									fade
-									duration={styles.duration}
-									to={`/${parent.parentPath}`}
-								>
-									{parent.parentTitle}
-								</AniLink>
-							</li>
-						)
-					})}
-					<li>{title}</li>
-				</ul>
+			{parentPage && parentPage.parentPage && (
+				<Breadcrumbs parentPage={parentPage} child={title} />
 			)}
 			<h1>{title}</h1>
 			<div

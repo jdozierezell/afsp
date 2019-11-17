@@ -43,7 +43,6 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 
 	useEffect(() => {
 		if (query.zip && query.radius) {
-			console.log(query.zip)
 			handleSearchClick(query.zip, query.radius)
 		}
 	}, [query])

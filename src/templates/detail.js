@@ -14,7 +14,7 @@ const Detail = ({ data, pageContext }) => {
 	return (
 		<Layout logo={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={detail.seoMetaTags} />
-			<HeroSolid data={detail} parents={pageContext.parents} />
+			<HeroSolid data={detail} />
 			<NavigationSide data={detail} />
 			<ContentGeneric data={detail} />
 		</Layout>
@@ -28,6 +28,10 @@ export const query = graphql`
 		detail: datoCmsDetail(slug: { eq: $slug }) {
 			title
 			slug
+			brief
+			parentPage {
+				...ParentList
+			}
 			details {
 				... on DatoCmsContent {
 					contentHeading

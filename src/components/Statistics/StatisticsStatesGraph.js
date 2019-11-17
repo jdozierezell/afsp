@@ -20,13 +20,15 @@ const statisticsStatesGraphContainerCSS = css`
 	}
 `
 
-const StatisticsStatesGraph = ({ width, height }) => {
+const StatisticsStatesGraph = ({ width, height, data }) => {
+	// console.log(data)
+
 	return (
 		<div
 			css={statisticsStatesGraphContainerCSS}
 			id="states-graph-container"
 		>
-			<XYPlot width={width} height={height}>
+			<XYPlot xType="time" width={width} height={height}>
 				{/* <HorizontalGridLines
 					style={{ stroke: styles.colors.darkGray }}
 				/>
@@ -34,6 +36,7 @@ const StatisticsStatesGraph = ({ width, height }) => {
 				<XAxis
 					title="X Axis"
 					tickSize={0}
+					tickTotal={15}
 					style={{
 						line: { stroke: styles.colors.darkGray },
 						text: {
@@ -56,38 +59,23 @@ const StatisticsStatesGraph = ({ width, height }) => {
 					}}
 				/>
 				<LineSeries
-					className="first-series"
 					data={[
-						{ x: 1, y: 3 },
-						{ x: 2, y: 5 },
-						{ x: 3, y: 15 },
-						{ x: 4, y: 12 },
+						{ x: new Date('2008'), y: 12.6 },
+						{ x: new Date('2009'), y: 13.74 },
+						{ x: new Date('2010'), y: 13.95 },
+						{ x: new Date('2011'), y: 13.18 },
+						{ x: new Date('2012'), y: 14.65 },
+						{ x: new Date('2013'), y: 14.35 },
+						{ x: new Date('2014'), y: 14.46 },
+						{ x: new Date('2015'), y: 14.87 },
+						{ x: new Date('2016'), y: 15.61 },
+						{ x: new Date('2017'), y: 16.65 },
+						{ x: new Date('2018') },
 					]}
 					style={{
 						strokeLinejoin: 'round',
 						strokeWidth: 4,
 					}}
-				/>
-				<LineSeries className="second-series" data={null} />
-				<LineSeries
-					className="third-series"
-					curve={'curveMonotoneX'}
-					data={[
-						{ x: 1, y: 10 },
-						{ x: 2, y: 4 },
-						{ x: 3, y: 2 },
-						{ x: 4, y: 15 },
-					]}
-					strokeDasharray="7, 3"
-				/>
-				<LineSeries
-					className="fourth-series"
-					data={[
-						{ x: 1, y: 7 },
-						{ x: 2, y: 11 },
-						{ x: 3, y: 9 },
-						{ x: 4, y: 2 },
-					]}
 				/>
 			</XYPlot>
 		</div>

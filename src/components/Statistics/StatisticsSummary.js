@@ -1,5 +1,8 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
+
+import buildUrl from '../../utils/buildUrl'
 
 import { styles } from '../../css/css'
 
@@ -65,62 +68,43 @@ const videoTitleCSS = css`
 	}
 `
 
-const StoriesReference = ({ videoURL, videoTitle }) => {
+const StoriesReference = ({ data }) => {
+	const {
+		additionalFacts,
+		videoHeader,
+		videoDescription,
+		videoUrl,
+		videoLinkText,
+		videoLink,
+	} = data
 	return (
 		<section css={containerCSS}>
 			<div css={statisticsSummaryCSS}>
-				<h2>Lorem ipsum hipsum</h2>
+				<h2>Additional facts about suicide in the US</h2>
 				<ul>
-					<li>
-						The age-adjusted suicide rate in 2017 was{' '}
-						<strong>14.0 per 100,000 individuals</strong>.
-					</li>
-					<li>
-						The rate of suicide is highest in{' '}
-						<strong>middle-aged white men in particular</strong>.
-					</li>
-					<li>
-						In 2017,{' '}
-						<strong>
-							men died by suicide 3.54x more often than women
-						</strong>
-						.
-					</li>
-					<li>
-						On average, there are{' '}
-						<strong>129 suicides per day</strong>.
-					</li>
-					<li>
-						White males accounted for{' '}
-						<strong>69.67% of suicide deaths in 2017</strong>.
-					</li>
-					<li>
-						In 2017,{' '}
-						<strong>
-							firearms accounted for 50.57% of all suicide deaths
-						</strong>
-						.
-					</li>
+					{additionalFacts.map((fact, index) => (
+						<li
+							key={index}
+							dangerouslySetInnerHTML={{ __html: fact.fact }}
+						></li>
+					))}
 				</ul>
 			</div>
 			<aside css={summaryVideoCSS}>
-				<video
-					controls
-					src="https://player.vimeo.com/external/284203921.hd.mp4?s=c7eff97604161ffc7b2094e9f741a3cadc622ef4&profile_id=175"
-				></video>
+				<video controls src={videoUrl}></video>
 				<div css={videoTitleCSS}>
 					<p>More resources</p>
-					<h3>Suicide Research Videos</h3>
+					<h3>{videoHeader}</h3>
 				</div>
-				<p>
-					Short and easy-to-understand, these new research-themed
-					videos make suicide prevention research accessible, and are
-					perfect for sharing on social media, helping to spread the
-					word that through research, we can #StopSuicide.
-				</p>
-				<a href="https://example.com" className="secondary-button">
-					Watch videos
-				</a>
+				<p>{videoDescription}</p>
+				<AniLink
+					fade
+					duration={styles.duration}
+					to={buildUrl(videoLink.__typename, videoLink.slug)}
+					className="secondary-button"
+				>
+					{videoLinkText}
+				</AniLink>
 			</aside>
 		</section>
 	)

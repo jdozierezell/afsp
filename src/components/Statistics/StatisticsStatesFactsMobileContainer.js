@@ -73,11 +73,20 @@ const CardMobileContainer = ({ title, data, cardCSS }) => {
 				<div data-glide-el="track">
 					<ul className="glide__slides">
 						{data.map((state, index) => {
+							const card = {
+								cardHeading: 'foo',
+								cardBodyNode: {
+									internal: {
+										content: 'foo',
+									},
+								},
+								cardButtonCta: 'foo',
+								cardButtonUrl: 'https://example.com',
+							}
 							return (
 								<Card
 									key={index}
-									title={state.title}
-									cta="View state fact sheet"
+									card={card}
 									cardCSS={cardCSS}
 								/>
 							)

@@ -1,9 +1,23 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import Layout from '../components/Layout'
+import SEO from '../components/SEO'
+import HeroStatistics from '../components/Hero/HeroStatistics'
+import StatisticsSummary from '../components/Statistics/StatisticsSummary'
+import StatisticsContainer from '../components/Statistics/StatisticsContainer'
+
+import { styles } from '../css/css'
+
 const SuicideStatistics = ({ data: { statistics } }) => {
-	console.log(statistics)
-	return <div>Hello Keaton!!!!</div>
+	return (
+		<Layout logo={styles.logo.mobileLightDesktopLight}>
+			<SEO meta={statistics.seoMetaTags} />
+			<HeroStatistics data={statistics} />
+			<StatisticsSummary data={statistics} />
+			<StatisticsContainer data={statistics} />
+		</Layout>
+	)
 }
 
 export default SuicideStatistics
@@ -25,8 +39,35 @@ export const query = graphql`
 						callToAction {
 							... on DatoCmsCtaWithDescription {
 								brief
+								external
 								linkText
 								linkUrl
+								link {
+									... on DatoCmsTag {
+										slug
+									}
+									... on DatoCmsStory {
+										slug
+									}
+									... on DatoCmsDetail {
+										slug
+									}
+									... on DatoCmsAuthor {
+										slug
+									}
+									... on DatoCmsLanding {
+										slug
+									}
+									... on DatoCmsRealStory {
+										slug
+									}
+									... on DatoCmsChapterSearch {
+										slug
+									}
+									... on DatoCmsStatistic {
+										slug
+									}
+								}
 							}
 						}
 					}

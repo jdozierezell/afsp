@@ -28,14 +28,17 @@ const CardContainer = ({ title, data, cardCSS }) => {
 			{title && <h2>{title}</h2>}
 			<ul css={cardListCSS}>
 				{data.map((state, index) => {
-					return (
-						<Card
-							key={index}
-							title={state.title}
-							cta="View state fact sheet"
-							cardCSS={cardCSS}
-						/>
-					)
+					const card = {
+						cardHeading: 'foo',
+						cardBodyNode: {
+							internal: {
+								content: 'foo',
+							},
+						},
+						cardButtonCta: 'foo',
+						cardButtonUrl: 'https://example.com',
+					}
+					return <Card key={index} card={card} cardCSS={cardCSS} />
 				})}
 			</ul>
 		</section>

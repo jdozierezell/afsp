@@ -99,7 +99,6 @@ const ChapterSearchResult = ({ chapter }) => {
 			window.removeEventListener('resize', handleResize)
 		}
 	}, [width])
-	// console.log(chapter)
 	return (
 		<div css={searchResultCSS}>
 			<div
