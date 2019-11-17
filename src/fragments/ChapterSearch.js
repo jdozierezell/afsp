@@ -6,7 +6,9 @@ export const ChapterSearch = graphql`
 			node {
 				title
 				slug
-				chapterZipCodes
+				chapterZipCodeSet {
+					zipCode
+				}
 				heroImage {
 					fluid(
 						maxWidth: 600
