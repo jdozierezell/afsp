@@ -21,8 +21,7 @@ const statisticsStatesGraphContainerCSS = css`
 `
 
 const StatisticsStatesGraph = ({ width, height, data }) => {
-	// console.log(data)
-
+	console.log(data)
 	return (
 		<div
 			css={statisticsStatesGraphContainerCSS}
@@ -58,25 +57,18 @@ const StatisticsStatesGraph = ({ width, height, data }) => {
 						},
 					}}
 				/>
-				<LineSeries
-					data={[
-						{ x: new Date('2008'), y: 12.6 },
-						{ x: new Date('2009'), y: 13.74 },
-						{ x: new Date('2010'), y: 13.95 },
-						{ x: new Date('2011'), y: 13.18 },
-						{ x: new Date('2012'), y: 14.65 },
-						{ x: new Date('2013'), y: 14.35 },
-						{ x: new Date('2014'), y: 14.46 },
-						{ x: new Date('2015'), y: 14.87 },
-						{ x: new Date('2016'), y: 15.61 },
-						{ x: new Date('2017'), y: 16.65 },
-						{ x: new Date('2018') },
-					]}
-					style={{
-						strokeLinejoin: 'round',
-						strokeWidth: 4,
-					}}
-				/>
+				{data &&
+					data.map(line => {
+						return (
+							<LineSeries
+								data={line.data}
+								style={{
+									strokeLinejoin: 'round',
+									strokeWidth: 4,
+								}}
+							/>
+						)
+					})}
 			</XYPlot>
 		</div>
 	)

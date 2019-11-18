@@ -48,23 +48,22 @@ const StatisticsContainer = ({ data }) => {
 						)
 						const state = states[index]
 						state.data.push({
-							year: result.Year,
-							rate: result['Age-Adjusted Rate'],
+							x: new Date(result.Year),
+							y: parseInt(result['Age-Adjusted Rate']),
 						})
 					} else {
 						states.push({
 							state: result.State,
 							data: [
 								{
-									year: result.Year,
-									rate: result['Age-Adjusted Rate'],
+									x: new Date(result.Year),
+									y: parseInt(result['Age-Adjusted Rate']),
 								},
 							],
 						})
 					}
 				})
-				console.log(states)
-				setStateData(results)
+				setStateData(states)
 			},
 		})
 		Papa.parse(data.ageData.url, {
@@ -96,7 +95,7 @@ const StatisticsContainer = ({ data }) => {
 			<StatisticsStatesContainer
 				width={visWidth}
 				height={height}
-				csv={stateData}
+				data={stateData}
 			/>
 			<StatisticsNationalContainer
 				width={visWidth}
