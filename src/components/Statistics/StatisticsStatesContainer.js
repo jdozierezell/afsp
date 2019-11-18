@@ -4,6 +4,8 @@ import { css } from '@emotion/core'
 import IconX from '../SVGs/IconX'
 import StatisticsStatesGraph from './StatisticsStatesGraph'
 import StatisticsStatesFactsContainer from './StatisticsStatesFactsContainer'
+import Downshift from 'downshift'
+import _ from 'lodash'
 
 import { styles } from '../../css/css'
 
@@ -87,6 +89,59 @@ const statisticsStatesFactsContainerCSS = css`
 
 const StatisticsStatesContainer = ({ width, height, data }) => {
 	console.log(data)
+	const states = [
+		'alabama',
+		'alaska',
+		'arizona',
+		'arkansas',
+		'california',
+		'colorado',
+		'connecticut',
+		'delaware',
+		'district of columbia',
+		'florida',
+		'georgia',
+		'hawaii',
+		'idaho',
+		'illinois',
+		'indiana',
+		'iowa',
+		'kansas',
+		'kentucky',
+		'louisiana',
+		'maine',
+		'maryland',
+		'massachusetts',
+		'michigan',
+		'minnesota',
+		'mississippi',
+		'missouri',
+		'montana',
+		'nebraska',
+		'nevada',
+		'new hampshire',
+		'new jersey',
+		'new mexico',
+		'new york',
+		'north carolina',
+		'north dakota',
+		'ohio',
+		'oklahoma',
+		'oregon',
+		'pennsylvania',
+		'rhode island',
+		'south carolina',
+		'south dakota',
+		'tennessee',
+		'texas',
+		'utah',
+		'vermont',
+		'virginia',
+		'washington',
+		'west virginia',
+		'wisconsin',
+		'wyoming',
+	]
 	return (
 		<div css={statisticsStatesContainerCSS}>
 			<h2>Suicide Rates in the United States</h2>
@@ -94,7 +149,67 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 				<p css={searchStateIntroCSS}>
 					Search state to add to the list to compare statistics
 				</p>
-				<input type="text" />
+				<Downshift
+					onChange={selection =>
+						alert(
+							selection
+								? `You selected ${selection}`
+								: 'Selection Cleared'
+						)
+					}
+					itemToString={state => (state ? state : '')}
+				>
+					{({
+						getInputProps,
+						getItemProps,
+						getLabelProps,
+						getMenuProps,
+						isOpen,
+						inputValue,
+						highlightedIndex,
+						selectedItem,
+					}) => (
+						<div>
+							<label {...getLabelProps()}>Enter a fruit</label>
+							<input {...getInputProps()} />
+							<ul {...getMenuProps()}>
+								{isOpen
+									? states
+											.filter(
+												state =>
+													!inputValue.toLowerCase() ||
+													state.includes(
+														inputValue.toLowerCase()
+													)
+											)
+											.map((state, index) => (
+												<li
+													{...getItemProps({
+														key: state.toLowerCase(),
+														index,
+														item: state.toLowerCase(),
+														style: {
+															backgroundColor:
+																highlightedIndex ===
+																index
+																	? 'lightgray'
+																	: 'white',
+															fontWeight:
+																selectedItem ===
+																state
+																	? 'bold'
+																	: 'normal',
+														},
+													})}
+												>
+													{_.startCase(state)}
+												</li>
+											))
+									: null}
+							</ul>
+						</div>
+					)}
+				</Downshift>
 				<button className="secondary-button">Add</button>
 			</div>
 			<div css={searchStateListCSS}>
