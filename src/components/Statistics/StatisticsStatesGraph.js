@@ -20,8 +20,7 @@ const statisticsStatesGraphContainerCSS = css`
 	}
 `
 
-const StatisticsStatesGraph = ({ width, height, data }) => {
-	console.log(data)
+const StatisticsStatesGraph = ({ width, height, data, selection }) => {
 	return (
 		<div
 			css={statisticsStatesGraphContainerCSS}
@@ -58,16 +57,20 @@ const StatisticsStatesGraph = ({ width, height, data }) => {
 					}}
 				/>
 				{data &&
-					data.map(line => {
-						return (
-							<LineSeries
-								data={line.data}
-								style={{
-									strokeLinejoin: 'round',
-									strokeWidth: 4,
-								}}
-							/>
-						)
+					data.map((line, index) => {
+						const state = line.state.toLowerCase()
+						if (selection.includes(state)) {
+							return (
+								<LineSeries
+									key={index}
+									data={line.data}
+									style={{
+										strokeLinejoin: 'round',
+										strokeWidth: 4,
+									}}
+								/>
+							)
+						}
 					})}
 			</XYPlot>
 		</div>
