@@ -34,19 +34,21 @@ const chapterTempData = [
 	},
 ]
 
-const StatisticsStatesFactsContainer = ({ title, cardCSS }) => {
+const StatisticsStatesFactsContainer = ({ data, selection, cardCSS }) => {
 	const { width } = useWindowDimensions()
 	return (
 		<section>
 			{width <= styles.screens.tablet && (
 				<StatisticsStatesFactsMobileContainer
-					data={chapterTempData}
+					data={data}
+					selection={selection}
 					cardCSS={cardCSS}
 				/>
 			)}
 			{width > styles.screens.tablet && (
 				<StatisticsStatesFactsDesktopContainer
-					data={chapterTempData}
+					data={data}
+					selection={selection}
 					cardCSS={cardCSS}
 				/>
 			)}

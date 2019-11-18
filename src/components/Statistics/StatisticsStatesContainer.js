@@ -382,7 +382,8 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 				))}
 			</ul>
 			<StatisticsStatesFactsContainer
-				title="Minnesota"
+				data={data}
+				selection={selection}
 				cardCSS={statisticsStatesFactsContainerCSS}
 			/>
 		</div>

@@ -49,17 +49,21 @@ const StatisticsContainer = ({ data }) => {
 						const state = states[index]
 						state.data.push({
 							x: new Date(result.Year),
-							y: parseInt(result['Age-Adjusted Rate']),
+							y: parseFloat(result['Age-Adjusted Rate']),
 						})
+						state.rank = result.Rank
+						state.rate = result['Age-Adjusted Rate']
 					} else {
 						states.push({
 							state: result.State,
 							data: [
 								{
 									x: new Date(result.Year),
-									y: parseInt(result['Age-Adjusted Rate']),
+									y: parseFloat(result['Age-Adjusted Rate']),
 								},
 							],
+							rank: result.Rank,
+							rate: result['Age-Adjusted Rate'],
 						})
 					}
 				})
