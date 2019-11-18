@@ -32,16 +32,34 @@ const searchStateCSS = css`
 
 const searchStateInputCSS = css`
 	grid-column: 1 / 5;
-	grid-row: 1 / 3;
+	grid-row: 1 / 4;
 	display: grid;
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
+	position: relative;
 	div {
 		grid-column: 1 / 5;
-		grid-row: 1 / 3;
+		grid-row: 1 / 4;
 		display: grid;
 		grid-template-columns: subgrid;
 		grid-template-rows: subgrid;
+		div {
+			grid-column: 1 / 5;
+			grid-row: 3 / 4;
+			position: relative;
+			ul {
+				position: absolute;
+				top: -${styles.scale.px20};
+				left: 0;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				li {
+					margin: 0;
+					padding: ${styles.scale.px12};
+				}
+			}
+		}
 	}
 	label {
 		margin: ${styles.scale.px35} 0 ${styles.scale.px40};
@@ -55,9 +73,8 @@ const searchStateInputCSS = css`
 		grid-column: 1 / 4;
 		grid-row: 2 / 3;
 		align-self: start;
-	}
-	ul {
-		position: absolute;
+		position: relative;
+		z-index: 5;
 	}
 	button {
 		grid-column: 4 / 5;
@@ -91,12 +108,27 @@ const searchStateListCSS = css`
 		white-space: nowrap;
 		padding: ${styles.scale.px14} ${styles.scale.px20};
 		border-radius: 5px;
-		margin-right: ${styles.scale.px12};
+		margin: 0 ${styles.scale.px12} ${styles.scale.px12} 0;
 		background-color: ${styles.colors.white};
-	}
-	svg {
-		width: 12px;
-		margin-right: ${styles.scale.px7};
+		cursor: pointer;
+		position: relative;
+		button {
+			background: transparent;
+			border: none;
+			margin: 0;
+			padding: 0;
+		}
+		svg {
+			width: 12px;
+			margin-right: ${styles.scale.px7};
+		}
+		span {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}
 	}
 `
 
@@ -111,14 +143,14 @@ const searchStateKeyCSS = css`
 		border-radius: ${styles.scale.px5};
 		margin-right: ${styles.scale.px20};
 	}
-	div {
-		display: inline-block;
-		width: ${styles.scale.px12};
-		height: ${styles.scale.px12};
-		margin-right: ${styles.scale.px7};
-		border-radius: 50%;
-		background-color: ${styles.colors.blue};
-	}
+`
+
+const stateBulletCSS = css`
+	display: inline-block;
+	width: ${styles.scale.px12};
+	height: ${styles.scale.px12};
+	margin-right: ${styles.scale.px7};
+	border-radius: 50%;
 `
 
 const statisticsStatesFactsContainerCSS = css`
@@ -181,10 +213,17 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 		'wisconsin',
 		'wyoming',
 	]
+	const colors = [
+		styles.colors.blue,
+		styles.colors.green,
+		styles.colors.poppy,
+		styles.colors.yellow,
+		styles.colors.darkBlue,
+		styles.colors.fuchsia,
+	]
 	const [selection, setSelection] = useState([])
-
 	useEffect(() => {
-		console.log(selection)
+		// console.log(selection)
 	}, [selection])
 
 	return (
@@ -194,8 +233,20 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 				<div css={searchStateInputCSS}>
 					<Downshift
 						onChange={state => {
-							if (!selection.includes(state)) {
-								setSelection(selection => [...selection, state])
+							let newState, newColor
+							if (!selection.some(e => e.state === state)) {
+								newState = state
+								colors.forEach(color => {
+									if (
+										!selection.some(e => e.color === color)
+									) {
+										newColor = color
+									}
+								})
+								setSelection(selection => [
+									...selection,
+									{ state: newState, color: newColor },
+								])
 							}
 						}}
 						itemToString={state => (state ? state : '')}
@@ -217,78 +268,87 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 								</label>
 								<input
 									{...getInputProps()}
+									id="state-input"
 									onKeyPress={e => {
 										if (e.key === 'Enter') {
 											const value = e.target.value.toLowerCase()
 											if (
-												!selection.includes(value) &&
+												!selection.some(
+													e => e.state === value
+												) &&
 												states.includes(value)
 											)
 												setSelection(selection => [
 													...selection,
-													value,
+													{ state: value },
 												])
 										}
 									}}
 								/>
-								<ul {...getMenuProps()}>
-									{isOpen
-										? states
-												.filter(
-													state =>
-														!inputValue.toLowerCase() ||
-														state.includes(
-															inputValue.toLowerCase()
-														)
-												)
-												.map((state, index) => (
-													<li
-														{...getItemProps({
-															key: state,
-															index,
-															item: state,
-															style: {
-																backgroundColor:
-																	highlightedIndex ===
-																	index
-																		? 'lightgray'
-																		: 'white',
-																fontWeight:
-																	selectedItem ===
-																	state
-																		? 'bold'
-																		: 'normal',
-															},
-														})}
-													>
-														{_.startCase(state)}
-													</li>
-												))
-										: null}
-								</ul>
+								<div>
+									<ul {...getMenuProps()}>
+										{isOpen
+											? states
+													.filter(
+														state =>
+															!inputValue.toLowerCase() ||
+															state.includes(
+																inputValue.toLowerCase()
+															)
+													)
+													.map((state, index) => (
+														<li
+															{...getItemProps({
+																key: state,
+																index,
+																item: state,
+																style: {
+																	backgroundColor:
+																		highlightedIndex ===
+																		index
+																			? styles
+																					.colors
+																					.lightGray
+																			: 'white',
+																	fontWeight:
+																		selectedItem ===
+																		state
+																			? 'bold'
+																			: 'normal',
+																},
+															})}
+														>
+															{_.startCase(state)}
+														</li>
+													))
+											: null}
+									</ul>
+								</div>
 							</div>
 						)}
 					</Downshift>
-					<button className="secondary-button">Add</button>
 				</div>
 				<div css={searchStateListCSS}>
 					<p>Showing state info for:</p>
 					<ul>
-						<li>
-							<IconX /> Minnesota
-						</li>
-						<li>
-							<IconX /> Rhode Island
-						</li>
-						<li>
-							<IconX /> New York
-						</li>
-						<li>
-							<IconX /> California
-						</li>
-						<li>
-							<IconX /> New Jersey
-						</li>
+						{selection.map((state, index) => (
+							<li
+								key={index}
+								id={state}
+								onClick={e =>
+									setSelection(
+										selection.filter(
+											thisState => state !== thisState
+										)
+									)
+								}
+							>
+								<IconX />
+								{_.startCase(state.state)}
+								{/* the following span just standardizes the click target */}
+								<span></span>
+							</li>
+						))}
 					</ul>
 				</div>
 			</div>
@@ -300,20 +360,26 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 			/>
 			<ul css={searchStateKeyCSS}>
 				<li>
-					<div></div> Minnesota
+					<div
+						css={css`
+							${stateBulletCSS};
+							background-color: ${styles.colors.lightGray};
+							border: 2px solid ${styles.colors.white};
+						`}
+					></div>{' '}
+					US Average
 				</li>
-				<li>
-					<div></div> Rhode Island
-				</li>
-				<li>
-					<div></div> New York
-				</li>
-				<li>
-					<div></div> California
-				</li>
-				<li>
-					<div></div> New Jersey
-				</li>
+				{selection.map((state, index) => (
+					<li key={index}>
+						<div
+							css={css`
+								${stateBulletCSS};
+								background-color: ${state.color};
+							`}
+						></div>{' '}
+						{_.startCase(state.state)}
+					</li>
+				))}
 			</ul>
 			<StatisticsStatesFactsContainer
 				title="Minnesota"

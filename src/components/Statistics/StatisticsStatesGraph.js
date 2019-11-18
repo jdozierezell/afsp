@@ -26,7 +26,12 @@ const StatisticsStatesGraph = ({ width, height, data, selection }) => {
 			css={statisticsStatesGraphContainerCSS}
 			id="states-graph-container"
 		>
-			<XYPlot xType="time" width={width} height={height}>
+			<XYPlot
+				xType="time"
+				width={width}
+				height={height}
+				yDomain={[0, 26]}
+			>
 				{/* <HorizontalGridLines
 					style={{ stroke: styles.colors.darkGray }}
 				/>
@@ -59,11 +64,28 @@ const StatisticsStatesGraph = ({ width, height, data, selection }) => {
 				{data &&
 					data.map((line, index) => {
 						const state = line.state.toLowerCase()
-						if (selection.includes(state)) {
+						if (state === 'us average') {
+							return (
+								<LineSeries
+									color={styles.colors.lightGray}
+									key={index}
+									data={line.data}
+									style={{
+										strokeLinejoin: 'round',
+										strokeWidth: 4,
+									}}
+								/>
+							)
+						} else if (selection.some(e => e.state === state)) {
+							const stateIndex = selection.findIndex(
+								x => x.state === state
+							)
+							const color = selection[stateIndex].color
 							return (
 								<LineSeries
 									key={index}
 									data={line.data}
+									color={color}
 									style={{
 										strokeLinejoin: 'round',
 										strokeWidth: 4,
