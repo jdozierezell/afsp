@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
+import fetch from 'isomorphic-fetch'
 
 import LayoutChapter from '../components/LayoutChapter'
 import SEO from '../components/SEO'
@@ -26,49 +27,54 @@ const Chapter = ({ data: { chapter } }) => {
 		staffTitle,
 		staffEmail,
 		staffPhone,
+		chapterEmailApiKey,
 		featuredPrograms,
 		volunteerSignupUrl,
 		chapterStoriesAndUpdates,
 	} = chapter
-	const eventsContainer = {
-		details: [
-			{
-				__typename: 'DonorDriveEvent',
-				title: 'Name of Event',
-				date: 'November 1',
-				url: 'https://nytimes.com',
-			},
-			{
-				__typename: 'DonorDriveEvent',
-				title: 'Name of Event',
-				date: 'November 1',
-				url: 'https://nytimes.com',
-			},
-			{
-				__typename: 'DonorDriveEvent',
-				title: 'Name of Event',
-				date: 'November 1',
-				url: 'https://nytimes.com',
-			},
-			{
-				__typename: 'DonorDriveEvent',
-				title: 'Name of Event',
-				date: 'November 1',
-				url: 'https://nytimes.com',
-			},
-		],
-		title: 'Upcoming events',
-	}
-	let stories = []
-	chapterStoriesAndUpdates.forEach(story => {
-		const coverImage = story.seo.image
-		const title = story.title
-		const slug = story.slug
-		const seo = story.seo
-		const type = 'chapter'
-		const node = { node: { coverImage, title, slug, seo, type } }
-		stories.push(node)
-	})
+
+	const chapterCode = chapter.chapterCode.toLowerCase()
+	const [events, setEvents] = useState({ details: [] })
+	const [stories, setStories] = useState([])
+	useEffect(() => {
+		chapterStoriesAndUpdates.forEach(story => {
+			const coverImage = story.seo.image
+			const title = story.title
+			const slug = story.slug
+			const seo = story.seo
+			const type = 'chapter'
+			const node = { node: { coverImage, title, slug, seo, type } }
+			setStories(storiesArray => [...storiesArray, node])
+		})
+
+		fetch(`//aws-fetch.s3.amazonaws.com/merged-events-${chapterCode}.json`)
+			.then(response => {
+				if (response.status >= 400) {
+					throw new Error('Bad response from server')
+				}
+				return response.json()
+			})
+			.then(response => {
+				const eventDetails = { title: 'Upcoming events', details: [] }
+				response.next.forEach(event => {
+					const eventObject = {
+						__typename: 'Event',
+						title: event.name,
+						date: new Date(event.startdate).toLocaleDateString(
+							'en-US',
+							{
+								month: 'long',
+								day: '2-digit',
+							}
+						),
+						url: `https://afsp.donordrive.com/index.cfm?fuseaction=donorDrive.event&eventID=${event.recordid}`,
+					}
+					eventDetails.details.push(eventObject)
+				})
+				setEvents(eventDetails)
+			})
+	}, [])
+
 	return (
 		<LayoutChapter logo={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={chapter.seoMetaTags} />
@@ -89,7 +95,7 @@ const Chapter = ({ data: { chapter } }) => {
 				}}
 			/>
 			<CarouselDetailContainer
-				content={eventsContainer}
+				content={events}
 				addCSS={eventCarouselCSS}
 			/>
 			<FeaturedProgramsContainer resources={featuredPrograms} />
@@ -112,8 +118,8 @@ const Chapter = ({ data: { chapter } }) => {
 export default Chapter
 
 export const query = graphql`
-	query {
-		chapter: datoCmsChapterHomePage {
+	query($slug: String) {
+		chapter: datoCmsChapterHomePage(slug: { eq: $slug }) {
 			seoMetaTags {
 				tags
 			}
@@ -138,6 +144,8 @@ export const query = graphql`
 				}
 			}
 			heroBrief
+			chapterCode
+			chapterEmailApiKey
 			staffName
 			staffTitle
 			staffEmail

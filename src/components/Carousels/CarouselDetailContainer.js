@@ -13,6 +13,7 @@ const carouselCSS = css`
 	background-color: ${styles.colors.blue};
 	padding: ${styles.scale.px50} ${styles.scale.px24} ${styles.scale.px25};
 	overflow: hidden;
+	width: 100vw;
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px80} ${styles.scale.px50} ${styles.scale.px35};
 	}
@@ -45,7 +46,6 @@ const carouselButtonsCSS = css`
 	margin: ${styles.scale.px45} 0 0;
 	padding: 0;
 	line-height: 0;
-	width: 100vw;
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin: ${styles.scale.px35} 0 0;
 	}
@@ -104,9 +104,7 @@ const CarouselDetailContainer = ({
 										addCSS={addCSS}
 									/>
 								)
-							} else if (
-								section.__typename === 'DonorDriveEvent'
-							) {
+							} else if (section.__typename === 'Event') {
 								return (
 									<CarouselDetail
 										key={index}
@@ -125,6 +123,14 @@ const CarouselDetailContainer = ({
 				<div data-glide-el="controls[nav]" css={carouselButtonsCSS}>
 					{details.map((section, index) => {
 						if (section.__typename === 'DatoCmsContent') {
+							count++
+							return (
+								<button
+									key={index}
+									data-glide-dir={`=${count - 1}`}
+								></button>
+							)
+						} else if (section.__typename === 'Event') {
 							count++
 							return (
 								<button
