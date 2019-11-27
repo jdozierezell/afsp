@@ -26,9 +26,10 @@ const emailCSS = css`
 		font-size: ${styles.scale.px17};
 	}
 	form {
-		div {
-		}
 		> div {
+			display: flex !important;
+			flex-direction: row !important;
+			align-items: center;
 		}
 		input {
 			margin: 40px 24px 40px 0;
@@ -55,6 +56,7 @@ const emailCSS = css`
 			cursor: pointer !important;
 			font-weight: 400 !important;
 			background-color: hsla(0, 0%, 100%, 1) !important;
+			width: initial !important;
 		}
 	}
 `
