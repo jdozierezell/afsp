@@ -30,27 +30,31 @@ const Breadcrumbs = ({ parentPage, child }) => {
 			slug: parentPage.slug,
 			type: parentPage.__typename,
 		})
-		if (parentPage.parentPage) {
+		if (parentPage.hasOwnProperty(parentPage)) {
 			breadcrumbs.unshift({
 				title: parentPage.parentPage.title,
 				slug: parentPage.parentPage.slug,
 				type: parentPage.parentPage.__typename,
 			})
-			if (parentPage.parentPage.parentPage) {
+			if (parentPage.parentPage.hasOwnProperty(parentPage)) {
 				breadcrumbs.unshift({
 					title: parentPage.parentPage.parentPage.title,
 					slug: parentPage.parentPage.parentPage.slug,
 					type: parentPage.parentPage.parentPage.__typename,
 				})
 			}
-			if (parentPage.parentPage.parentPage.parentPage) {
+			if (parentPage.parentPage.parentPage.hasOwnProperty(parentPage)) {
 				breadcrumbs.unshift({
 					title: parentPage.parentPage.parentPage.parentPage.title,
 					slug: parentPage.parentPage.parentPage.parentPage.slug,
 					type:
 						parentPage.parentPage.parentPage.parentPage.__typename,
 				})
-				if (parentPage.parentPage.parentPage.parentPage.parentPage) {
+				if (
+					parentPage.parentPage.parentPage.parentPage.hasOwnProperty(
+						parentPage
+					)
+				) {
 					console.log(new Error('too much nesting'))
 				}
 			}
