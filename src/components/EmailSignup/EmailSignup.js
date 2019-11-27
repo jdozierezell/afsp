@@ -25,28 +25,38 @@ const emailCSS = css`
 		margin: 0;
 		font-size: ${styles.scale.px17};
 	}
-`
-
-const subscribeCSS = css`
-	display: flex;
-	flex-flow: row wrap;
-	align-items: center;
-	justify-content: center;
-	@media (min-width: ${styles.screens.tablet}px) {
-		justify-content: space-between;
-	}
-	input {
-		flex-grow: 1;
-		flex-shrink: 1;
-		flex-basis: 100%;
-		margin: ${styles.scale.px40} 0;
-		@media (min-width: ${styles.screens.tablet}px) {
-			margin: ${styles.scale.px40} ${styles.scale.px24}
-				${styles.scale.px40} 0;
-			flex-basis: initial;
+	form {
+		div {
+		}
+		> div {
+		}
+		input {
+		}
+		button {
 		}
 	}
 `
+
+// const subscribeCSS = css`
+// 	display: flex;
+// 	flex-flow: row wrap;
+// 	align-items: center;
+// 	justify-content: center;
+// 	@media (min-width: ${styles.screens.tablet}px) {
+// 		justify-content: space-between;
+// 	}
+// 	input {
+// 		flex-grow: 1;
+// 		flex-shrink: 1;
+// 		flex-basis: 100%;
+// 		margin: ${styles.scale.px40} 0;
+// 		@media (min-width: ${styles.screens.tablet}px) {
+// 			margin: ${styles.scale.px40} ${styles.scale.px24}
+// 				${styles.scale.px40} 0;
+// 			flex-basis: initial;
+// 		}
+// 	}
+// `
 
 const EmailSignup = () => {
 	return (
@@ -56,12 +66,12 @@ const EmailSignup = () => {
 				<p>Join our network and be the first to take action</p>
 			</div>
 			<div className="klaviyo-form-LGcf3Q"></div>
-			<div css={subscribeCSS}>
+			{/* <div css={subscribeCSS}>
 				<input placeholder="Email address" type="text" />
 				<a className="secondary-button" href="https://example.com">
 					Subscribe
 				</a>
-			</div>
+			</div> */}
 		</div>
 	)
 }
