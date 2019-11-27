@@ -31,8 +31,30 @@ const emailCSS = css`
 		> div {
 		}
 		input {
+			margin: 40px 24px 40px 0;
+			font-size: 18px !important;
+			line-height: 50px !important;
+			background-color: white !important;
+			color: #262626 !important;
+			border-radius: 5px !important;
+			border: 2px solid #262626 !important;
+			padding: 0 16px !important;
 		}
 		button {
+			font-family: AvenirNextLTPro-Bold, Arial, sans-serif !important;
+			font-size: 18px !important;
+			color: hsla(355, 84.3%, 50%, 1) !important;
+			text-align: center !important;
+			line-height: 50px !important;
+			background-color: hsla(0, 0%, 100%, 1) !important;
+			border-radius: 30px !important;
+			border: solid 2px hsla(355, 84.3%, 50%, 1) !important;
+			padding: 0px 32px !important;
+			display: inline-block !important;
+			text-decoration: none !important;
+			cursor: pointer !important;
+			font-weight: 400 !important;
+			background-color: hsla(0, 0%, 100%, 1) !important;
 		}
 	}
 `
