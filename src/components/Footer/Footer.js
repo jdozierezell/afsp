@@ -120,6 +120,11 @@ const Footer = ({ nav }) => {
 					</li>
 				</ul>
 			</div>
+			<script
+				type="text/javascript"
+				async
+				src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=JXzNvL"
+			></script>
 		</footer>
 	)
 }

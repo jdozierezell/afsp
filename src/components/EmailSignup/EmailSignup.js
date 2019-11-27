@@ -55,6 +55,7 @@ const EmailSignup = () => {
 				<h2>Sign up for email alerts</h2>
 				<p>Join our network and be the first to take action</p>
 			</div>
+			<div className="klaviyo-form-LGcf3Q"></div>
 			<div css={subscribeCSS}>
 				<input placeholder="Email address" type="text" />
 				<a className="secondary-button" href="https://example.com">
