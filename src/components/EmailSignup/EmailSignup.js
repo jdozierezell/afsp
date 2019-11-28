@@ -29,6 +29,7 @@ const emailCSS = css`
 		> div {
 			display: flex !important;
 			flex-direction: row !important;
+			flex-wrap: wrap;
 			align-items: center !important;
 			> div:first-child {
 				width: 100% !important;
