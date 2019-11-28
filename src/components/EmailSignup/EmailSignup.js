@@ -31,8 +31,12 @@ const emailCSS = css`
 			flex-direction: row !important;
 			align-items: center !important;
 			> div:first-child {
-				flex: 1 1 !important;
-				margin: 40px 24px 40px 0 !important;
+				width: 100% !important;
+				@media (min-width: ${styles.screens.tablet}px) {
+					flex: 1 1 !important;
+					margin: 40px 24px 40px 0 !important;
+					width: initial !important;
+				}
 			}
 		}
 		input {
@@ -53,6 +57,7 @@ const emailCSS = css`
 			font-size: ${styles.scale.px18};
 		}
 		button {
+			width: 100% !important;
 			font-family: ${styles.fonts.avenirBold} !important;
 			font-size: 18px !important;
 			color: hsla(355, 84.3%, 50%, 1) !important;
@@ -67,7 +72,9 @@ const emailCSS = css`
 			cursor: pointer !important;
 			font-weight: 400 !important;
 			background-color: hsla(0, 0%, 100%, 1) !important;
-			width: initial !important;
+			@media (min-width: ${styles.screens.tablet}px) {
+				width: initial !important;
+			}
 		}
 	}
 `
