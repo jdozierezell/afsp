@@ -28,10 +28,15 @@ const emailCSS = css`
 	form {
 		> div {
 			display: flex !important;
-			flex-direction: row !important;
-			align-items: center;
+			flex-direction: row wrap !important;
+			align-items: center !important;
+			> div:first-child {
+				flex: 1 1 !important;
+				margin: 40px 24px 40px 0 !important;
+			}
 		}
 		input {
+			font-family: ${styles.fonts.avenirRegular} !important;
 			margin: 40px 24px 40px 0;
 			font-size: 18px !important;
 			line-height: 50px !important;
@@ -40,9 +45,10 @@ const emailCSS = css`
 			border-radius: 5px !important;
 			border: 2px solid #262626 !important;
 			padding: 0 16px !important;
+			height: initial !important;
 		}
 		button {
-			font-family: AvenirNextLTPro-Bold, Arial, sans-serif !important;
+			font-family: ${styles.fonts.avenirBold} !important;
 			font-size: 18px !important;
 			color: hsla(355, 84.3%, 50%, 1) !important;
 			text-align: center !important;
