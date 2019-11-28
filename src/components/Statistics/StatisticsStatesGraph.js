@@ -92,6 +92,8 @@ const StatisticsStatesGraph = ({ width, height, data, selection }) => {
 									}}
 								/>
 							)
+						} else {
+							return ''
 						}
 					})}
 			</XYPlot>

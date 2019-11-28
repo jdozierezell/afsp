@@ -108,7 +108,10 @@ export const query = graphql`
 				}
 			}
 		}
-		stories: allDatoCmsStory(limit: 66) {
+		stories: allDatoCmsStory(
+			limit: 66
+			sort: { fields: publicationDate, order: DESC }
+		) {
 			totalCount
 			edges {
 				node {

@@ -107,7 +107,7 @@ const CarouselChapterContainer = ({ location }) => {
 				},
 			}).mount()
 		}
-	}, [displayChapters])
+	}, [chapters, displayChapters])
 
 	return (
 		<div css={carouselCSS}>

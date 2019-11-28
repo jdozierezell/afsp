@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import zipcodes from 'zipcodes'
-import fetch from 'isomorphic-fetch'
 import { useQueryParams, NumberParam } from 'use-query-params'
 
 import Layout from '../components/Layout'
@@ -10,15 +9,11 @@ import HeroChapterSearch from '../components/Hero/HeroChapterSearch'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import ChapterSearchResultContainer from '../components/Chapter/ChapterSearchResultContainer'
 
-import {
-	chapterSearchResults,
-	searchChapters,
-} from '../utils/chapterSearchResults'
+import { chapterSearchResults } from '../utils/chapterSearchResults'
 
 import { styles } from '../css/css'
 
 const FindALocalChapter = ({ data: { search, chapters } }) => {
-	// imported chapters, now need to implement filtering chapters based on zip and radius
 	const [radius, setRadius] = useState(15)
 	const [zip, setZip] = useState()
 	const [searchResults, setSearchResults] = useState([])

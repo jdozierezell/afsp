@@ -1,6 +1,5 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs'
 

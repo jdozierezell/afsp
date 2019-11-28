@@ -73,7 +73,7 @@ const Chapter = ({ data: { chapter } }) => {
 				})
 				setEvents(eventDetails)
 			})
-	}, [])
+	}, [chapterStoriesAndUpdates, chapterCode])
 
 	return (
 		<LayoutChapter

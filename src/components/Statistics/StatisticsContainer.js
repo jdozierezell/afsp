@@ -92,7 +92,7 @@ const StatisticsContainer = ({ data }) => {
 			},
 		})
 		return () => window.removeEventListener('resize', handleWindowResize)
-	}, [visWidth, handleWindowResize])
+	}, [visWidth, handleWindowResize, data])
 
 	return (
 		<section css={statisticsContainerCSS}>

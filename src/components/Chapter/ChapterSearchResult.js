@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
-import ReactMapGL from 'react-map-gl'
 import { useWindowDimensions } from '../WindowDimensionsProvider'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
@@ -30,13 +29,6 @@ const searchImageCSS = css`
 	overflow: hidden;
 	@media (min-width: ${styles.screens.tablet}px) {
 		grid-area: 1 / 2 / 2 / 3;
-	}
-`
-
-const searchMapCSS = css`
-	grid-area: 1 / 2 / 2 / 3;
-	@media (min-width: ${styles.screens.tablet}px) {
-		grid-area: 1 / 3 / 2 / 4;
 	}
 `
 
@@ -74,13 +66,6 @@ const searchInfoCSS = css`
 
 const ChapterSearchResult = ({ chapter }) => {
 	const { width } = useWindowDimensions()
-	const [viewport, setViewport] = useState({
-		latitude: 37.7577,
-		longitude: -122.4376,
-		zoom: 8,
-		mapboxApiAccessToken:
-			'pk.eyJ1IjoiamRvemllcmV6ZWxsIiwiYSI6ImNqd295bmswdDBzdWk0MXFxNmhpNzNmaXgifQ.ddBzvbkmAYAvKhWnKeKTFQ',
-	})
 	// set width to half minus margin if tablet or smaller, one third minus margin if larger
 	const [mapWidth, setMapWidth] = useState(
 		width <= styles.screens.tablet ? width / 2 - 24 : width / 3 - 33
