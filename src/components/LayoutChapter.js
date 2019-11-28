@@ -11,7 +11,7 @@ import '../css/layout.css'
 import '../css/global.css'
 import '../fonts/gatsby-afsp.css'
 
-const LayoutChapter = ({ logo, children }) => {
+const LayoutChapter = ({ logo, email, children }) => {
 	const data = useStaticQuery(graphql`
 		query {
 			nav: allDatoCmsNavigation {
@@ -35,7 +35,7 @@ const LayoutChapter = ({ logo, children }) => {
 				<Header nav={headerNav} />
 			</HeaderContextProvider>
 			<main>{children}</main>
-			<EmailSignupChapter />
+			<EmailSignupChapter email={email} />
 			<Footer nav={footerNav} />
 		</WindowDimensionsProvider>
 	)

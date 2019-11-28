@@ -76,7 +76,10 @@ const Chapter = ({ data: { chapter } }) => {
 	}, [])
 
 	return (
-		<LayoutChapter logo={styles.logo.mobileLightDesktopLight}>
+		<LayoutChapter
+			logo={styles.logo.mobileLightDesktopLight}
+			email={chapterEmailApiKey}
+		>
 			<SEO meta={chapter.seoMetaTags} />
 			<HeroChapter
 				title={title}
