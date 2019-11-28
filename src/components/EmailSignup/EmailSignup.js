@@ -28,7 +28,7 @@ const emailCSS = css`
 	form {
 		> div {
 			display: flex !important;
-			flex-direction: row wrap !important;
+			flex-direction: row !important;
 			align-items: center !important;
 			> div:first-child {
 				flex: 1 1 !important;
@@ -36,7 +36,6 @@ const emailCSS = css`
 			}
 		}
 		input {
-			font-family: ${styles.fonts.avenirRegular} !important;
 			margin: 40px 24px 40px 0;
 			font-size: 18px !important;
 			line-height: 50px !important;
@@ -46,6 +45,12 @@ const emailCSS = css`
 			border: 2px solid #262626 !important;
 			padding: 0 16px !important;
 			height: initial !important;
+		}
+		input::placeholder {
+			font-family: ${styles.fonts.avenirRegular} !important;
+			line-height: ${styles.scale.px54} !important;
+			color: #333;
+			font-size: ${styles.scale.px18};
 		}
 		button {
 			font-family: ${styles.fonts.avenirBold} !important;
