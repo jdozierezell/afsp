@@ -9,7 +9,6 @@ import IconHamburger from '../SVGs/IconHamburger'
 import IconX from '../SVGs/IconX'
 import IconSearch from '../SVGs/IconSearch'
 import SearchBar from './SearchBar'
-import { useWindowDimensions } from '../WindowDimensionsProvider'
 import { useHeaderContext } from '../HeaderContextProvider'
 import MenuCTA from './MenuCTA'
 
@@ -87,14 +86,13 @@ const donateCSS = css`
 `
 
 const Navigation = ({ nav }) => {
-	const { width } = useWindowDimensions()
 	const headerContext = useHeaderContext()
 
 	const [isMobileLight, setMobileLight] = useState(
-		width <= styles.screens.tablet && headerContext.mobile === 'light'
+		headerContext.mobile === 'light'
 	)
 	const [isDesktopLight, setDesktopLight] = useState(
-		width > styles.screens.tablet && headerContext.desktop === 'light'
+		headerContext.desktop === 'light'
 	)
 	const [isMenuActive, setMenuActive] = useState(false)
 	const [isSearchActive, setSearchActive] = useState(false)
@@ -108,12 +106,8 @@ const Navigation = ({ nav }) => {
 	const [activeMegaMenu, setActiveMegaMenu] = useState('')
 
 	useEffect(() => {
-		setMobileLight(
-			width <= styles.screens.tablet && headerContext.mobile === 'light'
-		)
-		setDesktopLight(
-			width > styles.screens.tablet && headerContext.desktop === 'light'
-		)
+		setMobileLight(headerContext.mobile === 'light')
+		setDesktopLight(headerContext.desktop === 'light')
 		if (isMenuActive || isSearchActive || isHover) {
 			setNavBackground(styles.colors.white)
 			setNavColor(styles.colors.darkGray)
@@ -124,7 +118,6 @@ const Navigation = ({ nav }) => {
 			}
 		}
 	}, [
-		width,
 		headerContext.mobile,
 		headerContext.desktop,
 		isMenuActive,
