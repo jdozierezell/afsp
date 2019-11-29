@@ -18,6 +18,8 @@ const linkListCSS = css`
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	position: relative;
+	z-index: 1;
 	a {
 		color: ${styles.colors.white};
 	}

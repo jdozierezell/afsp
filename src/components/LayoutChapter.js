@@ -7,10 +7,6 @@ import Footer from './Footer/Footer'
 import WindowDimensionsProvider from './WindowDimensionsProvider'
 import HeaderContextProvider from './HeaderContextProvider'
 
-import '../css/layout.css'
-import '../css/global.css'
-import '../fonts/gatsby-afsp.css'
-
 const LayoutChapter = ({ logo, email, children }) => {
 	const data = useStaticQuery(graphql`
 		query {

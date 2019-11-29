@@ -42,6 +42,13 @@ const logoCSS = css`
 	}
 `
 
+const deskMenuCSS = css`
+	display: none;
+	@media (min-width: ${styles.screens.navigation}px) {
+		display: initial;
+	}
+`
+
 const navButtons = css`
 	display: flex;
 	min-width: 100px;
@@ -67,7 +74,18 @@ const hamburgerCSS = css`
 	width: ${styles.scale.px24};
 	background: transparent;
 	border: none;
+	@media (min-width: ${styles.screens.navigation}px) {
+		display: none;
+	}
 `
+
+const donateCSS = css`
+	display: none;
+	@media (min-width: ${styles.screens.navigation}px) {
+		display: initial;
+	}
+`
+
 const Navigation = ({ nav }) => {
 	const { width } = useWindowDimensions()
 	const headerContext = useHeaderContext()
@@ -144,14 +162,13 @@ const Navigation = ({ nav }) => {
 					<LogoColor />
 				)}
 			</div>
-			{width > styles.screens.navigation && (
-				<DeskMenu
-					items={nav}
-					activeItem={activeMegaMenu}
-					handleMouseEnter={handleMouseEnter}
-					handleMouseLeave={handleMouseLeave}
-				/>
-			)}
+			<DeskMenu
+				deskMenuCSS={deskMenuCSS}
+				items={nav}
+				activeItem={activeMegaMenu}
+				handleMouseEnter={handleMouseEnter}
+				handleMouseLeave={handleMouseLeave}
+			/>
 			<div css={navButtons}>
 				<button
 					css={searchCSS}
@@ -166,32 +183,29 @@ const Navigation = ({ nav }) => {
 						}
 					/>
 				</button>
-				{width <= styles.screens.navigation && (
-					<button
-						css={hamburgerCSS}
-						onClick={() => setMenuActive(!isMenuActive)}
-					>
-						{isMenuActive ? (
-							<IconX />
-						) : (
-							// set icon color to white on hover or on light theme
-							<IconHamburger
-								color={
-									(isMobileLight || isDesktopLight) &&
-									!isHover
-										? styles.colors.white
-										: styles.colors.darkGray
-								}
-							/>
-						)}
-					</button>
-				)}
-				{width > styles.screens.navigation && <MenuCTA />}
+				<button
+					css={hamburgerCSS}
+					onClick={() => setMenuActive(!isMenuActive)}
+				>
+					{isMenuActive ? (
+						<IconX />
+					) : (
+						// set icon color to white on hover or on light theme
+						<IconHamburger
+							color={
+								(isMobileLight || isDesktopLight) && !isHover
+									? styles.colors.white
+									: styles.colors.darkGray
+							}
+						/>
+					)}
+				</button>
+				<div css={donateCSS}>
+					<MenuCTA />
+				</div>
 			</div>
 			{isSearchActive && <SearchBar />}
-			{width <= styles.screens.navigation && isMenuActive && (
-				<MobileMenu items={nav} />
-			)}
+			{isMenuActive && <MobileMenu items={nav} />}
 		</div>
 	)
 }

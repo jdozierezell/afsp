@@ -3,8 +3,10 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
+// import FacebookSDK from '../components/Social/FacebookSDK'
 import HeroStories from '../components/Hero/HeroStories'
 import ContentStory from '../components/Content/ContentStory'
+import FacebookComments from '../components/Social/FacebookComments'
 
 import { styles } from '../css/css'
 
@@ -12,8 +14,10 @@ const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 	return (
 		<Layout logo={styles.logo.mobileDarkDesktopLight}>
 			<SEO meta={story.seoMetaTags} />
+			{/* <FacebookSDK /> */}
 			<HeroStories data={story} prev={prev} next={next} />
 			<ContentStory data={story} />
+			<FacebookComments />
 		</Layout>
 	)
 }
@@ -67,18 +71,22 @@ export const query = graphql`
 			}
 			article {
 				... on DatoCmsBody {
+					__typename
 					copy
 				}
 				... on DatoCmsImage {
+					__typename
 					images {
 						url
 						alt
 					}
 				}
 				... on DatoCmsDetailSquare {
+					__typename
 					detail {
 						details {
 							... on DatoCmsContent {
+								__typename
 								id
 								contentHeading
 							}

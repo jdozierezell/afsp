@@ -30,7 +30,7 @@ const emailCSS = css`
 			flex-direction: row !important;
 			flex-wrap: wrap;
 			align-items: center !important;
-			> div:first-child {
+			> div:first-of-type {
 				flex: 1 1 !important;
 				margin: 40px 24px 40px 0 !important;
 			}

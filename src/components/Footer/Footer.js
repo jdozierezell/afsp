@@ -6,7 +6,6 @@ import FooterSocials from './FooterSocials'
 import MobileMenuSection from '../Navigation/MobileMenuSection'
 import DeskFooterSection from '../Navigation/DeskFooterSection'
 import LogoWhite from '../SVGs/LogoWhite'
-import { useWindowDimensions } from '../WindowDimensionsProvider'
 
 import { styles } from '../../css/css'
 
@@ -16,18 +15,29 @@ const footerCSS = css`
 	color: ${styles.colors.white};
 	font-family: ${styles.fonts.avenirRegular};
 	position: relative;
+`
+
+const mobileFooterCSS = css`
+	@media (min-width: ${styles.screens.footer}px) {
+		display: none;
+	}
+`
+
+const desktopFooterCSS = css`
+	display: none;
 	@media (min-width: ${styles.screens.footer}px) {
 		display: grid;
 		grid-template-columns: repeat(6, 1fr) 320px;
 	}
 `
 
-const grid122 = css`
+const logoLegalCSS = css`
 	@media (min-width: ${styles.screens.footer}px) {
-		grid-area: 2 / 1 / 2 / 2;
-		align-self: end;
+		display: grid;
+		grid-template-columns: repeat(6, 1fr) 320px;
 	}
 `
+
 const grid782 = css`
 	@media (min-width: ${styles.screens.footer}px) {
 		grid-area: 2 / 7 / 2 / 8;
@@ -37,6 +47,10 @@ const grid782 = css`
 
 const logoCSS = css`
 	width: ${styles.scale.px126};
+	@media (min-width: ${styles.screens.footer}px) {
+		grid-area: 2 / 1 / 2 / 2;
+		align-self: end;
+	}
 `
 
 const copyrightCSS = css`
@@ -68,11 +82,10 @@ const legalCSS = css`
 	}
 `
 const Footer = ({ nav }) => {
-	const { width } = useWindowDimensions()
 	return (
 		<footer css={footerCSS}>
-			{width > styles.screens.footer &&
-				nav.map((item, index) => {
+			<div css={desktopFooterCSS}>
+				{nav.map((item, index) => {
 					const leftEdge = index * 2 + 1
 					const rightEdge =
 						index + 1 < nav.length ? index * 2 + 3 : index * 2 + 2
@@ -91,34 +104,35 @@ const Footer = ({ nav }) => {
 						</div>
 					)
 				})}
-			{width <= styles.screens.footer && (
-				<>
-					<FooterAside />
-					{nav.map((item, index) => (
-						<MobileMenuSection key={index} item={item} />
-					))}
-					<FooterSocials />
-				</>
-			)}
-			<div css={[logoCSS, grid122]}>
-				<LogoWhite />
 			</div>
-			<small css={copyrightCSS}>
-				© {new Date().getFullYear()} American Foundation for Suicide
-				Prevention. All rights reserved.
-			</small>
-			<div css={grid782}>
-				<ul css={legalCSS}>
-					<li>
-						<a href="https://example.com">Terms of use</a>
-					</li>
-					<li>
-						<a href="https://example.com">Privacy policy</a>
-					</li>
-					<li>
-						<a href="https://example.com">Sitemap</a>
-					</li>
-				</ul>
+			<div css={mobileFooterCSS}>
+				<FooterAside />
+				{nav.map((item, index) => (
+					<MobileMenuSection key={index} item={item} />
+				))}
+				<FooterSocials />
+			</div>
+			<div css={logoLegalCSS}>
+				<div css={logoCSS}>
+					<LogoWhite />
+				</div>
+				<small css={copyrightCSS}>
+					© {new Date().getFullYear()} American Foundation for Suicide
+					Prevention. All rights reserved.
+				</small>
+				<div css={grid782}>
+					<ul css={legalCSS}>
+						<li>
+							<a href="https://example.com">Terms of use</a>
+						</li>
+						<li>
+							<a href="https://example.com">Privacy policy</a>
+						</li>
+						<li>
+							<a href="https://example.com">Sitemap</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 			<script
 				type="text/javascript"

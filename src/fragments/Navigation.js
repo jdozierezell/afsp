@@ -20,24 +20,30 @@ export const Navigation = graphql`
 				}
 				navigationItem {
 					... on DatoCmsChildItem {
+						__typename
 						childHeading
 						childLink {
 							... on DatoCmsLanding {
+								__typename
 								slug
 							}
 							... on DatoCmsDetail {
+								__typename
 								slug
 							}
 							... on DatoCmsChapterSearch {
+								__typename
 								slug
 							}
 						}
 						childExternalLink
 					}
 					... on DatoCmsFeaturedItem {
+						__typename
 						featuredHeading
 						featuredLink {
 							... on DatoCmsLanding {
+								__typename
 								slug
 								seo {
 									image {

@@ -31,7 +31,7 @@ const emailCSS = css`
 			flex-direction: row !important;
 			flex-wrap: wrap;
 			align-items: center !important;
-			> div:first-child {
+			> div:first-of-type {
 				width: 100% !important;
 				@media (min-width: ${styles.screens.tablet}px) {
 					flex: 1 1 !important;

@@ -78,13 +78,14 @@ const featuredCSS = css`
 `
 
 const MenuItems = ({
+	deskMenuCSS,
 	items,
 	activeItem,
 	handleMouseEnter,
 	handleMouseLeave,
 }) => {
 	return (
-		<nav>
+		<nav css={deskMenuCSS}>
 			<ul css={menuCSS}>
 				{items.map((item, index) => {
 					const url = buildUrl(

@@ -26,7 +26,7 @@ const storyHeroCSS = css`
 const storyMetaCSS = css`
 	@media (min-width: ${styles.screens.tablet}px) {
 		grid-area: 1 / 2 / 2 / 3;
-		z-index: 1000;
+		z-index: 100;
 		margin: ${styles.scale.px180} 0 ${styles.scale.px80};
 	}
 	h1 {
