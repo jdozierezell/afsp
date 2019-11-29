@@ -145,6 +145,7 @@ const MenuItems = ({
 																${featuredCSS};
 																background-image: url(${featuredImage});
 															`}
+															key={index}
 														>
 															<h5>Featured</h5>
 															<h3>

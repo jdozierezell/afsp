@@ -62,11 +62,12 @@
 	],
 	"license": "MIT",
 	"scripts": {
+		"bs": "gatsby build && gatsby serve",
 		"build": "gatsby build",
 		"develop": "gatsby develop",
 		"format": "prettier --write src/**/*.{js,jsx}",
-		"start": "npm run develop",
 		"serve": "gatsby serve",
+		"start": "npm run develop",
 		"test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
 	},
 	"repository": {

@@ -71,7 +71,6 @@ const carouselButtonsCSS = css`
 `
 
 const ContentStory = ({ data }) => {
-	console.log(data.article)
 	const { width } = useWindowDimensions()
 	useEffect(() => {
 		const hasImages = document.getElementsByClassName('glide-image')

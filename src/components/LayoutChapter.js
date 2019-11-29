@@ -10,7 +10,7 @@ import HeaderContextProvider from './HeaderContextProvider'
 const LayoutChapter = ({ logo, email, children }) => {
 	const data = useStaticQuery(graphql`
 		query {
-			nav: allDatoCmsNavigation {
+			nav: allDatoCmsNavigation(sort: { fields: position, order: ASC }) {
 				...Navigation
 			}
 		}
