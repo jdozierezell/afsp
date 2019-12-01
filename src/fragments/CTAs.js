@@ -5,6 +5,7 @@ export const CTAs = graphql`
 		cta {
 			callToAction {
 				... on DatoCmsCtaVideo {
+					__typename
 					videoUrl
 					heading
 					brief
@@ -12,12 +13,14 @@ export const CTAs = graphql`
 					linkUrl
 				}
 				... on DatoCmsCtaWithDescription {
+					__typename
 					heading
 					brief
 					linkText
 					linkUrl
 				}
 				... on DatoCmsCtaNoDescription {
+					__typename
 					heading
 					linkText
 					linkUrl

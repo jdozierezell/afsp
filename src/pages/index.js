@@ -106,10 +106,12 @@ export const query = graphql`
 				linkText
 				link {
 					... on DatoCmsLanding {
+						__typename
 						title
 						slug
 					}
 					... on DatoCmsDetail {
+						__typename
 						title
 						slug
 					}
@@ -117,36 +119,18 @@ export const query = graphql`
 			}
 			ctaChapterResourceList {
 				... on DatoCmsCallToAction {
-					# cta {
-					# 	callToAction {
-					# 		... on DatoCmsCtaVideo {
-					# 			videoUrl
-					# 			heading
-					# 			brief
-					# 			linkText
-					# 			linkUrl
-					# 		}
-					# 		... on DatoCmsCtaWithDescription {
-					# 			heading
-					# 			brief
-					# 			linkText
-					# 			linkUrl
-					# 		}
-					# 		... on DatoCmsCtaNoDescription {
-					# 			heading
-					# 			linkText
-					# 			linkUrl
-					# 		}
-					# 	}
-					# }
+					__typename
 					...CTAs
 				}
 				... on DatoCmsChapterConnection {
+					__typename
 					showChapterConnection
 				}
 				... on DatoCmsResourceList {
+					__typename
 					resource {
 						... on DatoCmsDetail {
+							__typename
 							title
 							slug
 							seo {
@@ -168,6 +152,7 @@ export const query = graphql`
 							}
 						}
 						... on DatoCmsLanding {
+							__typename
 							title
 							slug
 							seo {

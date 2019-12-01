@@ -31,40 +31,51 @@ export const query = graphql`
 			title
 			brief
 			statisticsCallouts {
+				__typename
 				... on DatoCmsStatisticsCallout {
 					callout
 				}
 				... on DatoCmsCtaLink {
+					__typename
 					link {
 						callToAction {
 							... on DatoCmsCtaWithDescription {
+								__typename
 								brief
 								external
 								linkText
 								linkUrl
 								link {
 									... on DatoCmsTag {
+										__typename
 										slug
 									}
 									... on DatoCmsStory {
+										__typename
 										slug
 									}
 									... on DatoCmsDetail {
+										__typename
 										slug
 									}
 									... on DatoCmsAuthor {
+										__typename
 										slug
 									}
 									... on DatoCmsLanding {
+										__typename
 										slug
 									}
 									... on DatoCmsRealStory {
+										__typename
 										slug
 									}
 									... on DatoCmsChapterSearch {
+										__typename
 										slug
 									}
 									... on DatoCmsStatistic {
+										__typename
 										slug
 									}
 								}
@@ -81,24 +92,31 @@ export const query = graphql`
 			videoLinkText
 			videoLink {
 				... on DatoCmsLanding {
+					__typename
 					slug
 				}
 				... on DatoCmsDetail {
+					__typename
 					slug
 					parentPage {
 						... on DatoCmsLanding {
+							__typename
 							slug
 						}
 						... on DatoCmsDetail {
+							__typename
 							slug
 							parentPage {
 								... on DatoCmsLanding {
+									__typename
 									slug
 								}
 								... on DatoCmsDetail {
+									__typename
 									slug
 									parentPage {
 										... on DatoCmsDetail {
+											__typename
 											slug
 										}
 									}
@@ -127,6 +145,7 @@ export const query = graphql`
 			callToAction1 {
 				callToAction {
 					... on DatoCmsCtaVideo {
+						__typename
 						videoUrl
 						heading
 						brief
@@ -134,11 +153,13 @@ export const query = graphql`
 						linkUrl
 					}
 					... on DatoCmsCtaNoDescription {
+						__typename
 						heading
 						linkText
 						linkUrl
 					}
 					... on DatoCmsCtaWithDescription {
+						__typename
 						heading
 						brief
 						linkText
@@ -154,6 +175,7 @@ export const query = graphql`
 			callToAction2 {
 				callToAction {
 					... on DatoCmsCtaVideo {
+						__typename
 						videoUrl
 						heading
 						brief
@@ -161,11 +183,13 @@ export const query = graphql`
 						linkUrl
 					}
 					... on DatoCmsCtaNoDescription {
+						__typename
 						heading
 						linkText
 						linkUrl
 					}
 					... on DatoCmsCtaWithDescription {
+						__typename
 						heading
 						brief
 						linkText

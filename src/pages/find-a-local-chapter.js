@@ -82,6 +82,7 @@ export const query = graphql`
 			}
 			callsToAction {
 				... on DatoCmsCallToAction {
+					__typename
 					...CTAs
 				}
 			}

@@ -66,6 +66,7 @@ export const query = graphql`
 			callToAction1 {
 				callToAction {
 					... on DatoCmsCtaVideo {
+						__typename
 						videoUrl
 						heading
 						brief
@@ -73,12 +74,14 @@ export const query = graphql`
 						linkUrl
 					}
 					... on DatoCmsCtaWithDescription {
+						__typename
 						heading
 						brief
 						linkText
 						linkUrl
 					}
 					... on DatoCmsCtaNoDescription {
+						__typename
 						heading
 						linkText
 						linkUrl
@@ -88,6 +91,7 @@ export const query = graphql`
 			callToAction2 {
 				callToAction {
 					... on DatoCmsCtaVideo {
+						__typename
 						videoUrl
 						heading
 						brief
@@ -95,12 +99,14 @@ export const query = graphql`
 						linkUrl
 					}
 					... on DatoCmsCtaWithDescription {
+						__typename
 						heading
 						brief
 						linkText
 						linkUrl
 					}
 					... on DatoCmsCtaNoDescription {
+						__typename
 						heading
 						linkText
 						linkUrl

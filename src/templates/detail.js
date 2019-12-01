@@ -34,10 +34,12 @@ export const query = graphql`
 			}
 			details {
 				... on DatoCmsContent {
+					__typename
 					contentHeading
 					contentBody
 				}
 				... on DatoCmsRecommendation {
+					__typename
 					videoTitle
 					videoUrl
 					storyRecommendation {
@@ -48,6 +50,7 @@ export const query = graphql`
 					}
 				}
 				... on DatoCmsCardContainer {
+					__typename
 					cardContainerHeading
 					cardContainerList {
 						cardCategory

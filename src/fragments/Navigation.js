@@ -9,12 +9,15 @@ export const Navigation = graphql`
 				displayTitle
 				displayLink {
 					... on DatoCmsLanding {
+						__typename
 						slug
 					}
 					... on DatoCmsRealStory {
+						__typename
 						slug
 					}
 					... on DatoCmsChapterSearch {
+						__typename
 						slug
 					}
 				}
