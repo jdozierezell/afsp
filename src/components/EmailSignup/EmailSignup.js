@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 
 import { styles } from '../../css/css'
@@ -102,13 +102,17 @@ const emailCSS = css`
 // `
 
 const EmailSignup = () => {
+	const [showEmail, setEmail] = useState(false)
+	useEffect(() => {
+		setEmail(true)
+	})
 	return (
 		<div css={emailCSS}>
 			<div>
 				<h2>Sign up for email alerts</h2>
 				<p>Join our network and be the first to take action</p>
 			</div>
-			<div className="klaviyo-form-LGcf3Q"></div>
+			{showEmail && <div className="klaviyo-form-LGcf3Q"></div>}
 			{/* <div css={subscribeCSS}>
 				<input placeholder="Email address" type="text" />
 				<a className="secondary-button" href="https://example.com">
