@@ -2,12 +2,28 @@ import React from 'react'
 
 const FacebookSDK = () => {
 	return (
-		<script
-			async
-			defer
-			crossOrigin="anonymous"
-			src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=2546027162151797&autoLogAppEvents=1"
-		></script>
+		<div>
+			<script>
+				window.fbAsyncInit = function(){' '}
+				{FB.init({
+					appId: '2546027162151797',
+					autoLogAppEvents: true,
+					xfbml: true,
+					version: 'v5.0',
+				})}
+			</script>
+			<script
+				async
+				defer
+				src="https://connect.facebook.net/en_US/sdk.js"
+			></script>
+			<div
+				class="fb-like"
+				data-share="true"
+				data-width="450"
+				data-show-faces="true"
+			></div>
+		</div>
 	)
 }
 
