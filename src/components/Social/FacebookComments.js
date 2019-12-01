@@ -3,7 +3,7 @@ import { FacebookProvider, Comments } from 'react-facebook'
 
 const FacebookComments = () => {
 	return (
-		<FacebookProvider appId="123456789">
+		<FacebookProvider appId="2546027162151797">
 			<Comments href="http://www.facebook.com" />
 		</FacebookProvider>
 	)
