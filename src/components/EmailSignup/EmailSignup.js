@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { css } from '@emotion/core'
 
 import { styles } from '../../css/css'
@@ -102,10 +102,6 @@ const emailCSS = css`
 // `
 
 const EmailSignup = () => {
-	const [showEmail, setEmail] = useState(false)
-	useEffect(() => {
-		setEmail(true)
-	})
 	return (
 		<div css={emailCSS}>
 			<div>
