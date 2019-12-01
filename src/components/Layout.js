@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
 import Header from './Header/Header'
@@ -8,6 +8,7 @@ import WindowDimensionsProvider from './WindowDimensionsProvider'
 import HeaderContextProvider from './HeaderContextProvider'
 
 const Layout = ({ logo, children }) => {
+	const [showEmail, setEmail] = useState(false)
 	const data = useStaticQuery(graphql`
 		query {
 			nav: allDatoCmsNavigation(sort: { fields: position, order: ASC }) {
@@ -25,13 +26,16 @@ const Layout = ({ logo, children }) => {
 			footerNav.push(node)
 		}
 	})
+	useEffect(() => {
+		setEmail(true)
+	})
 	return (
 		<WindowDimensionsProvider>
 			<HeaderContextProvider value={logo}>
 				<Header nav={headerNav} />
 			</HeaderContextProvider>
 			<main>{children}</main>
-			<EmailSignup />
+			{showEmail && <EmailSignup />}
 			<Footer nav={footerNav} />
 		</WindowDimensionsProvider>
 	)
