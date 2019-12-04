@@ -25,7 +25,8 @@ const client = new ApolloClient({
 		fetch,
 	}),
 })
-// create query
+
+// create query for squares
 export const GET_QUILTS = gql`
 	query($skip: IntType) {
 		quilts: allQuiltSquares(skip: $skip) {
@@ -37,8 +38,22 @@ export const GET_QUILTS = gql`
 		}
 	}
 `
+
+// create query for selected square
+export const GET_SELECTED = gql`
+  query($id: ItemId) {
+    selected: quiltSquare(filter: { id: { eq: $id } }) {
+      id
+      title
+      quiltImage {
+        url
+      }
+    }
+  }
+`
 // style quilt squares
 const sectionCSS = css`
+<<<<<<< HEAD
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: flex-start;
@@ -53,9 +68,64 @@ const sectionCSS = css`
 		margin: 0;
 		padding: 0;
 	}
+=======
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+>>>>>>> quilt
 `
+
+const squareCSS = css`
+  margin: 0;
+  padding: 0;
+  width: 10%;
+`
+
+const imageCSS = css`
+  display: block;
+  margin: 0;
+  padding: 0;
+`
+
+const selectedCSS = css`
+  width: 100%;
+`
+
+// component that builds quilt square
+const QuiltSquare = ({ quilt, selected, handleClick }) => {
+  const isSelected = quilt.id === selected
+  return (
+    <div
+      css={isSelected ? [squareCSS, selectedCSS] : squareCSS}
+      key={quilt.id}
+      id={quilt.id}
+      onClick={() => {
+        // update the window history to provide a deep link to quilt square
+        window.history.pushState(
+          { id: quilt.id }, // give history state an id
+          `Memory Quilt | ${quilt.title}`, // give page a title
+          `?q=${quilt.id}` // create the new url with variables to base on render
+        )
+      }}
+    >
+      <img
+        css={imageCSS}
+        onClick={() => {
+          // handleClick lets parent know which element was clicked on
+          handleClick(quilt.id)
+        }}
+        src={`${quilt.quiltImage.url}?w=200&h=200&fit=crop&crop=faces`}
+        alt=""
+      />
+    </div>
+  )
+}
+
 // component to display quilt squares
 const QuiltSquares = () => {
+<<<<<<< HEAD
 	const [loadMore, setLoadMore] = useState(0)
 	const { data, loading, error, fetchMore } = useQuery(GET_QUILTS, {
 		variables: {
@@ -125,6 +195,79 @@ const QuiltSquares = () => {
 			)}
 		</>
 	)
+=======
+  const urlParams = new URLSearchParams(window.location.search)
+  const quiltParam = urlParams.has('q') ? urlParams.get('q') : null
+  const [loadMore, setLoadMore] = useState(0)
+  const [selected, setSelected] = useState(quiltParam)
+
+  const selectedQuiltQuery = useQuery(GET_SELECTED, {
+    variables: {
+      id: selected,
+    },
+  })
+  const selectedData = selectedQuiltQuery.data,
+    selectedLoading = selectedQuiltQuery.loading,
+    selectedError = selectedQuiltQuery.error,
+    selectedFetchMore = selectedQuiltQuery.fetchMore
+  const quilts = useQuery(GET_QUILTS, {
+    variables: {
+      skip: 0,
+    },
+  })
+  const quiltsData = quilts.data,
+    quiltsLoading = quilts.loading,
+    quiltsError = quilts.error,
+    quiltsFetchMore = quilts.fetchMore
+
+  const handleClick = id => {
+    // sets selected element for each click
+    setSelected(id)
+  }
+  if (quiltsLoading) return 'Loading...'
+  if (quiltsError) return `ERROR ${quiltsError.message}`
+  return (
+    <>
+      <section css={sectionCSS}>
+        {quiltsData.quilts &&
+          quiltsData.quilts.map(quilt => {
+            return (
+              <QuiltSquare
+                // css={}
+                key={quilt.id}
+                quilt={quilt}
+                selected={selected}
+                handleClick={handleClick}
+              />
+            ) // displays quilt squares
+          })}
+      </section>
+      {quiltsData.quilts && (
+        <button
+          onClick={() => {
+            setLoadMore(loadMore + 1)
+            // adds quilt squares to query on click
+            quiltsFetchMore({
+              variables: {
+                skip: quiltsData.quilts.length,
+              },
+              updateQuery: (prev, { fetchMoreResult, ...rest }) => {
+                if (!fetchMoreResult) return prev
+                const returnQuilts = {
+                  ...prev,
+                  quilts: [...prev.quilts, ...fetchMoreResult.quilts],
+                }
+                return returnQuilts
+              },
+            })
+          }}
+        >
+          {`Load More - ${loadMore}`}
+        </button>
+      )}
+    </>
+  )
+>>>>>>> quilt
 }
 // main component that displays QuiltSquares
 const Quilt = () => {
