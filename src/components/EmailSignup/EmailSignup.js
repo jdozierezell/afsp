@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { css } from '@emotion/core'
 
 import { styles } from '../../css/css'
+
+// if Klaviyo issue persists, legacy form available at https://help.klaviyo.com/hc/en-us/articles/115005249588-Add-and-Customize-a-Legacy-Embedded-Signup-Form
 
 const emailCSS = css`
 	background-color: ${styles.colors.lightGray};
@@ -101,14 +103,19 @@ const emailCSS = css`
 // 	}
 // `
 
-const EmailSignup = () => {
+const EmailSignup = ({ formId, children }) => {
+	useEffect(() => {
+		const script = document.createElement('script')
+		script.src =
+			'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=JXzNvL'
+		script.async = true
+
+		document.body.appendChild(script)
+	})
 	return (
 		<div css={emailCSS}>
-			<div>
-				<h2>Sign up for email alerts</h2>
-				<p>Join our network and be the first to take action</p>
-			</div>
-			<div className="klaviyo-form-LGcf3Q"></div>
+			{children}
+			<div className={`klaviyo-form-${formId}`}></div>
 			{/* <div css={subscribeCSS}>
 				<input placeholder="Email address" type="text" />
 				<a className="secondary-button" href="https://example.com">

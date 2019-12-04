@@ -2,7 +2,7 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
 import Header from './Header/Header'
-import EmailSignupChapter from './EmailSignup/EmailSignupChapter'
+import EmailSignup from './EmailSignup/EmailSignup'
 import Footer from './Footer/Footer'
 import WindowDimensionsProvider from './WindowDimensionsProvider'
 import HeaderContextProvider from './HeaderContextProvider'
@@ -31,7 +31,11 @@ const LayoutChapter = ({ logo, email, children }) => {
 				<Header nav={headerNav} />
 			</HeaderContextProvider>
 			<main>{children}</main>
-			<EmailSignupChapter email={email} />
+			<EmailSignup formId={email}>
+				<div>
+					<h2>Sign up for chapter news</h2>
+				</div>
+			</EmailSignup>
 			<Footer nav={footerNav} />
 		</WindowDimensionsProvider>
 	)

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import LogoColor from '../SVGs/LogoColor'
 import LogoWhite from '../SVGs/LogoWhite'
@@ -146,14 +147,16 @@ const Navigation = ({ nav }) => {
 			onMouseLeave={() => setHover(false)}
 		>
 			<div css={logoCSS}>
-				{/* if headerContext is light, logo defaults to white otherwise color; logo is color on hover in all contexts */}
-				{(isMobileLight || isDesktopLight) &&
-				!isHover &&
-				!isMenuActive ? (
-					<LogoWhite />
-				) : (
-					<LogoColor />
-				)}
+				<AniLink fade duration={styles.duration} to={`/`}>
+					{/* if headerContext is light, logo defaults to white otherwise color; logo is color on hover in all contexts */}
+					{(isMobileLight || isDesktopLight) &&
+					!isHover &&
+					!isMenuActive ? (
+						<LogoWhite />
+					) : (
+						<LogoColor />
+					)}
+				</AniLink>
 			</div>
 			<DeskMenu
 				deskMenuCSS={deskMenuCSS}

@@ -11,7 +11,7 @@ import { styles } from '../../css/css'
 
 import '@glidejs/glide/dist/css/glide.core.min.css'
 
-const carouselCSS = css`
+const defaultCarouselCSS = css`
 	padding: ${styles.scale.px25} ${styles.scale.px24};
 	overflow: hidden;
 	@media (min-width: ${styles.screens.mobile}px) {
@@ -69,7 +69,7 @@ const carouselButtonsCSS = css`
 	}
 `
 
-const CarouselChapterContainer = ({ location }) => {
+const CarouselChapterContainer = ({ location, carouselCSS }) => {
 	const data = useStaticQuery(graphql`
 		query {
 			chapters: allDatoCmsChapterHomePage {
@@ -110,7 +110,12 @@ const CarouselChapterContainer = ({ location }) => {
 	}, [chapters, displayChapters])
 
 	return (
-		<div css={carouselCSS}>
+		<div
+			css={css`
+				${defaultCarouselCSS}
+				${carouselCSS}
+			`}
+		>
 			<div css={carouselHeaderWrapperCSS}>
 				<h2>Connection makes a difference</h2>
 				<a href="https://example.com" className="secondary-button">

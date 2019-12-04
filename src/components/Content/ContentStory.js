@@ -2,8 +2,10 @@ import React, { useEffect } from 'react'
 import Glide from '@glidejs/glide'
 import { css } from '@emotion/core'
 
-import IconFacebook from '../SVGs/IconFacebook'
-import IconTwitter from '../SVGs/IconTwitter'
+import FacebookShare from '../Social/FacebookShare'
+import TwitterShare from '../Social/TwitterShare'
+import EmailShare from '../Social/EmailShare'
+import FacebookComments from '../Social/FacebookComments'
 import IconLink from '../SVGs/IconLink'
 import { useWindowDimensions } from '../WindowDimensionsProvider'
 
@@ -19,21 +21,6 @@ const storyContentCSS = css`
 		grid-template-columns: 1fr 2fr 1fr;
 		grid-column-gap: ${styles.gridGap.desktop};
 	}
-	> aside {
-		@media (min-width: ${styles.screens.tablet}px) {
-			grid-column: 1 / 2;
-			margin-left: ${styles.scale.px50};
-		}
-		div {
-			max-width: ${styles.scale.px30};
-			svg {
-				margin-bottom: ${styles.scale.px16};
-			}
-		}
-		h3 {
-			font-size: ${styles.scale.px18};
-		}
-	}
 	.storyContent {
 		margin: ${styles.scale.px50} ${styles.scale.px24};
 		@media (min-width: ${styles.screens.tablet}px) {
@@ -44,6 +31,22 @@ const storyContentCSS = css`
 		:first-of-type {
 			margin-top: 0;
 		}
+	}
+`
+
+const socialButtonsCSS = css`
+	@media (min-width: ${styles.screens.tablet}px) {
+		grid-column: 1 / 2;
+		margin-left: ${styles.scale.px50};
+	}
+	div {
+		max-width: ${styles.scale.px30};
+		svg {
+			margin-bottom: ${styles.scale.px16};
+		}
+	}
+	h3 {
+		font-size: ${styles.scale.px18};
 	}
 `
 
@@ -82,12 +85,12 @@ const ContentStory = ({ data }) => {
 	return (
 		<section css={storyContentCSS}>
 			{width > styles.screens.tablet && (
-				<aside>
+				<aside css={socialButtonsCSS}>
 					<h3>Share this Story</h3>
 					<div>
-						<IconFacebook color={styles.colors.darkGray} />
-						<IconTwitter color={styles.colors.darkGray} />
-						<IconLink color={styles.colors.darkGray} />
+						<FacebookShare />
+						<TwitterShare />
+						<EmailShare />
 					</div>
 				</aside>
 			)}
@@ -171,6 +174,7 @@ const ContentStory = ({ data }) => {
 				}
 				return ''
 			})}
+			<FacebookComments />
 		</section>
 	)
 }

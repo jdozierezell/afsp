@@ -9,6 +9,7 @@ import ChannelContainer from '../components/Channel/ChannelContainer'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import FeaturedResourcesContainer from '../components/FeaturedProgramsResources/FeaturedResourcesContainer'
+import InstagramFeed from '../components/Social/InstagramFeed'
 
 import { styles } from '../css/css'
 
@@ -69,6 +70,7 @@ const App = ({ data: { home } }) => {
 				}
 				return ''
 			})}
+			<InstagramFeed />
 		</Layout>
 	)
 }

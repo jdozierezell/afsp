@@ -1,23 +1,30 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-// import FacebookSDK from '../components/Social/FacebookSDK'
 import HeroStories from '../components/Hero/HeroStories'
 import ContentStory from '../components/Content/ContentStory'
-import FacebookComments from '../components/Social/FacebookComments'
+import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
+
+import '../utils/facebookSDK'
 
 import { styles } from '../css/css'
+
+const carouselCSS = css`
+	@media (min-width: ${styles.screens.mobile}px) {
+		background-color: ${styles.colors.white};
+	}
+`
 
 const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 	return (
 		<Layout logo={styles.logo.mobileDarkDesktopLight}>
 			<SEO meta={story.seoMetaTags} />
-			{/* <FacebookSDK /> */}
 			<HeroStories data={story} prev={prev} next={next} />
 			<ContentStory data={story} />
-			<FacebookComments />
+			<CarouselChapterContainer carouselCSS={carouselCSS} />
 		</Layout>
 	)
 }
