@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
@@ -62,17 +62,16 @@ const QuiltSquareContainer = () => {
 	const quiltParam = urlParams.has('q') ? urlParams.get('q') : null
 	const [loadMore, setLoadMore] = useState(0)
 	const [selected, setSelected] = useState(quiltParam)
-	const [squareSize, setSquareSize] = useState({ width: -1, height: -1 })
 
-	const selectedQuiltQuery = useQuery(GET_SELECTED, {
-		variables: {
-			id: selected,
-		},
-	})
-	const selectedData = selectedQuiltQuery.data,
-		selectedLoading = selectedQuiltQuery.loading,
-		selectedError = selectedQuiltQuery.error,
-		selectedFetchMore = selectedQuiltQuery.fetchMore
+	// const selectedQuiltQuery = useQuery(GET_SELECTED, {
+	// 	variables: {
+	// 		id: selected,
+	// 	},
+	// })
+	// const selectedData = selectedQuiltQuery.data,
+	// 	selectedLoading = selectedQuiltQuery.loading,
+	// 	selectedError = selectedQuiltQuery.error,
+	// 	selectedFetchMore = selectedQuiltQuery.fetchMore
 	const quilts = useQuery(GET_QUILTS, {
 		variables: {
 			skip: 0,
@@ -87,6 +86,10 @@ const QuiltSquareContainer = () => {
 		// sets selected element for each click
 		setSelected(id)
 	}
+
+	useEffect(() => {
+		console.log(selected)
+	}, [selected])
 
 	if (quiltsLoading) return 'Loading...'
 	if (quiltsError) return `ERROR ${quiltsError.message}`

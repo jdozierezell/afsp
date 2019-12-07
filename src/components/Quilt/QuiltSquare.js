@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { css } from '@emotion/core'
 import { useSpring, animated as a } from 'react-spring'
+
+import { useWindowDimensions } from '../WindowDimensionsProvider'
+
 import { styles } from '../../css/css'
 
 const squareCSS = css`
@@ -18,53 +21,55 @@ const imageCSS = css`
 
 const QuiltSquare = ({ quilt, selected, handleClick, index }) => {
 	const isSelected = quilt.id === selected
-	const scale = isSelected ? 2 : 1
-	const top = isSelected ? 20 : 0
+	const percentSize = 50
 
-	const trans = s => `perspective(600px) scale(${s})`
+	const [edges, setEdges] = useState({ top: 0, left: 0 })
+	const [squareSize, setSize] = useState(0)
+	const squareRef = useRef(null)
 
-	const [props, set] = useSpring(() => ({
-		scale: 1,
-		top: 0,
-		right: 0,
-		bottom: 0,
-		left: 0,
-		config: { mass: 5, tension: 350, friction: 40 },
-	}))
+	const { width, height } = useWindowDimensions()
+	const { transform, top, left, size } = useSpring({
+		top: isSelected ? edges.top : 'auto',
+		left: isSelected ? edges.left : 'auto',
+		size: isSelected ? squareSize : 'auto',
+		transform: `perspective(600px) scale(${isSelected ? 2 : 1})`,
+		config: { mass: 5, tension: 500, friction: 80 },
+	})
 
-	useEffect(() => console.log(`${isSelected} ${quilt.id}`))
+	useEffect(() => {
+		if (isSelected) {
+			setSize(
+				width > height
+					? (height / 100) * percentSize
+					: (width / 100) * percentSize
+			)
+			setEdges({
+				top: squareRef.current.getBoundingClientRect().top,
+				left: squareRef.current.getBoundingClientRect().left,
+			})
+		}
+	}, [isSelected, height, width])
 
 	return (
 		<a.div
-			style={{
-				transform: props.scale.interpolate(
-					scale => `perspective(600px) scale(${scale})`
-				),
-				top: props.top.interpolate(top => `${top}px`),
-			}}
+			ref={squareRef}
+			style={{ transform, top, left, size }}
 			css={squareCSS}
 			key={quilt.id}
 			id={quilt.id}
 			className={`quilt-col-${(index + 5) % 5}`}
-			onClick={({ clientX: x, clientY: y }) => {
+			onClick={() => {
 				// update the window history to provide a deep link to quilt square
-				// setIsSelected(!isSelected)
 				window.history.pushState(
 					{ id: quilt.id }, // give history state an id
 					`Memory Quilt | ${quilt.title}`, // give page a title
 					`?q=${quilt.id}` // create the new url with variables to base on render
 				)
-				set({ scale: scale, top: top })
-				console.log('clicked div')
+				handleClick(quilt.id)
 			}}
 		>
 			<img
 				css={imageCSS}
-				onClick={() => {
-					// handleClick lets parent know which element was clicked on
-					handleClick(quilt.id)
-					console.log('clicked img')
-				}}
 				src={`${quilt.quiltImage.url}?w=1080&h=1080&fit=crop&crop=faces`}
 				alt=""
 			/>
