@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { css } from '@emotion/core'
-import { useSpring, animated } from 'react-spring'
+import { useSpring, animated as a } from 'react-spring'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import buildUrl from '../../utils/buildUrl'
@@ -90,16 +90,16 @@ const MenuSection = ({ item }) => {
 					)}
 				</h2>
 				{item.navigationItem.length >= 1 && (
-					<animated.button
+					<a.button
 						css={iconCaretCSS}
 						style={flipCaret}
 						onClick={() => setCaretFlipped(!isCaretFlipped)}
 					>
 						<IconCaret color={styles.colors.white} />
-					</animated.button>
+					</a.button>
 				)}
 			</div>
-			<animated.ul css={menuListCSS} style={showList} ref={listRef}>
+			<a.ul css={menuListCSS} style={showList} ref={listRef}>
 				{item.navigationItem.map((navItem, index) => {
 					let url = ''
 					if (
@@ -129,7 +129,7 @@ const MenuSection = ({ item }) => {
 						</li>
 					)
 				})}
-			</animated.ul>
+			</a.ul>
 			<hr
 				css={css`
 					border-top: 1px solid ${styles.colors.white};

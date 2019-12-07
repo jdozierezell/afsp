@@ -11,6 +11,7 @@ const FacebookShare = () => {
 			target="_blank"
 			href={`https://www.facebook.com/sharer/sharer.php?u=${uri}&amp;src=sdkpreparse`}
 			className="fb-xfbml-parse-ignore"
+			rel="noopener noreferrer"
 		>
 			<IconFacebook color={styles.colors.darkGray} />
 		</a>

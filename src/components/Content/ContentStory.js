@@ -6,7 +6,6 @@ import FacebookShare from '../Social/FacebookShare'
 import TwitterShare from '../Social/TwitterShare'
 import EmailShare from '../Social/EmailShare'
 import FacebookComments from '../Social/FacebookComments'
-import IconLink from '../SVGs/IconLink'
 import { useWindowDimensions } from '../WindowDimensionsProvider'
 
 import { styles } from '../../css/css'

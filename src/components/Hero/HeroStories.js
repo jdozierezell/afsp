@@ -106,6 +106,14 @@ const followingStoryCSS = css`
 	}
 `
 
+const mobileImageCSS = css`
+	 {
+		@media (min-width: ${styles.screens.tablet}px) {
+			display: none;
+		}
+	}
+`
+
 const storyButtonCSS = css`
 	display: inline-block;
 	background: transparent;
@@ -116,7 +124,6 @@ const storyButtonCSS = css`
 `
 
 const HeroStories = ({ data, prev, next }) => {
-	const { width } = useWindowDimensions()
 	const {
 		title,
 		publicationDate,
@@ -187,9 +194,7 @@ const HeroStories = ({ data, prev, next }) => {
 							})}
 					</ul>
 				</h3>
-				{width <= styles.screens.tablet && (
-					<img src={mobileCover.fluid.src} alt="" />
-				)}
+				<img css={mobileImageCSS} src={mobileCover.fluid.src} alt="" />
 			</div>
 			{prev && (
 				<div css={previousStoryCSS}>
