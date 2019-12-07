@@ -41,6 +41,7 @@ export const query = graphql`
 			publicationDate(formatString: "D MMM YYYY")
 			author {
 				authorName
+				slug
 			}
 			tags {
 				tag

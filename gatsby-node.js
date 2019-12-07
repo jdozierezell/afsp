@@ -100,6 +100,7 @@ exports.createPages = async ({ graphql, actions }) => {
 			component: path.resolve('./src/templates/tag.js'),
 			context: {
 				slug: node.slug,
+				title: node.tag,
 			},
 		})
 	})
@@ -110,6 +111,7 @@ exports.createPages = async ({ graphql, actions }) => {
 			component: path.resolve('./src/templates/author.js'),
 			context: {
 				slug: node.slug,
+				title: node.authorName,
 			},
 		})
 	})

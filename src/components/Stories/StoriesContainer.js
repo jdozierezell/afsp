@@ -76,7 +76,7 @@ const StoriesContainer = ({ header, first, offset, more, stories }) => {
 						className="secondary-button"
 						onClick={() => setDisplayNumber(displayNumber + 6)}
 					>
-						Load more {more.toLowerCase()}
+						Load more
 					</button>
 				</div>
 			)}

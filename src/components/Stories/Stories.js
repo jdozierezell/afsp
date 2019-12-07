@@ -60,16 +60,22 @@ const Stories = ({ story: { node } }) => {
 			{node.author && (
 				<h3>
 					By{' '}
-					{node.author.map((author, index) => (
-						<AniLink
-							key={index}
-							fade
-							duration={styles.duration}
-							to={`/author/${author.slug}`}
-						>
-							{author.authorName}
-						</AniLink>
-					))}
+					{node.author.map((author, index) => {
+						if (author.authorName !== 'AFSP') {
+							return (
+								<AniLink
+									key={index}
+									fade
+									duration={styles.duration}
+									to={`/author/${author.slug}`}
+								>
+									{author.authorName}
+								</AniLink>
+							)
+						} else {
+							return author.authorName
+						}
+					})}
 				</h3>
 			)}
 		</div>

@@ -65,7 +65,6 @@ const QuiltSquareContainer = () => {
 	const [loadMore, setLoadMore] = useState(0)
 	const [selected, setSelected] = useState(quiltParam)
 	const [clean, setClean] = useState(true)
-	console.log(quiltParam)
 	const selectedQuilt = useQuery(GET_SELECTED, {
 		variables: {
 			id: selected,
@@ -118,7 +117,6 @@ const QuiltSquareContainer = () => {
 	} else {
 		renderQuilts = quiltsData.quilts
 	}
-	console.log(renderQuilts)
 
 	return (
 		<>

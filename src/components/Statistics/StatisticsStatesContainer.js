@@ -222,9 +222,6 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 		styles.colors.fuchsia,
 	]
 	const [selection, setSelection] = useState([])
-	useEffect(() => {
-		// console.log(selection)
-	}, [selection])
 
 	return (
 		<div css={statisticsStatesContainerCSS}>

@@ -169,9 +169,24 @@ const HeroStories = ({ data, prev, next }) => {
 				<p css={byLineCSS}>
 					BY{' '}
 					{author.map((author, index) => {
-						return index + 1 < author.length
-							? `${author.authorName}, `
-							: author.authorName
+						if (author.authorName !== 'AFSP') {
+							return (
+								<AniLink
+									key={index}
+									fade
+									duration={styles.duration}
+									to={`/author/${author.slug}`}
+								>
+									{`${author.authorName}${
+										index + 1 < author.length ? ', ' : ''
+									}`}
+								</AniLink>
+							)
+						} else {
+							return `${author.authorName}${
+								index + 1 < author.length ? ', ' : ''
+							}`
+						}
 					})}
 				</p>
 				<h3>
