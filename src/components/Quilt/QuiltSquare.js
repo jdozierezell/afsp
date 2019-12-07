@@ -2,14 +2,17 @@ import React, { useState, useEffect, useRef } from 'react'
 import { css } from '@emotion/core'
 import { useSpring, animated as a } from 'react-spring'
 
-import { useWindowDimensions } from '../WindowDimensionsProvider'
-
 import { styles } from '../../css/css'
 
 const squareCSS = css`
 	margin: 0;
 	padding: 0;
 	position: relative;
+	z-index: 1;
+`
+
+const selectedSquareCSS = css`
+	z-index: 1000;
 `
 
 const imageCSS = css`
@@ -19,42 +22,70 @@ const imageCSS = css`
 	width: 100%;
 `
 
+const descriptionCSS = css`
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	font-family: ${styles.fonts.avenirRegular};
+	color: ${styles.colors.white};
+	background: hsla(0, 0%, 14.9%, 0.7);
+	padding: ${styles.scale.px12};
+	font-size: 10px;
+	line-height: ${styles.scale.px12};
+`
+
 const QuiltSquare = ({ quilt, selected, handleClick, index }) => {
 	const isSelected = quilt.id === selected
-	const percentSize = 50
 
-	const [edges, setEdges] = useState({ top: 0, left: 0 })
-	const [squareSize, setSize] = useState(0)
+	const [location, setLocation] = useState({ horizontal: 0, vertical: 0 })
+	const [scale, setScale] = useState(1)
 	const squareRef = useRef(null)
-
-	const { width, height } = useWindowDimensions()
-	const { transform, top, left, size } = useSpring({
-		top: isSelected ? edges.top : 'auto',
-		left: isSelected ? edges.left : 'auto',
-		size: isSelected ? squareSize : 'auto',
-		transform: `perspective(600px) scale(${isSelected ? 2 : 1})`,
+	const { transform, border } = useSpring({
+		transform: isSelected
+			? `translate(${location.horizontal}px, ${location.vertical}px) scale(${scale})`
+			: `translate(0px, 0px) scale(1)`,
+		border: isSelected ? `10px solid white` : `0px solid white`,
 		config: { mass: 5, tension: 500, friction: 80 },
 	})
 
+	const resizeSelected = () => {
+		// find square size at current scale
+		const defaultSquareSize = squareRef.current.getBoundingClientRect()
+			.width
+		// find desired final square size based on window size with square at 80% window
+		const desiredSquareSize =
+			window.innerWidth > window.innerHeight
+				? window.innerHeight / 1.25
+				: window.innerWidth / 1.25
+		const center = {
+			x:
+				squareRef.current.getBoundingClientRect().left +
+				defaultSquareSize / 2,
+			y:
+				squareRef.current.getBoundingClientRect().top +
+				defaultSquareSize / 2,
+		}
+
+		// set the multiple of the difference between current and desired
+		setScale(desiredSquareSize / defaultSquareSize)
+		setLocation({
+			horizontal: window.innerWidth / 2 - center.x,
+			vertical: window.innerHeight / 2 - center.y,
+		})
+	}
+
 	useEffect(() => {
 		if (isSelected) {
-			setSize(
-				width > height
-					? (height / 100) * percentSize
-					: (width / 100) * percentSize
-			)
-			setEdges({
-				top: squareRef.current.getBoundingClientRect().top,
-				left: squareRef.current.getBoundingClientRect().left,
-			})
+			resizeSelected()
 		}
-	}, [isSelected, height, width])
+	}, [isSelected])
 
 	return (
 		<a.div
 			ref={squareRef}
-			style={{ transform, top, left, size }}
-			css={squareCSS}
+			style={{ transform, border }}
+			css={isSelected ? [squareCSS, selectedSquareCSS] : squareCSS}
 			key={quilt.id}
 			id={quilt.id}
 			className={`quilt-col-${(index + 5) % 5}`}
@@ -65,7 +96,12 @@ const QuiltSquare = ({ quilt, selected, handleClick, index }) => {
 					`Memory Quilt | ${quilt.title}`, // give page a title
 					`?q=${quilt.id}` // create the new url with variables to base on render
 				)
-				handleClick(quilt.id)
+				if (isSelected) {
+					handleClick(null)
+				} else {
+					handleClick(quilt.id)
+				}
+				resizeSelected()
 			}}
 		>
 			<img
@@ -73,6 +109,12 @@ const QuiltSquare = ({ quilt, selected, handleClick, index }) => {
 				src={`${quilt.quiltImage.url}?w=1080&h=1080&fit=crop&crop=faces`}
 				alt=""
 			/>
+			{isSelected && (
+				<div
+					css={descriptionCSS}
+					dangerouslySetInnerHTML={{ __html: quilt.quiltDescription }}
+				></div>
+			)}
 		</a.div>
 	)
 }

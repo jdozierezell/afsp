@@ -41,6 +41,7 @@ export const GET_QUILTS = gql`
 			quiltImage {
 				url
 			}
+			quiltDescription
 		}
 	}
 `
@@ -53,6 +54,7 @@ export const GET_SELECTED = gql`
 			quiltImage {
 				url
 			}
+			quiltDescription
 		}
 	}
 `
@@ -62,16 +64,17 @@ const QuiltSquareContainer = () => {
 	const quiltParam = urlParams.has('q') ? urlParams.get('q') : null
 	const [loadMore, setLoadMore] = useState(0)
 	const [selected, setSelected] = useState(quiltParam)
+	const [clean, setClean] = useState(true)
+	console.log(quiltParam)
+	const selectedQuilt = useQuery(GET_SELECTED, {
+		variables: {
+			id: selected,
+		},
+	})
+	const selectedData = selectedQuilt.data,
+		selectedLoading = selectedQuilt.loading,
+		selectedError = selectedQuilt.error
 
-	// const selectedQuiltQuery = useQuery(GET_SELECTED, {
-	// 	variables: {
-	// 		id: selected,
-	// 	},
-	// })
-	// const selectedData = selectedQuiltQuery.data,
-	// 	selectedLoading = selectedQuiltQuery.loading,
-	// 	selectedError = selectedQuiltQuery.error,
-	// 	selectedFetchMore = selectedQuiltQuery.fetchMore
 	const quilts = useQuery(GET_QUILTS, {
 		variables: {
 			skip: 0,
@@ -82,22 +85,46 @@ const QuiltSquareContainer = () => {
 		quiltsError = quilts.error,
 		quiltsFetchMore = quilts.fetchMore
 
+	let renderQuilts = []
+
 	const handleClick = id => {
 		// sets selected element for each click
 		setSelected(id)
+		setClean(false)
 	}
 
 	useEffect(() => {
-		console.log(selected)
+		if (selected) {
+			document.body.style.overflow = 'hidden'
+		}
 	}, [selected])
 
 	if (quiltsLoading) return 'Loading...'
 	if (quiltsError) return `ERROR ${quiltsError.message}`
+
+	if (clean && selectedData) {
+		if (selectedData.selected) {
+			if (
+				quiltsData.quilts.some(
+					quilt => quilt.id === selectedData.selected.id
+				)
+			) {
+				renderQuilts = quiltsData.quilts
+			} else {
+				renderQuilts.push(selectedData.selected)
+				quiltsData.quilts.forEach(quilt => renderQuilts.push(quilt))
+			}
+		}
+	} else {
+		renderQuilts = quiltsData.quilts
+	}
+	console.log(renderQuilts)
+
 	return (
 		<>
 			<section css={sectionCSS}>
-				{quiltsData.quilts &&
-					quiltsData.quilts.map((quilt, index) => {
+				{renderQuilts &&
+					renderQuilts.map((quilt, index) => {
 						return (
 							<QuiltSquare
 								key={index}
