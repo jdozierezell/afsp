@@ -54,9 +54,11 @@ const Quilt = ({ data: { quiltQuery } }) => {
 	)
 }
 
+export default Quilt
+
 export const query = graphql`
 	query {
-		quiltQuery: datoCmsQuilt {
+		quiltQuery: datoCmsQuilt(slug: { eq: "quilt" }) {
 			title
 			seoMetaTags {
 				tags
@@ -95,5 +97,3 @@ export const query = graphql`
 		}
 	}
 `
-
-export default Quilt

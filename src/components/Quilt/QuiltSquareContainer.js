@@ -92,12 +92,6 @@ const QuiltSquareContainer = () => {
 		setClean(false)
 	}
 
-	useEffect(() => {
-		if (selected) {
-			document.body.style.overflow = 'hidden'
-		}
-	}, [selected])
-
 	if (quiltsLoading) return 'Loading...'
 	if (quiltsError) return `ERROR ${quiltsError.message}`
 
@@ -113,11 +107,12 @@ const QuiltSquareContainer = () => {
 				renderQuilts.push(selectedData.selected)
 				quiltsData.quilts.forEach(quilt => renderQuilts.push(quilt))
 			}
+		} else {
+			renderQuilts = quiltsData.quilts
 		}
 	} else {
 		renderQuilts = quiltsData.quilts
 	}
-
 	return (
 		<>
 			<section css={sectionCSS}>
