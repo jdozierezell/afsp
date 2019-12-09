@@ -28,14 +28,14 @@ const commentCSS = css`
 		}
 	}
 `
-
 const FacebookComments = () => {
+	const location = typeof window !== `undefined` ? window.location : ''
 	return (
 		<aside css={commentCSS}>
 			<h2>Comments</h2>
 			<div
 				className="fb-comments"
-				data-href={window.location}
+				data-href={location}
 				data-width="100%"
 				data-numposts="10"
 			></div>

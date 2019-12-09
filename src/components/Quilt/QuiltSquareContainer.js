@@ -60,8 +60,11 @@ export const GET_SELECTED = gql`
 `
 
 const QuiltSquareContainer = () => {
-	const urlParams = new URLSearchParams(window.location.search)
-	const quiltParam = urlParams.has('q') ? urlParams.get('q') : null
+	let quiltParam = null
+	if (typeof window !== `undefined`) {
+		const urlParams = new URLSearchParams(window.location.search)
+		quiltParam = urlParams.has('q') ? urlParams.get('q') : null
+	}
 	const [loadMore, setLoadMore] = useState(0)
 	const [selected, setSelected] = useState(quiltParam)
 	const [clean, setClean] = useState(true)
