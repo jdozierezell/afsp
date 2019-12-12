@@ -9,6 +9,7 @@
 		"@emotion/core": "^10.0.17",
 		"@emotion/styled": "^10.0.17",
 		"@glidejs/glide": "^3.4.1",
+		"@nivo/line": "^0.59.3",
 		"algoliasearch": "^3.33.0",
 		"apollo-cache-inmemory": "^1.6.3",
 		"apollo-client": "^2.6.4",

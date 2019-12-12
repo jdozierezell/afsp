@@ -85,7 +85,7 @@ const StatisticsNationalGraph = ({
 				<h3>Suicide rates by age from 2000 to 2017</h3>
 				<div css={statisticsNationalGraphContainerCSS}>
 					{graphType === 'line' && (
-						<XYPlot width={width} height={height}>
+						<XYPlot width={400} height={200}>
 							{/* <HorizontalGridLines
 					style={{ stroke: styles.colors.darkGray }}
 				/>

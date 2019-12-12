@@ -95,7 +95,12 @@ const CardMobileContainer = ({ title, data, cardCSS }) => {
 				</div>
 				<div data-glide-el="controls[nav]" css={carouselButtonsCSS}>
 					{data.map((__, index) => {
-						return <button data-glide-dir={`=${index}`}></button>
+						return (
+							<button
+								key={index}
+								data-glide-dir={`=${index}`}
+							></button>
+						)
 					})}
 				</div>
 			</div>

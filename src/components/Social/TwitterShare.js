@@ -5,7 +5,10 @@ import IconTwitter from '../SVGs/IconTwitter'
 import { styles } from '../../css/css'
 
 const TwitterShare = () => {
-	const uri = encodeURIComponent(window.location)
+	const uri =
+		typeof window !== `undefined`
+			? encodeURIComponent(window.location)
+			: null
 	return (
 		<a
 			target="_blank"

@@ -349,12 +349,14 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 					</ul>
 				</div>
 			</div>
-			<StatisticsStatesGraph
-				width={width}
-				height={height}
-				data={data}
-				selection={selection}
-			/>
+			{data && (
+				<StatisticsStatesGraph
+					width={width}
+					height={height}
+					data={data}
+					selection={selection}
+				/>
+			)}
 			<ul css={searchStateKeyCSS}>
 				<li>
 					<div
@@ -378,11 +380,13 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 					</li>
 				))}
 			</ul>
-			<StatisticsStatesFactsContainer
-				data={data}
-				selection={selection}
-				cardCSS={statisticsStatesFactsContainerCSS}
-			/>
+			{data && (
+				<StatisticsStatesFactsContainer
+					data={data}
+					selection={selection}
+					cardCSS={statisticsStatesFactsContainerCSS}
+				/>
+			)}
 		</div>
 	)
 }

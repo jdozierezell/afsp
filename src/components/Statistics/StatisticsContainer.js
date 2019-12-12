@@ -79,7 +79,7 @@ const StatisticsContainer = ({ data }) => {
 	return (
 		<section css={statisticsContainerCSS}>
 			<StatisticsStatesContainer data={stateData} />
-			<StatisticsNationalContainer
+			{/* <StatisticsNationalContainer
 				csv={{
 					ageData,
 					methodData,
@@ -90,7 +90,7 @@ const StatisticsContainer = ({ data }) => {
 					methodBrief: data.methodBrief,
 					raceBrief: data.raceBrief,
 				}}
-			/>
+			/> */}
 		</section>
 	)
 }

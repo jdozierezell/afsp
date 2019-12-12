@@ -4,9 +4,10 @@ import IconLink from '../SVGs/IconLink'
 
 import { styles } from '../../css/css'
 
-const EmailShare = ({ subject }) => {
+const EmailShare = () => {
+	const body = typeof window !== `undefined` ? window.location : ''
 	return (
-		<a href={`mailto:?&subject=&body=${window.location}`}>
+		<a href={`mailto:?&subject=&body=${body}`}>
 			<IconLink color={styles.colors.darkGray} />
 		</a>
 	)
