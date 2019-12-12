@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
-import { useWindowDimensions } from '../WindowDimensionsProvider'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import { styles } from '../../css/css'
-
-import 'mapbox-gl/dist/mapbox-gl.css'
 
 const searchResultCSS = css`
 	display: grid;
@@ -65,32 +62,11 @@ const searchInfoCSS = css`
 `
 
 const ChapterSearchResult = ({ chapter }) => {
-	const { width } = useWindowDimensions()
-	// set width to half minus margin if tablet or smaller, one third minus margin if larger
-	const [mapWidth, setMapWidth] = useState(
-		width <= styles.screens.tablet ? width / 2 - 24 : width / 3 - 33
-	)
-
-	const height = width <= styles.screens.tablet ? '200px' : '408px'
-
-	// use useEffect to add an event listener that will reset map width whenever window size is changed
-	useEffect(() => {
-		const handleResize = () =>
-			setMapWidth(
-				width <= styles.screens.tablet ? width / 2 - 24 : width / 3 - 33
-			)
-		window.addEventListener('resize', handleResize)
-		return () => {
-			window.removeEventListener('resize', handleResize)
-		}
-	}, [width])
 	return (
 		<div css={searchResultCSS}>
 			<div
 				css={css`
 					${searchImageCSS};
-					width: ${mapWidth}px;
-					height: ${height};
 					background-image: url(${chapter.heroImage.fluid.src});
 					background-position: center;
 					background-size: cover;

@@ -5,8 +5,6 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import IconArrow from '../SVGs/IconArrow'
 import readTime from '../../utils/readTime'
 
-import { useWindowDimensions } from '../../components/WindowDimensionsProvider'
-
 import { styles } from '../../css/css'
 
 const storyHeroCSS = css`
@@ -107,10 +105,8 @@ const followingStoryCSS = css`
 `
 
 const mobileImageCSS = css`
-	 {
-		@media (min-width: ${styles.screens.tablet}px) {
-			display: none;
-		}
+	@media (min-width: ${styles.screens.tablet}px) {
+		display: none;
 	}
 `
 

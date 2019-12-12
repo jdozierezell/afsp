@@ -6,7 +6,6 @@ import FacebookShare from '../Social/FacebookShare'
 import TwitterShare from '../Social/TwitterShare'
 import EmailShare from '../Social/EmailShare'
 import FacebookComments from '../Social/FacebookComments'
-import { useWindowDimensions } from '../WindowDimensionsProvider'
 
 import { styles } from '../../css/css'
 
@@ -73,7 +72,6 @@ const carouselButtonsCSS = css`
 `
 
 const ContentStory = ({ data }) => {
-	const { width } = useWindowDimensions()
 	useEffect(() => {
 		const hasImages = document.getElementsByClassName('glide-image')
 		if (hasImages.length > 0) {
@@ -83,16 +81,14 @@ const ContentStory = ({ data }) => {
 	}, [])
 	return (
 		<section css={storyContentCSS}>
-			{width > styles.screens.tablet && (
-				<aside css={socialButtonsCSS}>
-					<h3>Share this Story</h3>
-					<div>
-						<FacebookShare />
-						<TwitterShare />
-						<EmailShare />
-					</div>
-				</aside>
-			)}
+			<aside css={socialButtonsCSS}>
+				<h3>Share this Story</h3>
+				<div>
+					<FacebookShare />
+					<TwitterShare />
+					<EmailShare />
+				</div>
+			</aside>
 			{data.article.map((article, index) => {
 				if (article.__typename === 'DatoCmsBody') {
 					return (

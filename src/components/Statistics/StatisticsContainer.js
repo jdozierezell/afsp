@@ -5,8 +5,6 @@ import Papa from 'papaparse'
 import StatisticsStatesContainer from './StatisticsStatesContainer'
 import StatisticsNationalContainer from './StatisticsNationalContainer'
 
-import { useWindowDimensions } from '../WindowDimensionsProvider'
-
 import { styles } from '../../css/css'
 
 const statisticsContainerCSS = css`
@@ -14,27 +12,12 @@ const statisticsContainerCSS = css`
 `
 
 const StatisticsContainer = ({ data }) => {
-	const { width } = useWindowDimensions()
-
-	const [visWidth, setVisWidth] = useState(
-		width <= styles.screens.tablet ? width - 32 : width - 170 // account for margins and padding
-	)
-	const [height, setHeight] = useState(
-		width <= styles.screens.tablet ? visWidth / 1.62 : 400
-	)
-
 	const [stateData, setStateData] = useState()
 	const [ageData, setAgeData] = useState()
 	const [methodData, setMethodData] = useState()
 	const [raceData, setRaceData] = useState()
 
-	const handleWindowResize = useCallback(() => {
-		setVisWidth(width <= styles.screens.tablet ? width - 32 : width - 170) // account for margins and padding
-		setHeight(width <= styles.screens.tablet ? visWidth / 1.62 : 400)
-	}, [width, visWidth])
-
 	useEffect(() => {
-		window.addEventListener('resize', handleWindowResize)
 		Papa.parse(data.stateData.url, {
 			download: true,
 			header: true,
@@ -91,20 +74,12 @@ const StatisticsContainer = ({ data }) => {
 				setRaceData(results)
 			},
 		})
-		return () => window.removeEventListener('resize', handleWindowResize)
-	}, [visWidth, handleWindowResize, data])
+	}, [data])
 
 	return (
 		<section css={statisticsContainerCSS}>
-			<StatisticsStatesContainer
-				width={visWidth}
-				height={height}
-				data={stateData}
-			/>
+			<StatisticsStatesContainer data={stateData} />
 			<StatisticsNationalContainer
-				width={visWidth}
-				height={height}
-				tabWidth={width}
 				csv={{
 					ageData,
 					methodData,

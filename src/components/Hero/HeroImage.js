@@ -5,8 +5,6 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import IconArrow from '../SVGs/IconArrow'
 import readTime from '../../utils/readTime'
 
-import { useWindowDimensions } from '../../components/WindowDimensionsProvider'
-
 import { styles } from '../../css/css'
 
 const storyHeroCSS = css`

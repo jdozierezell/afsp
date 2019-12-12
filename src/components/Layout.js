@@ -4,7 +4,6 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Header from './Header/Header'
 import EmailSignup from './EmailSignup/EmailSignup'
 import Footer from './Footer/Footer'
-import WindowDimensionsProvider from './WindowDimensionsProvider'
 import HeaderContextProvider from './HeaderContextProvider'
 
 const Layout = ({ logo, children }) => {
@@ -26,7 +25,7 @@ const Layout = ({ logo, children }) => {
 		}
 	})
 	return (
-		<WindowDimensionsProvider>
+		<>
 			<HeaderContextProvider value={logo}>
 				<Header nav={headerNav} />
 			</HeaderContextProvider>
@@ -38,7 +37,7 @@ const Layout = ({ logo, children }) => {
 				</div>
 			</EmailSignup>
 			<Footer nav={footerNav} />
-		</WindowDimensionsProvider>
+		</>
 	)
 }
 
