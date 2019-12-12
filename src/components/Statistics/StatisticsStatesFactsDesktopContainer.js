@@ -29,10 +29,10 @@ const CardContainer = ({ data, selection, cardCSS }) => {
 			<ul css={cardListCSS}>
 				{selection.map((state, index) => {
 					const usIndex = data.findIndex(
-						x => x.state.toLowerCase() === 'us average'
+						x => x.id.toLowerCase() === 'us average'
 					)
 					const stateIndex = data.findIndex(
-						x => x.state.toLowerCase() === state.state
+						x => x.id.toLowerCase() === state.state
 					)
 					const formattedState = _.startCase(state.state)
 					const rate = data[stateIndex].rate

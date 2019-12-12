@@ -25,23 +25,24 @@ const StatisticsContainer = ({ data }) => {
 				let states = []
 				// https://stackoverflow.com/questions/8217419/how-to-determine-if-javascript-array-contains-an-object-with-an-attribute-that-e/8217584#8217584
 				results.data.forEach(result => {
-					if (states.some(e => e.state === result.State)) {
+					result.State = result.State.toLowerCase()
+					if (states.some(e => e.id === result.State)) {
 						const index = states.findIndex(
-							state => state.state === result.State
+							state => state.id === result.State
 						)
 						const state = states[index]
 						state.data.push({
-							x: new Date(result.Year),
+							x: result.Year,
 							y: parseFloat(result['Age-Adjusted Rate']),
 						})
 						state.rank = result.Rank
 						state.rate = result['Age-Adjusted Rate']
 					} else {
 						states.push({
-							state: result.State,
+							id: result.State,
 							data: [
 								{
-									x: new Date(result.Year),
+									x: result.Year,
 									y: parseFloat(result['Age-Adjusted Rate']),
 								},
 							],

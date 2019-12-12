@@ -7,6 +7,7 @@ import { styles } from '../../css/css'
 
 const statisticsStatesGraphContainerCSS = css`
 	width: 100vw;
+	height: 400px;
 	position: relative;
 	left: -${styles.scale.px24};
 	background-color: ${styles.colors.white};
@@ -21,287 +22,26 @@ const statisticsStatesGraphContainerCSS = css`
 	}
 `
 
-const DUMMY_DATA = [
-	{
-		id: 'japan',
-		color: 'hsl(244, 70%, 50%)',
-		data: [
-			{
-				x: 'plane',
-				y: 20,
-			},
-			{
-				x: 'helicopter',
-				y: 67,
-			},
-			{
-				x: 'boat',
-				y: 53,
-			},
-			{
-				x: 'train',
-				y: 209,
-			},
-			{
-				x: 'subway',
-				y: 128,
-			},
-			{
-				x: 'bus',
-				y: 111,
-			},
-			{
-				x: 'car',
-				y: 269,
-			},
-			{
-				x: 'moto',
-				y: 1,
-			},
-			{
-				x: 'bicycle',
-				y: 271,
-			},
-			{
-				x: 'horse',
-				y: 224,
-			},
-			{
-				x: 'skateboard',
-				y: 119,
-			},
-			{
-				x: 'others',
-				y: 25,
-			},
-		],
-	},
-	{
-		id: 'france',
-		color: 'hsl(350, 70%, 50%)',
-		data: [
-			{
-				x: 'plane',
-				y: 207,
-			},
-			{
-				x: 'helicopter',
-				y: 93,
-			},
-			{
-				x: 'boat',
-				y: 5,
-			},
-			{
-				x: 'train',
-				y: 176,
-			},
-			{
-				x: 'subway',
-				y: 140,
-			},
-			{
-				x: 'bus',
-				y: 87,
-			},
-			{
-				x: 'car',
-				y: 232,
-			},
-			{
-				x: 'moto',
-				y: 96,
-			},
-			{
-				x: 'bicycle',
-				y: 10,
-			},
-			{
-				x: 'horse',
-				y: 272,
-			},
-			{
-				x: 'skateboard',
-				y: 173,
-			},
-			{
-				x: 'others',
-				y: 275,
-			},
-		],
-	},
-	{
-		id: 'us',
-		color: 'hsl(127, 70%, 50%)',
-		data: [
-			{
-				x: 'plane',
-				y: 157,
-			},
-			{
-				x: 'helicopter',
-				y: 249,
-			},
-			{
-				x: 'boat',
-				y: 235,
-			},
-			{
-				x: 'train',
-				y: 276,
-			},
-			{
-				x: 'subway',
-				y: 61,
-			},
-			{
-				x: 'bus',
-				y: 204,
-			},
-			{
-				x: 'car',
-				y: 47,
-			},
-			{
-				x: 'moto',
-				y: 81,
-			},
-			{
-				x: 'bicycle',
-				y: 99,
-			},
-			{
-				x: 'horse',
-				y: 98,
-			},
-			{
-				x: 'skateboard',
-				y: 243,
-			},
-			{
-				x: 'others',
-				y: 66,
-			},
-		],
-	},
-	{
-		id: 'germany',
-		color: 'hsl(29, 70%, 50%)',
-		data: [
-			{
-				x: 'plane',
-				y: 18,
-			},
-			{
-				x: 'helicopter',
-				y: 120,
-			},
-			{
-				x: 'boat',
-				y: 105,
-			},
-			{
-				x: 'train',
-				y: 25,
-			},
-			{
-				x: 'subway',
-				y: 290,
-			},
-			{
-				x: 'bus',
-				y: 173,
-			},
-			{
-				x: 'car',
-				y: 276,
-			},
-			{
-				x: 'moto',
-				y: 81,
-			},
-			{
-				x: 'bicycle',
-				y: 125,
-			},
-			{
-				x: 'horse',
-				y: 55,
-			},
-			{
-				x: 'skateboard',
-				y: 7,
-			},
-			{
-				x: 'others',
-				y: 2,
-			},
-		],
-	},
-	{
-		id: 'norway',
-		color: 'hsl(147, 70%, 50%)',
-		data: [
-			{
-				x: 'plane',
-				y: 144,
-			},
-			{
-				x: 'helicopter',
-				y: 270,
-			},
-			{
-				x: 'boat',
-				y: 112,
-			},
-			{
-				x: 'train',
-				y: 115,
-			},
-			{
-				x: 'subway',
-				y: 45,
-			},
-			{
-				x: 'bus',
-				y: 169,
-			},
-			{
-				x: 'car',
-				y: 146,
-			},
-			{
-				x: 'moto',
-				y: 48,
-			},
-			{
-				x: 'bicycle',
-				y: 93,
-			},
-			{
-				x: 'horse',
-				y: 210,
-			},
-			{
-				x: 'skateboard',
-				y: 2,
-			},
-			{
-				x: 'others',
-				y: 195,
-			},
-		],
-	},
-]
-
 const StatisticsStatesGraph = ({ width, height, data, selection }) => {
+	const filteredData = data.filter(object => object.id === 'us average')
+	if (selection) {
+		selection.forEach(selection => {
+			const selectionArray = data.filter(
+				object => object.id === selection.state
+			)
+			console.log(selection)
+			console.log(selectionArray)
+			filteredData.push(selectionArray[0])
+		})
+	}
+	console.log(filteredData)
 	return (
 		<div
 			css={statisticsStatesGraphContainerCSS}
 			id="states-graph-container"
 		>
 			<ResponsiveLine
-				data={DUMMY_DATA}
+				data={filteredData}
 				margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
 				xScale={{ type: 'point' }}
 				yScale={{
