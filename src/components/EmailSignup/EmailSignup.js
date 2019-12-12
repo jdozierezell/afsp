@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { css } from '@emotion/core'
+import Script from 'react-load-script'
 
 import { styles } from '../../css/css'
 
@@ -104,18 +105,17 @@ const emailCSS = css`
 // `
 
 const EmailSignup = ({ formId, children }) => {
-	useEffect(() => {
-		const script = document.createElement('script')
-		script.src =
-			'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=JXzNvL'
-		script.async = true
-
-		document.body.appendChild(script)
-	})
 	return (
 		<div css={emailCSS}>
 			{children}
 			<div className={`klaviyo-form-${formId}`}></div>
+			<Script
+				url="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=JXzNvL"
+				attributes={{ id: 'klaviyo' }}
+				onCreate={() => console.log('created')}
+				onError={() => console.log('error')}
+				onLoad={() => console.log('loaded')}
+			/>
 			{/* <div css={subscribeCSS}>
 				<input placeholder="Email address" type="text" />
 				<a className="secondary-button" href="https://example.com">
