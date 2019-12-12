@@ -8,7 +8,9 @@ const InstagramFeed = () => {
 
 		document.body.appendChild(script)
 	})
-	return <div class="elfsight-app-2b2e6777-b0d8-45f4-8ada-824338045eb7"></div>
+	return (
+		<div className="elfsight-app-2b2e6777-b0d8-45f4-8ada-824338045eb7"></div>
+	)
 }
 
 export default InstagramFeed
