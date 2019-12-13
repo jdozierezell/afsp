@@ -31,6 +31,7 @@ const Chapter = ({ data: { chapter } }) => {
 		featuredPrograms,
 		volunteerSignupUrl,
 		chapterStoriesAndUpdates,
+		chapterInformation,
 	} = chapter
 
 	const chapterCode = chapter.chapterCode.toLowerCase()
@@ -78,6 +79,7 @@ const Chapter = ({ data: { chapter } }) => {
 	return (
 		<LayoutChapter
 			logo={styles.logo.mobileLightDesktopLight}
+			instagram={chapterInformation.instagramClass}
 			email={chapterEmailApiKey}
 		>
 			<SEO meta={chapter.seoMetaTags} />
@@ -199,6 +201,9 @@ export const query = graphql`
 						}
 					}
 				}
+			}
+			chapterInformation {
+				instagramClass
 			}
 		}
 	}

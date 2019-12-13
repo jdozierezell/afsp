@@ -357,29 +357,6 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 					selection={selection}
 				/>
 			)}
-			<ul css={searchStateKeyCSS}>
-				<li>
-					<div
-						css={css`
-							${stateBulletCSS};
-							background-color: ${styles.colors.lightGray};
-							border: 2px solid ${styles.colors.white};
-						`}
-					></div>{' '}
-					US Average
-				</li>
-				{selection.map((state, index) => (
-					<li key={index}>
-						<div
-							css={css`
-								${stateBulletCSS};
-								background-color: ${state.color};
-							`}
-						></div>{' '}
-						{_.startCase(state.state)}
-					</li>
-				))}
-			</ul>
 			{data && (
 				<StatisticsStatesFactsContainer
 					data={data}

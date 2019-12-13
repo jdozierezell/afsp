@@ -70,7 +70,7 @@ const App = ({ data: { home } }) => {
 				}
 				return ''
 			})}
-			<InstagramFeed />
+			<InstagramFeed instaClass={home.instagramClass} />
 		</Layout>
 	)
 }
@@ -178,6 +178,7 @@ export const query = graphql`
 					}
 				}
 			}
+			instagramClass
 		}
 	}
 `

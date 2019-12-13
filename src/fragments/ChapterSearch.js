@@ -8,6 +8,20 @@ export const ChapterSearch = graphql`
 				slug
 				chapterInformation {
 					zipCode
+					chapterMap {
+						fluid(
+							maxWidth: 1080
+							imgixParams: {
+								fm: "jpg"
+								fit: "crop"
+								crop: "faces"
+								ar: 1.67
+								w: "1080"
+							}
+						) {
+							...GatsbyDatoCmsFluid_tracedSVG
+						}
+					}
 				}
 				heroImage {
 					fluid(

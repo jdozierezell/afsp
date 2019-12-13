@@ -4,15 +4,15 @@ import fetch from 'isomorphic-fetch'
 const chapterSearchResults = (chapters, response) => {
 	const chapterArray = []
 	chapters.edges.forEach(chapter => {
-		if (chapter.node.chapterZipCodeSet.zipCode) {
+		if (chapter.node.chapterInformation.zipCode) {
 			if (
-				chapter.node.chapterZipCodeSet.zipCode.zips.includes(
+				chapter.node.chapterInformation.zipCode.zips.includes(
 					response.primaryZip
 				)
 			) {
 				chapterArray.unshift(chapter.node)
 			} else if (
-				chapter.node.chapterZipCodeSet.zipCode.zips.some(zip =>
+				chapter.node.chapterInformation.zipCode.zips.some(zip =>
 					response.otherZips.includes(zip)
 				)
 			) {

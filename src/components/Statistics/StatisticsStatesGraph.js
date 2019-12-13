@@ -1,6 +1,5 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import { XYPlot, XAxis, YAxis, LineSeries } from 'react-vis'
 import { ResponsiveLine } from '@nivo/line'
 
 import { styles } from '../../css/css'
@@ -23,18 +22,22 @@ const statisticsStatesGraphContainerCSS = css`
 `
 
 const StatisticsStatesGraph = ({ width, height, data, selection }) => {
-	const filteredData = data.filter(object => object.id === 'us average')
+	data.forEach(item => {
+		item.id = item.id.toUpperCase()
+		console.log(item)
+	})
+	const filteredData = data.filter(object => object.id === 'US AVERAGE')
+	console.log()
 	if (selection) {
 		selection.forEach(selection => {
 			const selectionArray = data.filter(
-				object => object.id === selection.state
+				object => object.id === selection.state.toUpperCase()
 			)
 			console.log(selection)
 			console.log(selectionArray)
 			filteredData.push(selectionArray[0])
 		})
 	}
-	console.log(filteredData)
 	return (
 		<div
 			css={statisticsStatesGraphContainerCSS}
@@ -77,7 +80,7 @@ const StatisticsStatesGraph = ({ width, height, data, selection }) => {
 				pointBorderColor={{ from: 'serieColor' }}
 				pointLabel="y"
 				pointLabelYOffset={-12}
-				useMesh={true}
+				enableSlices={'x'}
 				legends={[
 					{
 						anchor: 'bottom-right',
@@ -105,72 +108,6 @@ const StatisticsStatesGraph = ({ width, height, data, selection }) => {
 					},
 				]}
 			/>
-			{/* <XYPlot xType="time" width={400} height={200} yDomain={[0, 26]}>
-				{/* <HorizontalGridLines
-					style={{ stroke: styles.colors.darkGray }}
-				/>
-				<VerticalGridLines style={{ stroke: styles.colors.darkGray }} /> */}
-			{/* <XAxis
-					title="X Axis"
-					tickSize={0}
-					tickTotal={15}
-					style={{
-						line: { stroke: styles.colors.darkGray },
-						text: {
-							stroke: 'none',
-							fill: styles.colors.darkGray,
-							fontWeight: 600,
-						},
-					}}
-				/>
-				<YAxis
-					title="Y Axis"
-					tickSize={0}
-					style={{
-						line: { stroke: styles.colors.darkGray },
-						text: {
-							stroke: 'none',
-							fill: styles.colors.darkGray,
-							fontWeight: 600,
-						},
-					}}
-				/>
-				{data &&
-					data.map((line, index) => {
-						const state = line.state.toLowerCase()
-						if (state === 'us average') {
-							return (
-								<LineSeries
-									color={styles.colors.lightGray}
-									key={index}
-									data={line.data}
-									style={{
-										strokeLinejoin: 'round',
-										strokeWidth: 4,
-									}}
-								/>
-							)
-						} else if (selection.some(e => e.state === state)) {
-							const stateIndex = selection.findIndex(
-								x => x.state === state
-							)
-							const color = selection[stateIndex].color
-							return (
-								<LineSeries
-									key={index}
-									data={line.data}
-									color={color}
-									style={{
-										strokeLinejoin: 'round',
-										strokeWidth: 4,
-									}}
-								/>
-							)
-						} else {
-							return ''
-						}
-					})}
-			</XYPlot> */}
 		</div>
 	)
 }

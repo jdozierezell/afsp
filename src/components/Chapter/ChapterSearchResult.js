@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { css } from '@emotion/core'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
@@ -24,6 +24,8 @@ const searchResultCSS = css`
 const searchImageCSS = css`
 	grid-area: 1 / 1 / 2 / 2;
 	overflow: hidden;
+	background-position: center;
+	background-size: cover;
 	@media (min-width: ${styles.screens.tablet}px) {
 		grid-area: 1 / 2 / 2 / 3;
 	}
@@ -61,6 +63,17 @@ const searchInfoCSS = css`
 	}
 `
 
+const searchMapCSS = css`
+	grid-area: 1 / 1 / 2 / 2;
+	overflow: hidden;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	@media (min-width: ${styles.screens.tablet}px) {
+		grid-area: 1 / 3 / 2 / 4;
+	}
+`
+
 const ChapterSearchResult = ({ chapter }) => {
 	return (
 		<div css={searchResultCSS}>
@@ -68,17 +81,8 @@ const ChapterSearchResult = ({ chapter }) => {
 				css={css`
 					${searchImageCSS};
 					background-image: url(${chapter.heroImage.fluid.src});
-					background-position: center;
-					background-size: cover;
 				`}
 			></div>
-			{/* <ReactMapGL
-				css={searchMapCSS}
-				{...viewport}
-				width={mapWidth}
-				height={height}
-				onViewportChange={viewport => setViewport(viewport)}
-			/> */}
 			<div css={searchInfoCSS}>
 				<h2>AFSP {chapter.title}</h2>
 				<h3>Community contact:</h3>
@@ -104,6 +108,13 @@ const ChapterSearchResult = ({ chapter }) => {
 					More info
 				</AniLink>
 			</div>
+			<div
+				css={css`
+					${searchMapCSS};
+					background-image: url(${chapter.chapterInformation
+						.chapterMap.fluid.src});
+				`}
+			></div>
 		</div>
 	)
 }
