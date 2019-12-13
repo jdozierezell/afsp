@@ -6,7 +6,7 @@ export const ChapterSearch = graphql`
 			node {
 				title
 				slug
-				chapterZipCodeSet {
+				chapterInformation {
 					zipCode
 				}
 				heroImage {
