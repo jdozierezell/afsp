@@ -13,7 +13,7 @@ const Tag = ({ data: { stories }, pageContext: { title } }) => {
 		title: `Tagged: ${title}`,
 	}
 	return (
-		<Layout logo={styles.logo.mobileLightDesktopLight}>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HeroSolid data={heroData} />
 			<StoriesContainer stories={stories.edges} more={true} />
 		</Layout>

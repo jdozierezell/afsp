@@ -45,7 +45,7 @@ const resourcesCSS = css`
 
 const Landing = ({ data: { landing } }) => {
 	return (
-		<Layout logo={styles.logo.mobileDarkDesktopDark}>
+		<Layout theme={styles.logo.mobileDarkDesktopDark}>
 			<SEO meta={landing.seoMetaTags} />
 			<h1 css={landingTitle}>{landing.title}</h1>
 			<p css={landingBrief}>{landing.seo.description}</p>

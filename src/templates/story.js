@@ -20,7 +20,7 @@ const carouselCSS = css`
 
 const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 	return (
-		<Layout logo={styles.logo.mobileDarkDesktopLight}>
+		<Layout theme={styles.logo.mobileDarkDesktopLight}>
 			<SEO meta={story.seoMetaTags} />
 			<HeroStories data={story} prev={prev} next={next} />
 			<ContentStory data={story} />

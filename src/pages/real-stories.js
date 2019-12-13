@@ -16,7 +16,7 @@ const RealStories = ({ data: { real, stories } }) => {
 		story.node.type = 'story'
 	})
 	return (
-		<Layout logo={styles.logo.mobileLightDesktopLight}>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={real.seoMetaTags} />
 			<HeroVideo
 				videoUrl={real.heroVideoUrl}

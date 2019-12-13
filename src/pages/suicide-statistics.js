@@ -11,7 +11,7 @@ import { styles } from '../css/css'
 
 const SuicideStatistics = ({ data: { statistics } }) => {
 	return (
-		<Layout logo={styles.logo.mobileLightDesktopLight}>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={statistics.seoMetaTags} />
 			<HeroStatistics data={statistics} />
 			<StatisticsSummary data={statistics} />

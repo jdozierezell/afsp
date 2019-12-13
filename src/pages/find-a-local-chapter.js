@@ -43,7 +43,7 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 	}, [query])
 
 	return (
-		<Layout logo={styles.logo.mobileLightDesktopLight}>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={search.seoMetaTags} />
 			<HeroChapterSearch
 				title={search.title}

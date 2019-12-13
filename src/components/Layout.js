@@ -4,9 +4,8 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Header from './Header/Header'
 import EmailSignup from './EmailSignup/EmailSignup'
 import Footer from './Footer/Footer'
-import HeaderContextProvider from './HeaderContextProvider'
 
-const Layout = ({ logo, children }) => {
+const Layout = ({ theme, children }) => {
 	const data = useStaticQuery(graphql`
 		query {
 			nav: allDatoCmsNavigation(sort: { fields: position, order: ASC }) {
@@ -26,9 +25,7 @@ const Layout = ({ logo, children }) => {
 	})
 	return (
 		<>
-			<HeaderContextProvider value={logo}>
-				<Header nav={headerNav} />
-			</HeaderContextProvider>
+			<Header nav={headerNav} theme={theme} />
 			<main>{children}</main>
 			<EmailSignup formId="LGcf3Q">
 				<div>

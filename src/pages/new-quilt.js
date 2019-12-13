@@ -21,7 +21,7 @@ const mainCSS = css`
 
 const NewQuilt = ({ data: { quiltQuery } }) => {
 	return (
-		<Layout logo={styles.logo.mobileLightDesktopLight}>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={quiltQuery.seoMetaTags} />
 			<HeroImage data={quiltQuery} />
 			<main css={mainCSS}>

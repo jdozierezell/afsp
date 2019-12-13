@@ -78,7 +78,7 @@ const Chapter = ({ data: { chapter } }) => {
 
 	return (
 		<LayoutChapter
-			logo={styles.logo.mobileLightDesktopLight}
+			theme={styles.logo.mobileLightDesktopLight}
 			instagram={chapterInformation.instagramClass}
 			email={chapterEmailApiKey}
 		>

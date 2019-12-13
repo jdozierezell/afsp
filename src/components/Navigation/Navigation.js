@@ -10,7 +10,6 @@ import IconHamburger from '../SVGs/IconHamburger'
 import IconX from '../SVGs/IconX'
 import IconSearch from '../SVGs/IconSearch'
 import SearchBar from './SearchBar'
-import { useHeaderContext } from '../HeaderContextProvider'
 import MenuCTA from './MenuCTA'
 
 import { styles } from '../../css/css'
@@ -86,14 +85,10 @@ const donateCSS = css`
 	}
 `
 
-const Navigation = ({ nav }) => {
-	const headerContext = useHeaderContext()
-
-	const [isMobileLight, setMobileLight] = useState(
-		headerContext.mobile === 'light'
-	)
+const Navigation = ({ nav, theme }) => {
+	const [isMobileLight, setMobileLight] = useState(theme.mobile === 'light')
 	const [isDesktopLight, setDesktopLight] = useState(
-		headerContext.desktop === 'light'
+		theme.desktop === 'light'
 	)
 	const [isMenuActive, setMenuActive] = useState(false)
 	const [isSearchActive, setSearchActive] = useState(false)
@@ -107,8 +102,8 @@ const Navigation = ({ nav }) => {
 	const [activeMegaMenu, setActiveMegaMenu] = useState('')
 
 	useEffect(() => {
-		setMobileLight(headerContext.mobile === 'light')
-		setDesktopLight(headerContext.desktop === 'light')
+		setMobileLight(theme.mobile === 'light')
+		setDesktopLight(theme.desktop === 'light')
 		if (isMenuActive || isSearchActive || isHover) {
 			setNavBackground(styles.colors.white)
 			setNavColor(styles.colors.darkGray)
@@ -119,8 +114,8 @@ const Navigation = ({ nav }) => {
 			}
 		}
 	}, [
-		headerContext.mobile,
-		headerContext.desktop,
+		theme.mobile,
+		theme.desktop,
 		isMenuActive,
 		isSearchActive,
 		isHover,
@@ -148,7 +143,7 @@ const Navigation = ({ nav }) => {
 		>
 			<div css={logoCSS}>
 				<AniLink fade duration={styles.duration} to={`/`}>
-					{/* if headerContext is light, logo defaults to white otherwise color; logo is color on hover in all contexts */}
+					{/* if theme is light, logo defaults to white otherwise color; logo is color on hover in all contexts */}
 					{(isMobileLight || isDesktopLight) &&
 					!isHover &&
 					!isMenuActive ? (

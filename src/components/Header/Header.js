@@ -9,12 +9,12 @@ const navCSS = css`
 	z-index: 1000;
 `
 
-const Header = ({ nav }) => {
+const Header = ({ nav, theme }) => {
 	return (
 		<header>
 			<HeaderAside />
 			<div css={navCSS}>
-				<Navigation nav={nav} />
+				<Navigation nav={nav} theme={theme} />
 			</div>
 		</header>
 	)

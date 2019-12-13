@@ -12,7 +12,7 @@ import { styles } from '../css/css'
 const Detail = ({ data, pageContext }) => {
 	const { detail } = data
 	return (
-		<Layout logo={styles.logo.mobileLightDesktopLight}>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={detail.seoMetaTags} />
 			<HeroSolid data={detail} />
 			<NavigationSide data={detail} />
