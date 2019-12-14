@@ -24,17 +24,13 @@ const statisticsStatesGraphContainerCSS = css`
 const StatisticsStatesGraph = ({ width, height, data, selection }) => {
 	data.forEach(item => {
 		item.id = item.id.toUpperCase()
-		console.log(item)
 	})
 	const filteredData = data.filter(object => object.id === 'US AVERAGE')
-	console.log()
 	if (selection) {
 		selection.forEach(selection => {
 			const selectionArray = data.filter(
 				object => object.id === selection.state.toUpperCase()
 			)
-			console.log(selection)
-			console.log(selectionArray)
 			filteredData.push(selectionArray[0])
 		})
 	}
@@ -73,7 +69,7 @@ const StatisticsStatesGraph = ({ width, height, data, selection }) => {
 					legendOffset: -40,
 					legendPosition: 'middle',
 				}}
-				colors={{ scheme: 'nivo' }}
+				colors={styles.graphColors}
 				pointSize={10}
 				pointColor={{ theme: 'background' }}
 				pointBorderWidth={2}
@@ -107,6 +103,13 @@ const StatisticsStatesGraph = ({ width, height, data, selection }) => {
 						],
 					},
 				]}
+				theme={{
+					tooltip: {
+						container: {
+							fontFamily: styles.fonts.avenirRegular,
+						},
+					},
+				}}
 			/>
 		</div>
 	)

@@ -1,17 +1,39 @@
+const blue = 'hsla(224, 100%, 60%, 1)'
+const darkGray = 'hsla(0, 0%, 14.9%, 1)'
+const lightGray = 'hsla(0, 0%, 91.8%, 1)'
+const yellow = 'hsla(48, 100%, 51.6%, 1)'
+const darkBlue = 'hsla(247, 65.1%, 44.9%, 1)'
+const poppy = 'hsla(355, 84.3%, 50%, 1)'
+const poppyHover = 'hsla(355, 84.3%, 45%, 1)'
+const green = 'hsla(156, 69%, 50.6%, 1)'
+const fuchsia = 'hsla(326, 75%, 49%, 1)'
+const white = 'hsla(0, 0%, 100%, 1)'
+const black = 'hsla(0, 0%, 0%, 1)'
+
 export const styles = {
 	colors: {
-		blue: 'hsla(224, 100%, 60%, 1)',
-		darkGray: 'hsla(0, 0%, 14.9%, 1)',
-		lightGray: 'hsla(0, 0%, 91.8%, 1)',
-		yellow: 'hsla(48, 100%, 51.6%, 1)',
-		darkBlue: 'hsla(247, 65.1%, 44.9%, 1)',
-		poppy: 'hsla(355, 84.3%, 50%, 1)',
-		poppyHover: 'hsla(355, 84.3%, 45%, 1)',
-		green: 'hsla(156, 69%, 50.6%, 1)',
-		fuchsia: 'hsla(326, 75%, 49%, 1)',
-		white: 'hsla(0, 0%, 100%, 1)',
-		black: 'hsla(0, 0%, 0%, 1)',
+		blue,
+		darkGray,
+		lightGray,
+		yellow,
+		darkBlue,
+		poppy,
+		poppyHover,
+		green,
+		fuchsia,
+		white,
+		black,
 	},
+	graphColors: [
+		lightGray,
+		blue,
+		darkGray,
+		yellow,
+		darkBlue,
+		poppy,
+		green,
+		fuchsia,
+	],
 	fonts: {
 		avenirRegular: 'AvenirNextLTPro-Regular, Arial, sans-serif',
 		avenirRegularIt: 'AvenirNextLTPro-It, Arial, sans-serif',

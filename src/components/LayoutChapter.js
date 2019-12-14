@@ -5,9 +5,8 @@ import Header from './Header/Header'
 import InstagramFeed from '../components/Social/InstagramFeed'
 import EmailSignup from './EmailSignup/EmailSignup'
 import Footer from './Footer/Footer'
-import HeaderContextProvider from './HeaderContextProvider'
 
-const LayoutChapter = ({ logo, instagram, email, children }) => {
+const LayoutChapter = ({ theme, instagram, email, children }) => {
 	const data = useStaticQuery(graphql`
 		query {
 			nav: allDatoCmsNavigation(sort: { fields: position, order: ASC }) {
@@ -27,9 +26,7 @@ const LayoutChapter = ({ logo, instagram, email, children }) => {
 	})
 	return (
 		<>
-			<HeaderContextProvider value={logo}>
-				<Header nav={headerNav} />
-			</HeaderContextProvider>
+			<Header nav={headerNav} theme={theme} />
 			<main>{children}</main>
 			<InstagramFeed instaClass={instagram} />
 			<EmailSignup formId={email}>
