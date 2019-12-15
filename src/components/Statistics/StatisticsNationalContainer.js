@@ -70,14 +70,20 @@ const menuTabsCSS = css`
 	}
 `
 
-const StatisticsNationalContainer = ({ width, height, tabWidth }) => {
+const StatisticsNationalContainer = ({
+	csv,
+	brief,
+	width,
+	height,
+	tabWidth,
+}) => {
 	const age = 'Suicide rates by age'
 	const race = 'Suicide rates by race/ethnicity'
 	const method = 'Suicide methods'
 
 	const [isCaretFlipped, setCaretFlipped] = useState(false)
 	const [childrenHeight, setChildrenHeight] = useState(0)
-	const [focusedArea, setFocusedArea] = useState(age)
+	const [focusedArea, setFocusedArea] = useState(method)
 	const listRef = useRef(null)
 	const ageRef = useRef(null)
 	const raceRef = useRef(null)
@@ -107,7 +113,7 @@ const StatisticsNationalContainer = ({ width, height, tabWidth }) => {
 	}
 
 	useEffect(() => {
-		if (width <= styles.screens.tablet) {
+		if (listRef.current) {
 			setMenuHeight()
 		}
 		if (focusedArea === age) {
@@ -139,68 +145,65 @@ const StatisticsNationalContainer = ({ width, height, tabWidth }) => {
 
 	return (
 		<div css={statisticsNationalGraphCSS}>
-			{tabWidth <= styles.screens.tablet && (
-				<div css={activeGraphSwitchCSS}>
-					<h2>{focusedArea}</h2>
-					<animated.button
-						css={iconCaretCSS}
-						style={flipCaret}
-						onClick={() => setCaretFlipped(!isCaretFlipped)}
-					>
-						<IconCaret color={styles.colors.white} />
-					</animated.button>
-				</div>
-			)}
-			{tabWidth <= styles.screens.tablet && (
-				<animated.ul css={menuListCSS} style={showList} ref={listRef}>
-					{focusedArea !== age && (
-						<li onClick={() => setFocusedArea(age)}>{age}</li>
-					)}
-					{focusedArea !== race && (
-						<li onClick={() => setFocusedArea(race)}>{race}</li>
-					)}
-					{focusedArea !== method && (
-						<li onClick={() => setFocusedArea(method)}>{method}</li>
-					)}
-				</animated.ul>
-			)}
-			{tabWidth > styles.screens.tablet && (
-				<ul css={menuTabsCSS}>
-					<li ref={ageRef} onClick={() => setFocusedArea(age)}>
-						{age}
-					</li>
-					<li ref={raceRef} onClick={() => setFocusedArea(race)}>
-						{race}
-					</li>
-					<li ref={methodRef} onClick={() => setFocusedArea(method)}>
-						{method}
-					</li>
-				</ul>
-			)}
+			<div css={activeGraphSwitchCSS}>
+				<h2>{focusedArea}</h2>
+				<animated.button
+					css={iconCaretCSS}
+					style={flipCaret}
+					onClick={() => setCaretFlipped(!isCaretFlipped)}
+				>
+					<IconCaret color={styles.colors.white} />
+				</animated.button>
+			</div>
+			<animated.ul css={menuListCSS} style={showList} ref={listRef}>
+				{focusedArea !== age && (
+					<li onClick={() => setFocusedArea(age)}>{age}</li>
+				)}
+				{focusedArea !== race && (
+					<li onClick={() => setFocusedArea(race)}>{race}</li>
+				)}
+				{focusedArea !== method && (
+					<li onClick={() => setFocusedArea(method)}>{method}</li>
+				)}
+			</animated.ul>
+			<ul css={menuTabsCSS}>
+				<li ref={ageRef} onClick={() => setFocusedArea(age)}>
+					{age}
+				</li>
+				<li ref={raceRef} onClick={() => setFocusedArea(race)}>
+					{race}
+				</li>
+				<li ref={methodRef} onClick={() => setFocusedArea(method)}>
+					{method}
+				</li>
+			</ul>
 			{focusedArea === age && (
 				<StatisticsNationalGraph
 					graphType="line"
-					data={dataRadial}
+					title={age}
+					brief={brief.ageBrief}
+					data={csv.ageData}
 					width={width}
-					height={height}
 					tabWidth={tabWidth}
 				/>
 			)}
 			{focusedArea === race && (
 				<StatisticsNationalGraph
 					graphType="line"
-					data={dataRadial}
+					title={race}
+					brief={brief.raceBrief}
+					data={csv.raceData}
 					width={width}
-					height={height}
 					tabWidth={tabWidth}
 				/>
 			)}
 			{focusedArea === method && (
 				<StatisticsNationalGraph
 					graphType="radial"
-					data={dataRadial}
+					title={method}
+					brief={brief.methodBrief}
+					data={csv.methodData}
 					width={width}
-					height={height}
 					tabWidth={tabWidth}
 				/>
 			)}

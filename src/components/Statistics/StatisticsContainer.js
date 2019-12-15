@@ -58,40 +58,78 @@ const StatisticsContainer = ({ data }) => {
 			download: true,
 			header: true,
 			complete: results => {
-				setAgeData(results)
-			},
-		})
-		Papa.parse(data.methodData.url, {
-			download: true,
-			header: true,
-			complete: results => {
-				setMethodData(results)
+				let ages = []
+				results.data.forEach(result => {
+					let data = []
+					Object.keys(result).forEach(key => {
+						if (key !== 'Year') {
+							data.push({ x: key, y: result[key] })
+						}
+					})
+					ages.push({
+						id: result.Year,
+						data,
+					})
+				})
+				setAgeData(ages)
 			},
 		})
 		Papa.parse(data.raceData.url, {
 			download: true,
 			header: true,
 			complete: results => {
-				setRaceData(results)
+				let races = []
+				results.data.forEach(result => {
+					let data = []
+					Object.keys(result).forEach(key => {
+						if (key !== 'Year') {
+							data.push({ x: key, y: result[key] })
+						}
+					})
+					races.push({
+						id: result.Year,
+						data,
+					})
+				})
+				setRaceData(races)
+			},
+		})
+		Papa.parse(data.methodData.url, {
+			download: true,
+			header: true,
+			complete: results => {
+				console.log(results)
+				let methods = []
+				results.data.forEach(result => {
+					methods.push({
+						id: result.Method,
+						label: result.Method,
+						value: Number(result.Deaths),
+						percent: Number(result.Percent),
+					})
+				})
+				setMethodData(methods)
 			},
 		})
 	}, [data])
 
 	return (
 		<section css={statisticsContainerCSS}>
-			<StatisticsStatesContainer data={stateData} />
-			{/* <StatisticsNationalContainer
-				csv={{
-					ageData,
-					methodData,
-					raceData,
-				}}
-				brief={{
-					ageBrief: data.ageBrief,
-					methodBrief: data.methodBrief,
-					raceBrief: data.raceBrief,
-				}}
-			/> */}
+			{stateData && <StatisticsStatesContainer data={stateData} />}
+			{ageData && raceData && (
+				<StatisticsNationalContainer
+					csv={{
+						ageData,
+						methodData,
+						raceData,
+					}}
+					brief={{
+						ageBrief: data.ageBrief,
+						raceBrief: data.raceBrief,
+						methodBrief: data.methodBrief,
+					}}
+				/>
+			)}
 		</section>
 	)
 }

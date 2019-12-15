@@ -10,6 +10,7 @@
 		"@emotion/styled": "^10.0.17",
 		"@glidejs/glide": "^3.4.1",
 		"@nivo/line": "^0.59.3",
+		"@nivo/pie": "^0.60.0",
 		"algoliasearch": "^3.33.0",
 		"apollo-cache-inmemory": "^1.6.3",
 		"apollo-client": "^2.6.4",
@@ -49,10 +50,8 @@
 		"react-helmet": "^5.2.1",
 		"react-instantsearch-dom": "^5.7.0",
 		"react-load-script": "^0.0.6",
-		"react-map-gl": "^5.0.12",
 		"react-slick": "^0.25.2",
 		"react-spring": "^8.0.27",
-		"react-vis": "^1.11.7",
 		"use-query-params": "^0.4.4",
 		"yup": "^0.27.0",
 		"zipcodes": "^8.0.0"

@@ -1,6 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import { XYPlot, XAxis, YAxis, LineSeries, RadialChart } from 'react-vis'
+import { ResponsiveLine } from '@nivo/line'
+import { ResponsivePie } from '@nivo/pie'
 
 import { styles } from '../../css/css'
 
@@ -24,6 +25,7 @@ const statisticsNationalGraphCSS = css`
 
 const statisticsNationalGraphContainerCSS = css`
 	width: 100vw;
+	height: 75vh;
 	position: relative;
 	left: -${styles.scale.px24};
 	background-color: ${styles.colors.white};
@@ -62,6 +64,8 @@ const keyCSS = css`
 
 const StatisticsNationalGraph = ({
 	data,
+	brief,
+	title,
 	graphType,
 	width,
 	height,
@@ -73,123 +77,153 @@ const StatisticsNationalGraph = ({
 	}
 	return (
 		<div css={statisticsNationalGraphCSS}>
-			<p>
-				In 2017, the highest suicide rate (20.2) was among adults
-				between 45 and 54 years of age. The second highest rate (20.1)
-				occurred in those 85 years or older. Younger groups have had
-				consistently lower suicide rates than middle-aged and older
-				adults. In 2017, adolescents and young adults aged 15 to 24 had
-				a suicide rate of 14.46.
-			</p>
+			<div dangerouslySetInnerHTML={{ __html: brief }}></div>
 			<div>
-				<h3>Suicide rates by age from 2000 to 2017</h3>
+				<h3>{title}</h3>
 				<div css={statisticsNationalGraphContainerCSS}>
-					{graphType === 'line' && (
-						<XYPlot width={400} height={200}>
-							{/* <HorizontalGridLines
-					style={{ stroke: styles.colors.darkGray }}
-				/>
-				<VerticalGridLines style={{ stroke: styles.colors.darkGray }} /> */}
-							<XAxis
-								title="X Axis"
-								tickSize={0}
-								style={{
-									line: { stroke: styles.colors.darkGray },
-									text: {
-										stroke: 'none',
-										fill: styles.colors.darkGray,
-										fontWeight: 600,
-									},
-								}}
-							/>
-							<YAxis
-								title="Y Axis"
-								tickSize={0}
-								style={{
-									line: { stroke: styles.colors.darkGray },
-									text: {
-										stroke: 'none',
-										fill: styles.colors.darkGray,
-										fontWeight: 600,
-									},
-								}}
-							/>
-							<LineSeries
-								className="first-series"
-								data={[
-									{ x: 1, y: 3 },
-									{ x: 2, y: 5 },
-									{ x: 3, y: 15 },
-									{ x: 4, y: 12 },
-								]}
-								style={{
-									strokeLinejoin: 'round',
-									strokeWidth: 4,
-								}}
-							/>
-							<LineSeries className="second-series" data={null} />
-							<LineSeries
-								className="third-series"
-								curve={'curveMonotoneX'}
-								data={[
-									{ x: 1, y: 10 },
-									{ x: 2, y: 4 },
-									{ x: 3, y: 2 },
-									{ x: 4, y: 15 },
-								]}
-								strokeDasharray="7, 3"
-							/>
-							<LineSeries
-								className="fourth-series"
-								data={[
-									{ x: 1, y: 7 },
-									{ x: 2, y: 11 },
-									{ x: 3, y: 9 },
-									{ x: 4, y: 2 },
-								]}
-							/>
-						</XYPlot>
-					)}
-					{graphType === 'radial' && (
-						<RadialChart
+					{graphType === 'line' && data && (
+						<ResponsiveLine
 							data={data}
-							width={width}
-							height={height}
+							margin={{
+								top: 50,
+								right: 110,
+								bottom: 50,
+								left: 60,
+							}}
+							xScale={{ type: 'point' }}
+							yScale={{
+								type: 'linear',
+								stacked: false,
+								min: 'auto',
+								max: 'auto',
+							}}
+							axisTop={null}
+							axisRight={null}
+							axisBottom={{
+								orient: 'bottom',
+								tickSize: 5,
+								tickPadding: 5,
+								tickRotation: 0,
+								legend: 'Years',
+								legendOffset: 36,
+								legendPosition: 'middle',
+							}}
+							axisLeft={{
+								orient: 'left',
+								tickSize: 5,
+								tickPadding: 5,
+								tickRotation: 0,
+								legend: 'Rate per 100,000 Individuals',
+								legendOffset: -40,
+								legendPosition: 'middle',
+							}}
+							colors={styles.ageRaceMethodGraphColors}
+							pointSize={10}
+							pointColor={{ theme: 'background' }}
+							pointBorderWidth={2}
+							pointBorderColor={{ from: 'serieColor' }}
+							pointLabel="y"
+							pointLabelYOffset={-12}
+							enableSlices={'x'}
+							legends={[
+								{
+									anchor: 'bottom-right',
+									direction: 'column',
+									justify: false,
+									translateX: 100,
+									translateY: 0,
+									itemsSpacing: 0,
+									itemDirection: 'left-to-right',
+									itemWidth: 80,
+									itemHeight: 20,
+									itemOpacity: 0.75,
+									symbolSize: 12,
+									symbolShape: 'circle',
+									symbolBorderColor: 'rgba(0, 0, 0, .5)',
+									effects: [
+										{
+											on: 'hover',
+											style: {
+												itemBackground:
+													'rgba(0, 0, 0, .03)',
+												itemOpacity: 1,
+											},
+										},
+									],
+								},
+							]}
+							theme={{
+								tooltip: {
+									container: {
+										fontFamily: styles.fonts.avenirRegular,
+									},
+								},
+							}}
+						/>
+					)}
+					{console.log(data)}
+					{graphType === 'radial' && data && (
+						<ResponsivePie
+							data={data}
+							margin={{
+								top: 40,
+								right: 80,
+								bottom: 80,
+								left: 80,
+							}}
+							innerRadius={0.5}
+							padAngle={0.7}
+							cornerRadius={3}
+							colors={styles.ageRaceMethodGraphColors}
+							borderWidth={0}
+							radialLabel={function(e) {
+								return `${e.id} (${e.percent})`
+							}}
+							radialLabelsSkipAngle={10}
+							radialLabelsTextXOffset={6}
+							radialLabelsTextColor="#333333"
+							radialLabelsLinkOffset={0}
+							radialLabelsLinkDiagonalLength={16}
+							radialLabelsLinkHorizontalLength={24}
+							radialLabelsLinkStrokeWidth={1}
+							radialLabelsLinkColor={{ from: 'color' }}
+							enableSlicesLabels={false}
+							slicesLabelsSkipAngle={10}
+							slicesLabelsTextColor="#333333"
+							sortByValue={true}
+							animate={true}
+							motionStiffness={90}
+							motionDamping={15}
+							legends={[
+								{
+									anchor: 'bottom',
+									direction: 'row',
+									translateY: 56,
+									itemWidth: 100,
+									itemHeight: 18,
+									itemTextColor: '#999',
+									symbolSize: 18,
+									symbolShape: 'circle',
+									effects: [
+										{
+											on: 'hover',
+											style: {
+												itemTextColor: '#000',
+											},
+										},
+									],
+								},
+							]}
+							theme={{
+								tooltip: {
+									container: {
+										fontFamily: styles.fonts.avenirRegular,
+									},
+								},
+							}}
 						/>
 					)}
 				</div>
-			</div>
-			<div>
-				<h4>Age range</h4>
-				<ul css={keyCSS}>
-					<li>
-						<div></div> 15 to 24
-					</li>
-					<li>
-						<div></div> 15 to 24
-					</li>
-					<li>
-						<div></div> 15 to 24
-					</li>
-					<li>
-						<div></div> 15 to 24
-					</li>
-					<li>
-						<div></div> 15 to 24
-					</li>
-					<li>
-						<div></div> 15 to 24
-					</li>
-					<li>
-						<div></div> 15 to 24
-					</li>
-					<li>
-						<div></div> 15 to 24
-					</li>
-					<li>
-						<div></div> 15 to 24
-					</li>
-				</ul>
 			</div>
 		</div>
 	)

@@ -24,7 +24,7 @@ export const styles = {
 		white,
 		black,
 	},
-	graphColors: [
+	stateGraphColors: [
 		lightGray,
 		blue,
 		darkGray,
@@ -33,6 +33,15 @@ export const styles = {
 		poppy,
 		green,
 		fuchsia,
+	],
+	ageRaceMethodGraphColors: [
+		blue,
+		yellow,
+		poppy,
+		green,
+		darkBlue,
+		fuchsia,
+		darkGray,
 	],
 	fonts: {
 		avenirRegular: 'AvenirNextLTPro-Regular, Arial, sans-serif',

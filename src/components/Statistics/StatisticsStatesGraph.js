@@ -45,7 +45,7 @@ const StatisticsStatesGraph = ({ width, height, data, selection }) => {
 				xScale={{ type: 'point' }}
 				yScale={{
 					type: 'linear',
-					stacked: true,
+					stacked: false,
 					min: 'auto',
 					max: 'auto',
 				}}
@@ -56,7 +56,7 @@ const StatisticsStatesGraph = ({ width, height, data, selection }) => {
 					tickSize: 5,
 					tickPadding: 5,
 					tickRotation: 0,
-					legend: 'transportation',
+					legend: 'Years',
 					legendOffset: 36,
 					legendPosition: 'middle',
 				}}
@@ -65,11 +65,11 @@ const StatisticsStatesGraph = ({ width, height, data, selection }) => {
 					tickSize: 5,
 					tickPadding: 5,
 					tickRotation: 0,
-					legend: 'count',
+					legend: 'Rate per 100,000 Individuals',
 					legendOffset: -40,
 					legendPosition: 'middle',
 				}}
-				colors={styles.graphColors}
+				colors={styles.stateGraphColors}
 				pointSize={10}
 				pointColor={{ theme: 'background' }}
 				pointBorderWidth={2}
