@@ -16,7 +16,7 @@ import { styles } from '../css/css'
 
 const eventCarouselCSS = css``
 
-const Chapter = ({ data: { chapter } }) => {
+const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	const {
 		title,
 		useVideoInHero,
@@ -30,23 +30,52 @@ const Chapter = ({ data: { chapter } }) => {
 		chapterEmailApiKey,
 		featuredPrograms,
 		volunteerSignupUrl,
-		chapterStoriesAndUpdates,
 		chapterInformation,
 	} = chapter
-
 	const chapterCode = chapter.chapterCode.toLowerCase()
 	const [events, setEvents] = useState({ details: [] })
 	const [stories, setStories] = useState([])
+
+	const storiesUpdates = []
+
 	useEffect(() => {
-		chapterStoriesAndUpdates.forEach(story => {
-			const coverImage = story.seo.image
-			const title = story.title
-			const slug = story.slug
-			const seo = story.seo
-			const type = 'chapter'
-			const node = { node: { coverImage, title, slug, seo, type } }
-			setStories(storiesArray => [...storiesArray, node])
-		})
+		if (stories.length === 0) {
+			realStories.edges.forEach(story => {
+				const coverImage = story.node.seo.image
+				const title = story.node.title
+				const slug = story.node.slug
+				const seo = story.node.seo
+				const date = parseInt(story.node.publicationDate, 10)
+				const type = 'chapter'
+				const node = {
+					node: { coverImage, title, slug, seo, date, type },
+				}
+				storiesUpdates.push(node)
+			})
+			chapterStoriesUpdates.edges.forEach(story => {
+				const coverImage = story.node.seo.image
+				const title = story.node.title
+				const slug = story.node.slug
+				const seo = story.node.seo
+				const date = parseInt(story.node.publicationDate, 10)
+				const type = 'chapter'
+				const node = {
+					node: { coverImage, title, slug, seo, date, type },
+				}
+				storiesUpdates.push(node)
+			})
+			storiesUpdates.sort((a, b) => {
+				if (a.node.date < b.node.date) {
+					return 1
+				} else if (a.node.date > b.node.date) {
+					return -1
+				} else {
+					return 0
+				}
+			})
+			storiesUpdates.forEach(story => console.log(story.node.date))
+			setStories(storiesUpdates)
+		}
 
 		fetch(`//aws-fetch.s3.amazonaws.com/merged-events-${chapterCode}.json`)
 			.then(response => {
@@ -74,7 +103,7 @@ const Chapter = ({ data: { chapter } }) => {
 				})
 				setEvents(eventDetails)
 			})
-	}, [chapterStoriesAndUpdates, chapterCode])
+	}, [chapterStoriesUpdates, chapterCode])
 
 	return (
 		<LayoutChapter
@@ -115,6 +144,7 @@ const Chapter = ({ data: { chapter } }) => {
 				header="Stories and updates"
 				first={true}
 				stories={stories}
+				more={true}
 			/>
 		</LayoutChapter>
 	)
@@ -123,7 +153,7 @@ const Chapter = ({ data: { chapter } }) => {
 export default Chapter
 
 export const query = graphql`
-	query($slug: String) {
+	query($slug: String, $tag: String) {
 		chapter: datoCmsChapterHomePage(slug: { eq: $slug }) {
 			seoMetaTags {
 				tags
@@ -181,29 +211,64 @@ export const query = graphql`
 					}
 				}
 			}
-			chapterStoriesAndUpdates {
-				title
-				slug
-				seo {
-					description
-					image {
-						fluid(
-							maxWidth: 600
-							imgixParams: {
-								fm: "jpg"
-								fit: "crop"
-								crop: "faces"
-								w: "600"
-								h: "370"
+			chapterInformation {
+				instagramClass
+			}
+		}
+		realStories: allDatoCmsStory(
+			filter: { tags: { elemMatch: { tag: { eq: $tag } } } }
+		) {
+			edges {
+				node {
+					title
+					publicationDate(formatString: "x")
+					slug
+					seo {
+						description
+						image {
+							fluid(
+								maxWidth: 600
+								imgixParams: {
+									fm: "jpg"
+									fit: "crop"
+									crop: "faces"
+									w: "600"
+									h: "370"
+								}
+							) {
+								...GatsbyDatoCmsFluid_tracedSVG
 							}
-						) {
-							...GatsbyDatoCmsFluid_tracedSVG
 						}
 					}
 				}
 			}
-			chapterInformation {
-				instagramClass
+		}
+		chapterStoriesUpdates: allDatoCmsChapterStoryUpdate(
+			filter: { tags: { elemMatch: { tag: { eq: $tag } } } }
+		) {
+			edges {
+				node {
+					title
+					publicationDate(formatString: "x")
+					slug
+					seo {
+						description
+						image {
+							fluid(
+								maxWidth: 600
+								imgixParams: {
+									fm: "jpg"
+									fit: "crop"
+									crop: "faces"
+									w: "600"
+									h: "370"
+								}
+							) {
+								...GatsbyDatoCmsFluid_tracedSVG
+							}
+						}
+					}
+				}
 			}
 		}
 	}

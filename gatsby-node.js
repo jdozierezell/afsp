@@ -21,6 +21,16 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
+			chapterStoriesUpdates: allDatoCmsChapterStoryUpdate(
+				sort: { fields: publicationDate, order: DESC }
+			) {
+				edges {
+					node {
+						slug
+						title
+					}
+				}
+			}
 			tags: allDatoCmsTag {
 				edges {
 					node {
@@ -72,6 +82,7 @@ exports.createPages = async ({ graphql, actions }) => {
 		}
 	`)
 	const stories = data.stories.edges
+	const chapterStoriesUpdates = data.chapterStoriesUpdates.edges
 	const tags = data.tags.edges
 	const authors = data.authors.edges
 	const redirects = data.redirects.edges
@@ -82,6 +93,21 @@ exports.createPages = async ({ graphql, actions }) => {
 	stories.forEach(({ node }, index) => {
 		createPage({
 			path: `story/${node.slug}`,
+			component: path.resolve('./src/templates/story.js'),
+			context: {
+				slug: node.slug,
+				prev: index === 0 ? null : stories[index - 1].node,
+				next:
+					index === stories.length - 1
+						? null
+						: stories[index + 1].node,
+			},
+		})
+	})
+
+	chapterStoriesUpdates.forEach(({ node }, index) => {
+		createPage({
+			path: `chapter-detail/${node.slug}`,
 			component: path.resolve('./src/templates/story.js'),
 			context: {
 				slug: node.slug,
@@ -150,6 +176,7 @@ exports.createPages = async ({ graphql, actions }) => {
 			component: path.resolve('./src/templates/chapterHome.js'),
 			context: {
 				slug: node.slug,
+				tag: `AFSP ${node.title}`,
 			},
 		})
 	})
