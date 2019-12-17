@@ -82,10 +82,10 @@ exports.createPages = async ({ graphql, actions }) => {
 		}
 	`)
 	const stories = data.stories.edges
-	// const chapterStoriesUpdates = data.chapterStoriesUpdates.edges
-	// const tags = data.tags.edges
-	// const authors = data.authors.edges
-	// const redirects = data.redirects.edges
+	const chapterStoriesUpdates = data.chapterStoriesUpdates.edges
+	const tags = data.tags.edges
+	const authors = data.authors.edges
+	const redirects = data.redirects.edges
 	// const details = data.details.edges
 	// const landings = data.landings.edges
 	// const chapterHomes = data.chapterHomes.edges
@@ -105,50 +105,50 @@ exports.createPages = async ({ graphql, actions }) => {
 		})
 	})
 
-	// chapterStoriesUpdates.forEach(({ node }, index) => {
-	// 	createPage({
-	// 		path: `chapter-detail/${node.slug}`,
-	// 		component: path.resolve('./src/templates/story.js'),
-	// 		context: {
-	// 			slug: node.slug,
-	// 			prev: index === 0 ? null : stories[index - 1].node,
-	// 			next:
-	// 				index === stories.length - 1
-	// 					? null
-	// 					: stories[index + 1].node,
-	// 		},
-	// 	})
-	// })
+	chapterStoriesUpdates.forEach(({ node }, index) => {
+		createPage({
+			path: `chapter-detail/${node.slug}`,
+			component: path.resolve('./src/templates/story.js'),
+			context: {
+				slug: node.slug,
+				prev: index === 0 ? null : stories[index - 1].node,
+				next:
+					index === stories.length - 1
+						? null
+						: stories[index + 1].node,
+			},
+		})
+	})
 
-	// tags.forEach(({ node }) => {
-	// 	createPage({
-	// 		path: `tag/${node.slug}`,
-	// 		component: path.resolve('./src/templates/tag.js'),
-	// 		context: {
-	// 			slug: node.slug,
-	// 			title: node.tag,
-	// 		},
-	// 	})
-	// })
+	tags.forEach(({ node }) => {
+		createPage({
+			path: `tag/${node.slug}`,
+			component: path.resolve('./src/templates/tag.js'),
+			context: {
+				slug: node.slug,
+				title: node.tag,
+			},
+		})
+	})
 
-	// authors.forEach(({ node }) => {
-	// 	createPage({
-	// 		path: `author/${node.slug}`,
-	// 		component: path.resolve('./src/templates/author.js'),
-	// 		context: {
-	// 			slug: node.slug,
-	// 			title: node.authorName,
-	// 		},
-	// 	})
-	// })
+	authors.forEach(({ node }) => {
+		createPage({
+			path: `author/${node.slug}`,
+			component: path.resolve('./src/templates/author.js'),
+			context: {
+				slug: node.slug,
+				title: node.authorName,
+			},
+		})
+	})
 
-	// redirects.forEach(({ node }) => {
-	// 	createRedirect({
-	// 		fromPath: node.aliasUrl,
-	// 		toPath: node.destinationUrl,
-	// 		isPermanent: true,
-	// 	})
-	// })
+	redirects.forEach(({ node }) => {
+		createRedirect({
+			fromPath: node.aliasUrl,
+			toPath: node.destinationUrl,
+			isPermanent: true,
+		})
+	})
 
 	// details.forEach(({ node }) => {
 	// 	createPage({
