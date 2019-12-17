@@ -43,7 +43,7 @@ const Quilt = ({ data: { quiltQuery } }) => {
 	return (
 		<ApolloProvider client={client}>
 			<Layout theme={styles.logo.mobileLightDesktopLight}>
-				<SEO meta={quiltQuery.seoMetaTags} />
+				<SEO meta={quiltQuery} />
 				<HeroImage data={quiltQuery} />
 				<main css={containerCSS}>
 					<h3>{quiltQuery.brief}</h3>

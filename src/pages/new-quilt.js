@@ -22,7 +22,7 @@ const mainCSS = css`
 const NewQuilt = ({ data: { quiltQuery } }) => {
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<SEO meta={quiltQuery.seoMetaTags} />
+			<SEO meta={quiltQuery} />
 			<HeroImage data={quiltQuery} />
 			<main css={mainCSS}>
 				<QuiltDisclaimer disclaimer={quiltQuery.disclaimer} />

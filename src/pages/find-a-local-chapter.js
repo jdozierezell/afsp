@@ -44,7 +44,7 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<SEO meta={search.seoMetaTags} />
+			<SEO meta={search} />
 			<HeroChapterSearch
 				title={search.title}
 				description={search.seo.description}

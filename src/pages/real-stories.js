@@ -17,7 +17,7 @@ const RealStories = ({ data: { real, stories } }) => {
 	})
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<SEO meta={real.seoMetaTags} />
+			<SEO meta={real} />
 			<HeroVideo
 				videoUrl={real.heroVideoUrl}
 				heading={real.heroHeading}

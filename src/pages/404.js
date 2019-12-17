@@ -7,7 +7,9 @@ import { styles } from '../css/css'
 
 const NotFoundPage = () => {
 	const meta = {
-		tags: [{ tagName: 'title', content: '404: Page not found' }],
+		seoMetaTags: {
+			tags: [{ tagName: 'title', content: '404: Page not found' }],
+		},
 	}
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>

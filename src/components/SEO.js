@@ -9,7 +9,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 
 const SEO = ({ lang, meta }) => {
-	const tags = meta.tags
+	const tags = meta.seoMetaTags.tags
 	let title,
 		description,
 		ogTitle,
