@@ -108,14 +108,9 @@ exports.createPages = async ({ graphql, actions }) => {
 	chapterStoriesUpdates.forEach(({ node }, index) => {
 		createPage({
 			path: `chapter-detail/${node.slug}`,
-			component: path.resolve('./src/templates/story.js'),
+			component: path.resolve('./src/templates/chapterStoryUpdate.js'),
 			context: {
 				slug: node.slug,
-				prev: index === 0 ? null : stories[index - 1].node,
-				next:
-					index === stories.length - 1
-						? null
-						: stories[index + 1].node,
 			},
 		})
 	})

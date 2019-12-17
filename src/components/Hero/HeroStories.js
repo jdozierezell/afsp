@@ -162,29 +162,33 @@ const HeroStories = ({ data, prev, next }) => {
 				<p css={dateLineCSS}>
 					{publicationDate} — {timeToRead.humanizedDuration} min read
 				</p>
-				<p css={byLineCSS}>
-					BY{' '}
-					{author.map((author, index) => {
-						if (author.authorName !== 'AFSP') {
-							return (
-								<AniLink
-									key={index}
-									fade
-									duration={styles.duration}
-									to={`/author/${author.slug}`}
-								>
-									{`${author.authorName}${
-										index + 1 < author.length ? ', ' : ''
-									}`}
-								</AniLink>
-							)
-						} else {
-							return `${author.authorName}${
-								index + 1 < author.length ? ', ' : ''
-							}`
-						}
-					})}
-				</p>
+				{author && (
+					<p css={byLineCSS}>
+						BY{' '}
+						{author.map((author, index) => {
+							if (author.authorName !== 'AFSP') {
+								return (
+									<AniLink
+										key={index}
+										fade
+										duration={styles.duration}
+										to={`/author/${author.slug}`}
+									>
+										{`${author.authorName}${
+											index + 1 < author.length
+												? ', '
+												: ''
+										}`}
+									</AniLink>
+								)
+							} else {
+								return `${author.authorName}${
+									index + 1 < author.length ? ', ' : ''
+								}`
+							}
+						})}
+					</p>
+				)}
 				<h3>
 					Tagged{' '}
 					<ul>
