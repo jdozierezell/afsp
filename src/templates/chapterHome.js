@@ -163,20 +163,21 @@ export const query = graphql`
 			heroVideoUrl
 			volunteerSignupUrl
 			heroImage {
-				fluid(
-					maxWidth: 1920
-					imgixParams: {
-						fm: "jpg"
-						fit: "crop"
-						crop: "faces"
-						ar: 2.5
-						w: "1920"
-						blendMode: "hardlight"
-						blend: "555"
-					}
-				) {
-					...GatsbyDatoCmsFluid_tracedSVG
-				}
+				url
+				# fluid(
+				# 	maxWidth: 1920
+				# 	imgixParams: {
+				# 		fm: "jpg"
+				# 		fit: "crop"
+				# 		crop: "faces"
+				# 		ar: 2.5
+				# 		w: "1920"
+				# 		blendMode: "hardlight"
+				# 		blend: "555"
+				# 	}
+				# ) {
+				# 	...GatsbyDatoCmsFluid_tracedSVG
+				# }
 			}
 			heroBrief
 			chapterCode
@@ -196,18 +197,19 @@ export const query = graphql`
 				seo {
 					description
 					image {
-						fluid(
-							maxWidth: 600
-							imgixParams: {
-								fm: "jpg"
-								fit: "crop"
-								crop: "faces"
-								w: "600"
-								h: "370"
-							}
-						) {
-							...GatsbyDatoCmsFluid_tracedSVG
-						}
+						url
+						# fluid(
+						# 	maxWidth: 600
+						# 	imgixParams: {
+						# 		fm: "jpg"
+						# 		fit: "crop"
+						# 		crop: "faces"
+						# 		w: "600"
+						# 		h: "370"
+						# 	}
+						# ) {
+						# 	...GatsbyDatoCmsFluid_tracedSVG
+						# }
 					}
 				}
 			}
@@ -226,18 +228,19 @@ export const query = graphql`
 					seo {
 						description
 						image {
-							fluid(
-								maxWidth: 600
-								imgixParams: {
-									fm: "jpg"
-									fit: "crop"
-									crop: "faces"
-									w: "600"
-									h: "370"
-								}
-							) {
-								...GatsbyDatoCmsFluid_tracedSVG
-							}
+							url
+							# fluid(
+							# 	maxWidth: 600
+							# 	imgixParams: {
+							# 		fm: "jpg"
+							# 		fit: "crop"
+							# 		crop: "faces"
+							# 		w: "600"
+							# 		h: "370"
+							# 	}
+							# ) {
+							# 	...GatsbyDatoCmsFluid_tracedSVG
+							# }
 						}
 					}
 				}
@@ -254,18 +257,19 @@ export const query = graphql`
 					seo {
 						description
 						image {
-							fluid(
-								maxWidth: 600
-								imgixParams: {
-									fm: "jpg"
-									fit: "crop"
-									crop: "faces"
-									w: "600"
-									h: "370"
-								}
-							) {
-								...GatsbyDatoCmsFluid_tracedSVG
-							}
+							url
+							# fluid(
+							# 	maxWidth: 600
+							# 	imgixParams: {
+							# 		fm: "jpg"
+							# 		fit: "crop"
+							# 		crop: "faces"
+							# 		w: "600"
+							# 		h: "370"
+							# 	}
+							# ) {
+							# 	...GatsbyDatoCmsFluid_tracedSVG
+							# }
 						}
 					}
 				}

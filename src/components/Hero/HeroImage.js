@@ -57,12 +57,12 @@ const HeroStories = ({ data }) => {
 							${styles.colors.darkGray},
 							${styles.colors.darkGray}
 						),
-						url(${desktopCover.fluid.src});
+						url(${desktopCover.url});
 				}
 			`}
 		>
 			<h2 css={headerCSS}>{title}</h2>
-			<img css={mobileImageCSS} src={mobileCover.fluid.src} alt="" />
+			<img css={mobileImageCSS} src={mobileCover.url} alt="" />
 		</section>
 	)
 }

@@ -153,7 +153,7 @@ const HeroStories = ({ data, prev, next }) => {
 							${styles.colors.darkGray},
 							${styles.colors.darkGray}
 						),
-						url(${desktopCover.fluid.src});
+						url(${desktopCover.url});
 				}
 			`}
 		>
@@ -205,7 +205,7 @@ const HeroStories = ({ data, prev, next }) => {
 							})}
 					</ul>
 				</h3>
-				<img css={mobileImageCSS} src={mobileCover.fluid.src} alt="" />
+				<img css={mobileImageCSS} src={mobileCover.url} alt="" />
 			</div>
 			{prev && (
 				<div css={previousStoryCSS}>

@@ -90,18 +90,19 @@ export const query = graphql`
 			heroButtonLink
 			channelList {
 				image {
-					fluid(
-						maxWidth: 200
-						imgixParams: {
-							fm: "jpg"
-							fit: "crop"
-							crop: "faces"
-							w: "200"
-							h: "200"
-						}
-					) {
-						...GatsbyDatoCmsFluid_tracedSVG
-					}
+					url
+					# fluid(
+					# 	maxWidth: 200
+					# 	imgixParams: {
+					# 		fm: "jpg"
+					# 		fit: "crop"
+					# 		crop: "faces"
+					# 		w: "200"
+					# 		h: "200"
+					# 	}
+					# ) {
+					# 	...GatsbyDatoCmsFluid_tracedSVG
+					# }
 				}
 				heading
 				brief
@@ -138,18 +139,19 @@ export const query = graphql`
 							seo {
 								description
 								image {
-									fluid(
-										maxWidth: 600
-										imgixParams: {
-											fm: "jpg"
-											fit: "crop"
-											crop: "faces"
-											w: "600"
-											h: "370"
-										}
-									) {
-										...GatsbyDatoCmsFluid_tracedSVG
-									}
+									url
+									# fluid(
+									# 	maxWidth: 600
+									# 	imgixParams: {
+									# 		fm: "jpg"
+									# 		fit: "crop"
+									# 		crop: "faces"
+									# 		w: "600"
+									# 		h: "370"
+									# 	}
+									# ) {
+									# 	...GatsbyDatoCmsFluid_tracedSVG
+									# }
 								}
 							}
 						}
@@ -160,18 +162,19 @@ export const query = graphql`
 							seo {
 								description
 								image {
-									fluid(
-										maxWidth: 600
-										imgixParams: {
-											fm: "jpg"
-											fit: "crop"
-											crop: "faces"
-											w: "600"
-											h: "370"
-										}
-									) {
-										...GatsbyDatoCmsFluid_tracedSVG
-									}
+									url
+									# fluid(
+									# 	maxWidth: 600
+									# 	imgixParams: {
+									# 		fm: "jpg"
+									# 		fit: "crop"
+									# 		crop: "faces"
+									# 		w: "600"
+									# 		h: "370"
+									# 	}
+									# ) {
+									# 	...GatsbyDatoCmsFluid_tracedSVG
+									# }
 								}
 							}
 						}

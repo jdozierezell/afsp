@@ -37,18 +37,19 @@ export const query = graphql`
 					}
 					publicationDate(formatString: "D MMM YYYY")
 					coverImage {
-						fluid(
-							maxWidth: 769
-							imgixParams: {
-								fm: "jpg"
-								fit: "crop"
-								crop: "faces"
-								w: "769"
-								h: "475"
-							}
-						) {
-							...GatsbyDatoCmsFluid_tracedSVG
-						}
+						url
+						# fluid(
+						# 	maxWidth: 769
+						# 	imgixParams: {
+						# 		fm: "jpg"
+						# 		fit: "crop"
+						# 		crop: "faces"
+						# 		w: "769"
+						# 		h: "475"
+						# 	}
+						# ) {
+						# 	...GatsbyDatoCmsFluid_tracedSVG
+						# }
 					}
 					author {
 						authorName

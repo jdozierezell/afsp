@@ -9,33 +9,35 @@ export const ChapterSearch = graphql`
 				chapterInformation {
 					zipCode
 					chapterMap {
-						fluid(
-							maxWidth: 1080
-							imgixParams: {
-								fm: "jpg"
-								fit: "crop"
-								crop: "faces"
-								ar: 1.67
-								w: "1080"
-							}
-						) {
-							...GatsbyDatoCmsFluid_tracedSVG
-						}
+						url
+						# fluid(
+						# 	maxWidth: 1080
+						# 	imgixParams: {
+						# 		fm: "jpg"
+						# 		fit: "crop"
+						# 		crop: "faces"
+						# 		ar: 1.67
+						# 		w: "1080"
+						# 	}
+						# ) {
+						# 	...GatsbyDatoCmsFluid_tracedSVG
+						# }
 					}
 				}
 				heroImage {
-					fluid(
-						maxWidth: 600
-						imgixParams: {
-							fm: "jpg"
-							fit: "crop"
-							crop: "faces"
-							w: "600"
-							ar: 1.67
-						}
-					) {
-						...GatsbyDatoCmsFluid_tracedSVG
-					}
+					url
+					# fluid(
+					# 	maxWidth: 600
+					# 	imgixParams: {
+					# 		fm: "jpg"
+					# 		fit: "crop"
+					# 		crop: "faces"
+					# 		w: "600"
+					# 		ar: 1.67
+					# 	}
+					# ) {
+					# 	...GatsbyDatoCmsFluid_tracedSVG
+					# }
 				}
 				staffName
 				staffTitle

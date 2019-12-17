@@ -138,7 +138,7 @@ const MenuItems = ({
 												) {
 													const featuredImage =
 														link.featuredLink.seo
-															.image.fluid.src
+															.image.url
 													return (
 														<li
 															css={css`

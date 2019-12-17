@@ -46,7 +46,7 @@ const featuredCSS = css`
 const Stories = ({ story: { node } }) => {
 	return (
 		<div css={featuredCSS}>
-			<img src={node.coverImage.fluid.src} alt="" />
+			<img src={node.coverImage.url} alt="" />
 			<h2>
 				<AniLink
 					fade

@@ -50,18 +50,19 @@ export const Navigation = graphql`
 								slug
 								seo {
 									image {
-										fluid(
-											maxWidth: 1080
-											imgixParams: {
-												fm: "jpg"
-												fit: "crop"
-												crop: "faces"
-												ar: 1.67
-												w: "1080"
-											}
-										) {
-											...GatsbyDatoCmsFluid_tracedSVG
-										}
+										url
+										# fluid(
+										# 	maxWidth: 1080
+										# 	imgixParams: {
+										# 		fm: "jpg"
+										# 		fit: "crop"
+										# 		crop: "faces"
+										# 		ar: 1.67
+										# 		w: "1080"
+										# 	}
+										# ) {
+										# 	...GatsbyDatoCmsFluid_tracedSVG
+										# }
 									}
 								}
 							}

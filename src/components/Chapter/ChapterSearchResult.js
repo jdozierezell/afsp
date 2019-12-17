@@ -80,7 +80,7 @@ const ChapterSearchResult = ({ chapter }) => {
 			<div
 				css={css`
 					${searchImageCSS};
-					background-image: url(${chapter.heroImage.fluid.src});
+					background-image: url(${chapter.heroImage.url});
 				`}
 			></div>
 			<div css={searchInfoCSS}>
@@ -112,7 +112,7 @@ const ChapterSearchResult = ({ chapter }) => {
 				css={css`
 					${searchMapCSS};
 					background-image: url(${chapter.chapterInformation
-						.chapterMap.fluid.src});
+						.chapterMap.url});
 				`}
 			></div>
 		</div>

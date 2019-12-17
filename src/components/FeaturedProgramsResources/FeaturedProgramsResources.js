@@ -46,7 +46,7 @@ const FeaturedResources = ({ data }) => {
 
 	return (
 		<div css={featuredCSS}>
-			<img src={data.seo.image.fluid.src} alt="" />
+			<img src={data.seo.image.url} alt="" />
 			<h2>{data.title}</h2>
 			<p
 				dangerouslySetInnerHTML={{
