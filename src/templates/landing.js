@@ -46,7 +46,7 @@ const resourcesCSS = css`
 const Landing = ({ data: { landing } }) => {
 	return (
 		<Layout theme={styles.logo.mobileDarkDesktopDark}>
-			<SEO meta={landing.seoMetaTags} />
+			<SEO meta={landing} />
 			<h1 css={landingTitle}>{landing.title}</h1>
 			<p css={landingBrief}>{landing.seo.description}</p>
 			<ChannelContainer

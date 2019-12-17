@@ -86,9 +86,9 @@ exports.createPages = async ({ graphql, actions }) => {
 	const tags = data.tags.edges
 	const authors = data.authors.edges
 	const redirects = data.redirects.edges
-	// const details = data.details.edges
-	// const landings = data.landings.edges
-	// const chapterHomes = data.chapterHomes.edges
+	const details = data.details.edges
+	const landings = data.landings.edges
+	const chapterHomes = data.chapterHomes.edges
 
 	stories.forEach(({ node }, index) => {
 		createPage({
@@ -145,34 +145,34 @@ exports.createPages = async ({ graphql, actions }) => {
 		})
 	})
 
-	// details.forEach(({ node }) => {
-	// 	createPage({
-	// 		path: `detail/${node.slug}`,
-	// 		component: path.resolve('./src/templates/detail.js'),
-	// 		context: {
-	// 			slug: node.slug,
-	// 		},
-	// 	})
-	// })
+	details.forEach(({ node }) => {
+		createPage({
+			path: `detail/${node.slug}`,
+			component: path.resolve('./src/templates/detail.js'),
+			context: {
+				slug: node.slug,
+			},
+		})
+	})
 
-	// landings.forEach(({ node }) => {
-	// 	createPage({
-	// 		path: `landing/${node.slug}`,
-	// 		component: path.resolve('./src/templates/landing.js'),
-	// 		context: {
-	// 			slug: node.slug,
-	// 		},
-	// 	})
-	// })
+	landings.forEach(({ node }) => {
+		createPage({
+			path: `landing/${node.slug}`,
+			component: path.resolve('./src/templates/landing.js'),
+			context: {
+				slug: node.slug,
+			},
+		})
+	})
 
-	// chapterHomes.forEach(({ node }) => {
-	// 	createPage({
-	// 		path: `chapter/${node.slug}`,
-	// 		component: path.resolve('./src/templates/chapterHome.js'),
-	// 		context: {
-	// 			slug: node.slug,
-	// 			tag: `AFSP ${node.title}`,
-	// 		},
-	// 	})
-	// })
+	chapterHomes.forEach(({ node }) => {
+		createPage({
+			path: `chapter/${node.slug}`,
+			component: path.resolve('./src/templates/chapterHome.js'),
+			context: {
+				slug: node.slug,
+				tag: `AFSP ${node.title}`,
+			},
+		})
+	})
 }

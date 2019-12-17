@@ -13,7 +13,7 @@ const Detail = ({ data, pageContext }) => {
 	const { detail } = data
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<SEO meta={detail.seoMetaTags} />
+			<SEO meta={detail} />
 			<HeroSolid data={detail} />
 			<NavigationSide data={detail} />
 			<ContentGeneric data={detail} />
