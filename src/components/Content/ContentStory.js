@@ -20,14 +20,23 @@ const storyContentCSS = css`
 		grid-column-gap: ${styles.gridGap.desktop};
 	}
 	.storyContent {
-		margin: ${styles.scale.px50} ${styles.scale.px24};
+		margin: ${styles.scale.px24} ${styles.scale.px24} 0;
 		@media (min-width: ${styles.screens.tablet}px) {
 			grid-column: 2 / 3;
 			max-width: 623px;
-			margin: ${styles.scale.px80} auto;
+			margin: ${styles.scale.px50} auto 0;
 		}
 		:first-of-type {
 			margin-top: 0;
+		}
+		:last-of-type {
+			margin-bottom: ${styles.scale.px24};
+			@media (min-width: ${styles.screens.tablet}px) {
+				margin-bottom: ${styles.scale.px50};
+			}
+		}
+		p:last-of-type {
+			margin-bottom: 0;
 		}
 	}
 `

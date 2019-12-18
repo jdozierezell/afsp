@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Form, Input, FileInput } from '@rocketseat/unform'
 import * as Yup from 'yup'
 import { css } from '@emotion/core'
@@ -10,25 +10,25 @@ import stateList from '../../utils/stateList'
 
 import { styles } from '../../css/css'
 
-const schema = Yup.object().shape({
-	quiltTitle: Yup.string().required(
-		'A title is required. Please enter your title and resubmit your square.'
-	),
-	name: Yup.string().required(
-		'Your name is required. Please enter your name and resubmit your square.'
-	),
-	email: Yup.string()
-		.email('Invalid email address')
-		.required(
-			'Your email address is required. Please enter your email and resubmit your square.'
-		),
-	state: Yup.string().required(
-		'Your state was not selected. Please select your state and resubmit your square.'
-	),
-	file: Yup.mixed().required(
-		'An image is required to create your square. Please select an image and resubmit.'
-	),
-})
+// const schema = Yup.object().shape({
+// 	quiltTitle: Yup.string().required(
+// 		'A title is required. Please enter your title and resubmit your square.'
+// 	),
+// 	name: Yup.string().required(
+// 		'Your name is required. Please enter your name and resubmit your square.'
+// 	),
+// 	email: Yup.string()
+// 		.email('Invalid email address')
+// 		.required(
+// 			'Your email address is required. Please enter your email and resubmit your square.'
+// 		),
+// 	state: Yup.string().required(
+// 		'Your state was not selected. Please select your state and resubmit your square.'
+// 	),
+// 	image: Yup.mixed().required(
+// 		'An image is required to create your square. Please select an image and resubmit.'
+// 	),
+// })
 
 const formWrapperCSS = css`
 	font-family: ${styles.fonts.avenirRegular};
@@ -65,15 +65,37 @@ const formWrapperCSS = css`
 `
 
 const QuiltForm = () => {
+	const [imageFile, setImageFile] = useState(null)
+	function handleProgress(progress, event) {
+		console.log(progress)
+		console.log(event)
+	}
 	const handleSubmit = data => {
-		console.log(data)
+		// console.log(data)
+		const form = document.querySelector('form')
+		const image = document.querySelector('#image')
+		let formData = new FormData(form)
+		formData.append('image', data.image)
+		console.log(...formData)
 		axios
-			.post('https://serene-dusk-44738.herokuapp.com/create-quilt', data)
+			.post(
+				'https://serene-dusk-44738.herokuapp.com/create-quilt',
+				formData,
+				{
+					headers: {
+						'Content-Type': 'multipart/form-data',
+					},
+				}
+			)
 			.then(response => console.log(response))
 			.catch(error => console.log(error))
 	}
 	return (
-		<Form schema={schema} onSubmit={handleSubmit} css={formWrapperCSS}>
+		// <form action="#" onSubmit={handleSubmit}>
+		// 	<input type="text" name="foo" />
+		// 	<button type="submit">Submit</button>
+		// </form>
+		<Form onSubmit={handleSubmit} css={formWrapperCSS}>
 			<label htmlFor="quiltTitle">Square Title/Name of Person Lost</label>
 			<Input name="quiltTitle" />
 			<label htmlFor="name">Your Name</label>
@@ -98,7 +120,7 @@ const QuiltForm = () => {
 				Please note, images do not need to be square when uploading.
 				They will appear as squares automatically.
 			</p>
-			<FileInput name="file" />
+			<FileInput name="image" onStartProgress={handleProgress} />
 			<label htmlFor="description">Square Description</label>
 			<p>
 				Enter a brief description of your quilt square. This can be

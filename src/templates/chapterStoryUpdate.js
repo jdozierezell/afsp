@@ -19,7 +19,6 @@ const carouselCSS = css`
 `
 
 const Story = ({ data: { story }, pageContext: { prev, next } }) => {
-	console.log(story)
 	return (
 		<Layout theme={styles.logo.mobileDarkDesktopLight}>
 			<SEO meta={story} />
