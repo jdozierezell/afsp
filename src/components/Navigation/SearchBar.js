@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { css } from '@emotion/core'
 
+import Search from '../Search/Search'
 import IconX from '../SVGs/IconX'
 
 import { styles } from '../../css/css'
@@ -42,6 +43,7 @@ const SearchBar = () => {
 
 	return (
 		<div css={searchCSS}>
+			<Search />
 			<input
 				type="text"
 				placeholder="Search..."

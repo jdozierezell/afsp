@@ -46,7 +46,8 @@ const mobileImageCSS = css`
 
 const HeroStories = ({ data }) => {
 	const { title, mobileCover, desktopCover } = data
-
+	const mobileHeroImg = `${mobileCover.url}?w=769&h=475&fit=crop&crop=faces`
+	const desktopHeroImg = `${desktopCover.url}?w=1920&h=768&fit=crop&crop=faces`
 	return (
 		<section
 			css={css`
@@ -57,12 +58,12 @@ const HeroStories = ({ data }) => {
 							${styles.colors.darkGray},
 							${styles.colors.darkGray}
 						),
-						url(${desktopCover.url});
+						url(${desktopHeroImg});
 				}
 			`}
 		>
 			<h2 css={headerCSS}>{title}</h2>
-			<img css={mobileImageCSS} src={mobileCover.url} alt="" />
+			<img css={mobileImageCSS} src={mobileHeroImg} alt="" />
 		</section>
 	)
 }

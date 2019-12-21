@@ -46,7 +46,10 @@ const featuredCSS = css`
 const Stories = ({ story: { node } }) => {
 	return (
 		<div css={featuredCSS}>
-			<img src={node.coverImage.url} alt="" />
+			<img
+				src={`${node.coverImage.url}?w=600&h=370&fit=crop&crop=faces`}
+				alt=""
+			/>
 			<h2>
 				<AniLink
 					fade

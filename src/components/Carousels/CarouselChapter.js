@@ -29,7 +29,11 @@ const carouselTitleCSS = css`
 const CarouselChapter = ({ title, titleHref, src }) => {
 	return (
 		<div css={carouselComponentCSS}>
-			<img src={src} alt="" css={carouselImageCSS} />
+			<img
+				src={`${src}?w=600&h=370&fit=crop&crop=faces`}
+				alt=""
+				css={carouselImageCSS}
+			/>
 			<a href={titleHref} css={carouselTitleCSS}>
 				{title}
 			</a>

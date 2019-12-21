@@ -40,7 +40,7 @@ const Channel = ({ channel }) => {
 	}
 	return (
 		<div css={channelCSS}>
-			<img src={image.url} alt="" />
+			<img src={`${image.url}?w=200&h=200&fit=crop&crop=faces`} alt="" />
 			<h2>{heading}</h2>
 			<div dangerouslySetInnerHTML={{ __html: brief }}></div>
 			<AniLink fade duration={styles.duration} to={`/${link}`}>

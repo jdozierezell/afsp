@@ -75,12 +75,14 @@ const searchMapCSS = css`
 `
 
 const ChapterSearchResult = ({ chapter }) => {
+	const heroBackgroundImg = `${chapter.heroImage.url}?w=1080&h=1080&fit=crop&crop=faces`
+	const chapterBackgroundImg = `${chapter.chapterInformation.chapterMap.url}?w=1080&h=1080`
 	return (
 		<div css={searchResultCSS}>
 			<div
 				css={css`
 					${searchImageCSS};
-					background-image: url(${chapter.heroImage.url});
+					background-image: url(${heroBackgroundImg});
 				`}
 			></div>
 			<div css={searchInfoCSS}>
@@ -111,8 +113,7 @@ const ChapterSearchResult = ({ chapter }) => {
 			<div
 				css={css`
 					${searchMapCSS};
-					background-image: url(${chapter.chapterInformation
-						.chapterMap.url});
+					background-image: url(${chapterBackgroundImg});
 				`}
 			></div>
 		</div>

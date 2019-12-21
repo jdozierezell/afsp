@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 import Script from 'react-load-script'
 
@@ -83,6 +83,26 @@ const emailCSS = css`
 	}
 `
 
+const formCSS = css`
+	display: flex;
+	flex-flow: row nowrap;
+	width: 100%;
+	.klaviyo_field_group,
+	input {
+		flex-grow: 1;
+	}
+	button {
+		margin-left: ${styles.scale.px36};
+	}
+	.success_message {
+		font-family: ${styles.fonts.avenirRegular};
+		flex-grow: 1;
+	}
+	.hidden {
+		display: none !important;
+	}
+`
+
 // const subscribeCSS = css`
 // 	display: flex;
 // 	flex-flow: row wrap;
@@ -105,16 +125,68 @@ const emailCSS = css`
 // `
 
 const EmailSignup = ({ formId, children }) => {
+	const [submitted, setSubmitted] = useState(false)
+
 	return (
 		<div css={emailCSS}>
 			{children}
-			<div className={`klaviyo-form-${formId}`}></div>
+			<form
+				css={formCSS}
+				id="email_signup"
+				action="//manage.kmail-lists.com/subscriptions/subscribe"
+				data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe"
+				method="GET"
+				target="_blank"
+				noValidate="novalidate"
+			>
+				<input type="hidden" name="g" value={`${formId}`} />
+				<input type="hidden" name="$fields" value="$consent" />
+				<input type="hidden" name="$list_fields" value="$consent" />
+				<div className={submitted ? 'hidden' : 'klaviyo_field_group'}>
+					<input
+						type="email"
+						name="email"
+						id="k_id_email"
+						placeholder="Type your email here..."
+					/>
+				</div>
+				<div className="klaviyo_messages">
+					<div
+						className="success_message"
+						style={{ display: 'none' }}
+					></div>
+				</div>
+				<div className="klaviyo_form_actions">
+					<button
+						type="submit"
+						className={
+							submitted ? 'hidden' : 'klaviyo_submit_button'
+						}
+					>
+						Subscribe
+					</button>
+				</div>
+			</form>
 			<Script
-				url="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=JXzNvL"
+				url="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"
 				attributes={{ id: 'klaviyo' }}
 				onCreate={() => console.log('created')}
 				onError={() => console.log('error')}
-				onLoad={() => console.log('loaded')}
+				onLoad={() => {
+					console.log('loaded')
+					// eslint-disable-next-line no-undef
+					KlaviyoSubscribe.attachToForms('#email_signup', {
+						hide_form_on_success: true,
+						success_message:
+							'Thank you for subscribing. Please check your email to confirm your subscription.',
+						extra_properties: {
+							$source: '$embed',
+							$method_type: 'Klaviyo Form',
+							$method_id: 'embed',
+						},
+						success: () => setSubmitted(true),
+					})
+				}}
 			/>
 			{/* <div css={subscribeCSS}>
 				<input placeholder="Email address" type="text" />

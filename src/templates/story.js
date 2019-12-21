@@ -8,7 +8,7 @@ import HeroStories from '../components/Hero/HeroStories'
 import ContentStory from '../components/Content/ContentStory'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 
-import '../utils/facebookSDK'
+// import '../utils/facebookSDK'
 
 import { styles } from '../css/css'
 

@@ -27,7 +27,7 @@ const Layout = ({ theme, children }) => {
 		<>
 			<Header nav={headerNav} theme={theme} />
 			<main>{children}</main>
-			<EmailSignup formId="LGcf3Q">
+			<EmailSignup formId="KxgQRb">
 				<div>
 					<h2>Sign up for email alerts</h2>
 					<p>Join our network and be the first to take action</p>
