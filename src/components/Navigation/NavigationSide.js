@@ -43,6 +43,7 @@ const sideNavigationCSS = css`
 
 const NavigationSide = ({ data }) => {
 	let headings = []
+	console.log(data.details)
 	data.details.map(detail => {
 		if (detail.__typename === 'DatoCmsContent') {
 			if (detail.contentHeading) {

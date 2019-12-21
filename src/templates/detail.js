@@ -64,6 +64,18 @@ export const query = graphql`
 						cardButtonUrl
 					}
 				}
+				... on DatoCmsActionButton {
+					__typename
+					buttonText
+					buttonLink
+				}
+				... on DatoCmsVideo {
+					__typename
+					video {
+						provider
+						providerUid
+					}
+				}
 			}
 			seoMetaTags {
 				tags

@@ -3,6 +3,7 @@ import { css } from '@emotion/core'
 
 import RecommendationsVideoStories from '../Recommendations/RecommendationsVideoStories'
 import Content from './Content'
+import ContentVideo from './ContentVideo'
 import CardContainer from '../Cards/CardContainer'
 
 import { styles } from '../../css/css'
@@ -39,16 +40,6 @@ const ContentGeneric = ({ data }) => {
 							storyData={detail.storyRecommendation}
 						/>
 					)
-					// } else if (detail.__typename === 'DatoCmsTable') {
-					// 	return (
-					// 		<Table
-					// 			key={index}
-					// 			tableHeading={detail.tableHeading}
-					// 			tableBody={
-					// 				detail.tableBodyNode.childMarkdownRemark.html
-					// 			}
-					// 		/>
-					// 	)
 				} else if (detail.__typename === 'DatoCmsCardContainer') {
 					return (
 						<CardContainer
@@ -56,6 +47,17 @@ const ContentGeneric = ({ data }) => {
 							cards={detail.cardContainerList}
 							heading={detail.cardContainerHeading}
 						/>
+					)
+				} else if (detail.__typename === 'DatoCmsVideo') {
+					return <ContentVideo video={detail} />
+				} else if (detail.__typename === 'DatoCmsActionButton') {
+					return (
+						<a
+							className="secondary-button"
+							href={detail.buttonLink}
+						>
+							{detail.buttonText}
+						</a>
 					)
 				}
 				return ''

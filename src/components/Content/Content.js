@@ -71,9 +71,11 @@ const Content = ({ contentHeading, contentBody }) => {
 	return (
 		<div>
 			{contentHeading && (
-				<h2 css={contentHeadingCSS} id={createAnchor(contentHeading)}>
-					{contentHeading}
-				</h2>
+				<h2
+					css={contentHeadingCSS}
+					id={createAnchor(contentHeading)}
+					dangerouslySetInnerHTML={{ __html: contentHeading }}
+				></h2>
 			)}
 			<div
 				css={contentBodyCSS}

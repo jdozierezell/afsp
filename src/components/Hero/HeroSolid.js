@@ -37,7 +37,7 @@ const HeroSolid = ({ data }) => {
 			{parentPage && parentPage.parentPage && (
 				<Breadcrumbs parentPage={parentPage} child={title} />
 			)}
-			<h1>{title}</h1>
+			<h1 dangerouslySetInnerHTML={{ __html: title }}></h1>
 			<div
 				dangerouslySetInnerHTML={{
 					__html: brief,
