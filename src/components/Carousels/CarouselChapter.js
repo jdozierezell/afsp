@@ -1,5 +1,8 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
+
+import buildUrl from '../../utils/buildUrl'
 
 import { styles } from '../../css/css'
 
@@ -34,9 +37,15 @@ const CarouselChapter = ({ title, titleHref, src }) => {
 				alt=""
 				css={carouselImageCSS}
 			/>
-			<a href={titleHref} css={carouselTitleCSS}>
+
+			<AniLink
+				fade
+				duration={styles.duration}
+				to={buildUrl('chapter', titleHref)}
+				css={carouselTitleCSS}
+			>
 				{title}
-			</a>
+			</AniLink>
 		</div>
 	)
 }

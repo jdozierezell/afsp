@@ -5,34 +5,22 @@ import { styles } from '../../css/css'
 
 import background from '../SVGs/BackgroundOneBlueGreen.svg'
 
-const titleCTACSS = css`
-	background-image: url(${background});
-	background-size: cover;
-	background-position: center;
-	padding: ${styles.scale.px50} ${styles.scale.px24};
+const h2 = css`
 	text-align: center;
+	font-size: ${styles.scale.px36};
+	margin-bottom: ${styles.scale.px30};
 	@media (min-width: ${styles.screens.tablet}px) {
-		padding: ${styles.scale.px80} ${styles.scale.px50};
+		font-size: ${styles.scale.px56};
 	}
-	h2 {
-		text-align: center;
-		font-size: ${styles.scale.px36};
-		color: ${styles.colors.white};
-		margin-bottom: ${styles.scale.px30};
+`
+const p = css`
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	:last-of-type {
+		margin-bottom: ${styles.scale.px40};
 		@media (min-width: ${styles.screens.tablet}px) {
-			font-size: ${styles.scale.px56};
-		}
-	}
-	p {
-		color: ${styles.colors.white};
-		max-width: 600px;
-		margin-left: auto;
-		margin-right: auto;
-		:last-of-type {
-			margin-bottom: ${styles.scale.px40};
-			@media (min-width: ${styles.screens.tablet}px) {
-				margin-bottom: ${styles.scale.px80};
-			}
+			margin-bottom: ${styles.scale.px80};
 		}
 	}
 `
@@ -40,9 +28,10 @@ const titleCTACSS = css`
 const CTAWithDescription = ({ cta }) => {
 	const { heading, brief, linkText, linkUrl } = cta
 	return (
-		<div css={titleCTACSS}>
-			<h2>{heading}</h2>
+		<>
+			<h2 css={h2}>{heading}</h2>
 			<p
+				css={p}
 				dangerouslySetInnerHTML={{
 					__html: brief,
 				}}
@@ -50,7 +39,7 @@ const CTAWithDescription = ({ cta }) => {
 			<a href={linkUrl} className="secondary-button">
 				{linkText}
 			</a>
-		</div>
+		</>
 	)
 }
 

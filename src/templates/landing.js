@@ -20,16 +20,18 @@ const landingTitle = css`
 `
 
 const landingBrief = css`
-	margin: 0 24px;
+	padding: 0 24px ${styles.scale.px50};
 	@media (min-width: ${styles.screens.tablet}px) {
-		margin: 0 50px;
+		padding: 0 ${styles.scale.px50} ${styles.scale.px80};
 	}
 `
 
 const channelCSS = css`
 	background-color: ${styles.colors.white};
 	grid-template-columns: repeat(2, 1fr);
+	padding-top: 0;
 	@media (min-width: ${styles.screens.tablet}px) {
+		padding-top: 0;
 		div {
 			text-align: center;
 		}
@@ -44,20 +46,24 @@ const resourcesCSS = css`
 `
 
 const Landing = ({ data: { landing } }) => {
+	console.log()
 	return (
 		<Layout theme={styles.logo.mobileDarkDesktopDark}>
 			<SEO meta={landing} />
 			<h1 css={landingTitle}>{landing.title}</h1>
 			<p css={landingBrief}>{landing.seo.description}</p>
-			<ChannelContainer
-				channelList={landing.channelList}
-				addCSS={channelCSS}
-			/>
+			{landing.channelList.length !== 0 && (
+				<ChannelContainer
+					channelList={landing.channelList}
+					addCSS={channelCSS}
+				/>
+			)}
 			{landing.ctaChapterResourceDetailList.map((item, index) => {
 				if (item.__typename === 'DatoCmsCallToAction') {
 					return (
 						<CTAContainer
 							key={index}
+							number={index}
 							cta={item.cta.callToAction[0]}
 						/>
 					)
@@ -83,10 +89,12 @@ const Landing = ({ data: { landing } }) => {
 				}
 				return ''
 			})}
-			<ChannelContainer
-				channelList={landing.channelList}
-				addCSS={channelCSS}
-			/>
+			{landing.channelList.length !== 0 && (
+				<ChannelContainer
+					channelList={landing.channelList}
+					addCSS={channelCSS}
+				/>
+			)}
 		</Layout>
 	)
 }

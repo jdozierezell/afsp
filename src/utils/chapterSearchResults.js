@@ -30,10 +30,11 @@ const fetchChapters = (chapters, useStateFunction) => {
 		.then(res => res.json())
 		.then(
 			result => {
+				console.log(result)
 				useStateFunction(
 					chapterSearchResults(chapters, {
 						primaryZip: result.zip,
-						otherZips: zipcodes.radius(result.zip, 15),
+						otherZips: zipcodes.radius(result.zip, 100),
 					})
 				)
 			},

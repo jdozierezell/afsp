@@ -31,13 +31,13 @@ const RealStories = ({ data: { real, stories } }) => {
 				first={true}
 				stories={stories.edges}
 			/>
-			<CTAContainer cta={real.callToAction1.callToAction[0]} />
+			<CTAContainer number={1} cta={real.callToAction1.callToAction[0]} />
 			<StoriesContainer
 				offset={3}
 				more="stories"
 				stories={stories.edges}
 			/>
-			<CTAContainer cta={real.callToAction2.callToAction[0]} />
+			<CTAContainer number={2} cta={real.callToAction2.callToAction[0]} />
 			<CarouselChapterContainer />
 		</Layout>
 	)

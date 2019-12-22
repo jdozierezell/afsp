@@ -17,6 +17,7 @@ const buildUrl = (typename, slug) => {
 			folder = '/landing'
 			break
 		default:
+			folder = typename
 			break
 	}
 	return `${folder}/${slug}`

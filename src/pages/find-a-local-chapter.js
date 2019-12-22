@@ -62,7 +62,11 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 				/>
 			)}
 			{search.callsToAction.map((item, index) => (
-				<CTAContainer key={index} cta={item.cta.callToAction[0]} />
+				<CTAContainer
+					key={index}
+					number={index}
+					cta={item.cta.callToAction[0]}
+				/>
 			))}
 		</Layout>
 	)

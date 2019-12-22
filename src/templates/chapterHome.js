@@ -9,7 +9,7 @@ import HeroChapter from '../components/Hero/HeroChapter'
 import ChapterAboutContact from '../components/Chapter/ChapterAboutContact'
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
 import FeaturedProgramsContainer from '../components/FeaturedProgramsResources/FeaturedProgramsContainer'
-import CTAWithDescription from '../components/CTAs/CTAWithDescription'
+import CTAContainer from '../components/CTAs/CTAContainer'
 import StoriesContainer from '../components/Stories/StoriesContainer'
 
 import { styles } from '../css/css'
@@ -32,7 +32,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 		volunteerSignupUrl,
 		chapterInformation,
 	} = chapter
-	const chapterCode = chapter.chapterCode.toLowerCase()
+	const chapterDonorDriveId = chapterInformation.chapterDonorDriveId.toLowerCase()
 	const [events, setEvents] = useState({ details: [] })
 	const [stories, setStories] = useState([])
 
@@ -77,7 +77,9 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			setStories(storiesUpdates)
 		}
 
-		fetch(`//aws-fetch.s3.amazonaws.com/merged-events-${chapterCode}.json`)
+		fetch(
+			`//aws-fetch.s3.amazonaws.com/merged-events-${chapterDonorDriveId}.json`
+		)
 			.then(response => {
 				if (response.status >= 400) {
 					throw new Error('Bad response from server')
@@ -103,7 +105,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				})
 				setEvents(eventDetails)
 			})
-	}, [chapterStoriesUpdates, chapterCode])
+	}, [chapterStoriesUpdates, chapterDonorDriveId])
 
 	return (
 		<LayoutChapter
@@ -133,8 +135,9 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				addCSS={eventCarouselCSS}
 			/>
 			<FeaturedProgramsContainer resources={featuredPrograms} />
-			<CTAWithDescription
+			<CTAContainer
 				cta={{
+					__typename: 'DatoCmsCtaWithDescription',
 					heading: `Join the AFSP ${title} Chapter`,
 					linkText: 'Volunteer',
 					linkUrl: volunteerSignupUrl,
@@ -180,7 +183,6 @@ export const query = graphql`
 				# }
 			}
 			heroBrief
-			chapterCode
 			chapterEmailApiKey
 			staffName
 			staffTitle
@@ -215,6 +217,7 @@ export const query = graphql`
 			}
 			chapterInformation {
 				instagramClass
+				chapterDonorDriveId
 			}
 		}
 		realStories: allDatoCmsStory(

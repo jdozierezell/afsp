@@ -53,6 +53,7 @@ const App = ({ data: { home } }) => {
 					return (
 						<CTAContainer
 							key={index}
+							number={index}
 							cta={item.cta.callToAction[0]}
 						/>
 					)
