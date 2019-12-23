@@ -3,6 +3,8 @@ import { css } from '@emotion/core'
 
 import Stories from './Stories'
 
+import createAnchor from '../../utils/createAnchor'
+
 import { styles } from '../../css/css'
 
 const containerCSS = css`
@@ -46,7 +48,7 @@ const moreButtonCSS = css`
 const StoriesContainer = ({ header, first, offset, more, stories }) => {
 	const [displayNumber, setDisplayNumber] = useState(3)
 	return (
-		<section css={containerCSS}>
+		<section css={containerCSS} id={header ? createAnchor(header) : null}>
 			{header && <h2>{header}</h2>}
 			{first && (
 				<div css={storiesCSS}>

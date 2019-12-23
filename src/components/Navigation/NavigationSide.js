@@ -41,9 +41,15 @@ const sideNavigationCSS = css`
 	}
 `
 
-const NavigationSide = ({ data }) => {
+const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
 	let headings = []
-	console.log(data.details)
+	if (beforeAnchors) {
+		beforeAnchors.map(anchor => {
+			anchor = createAnchor(anchor)
+			headings.push(anchor)
+		})
+	}
+
 	data.details.map(detail => {
 		if (detail.__typename === 'DatoCmsContent') {
 			if (detail.contentHeading) {
@@ -59,6 +65,16 @@ const NavigationSide = ({ data }) => {
 		}
 		return headings
 	})
+
+	if (afterAnchors) {
+		afterAnchors.map(anchor => {
+			const heading = anchor
+			anchor = createAnchor(anchor)
+			headings.push({ heading, anchor })
+		})
+	}
+	console.log(headings)
+
 	const asideRef = useRef(null)
 	const [position, setPosition] = useState('absolute')
 	const [top, setTop] = useState('220px')
@@ -96,9 +112,17 @@ const NavigationSide = ({ data }) => {
 				<ul>
 					{headings.map((heading, index) => (
 						<li key={index}>
-							<Link to={`/detail/${data.slug}#${heading.anchor}`}>
-								{heading.heading}
-							</Link>
+							{navRoot ? (
+								<Link to={`${navRoot}#${heading.anchor}`}>
+									{heading.heading}
+								</Link>
+							) : (
+								<Link
+									to={`/detail/${data.slug}#${heading.anchor}`}
+								>
+									{heading.heading}
+								</Link>
+							)}
 						</li>
 					))}
 				</ul>

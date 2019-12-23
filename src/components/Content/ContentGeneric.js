@@ -4,6 +4,7 @@ import { css } from '@emotion/core'
 import RecommendationsVideoStories from '../Recommendations/RecommendationsVideoStories'
 import Content from './Content'
 import ContentVideo from './ContentVideo'
+import ContentAudio from './ContentAudio'
 import CardContainer from '../Cards/CardContainer'
 
 import { styles } from '../../css/css'
@@ -50,6 +51,9 @@ const ContentGeneric = ({ data }) => {
 					)
 				} else if (detail.__typename === 'DatoCmsVideo') {
 					return <ContentVideo video={detail} />
+				} else if (detail.__typename === 'DatoCmsAudio') {
+					console.log(detail)
+					return <ContentAudio audio={detail} />
 				} else if (detail.__typename === 'DatoCmsActionButton') {
 					return (
 						<a

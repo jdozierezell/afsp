@@ -28,7 +28,6 @@ const ContentVideo = ({ video: { video } }) => {
 		case 'vimeo':
 			src = `https://player.vimeo.com/video/${video.providerUid}`
 	}
-	console.log(video)
 	return (
 		<div css={videoCSS}>
 			<iframe
