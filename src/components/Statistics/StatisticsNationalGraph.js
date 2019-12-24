@@ -161,7 +161,6 @@ const StatisticsNationalGraph = ({
 							}}
 						/>
 					)}
-					{console.log(data)}
 					{graphType === 'radial' && data && (
 						<ResponsivePie
 							data={data}

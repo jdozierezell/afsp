@@ -30,7 +30,6 @@ const fetchChapters = (chapters, useStateFunction) => {
 		.then(res => res.json())
 		.then(
 			result => {
-				console.log(result)
 				useStateFunction(
 					chapterSearchResults(chapters, {
 						primaryZip: result.zip,

@@ -77,6 +77,13 @@ export const query = graphql`
 					buttonText
 					buttonLink
 				}
+				... on DatoCmsImage {
+					__typename
+					images {
+						url
+						alt
+					}
+				}
 				... on DatoCmsVideo {
 					__typename
 					video {
@@ -90,6 +97,11 @@ export const query = graphql`
 						url
 						title
 					}
+				}
+				... on DatoCmsHeading {
+					__typename
+					headingLevel
+					heading
 				}
 			}
 			seoMetaTags {

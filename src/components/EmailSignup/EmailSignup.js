@@ -170,10 +170,7 @@ const EmailSignup = ({ formId, children }) => {
 			<Script
 				url="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"
 				attributes={{ id: 'klaviyo' }}
-				onCreate={() => console.log('created')}
-				onError={() => console.log('error')}
 				onLoad={() => {
-					console.log('loaded')
 					// eslint-disable-next-line no-undef
 					KlaviyoSubscribe.attachToForms('#email_signup', {
 						hide_form_on_success: true,

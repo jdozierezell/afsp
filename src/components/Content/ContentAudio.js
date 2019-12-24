@@ -12,7 +12,7 @@ const audioCSS = css`
 	}
 `
 
-const ContentVideo = ({ audio: { audio } }) => {
+const ContentVideo = ({ audio }) => {
 	return (
 		<figure css={audioCSS}>
 			<figcaption>{audio.title}</figcaption>

@@ -46,7 +46,6 @@ const resourcesCSS = css`
 `
 
 const Landing = ({ data: { landing } }) => {
-	console.log()
 	return (
 		<Layout theme={styles.logo.mobileDarkDesktopDark}>
 			<SEO meta={landing} />

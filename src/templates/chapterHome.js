@@ -73,7 +73,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					return 0
 				}
 			})
-			storiesUpdates.forEach(story => console.log(story.node.date))
 			setStories(storiesUpdates)
 		}
 

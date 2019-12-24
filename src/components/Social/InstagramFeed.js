@@ -8,9 +8,6 @@ const InstagramFeed = ({ instaClass }) => {
 			<Script
 				url="https://apps.elfsight.com/p/platform.js"
 				attributes={{ id: 'elfsight' }}
-				onCreate={() => console.log('created')}
-				onError={() => console.log('error')}
-				onLoad={() => console.log('loaded')}
 			/>
 		</>
 	)

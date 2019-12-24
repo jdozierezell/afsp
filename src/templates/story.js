@@ -91,6 +91,25 @@ export const query = graphql`
 						alt
 					}
 				}
+				... on DatoCmsVideo {
+					__typename
+					video {
+						provider
+						providerUid
+					}
+				}
+				... on DatoCmsAudio {
+					__typename
+					audio {
+						url
+						title
+					}
+				}
+				... on DatoCmsHeading {
+					__typename
+					headingLevel
+					heading
+				}
 				... on DatoCmsDetailSquare {
 					__typename
 					detail {

@@ -3,8 +3,10 @@ import { css } from '@emotion/core'
 
 import RecommendationsVideoStories from '../Recommendations/RecommendationsVideoStories'
 import Content from './Content'
+import ContentImage from './ContentImage'
 import ContentVideo from './ContentVideo'
 import ContentAudio from './ContentAudio'
+import ContentHeading from './ContentHeading'
 import CardContainer from '../Cards/CardContainer'
 
 import { styles } from '../../css/css'
@@ -49,11 +51,19 @@ const ContentGeneric = ({ data }) => {
 							heading={detail.cardContainerHeading}
 						/>
 					)
+				} else if (detail.__typename === 'DatoCmsImage') {
+					return <ContentImage key={index} image={detail.images} />
 				} else if (detail.__typename === 'DatoCmsVideo') {
-					return <ContentVideo video={detail} />
+					return <ContentVideo video={detail.video} />
 				} else if (detail.__typename === 'DatoCmsAudio') {
-					console.log(detail)
-					return <ContentAudio audio={detail} />
+					return <ContentAudio audio={detail.audio} />
+				} else if (detail.__typename === 'DatoCmsHeading') {
+					return (
+						<ContentHeading
+							heading={detail.heading}
+							level={detail.headingLevel}
+						/>
+					)
 				} else if (detail.__typename === 'DatoCmsActionButton') {
 					return (
 						<a

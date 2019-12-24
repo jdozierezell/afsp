@@ -62,6 +62,12 @@ const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
 		} else if (detail.__typename === 'DatoCmsCardContainer') {
 			const anchor = createAnchor(detail.cardContainerHeading)
 			headings.push({ heading: detail.cardContainerHeading, anchor })
+		} else if (
+			detail.__typename === 'DatoCmsHeading' &&
+			detail.headingLevel === 'Level 2 (will be included in sidebar)'
+		) {
+			const anchor = createAnchor(detail.heading)
+			headings.push({ heading: detail.heading, anchor })
 		}
 		return headings
 	})
@@ -73,7 +79,6 @@ const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
 			headings.push({ heading, anchor })
 		})
 	}
-	console.log(headings)
 
 	const asideRef = useRef(null)
 	const [position, setPosition] = useState('absolute')

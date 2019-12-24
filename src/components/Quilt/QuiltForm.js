@@ -66,17 +66,13 @@ const formWrapperCSS = css`
 
 const QuiltForm = () => {
 	const [imageFile, setImageFile] = useState(null)
-	function handleProgress(progress, event) {
-		console.log(progress)
-		console.log(event)
-	}
+	function handleProgress(progress, event) {}
 	const handleSubmit = data => {
 		// console.log(data)
 		const form = document.querySelector('form')
 		const image = document.querySelector('#image')
 		let formData = new FormData(form)
 		formData.append('image', data.image)
-		console.log(...formData)
 		axios
 			.post(
 				'https://serene-dusk-44738.herokuapp.com/create-quilt',

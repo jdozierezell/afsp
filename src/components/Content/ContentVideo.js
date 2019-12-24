@@ -18,7 +18,7 @@ const videoCSS = css`
 	}
 `
 
-const ContentVideo = ({ video: { video } }) => {
+const ContentVideo = ({ video }) => {
 	let src
 	const provider = video.provider
 	switch (provider) {

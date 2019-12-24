@@ -98,7 +98,6 @@ const StatisticsContainer = ({ data }) => {
 			download: true,
 			header: true,
 			complete: results => {
-				console.log(results)
 				let methods = []
 				results.data.forEach(result => {
 					methods.push({

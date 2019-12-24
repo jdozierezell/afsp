@@ -6,6 +6,10 @@ import FacebookShare from '../Social/FacebookShare'
 import TwitterShare from '../Social/TwitterShare'
 import EmailShare from '../Social/EmailShare'
 import FacebookComments from '../Social/FacebookComments'
+import ContentImage from './ContentImage'
+import ContentAudio from './ContentAudio'
+import ContentVideo from './ContentVideo'
+import ContentHeading from './ContentHeading'
 
 import { styles } from '../../css/css'
 
@@ -57,29 +61,6 @@ const socialButtonsCSS = css`
 	}
 `
 
-const carouselButtonsCSS = css`
-	text-align: center;
-	margin: ${styles.scale.px45} 0 0;
-	padding: 0;
-	line-height: 0;
-	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px35} 0 0;
-	}
-	button {
-		background: ${styles.colors.lightGray};
-		border: none;
-		margin: 0 5px;
-		padding: 0;
-		font-size: ${styles.scale.px28};
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
-	}
-	.glide__bullet--active {
-		background: ${styles.colors.darkGray};
-	}
-`
-
 const ContentStory = ({ data }) => {
 	useEffect(() => {
 		const hasImages = document.getElementsByClassName('glide-image')
@@ -110,57 +91,7 @@ const ContentStory = ({ data }) => {
 						></div>
 					)
 				} else if (article.__typename === 'DatoCmsImage') {
-					return (
-						<div key={index} className="storyContent">
-							{article.images.length === 1 && (
-								<img
-									key={index}
-									src={article.images[0].url}
-									alt={article.images[0].alt}
-								/>
-							)}
-							{article.images.length > 1 && (
-								<div
-									className="glide-image"
-									css={css`
-										overflow: hidden;
-										margin: ${styles.scale.px36} 0;
-									`}
-								>
-									<div data-glide-el="track">
-										<div className="glide__slides">
-											{article.images.map(
-												(image, index) => (
-													<img
-														key={index}
-														src={image.url}
-														alt={image.alt}
-														css={css`
-															max-height: 500px;
-															width: auto !important;
-														`}
-													/>
-												)
-											)}
-										</div>
-									</div>
-									<div
-										data-glide-el="controls[nav]"
-										css={carouselButtonsCSS}
-									>
-										{article.images.map((__, index) => {
-											return (
-												<button
-													key={index}
-													data-glide-dir={`=${index}`}
-												></button>
-											)
-										})}
-									</div>
-								</div>
-							)}
-						</div>
-					)
+					return <ContentImage key={index} image={article.images} />
 				} else if (article.__typename === 'DatoCmsDetailSquare') {
 					return (
 						<div
@@ -174,6 +105,17 @@ const ContentStory = ({ data }) => {
 								content={article.detail}
 							/>
 						</div>
+					)
+				} else if (article.__typename === 'DatoCmsVideo') {
+					return <ContentVideo video={article.video} />
+				} else if (article.__typename === 'DatoCmsAudio') {
+					return <ContentAudio audio={article.audio} />
+				} else if (article.__typename === 'DatoCmsHeading') {
+					return (
+						<ContentHeading
+							heading={article.heading}
+							level={article.headingLevel}
+						/>
 					)
 				}
 				return ''

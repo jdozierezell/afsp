@@ -16,6 +16,12 @@ const buildUrl = (typename, slug) => {
 		case 'DatoCmsLanding':
 			folder = '/landing'
 			break
+		case 'DatoCmsRealStory':
+		case 'DatoCmsChapterSearch':
+		case 'DatoCmsJournalist':
+		case 'DatoCmsHome':
+			folder = '/'
+			break
 		default:
 			folder = typename
 			break
