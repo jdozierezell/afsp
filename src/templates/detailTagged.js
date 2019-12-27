@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
@@ -10,23 +10,31 @@ import StoriesContainer from '../components/Stories/StoriesContainer'
 
 import { styles } from '../css/css'
 
-const Detail = ({ data }) => {
-	const { journalist, stories } = data
-	const pressReleases = 'Press Releases'
+const Detail = ({ data, pageContext }) => {
+	console.log(pageContext)
+	const { tagged, stories } = data
+	const [taggedStories, setTaggedStories] = useState([])
+	useEffect(() => {
+		stories.edges.forEach(story => {
+			story.node.tags.forEach(tag => {
+				if (tag.tag === pageContext.tag) {
+					story.node['type'] = 'story'
+					setTaggedStories(taggedStories => [...taggedStories, story])
+				}
+			})
+		})
+	}, [stories])
+	const header = pageContext.tag
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<SEO meta={journalist} />
-			<HeroSolid data={journalist} />
-			<NavigationSide
-				data={journalist}
-				afterAnchors={[pressReleases]}
-				navRoot="/journalist"
-			/>
-			<ContentGeneric data={journalist} />
+			<SEO meta={tagged} />
+			<HeroSolid data={tagged} />
+			<NavigationSide data={tagged} />
+			<ContentGeneric data={tagged} />
 			<StoriesContainer
-				header={pressReleases}
+				header={`${header}s`}
 				more="releases"
-				stories={stories.edges}
+				stories={taggedStories}
 			/>
 		</Layout>
 	)
@@ -35,8 +43,8 @@ const Detail = ({ data }) => {
 export default Detail
 
 export const query = graphql`
-	query {
-		journalist: datoCmsJournalist {
+	query($slug: String) {
+		tagged: datoCmsDetailTagged(slug: { eq: $slug }) {
 			title
 			slug
 			brief
@@ -103,6 +111,12 @@ export const query = graphql`
 					headingLevel
 					heading
 				}
+				... on DatoCmsFeaturedStoryTag {
+					__typename
+					tag {
+						tag
+					}
+				}
 			}
 			seoMetaTags {
 				tags
@@ -112,7 +126,7 @@ export const query = graphql`
 			}
 		}
 		stories: allDatoCmsStory(
-			filter: { tags: { elemMatch: { tag: { eq: "Press Release" } } } }
+			sort: { fields: publicationDate, order: DESC }
 		) {
 			totalCount
 			edges {
@@ -128,6 +142,9 @@ export const query = graphql`
 					author {
 						authorName
 						slug
+					}
+					tags {
+						tag
 					}
 				}
 			}

@@ -39,6 +39,8 @@ const ContentHeading = ({ heading, level }) => {
 		case 'Level 6':
 			return <h6 css={headingCSS}>{heading}</h6>
 			break
+		default:
+			return ''
 	}
 }
 

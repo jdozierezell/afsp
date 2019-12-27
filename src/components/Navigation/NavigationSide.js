@@ -68,6 +68,12 @@ const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
 		) {
 			const anchor = createAnchor(detail.heading)
 			headings.push({ heading: detail.heading, anchor })
+		} else if (detail.__typename === 'DatoCmsFeaturedStoryTag') {
+			const anchor = createAnchor(detail.tag.tag)
+			headings.push({
+				heading: `${detail.tag.tag}s`,
+				anchor: `${anchor}s`,
+			})
 		}
 		return headings
 	})
@@ -122,9 +128,7 @@ const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
 									{heading.heading}
 								</Link>
 							) : (
-								<Link
-									to={`/detail/${data.slug}#${heading.anchor}`}
-								>
+								<Link to={`/${data.slug}#${heading.anchor}`}>
 									{heading.heading}
 								</Link>
 							)}

@@ -1,4 +1,4 @@
-const buildUrl = (typename, slug) => {
+const buildUrl = (typename = '', slug = '') => {
 	let folder = ''
 	switch (typename) {
 		case 'DatoCmsTag':
@@ -7,21 +7,12 @@ const buildUrl = (typename, slug) => {
 		case 'DatoCmsStory':
 			folder = '/story'
 			break
-		case 'DatoCmsDetail':
-			folder = '/detail'
-			break
 		case 'DatoCmsAuthor':
 			folder = '/author'
 			break
-		case 'DatoCmsLanding':
-			folder = '/landing'
-			break
-		case 'DatoCmsRealStory':
-		case 'DatoCmsChapterSearch':
-		case 'DatoCmsJournalist':
-		case 'DatoCmsHome':
-			folder = '/'
-			break
+		case 'DatoCmsChapterHomePage':
+		case 'DatoCmsChapterStoryUpdate':
+			folder = '/chapter'
 		default:
 			folder = typename
 			break

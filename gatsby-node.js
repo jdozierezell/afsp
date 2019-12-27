@@ -63,6 +63,46 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
+			detailsTagged: allDatoCmsDetailTagged {
+				edges {
+					node {
+						slug
+						title
+						details {
+							... on DatoCmsContent {
+								__typename
+							}
+							... on DatoCmsRecommendation {
+								__typename
+							}
+							... on DatoCmsCardContainer {
+								__typename
+							}
+							... on DatoCmsActionButton {
+								__typename
+							}
+							... on DatoCmsImage {
+								__typename
+							}
+							... on DatoCmsVideo {
+								__typename
+							}
+							... on DatoCmsAudio {
+								__typename
+							}
+							... on DatoCmsHeading {
+								__typename
+							}
+							... on DatoCmsFeaturedStoryTag {
+								__typename
+								tag {
+									tag
+								}
+							}
+						}
+					}
+				}
+			}
 			landings: allDatoCmsLanding {
 				edges {
 					node {
@@ -87,6 +127,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	const authors = data.authors.edges
 	const redirects = data.redirects.edges
 	const details = data.details.edges
+	const detailsTagged = data.detailsTagged.edges
 	const landings = data.landings.edges
 	const chapterHomes = data.chapterHomes.edges
 
@@ -107,7 +148,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
 	chapterStoriesUpdates.forEach(({ node }, index) => {
 		createPage({
-			path: `chapter-detail/${node.slug}`,
+			path: `chapter/${node.slug}`,
 			component: path.resolve('./src/templates/chapterStoryUpdate.js'),
 			context: {
 				slug: node.slug,
@@ -147,7 +188,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
 	details.forEach(({ node }) => {
 		createPage({
-			path: `detail/${node.slug}`,
+			path: `${node.slug}`,
 			component: path.resolve('./src/templates/detail.js'),
 			context: {
 				slug: node.slug,
@@ -155,9 +196,26 @@ exports.createPages = async ({ graphql, actions }) => {
 		})
 	})
 
+	detailsTagged.forEach(({ node }) => {
+		let tag = ''
+		node.details.forEach(detail => {
+			if (detail.__typename === 'DatoCmsFeaturedStoryTag') {
+				tag = detail.tag.tag
+			}
+		})
+		createPage({
+			path: `${node.slug}`,
+			component: path.resolve('./src/templates/detailTagged.js'),
+			context: {
+				slug: node.slug,
+				tag: tag,
+			},
+		})
+	})
+
 	landings.forEach(({ node }) => {
 		createPage({
-			path: `landing/${node.slug}`,
+			path: `${node.slug}`,
 			component: path.resolve('./src/templates/landing.js'),
 			context: {
 				slug: node.slug,
