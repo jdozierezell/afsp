@@ -18,17 +18,22 @@ const partnerContainerCSS = css`
 	}
 	> div {
 		display: flex;
-		flex-flow: row nowrap;
+		flex-flow: row wrap;
 		align-items: flex-start;
 		margin-bottom: ${styles.scale.px80};
+		@media (min-width: ${styles.screens.tablet}px) {
+			flex-flow: row nowrap;
+		}
 		img {
 			display: block;
 			flex: 0 0 244px;
 		}
 		> div {
-			margin-left: ${styles.scale.px50};
 			flex: 1 1 0;
 			max-width: 623px;
+			@media (min-width: ${styles.screens.tablet}px) {
+				margin-left: ${styles.scale.px50};
+			}
 			p:first-of-type {
 				margin-top: 0;
 			}

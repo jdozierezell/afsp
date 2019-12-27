@@ -9,6 +9,8 @@ const videoCTACSS = css`
 	min-height: 500px;
 	max-height: 580px;
 	line-height: 0;
+	background-size: cover;
+	background-position: center;
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin-bottom: 0;
 		line-height: initial;
@@ -78,16 +80,33 @@ const descriptionWrapperCSS = css`
 `
 
 const CTAVideo = ({ cta }) => {
-	const { videoUrl, heading, brief, linkText, linkUrl } = cta
+	const {
+		backgroundVideo,
+		backgroundImage,
+		heading,
+		brief,
+		linkText,
+		linkUrl,
+	} = cta
+	const video = backgroundVideo ? backgroundVideo.url : null
+	const poster = `${backgroundImage.url}?w=1920&h=1080&fit=crop&crop=faces`
 	return (
-		<section css={videoCTACSS}>
-			<video
-				autoPlay
-				muted
-				loop
-				css={videoCoverCSS}
-				src={videoUrl}
-			></video>
+		<section
+			css={css`
+				${videoCTACSS};
+				background-image: url(${poster});
+			`}
+		>
+			{video && (
+				<video
+					autoPlay
+					muted
+					loop
+					css={videoCoverCSS}
+					src={video}
+					poster={poster}
+				></video>
+			)}
 			<div css={videoDescriptionCSS}>
 				<div css={descriptionWrapperCSS}>
 					<h2>{heading}</h2>

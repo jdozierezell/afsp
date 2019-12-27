@@ -17,10 +17,10 @@ import { styles } from '../../css/css'
 const navTopCSS = css`
 	display: flex;
 	flex-flow: row wrap;
-	padding: ${styles.scale.px24} 0;
+	padding: ${styles.scale.px24} 0 0;
 	justify-content: space-between;
-	align-items: center;
-	min-height: 100px;
+	align-items: flex-start;
+	min-height: 80px;
 	position: absolute;
 	left: 0;
 	right: 0;

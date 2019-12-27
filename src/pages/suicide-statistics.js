@@ -35,53 +35,9 @@ export const query = graphql`
 				... on DatoCmsStatisticsCallout {
 					callout
 				}
-				... on DatoCmsCtaLink {
+				... on DatoCmsCallToAction {
 					__typename
-					link {
-						callToAction {
-							... on DatoCmsCtaWithDescription {
-								__typename
-								brief
-								external
-								linkText
-								linkUrl
-								link {
-									... on DatoCmsTag {
-										__typename
-										slug
-									}
-									... on DatoCmsStory {
-										__typename
-										slug
-									}
-									... on DatoCmsDetail {
-										__typename
-										slug
-									}
-									... on DatoCmsAuthor {
-										__typename
-										slug
-									}
-									... on DatoCmsLanding {
-										__typename
-										slug
-									}
-									... on DatoCmsRealStory {
-										__typename
-										slug
-									}
-									... on DatoCmsChapterSearch {
-										__typename
-										slug
-									}
-									... on DatoCmsStatistic {
-										__typename
-										slug
-									}
-								}
-							}
-						}
-					}
+					...CTAs
 				}
 			}
 			additionalFacts {
@@ -142,60 +98,16 @@ export const query = graphql`
 				url
 			}
 			methodBrief
-			callToAction1 {
-				callToAction {
-					... on DatoCmsCtaVideo {
-						__typename
-						videoUrl
-						heading
-						brief
-						linkText
-						linkUrl
-					}
-					... on DatoCmsCtaNoDescription {
-						__typename
-						heading
-						linkText
-						linkUrl
-					}
-					... on DatoCmsCtaWithDescription {
-						__typename
-						heading
-						brief
-						linkText
-						linkUrl
-					}
+			callsToAction {
+				... on DatoCmsCallToAction {
+					__typename
+					...CTAs
 				}
 			}
 			additionalContent
 			relatedStories {
 				title
 				slug
-			}
-			callToAction2 {
-				callToAction {
-					... on DatoCmsCtaVideo {
-						__typename
-						videoUrl
-						heading
-						brief
-						linkText
-						linkUrl
-					}
-					... on DatoCmsCtaNoDescription {
-						__typename
-						heading
-						linkText
-						linkUrl
-					}
-					... on DatoCmsCtaWithDescription {
-						__typename
-						heading
-						brief
-						linkText
-						linkUrl
-					}
-				}
 			}
 		}
 	}

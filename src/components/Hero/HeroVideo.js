@@ -50,6 +50,7 @@ const videoHeaderCSS = css`
 	font-size: ${styles.scale.px46};
 	color: ${styles.colors.white};
 	margin: 0 ${styles.scale.px60} 0 ${styles.scale.px24};
+	z-index: 1;
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin: 0 ${styles.scale.px60};
 	}
@@ -92,7 +93,14 @@ const buttonWrapperCSS = css`
 	}
 `
 
-const HeroVideo = ({ videoUrl, heading, brief, buttonCta, buttonUrl }) => {
+const HeroVideo = ({
+	videoUrl,
+	posterUrl,
+	heading,
+	brief,
+	buttonCta,
+	buttonUrl,
+}) => {
 	return (
 		<section css={videoHeroCSS}>
 			<video
@@ -101,6 +109,7 @@ const HeroVideo = ({ videoUrl, heading, brief, buttonCta, buttonUrl }) => {
 				loop
 				css={videoCoverCSS}
 				src={videoUrl}
+				poster={posterUrl}
 			></video>
 			<div css={descriptionBackgroundCSS}></div>
 			<h2 css={videoHeaderCSS}>

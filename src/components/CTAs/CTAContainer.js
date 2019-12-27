@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 
-import CTAVideo from './CTAVideo'
+import CTABackground from './CTABackground'
 import CTAWithDescription from './CTAWithDescription'
 import CTANoDescription from './CTANoDescription'
 
@@ -62,7 +62,9 @@ const CTAContainer = ({ cta, number }) => {
 
 	return (
 		<>
-			{cta.__typename === 'DatoCmsCtaVideo' && <CTAVideo cta={cta} />}
+			{cta.__typename === 'DatoCmsCtaBackground' && (
+				<CTABackground cta={cta} />
+			)}
 			{cta.__typename === 'DatoCmsCtaWithDescription' && (
 				<div
 					css={css`

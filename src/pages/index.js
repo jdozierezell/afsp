@@ -37,7 +37,8 @@ const App = ({ data: { home } }) => {
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={home} />
 			<HeroVideo
-				videoUrl={home.heroVideoUrl}
+				videoUrl={home.heroVideo.url}
+				posterUrl={home.heroPoster.url}
 				heading={home.heroHeading}
 				brief={home.heroBrief}
 				buttonCta={home.heroButtonCta}
@@ -84,7 +85,12 @@ export const query = graphql`
 			seoMetaTags {
 				tags
 			}
-			heroVideoUrl
+			heroVideo {
+				url
+			}
+			heroPoster {
+				url
+			}
 			heroHeading
 			heroBrief
 			heroButtonCta

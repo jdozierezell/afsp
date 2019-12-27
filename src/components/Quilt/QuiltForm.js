@@ -36,6 +36,7 @@ const formWrapperCSS = css`
 		display: block;
 		width: 100%;
 		font-family: ${styles.fonts.paul};
+		margin-bottom: ${styles.scale.px12};
 	}
 	input,
 	textarea {
@@ -46,11 +47,22 @@ const formWrapperCSS = css`
 	p {
 		font-family: ${styles.fonts.avenirRegularIt};
 		font-size: ${styles.scale.px16};
-		margin: 0;
+		margin: 0 0 ${styles.scale.px12} 0;
 		padding: 0;
 	}
 	input[type='file'] {
 		border: none;
+		display: none;
+	}
+	label[for='image'] {
+		height: ${styles.scale.px62};
+		line-height: ${styles.scale.px62};
+		border-radius: ${styles.scale.px5};
+		text-align: center;
+		margin-bottom: ${styles.scale.px36};
+		background-color: ${styles.colors.blue};
+		color: ${styles.colors.white};
+		cursor: pointer;
 	}
 	textarea {
 		border: 2px solid ${styles.colors.darkGray};
@@ -59,8 +71,8 @@ const formWrapperCSS = css`
 	span {
 		color: ${styles.colors.poppy};
 		display: block;
-		margin-top: -${styles.scale.px24};
-		margin-bottom: ${styles.scale.px36};
+		/* margin-top: -${styles.scale.px24};
+		margin-bottom: ${styles.scale.px36}; */
 	}
 `
 
@@ -116,6 +128,7 @@ const QuiltForm = () => {
 				Please note, images do not need to be square when uploading.
 				They will appear as squares automatically.
 			</p>
+			<label for="image">Click here to upload your image</label>
 			<FileInput name="image" onStartProgress={handleProgress} />
 			<label htmlFor="description">Square Description</label>
 			<p>
