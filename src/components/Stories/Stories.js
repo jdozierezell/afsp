@@ -44,7 +44,6 @@ const featuredCSS = css`
 `
 
 const Stories = ({ story: { node } }) => {
-	console.log(node)
 	return (
 		<div css={featuredCSS}>
 			<img

@@ -11,7 +11,6 @@ import StoriesContainer from '../components/Stories/StoriesContainer'
 import { styles } from '../css/css'
 
 const Detail = ({ data, pageContext }) => {
-	console.log(pageContext)
 	const { tagged, stories } = data
 	const [taggedStories, setTaggedStories] = useState([])
 	useEffect(() => {

@@ -26,7 +26,6 @@ const RealStories = ({ data: { real, stories } }) => {
 				buttonCta={real.heroButtonCta}
 				buttonUrl={real.heroButtonLink}
 			/>
-			{console.log(real.featuredVideo)}
 			<CarouselVideoContainer videos={real.featuredVideo} />
 			<StoriesContainer
 				header="Stories"

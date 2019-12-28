@@ -80,7 +80,6 @@ const QuiltForm = () => {
 	const [imageFile, setImageFile] = useState(null)
 	function handleProgress(progress, event) {}
 	const handleSubmit = data => {
-		// console.log(data)
 		const form = document.querySelector('form')
 		const image = document.querySelector('#image')
 		let formData = new FormData(form)

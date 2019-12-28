@@ -51,7 +51,6 @@ const Partners = ({ data: { partners } }) => {
 			<HeroSolid data={partners} />
 			<section css={partnerContainerCSS}>
 				{partners.partnerList.map(partner => {
-					console.log(partner)
 					return (
 						<div>
 							<img
