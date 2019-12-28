@@ -6,9 +6,15 @@ import { styles } from '../../css/css'
 const videoComponentCSS = css`
 	margin: 0 ${styles.gridGap.mobile} 0 0;
 	flex-shrink: 0;
+	div {
+		background-size: cover;
+		background-position: center;
+		border-radius: ${styles.scale.px7} / ${styles.scale.px5};
+	}
 	video {
 		object-fit: cover;
 		width: 100%;
+		display: block;
 		border-radius: ${styles.scale.px7} / ${styles.scale.px5};
 	}
 	h2 {
@@ -17,10 +23,21 @@ const videoComponentCSS = css`
 	}
 `
 
-const CarouselVideo = ({ src, title }) => {
+const CarouselVideo = ({ video, poster, title }) => {
 	return (
-		<div css={videoComponentCSS} draggable>
-			<video controls src={src}></video>
+		<div
+			css={css`
+				${videoComponentCSS};
+			`}
+			draggable
+		>
+			<div
+				css={css`
+					background-image: url(${poster});
+				`}
+			>
+				<video controls src={video} poster={poster}></video>
+			</div>
 			<h2>{title}</h2>
 		</div>
 	)

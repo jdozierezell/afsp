@@ -76,11 +76,13 @@ const CarouselVideoContainer = ({ videos }) => {
 				<div data-glide-el="track">
 					<ul className="glide__slides">
 						{videos.map((video, index) => {
+							console.log(video.video)
 							return (
 								<CarouselVideo
 									key={index}
-									title={video.videoTitle}
-									src={video.videoUrl}
+									title={video.video.title}
+									video={video.video.url}
+									poster={video.poster.url}
 								/>
 							)
 						})}

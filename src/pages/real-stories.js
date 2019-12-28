@@ -19,25 +19,33 @@ const RealStories = ({ data: { real, stories } }) => {
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={real} />
 			<HeroVideo
-				videoUrl={real.heroVideoUrl}
+				videoUrl={real.heroVideo.url}
+				posterUrl={real.heroPoster.url}
 				heading={real.heroHeading}
 				brief={real.heroBrief}
 				buttonCta={real.heroButtonCta}
 				buttonUrl={real.heroButtonLink}
 			/>
+			{console.log(real.featuredVideo)}
 			<CarouselVideoContainer videos={real.featuredVideo} />
 			<StoriesContainer
 				header="Stories"
 				first={true}
 				stories={stories.edges}
 			/>
-			<CTAContainer number={1} cta={real.callToAction1.callToAction[0]} />
+			<CTAContainer
+				number={1}
+				cta={real.callsToAction[0].cta.callToAction[0]}
+			/>
 			<StoriesContainer
 				offset={3}
 				more="stories"
 				stories={stories.edges}
 			/>
-			<CTAContainer number={2} cta={real.callToAction2.callToAction[0]} />
+			<CTAContainer
+				number={2}
+				cta={real.callsToAction[1].cta.callToAction[0]}
+			/>
 			<CarouselChapterContainer />
 		</Layout>
 	)
@@ -51,8 +59,10 @@ export const query = graphql`
 			seoMetaTags {
 				tags
 			}
-			heroVideoUrl
-			heroImage {
+			heroVideo {
+				url
+			}
+			heroPoster {
 				url
 			}
 			heroBrief
@@ -60,8 +70,15 @@ export const query = graphql`
 			heroButtonCta
 			heroButtonLink
 			featuredVideo {
-				videoTitle
-				videoUrl
+				... on DatoCmsFeaturedVideo {
+					video {
+						url
+						title
+					}
+					poster {
+						url
+					}
+				}
 			}
 			callsToAction {
 				... on DatoCmsCallToAction {

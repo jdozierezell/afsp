@@ -8,6 +8,8 @@ const videoHeroCSS = css`
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 150px repeat(3, auto);
+	background-position: center;
+	background-size: cover;
 	@media (min-width: ${styles.screens.tablet}px) {
 		overflow: hidden;
 		max-height: 600px;
@@ -102,15 +104,22 @@ const HeroVideo = ({
 	buttonUrl,
 }) => {
 	return (
-		<section css={videoHeroCSS}>
-			<video
-				autoPlay
-				muted
-				loop
-				css={videoCoverCSS}
-				src={videoUrl}
-				poster={posterUrl}
-			></video>
+		<section
+			css={css`
+				${videoHeroCSS};
+				background-image: ${posterUrl};
+			`}
+		>
+			{videoUrl && (
+				<video
+					autoPlay
+					muted
+					loop
+					css={videoCoverCSS}
+					src={videoUrl}
+					poster={posterUrl}
+				></video>
+			)}
 			<div css={descriptionBackgroundCSS}></div>
 			<h2 css={videoHeaderCSS}>
 				<span>{heading}</span>
