@@ -47,6 +47,7 @@ const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
 		beforeAnchors.map(anchor => {
 			anchor = createAnchor(anchor)
 			headings.push(anchor)
+			return ''
 		})
 	}
 
@@ -83,6 +84,7 @@ const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
 			const heading = anchor
 			anchor = createAnchor(anchor)
 			headings.push({ heading, anchor })
+			return ''
 		})
 	}
 

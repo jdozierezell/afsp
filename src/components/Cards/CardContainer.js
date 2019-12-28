@@ -3,8 +3,6 @@ import React from 'react'
 import CardMobileContainer from './CardMobileContainer'
 import CardDesktopContainer from './CardDesktopContainer'
 
-import { styles } from '../../css/css'
-
 const CardContainer = ({ cards, heading }) => {
 	return (
 		<section>

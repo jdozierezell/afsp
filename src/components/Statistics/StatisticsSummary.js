@@ -91,7 +91,9 @@ const StoriesReference = ({ data }) => {
 				</ul>
 			</div>
 			<aside css={summaryVideoCSS}>
-				<video controls src={videoUrl}></video>
+				<video controls src={videoUrl}>
+					<track default kind="captions" srcLang="en" src="#" />
+				</video>
 				<div css={videoTitleCSS}>
 					<p>More resources</p>
 					<h3>{videoHeader}</h3>

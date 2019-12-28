@@ -119,7 +119,7 @@ const HeroChapterSearch = ({
 		if (clicked) {
 			handleClick()
 		}
-	}, [clicked])
+	}, [clicked, handleClick])
 
 	return (
 		<div css={solidHeroCSS}>
@@ -135,7 +135,7 @@ const HeroChapterSearch = ({
 					<input
 						type="text"
 						placeholder="Search by zip"
-						onChange={e => {
+						onBlur={e => {
 							updateZip(e.target.value)
 							setClicked(false)
 						}}
@@ -148,7 +148,7 @@ const HeroChapterSearch = ({
 				<select
 					css={dropDownCSS}
 					name="radius"
-					onChange={e => {
+					onBlur={e => {
 						updateRadius(e.target.value)
 						setClicked(false)
 					}}

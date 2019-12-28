@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { css } from '@emotion/core'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
@@ -94,9 +94,7 @@ const QuiltSquareContainer = () => {
 			id: selected,
 		},
 	})
-	const selectedData = selectedQuilt.data,
-		selectedLoading = selectedQuilt.loading,
-		selectedError = selectedQuilt.error
+	const selectedData = selectedQuilt.data
 
 	const quilts = useQuery(GET_QUILTS, {
 		variables: {

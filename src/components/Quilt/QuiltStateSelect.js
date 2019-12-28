@@ -34,7 +34,7 @@ const QuiltStateSelect = ({ name, options }) => {
 				selectRef.select.clearValue()
 			},
 		})
-	}, [ref.current, fieldName])
+	}, [fieldName, registerField])
 
 	const getDefaultValue = () => {
 		if (!defaultValue) return null

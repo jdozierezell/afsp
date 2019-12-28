@@ -7,8 +7,6 @@ import IconCaret from '../SVGs/IconCaret'
 
 import { styles } from '../../css/css'
 
-const dataRadial = [{ angle: 1 }, { angle: 5 }, { angle: 2 }]
-
 const statisticsNationalGraphCSS = css`
 	position: relative;
 `
@@ -157,24 +155,38 @@ const StatisticsNationalContainer = ({
 			</div>
 			<animated.ul css={menuListCSS} style={showList} ref={listRef}>
 				{focusedArea !== age && (
-					<li onClick={() => setFocusedArea(age)}>{age}</li>
+					<li>
+						<button onClick={() => setFocusedArea(age)}>
+							{age}
+						</button>
+					</li>
 				)}
 				{focusedArea !== race && (
-					<li onClick={() => setFocusedArea(race)}>{race}</li>
+					<li>
+						<button onClick={() => setFocusedArea(race)}>
+							{race}
+						</button>
+					</li>
 				)}
 				{focusedArea !== method && (
-					<li onClick={() => setFocusedArea(method)}>{method}</li>
+					<li>
+						<button onClick={() => setFocusedArea(method)}>
+							{method}
+						</button>
+					</li>
 				)}
 			</animated.ul>
 			<ul css={menuTabsCSS}>
-				<li ref={ageRef} onClick={() => setFocusedArea(age)}>
-					{age}
+				<li ref={ageRef}>
+					<button onClick={() => setFocusedArea(age)}>{age}</button>
 				</li>
-				<li ref={raceRef} onClick={() => setFocusedArea(race)}>
-					{race}
+				<li ref={raceRef}>
+					<button onClick={() => setFocusedArea(race)}>{race}</button>
 				</li>
-				<li ref={methodRef} onClick={() => setFocusedArea(method)}>
-					{method}
+				<li ref={methodRef}>
+					<button onClick={() => setFocusedArea(method)}>
+						{method}
+					</button>
 				</li>
 			</ul>
 			{focusedArea === age && (

@@ -3,8 +3,6 @@ import { css } from '@emotion/core'
 
 import { styles } from '../../css/css'
 
-import background from '../SVGs/BackgroundOneBlueGreen.svg'
-
 const h2 = css`
 	text-align: center;
 	font-size: ${styles.scale.px36};

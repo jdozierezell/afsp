@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { css } from '@emotion/core'
 
 import IconX from '../SVGs/IconX'
@@ -132,26 +132,26 @@ const searchStateListCSS = css`
 	}
 `
 
-const searchStateKeyCSS = css`
-	list-style: none;
-	margin: ${styles.scale.px20} 0 0;
-	display: flex;
-	flex-flow: row wrap;
-	li {
-		display: inline-block;
-		white-space: nowrap;
-		border-radius: ${styles.scale.px5};
-		margin-right: ${styles.scale.px20};
-	}
-`
+// const searchStateKeyCSS = css`
+// 	list-style: none;
+// 	margin: ${styles.scale.px20} 0 0;
+// 	display: flex;
+// 	flex-flow: row wrap;
+// 	li {
+// 		display: inline-block;
+// 		white-space: nowrap;
+// 		border-radius: ${styles.scale.px5};
+// 		margin-right: ${styles.scale.px20};
+// 	}
+// `
 
-const stateBulletCSS = css`
-	display: inline-block;
-	width: ${styles.scale.px12};
-	height: ${styles.scale.px12};
-	margin-right: ${styles.scale.px7};
-	border-radius: 50%;
-`
+// const stateBulletCSS = css`
+// 	display: inline-block;
+// 	width: ${styles.scale.px12};
+// 	height: ${styles.scale.px12};
+// 	margin-right: ${styles.scale.px7};
+// 	border-radius: 50%;
+// `
 
 const statisticsStatesFactsContainerCSS = css`
 	h2 {
@@ -259,7 +259,10 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 							selectedItem,
 						}) => (
 							<div>
-								<label {...getLabelProps()}>
+								<label
+									{...getLabelProps()}
+									htmlFor="state-input"
+								>
 									Search state to add to the list to compare
 									statistics
 								</label>
@@ -329,21 +332,21 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 					<p>Showing state info for:</p>
 					<ul>
 						{selection.map((state, index) => (
-							<li
-								key={index}
-								id={state}
-								onClick={e =>
-									setSelection(
-										selection.filter(
-											thisState => state !== thisState
+							<li key={index} id={state}>
+								<button
+									onClick={e =>
+										setSelection(
+											selection.filter(
+												thisState => state !== thisState
+											)
 										)
-									)
-								}
-							>
-								<IconX />
-								{_.startCase(state.state)}
-								{/* the following span just standardizes the click target */}
-								<span></span>
+									}
+								>
+									<IconX />
+									{_.startCase(state.state)}
+									{/* the following span just standardizes the click target */}
+									<span></span>
+								</button>
 							</li>
 						))}
 					</ul>

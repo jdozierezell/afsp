@@ -49,7 +49,9 @@ const RecommendationsVideoStories = ({ videoData, storyData }) => {
 				onPlay={() => setIsPlaying(true)}
 				onPause={() => setIsPlaying(false)}
 				onEnded={() => setIsPlaying(false)}
-			></video>
+			>
+				<track default kind="captions" srcLang="en" src="#" />
+			</video>
 			{!isPlaying && <h2 css={videoTitleCSS}>{videoData.title}</h2>}
 			<Recommendations data={storyData} />
 		</div>

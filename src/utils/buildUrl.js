@@ -13,6 +13,14 @@ const buildUrl = (typename = '', slug = '') => {
 		case 'DatoCmsChapterHomePage':
 		case 'DatoCmsChapterStoryUpdate':
 			folder = '/chapter'
+			break
+		case 'DatoCmsRealStory':
+		case 'DatoCmsLanding':
+		case 'DatoCmsDetail':
+		case 'DatoCmsHomePage':
+		case 'DatoCmsChapterSearch':
+			folder = ''
+			break
 		default:
 			folder = typename
 			break

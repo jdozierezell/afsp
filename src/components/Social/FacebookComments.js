@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { css } from '@emotion/core'
 import { FacebookProvider, Comments } from 'react-facebook'
 

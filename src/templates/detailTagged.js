@@ -22,8 +22,7 @@ const Detail = ({ data, pageContext }) => {
 				}
 			})
 		})
-	}, [stories])
-	const header = pageContext.tag
+	}, [stories, pageContext.tag])
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={tagged} />
@@ -31,7 +30,7 @@ const Detail = ({ data, pageContext }) => {
 			<NavigationSide data={tagged} />
 			<ContentGeneric data={tagged} />
 			<StoriesContainer
-				header={`${header}s`}
+				header={`${pageContext.tag}s`}
 				more="releases"
 				stories={taggedStories}
 			/>

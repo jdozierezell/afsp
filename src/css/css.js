@@ -81,6 +81,7 @@ export const styles = {
 		px56: '56px',
 		px60: '60px',
 		px62: '62px',
+		px64: '64px',
 		px70: '70px',
 		px75: '75px',
 		px80: '80px',

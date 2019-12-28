@@ -36,7 +36,9 @@ const CarouselVideo = ({ video, poster, title }) => {
 					background-image: url(${poster});
 				`}
 			>
-				<video controls src={video} poster={poster}></video>
+				<video controls src={video} poster={poster}>
+					<track default kind="captions" srcLang="en" src="#" />
+				</video>
 			</div>
 			<h2>{title}</h2>
 		</div>

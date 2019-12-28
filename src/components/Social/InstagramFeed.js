@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Script from 'react-load-script'
 
 const InstagramFeed = ({ instaClass }) => {

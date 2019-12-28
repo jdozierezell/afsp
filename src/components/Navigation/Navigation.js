@@ -9,7 +9,7 @@ import DeskMenu from './DeskMenu'
 import IconHamburger from '../SVGs/IconHamburger'
 import IconX from '../SVGs/IconX'
 import IconSearch from '../SVGs/IconSearch'
-import SearchBar from './SearchBar'
+import Search from '../Search/Search'
 import MenuCTA from './MenuCTA'
 
 import { styles } from '../../css/css'
@@ -195,7 +195,7 @@ const Navigation = ({ nav, theme }) => {
 					<MenuCTA />
 				</div>
 			</div>
-			{isSearchActive && <SearchBar />}
+			{isSearchActive && <Search />}
 			{isMenuActive && <MobileMenu items={nav} />}
 		</div>
 	)

@@ -27,10 +27,14 @@ const ContentVideo = ({ video }) => {
 			break
 		case 'vimeo':
 			src = `https://player.vimeo.com/video/${video.providerUid}`
+			break
+		default:
+			break
 	}
 	return (
 		<div css={videoCSS}>
 			<iframe
+				title="video"
 				src={src}
 				frameBorder="0"
 				allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"

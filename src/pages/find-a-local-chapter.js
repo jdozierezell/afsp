@@ -40,7 +40,7 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 		if (query.zip && query.radius) {
 			handleSearchClick(query.zip, query.radius)
 		}
-	}, [query])
+	}, [query, handleSearchClick])
 
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>

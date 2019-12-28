@@ -76,35 +76,47 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			setStories(storiesUpdates)
 		}
 
-		fetch(
-			`//aws-fetch.s3.amazonaws.com/merged-events-${chapterDonorDriveId}.json`
-		)
-			.then(response => {
-				if (response.status >= 400) {
-					throw new Error('Bad response from server')
-				}
-				return response.json()
-			})
-			.then(response => {
-				const eventDetails = { title: 'Upcoming events', details: [] }
-				response.next.forEach(event => {
-					const eventObject = {
-						__typename: 'Event',
-						title: event.name,
-						date: new Date(event.startdate).toLocaleDateString(
-							'en-US',
-							{
-								month: 'long',
-								day: '2-digit',
-							}
-						),
-						url: `https://afsp.donordrive.com/index.cfm?fuseaction=donorDrive.event&eventID=${event.recordid}`,
+		if (events.length === 0) {
+			fetch(
+				`//aws-fetch.s3.amazonaws.com/merged-events-${chapterDonorDriveId}.json`
+			)
+				.then(response => {
+					if (response.status >= 400) {
+						throw new Error('Bad response from server')
 					}
-					eventDetails.details.push(eventObject)
+					return response.json()
 				})
-				setEvents(eventDetails)
-			})
-	}, [chapterStoriesUpdates, chapterDonorDriveId])
+				.then(response => {
+					const eventDetails = {
+						title: 'Upcoming events',
+						details: [],
+					}
+					response.next.forEach(event => {
+						const eventObject = {
+							__typename: 'Event',
+							title: event.name,
+							date: new Date(event.startdate).toLocaleDateString(
+								'en-US',
+								{
+									month: 'long',
+									day: '2-digit',
+								}
+							),
+							url: `https://afsp.donordrive.com/index.cfm?fuseaction=donorDrive.event&eventID=${event.recordid}`,
+						}
+						eventDetails.details.push(eventObject)
+					})
+					setEvents(eventDetails)
+				})
+		}
+	}, [
+		chapterStoriesUpdates,
+		chapterDonorDriveId,
+		realStories.edges,
+		stories.length,
+		events.length,
+		storiesUpdates,
+	])
 
 	return (
 		<LayoutChapter

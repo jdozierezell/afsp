@@ -19,29 +19,19 @@ const headingCSS = css`
 `
 
 const ContentHeading = ({ heading, level }) => {
-	switch (level) {
-		case 'Level 2 (will be included in sidebar)':
-			return (
+	return (
+		<>
+			{level === 'Level 2 (will be included in sidebar)' && (
 				<h2 id={createAnchor(heading)} css={levelTwoHeadingCSS}>
 					{heading}
 				</h2>
-			)
-			break
-		case 'Level 3':
-			return <h3 css={headingCSS}>{heading}</h3>
-			break
-		case 'Level 4':
-			return <h4 css={headingCSS}>{heading}</h4>
-			break
-		case 'Level 5':
-			return <h5 css={headingCSS}>{heading}</h5>
-			break
-		case 'Level 6':
-			return <h6 css={headingCSS}>{heading}</h6>
-			break
-		default:
-			return ''
-	}
+			)}
+			{level === 'Level 3' && <h3 css={headingCSS}>{heading}</h3>}
+			{level === 'Level 4' && <h3 css={headingCSS}>{heading}</h3>}
+			{level === 'Level 5' && <h3 css={headingCSS}>{heading}</h3>}
+			{level === 'Level 6' && <h3 css={headingCSS}>{heading}</h3>}
+		</>
+	)
 }
 
 export default ContentHeading

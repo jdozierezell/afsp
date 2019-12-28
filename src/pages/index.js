@@ -46,7 +46,9 @@ const App = ({ data: { home } }) => {
 			/>
 			<div css={walkBar}>
 				<span>Want to walk with us?</span>{' '}
-				<a href="">Find a walk near you</a>
+				<a href="https://afsp.donordrive.com/index.cfm?fuseaction=cms.page&id=1370">
+					Find a walk near you
+				</a>
 			</div>
 			<ChannelContainer channelList={home.channelList} />
 			{home.ctaChapterResourceList.map((item, index) => {

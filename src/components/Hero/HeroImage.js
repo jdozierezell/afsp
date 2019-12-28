@@ -1,9 +1,5 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
-
-import IconArrow from '../SVGs/IconArrow'
-import readTime from '../../utils/readTime'
 
 import { styles } from '../../css/css'
 

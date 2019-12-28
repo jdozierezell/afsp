@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 import Papa from 'papaparse'
 
 import StatisticsStatesContainer from './StatisticsStatesContainer'
 import StatisticsNationalContainer from './StatisticsNationalContainer'
-
-import { styles } from '../../css/css'
 
 const statisticsContainerCSS = css`
 	margin: 0;

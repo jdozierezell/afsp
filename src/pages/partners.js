@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import HeroSolid from '../components/Hero/HeroSolid'
-import StoriesContainer from '../components/Stories/StoriesContainer'
 
 import { styles } from '../css/css'
 

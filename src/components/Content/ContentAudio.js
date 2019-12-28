@@ -17,6 +17,7 @@ const ContentVideo = ({ audio }) => {
 		<figure css={audioCSS}>
 			<figcaption>{audio.title}</figcaption>
 			<audio controls src={audio.url}>
+				<track default kind="captions" srcLang="en" src="#" />
 				Your browser does not support the
 				<code>audio</code> element.
 			</audio>

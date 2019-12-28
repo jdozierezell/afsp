@@ -8,7 +8,7 @@ import { styles } from '../../css/css'
 
 const menuCSS = css`
 	background-color: ${styles.colors.blue};
-	margin-top: ${styles.scale.px12};
+	margin-top: ${styles.scale.px14};
 	padding: ${styles.scale.px50} ${styles.scale.px24} ${styles.scale.px35};
 	width: 100%;
 	@media (min-width: ${styles.screens.navigation}px) {
