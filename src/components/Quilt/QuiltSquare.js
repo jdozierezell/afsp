@@ -24,15 +24,22 @@ const imageCSS = css`
 
 const descriptionCSS = css`
 	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
+	top: calc(100% + 10px);
+	left: -10px;
+	right: -10px;
 	font-family: ${styles.fonts.avenirRegular};
 	color: ${styles.colors.white};
-	background: hsla(0, 0%, 14.9%, 0.7);
+	background: ${styles.colors.darkGray};
 	padding: ${styles.scale.px12};
 	font-size: 10px;
 	line-height: ${styles.scale.px12};
+	@media (min-width: ${styles.screens.tablet}px) {
+		top: initial;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: hsla(0, 0%, 14.9%, 0.7);
+	}
 `
 
 const QuiltSquare = ({ quilt, selected, handleClick, index }) => {
@@ -53,11 +60,10 @@ const QuiltSquare = ({ quilt, selected, handleClick, index }) => {
 		// find square size at current scale
 		const defaultSquareSize = squareRef.current.getBoundingClientRect()
 			.width
+		const width = window.innerWidth
+		const height = window.innerHeight
 		// find desired final square size based on window size with square at 80% window
-		const desiredSquareSize =
-			window.innerWidth > window.innerHeight
-				? window.innerHeight / 1.25
-				: window.innerWidth / 1.25
+		const desiredSquareSize = width > height ? height / 1.25 : width / 1.25
 		const center = {
 			x:
 				squareRef.current.getBoundingClientRect().left +
@@ -66,12 +72,12 @@ const QuiltSquare = ({ quilt, selected, handleClick, index }) => {
 				squareRef.current.getBoundingClientRect().top +
 				defaultSquareSize / 2,
 		}
-
+		const denominator = window.innerWidth > 768 ? 2 : 3
 		// set the multiple of the difference between current and desired
 		setScale(desiredSquareSize / defaultSquareSize)
 		setLocation({
 			horizontal: window.innerWidth / 2 - center.x,
-			vertical: window.innerHeight / 2 - center.y,
+			vertical: window.innerHeight / denominator - center.y,
 		})
 	}
 
@@ -88,7 +94,7 @@ const QuiltSquare = ({ quilt, selected, handleClick, index }) => {
 			css={isSelected ? [squareCSS, selectedSquareCSS] : squareCSS}
 			key={quilt.id}
 			id={quilt.id}
-			className={`quilt-col-${(index + 5) % 5}`}
+			className={`quilt-col-${(index + 6) % 6}`}
 			onClick={() => {
 				// update the window history to provide a deep link to quilt square
 				window.history.pushState(

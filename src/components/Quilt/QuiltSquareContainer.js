@@ -9,22 +9,43 @@ import { styles } from '../../css/css'
 
 const sectionCSS = css`
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(2, 1fr);
+	@media (min-width: ${styles.screens.tablet}px) {
+		grid-template-columns: repeat(5, 1fr);
+	}
 	/* below classes based on index of quilt square determine grid column location */
 	.quilt-col-0 {
 		grid-column: 1 / 2;
 	}
 	.quilt-col-1 {
 		grid-column: 2 / 3;
+		@media (min-width: ${styles.screens.tablet}px) {
+			grid-column: 2 / 3;
+		}
 	}
 	.quilt-col-2 {
-		grid-column: 3 / 4;
+		grid-column: 1 / 2;
+		@media (min-width: ${styles.screens.tablet}px) {
+			grid-column: 3 / 4;
+		}
 	}
 	.quilt-col-3 {
-		grid-column: 4 / 5;
+		grid-column: 2 / 3;
+		@media (min-width: ${styles.screens.tablet}px) {
+			grid-column: 4 / 5;
+		}
 	}
 	.quilt-col-4 {
-		grid-column: 5 / 6;
+		grid-column: 1 / 2;
+		@media (min-width: ${styles.screens.tablet}px) {
+			grid-column: 5 / 6;
+		}
+	}
+	.quilt-col-5 {
+		grid-column: 2 / 3;
+		@media (min-width: ${styles.screens.tablet}px) {
+			grid-column: 5 / 6;
+		}
 	}
 `
 
