@@ -39,15 +39,7 @@ export const query = graphql`
 					contentBody
 				}
 				... on DatoCmsRecommendation {
-					__typename
-					videoTitle
-					videoUrl
-					storyRecommendation {
-						title
-						author {
-							authorName
-						}
-					}
+					...Recommendation
 				}
 				... on DatoCmsCardContainer {
 					__typename

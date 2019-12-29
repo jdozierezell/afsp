@@ -41,7 +41,7 @@ const StatisticsStatesGraph = ({ width, height, data, selection }) => {
 		>
 			<ResponsiveLine
 				data={filteredData}
-				margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+				margin={{ top: 50, right: 20, bottom: 80, left: 50 }}
 				xScale={{ type: 'point' }}
 				yScale={{
 					type: 'linear',
@@ -79,13 +79,13 @@ const StatisticsStatesGraph = ({ width, height, data, selection }) => {
 				enableSlices={'x'}
 				legends={[
 					{
-						anchor: 'bottom-right',
-						direction: 'column',
+						anchor: 'bottom',
+						direction: 'row',
 						justify: false,
-						translateX: 100,
-						translateY: 0,
+						translateX: 0,
+						translateY: 70,
 						itemsSpacing: 0,
-						itemDirection: 'left-to-right',
+						itemDirection: 'top-to-bottom',
 						itemWidth: 80,
 						itemHeight: 20,
 						itemOpacity: 0.75,

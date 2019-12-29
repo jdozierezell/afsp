@@ -7,8 +7,8 @@ const recommendationsCSS = css`
 	background-color: ${styles.colors.blue};
 	padding: ${styles.scale.px50} ${styles.scale.px24};
 	@media (min-width: ${styles.screens.tablet}px) {
-		padding: ${styles.scale.px36} ${styles.scale.px50} ${styles.scale.px36}
-			${styles.scale.px24};
+		padding: ${styles.scale.px36} ${styles.scale.px50} ${styles.scale.px36};
+		${styles.scale.px24};
 	}
 	h2 {
 		font-family: ${styles.fonts.avenirBold};

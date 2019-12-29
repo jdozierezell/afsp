@@ -23,6 +23,40 @@ export const CTAs = graphql`
 					brief
 					linkText
 					linkUrl
+					link {
+						... on DatoCmsTag {
+							__typename
+							slug
+						}
+						... on DatoCmsStory {
+							__typename
+							slug
+						}
+						... on DatoCmsDetail {
+							__typename
+							slug
+						}
+						... on DatoCmsAuthor {
+							__typename
+							slug
+						}
+						... on DatoCmsLanding {
+							__typename
+							slug
+						}
+						... on DatoCmsRealStory {
+							__typename
+							slug
+						}
+						... on DatoCmsChapterSearch {
+							__typename
+							slug
+						}
+						... on DatoCmsStatistic {
+							__typename
+							slug
+						}
+					}
 				}
 				... on DatoCmsCtaNoDescription {
 					__typename

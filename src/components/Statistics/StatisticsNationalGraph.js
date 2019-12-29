@@ -13,14 +13,14 @@ const statisticsNationalGraphCSS = css`
 		grid-template-columns: 1fr 2fr 100px;
 		grid-column-gap: ${styles.scale.px40};
 	}
-	h3 {
-		font-size: ${styles.scale.px20};
-		font-family: ${styles.fonts.avenirBold};
-	}
 	h4 {
 		font-size: ${styles.scale.px14};
 		font-family: ${styles.fonts.avenirBold};
 	}
+`
+
+const graphHeadingCSS = css`
+	margin-bottom: 0;
 `
 
 const statisticsNationalGraphContainerCSS = css`
@@ -79,16 +79,16 @@ const StatisticsNationalGraph = ({
 		<div css={statisticsNationalGraphCSS}>
 			<div dangerouslySetInnerHTML={{ __html: brief }}></div>
 			<div>
-				<h3>{title}</h3>
+				<h2 css={graphHeadingCSS}>{title}</h2>
 				<div css={statisticsNationalGraphContainerCSS}>
 					{graphType === 'line' && data && (
 						<ResponsiveLine
 							data={data}
 							margin={{
-								top: 50,
-								right: 110,
+								top: 10,
+								right: 20,
 								bottom: 50,
-								left: 60,
+								left: 50,
 							}}
 							xScale={{ type: 'point' }}
 							yScale={{
@@ -125,33 +125,7 @@ const StatisticsNationalGraph = ({
 							pointLabel="y"
 							pointLabelYOffset={-12}
 							enableSlices={'x'}
-							legends={[
-								{
-									anchor: 'bottom-right',
-									direction: 'column',
-									justify: false,
-									translateX: 100,
-									translateY: 0,
-									itemsSpacing: 0,
-									itemDirection: 'left-to-right',
-									itemWidth: 80,
-									itemHeight: 20,
-									itemOpacity: 0.75,
-									symbolSize: 12,
-									symbolShape: 'circle',
-									symbolBorderColor: 'rgba(0, 0, 0, .5)',
-									effects: [
-										{
-											on: 'hover',
-											style: {
-												itemBackground:
-													'rgba(0, 0, 0, .03)',
-												itemOpacity: 1,
-											},
-										},
-									],
-								},
-							]}
+							legends={[]}
 							theme={{
 								tooltip: {
 									container: {
@@ -165,9 +139,9 @@ const StatisticsNationalGraph = ({
 						<ResponsivePie
 							data={data}
 							margin={{
-								top: 40,
+								top: 0,
 								right: 80,
-								bottom: 80,
+								bottom: 0,
 								left: 80,
 							}}
 							innerRadius={0.5}
@@ -193,26 +167,7 @@ const StatisticsNationalGraph = ({
 							animate={true}
 							motionStiffness={90}
 							motionDamping={15}
-							legends={[
-								{
-									anchor: 'bottom',
-									direction: 'row',
-									translateY: 56,
-									itemWidth: 100,
-									itemHeight: 18,
-									itemTextColor: '#999',
-									symbolSize: 18,
-									symbolShape: 'circle',
-									effects: [
-										{
-											on: 'hover',
-											style: {
-												itemTextColor: '#000',
-											},
-										},
-									],
-								},
-							]}
+							legends={[]}
 							theme={{
 								tooltip: {
 									container: {

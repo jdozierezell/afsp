@@ -1,7 +1,10 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import { styles } from '../../css/css'
+
+import buildUrl from '../../utils/buildUrl'
 
 const videoCTACSS = css`
 	overflow: hidden;
@@ -87,6 +90,8 @@ const CTAVideo = ({ cta }) => {
 		brief,
 		linkText,
 		linkUrl,
+		link,
+		external,
 	} = cta
 	const video = backgroundVideo ? backgroundVideo.url : null
 	const poster = `${backgroundImage.url}?w=1920&h=1080&fit=crop&crop=faces`
@@ -115,9 +120,21 @@ const CTAVideo = ({ cta }) => {
 							__html: brief,
 						}}
 					></p>
-					<a className="secondary-button" href={linkUrl}>
-						{linkText}
-					</a>
+					{external && (
+						<a href={linkUrl} className="secondary-button">
+							{linkText}
+						</a>
+					)}
+					{!external && (
+						<AniLink
+							className="secondary-button"
+							fade
+							duration={styles.duration}
+							to={buildUrl(link.__typename, link.slug)}
+						>
+							{linkText}
+						</AniLink>
+					)}
 				</div>
 			</div>
 		</section>

@@ -97,15 +97,17 @@ const HeroStatistics = ({ data }) => {
 									}}
 								></li>
 							)
-						} else if (callout.__typename === 'DatoCmsCtaLink') {
-							const cta = callout.link.callToAction[0]
+						} else if (
+							callout.__typename === 'DatoCmsCallToAction'
+						) {
+							const cta = callout.cta.callToAction[0]
 							return (
 								<li key={index}>
 									<span>{cta.brief}</span>
-									{cta.external === true && (
+									{cta.external && (
 										<a href={cta.linkUrl}>{cta.linkText}</a>
 									)}
-									{cta.external === false && (
+									{!cta.external && (
 										<AniLink
 											fade
 											duration={styles.duration}

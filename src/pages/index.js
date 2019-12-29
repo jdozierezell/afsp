@@ -139,55 +139,7 @@ export const query = graphql`
 					showChapterConnection
 				}
 				... on DatoCmsResourceList {
-					__typename
-					resource {
-						... on DatoCmsDetail {
-							__typename
-							title
-							slug
-							seo {
-								description
-								image {
-									url
-									# fluid(
-									# 	maxWidth: 600
-									# 	imgixParams: {
-									# 		fm: "jpg"
-									# 		fit: "crop"
-									# 		crop: "faces"
-									# 		w: "600"
-									# 		h: "370"
-									# 	}
-									# ) {
-									# 	...GatsbyDatoCmsFluid_tracedSVG
-									# }
-								}
-							}
-						}
-						... on DatoCmsLanding {
-							__typename
-							title
-							slug
-							seo {
-								description
-								image {
-									url
-									# fluid(
-									# 	maxWidth: 600
-									# 	imgixParams: {
-									# 		fm: "jpg"
-									# 		fit: "crop"
-									# 		crop: "faces"
-									# 		w: "600"
-									# 		h: "370"
-									# 	}
-									# ) {
-									# 	...GatsbyDatoCmsFluid_tracedSVG
-									# }
-								}
-							}
-						}
-					}
+					...ResourceList
 				}
 			}
 			instagramClass

@@ -49,30 +49,31 @@ const carouselButtonsCSS = css`
 	}
 `
 
-const CardMobileContainer = ({ title, data, cardCSS }) => {
+const StatisticsStatesFactsMobileContainer = ({
+	title,
+	selection,
+	cardCSS,
+}) => {
 	useEffect(() => {
 		new Glide('.glide', {
-			perView: 3,
-			peek: { before: 0, after: styles.scale.px24 },
 			breakpoints: {
 				1080: {
-					perView: 2,
-					peek: { before: 0, after: styles.scale.px24 },
+					perView: 3,
 				},
 				768: {
 					perView: 1,
-					peek: { before: 0, after: styles.scale.px24 },
+					peek: { before: 0, after: 50 },
 				},
 			},
 		}).mount()
-	}, [])
+	}, [selection])
 	return (
 		<div css={carouselCSS}>
 			{title && <h2 css={carouselHeaderTitleCSS}>{title}</h2>}
 			<div className="glide">
 				<div data-glide-el="track">
 					<ul className="glide__slides">
-						{data.map((state, index) => {
+						{selection.map((state, index) => {
 							const card = {
 								cardHeading: 'foo',
 								cardBodyNode: {
@@ -94,7 +95,7 @@ const CardMobileContainer = ({ title, data, cardCSS }) => {
 					</ul>
 				</div>
 				<div data-glide-el="controls[nav]" css={carouselButtonsCSS}>
-					{data.map((__, index) => {
+					{selection.map((__, index) => {
 						return (
 							<button
 								key={index}
@@ -108,4 +109,4 @@ const CardMobileContainer = ({ title, data, cardCSS }) => {
 	)
 }
 
-export default CardMobileContainer
+export default StatisticsStatesFactsMobileContainer

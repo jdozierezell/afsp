@@ -3,6 +3,7 @@ import { css } from '@emotion/core'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import { styles } from '../../css/css'
+import buildUrl from '../../utils/buildUrl'
 
 const featuredCSS = css`
 	position: relative;
@@ -24,26 +25,7 @@ const featuredCSS = css`
 `
 
 const FeaturedResources = ({ data }) => {
-	let slug = ''
-	if (data.__typename) {
-		switch (data.__typename) {
-			case 'DatoCmsDetail':
-				slug = `detail/${data.slug}`
-				break
-			case 'DatoCmsLanding':
-				slug = `landing/${data.slug}`
-				break
-			case 'DatoCmsChapterPage':
-				slug = `chapter/${data.slug}`
-				break
-			default:
-				break
-		}
-	} else {
-		// right now the only single model option is for detail pages; this will need to be adjusted if that changes
-		slug = `detail/${data.slug}`
-	}
-
+	console.log(data)
 	return (
 		<div css={featuredCSS}>
 			<img
@@ -59,7 +41,7 @@ const FeaturedResources = ({ data }) => {
 			<AniLink
 				fade
 				duration={styles.duration}
-				to={`/${slug}`}
+				to={buildUrl(data.__typename, data.slug)}
 				className="featured-link"
 			>
 				Learn more

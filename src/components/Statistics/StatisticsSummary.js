@@ -37,7 +37,9 @@ const statisticsSummaryCSS = css`
 const summaryVideoCSS = css`
 	position: relative;
 	video {
-		width: 100%;
+		width: calc(100vw - 48px);
+		height: calc((100vw - 48px) / 1.5);
+		border-radius: ${styles.scale.px5};
 	}
 	> p {
 		:first-of-type {
@@ -56,15 +58,17 @@ const summaryVideoCSS = css`
 `
 
 const videoTitleCSS = css`
-	position: absolute;
-	left: ${styles.scale.px24};
-	top: ${styles.scale.px30};
-	h3,
-	p {
-		color: ${styles.colors.white};
-	}
-	p {
-		margin-bottom: ${styles.scale.px20};
+	@media (mim-width: ${styles.screens.tablet}px) {
+		position: absolute;
+		left: ${styles.scale.px24};
+		top: ${styles.scale.px30};
+		h3,
+		p {
+			color: ${styles.colors.white};
+		}
+		p {
+			margin-bottom: ${styles.scale.px20};
+		}
 	}
 `
 
@@ -73,7 +77,8 @@ const StoriesReference = ({ data }) => {
 		additionalFacts,
 		videoHeader,
 		videoDescription,
-		videoUrl,
+		video,
+		videoPoster,
 		videoLinkText,
 		videoLink,
 	} = data
@@ -91,13 +96,13 @@ const StoriesReference = ({ data }) => {
 				</ul>
 			</div>
 			<aside css={summaryVideoCSS}>
-				<video controls src={videoUrl}>
-					<track default kind="captions" srcLang="en" src="#" />
-				</video>
 				<div css={videoTitleCSS}>
 					<p>More resources</p>
 					<h3>{videoHeader}</h3>
 				</div>
+				<video controls src={video.url} poster={videoPoster.url}>
+					<track default kind="captions" srcLang="en" src="#" />
+				</video>
 				<p>{videoDescription}</p>
 				<AniLink
 					fade

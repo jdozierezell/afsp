@@ -23,37 +23,45 @@ const statisticsStatesContainerCSS = css`
 
 const searchStateCSS = css`
 	display: grid;
-	grid-template-columns: repeat(4, minmax(0, 1fr)) 50px repeat(
-			4,
-			minmax(0, 1fr)
-		);
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat() (4, 1fr);
 	margin-bottom: ${styles.scale.px24};
+	@media (min-width: ${styles.screens.tablet}px) {
+		grid-template-columns: repeat(4, minmax(0, 1fr)) 50px repeat(
+				4,
+				minmax(0, 1fr)
+			);
+	}
 `
 
 const searchStateInputCSS = css`
-	grid-column: 1 / 5;
-	grid-row: 1 / 4;
+	grid-column: 1 / 2;
+	grid-row: 1 / 3;
 	display: grid;
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
 	position: relative;
+	@media (min-width: ${styles.screens.tablet}px) {
+		grid-column: 1 / 5;
+	}
 	div {
 		grid-column: 1 / 5;
-		grid-row: 1 / 4;
+		grid-row: 1 / 3;
 		display: grid;
 		grid-template-columns: subgrid;
 		grid-template-rows: subgrid;
 		div {
 			grid-column: 1 / 5;
-			grid-row: 3 / 4;
+			grid-row: 2 / 3;
 			position: relative;
 			ul {
 				position: absolute;
-				top: -${styles.scale.px20};
+				top: ${styles.scale.px50};
 				left: 0;
 				list-style: none;
 				margin: 0;
 				padding: 0;
+				z-index: 5;
 				li {
 					margin: 0;
 					padding: ${styles.scale.px12};
@@ -70,11 +78,14 @@ const searchStateInputCSS = css`
 	input {
 		border: none;
 		margin-right: ${styles.gridGap.mobile};
-		grid-column: 1 / 4;
+		grid-column: 1 / 5;
 		grid-row: 2 / 3;
 		align-self: start;
 		position: relative;
 		z-index: 5;
+		@media (min-width: ${styles.screens.tablet}px) {
+			grid-column: 1 / 4;
+		}
 	}
 	button {
 		grid-column: 4 / 5;
@@ -84,11 +95,15 @@ const searchStateInputCSS = css`
 `
 
 const searchStateListCSS = css`
-	grid-column: 6 / 10;
-	grid-row: 1 / 3;
+	grid-column: 1 / 2;
+	grid-row: 3 / 5;
 	display: grid;
 	grid-template-columns: subgrid;
 	grid-template-rows: subgrid;
+	@media (min-width: ${styles.screens.tablet}px) {
+		grid-column: 6 / 10;
+		grid-row: 1 / 3;
+	}
 	p {
 		margin: ${styles.scale.px35} 0 ${styles.scale.px40};
 		grid-column: 1 / 5;
@@ -96,7 +111,7 @@ const searchStateListCSS = css`
 	}
 	ul {
 		grid-column: 1 / 5;
-		grid-row: 2 / 4;
+		grid-row: 2 / 3;
 		list-style: none;
 		margin: 0;
 		overflow: auto hidden;
@@ -308,8 +323,19 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 																		index
 																			? styles
 																					.colors
-																					.lightGray
-																			: 'white',
+																					.blue
+																			: styles
+																					.colors
+																					.white,
+																	color:
+																		highlightedIndex ===
+																		index
+																			? styles
+																					.colors
+																					.white
+																			: styles
+																					.colors
+																					.darkGray,
 																	fontWeight:
 																		selectedItem ===
 																		state

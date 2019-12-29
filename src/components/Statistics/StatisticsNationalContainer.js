@@ -42,7 +42,9 @@ const menuListCSS = css`
 	position: relative;
 	background-color: ${styles.colors.blue};
 	border-top: solid ${styles.scale.px2} ${styles.colors.white};
-	li {
+	button {
+		background: transparent;
+		border: none;
 		color: ${styles.colors.white};
 		font-size: ${styles.scale.px17};
 		font-family: ${styles.fonts.avenirBold};
@@ -52,11 +54,14 @@ const menuListCSS = css`
 `
 
 const menuTabsCSS = css`
-	list-style: none;
-	margin: 0;
-	display: flex;
-	justify-content: space-evenly;
-	background-color: ${styles.colors.lightGray};
+	display: none;
+	@media (min-width: ${styles.screens.tablet}px) {
+		list-style: none;
+		margin: 0;
+		display: flex;
+		justify-content: space-evenly;
+		background-color: ${styles.colors.lightGray};
+	}
 	li {
 		padding: ${styles.scale.px30} 0;
 		flex-grow: 1;
@@ -81,7 +86,7 @@ const StatisticsNationalContainer = ({
 
 	const [isCaretFlipped, setCaretFlipped] = useState(false)
 	const [childrenHeight, setChildrenHeight] = useState(0)
-	const [focusedArea, setFocusedArea] = useState(method)
+	const [focusedArea, setFocusedArea] = useState(age)
 	const listRef = useRef(null)
 	const ageRef = useRef(null)
 	const raceRef = useRef(null)
@@ -156,21 +161,36 @@ const StatisticsNationalContainer = ({
 			<animated.ul css={menuListCSS} style={showList} ref={listRef}>
 				{focusedArea !== age && (
 					<li>
-						<button onClick={() => setFocusedArea(age)}>
+						<button
+							onClick={() => {
+								setFocusedArea(age)
+								setCaretFlipped(!isCaretFlipped)
+							}}
+						>
 							{age}
 						</button>
 					</li>
 				)}
 				{focusedArea !== race && (
 					<li>
-						<button onClick={() => setFocusedArea(race)}>
+						<button
+							onClick={() => {
+								setFocusedArea(race)
+								setCaretFlipped(!isCaretFlipped)
+							}}
+						>
 							{race}
 						</button>
 					</li>
 				)}
 				{focusedArea !== method && (
 					<li>
-						<button onClick={() => setFocusedArea(method)}>
+						<button
+							onClick={() => {
+								setFocusedArea(method)
+								setCaretFlipped(!isCaretFlipped)
+							}}
+						>
 							{method}
 						</button>
 					</li>

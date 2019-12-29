@@ -1,7 +1,10 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import { styles } from '../../css/css'
+
+import buildUrl from '../../utils/buildUrl'
 
 const h2 = css`
 	text-align: center;
@@ -24,7 +27,7 @@ const p = css`
 `
 
 const CTAWithDescription = ({ cta }) => {
-	const { heading, brief, linkText, linkUrl } = cta
+	const { heading, brief, linkText, linkUrl, link, external } = cta
 	return (
 		<>
 			<h2 css={h2}>{heading}</h2>
@@ -34,9 +37,21 @@ const CTAWithDescription = ({ cta }) => {
 					__html: brief,
 				}}
 			></p>
-			<a href={linkUrl} className="secondary-button">
-				{linkText}
-			</a>
+			{external && (
+				<a href={linkUrl} className="secondary-button">
+					{linkText}
+				</a>
+			)}
+			{!external && (
+				<AniLink
+					className="secondary-button"
+					fade
+					duration={styles.duration}
+					to={buildUrl(link.__typename, link.slug)}
+				>
+					{linkText}
+				</AniLink>
+			)}
 		</>
 	)
 }

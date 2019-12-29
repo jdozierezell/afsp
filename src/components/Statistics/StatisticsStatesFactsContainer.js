@@ -7,7 +7,6 @@ const StatisticsStatesFactsContainer = ({ data, selection, cardCSS }) => {
 	return (
 		<section>
 			<StatisticsStatesFactsMobileContainer
-				data={data}
 				selection={selection}
 				cardCSS={cardCSS}
 			/>

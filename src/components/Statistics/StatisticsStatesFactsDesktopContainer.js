@@ -7,12 +7,12 @@ import Card from '../Cards/Card'
 import { styles } from '../../css/css'
 
 const cardContainerCSS = css`
-	padding: ${styles.scale.px80} ${styles.scale.px50};
-	background-color: ${styles.colors.lightGray};
-	position: relative;
-	z-index: 500;
+	display: none;
 	@media (min-width: ${styles.screens.tablet}px) {
 		padding: ${styles.scale.px60} 0 ${styles.scale.px80};
+		background-color: ${styles.colors.lightGray};
+		position: relative;
+		z-index: 500;
 	}
 `
 
@@ -23,7 +23,11 @@ const cardListCSS = css`
 	margin: 0;
 `
 
-const CardContainer = ({ data, selection, cardCSS }) => {
+const StatisticsStatesFactsDesktopContainer = ({
+	data,
+	selection,
+	cardCSS,
+}) => {
 	return (
 		<section css={cardContainerCSS}>
 			<ul css={cardListCSS}>
@@ -84,4 +88,4 @@ const CardContainer = ({ data, selection, cardCSS }) => {
 	)
 }
 
-export default CardContainer
+export default StatisticsStatesFactsDesktopContainer
