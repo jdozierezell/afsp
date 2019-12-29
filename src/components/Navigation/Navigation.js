@@ -4,6 +4,7 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import LogoColor from '../SVGs/LogoColor'
 import LogoWhite from '../SVGs/LogoWhite'
+import Logo from '../SVGs/Logo'
 import MobileMenu from './MobileMenu'
 import DeskMenu from './DeskMenu'
 import IconHamburger from '../SVGs/IconHamburger'
@@ -85,7 +86,7 @@ const donateCSS = css`
 	}
 `
 
-const Navigation = ({ nav, theme }) => {
+const Navigation = ({ nav, theme, overrideLight }) => {
 	const [isMobileLight, setMobileLight] = useState(theme.mobile === 'light')
 	const [isDesktopLight, setDesktopLight] = useState(
 		theme.desktop === 'light'
@@ -143,14 +144,12 @@ const Navigation = ({ nav, theme }) => {
 		>
 			<div css={logoCSS}>
 				<AniLink fade duration={styles.duration} to={`/`}>
-					{/* if theme is light, logo defaults to white otherwise color; logo is color on hover in all contexts */}
-					{(isMobileLight || isDesktopLight) &&
-					!isHover &&
-					!isMenuActive ? (
-						<LogoWhite />
-					) : (
-						<LogoColor />
-					)}
+					<Logo
+						theme={theme}
+						overrideLight={overrideLight}
+						isHover={isHover}
+						isMenuActive={isMenuActive}
+					/>
 				</AniLink>
 			</div>
 			<DeskMenu
@@ -167,11 +166,10 @@ const Navigation = ({ nav, theme }) => {
 				>
 					{/* set icon color to white on hover or on light theme */}
 					<IconSearch
-						color={
-							(isMobileLight || isDesktopLight) && !isHover
-								? styles.colors.white
-								: styles.colors.darkGray
-						}
+						theme={theme}
+						overrideLight={overrideLight}
+						isHover={isHover}
+						isMenuActive={isMenuActive}
 					/>
 				</button>
 				<button
@@ -183,11 +181,10 @@ const Navigation = ({ nav, theme }) => {
 					) : (
 						// set icon color to white on hover or on light theme
 						<IconHamburger
-							color={
-								(isMobileLight || isDesktopLight) && !isHover
-									? styles.colors.white
-									: styles.colors.darkGray
-							}
+							theme={theme}
+							overrideLight={overrideLight}
+							isHover={isHover}
+							isMenuActive={isMenuActive}
 						/>
 					)}
 				</button>

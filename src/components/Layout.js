@@ -5,7 +5,7 @@ import Header from './Header/Header'
 import EmailSignup from './EmailSignup/EmailSignup'
 import Footer from './Footer/Footer'
 
-const Layout = ({ theme, children }) => {
+const Layout = ({ theme, overrideLight, children }) => {
 	const data = useStaticQuery(graphql`
 		query {
 			nav: allDatoCmsNavigation(sort: { fields: position, order: ASC }) {
@@ -25,7 +25,11 @@ const Layout = ({ theme, children }) => {
 	})
 	return (
 		<>
-			<Header nav={headerNav} theme={theme} />
+			<Header
+				nav={headerNav}
+				theme={theme}
+				overrideLight={overrideLight}
+			/>
 			<main>{children}</main>
 			<EmailSignup formId="KxgQRb">
 				<div>

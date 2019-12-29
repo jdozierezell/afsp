@@ -24,7 +24,7 @@ export const ChapterSearch = graphql`
 						# }
 					}
 				}
-				heroImage {
+				heroPoster {
 					url
 					# fluid(
 					# 	maxWidth: 600

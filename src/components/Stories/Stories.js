@@ -4,6 +4,8 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import { styles } from '../../css/css'
 
+import buildUrl from '../../utils/buildUrl'
+
 const featuredCSS = css`
 	img {
 		margin: 0;
@@ -54,7 +56,7 @@ const Stories = ({ story: { node } }) => {
 				<AniLink
 					fade
 					duration={styles.duration}
-					to={`/${node.type}/${node.slug}`}
+					to={buildUrl(node.type, node.slug)}
 				>
 					{node.title}
 				</AniLink>

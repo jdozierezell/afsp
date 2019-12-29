@@ -54,7 +54,7 @@ const storyMetaCSS = css`
 	ul {
 		list-style: none;
 		margin: 0;
-		display: inline-block;
+		display: inline;
 		margin-left: ${styles.scale.px5};
 	}
 	li {
@@ -209,7 +209,11 @@ const HeroStories = ({ data, prev, next }) => {
 							})}
 					</ul>
 				</h3>
-				<img css={mobileImageCSS} src={mobileCover.url} alt="" />
+				<img
+					css={mobileImageCSS}
+					src={`${mobileCover.url}?w=768&h=475&fit=crop&crop=faces`}
+					alt=""
+				/>
 			</div>
 			{prev && (
 				<div css={previousStoryCSS}>

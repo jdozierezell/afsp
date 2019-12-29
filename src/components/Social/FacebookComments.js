@@ -36,7 +36,10 @@ const commentCSS = css`
 const FacebookComments = () => {
 	useEffect(() => {
 		// eslint-disable-next-line no-undef
-		FB.XFBML.parse() // this is part of the SDK that needs to run upon each refresh, so it's pulled out here and dropped into useEffect
+		if (FB) {
+			// eslint-disable-next-line no-undef
+			FB.XFBML.parse() // this is part of the SDK that needs to run upon each refresh, so it's pulled out here and dropped into useEffect
+		}
 	})
 	const location = typeof window !== `undefined` ? window.location : ''
 	return (

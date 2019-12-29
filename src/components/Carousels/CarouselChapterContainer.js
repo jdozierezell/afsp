@@ -135,7 +135,7 @@ const CarouselChapterContainer = ({ location, carouselCSS }) => {
 										key={index}
 										title={chapter.title}
 										titleHref={chapter.slug}
-										src={chapter.heroImage.url}
+										src={chapter.heroPoster.url}
 									/>
 								)
 							})}

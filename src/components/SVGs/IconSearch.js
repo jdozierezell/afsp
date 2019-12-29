@@ -2,13 +2,27 @@ import React from 'react'
 
 import { css } from '@emotion/core'
 
-const SearchIcon = ({ color, iconCSS }) => {
+import { styles } from '../../css/css'
+
+const SearchIcon = ({
+	theme,
+	overrideLight,
+	isHover,
+	isMenuActive,
+	iconCSS,
+}) => {
+	const mobileColor =
+		theme.mobile === 'light' && !isHover && !isMenuActive
+			? styles.colors.white
+			: styles.colors.darkGray
+	const desktopColor =
+		theme.desktop === 'light' ? styles.colors.white : styles.colors.darkGray
 	return (
 		<svg
 			viewBox="0 0 100 100"
 			css={css`
 				${iconCSS};
-				fill: ${color};
+				fill: ${overrideLight ? styles.colors.darkGray : mobileColor};
 			`}
 		>
 			<g>

@@ -19,8 +19,8 @@ const eventCarouselCSS = css``
 const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	const {
 		title,
-		useVideoInHero,
-		heroVideoUrl,
+		heroVideo,
+		heroPoster,
 		heroBrief,
 		aboutTheChapterNode,
 		staffName,
@@ -127,8 +127,8 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			<SEO meta={chapter} />
 			<HeroChapter
 				title={title}
-				useVideo={useVideoInHero}
-				src={heroVideoUrl}
+				video={heroVideo.url}
+				poster={heroPoster.url}
 				brief={heroBrief}
 			/>
 			<ChapterAboutContact
@@ -152,6 +152,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					heading: `Join the AFSP ${title} Chapter`,
 					linkText: 'Volunteer',
 					linkUrl: volunteerSignupUrl,
+					external: true,
 				}}
 			/>
 			<StoriesContainer
@@ -173,25 +174,11 @@ export const query = graphql`
 				tags
 			}
 			title
-			useVideoInHero
-			heroVideoUrl
-			volunteerSignupUrl
-			heroImage {
+			heroVideo {
 				url
-				# fluid(
-				# 	maxWidth: 1920
-				# 	imgixParams: {
-				# 		fm: "jpg"
-				# 		fit: "crop"
-				# 		crop: "faces"
-				# 		ar: 2.5
-				# 		w: "1920"
-				# 		blendMode: "hardlight"
-				# 		blend: "555"
-				# 	}
-				# ) {
-				# 	...GatsbyDatoCmsFluid_tracedSVG
-				# }
+			}
+			heroPoster {
+				url
 			}
 			heroBrief
 			chapterEmailApiKey
@@ -205,27 +192,18 @@ export const query = graphql`
 				}
 			}
 			featuredPrograms {
-				title
-				slug
-				seo {
-					description
-					image {
-						url
-						# fluid(
-						# 	maxWidth: 600
-						# 	imgixParams: {
-						# 		fm: "jpg"
-						# 		fit: "crop"
-						# 		crop: "faces"
-						# 		w: "600"
-						# 		h: "370"
-						# 	}
-						# ) {
-						# 	...GatsbyDatoCmsFluid_tracedSVG
-						# }
+				... on DatoCmsDetail {
+					title
+					slug
+					seo {
+						description
+						image {
+							url
+						}
 					}
 				}
 			}
+			volunteerSignupUrl
 			chapterInformation {
 				instagramClass
 				chapterDonorDriveId

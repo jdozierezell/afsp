@@ -25,6 +25,7 @@ const ContentGeneric = ({ data }) => {
 	return (
 		<section css={storyContentCSS}>
 			{details.map((detail, index) => {
+				console.log(detail)
 				if (detail.__typename === 'DatoCmsContent') {
 					return (
 						<Content
@@ -55,21 +56,29 @@ const ContentGeneric = ({ data }) => {
 				} else if (detail.__typename === 'DatoCmsImage') {
 					return <ContentImage key={index} image={detail.images} />
 				} else if (detail.__typename === 'DatoCmsVideo') {
-					return <ContentVideo video={detail.video} />
+					return (
+						<ContentVideo
+							key={index}
+							video={detail.video.url}
+							poster={detail.poster.url}
+						/>
+					)
 				} else if (detail.__typename === 'DatoCmsAudio') {
-					return <ContentAudio audio={detail.audio} />
+					return <ContentAudio key={index} audio={detail.audio} />
 				} else if (detail.__typename === 'DatoCmsHeading') {
 					return (
 						<ContentHeading
+							key={index}
 							heading={detail.heading}
 							level={detail.headingLevel}
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsFeaturedStoryTag') {
-					return <ContentTag tag={detail.tag.tag} />
+					return <ContentTag key={index} tag={detail.tag.tag} />
 				} else if (detail.__typename === 'DatoCmsActionButton') {
 					return (
 						<a
+							key={index}
 							className="secondary-button"
 							href={detail.buttonLink}
 						>

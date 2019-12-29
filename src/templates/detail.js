@@ -71,8 +71,10 @@ export const query = graphql`
 				... on DatoCmsVideo {
 					__typename
 					video {
-						provider
-						providerUid
+						url
+					}
+					poster {
+						url
 					}
 				}
 				... on DatoCmsHeading {

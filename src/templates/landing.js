@@ -20,18 +20,17 @@ const landingTitle = css`
 `
 
 const landingBrief = css`
-	padding: 0 24px ${styles.scale.px50};
+	padding: 0 24px;
+	margin: 0;
 	@media (min-width: ${styles.screens.tablet}px) {
-		padding: 0 ${styles.scale.px50} ${styles.scale.px80};
+		padding: 0 ${styles.scale.px50} ${styles.scale.px50};
 	}
 `
 
 const channelCSS = css`
 	background-color: ${styles.colors.white};
 	grid-template-columns: repeat(2, 1fr);
-	padding-top: 0;
 	@media (min-width: ${styles.screens.tablet}px) {
-		padding-top: 0;
 		div {
 			text-align: center;
 		}

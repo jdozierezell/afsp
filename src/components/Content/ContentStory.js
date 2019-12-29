@@ -46,18 +46,30 @@ const storyContentCSS = css`
 `
 
 const socialButtonsCSS = css`
+	margin: 0 ${styles.scale.px24} ${styles.scale.px24};
 	@media (min-width: ${styles.screens.tablet}px) {
 		grid-column: 1 / 2;
-		margin-left: ${styles.scale.px50};
+		margin: 0 0 0 ${styles.scale.px50};
 	}
 	div {
-		max-width: ${styles.scale.px30};
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-evenly;
+		@media (min-width: ${styles.screens.tablet}px) {
+			max-width: ${styles.scale.px30};
+		}
 		svg {
+			height: ${styles.scale.px30};
+			max-width: ${styles.scale.px30};
 			margin-bottom: ${styles.scale.px16};
 		}
 	}
 	h3 {
 		font-size: ${styles.scale.px18};
+		text-align: center;
+		@media (min-width: ${styles.screens.tablet}px) {
+			text-align: left;
+		}
 	}
 `
 
@@ -107,7 +119,12 @@ const ContentStory = ({ data }) => {
 						</div>
 					)
 				} else if (article.__typename === 'DatoCmsVideo') {
-					return <ContentVideo video={article.video} />
+					return (
+						<ContentVideo
+							video={article.video.url}
+							poster={article.poster.url}
+						/>
+					)
 				} else if (article.__typename === 'DatoCmsAudio') {
 					return <ContentAudio audio={article.audio} />
 				} else if (article.__typename === 'DatoCmsHeading') {

@@ -25,7 +25,6 @@ const featuredCSS = css`
 `
 
 const FeaturedResources = ({ data }) => {
-	console.log(data)
 	return (
 		<div css={featuredCSS}>
 			<img

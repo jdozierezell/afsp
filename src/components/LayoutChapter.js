@@ -6,7 +6,13 @@ import InstagramFeed from '../components/Social/InstagramFeed'
 import EmailSignup from './EmailSignup/EmailSignup'
 import Footer from './Footer/Footer'
 
-const LayoutChapter = ({ theme, instagram, email, children }) => {
+const LayoutChapter = ({
+	theme,
+	overrideLight,
+	instagram,
+	email,
+	children,
+}) => {
 	const data = useStaticQuery(graphql`
 		query {
 			nav: allDatoCmsNavigation(sort: { fields: position, order: ASC }) {
@@ -26,7 +32,11 @@ const LayoutChapter = ({ theme, instagram, email, children }) => {
 	})
 	return (
 		<>
-			<Header nav={headerNav} theme={theme} />
+			<Header
+				nav={headerNav}
+				theme={theme}
+				overrideLight={overrideLight}
+			/>
 			<main>{children}</main>
 			<InstagramFeed instaClass={instagram} />
 			<EmailSignup formId={email}>

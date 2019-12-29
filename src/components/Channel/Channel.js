@@ -4,6 +4,8 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import { styles } from '../../css/css'
 
+import buildUrl from '../../utils/buildUrl'
+
 const channelCSS = css`
 	text-align: center;
 	@media (min-width: ${styles.screens.tablet}px) {
@@ -23,29 +25,50 @@ const channelCSS = css`
 		font-family: ${styles.fonts.avenirBold};
 		font-size: ${styles.scale.px20};
 	}
+	a,
+	h2 {
+		text-decoration: none;
+	}
 `
 
 const Channel = ({ channel }) => {
-	const { image, heading, brief, linkText } = channel
-	let link = ''
-	switch (channel.link.__typename) {
-		case 'DatoCmsDetail':
-			link = `detail/${channel.link.slug}`
-			break
-		case 'DatoCmsLanding':
-			link = `landing/${channel.link.slug}`
-			break
-		default:
-			break
-	}
+	const { image, heading, brief, linkText, link } = channel
+
 	return (
 		<div css={channelCSS}>
-			<img src={`${image.url}?w=200&h=200&fit=crop&crop=faces`} alt="" />
-			<h2>{heading}</h2>
-			<div dangerouslySetInnerHTML={{ __html: brief }}></div>
-			<AniLink fade duration={styles.duration} to={`/${link}`}>
-				{linkText}
-			</AniLink>
+			{!linkText && (
+				<>
+					<AniLink
+						fade
+						duration={styles.duration}
+						to={buildUrl(link.__typename, link.slug)}
+					>
+						<img
+							src={`${image.url}?w=200&h=200&fit=crop&crop=faces`}
+							alt=""
+						/>
+						<h2>{heading}</h2>
+						<div dangerouslySetInnerHTML={{ __html: brief }}></div>
+					</AniLink>
+				</>
+			)}
+			{linkText && (
+				<>
+					<img
+						src={`${image.url}?w=200&h=200&fit=crop&crop=faces`}
+						alt=""
+					/>
+					<h2>{heading}</h2>
+					<div dangerouslySetInnerHTML={{ __html: brief }}></div>
+					<AniLink
+						fade
+						duration={styles.duration}
+						to={buildUrl(link.__typename, link.slug)}
+					>
+						{linkText}
+					</AniLink>
+				</>
+			)}
 		</div>
 	)
 }

@@ -20,7 +20,7 @@ const carouselCSS = css`
 
 const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 	return (
-		<Layout theme={styles.logo.mobileDarkDesktopLight}>
+		<Layout theme={styles.logo.mobileDarkDesktopLight} overrideLight={true}>
 			<SEO meta={story} />
 			<HeroStories data={story} prev={prev} next={next} />
 			<ContentStory data={story} />
@@ -94,8 +94,10 @@ export const query = graphql`
 				... on DatoCmsVideo {
 					__typename
 					video {
-						provider
-						providerUid
+						url
+					}
+					poster {
+						url
 					}
 				}
 				... on DatoCmsAudio {

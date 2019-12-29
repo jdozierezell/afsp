@@ -51,6 +51,7 @@ const chapterNameCSS = css`
 	font-size: ${styles.scale.px46};
 	color: ${styles.colors.white};
 	margin: 0 ${styles.scale.px24};
+	z-index: 1;
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin: 0 ${styles.scale.px60};
 	}
@@ -64,6 +65,7 @@ const chapterNameCSS = css`
 const chapterDescriptionCSS = css`
 	margin: 0 ${styles.scale.px24};
 	max-width: 500px;
+	z-index: 1;
 	@media (min-width: ${styles.screens.tablet}px) {
 		grid-area: 3 / 1 / 4 / 2;
 		margin: 0 ${styles.scale.px50};
@@ -92,22 +94,27 @@ const buttonWrapperCSS = css`
 	}
 `
 
-const HeroChapter = ({ title, useVideo, src, poster, brief }) => {
+const HeroChapter = ({ title, video, poster, brief }) => {
 	return (
 		<section css={videoHeroCSS}>
-			{useVideo === true && (
-				<video
-					autoPlay
-					muted
-					loop
-					css={videoImageCoverCSS}
-					src={src}
-					poster={poster}
-				></video>
-			)}
-			{useVideo === false && (
-				<img css={videoImageCoverCSS} src={src} alt=""></img>
-			)}
+			<div
+				css={css`
+					background-image: url(${poster});
+					background-size: cover;
+					background-position: center;
+				`}
+			>
+				{video && (
+					<video
+						autoPlay
+						muted
+						loop
+						css={videoImageCoverCSS}
+						src={video}
+						poster={poster}
+					></video>
+				)}
+			</div>
 			<div css={descriptionBackgroundCSS}></div>
 			<h2 css={chapterNameCSS}>
 				<span>AFSP {title}</span>
