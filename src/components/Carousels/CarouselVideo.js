@@ -33,7 +33,7 @@ const CarouselVideo = ({ video, poster, title }) => {
 		>
 			<div
 				css={css`
-					background-image: url(${poster});
+					background-image: url(${`${poster}?w=1920&h=1080&fit=crop&crop=faces`});
 				`}
 			>
 				<video controls src={video} poster={poster}>

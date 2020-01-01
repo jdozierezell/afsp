@@ -96,6 +96,9 @@ const formCSS = css`
 	.hidden {
 		display: none !important;
 	}
+	.klaviyo_submit_button {
+		margin: 0;
+	}
 `
 
 // const subscribeCSS = css`

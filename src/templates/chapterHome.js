@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import fetch from 'isomorphic-fetch'
+import moment from 'moment'
 
 import LayoutChapter from '../components/LayoutChapter'
 import SEO from '../components/SEO'
@@ -75,8 +76,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			})
 			setStories(storiesUpdates)
 		}
-
-		if (events.length === 0) {
+		if (events.details.length === 0) {
 			fetch(
 				`//aws-fetch.s3.amazonaws.com/merged-events-${chapterDonorDriveId}.json`
 			)
@@ -95,13 +95,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 						const eventObject = {
 							__typename: 'Event',
 							title: event.name,
-							date: new Date(event.startdate).toLocaleDateString(
-								'en-US',
-								{
-									month: 'long',
-									day: '2-digit',
-								}
-							),
+							date: moment(event.startdate).format('MMMM D'),
 							url: `https://afsp.donordrive.com/index.cfm?fuseaction=donorDrive.event&eventID=${event.recordid}`,
 						}
 						eventDetails.details.push(eventObject)

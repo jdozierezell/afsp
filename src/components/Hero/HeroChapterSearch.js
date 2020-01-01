@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { css } from '@emotion/core'
 
-import NavArrow from '../SVGs/IconNavArrow'
 import SolidArrow from '../SVGs/IconSolidArrow.svg'
 
 import { styles } from '../../css/css'
@@ -10,8 +9,7 @@ const solidHeroCSS = css`
 	background-color: ${styles.colors.blue};
 	padding: ${styles.scale.px150} ${styles.scale.px24} ${styles.scale.px50};
 	@media (min-width: ${styles.screens.mobile}px) {
-		padding: ${styles.scale.px180} ${styles.scale.px50}
-			${styles.scale.px160};
+		padding: ${styles.scale.px160} ${styles.scale.px50};
 	}
 	h1,
 	span {
@@ -113,36 +111,19 @@ const HeroChapterSearch = ({
 	zip,
 	updateZip,
 }) => {
-	const [clicked, setClicked] = useState(false)
-
-	useEffect(() => {
-		if (clicked) {
-			handleClick()
-		}
-	}, [clicked, handleClick])
-
 	return (
 		<div css={solidHeroCSS}>
 			<h1>{title}</h1>
 			<h3 css={subHeaderCSS}>{description}</h3>
-			<form
-				onSubmit={e => {
-					e.preventDefault()
-					setClicked(true)
-				}}
-			>
+			<form>
 				<div css={inputCSS}>
 					<input
 						type="text"
 						placeholder="Search by zip"
 						onBlur={e => {
 							updateZip(e.target.value)
-							setClicked(false)
 						}}
 					/>
-					<button css={actionButtonCSS}>
-						<NavArrow />
-					</button>
 				</div>
 				<span>within</span>
 				<select
@@ -150,7 +131,6 @@ const HeroChapterSearch = ({
 					name="radius"
 					onBlur={e => {
 						updateRadius(e.target.value)
-						setClicked(false)
 					}}
 				>
 					<option value="15">15 Miles</option>
@@ -163,7 +143,7 @@ const HeroChapterSearch = ({
 					id="search-button"
 					onClick={e => {
 						e.preventDefault()
-						setClicked(true)
+						handleClick()
 					}}
 				>
 					Search

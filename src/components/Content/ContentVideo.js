@@ -17,14 +17,12 @@ const ContentVideo = ({ video, poster }) => {
 	return (
 		<div css={videoCSS}>
 			<video
-				autoPlay
-				muted
-				loop
+				controls
 				css={css`
 					object-fit: cover;
 				`}
 				src={video}
-				poster={poster}
+				poster={`${poster}?w=1920&h=1080&fit=crop&crop=faces`}
 			></video>
 		</div>
 	)

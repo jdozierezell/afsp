@@ -4,10 +4,6 @@ import { css } from '@emotion/core'
 
 import { styles } from '../../css/css'
 
-const lifesaverCSS = css`
-	fill: ${styles.colors.blue};
-`
-
 const Logo = ({ theme, overrideLight, isHover, isMenuActive }) => {
 	const mobileName =
 		theme.mobile === 'light' && !isHover && !isMenuActive
@@ -23,14 +19,20 @@ const Logo = ({ theme, overrideLight, isHover, isMenuActive }) => {
 		theme.desktop === 'light' && !isHover && !isMenuActive
 			? styles.colors.white
 			: styles.colors.blue
+
 	return (
 		<svg viewBox="0 0 588 239">
 			<g>
 				<g
 					css={css`
-						fill: ${overrideLight
+						fill: ${overrideLight || isHover || isMenuActive
 							? styles.colors.darkGray
 							: mobileName};
+						@media (min-width: ${styles.screens.tablet}px) {
+							fill: ${isHover || isMenuActive
+								? styles.colors.darkGray
+								: desktopName};
+						}
 					`}
 				>
 					<g>
@@ -238,9 +240,14 @@ const Logo = ({ theme, overrideLight, isHover, isMenuActive }) => {
 				</g>
 				<g
 					css={css`
-						fill: ${overrideLight
+						fill: ${overrideLight || isHover || isMenuActive
 							? styles.colors.darkGray
 							: mobileName};
+						@media (min-width: ${styles.screens.tablet}px) {
+							fill: ${isHover || isMenuActive
+								? styles.colors.darkGray
+								: desktopName};
+						}
 					`}
 				>
 					<path
@@ -266,6 +273,11 @@ const Logo = ({ theme, overrideLight, isHover, isMenuActive }) => {
 						fill: ${overrideLight
 							? styles.colors.blue
 							: mobileLifesaver};
+						@media (min-width: ${styles.screens.tablet}px) {
+							fill: ${isHover || isMenuActive
+								? styles.colors.blue
+								: desktopLifesaver};
+						}
 					`}
 					d="M229.15,77.37c-24.6-59.38-92.91-87.68-152.3-63.08c-59.38,24.6-87.68,92.92-63.08,152.3
 		c11.92,28.77,34.32,51.17,63.08,63.09c14.38,5.96,29.5,8.94,44.61,8.94c15.11,0,30.22-2.98,44.61-8.94

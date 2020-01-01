@@ -11,7 +11,7 @@ const sectionCSS = css`
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	@media (min-width: ${styles.screens.tablet}px) {
-		grid-template-columns: repeat(5, 1fr);
+		grid-template-columns: repeat(6, 1fr);
 	}
 	/* below classes based on index of quilt square determine grid column location */
 	.quilt-col-0 {
@@ -44,7 +44,7 @@ const sectionCSS = css`
 	.quilt-col-5 {
 		grid-column: 2 / 3;
 		@media (min-width: ${styles.screens.tablet}px) {
-			grid-column: 5 / 6;
+			grid-column: 6 / 7;
 		}
 	}
 `
@@ -56,7 +56,7 @@ const buttonCSS = css`
 
 export const GET_QUILTS = gql`
 	query($skip: IntType) {
-		quilts: allQuiltSquares(skip: $skip) {
+		quilts: allQuiltSquares(skip: $skip, first: 24) {
 			id
 			title
 			quiltImage {

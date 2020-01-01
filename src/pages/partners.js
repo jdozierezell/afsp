@@ -26,6 +26,9 @@ const partnerContainerCSS = css`
 		img {
 			display: block;
 			flex: 0 0 244px;
+			@media (min-width: ${styles.screens.tablet}px) {
+				max-width: 200px;
+			}
 		}
 		> div {
 			flex: 1 1 0;

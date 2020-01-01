@@ -8,7 +8,7 @@ import HeroStatistics from '../components/Hero/HeroStatistics'
 import StatisticsSummary from '../components/Statistics/StatisticsSummary'
 import StatisticsContainer from '../components/Statistics/StatisticsContainer'
 import CTAContainer from '../components/CTAs/CTAContainer'
-import Recommendations from '../components/Recommendations/Recommendations'
+import RecommendationsContentStories from '../components/Recommendations/RecommendationsContentStories'
 import FeaturedResourcesContainer from '../components/FeaturedProgramsResources/FeaturedResourcesContainer'
 
 import { styles } from '../css/css'
@@ -27,12 +27,6 @@ const SuicideStatistics = ({ data: { statistics } }) => {
 			<HeroStatistics data={statistics} />
 			<StatisticsSummary data={statistics} />
 			<StatisticsContainer data={statistics} />
-			<div
-				css={additionalCSS}
-				dangerouslySetInnerHTML={{
-					__html: statistics.additionalContent,
-				}}
-			></div>
 			{statistics.callsToAction.map((action, index) => {
 				if (action.__typename === 'DatoCmsCallToAction') {
 					return (
@@ -41,11 +35,11 @@ const SuicideStatistics = ({ data: { statistics } }) => {
 							cta={action.cta.callToAction[0]}
 						/>
 					)
-				} else if (action.__typename === 'DatoCmsRecommendation') {
+				} else if (action.__typename === 'DatoCmsContentStory') {
 					return (
-						<Recommendations
+						<RecommendationsContentStories
 							key={index}
-							data={action.storyRecommendation}
+							data={action}
 						/>
 					)
 				} else if (action.__typename === 'DatoCmsResourceList') {
@@ -53,6 +47,9 @@ const SuicideStatistics = ({ data: { statistics } }) => {
 						<FeaturedResourcesContainer
 							key={index}
 							resources={action.resource}
+							addCSS={css`
+								background-color: ${styles.colors.lightGray};
+							`}
 						/>
 					)
 				}
@@ -127,12 +124,20 @@ export const query = graphql`
 					__typename
 					...ResourceList
 				}
-				... on DatoCmsRecommendation {
+				... on DatoCmsContentStory {
 					__typename
-					...Recommendation
+					contentHeading
+					content
+					storiesHeading
+					storyLink {
+						title
+						slug
+						author {
+							authorName
+						}
+					}
 				}
 			}
-			additionalContent
 		}
 	}
 `

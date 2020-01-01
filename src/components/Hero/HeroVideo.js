@@ -39,6 +39,7 @@ const descriptionBackgroundCSS = css`
 		display: block;
 		grid-area: 1 / 1 / 5 / 3;
 		margin: 0;
+		z-index: 1;
 		background: linear-gradient(
 			90deg,
 			rgba(38, 38, 38, 0.7) 0%,
@@ -66,6 +67,7 @@ const videoHeaderCSS = css`
 const videoDescriptionCSS = css`
 	margin: 0 ${styles.scale.px24};
 	max-width: 500px;
+	z-index: 1;
 	@media (min-width: ${styles.screens.tablet}px) {
 		grid-area: 3 / 1 / 4 / 2;
 		margin: 0 ${styles.scale.px50};
@@ -89,6 +91,7 @@ const videoDescriptionCSS = css`
 
 const buttonWrapperCSS = css`
 	margin: 0 ${styles.scale.px24} ${styles.scale.px50};
+	z-index: 1;
 	@media (min-width: ${styles.screens.tablet}px) {
 		grid-area: 4 / 1 / 5 / 2;
 		margin: 0 ${styles.scale.px50} ${styles.scale.px50};
@@ -107,7 +110,7 @@ const HeroVideo = ({
 		<section
 			css={css`
 				${videoHeroCSS};
-				background-image: ${posterUrl};
+				background-image: url(${`${posterUrl}?w=1920&h=1080&fit=crop&crop=faces`});
 			`}
 		>
 			{videoUrl && (

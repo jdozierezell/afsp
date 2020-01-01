@@ -27,6 +27,9 @@ const activeGraphSwitchCSS = css`
 	justify-content: space-between;
 	align-items: center;
 	padding: ${styles.scale.px30} ${styles.scale.px24};
+	@media (min-width: ${styles.screens.tablet}px) {
+		display: none;
+	}
 	h2 {
 		color: ${styles.colors.white};
 		margin: 0;
@@ -42,6 +45,9 @@ const menuListCSS = css`
 	position: relative;
 	background-color: ${styles.colors.blue};
 	border-top: solid ${styles.scale.px2} ${styles.colors.white};
+	@media(min-width:${styles.screens.tablet}px) {
+		display: none;
+	}
 	button {
 		background: transparent;
 		border: none;
@@ -71,6 +77,11 @@ const menuTabsCSS = css`
 		background-color: ${styles.colors.white};
 		font-family: ${styles.fonts.avenirBold};
 	}
+	button {
+		border: none;
+		background: transparent;
+		cursor: pointer;
+	}
 `
 
 const StatisticsNationalContainer = ({
@@ -91,6 +102,9 @@ const StatisticsNationalContainer = ({
 	const ageRef = useRef(null)
 	const raceRef = useRef(null)
 	const methodRef = useRef(null)
+	const ageButtonRef = useRef(null)
+	const raceButtonRef = useRef(null)
+	const methodButtonRef = useRef(null)
 
 	const flipCaret = useSpring({
 		transform: isCaretFlipped ? 'rotateX(180deg)' : 'rotateX(0deg)',
@@ -122,27 +136,42 @@ const StatisticsNationalContainer = ({
 		if (focusedArea === age) {
 			ageRef.current.setAttribute(
 				'style',
-				`background-color: ${styles.colors.blue};
-				color: ${styles.colors.white};`
+				`background-color: ${styles.colors.blue};`
+			)
+			ageButtonRef.current.setAttribute(
+				'style',
+				`color: ${styles.colors.white};`
 			)
 			raceRef.current.setAttribute('style', ``)
 			methodRef.current.setAttribute('style', ``)
+			raceButtonRef.current.setAttribute('style', ``)
+			methodButtonRef.current.setAttribute('style', ``)
 		} else if (focusedArea === race) {
 			raceRef.current.setAttribute(
 				'style',
-				`background-color: ${styles.colors.blue};
-				color: ${styles.colors.white};`
+				`background-color: ${styles.colors.blue};`
+			)
+			raceButtonRef.current.setAttribute(
+				'style',
+				`color: ${styles.colors.white};`
 			)
 			ageRef.current.setAttribute('style', ``)
 			methodRef.current.setAttribute('style', ``)
+			ageButtonRef.current.setAttribute('style', ``)
+			methodButtonRef.current.setAttribute('style', ``)
 		} else if (focusedArea === method) {
 			methodRef.current.setAttribute(
 				'style',
-				`background-color: ${styles.colors.blue};
-				color: ${styles.colors.white};`
+				`background-color: ${styles.colors.blue};`
+			)
+			methodButtonRef.current.setAttribute(
+				'style',
+				`color: ${styles.colors.white};`
 			)
 			raceRef.current.setAttribute('style', ``)
 			ageRef.current.setAttribute('style', ``)
+			raceButtonRef.current.setAttribute('style', ``)
+			ageButtonRef.current.setAttribute('style', ``)
 		}
 	}, [listRef, focusedArea, width])
 
@@ -198,13 +227,26 @@ const StatisticsNationalContainer = ({
 			</animated.ul>
 			<ul css={menuTabsCSS}>
 				<li ref={ageRef}>
-					<button onClick={() => setFocusedArea(age)}>{age}</button>
+					<button
+						ref={ageButtonRef}
+						onClick={() => setFocusedArea(age)}
+					>
+						{age}
+					</button>
 				</li>
 				<li ref={raceRef}>
-					<button onClick={() => setFocusedArea(race)}>{race}</button>
+					<button
+						ref={raceButtonRef}
+						onClick={() => setFocusedArea(race)}
+					>
+						{race}
+					</button>
 				</li>
 				<li ref={methodRef}>
-					<button onClick={() => setFocusedArea(method)}>
+					<button
+						ref={methodButtonRef}
+						onClick={() => setFocusedArea(method)}
+					>
 						{method}
 					</button>
 				</li>

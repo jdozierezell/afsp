@@ -92,6 +92,7 @@ const ContentStory = ({ data }) => {
 				</div>
 			</aside>
 			{data.article.map((article, index) => {
+				console.log(article)
 				if (article.__typename === 'DatoCmsBody') {
 					return (
 						<div

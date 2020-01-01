@@ -75,7 +75,7 @@ const searchMapCSS = css`
 `
 
 const ChapterSearchResult = ({ chapter }) => {
-	const heroBackgroundImg = `${chapter.heroImage.url}?w=1080&h=1080&fit=crop&crop=faces`
+	const heroBackgroundImg = `${chapter.heroPoster.url}?w=1080&h=1080&fit=crop&crop=faces`
 	const chapterBackgroundImg = `${chapter.chapterInformation.chapterMap.url}?w=1080&h=1080`
 	return (
 		<div css={searchResultCSS}>

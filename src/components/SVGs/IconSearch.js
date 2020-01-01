@@ -22,7 +22,14 @@ const SearchIcon = ({
 			viewBox="0 0 100 100"
 			css={css`
 				${iconCSS};
-				fill: ${overrideLight ? styles.colors.darkGray : mobileColor};
+				fill: ${overrideLight || isHover || isMenuActive
+					? styles.colors.darkGray
+					: mobileColor};
+				@media (min-width: ${styles.screens.navigation}px) {
+					fill: ${isHover || isMenuActive
+						? styles.colors.darkGray
+						: desktopColor};
+				}
 			`}
 		>
 			<g>

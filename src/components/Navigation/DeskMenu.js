@@ -14,7 +14,7 @@ const menuCSS = css`
 	& > li {
 		display: table-cell;
 		vertical-align: middle;
-		height: 100px;
+		height: 105px;
 		:hover {
 			background-color: ${styles.colors.blue};
 			color: ${styles.colors.white};
@@ -136,9 +136,7 @@ const MenuItems = ({
 													link.__typename ===
 													'DatoCmsFeaturedItem'
 												) {
-													const featuredImage =
-														link.featuredLink.seo
-															.image.url
+													const featuredImage = `${link.featuredLink.seo.image.url}?w=768&h=475&fit=crop&crop=faces`
 													return (
 														<li
 															css={css`

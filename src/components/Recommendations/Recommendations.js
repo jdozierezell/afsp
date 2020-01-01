@@ -1,7 +1,10 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import { styles } from '../../css/css'
+
+import buildUrl from '../../utils/buildUrl'
 
 const recommendationsCSS = css`
 	background-color: ${styles.colors.blue};
@@ -40,10 +43,19 @@ const storyCSS = css`
 const Recommendations = ({ data }) => {
 	return (
 		<div css={recommendationsCSS}>
-			<h2>Real stories of hope</h2>
-			{data.map((story, index) => (
+			<h2>{data.heading}</h2>
+			{data.stories.map((story, index) => (
 				<div key={index} css={storyCSS}>
-					<h3>{story.title}</h3>
+					<AniLink
+						fade
+						duration={styles.duration}
+						to={buildUrl(story.__typename, story.slug)}
+						css={css`
+							text-decoration: none;
+						`}
+					>
+						<h3>{story.title}</h3>
+					</AniLink>
 					<h4>
 						By{' '}
 						{story.author.map((author, index) =>

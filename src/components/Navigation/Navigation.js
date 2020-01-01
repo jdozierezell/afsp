@@ -18,10 +18,10 @@ import { styles } from '../../css/css'
 const navTopCSS = css`
 	display: flex;
 	flex-flow: row wrap;
-	padding: ${styles.scale.px24} 0 0;
+	padding: ${styles.scale.px24} 0 ${styles.scale.px16};
 	justify-content: space-between;
 	align-items: flex-start;
-	min-height: 80px;
+	min-height: 70px;
 	position: absolute;
 	left: 0;
 	right: 0;
@@ -36,7 +36,7 @@ const logoCSS = css`
 	max-width: 150px;
 	padding-left: ${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}px) {
-		margin: 0 ${styles.scale.px50} 0 ${styles.scale.px50};
+		margin: ${styles.scale.px28} ${styles.scale.px50} ${styles.scale.px16};
 		padding-left: 0;
 		width: 126px;
 	}
@@ -57,20 +57,24 @@ const navButtons = css`
 	padding-right: ${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding-right: ${styles.scale.px50};
+		height: 105px;
 	}
 `
 
 const searchCSS = css`
 	margin: 0 ${styles.scale.px22} 0 0;
-	padding: ${styles.scale.px7} 0 0;
+	padding: ${styles.scale.px16} 0 0;
 	width: ${styles.scale.px24};
 	background: transparent;
 	border: none;
+	@media (min-width: ${styles.screens.navigation}px) {
+		padding: 0;
+	}
 `
 
 const hamburgerCSS = css`
 	margin: 0;
-	padding: ${styles.scale.px7} 0 0;
+	padding: ${styles.scale.px16} 0 0;
 	width: ${styles.scale.px24};
 	background: transparent;
 	border: none;
@@ -83,6 +87,7 @@ const donateCSS = css`
 	display: none;
 	@media (min-width: ${styles.screens.navigation}px) {
 		display: initial;
+		margin-top: ${styles.scale.px24};
 	}
 `
 

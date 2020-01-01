@@ -23,12 +23,18 @@ const videoImageCoverCSS = css`
 	min-height: 300px;
 	max-height: 600px;
 	width: 100%;
-	object-fit: cover;
 	margin-bottom: 0;
 	grid-area: 1 / 1 / 3 / 2;
+	background-position: center;
+	background-size: cover;
 	@media (min-width: ${styles.screens.tablet}px) {
 		height: calc(100vw);
 		grid-area: 1 / 1 / 5 / 3;
+	}
+	video {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 `
 
@@ -38,6 +44,7 @@ const descriptionBackgroundCSS = css`
 		display: block;
 		grid-area: 1 / 1 / 5 / 3;
 		margin: 0;
+		z-index: 1;
 		background: linear-gradient(
 			90deg,
 			rgba(38, 38, 38, 0.7) 0%,
@@ -88,6 +95,7 @@ const buttonWrapperCSS = css`
 	grid-template-rows: ${styles.scale.px54} ${styles.scale.px54};
 	grid-gap: ${styles.gridGap.desktop};
 	margin: 0 ${styles.scale.px24};
+	z-index: 1;
 	@media (min-width: ${styles.screens.video}px) {
 		grid-area: 4 / 1 / 5 / 2;
 		margin: 0 ${styles.scale.px50} ${styles.scale.px50};
@@ -99,9 +107,8 @@ const HeroChapter = ({ title, video, poster, brief }) => {
 		<section css={videoHeroCSS}>
 			<div
 				css={css`
-					background-image: url(${poster});
-					background-size: cover;
-					background-position: center;
+					${videoImageCoverCSS};
+					background-image: url(${`${poster}?w=1920&h=1080&fit=crop&crop=faces`});
 				`}
 			>
 				{video && (
@@ -109,9 +116,8 @@ const HeroChapter = ({ title, video, poster, brief }) => {
 						autoPlay
 						muted
 						loop
-						css={videoImageCoverCSS}
 						src={video}
-						poster={poster}
+						poster={`${poster}?w=1920&h=1080&fit=crop&crop=faces`}
 					></video>
 				)}
 			</div>

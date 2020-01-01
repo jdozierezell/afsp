@@ -5,6 +5,7 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { styles } from '../../css/css'
 
 import buildUrl from '../../utils/buildUrl'
+import createAnchor from '../../utils/createAnchor'
 
 const featuredCSS = css`
 	img {
@@ -56,7 +57,7 @@ const Stories = ({ story: { node } }) => {
 				<AniLink
 					fade
 					duration={styles.duration}
-					to={buildUrl(node.type, node.slug)}
+					to={buildUrl('DatoCmsStory', createAnchor(node.title))}
 				>
 					{node.title}
 				</AniLink>

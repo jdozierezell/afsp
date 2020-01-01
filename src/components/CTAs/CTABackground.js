@@ -99,7 +99,7 @@ const CTAVideo = ({ cta }) => {
 		<section
 			css={css`
 				${videoCTACSS};
-				background-image: url(${poster});
+				background-image: url(${`${poster}?w=1920&h=1080&fit=crop&crop=faces`});
 			`}
 		>
 			{video && (
@@ -109,7 +109,7 @@ const CTAVideo = ({ cta }) => {
 					loop
 					css={videoCoverCSS}
 					src={video}
-					poster={poster}
+					poster={`${poster}?w=1920&h=1080&fit=crop&crop=faces`}
 				></video>
 			)}
 			<div css={videoDescriptionCSS}>

@@ -12,7 +12,7 @@ const containerCSS = css`
 	grid-template-columns: 1fr;
 	margin: ${styles.scale.px50} ${styles.scale.px24};
 	@media (min-width: ${styles.screens.tablet}px) {
-		grid-template-columns: 7fr 5fr;
+		grid-template-columns: repeat(12, 1fr);
 		align-items: stretch;
 		margin: ${styles.scale.px80} ${styles.scale.px50};
 	}
@@ -23,6 +23,7 @@ const statisticsSummaryCSS = css`
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin-bottom: 0;
 		max-width: 623px;
+		grid-column: 1 / 7;
 	}
 	h2 {
 		font-size: ${styles.scale.px36};
@@ -36,10 +37,19 @@ const statisticsSummaryCSS = css`
 
 const summaryVideoCSS = css`
 	position: relative;
+	@media (min-width: ${styles.screens.mobile}px) {
+		grid-column: 8 / 13;
+		width: 100%;
+	}
 	video {
 		width: calc(100vw - 48px);
 		height: calc((100vw - 48px) / 1.5);
 		border-radius: ${styles.scale.px5};
+		object-fit: cover;
+		@media (min-width: ${styles.screens.tablet}px) {
+			width: 100%;
+			height: initial;
+		}
 	}
 	> p {
 		:first-of-type {
@@ -51,7 +61,7 @@ const summaryVideoCSS = css`
 		:last-of-type {
 			margin-bottom: ${styles.scale.px40};
 			@media (min-width: ${styles.screens.mobile}px) {
-				margin-bottom: ${styles.scale.px60};
+				margin: ${styles.scale.px20} 0 0;
 			}
 		}
 	}
