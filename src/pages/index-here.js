@@ -47,7 +47,9 @@ const success = position => {
 
 const error = () => console.log(`Unable to determine location`)
 
-navigator.geolocation.getCurrentPosition(success, error)
+if (typeof navigator !== `undefined`) {
+	navigator.geolocation.getCurrentPosition(success, error)
+}
 
 const App = ({ data: { home } }) => {
 	return (

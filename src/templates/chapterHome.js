@@ -39,6 +39,9 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 
 	const storiesUpdates = []
 
+	const heroVideoUrl = heroVideo ? heroVideo.url : ''
+	const heroPosterUrl = heroPoster ? heroPoster.url : ''
+
 	useEffect(() => {
 		if (stories.length === 0) {
 			realStories.edges.forEach(story => {
@@ -121,8 +124,8 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			<SEO meta={chapter} />
 			<HeroChapter
 				title={title}
-				video={heroVideo.url}
-				poster={heroPoster.url}
+				video={heroVideoUrl}
+				poster={heroPosterUrl}
 				brief={heroBrief}
 			/>
 			<ChapterAboutContact

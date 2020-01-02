@@ -25,7 +25,6 @@ const ContentGeneric = ({ data }) => {
 	return (
 		<section css={storyContentCSS}>
 			{details.map((detail, index) => {
-				console.log(detail)
 				if (detail.__typename === 'DatoCmsContent') {
 					return (
 						<Content

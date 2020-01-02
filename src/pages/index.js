@@ -32,22 +32,6 @@ const walkBar = css`
 		}
 	}
 `
-const success = position => {
-	console.log(`Latitude: ${position.coords.latitude}`)
-	console.log(`Longitude: ${position.coords.longitude}`)
-	console.log(position)
-
-	axios
-		.get(
-			`https://reverse.geocoder.ls.hereapi.com/6.2/reversegeocode.json?apiKey=j4gyc6DdGadLsAKwdLmX4OhOnN7R9YzeYolmz3mqOGA&mode=retrieveAddresses&prox=${position.coords.latitude},${position.coords.longitude}`
-		)
-		.then(response => console.log(response))
-		.catch(error => console.log(error))
-}
-
-const error = () => console.log(`Unable to determine location`)
-
-navigator.geolocation.getCurrentPosition(success, error)
 
 const App = ({ data: { home } }) => {
 	return (

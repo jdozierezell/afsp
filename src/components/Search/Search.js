@@ -62,7 +62,7 @@ const searchCSS = css`
 `
 
 const Hit = ({ hit }) => {
-	console.log(hit)
+	// console.log(hit)
 	return (
 		<p>
 			<Highlight attribute="title" hit={hit} tagName="mark" />
