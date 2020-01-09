@@ -55,6 +55,14 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
+			bios: allDatoCmsBio {
+				edges {
+					node {
+						slug
+						name
+					}
+				}
+			}
 			details: allDatoCmsDetail {
 				edges {
 					node {
@@ -126,6 +134,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	const tags = data.tags.edges
 	const authors = data.authors.edges
 	const redirects = data.redirects.edges
+	const bios = data.bios.edges
 	const details = data.details.edges
 	const detailsTagged = data.detailsTagged.edges
 	const landings = data.landings.edges
@@ -183,6 +192,16 @@ exports.createPages = async ({ graphql, actions }) => {
 			fromPath: node.aliasUrl,
 			toPath: node.destinationUrl,
 			isPermanent: true,
+		})
+	})
+
+	bios.forEach(({ node }) => {
+		createPage({
+			path: `bio/${node.slug}`,
+			component: path.resolve('./src/templates/bio.js'),
+			context: {
+				slug: node.slug,
+			},
 		})
 	})
 

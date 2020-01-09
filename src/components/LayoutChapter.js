@@ -38,12 +38,14 @@ const LayoutChapter = ({
 				overrideLight={overrideLight}
 			/>
 			<main>{children}</main>
-			<InstagramFeed instaClass={instagram} />
-			<EmailSignup formId={email}>
-				<div>
-					<h2>Sign up for chapter news</h2>
-				</div>
-			</EmailSignup>
+			{instagram && <InstagramFeed instaClass={instagram} />}
+			{email && (
+				<EmailSignup formId={email}>
+					<div>
+						<h2>Sign up for chapter news</h2>
+					</div>
+				</EmailSignup>
+			)}
 			<Footer nav={footerNav} />
 		</>
 	)

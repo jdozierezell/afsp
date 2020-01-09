@@ -16,14 +16,18 @@ const storyContentCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin: ${styles.scale.px80} ${styles.scale.px50};
-		max-width: 623px;
 	}
 `
 
 const ContentGeneric = ({ data }) => {
 	const { details } = data
 	return (
-		<section css={storyContentCSS}>
+		<section
+			css={css`
+				${storyContentCSS};
+				max-width: ${!data.overrideWidth ? `623px` : `auto`};
+			`}
+		>
 			{details.map((detail, index) => {
 				if (detail.__typename === 'DatoCmsContent') {
 					return (

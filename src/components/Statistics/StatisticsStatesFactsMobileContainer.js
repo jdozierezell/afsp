@@ -4,6 +4,8 @@ import { css } from '@emotion/core'
 
 import Card from '../Cards/Card'
 
+import formatStatisticsCard from '../../utils/formatStatisticsCard'
+
 import { styles } from '../../css/css'
 
 import '@glidejs/glide/dist/css/glide.core.min.css'
@@ -14,6 +16,9 @@ const carouselCSS = css`
 	background-color: ${styles.colors.lightGray};
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px80} ${styles.scale.px50} ${styles.scale.px35};
+	}
+	@media (min-width: ${styles.screens.tablet}px) {
+		display: none;
 	}
 	.glide__slides {
 		margin: 0;
@@ -51,6 +56,7 @@ const carouselButtonsCSS = css`
 
 const StatisticsStatesFactsMobileContainer = ({
 	title,
+	data,
 	selection,
 	cardCSS,
 }) => {
@@ -74,16 +80,7 @@ const StatisticsStatesFactsMobileContainer = ({
 				<div data-glide-el="track">
 					<ul className="glide__slides">
 						{selection.map((state, index) => {
-							const card = {
-								cardHeading: 'foo',
-								cardBodyNode: {
-									internal: {
-										content: 'foo',
-									},
-								},
-								cardButtonCta: 'foo',
-								cardButtonUrl: 'https://example.com',
-							}
+							const card = formatStatisticsCard(data, state)
 							return (
 								<Card
 									key={index}

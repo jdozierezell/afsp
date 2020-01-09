@@ -175,6 +175,7 @@ const statisticsStatesFactsContainerCSS = css`
 `
 
 const StatisticsStatesContainer = ({ width, height, data }) => {
+	console.log(data)
 	const states = [
 		'alabama',
 		'alaska',
@@ -228,14 +229,6 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 		'wisconsin',
 		'wyoming',
 	]
-	const colors = [
-		styles.colors.blue,
-		styles.colors.green,
-		styles.colors.poppy,
-		styles.colors.yellow,
-		styles.colors.darkBlue,
-		styles.colors.fuchsia,
-	]
 	const [selection, setSelection] = useState([])
 
 	return (
@@ -245,19 +238,12 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 				<div css={searchStateInputCSS}>
 					<Downshift
 						onChange={state => {
-							let newState, newColor
+							let newState
 							if (!selection.some(e => e.state === state)) {
 								newState = state
-								colors.forEach(color => {
-									if (
-										!selection.some(e => e.color === color)
-									) {
-										newColor = color
-									}
-								})
 								setSelection(selection => [
 									...selection,
-									{ state: newState, color: newColor },
+									{ state: newState },
 								])
 							}
 						}}

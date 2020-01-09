@@ -11,6 +11,7 @@ import { styles } from '../css/css'
 
 const Detail = ({ data, pageContext }) => {
 	const { detail } = data
+	console.log(detail)
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={detail} />
@@ -83,6 +84,7 @@ export const query = graphql`
 					heading
 				}
 			}
+			overrideWidth
 			seoMetaTags {
 				tags
 				internal {

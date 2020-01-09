@@ -21,6 +21,7 @@ const additionalCSS = css`
 `
 
 const SuicideStatistics = ({ data: { statistics } }) => {
+	console.log(statistics)
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<SEO meta={statistics} />
@@ -68,6 +69,7 @@ export const query = graphql`
 			}
 			title
 			brief
+			stateFactsYear
 			statisticsCallouts {
 				__typename
 				... on DatoCmsStatisticsCallout {

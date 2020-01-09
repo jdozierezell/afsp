@@ -31,7 +31,7 @@ const FeaturedResources = ({ data }) => {
 				src={`${data.seo.image.url}?w=600&h=370&fit=crop&crop=faces`}
 				alt=""
 			/>
-			<h2>{data.title}</h2>
+			<h2 dangerouslySetInnerHTML={{ __html: data.title }}></h2>
 			<p
 				dangerouslySetInnerHTML={{
 					__html: data.seo.description,

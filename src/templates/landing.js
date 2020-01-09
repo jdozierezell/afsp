@@ -187,6 +187,17 @@ export const query = graphql`
 								}
 							}
 						}
+						... on DatoCmsQuilt {
+							__typename
+							title
+							slug
+							seo {
+								description
+								image {
+									url
+								}
+							}
+						}
 					}
 				}
 				... on DatoCmsCallToAction {

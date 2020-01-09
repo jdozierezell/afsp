@@ -28,7 +28,19 @@ fs.createReadStream('grantees_12-25-19-3.csv')
 		// console.log('CSV file successfully processed')
 		data.forEach((row, index) => {
 			let slug = row.Title
-			slug = slug.replace(/[^A-Za-z0-9]/g, '-')
+			slug = slug.replace(/[^A-Za-z0-9]/g, '-').toLowerCase()
+			slug = slug.replace(/--/g, '-')
+			slug = slug.replace(/--/g, '-')
+			if (slug.indexOf('-') === 0) {
+				slug = slug.slice(1)
+			}
+			if (slug.lastIndexOf('-') === slug.length - 1) {
+				slug = slug.slice(0, -1)
+			}
+			// console.log(slug, index)
+			if (slug.indexOf('--') !== -1) {
+				console.log(slug, index)
+			}
 			const grantees = []
 			const areas = []
 			const contents = []
@@ -90,9 +102,8 @@ fs.createReadStream('grantees_12-25-19-3.csv')
 				amount: row.GrantAmount !== '' ? row.GrantAmount : '',
 				mentor: row.GrantMentor !== '' ? row.GrantMentor : '',
 				type: row.GrantType !== '' ? row.GrantType : '',
-				
 			}
-			if (index === 1) {
+			if (contents[2]) {
 				setTimeout(() => {
 					client
 						.uploadFile(row.ImageURL)
@@ -102,33 +113,159 @@ fs.createReadStream('grantees_12-25-19-3.csv')
 								title: row.Title,
 								slug: slug,
 								grantInformation: [
-									{amount: {
-										amount: grantInformation.amount
-									}, type: '176635'},
-									{grantee: {
-										granteeName: grantInformation.grantees[0].grantee,
-										granteeInstitution: grantInformation.grantees[0].institution,
+									buildModularBlock({
+										amount: grantInformation.amount,
+										itemType: '176635',
+									}),
+									buildModularBlock({
+										granteeName:
+											grantInformation.grantees[0]
+												.grantee,
+										granteeInstitution:
+											grantInformation.grantees[0]
+												.institution,
 										granteeImage: image,
-									}, type: '176632'},
-									{mentor: {
-										mentor: grantInformation.mentor
-									}, type: '176634'},
-									{year: {
-										year: grantInformation.year
-									}, type: '176633'},
+										itemType: '176632',
+									}),
+									buildModularBlock({
+										mentor: grantInformation.mentor,
+										itemType: '176634',
+									}),
+									buildModularBlock({
+										year: grantInformation.year,
+										itemType: '176633',
+									}),
 								],
 								grantDetails: [
-									{content: {
-										contentHeading: 'foo',
-										contentBody: 'bar'
-									}, type: '148717'}
+									buildModularBlock({
+										contentHeading: contents[0].header,
+										contentBody: contents[0].content,
+										itemType: '148717',
+									}),
+									buildModularBlock({
+										contentHeading: contents[1].header,
+										contentBody: contents[1].content,
+										itemType: '148717',
+									}),
+									buildModularBlock({
+										contentHeading: contents[2].header,
+										contentBody: contents[2].content,
+										itemType: '148717',
+									}),
 								],
 								seo: {
 									title: row.Title,
-									description: 'The American Foundation for Suicide Prevention is the largest private funder of suicide prevention research.',
-									image: image
-
-								}
+									description:
+										'The American Foundation for Suicide Prevention is the leading private funder of suicide prevention research in the United States.',
+									image: image.uploadId,
+								},
+							})
+						})
+						.then(record => console.log(record))
+						.catch(error => console.log(error.message))
+				}, index * 1000)
+			} else if (contents[1] && !contents[2]) {
+				setTimeout(() => {
+					client
+						.uploadFile(row.ImageURL)
+						.then(image => {
+							return client.items.create({
+								itemType: '176621',
+								title: row.Title,
+								slug: slug,
+								grantInformation: [
+									buildModularBlock({
+										amount: grantInformation.amount,
+										itemType: '176635',
+									}),
+									buildModularBlock({
+										granteeName:
+											grantInformation.grantees[0]
+												.grantee,
+										granteeInstitution:
+											grantInformation.grantees[0]
+												.institution,
+										granteeImage: image,
+										itemType: '176632',
+									}),
+									buildModularBlock({
+										mentor: grantInformation.mentor,
+										itemType: '176634',
+									}),
+									buildModularBlock({
+										year: grantInformation.year,
+										itemType: '176633',
+									}),
+								],
+								grantDetails: [
+									buildModularBlock({
+										contentHeading: contents[0].header,
+										contentBody: contents[0].content,
+										itemType: '148717',
+									}),
+									buildModularBlock({
+										contentHeading: contents[1].header,
+										contentBody: contents[1].content,
+										itemType: '148717',
+									}),
+								],
+								seo: {
+									title: row.Title,
+									description:
+										'The American Foundation for Suicide Prevention is the leading private funder of suicide prevention research in the United States.',
+									image: image.uploadId,
+								},
+							})
+						})
+						.then(record => console.log(record))
+						.catch(error => console.log(error.message))
+				}, index * 1000)
+			} else if (contents[0] && !contents[1]) {
+				setTimeout(() => {
+					client
+						.uploadFile(row.ImageURL)
+						.then(image => {
+							return client.items.create({
+								itemType: '176621',
+								title: row.Title,
+								slug: slug,
+								grantInformation: [
+									buildModularBlock({
+										amount: grantInformation.amount,
+										itemType: '176635',
+									}),
+									buildModularBlock({
+										granteeName:
+											grantInformation.grantees[0]
+												.grantee,
+										granteeInstitution:
+											grantInformation.grantees[0]
+												.institution,
+										granteeImage: image,
+										itemType: '176632',
+									}),
+									buildModularBlock({
+										mentor: grantInformation.mentor,
+										itemType: '176634',
+									}),
+									buildModularBlock({
+										year: grantInformation.year,
+										itemType: '176633',
+									}),
+								],
+								grantDetails: [
+									buildModularBlock({
+										contentHeading: contents[0].header,
+										contentBody: contents[0].content,
+										itemType: '148717',
+									}),
+								],
+								seo: {
+									title: row.Title,
+									description:
+										'The American Foundation for Suicide Prevention is the leading private funder of suicide prevention research in the United States.',
+									image: image.uploadId,
+								},
 							})
 						})
 						.then(record => console.log(record))

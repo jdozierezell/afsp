@@ -34,6 +34,10 @@ const client = new ApolloClient({
 
 const containerCSS = css`
 	margin: ${styles.scale.px24};
+	h3 a {
+		font-family: ${styles.fonts.avenirBold};
+		font-size: ${styles.scale.px22};
+	}
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin: ${styles.scale.px24} ${styles.scale.px50};
 	}
@@ -46,7 +50,9 @@ const Quilt = ({ data: { quiltQuery } }) => {
 				<SEO meta={quiltQuery} />
 				<HeroImage data={quiltQuery} />
 				<main css={containerCSS}>
-					<h3>{quiltQuery.brief}</h3>
+					<h3
+						dangerouslySetInnerHTML={{ __html: quiltQuery.brief }}
+					></h3>
 					<QuiltSquareContainer />
 				</main>
 			</Layout>

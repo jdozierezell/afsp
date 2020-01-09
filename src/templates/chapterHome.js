@@ -178,7 +178,6 @@ export const query = graphql`
 				url
 			}
 			heroBrief
-			chapterEmailApiKey
 			staffName
 			staffTitle
 			staffEmail
@@ -204,6 +203,7 @@ export const query = graphql`
 			chapterInformation {
 				instagramClass
 				chapterDonorDriveId
+				chapterEmailApiKey
 			}
 		}
 		realStories: allDatoCmsStory(

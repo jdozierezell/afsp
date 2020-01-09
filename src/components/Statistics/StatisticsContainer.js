@@ -5,6 +5,8 @@ import Papa from 'papaparse'
 import StatisticsStatesContainer from './StatisticsStatesContainer'
 import StatisticsNationalContainer from './StatisticsNationalContainer'
 
+import createAnchor from '../../utils/createAnchor'
+
 const statisticsContainerCSS = css`
 	margin: 0;
 `
@@ -46,6 +48,9 @@ const StatisticsContainer = ({ data }) => {
 							],
 							rank: result.Rank,
 							rate: result['Age-Adjusted Rate'],
+							factSheet: `${data.stateFactsYear}-${createAnchor(
+								result.State
+							)}`,
 						})
 					}
 				})

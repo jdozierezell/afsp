@@ -8,8 +8,11 @@ const contentHeadingCSS = css`
 	font-size: ${styles.scale.px36};
 	margin: ${styles.scale.px50} 0 ${styles.scale.px35};
 	@media (min-width: ${styles.screens.mobile}px) {
-		${styles.scale.px44};
 		margin: ${styles.scale.px80} 0 ${styles.scale.px40};
+	}
+	a {
+		font-family: ${styles.fonts.paul};
+		font-size: ${styles.scale.px36};
 	}
 `
 
