@@ -4,7 +4,6 @@ import StatisticsStatesFactsMobileContainer from './StatisticsStatesFactsMobileC
 import StatisticsStatesFactsDesktopContainer from './StatisticsStatesFactsDesktopContainer'
 
 const StatisticsStatesFactsContainer = ({ data, selection, cardCSS }) => {
-	console.log(selection)
 	return (
 		<section>
 			<StatisticsStatesFactsMobileContainer

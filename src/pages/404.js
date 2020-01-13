@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import { styles } from '../css/css'
 
@@ -13,7 +13,7 @@ const NotFoundPage = () => {
 	}
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<SEO meta={meta} />
+			<HelmetDatoCms seo={meta.seoMetaTags} />
 			<h1>404 NOT FOUND</h1>
 			<p>You just hit a route that doesn&#39;t exist... the sadness.</p>
 		</Layout>

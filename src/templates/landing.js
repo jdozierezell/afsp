@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 import ChannelContainer from '../components/Channel/ChannelContainer'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
@@ -47,7 +47,7 @@ const resourcesCSS = css`
 const Landing = ({ data: { landing } }) => {
 	return (
 		<Layout theme={styles.logo.mobileDarkDesktopDark}>
-			<SEO meta={landing} />
+			<HelmetDatoCms seo={landing.seoMetaTags} />
 			<h1 css={landingTitle}>{landing.title}</h1>
 			<p css={landingBrief}>{landing.seo.description}</p>
 			{landing.channelList.length !== 0 && (
@@ -103,7 +103,7 @@ export const query = graphql`
 	query($slug: String) {
 		landing: datoCmsLanding(slug: { eq: $slug }) {
 			seoMetaTags {
-				tags
+				...GatsbyDatoCmsSeoMetaTags
 			}
 			title
 			seo {

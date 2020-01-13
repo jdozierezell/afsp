@@ -34,7 +34,6 @@ const formatStatisticsCard = (data, state) => {
 			ordinal = 'th'
 			break
 	}
-	console.log(state)
 	const card = {
 		cardHeading: formattedState,
 		cardBodyNode: {

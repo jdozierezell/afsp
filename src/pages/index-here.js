@@ -4,7 +4,7 @@ import { css } from '@emotion/core'
 import axios from 'axios'
 
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroVideo from '../components/Hero/HeroVideo'
 import ChannelContainer from '../components/Channel/ChannelContainer'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
@@ -54,7 +54,7 @@ if (typeof navigator !== `undefined`) {
 const App = ({ data: { home } }) => {
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<SEO meta={home} />
+			<HelmetDatoCms seo={home.seoMetaTags} />
 			<HeroVideo
 				videoUrl={home.heroVideo.url}
 				posterUrl={home.heroPoster.url}
@@ -104,7 +104,7 @@ export const query = graphql`
 	query {
 		home: datoCmsHome {
 			seoMetaTags {
-				tags
+				...GatsbyDatoCmsSeoMetaTags
 			}
 			heroVideo {
 				url

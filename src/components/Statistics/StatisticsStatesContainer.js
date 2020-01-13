@@ -175,7 +175,6 @@ const statisticsStatesFactsContainerCSS = css`
 `
 
 const StatisticsStatesContainer = ({ width, height, data }) => {
-	console.log(data)
 	const states = [
 		'alabama',
 		'alaska',

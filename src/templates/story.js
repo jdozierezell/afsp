@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroStories from '../components/Hero/HeroStories'
 import ContentStory from '../components/Content/ContentStory'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
@@ -21,7 +21,7 @@ const carouselCSS = css`
 const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 	return (
 		<Layout theme={styles.logo.mobileDarkDesktopLight} overrideLight={true}>
-			<SEO meta={story} />
+			<HelmetDatoCms seo={story.seoMetaTags} />
 			<HeroStories data={story} prev={prev} next={next} />
 			<ContentStory data={story} />
 			<CarouselChapterContainer carouselCSS={carouselCSS} />
@@ -36,7 +36,7 @@ export const query = graphql`
 		story: datoCmsStory(slug: { eq: $slug }) {
 			title
 			seoMetaTags {
-				tags
+				...GatsbyDatoCmsSeoMetaTags
 			}
 			publicationDate(formatString: "D MMM YYYY")
 			author {

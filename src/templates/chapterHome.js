@@ -5,7 +5,7 @@ import fetch from 'isomorphic-fetch'
 import moment from 'moment'
 
 import LayoutChapter from '../components/LayoutChapter'
-import SEO from '../components/SEO'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroChapter from '../components/Hero/HeroChapter'
 import ChapterAboutContact from '../components/Chapter/ChapterAboutContact'
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
@@ -121,7 +121,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			instagram={chapterInformation.instagramClass}
 			email={chapterEmailApiKey}
 		>
-			<SEO meta={chapter} />
+			<HelmetDatoCms seo={chapter.seoMetaTags} />
 			<HeroChapter
 				title={title}
 				video={heroVideoUrl}
@@ -168,7 +168,7 @@ export const query = graphql`
 	query($slug: String, $tag: String) {
 		chapter: datoCmsChapterHomePage(slug: { eq: $slug }) {
 			seoMetaTags {
-				tags
+				...GatsbyDatoCmsSeoMetaTags
 			}
 			title
 			heroVideo {

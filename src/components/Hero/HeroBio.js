@@ -41,7 +41,6 @@ const solidBioCSS = css`
 `
 
 const HeroBio = ({ data }) => {
-	console.log(data)
 	const { name, title, photo } = data
 	return (
 		<div css={solidBioCSS}>

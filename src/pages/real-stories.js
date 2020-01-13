@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroVideo from '../components/Hero/HeroVideo'
 import CarouselVideoContainer from '../components/Carousels/CarouselVideoContainer'
 import StoriesContainer from '../components/Stories/StoriesContainer'
@@ -17,7 +17,7 @@ const RealStories = ({ data: { real, stories } }) => {
 	})
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<SEO meta={real} />
+			<HelmetDatoCms seo={real.seoMetaTags} />
 			<HeroVideo
 				videoUrl={real.heroVideo.url}
 				posterUrl={real.heroPoster.url}
@@ -56,7 +56,7 @@ export const query = graphql`
 	query {
 		real: datoCmsRealStory {
 			seoMetaTags {
-				tags
+				...GatsbyDatoCmsSeoMetaTags
 			}
 			heroVideo {
 				url

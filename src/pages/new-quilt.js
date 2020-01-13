@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroImage from '../components/Hero/HeroImage'
 import QuiltDisclaimer from '../components/Quilt/QuiltDisclaimer'
 import QuiltForm from '../components/Quilt/QuiltForm'
@@ -22,7 +22,7 @@ const mainCSS = css`
 const NewQuilt = ({ data: { quiltQuery } }) => {
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<SEO meta={quiltQuery} />
+			<HelmetDatoCms seo={quiltQuery.seoMetaTags} />
 			<HeroImage data={quiltQuery} />
 			<main css={mainCSS}>
 				<QuiltDisclaimer disclaimer={quiltQuery.disclaimer} />
@@ -39,7 +39,7 @@ export const query = graphql`
 		quiltQuery: datoCmsQuilt(slug: { eq: "new-quilt" }) {
 			title
 			seoMetaTags {
-				tags
+				...GatsbyDatoCmsSeoMetaTags
 			}
 			mobileCover: heroImage {
 				url

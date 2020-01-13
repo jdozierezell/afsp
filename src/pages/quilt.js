@@ -10,7 +10,7 @@ import fetch from 'isomorphic-fetch'
 import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroImage from '../components/Hero/HeroImage'
 import QuiltSquareContainer from '../components/Quilt/QuiltSquareContainer'
 
@@ -47,7 +47,7 @@ const Quilt = ({ data: { quiltQuery } }) => {
 	return (
 		<ApolloProvider client={client}>
 			<Layout theme={styles.logo.mobileLightDesktopLight}>
-				<SEO meta={quiltQuery} />
+				<HelmetDatoCms seo={quiltQuery.seoMetaTags} />
 				<HeroImage data={quiltQuery} />
 				<main css={containerCSS}>
 					<h3
@@ -67,7 +67,7 @@ export const query = graphql`
 		quiltQuery: datoCmsQuilt(slug: { eq: "quilt" }) {
 			title
 			seoMetaTags {
-				tags
+				...GatsbyDatoCmsSeoMetaTags
 			}
 			mobileCover: heroImage {
 				url

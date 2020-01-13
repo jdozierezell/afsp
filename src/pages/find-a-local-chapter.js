@@ -4,7 +4,7 @@ import zipcodes from 'zipcodes'
 import { useQueryParams, NumberParam } from 'use-query-params'
 
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroChapterSearch from '../components/Hero/HeroChapterSearch'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import ChapterSearchResultContainer from '../components/Chapter/ChapterSearchResultContainer'
@@ -44,7 +44,7 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<SEO meta={search} />
+			<HelmetDatoCms seo={search.seoMetaTags} />
 			<HeroChapterSearch
 				title={search.title}
 				description={search.seo.description}
@@ -78,7 +78,7 @@ export const query = graphql`
 	query {
 		search: datoCmsChapterSearch {
 			seoMetaTags {
-				tags
+				...GatsbyDatoCmsSeoMetaTags
 			}
 			title
 			seo {

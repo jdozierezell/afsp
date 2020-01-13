@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroSolid from '../components/Hero/HeroSolid'
 
 import { styles } from '../css/css'
@@ -49,7 +49,7 @@ const partnerContainerCSS = css`
 const Partners = ({ data: { partners } }) => {
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<SEO meta={partners} />
+			<HelmetDatoCms seo={partners.seoMetaTags} />
 			<HeroSolid data={partners} />
 			<section css={partnerContainerCSS}>
 				{partners.partnerList.map(partner => {
@@ -88,7 +88,7 @@ export const query = graphql`
 		partners: datoCmsPartnerPage {
 			title
 			seoMetaTags {
-				tags
+				...GatsbyDatoCmsSeoMetaTags
 			}
 			partnerList {
 				partnerName

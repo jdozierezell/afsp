@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroSolid from '../components/Hero/HeroSolid'
 import NavigationSide from '../components/Navigation/NavigationSide'
 import ContentGeneric from '../components/Content/ContentGeneric'
@@ -11,11 +11,9 @@ import { styles } from '../css/css'
 
 const Detail = ({ data, pageContext }) => {
 	const { detail } = data
-	console.log(detail)
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<SEO meta={detail} />
-			<HeroSolid data={detail} />
+			<HelmetDatoCms seo={detail.seoMetaTags} />
 			<NavigationSide data={detail} />
 			<ContentGeneric data={detail} />
 		</Layout>

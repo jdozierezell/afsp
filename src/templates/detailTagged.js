@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroSolid from '../components/Hero/HeroSolid'
 import NavigationSide from '../components/Navigation/NavigationSide'
 import ContentGeneric from '../components/Content/ContentGeneric'
@@ -25,7 +25,7 @@ const Detail = ({ data, pageContext }) => {
 	}, [stories, pageContext.tag])
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<SEO meta={tagged} />
+			<HelmetDatoCms seo={tagged.seoMetaTags} />
 			<HeroSolid data={tagged} />
 			<NavigationSide data={tagged} />
 			<ContentGeneric data={tagged} />

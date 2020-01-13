@@ -1,12 +1,14 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+// import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroBio from '../components/Hero/HeroBio'
 
 import { styles } from '../css/css'
+import Helmet from 'react-helmet'
 
 const biographyCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24};
@@ -23,7 +25,8 @@ const Bio = ({ data }) => {
 	const { bio } = data
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<SEO meta={bio} />
+			{/* <SEO meta={bio} /> */}
+			<HelmetDatoCms seo={bio.seoMetaTags} />
 			<HeroBio data={bio} />
 			<main
 				css={biographyCSS}
@@ -47,7 +50,7 @@ export const query = graphql`
 			}
 			biography
 			seoMetaTags {
-				tags
+				...GatsbyDatoCmsSeoMetaTags
 			}
 		}
 	}

@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroStatistics from '../components/Hero/HeroStatistics'
 import StatisticsSummary from '../components/Statistics/StatisticsSummary'
 import StatisticsContainer from '../components/Statistics/StatisticsContainer'
@@ -21,10 +21,9 @@ const additionalCSS = css`
 `
 
 const SuicideStatistics = ({ data: { statistics } }) => {
-	console.log(statistics)
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<SEO meta={statistics} />
+			<HelmetDatoCms seo={statistics.seoMetaTags} />
 			<HeroStatistics data={statistics} />
 			<StatisticsSummary data={statistics} />
 			<StatisticsContainer data={statistics} />
@@ -65,7 +64,7 @@ export const query = graphql`
 	query {
 		statistics: datoCmsStatistic {
 			seoMetaTags {
-				tags
+				...GatsbyDatoCmsSeoMetaTags
 			}
 			title
 			brief
