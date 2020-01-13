@@ -63,6 +63,14 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
+			grants: allDatoCmsGrant {
+				edges {
+					node {
+						slug
+						title
+					}
+				}
+			}
 			details: allDatoCmsDetail {
 				edges {
 					node {
@@ -135,6 +143,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	const authors = data.authors.edges
 	const redirects = data.redirects.edges
 	const bios = data.bios.edges
+	const grants = data.grants.edges
 	const details = data.details.edges
 	const detailsTagged = data.detailsTagged.edges
 	const landings = data.landings.edges
@@ -199,6 +208,16 @@ exports.createPages = async ({ graphql, actions }) => {
 		createPage({
 			path: `bio/${node.slug}`,
 			component: path.resolve('./src/templates/bio.js'),
+			context: {
+				slug: node.slug,
+			},
+		})
+	})
+
+	grants.forEach(({ node }) => {
+		createPage({
+			path: `grant/${node.slug}`,
+			component: path.resolve('./src/templates/grant.js'),
 			context: {
 				slug: node.slug,
 			},
