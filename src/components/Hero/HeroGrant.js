@@ -39,22 +39,24 @@ const granteeInformationCSS = css`
 	@media (min-width: ${styles.screens.navigation}px) {
 		width: calc(100vw - 600px - 150px);
 	}
-	img {
-		margin-top: ${styles.scale.px50};
-		@media (min-width: ${styles.screens.tablet}px) {
-			max-height: 360px;
-			border-radius: 50%;
-			margin-top: 0;
+	div {
+		max-width: 200px;
+		@media (min-width: ${styles.screens.navigation}px) {
+			max-width: 360px;
 		}
+	}
+	img {
+		border-radius: 50%;
 	}
 	p {
 		text-align: center;
 		color: ${styles.colors.white};
+		direction: ltr;
 	}
 `
 
 const HeroGrant = ({ data }) => {
-	const { title, grantInformation, grantDetails } = data
+	const { title, grantInformation } = data
 	let amount, type, year, displayAmount, displayAreas
 	let areas = []
 	let grantees = []
@@ -113,10 +115,15 @@ const HeroGrant = ({ data }) => {
 			<div
 				css={css`
 					${granteeInformationCSS};
+					grid-template-columns: repeat(
+						${grantees.length > 1 ? 2 : 1},
+						1fr
+					);
 					@media (min-width: ${styles.screens.tablet}px) {
 						grid-template-columns: repeat(${grantees.length}, 1fr);
 					}
 					@media (min-width: ${styles.screens.navigation}px) {
+						direction: rtl;
 						grid-template-columns: repeat(${grantees.length}, 1fr);
 					}
 				`}
@@ -137,12 +144,6 @@ const HeroGrant = ({ data }) => {
 					)
 				})}
 			</div>
-			{/* <div>
-				<img
-					src={`${photo.url}?w=768&h=768&fit=crop&crop=faces`}
-					alt={photo.alt}
-				/>
-			</div> */}
 		</div>
 	)
 }

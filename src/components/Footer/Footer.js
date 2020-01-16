@@ -65,22 +65,6 @@ const copyrightCSS = css`
 		align-self: end;
 	}
 `
-
-const legalCSS = css`
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	justify-content: space-between;
-	li {
-		@media (min-width: ${styles.screens.footer}px) {
-			margin: 0;
-		}
-	}
-	a {
-		color: ${styles.colors.white};
-	}
-`
 const Footer = ({ nav }) => {
 	return (
 		<footer css={footerCSS}>
@@ -110,9 +94,11 @@ const Footer = ({ nav }) => {
 				{nav.map((item, index) => (
 					<MobileMenuSection key={index} item={item} />
 				))}
-				<FooterSocials />
 			</div>
 			<div css={logoLegalCSS}>
+				<div css={grid782}>
+					<FooterSocials />
+				</div>
 				<div css={logoCSS}>
 					<LogoWhite />
 				</div>
@@ -120,19 +106,6 @@ const Footer = ({ nav }) => {
 					© {new Date().getFullYear()} American Foundation for Suicide
 					Prevention. All rights reserved.
 				</small>
-				<div css={grid782}>
-					<ul css={legalCSS}>
-						<li>
-							<a href="https://example.com">Terms of use</a>
-						</li>
-						<li>
-							<a href="https://example.com">Privacy policy</a>
-						</li>
-						<li>
-							<a href="https://example.com">Sitemap</a>
-						</li>
-					</ul>
-				</div>
 			</div>
 		</footer>
 	)

@@ -13,13 +13,6 @@ import FeaturedResourcesContainer from '../components/FeaturedProgramsResources/
 
 import { styles } from '../css/css'
 
-const additionalCSS = css`
-	margin: 0 ${styles.scale.px24};
-	@media (min-width: ${styles.screens.tablet}px) {
-		margin: 0 ${styles.scale.px50};
-	}
-`
-
 const SuicideStatistics = ({ data: { statistics } }) => {
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
@@ -52,6 +45,8 @@ const SuicideStatistics = ({ data: { statistics } }) => {
 							`}
 						/>
 					)
+				} else {
+					return ''
 				}
 			})}
 		</Layout>

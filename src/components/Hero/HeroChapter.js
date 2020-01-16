@@ -11,7 +11,7 @@ const videoHeroCSS = css`
 	grid-template-rows: 150px repeat(3, auto);
 	@media (min-width: ${styles.screens.tablet}px) {
 		overflow: hidden;
-		max-height: 600px;
+		max-height: 700px;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 200px repeat(3, auto);
 	}
@@ -21,7 +21,7 @@ const videoImageCoverCSS = css`
 	line-height: 0;
 	height: calc(100vw / 1.78);
 	min-height: 300px;
-	max-height: 600px;
+	max-height: 700px;
 	width: 100%;
 	margin-bottom: 0;
 	grid-area: 1 / 1 / 3 / 2;

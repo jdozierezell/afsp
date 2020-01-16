@@ -62,6 +62,7 @@ const featuredCSS = css`
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	min-height: 300px;
 	h5 {
 		margin: ${styles.scale.px35} ${styles.scale.px25} ${styles.scale.px25};
 		font-size: ${styles.scale.px18};
@@ -111,11 +112,14 @@ const MenuItems = ({
 													link.__typename ===
 													'DatoCmsChildItem'
 												) {
-													const url = buildUrl(
-														link.childLink
-															.__typename,
-														link.childLink.slug
-													)
+													const url = link.childLink
+														? buildUrl(
+																link.childLink
+																	.__typename,
+																link.childLink
+																	.slug
+														  )
+														: link.childExternalLink
 													return (
 														<li
 															css={megaLinkCSS}

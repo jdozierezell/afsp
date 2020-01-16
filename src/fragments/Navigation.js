@@ -38,6 +38,18 @@ export const Navigation = graphql`
 								__typename
 								slug
 							}
+							... on DatoCmsPartnerPage {
+								__typename
+								slug
+							}
+							... on DatoCmsStatistic {
+								__typename
+								slug
+							}
+							... on DatoCmsDetailTagged {
+								__typename
+								slug
+							}
 						}
 						childExternalLink
 					}
@@ -45,24 +57,44 @@ export const Navigation = graphql`
 						__typename
 						featuredHeading
 						featuredLink {
-							... on DatoCmsLanding {
-								__typename
+							__typename
+							... on DatoCmsDetail {
 								slug
 								seo {
 									image {
 										url
-										# fluid(
-										# 	maxWidth: 1080
-										# 	imgixParams: {
-										# 		fm: "jpg"
-										# 		fit: "crop"
-										# 		crop: "faces"
-										# 		ar: 1.67
-										# 		w: "1080"
-										# 	}
-										# ) {
-										# 	...GatsbyDatoCmsFluid_tracedSVG
-										# }
+									}
+								}
+							}
+							... on DatoCmsLanding {
+								slug
+								seo {
+									image {
+										url
+									}
+								}
+							}
+							... on DatoCmsPartnerPage {
+								slug
+								seo {
+									image {
+										url
+									}
+								}
+							}
+							... on DatoCmsStatistic {
+								slug
+								seo {
+									image {
+										url
+									}
+								}
+							}
+							... on DatoCmsDetailTagged {
+								slug
+								seo {
+									image {
+										url
 									}
 								}
 							}

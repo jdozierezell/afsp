@@ -3,7 +3,6 @@ import { css } from '@emotion/core'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import FooterAside from '../Footer/FooterAside'
-import FooterSocials from '../Footer/FooterSocials'
 
 import buildUrl from '../../utils/buildUrl'
 
@@ -62,7 +61,6 @@ const DeskFooterSection = ({ item, index, length }) => {
 			{index + 1 >= length && (
 				<>
 					<FooterAside />
-					<FooterSocials />
 				</>
 			)}
 		</>

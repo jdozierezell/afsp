@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
-import axios from 'axios'
 
 import Layout from '../components/Layout'
 import { HelmetDatoCms } from 'gatsby-source-datocms'

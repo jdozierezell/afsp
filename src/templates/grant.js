@@ -5,10 +5,13 @@ import { css } from '@emotion/core'
 import Layout from '../components/Layout'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroGrant from '../components/Hero/HeroGrant'
+import Content from '../components/Content/Content'
+import ContentHeading from '../components/Content/ContentHeading'
+import ContentVideo from '../components/Content/ContentVideo'
 
 import { styles } from '../css/css'
 
-const biographyCSS = css`
+const grantCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin: ${styles.scale.px80} ${styles.scale.px50};
@@ -25,10 +28,37 @@ const Bio = ({ data }) => {
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HelmetDatoCms seo={grant.seoMetaTags} />
 			<HeroGrant data={grant} />
-			{/* <main
-				css={biographyCSS}
-				dangerouslySetInnerHTML={{ __html: bio.biography }}
-			></main> */}
+			<main css={grantCSS}>
+				{grant.grantDetails.map((detail, index) => {
+					if (detail.__typename === 'DatoCmsContent') {
+						return (
+							<Content
+								key={index}
+								contentHeading={detail.contentHeading}
+								contentBody={detail.contentBody}
+							/>
+						)
+					} else if (detail.__typename === 'DatoCmsHeading') {
+						return (
+							<ContentHeading
+								key={index}
+								heading={detail.heading}
+								level={detail.headingLevel}
+							/>
+						)
+					} else if (detail.__typename === 'DatoCmsVideo') {
+						return (
+							<ContentVideo
+								key={index}
+								video={detail.video.url}
+								poster={detail.poster.url}
+							/>
+						)
+					} else {
+						return ''
+					}
+				})}
+			</main>
 		</Layout>
 	)
 }

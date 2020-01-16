@@ -59,7 +59,7 @@ const Channel = ({ channel }) => {
 						alt=""
 					/>
 					<h2>{heading}</h2>
-					<div dangerouslySetInnerHTML={{ __html: brief }}></div>
+					<p dangerouslySetInnerHTML={{ __html: brief }}></p>
 					<AniLink
 						fade
 						duration={styles.duration}

@@ -20,6 +20,8 @@ const buildUrl = (typename = '', slug = '') => {
 		case 'DatoCmsHomePage':
 		case 'DatoCmsChapterSearch':
 		case 'DatoCmsQuilt':
+		case 'DatoCmsStatistic':
+		case 'DatoCmsPartnerPage':
 			folder = ''
 			break
 		default:

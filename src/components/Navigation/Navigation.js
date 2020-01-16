@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
-import LogoColor from '../SVGs/LogoColor'
-import LogoWhite from '../SVGs/LogoWhite'
 import Logo from '../SVGs/Logo'
 import MobileMenu from './MobileMenu'
 import DeskMenu from './DeskMenu'
@@ -136,7 +134,6 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 	const handleMouseLeave = id => {
 		setActiveMegaMenu('')
 	}
-
 	return (
 		<div
 			css={css`

@@ -47,6 +47,7 @@ const featuredCSS = css`
 `
 
 const Stories = ({ story: { node } }) => {
+	console.log(node)
 	return (
 		<div css={featuredCSS}>
 			<img
@@ -57,7 +58,11 @@ const Stories = ({ story: { node } }) => {
 				<AniLink
 					fade
 					duration={styles.duration}
-					to={buildUrl('DatoCmsStory', createAnchor(node.title))}
+					to={
+						node.type
+							? buildUrl(node.type, createAnchor(node.title))
+							: buildUrl('DatoCmsStory', createAnchor(node.title))
+					}
 				>
 					{node.title}
 				</AniLink>

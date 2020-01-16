@@ -43,43 +43,52 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	const heroPosterUrl = heroPoster ? heroPoster.url : ''
 
 	useEffect(() => {
-		if (stories.length === 0) {
-			realStories.edges.forEach(story => {
-				const coverImage = story.node.seo.image
-				const title = story.node.title
-				const slug = story.node.slug
-				const seo = story.node.seo
-				const date = parseInt(story.node.publicationDate, 10)
-				const type = 'chapter'
-				const node = {
-					node: { coverImage, title, slug, seo, date, type },
-				}
-				storiesUpdates.push(node)
-			})
-			chapterStoriesUpdates.edges.forEach(story => {
-				const coverImage = story.node.seo.image
-				const title = story.node.title
-				const slug = story.node.slug
-				const seo = story.node.seo
-				const date = parseInt(story.node.publicationDate, 10)
-				const type = 'chapter'
-				const node = {
-					node: { coverImage, title, slug, seo, date, type },
-				}
-				storiesUpdates.push(node)
-			})
-			storiesUpdates.sort((a, b) => {
-				if (a.node.date < b.node.date) {
-					return 1
-				} else if (a.node.date > b.node.date) {
-					return -1
-				} else {
-					return 0
-				}
-			})
-			setStories(storiesUpdates)
+		console.log(stories.length)
+		if (stories.length === 0 && stories[0] !== 'no stories') {
+			// setStories(['no stories'])
+			if (
+				realStories.edges.length === 0 &&
+				chapterStoriesUpdates.edges.length === 0
+			) {
+				setStories(['no stories'])
+			} else {
+				realStories.edges.forEach(story => {
+					const coverImage = story.node.seo.image
+					const title = story.node.title
+					const slug = story.node.slug
+					const seo = story.node.seo
+					const date = parseInt(story.node.publicationDate, 10)
+					const type = 'DatoCmsStory'
+					const node = {
+						node: { coverImage, title, slug, seo, date, type },
+					}
+					storiesUpdates.push(node)
+				})
+				chapterStoriesUpdates.edges.forEach(story => {
+					const coverImage = story.node.seo.image
+					const title = story.node.title
+					const slug = story.node.slug
+					const seo = story.node.seo
+					const date = parseInt(story.node.publicationDate, 10)
+					const type = 'DatoCmsChapterStoryUpdate'
+					const node = {
+						node: { coverImage, title, slug, seo, date, type },
+					}
+					storiesUpdates.push(node)
+				})
+				storiesUpdates.sort((a, b) => {
+					if (a.node.date < b.node.date) {
+						return 1
+					} else if (a.node.date > b.node.date) {
+						return -1
+					} else {
+						return 0
+					}
+				})
+				setStories(storiesUpdates)
+			}
 		}
-		if (events.details.length === 0) {
+		if (events.details.length === 0 && events.details[0] !== 'no events') {
 			fetch(
 				`//aws-fetch.s3.amazonaws.com/merged-events-${chapterDonorDriveId}.json`
 			)
@@ -94,16 +103,20 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 						title: 'Upcoming events',
 						details: [],
 					}
-					response.next.forEach(event => {
-						const eventObject = {
-							__typename: 'Event',
-							title: event.name,
-							date: moment(event.startdate).format('MMMM D'),
-							url: `https://afsp.donordrive.com/index.cfm?fuseaction=donorDrive.event&eventID=${event.recordid}`,
-						}
-						eventDetails.details.push(eventObject)
-					})
-					setEvents(eventDetails)
+					if (response.next) {
+						response.next.forEach(event => {
+							const eventObject = {
+								__typename: 'Event',
+								title: event.name,
+								date: moment(event.startdate).format('MMMM D'),
+								url: `https://afsp.donordrive.com/index.cfm?fuseaction=donorDrive.event&eventID=${event.recordid}`,
+							}
+							eventDetails.details.push(eventObject)
+						})
+						setEvents(eventDetails)
+					} else {
+						setEvents({ details: ['no events'] })
+					}
 				})
 		}
 	}, [
@@ -152,12 +165,14 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					external: true,
 				}}
 			/>
-			<StoriesContainer
-				header="Stories and updates"
-				first={true}
-				stories={stories}
-				more={true}
-			/>
+			{stories[0] !== 'no stories' && (
+				<StoriesContainer
+					header="Stories and updates"
+					first={true}
+					stories={stories}
+					more={true}
+				/>
+			)}
 		</LayoutChapter>
 	)
 }

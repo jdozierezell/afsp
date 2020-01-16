@@ -91,17 +91,6 @@ const dropDownCSS = css`
 	}
 `
 
-const actionButtonCSS = css`
-	position: absolute;
-	right: ${styles.scale.px18};
-	top: ${styles.scale.px12};
-	background-color: transparent;
-	border: none;
-	padding: 0;
-	width: ${styles.scale.px24};
-	height: ${styles.scale.px36};
-`
-
 const HeroChapterSearch = ({
 	title,
 	description,

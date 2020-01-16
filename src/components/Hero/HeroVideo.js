@@ -120,7 +120,7 @@ const HeroVideo = ({
 					loop
 					css={videoCoverCSS}
 					src={videoUrl}
-					poster={posterUrl}
+					poster={`${posterUrl}?w=720`}
 				></video>
 			)}
 			<div css={descriptionBackgroundCSS}></div>

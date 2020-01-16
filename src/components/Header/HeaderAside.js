@@ -5,7 +5,7 @@ import { styles } from '../../css/css'
 
 const headerAsideCSS = css`
 	background-color: ${styles.colors.yellow};
-	padding: ${styles.scale.px14} ${styles.scale.px24};
+	padding: ${styles.scale.px5} ${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}) {
 		padding: ${styles.scale.px14} ${styles.scale.px50};
 	}
@@ -24,25 +24,23 @@ const HeaderAside = () => {
 	return (
 		<aside css={headerAsideCSS}>
 			<p>
-				<strong>Are you in a crisis?</strong>
-				<br />
-				Call the{' '}
+				<strong>Are you in a crisis?</strong> Call{' '}
 				<a
 					href="https://suicidepreventionlifeline.org"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					National Suicide Prevention Lifeline
+					800-273-8255
 				</a>{' '}
-				at <a href="tel:+18002738255">800-273-8255</a> or contact the{' '}
+				or text{' '}
 				<a
 					href="https://crisistextline.org"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					Crisis Text Line
-				</a>{' '}
-				by texting <a href="sms:741741&body=TALK">TALK to 741741</a>.
+					TALK to 741741
+				</a>
+				.
 			</p>
 		</aside>
 	)

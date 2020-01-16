@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import zipcodes from 'zipcodes'
 import { useQueryParams, NumberParam } from 'use-query-params'

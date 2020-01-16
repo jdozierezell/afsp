@@ -8,7 +8,6 @@ import Layout from '../components/Layout'
 import HeroBio from '../components/Hero/HeroBio'
 
 import { styles } from '../css/css'
-import Helmet from 'react-helmet'
 
 const biographyCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24};

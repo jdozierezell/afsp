@@ -14,6 +14,7 @@ const Detail = ({ data, pageContext }) => {
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HelmetDatoCms seo={detail.seoMetaTags} />
+			<HeroSolid data={detail} />
 			<NavigationSide data={detail} />
 			<ContentGeneric data={detail} />
 		</Layout>

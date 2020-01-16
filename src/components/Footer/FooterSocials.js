@@ -17,17 +17,56 @@ const socialCSS = css`
 	svg {
 		height: ${styles.scale.px30};
 	}
+	@media (min-width: ${styles.screens.tablet}px) {
+		margin: 0;
+	}
 `
 
 const FooterSocials = () => {
 	return (
 		<div css={socialCSS}>
-			<IconFacebook color={styles.colors.white} />
-			<IconInstagram color={styles.colors.white} />
-			<IconTwitter color={styles.colors.white} />
-			<IconLinkedIn color={styles.colors.white} />
-			<IconYouTube color={styles.colors.white} />
-			<IconTheMighty color={styles.colors.white} />
+			<a
+				href="https://www.facebook.com/AFSPnational/"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<IconFacebook color={styles.colors.white} />
+			</a>
+			<a
+				href="https://www.instagram.com/afspnational/"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<IconInstagram color={styles.colors.white} />
+			</a>
+			<a
+				href="https://twitter.com/afspnational"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<IconTwitter color={styles.colors.white} />
+			</a>
+			<a
+				href="https://www.linkedin.com/company/afspnational"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<IconLinkedIn color={styles.colors.white} />
+			</a>
+			<a
+				href="https://www.youtube.com/user/afspnational"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<IconYouTube color={styles.colors.white} />
+			</a>
+			<a
+				href="https://themighty.com/partner/AmericanFoundationforSuicidePrevention/"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<IconTheMighty color={styles.colors.white} />
+			</a>
 		</div>
 	)
 }
