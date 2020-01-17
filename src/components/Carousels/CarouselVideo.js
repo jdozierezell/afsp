@@ -31,12 +31,12 @@ const CarouselVideo = ({ video, poster, title }) => {
 			`}
 			draggable
 		>
-			<div
-				css={css`
-					background-image: url(${`${poster}?w=1920&h=1080&fit=crop&crop=faces`});
-				`}
-			>
-				<video controls src={video} poster={poster}>
+			<div>
+				<video
+					controls
+					src={video}
+					poster={`${poster}?w=1280&h=720&fit=crop&crop=faces`}
+				>
 					<track default kind="captions" srcLang="en" src="#" />
 				</video>
 			</div>

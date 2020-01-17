@@ -20,7 +20,7 @@ const containerCSS = css`
 
 const statisticsSummaryCSS = css`
 	margin-bottom: ${styles.scale.px50};
-	@media (min-width: ${styles.screens.mobile}px) {
+	@media (min-width: ${styles.screens.tablet}px) {
 		margin-bottom: 0;
 		max-width: 623px;
 		grid-column: 1 / 7;
@@ -28,7 +28,7 @@ const statisticsSummaryCSS = css`
 	h2 {
 		font-size: ${styles.scale.px36};
 		margin: 0 0 ${styles.scale.px35};
-		@media (min-width: ${styles.screens.mobile}px) {
+		@media (min-width: ${styles.screens.tablet}px) {
 			font-size: ${styles.scale.px44};
 			margin: 0 0 ${styles.scale.px40};
 		}
@@ -37,7 +37,7 @@ const statisticsSummaryCSS = css`
 
 const summaryVideoCSS = css`
 	position: relative;
-	@media (min-width: ${styles.screens.mobile}px) {
+	@media (min-width: ${styles.screens.tablet}px) {
 		grid-column: 8 / 13;
 		width: 100%;
 	}

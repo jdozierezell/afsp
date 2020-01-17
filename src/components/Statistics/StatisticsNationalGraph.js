@@ -24,8 +24,8 @@ const graphHeadingCSS = css`
 `
 
 const statisticsNationalGraphContainerCSS = css`
-	width: 100vw;
-	height: 75vh;
+	width: 100%;
+	height: calc(100vw);
 	position: relative;
 	left: -${styles.scale.px24};
 	background-color: ${styles.colors.white};
@@ -34,6 +34,7 @@ const statisticsNationalGraphContainerCSS = css`
 		width: auto;
 		position: initial;
 		padding: 0;
+		height: calc(100vw / 3.5);
 	}
 	svg {
 		fill: none;

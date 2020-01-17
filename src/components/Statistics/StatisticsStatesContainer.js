@@ -61,7 +61,7 @@ const searchStateInputCSS = css`
 				list-style: none;
 				margin: 0;
 				padding: 0;
-				z-index: 5;
+				z-index: 501;
 				li {
 					margin: 0;
 					padding: ${styles.scale.px12};

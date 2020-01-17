@@ -6,12 +6,13 @@ import { styles } from '../../css/css'
 
 const statisticsStatesGraphContainerCSS = css`
 	width: 100vw;
-	height: 400px;
+	height: 100vw;
 	position: relative;
 	left: -${styles.scale.px24};
 	background-color: ${styles.colors.white};
 	padding: ${styles.scale.px16};
 	@media (min-width: ${styles.screens.tablet}px) {
+		height: calc(100vw / 3);
 		width: auto;
 		position: initial;
 		padding: ${styles.scale.px35};
@@ -77,32 +78,34 @@ const StatisticsStatesGraph = ({ width, height, data, selection }) => {
 				pointLabel="y"
 				pointLabelYOffset={-12}
 				enableSlices={'x'}
-				legends={[
-					{
-						anchor: 'bottom',
-						direction: 'row',
-						justify: false,
-						translateX: 0,
-						translateY: 70,
-						itemsSpacing: 0,
-						itemDirection: 'top-to-bottom',
-						itemWidth: 80,
-						itemHeight: 20,
-						itemOpacity: 0.75,
-						symbolSize: 12,
-						symbolShape: 'circle',
-						symbolBorderColor: 'rgba(0, 0, 0, .5)',
-						effects: [
-							{
-								on: 'hover',
-								style: {
-									itemBackground: 'rgba(0, 0, 0, .03)',
-									itemOpacity: 1,
-								},
-							},
-						],
-					},
-				]}
+				legends={
+					[
+						// {
+						// 	anchor: 'bottom',
+						// 	direction: 'row',
+						// 	justify: false,
+						// 	translateX: 0,
+						// 	translateY: 70,
+						// 	itemsSpacing: 0,
+						// 	itemDirection: 'top-to-bottom',
+						// 	itemWidth: 80,
+						// 	itemHeight: 20,
+						// 	itemOpacity: 0.75,
+						// 	symbolSize: 12,
+						// 	symbolShape: 'circle',
+						// 	symbolBorderColor: 'rgba(0, 0, 0, .5)',
+						// 	effects: [
+						// 		{
+						// 			on: 'hover',
+						// 			style: {
+						// 				itemBackground: 'rgba(0, 0, 0, .03)',
+						// 				itemOpacity: 1,
+						// 			},
+						// 		},
+						// 	],
+						// },
+					]
+				}
 				theme={{
 					tooltip: {
 						container: {
