@@ -22,6 +22,9 @@ const carouselCSS = css`
 		margin: 0;
 		white-space: break-spaces;
 	}
+	@media (min-width: ${styles.screens.tablet}px) {
+		display: none;
+	}
 `
 
 const carouselHeaderTitleCSS = css`

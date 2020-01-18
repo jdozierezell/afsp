@@ -6,12 +6,16 @@ import Card from './Card'
 import { styles } from '../../css/css'
 
 const cardContainerCSS = css`
-	padding: ${styles.scale.px80} ${styles.scale.px50};
-	background-color: ${styles.colors.lightGray};
-	position: relative;
-	z-index: 500;
-	width: 100vw;
-	margin-left: -${styles.scale.px50};
+	display: none;
+	@media (min-width: ${styles.screens.tablet}px) {
+		display: block;
+		padding: ${styles.scale.px80} ${styles.scale.px50};
+		background-color: ${styles.colors.lightGray};
+		position: relative;
+		z-index: 500;
+		width: 100vw;
+		margin-left: -${styles.scale.px50};
+	}
 `
 
 const cardListCSS = css`
