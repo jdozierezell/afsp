@@ -49,35 +49,35 @@ export const query = graphql`
 			}
 			mobileCover: coverImage {
 				url
-				# fluid(
-				# 	maxWidth: 769
-				# 	imgixParams: {
-				# 		fm: "jpg"
-				# 		fit: "crop"
-				# 		crop: "faces"
-				# 		w: "769"
-				# 		h: "475"
-				# 	}
-				# ) {
-				# 	...GatsbyDatoCmsFluid_tracedSVG
-				# }
+				fluid(
+					maxWidth: 769
+					imgixParams: {
+						fm: "jpg"
+						fit: "crop"
+						crop: "faces"
+						w: "769"
+						h: "475"
+					}
+				) {
+					...GatsbyDatoCmsFluid_tracedSVG
+				}
 			}
 			desktopCover: coverImage {
 				url
-				# fluid(
-				# 	maxWidth: 1920
-				# 	imgixParams: {
-				# 		fm: "jpg"
-				# 		fit: "crop"
-				# 		crop: "faces"
-				# 		ar: 2.5
-				# 		w: "1920"
-				# 		blendMode: "hardlight"
-				# 		blend: "555"
-				# 	}
-				# ) {
-				# 	...GatsbyDatoCmsFluid_tracedSVG
-				# }
+				fluid(
+					maxWidth: 1920
+					imgixParams: {
+						fm: "jpg"
+						fit: "crop"
+						crop: "faces"
+						ar: "2.5"
+						w: "1920"
+						blendMode: "hardlight"
+						blend: "555"
+					}
+				) {
+					...GatsbyDatoCmsFluid_tracedSVG
+				}
 			}
 			article {
 				... on DatoCmsBody {

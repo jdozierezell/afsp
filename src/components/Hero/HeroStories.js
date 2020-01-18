@@ -1,6 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import Img from 'gatsby-image'
 
 import IconArrow from '../SVGs/IconArrow'
 import readTime from '../../utils/readTime'
@@ -209,11 +210,12 @@ const HeroStories = ({ data, prev, next }) => {
 							})}
 					</ul>
 				</h3>
-				<img
+				<Img css={mobileImageCSS} fluid={mobileCover.fluid} />
+				{/* <img
 					css={mobileImageCSS}
 					src={`${mobileCover.url}?w=768&h=475&fit=crop&crop=faces`}
 					alt=""
-				/>
+				/> */}
 			</div>
 			{prev && (
 				<div css={previousStoryCSS}>
