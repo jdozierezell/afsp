@@ -33,12 +33,7 @@ const carouselTitleCSS = css`
 const CarouselChapter = ({ title, titleHref, image }) => {
 	return (
 		<div css={carouselComponentCSS}>
-			{/* <img
-				src={`${src}?w=600&h=370&fit=crop&crop=faces`}
-				alt=""
-				css={carouselImageCSS}
-			/> */}
-			<Img fluid={image} css={carouselImageCSS} />
+			<Img fluid={image} css={carouselImageCSS} alt="" />
 			<AniLink
 				fade
 				duration={styles.duration}

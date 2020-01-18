@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
+import Img from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
@@ -55,8 +56,8 @@ const Partners = ({ data: { partners } }) => {
 				{partners.partnerList.map(partner => {
 					return (
 						<div>
-							<img
-								src={`${partner.partnerLogo.url}?w=600`}
+							<Img
+								fluid={partner.partnerLogo.fluid}
 								alt={`${partner.partnerName} logo`}
 							/>
 							<div>
@@ -94,6 +95,17 @@ export const query = graphql`
 				partnerName
 				partnerLogo {
 					url
+					fluid(
+						maxWidth: 600
+						imgixParams: {
+							fm: "jpg"
+							fit: "crop"
+							crop: "faces"
+							w: "600"
+						}
+					) {
+						...GatsbyDatoCmsFluid_tracedSVG
+					}
 				}
 				partnerDescription
 				partnerLink
