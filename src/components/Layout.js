@@ -14,7 +14,6 @@ const Layout = ({ theme, overrideLight, children }) => {
 		}
 	`)
 	const { nav } = data
-	console.log(nav)
 	let headerNav = []
 	let footerNav = []
 	nav.edges.forEach(({ node }) => {

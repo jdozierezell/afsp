@@ -43,7 +43,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	const heroPosterUrl = heroPoster ? heroPoster.url : ''
 
 	useEffect(() => {
-		console.log(stories.length)
 		if (stories.length === 0 && stories[0] !== 'no stories') {
 			// setStories(['no stories'])
 			if (

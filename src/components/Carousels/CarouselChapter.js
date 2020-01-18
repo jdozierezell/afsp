@@ -1,6 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import Img from 'gatsby-image'
 
 import buildUrl from '../../utils/buildUrl'
 
@@ -29,15 +30,15 @@ const carouselTitleCSS = css`
 	}
 `
 
-const CarouselChapter = ({ title, titleHref, src }) => {
+const CarouselChapter = ({ title, titleHref, image }) => {
 	return (
 		<div css={carouselComponentCSS}>
-			<img
+			{/* <img
 				src={`${src}?w=600&h=370&fit=crop&crop=faces`}
 				alt=""
 				css={carouselImageCSS}
-			/>
-
+			/> */}
+			<Img fluid={image} css={carouselImageCSS} />
 			<AniLink
 				fade
 				duration={styles.duration}

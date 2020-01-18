@@ -145,6 +145,7 @@ const HeroStories = ({ data, prev, next }) => {
 	const timeToRead = readTime(fullStory)
 
 	return (
+		// todo: convert background image to gatsby image
 		<section
 			css={css`
 				${storyHeroCSS};

@@ -26,18 +26,18 @@ export const ChapterSearch = graphql`
 				}
 				heroPoster {
 					url
-					# fluid(
-					# 	maxWidth: 600
-					# 	imgixParams: {
-					# 		fm: "jpg"
-					# 		fit: "crop"
-					# 		crop: "faces"
-					# 		w: "600"
-					# 		ar: 1.67
-					# 	}
-					# ) {
-					# 	...GatsbyDatoCmsFluid_tracedSVG
-					# }
+					fluid(
+						maxWidth: 600
+						imgixParams: {
+							fm: "jpg"
+							fit: "crop"
+							crop: "faces"
+							w: "600"
+							h: "360"
+						}
+					) {
+						...GatsbyDatoCmsFluid_tracedSVG
+					}
 				}
 				staffName
 				staffTitle
