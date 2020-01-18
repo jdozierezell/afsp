@@ -127,6 +127,18 @@ export const query = graphql`
 					slug
 					coverImage {
 						url
+						fluid(
+							maxWidth: 600
+							imgixParams: {
+								fm: "jpg"
+								fit: "crop"
+								crop: "faces"
+								w: "600"
+								h: "370"
+							}
+						) {
+							...GatsbyDatoCmsFluid_tracedSVG
+						}
 					}
 					seo {
 						description

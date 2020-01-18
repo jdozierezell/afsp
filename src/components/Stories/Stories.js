@@ -1,6 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import Img from 'gatsby-image'
 
 import { styles } from '../../css/css'
 
@@ -49,10 +50,7 @@ const featuredCSS = css`
 const Stories = ({ story: { node } }) => {
 	return (
 		<div css={featuredCSS}>
-			<img
-				src={`${node.coverImage.url}?w=600&h=370&fit=crop&crop=faces`}
-				alt=""
-			/>
+			<Img fluid={node.coverImage.fluid} alt="" />
 			<h2>
 				<AniLink
 					fade
