@@ -110,7 +110,7 @@ export const query = graphql`
 					# 		h: "200"
 					# 	}
 					# ) {
-					# 	...GatsbyDatoCmsFluid_tracedSVG
+					# 	...GatsbyDatoCmsFluid
 					# }
 				}
 				heading

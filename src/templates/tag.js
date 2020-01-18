@@ -47,7 +47,7 @@ export const query = graphql`
 								h: "475"
 							}
 						) {
-							...GatsbyDatoCmsFluid_tracedSVG
+							...GatsbyDatoCmsFluid
 						}
 					}
 					author {

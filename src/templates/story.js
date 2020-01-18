@@ -59,7 +59,7 @@ export const query = graphql`
 						h: "475"
 					}
 				) {
-					...GatsbyDatoCmsFluid_tracedSVG
+					...GatsbyDatoCmsFluid
 				}
 			}
 			desktopCover: coverImage {
@@ -76,7 +76,7 @@ export const query = graphql`
 						blend: "555"
 					}
 				) {
-					...GatsbyDatoCmsFluid_tracedSVG
+					...GatsbyDatoCmsFluid
 				}
 			}
 			article {

@@ -122,7 +122,7 @@ export const query = graphql`
 					# 		h: "200"
 					# 	}
 					# ) {
-					# 	...GatsbyDatoCmsFluid_tracedSVG
+					# 	...GatsbyDatoCmsFluid
 					# }
 				}
 				heading
@@ -159,7 +159,7 @@ export const query = graphql`
 									# 		h: "370"
 									# 	}
 									# ) {
-									# 	...GatsbyDatoCmsFluid_tracedSVG
+									# 	...GatsbyDatoCmsFluid
 									# }
 								}
 							}
@@ -182,7 +182,7 @@ export const query = graphql`
 									# 		h: "370"
 									# 	}
 									# ) {
-									# 	...GatsbyDatoCmsFluid_tracedSVG
+									# 	...GatsbyDatoCmsFluid
 									# }
 								}
 							}

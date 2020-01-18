@@ -20,7 +20,7 @@ export const ChapterSearch = graphql`
 						# 		w: "1080"
 						# 	}
 						# ) {
-						# 	...GatsbyDatoCmsFluid_tracedSVG
+						# 	...GatsbyDatoCmsFluid
 						# }
 					}
 				}
@@ -36,7 +36,7 @@ export const ChapterSearch = graphql`
 							h: "360"
 						}
 					) {
-						...GatsbyDatoCmsFluid_tracedSVG
+						...GatsbyDatoCmsFluid
 					}
 				}
 				staffName

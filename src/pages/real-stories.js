@@ -107,7 +107,7 @@ export const query = graphql`
 								h: "370"
 							}
 						) {
-							...GatsbyDatoCmsFluid_tracedSVG
+							...GatsbyDatoCmsFluid
 						}
 					}
 					seo {

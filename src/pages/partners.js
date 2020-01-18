@@ -104,7 +104,7 @@ export const query = graphql`
 							w: "600"
 						}
 					) {
-						...GatsbyDatoCmsFluid_tracedSVG
+						...GatsbyDatoCmsFluid
 					}
 				}
 				partnerDescription
