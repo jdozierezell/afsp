@@ -16,8 +16,8 @@ export const ChapterSearch = graphql`
 								fm: "jpg"
 								fit: "crop"
 								crop: "faces"
-								ar: 1.67
 								w: "1080"
+								h: "645"
 							}
 						) {
 							...GatsbyDatoCmsFluid
