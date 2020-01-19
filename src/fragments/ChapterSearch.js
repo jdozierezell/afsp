@@ -10,18 +10,18 @@ export const ChapterSearch = graphql`
 					zipCode
 					chapterMap {
 						url
-						# fluid(
-						# 	maxWidth: 1080
-						# 	imgixParams: {
-						# 		fm: "jpg"
-						# 		fit: "crop"
-						# 		crop: "faces"
-						# 		ar: 1.67
-						# 		w: "1080"
-						# 	}
-						# ) {
-						# 	...GatsbyDatoCmsFluid
-						# }
+						fluid(
+							maxWidth: 1080
+							imgixParams: {
+								fm: "jpg"
+								fit: "crop"
+								crop: "faces"
+								ar: 1.67
+								w: "1080"
+							}
+						) {
+							...GatsbyDatoCmsFluid
+						}
 					}
 				}
 				heroPoster {

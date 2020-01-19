@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import Img from 'gatsby-image'
 
 import { styles } from '../../css/css'
 
@@ -59,7 +60,7 @@ const HeroStories = ({ data }) => {
 			`}
 		>
 			<h2 css={headerCSS}>{title}</h2>
-			<img css={mobileImageCSS} src={mobileHeroImg} alt="" />
+			<Img css={mobileImageCSS} fluid={mobileCover.fluid} alt="" />
 		</section>
 	)
 }

@@ -79,6 +79,18 @@ export const query = graphql`
 					granteeInstitution
 					granteeImage {
 						url
+						fluid(
+							maxWidth: 768
+							imgixParams: {
+								fm: "jpg"
+								fit: "crop"
+								crop: "faces"
+								w: "768"
+								h: "768"
+							}
+						) {
+							...GatsbyDatoCmsFluid
+						}
 					}
 				}
 				... on DatoCmsYear {

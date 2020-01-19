@@ -212,11 +212,6 @@ const HeroStories = ({ data, prev, next }) => {
 					</ul>
 				</h3>
 				<Img css={mobileImageCSS} fluid={mobileCover.fluid} alt="" />
-				{/* <img
-					css={mobileImageCSS}
-					src={`${mobileCover.url}?w=768&h=475&fit=crop&crop=faces`}
-					alt=""
-				/> */}
 			</div>
 			{prev && (
 				<div css={previousStoryCSS}>

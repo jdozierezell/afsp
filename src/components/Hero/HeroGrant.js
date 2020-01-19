@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import Img from 'graphql-tag'
 
 import { styles } from '../../css/css'
 
@@ -73,7 +74,7 @@ const HeroGrant = ({ data }) => {
 			grantees.push({
 				name: grant.granteeName,
 				institution: grant.granteeInstitution,
-				image: grant.granteeImage.url,
+				image: grant.granteeImage.fluid,
 			})
 		}
 	})
@@ -131,8 +132,8 @@ const HeroGrant = ({ data }) => {
 				{grantees.map(grantee => {
 					return (
 						<div>
-							<img
-								src={`${grantee.image}?w=768&h=768&fit=crop&crop=faces`}
+							<Img
+								fluid={`${grantee.image}?w=768&h=768&fit=crop&crop=faces`}
 								alt=""
 							/>
 							<p>
