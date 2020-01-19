@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import Img from 'graphql-tag'
+import Img from 'gatsby-image'
 
 import { styles } from '../../css/css'
 
@@ -41,6 +41,7 @@ const granteeInformationCSS = css`
 		width: calc(100vw - 600px - 150px);
 	}
 	div {
+		min-width: 100px;
 		max-width: 200px;
 		@media (min-width: ${styles.screens.navigation}px) {
 			max-width: 360px;
@@ -74,7 +75,7 @@ const HeroGrant = ({ data }) => {
 			grantees.push({
 				name: grant.granteeName,
 				institution: grant.granteeInstitution,
-				image: grant.granteeImage.fluid,
+				image: grant.granteeImage,
 			})
 		}
 	})
@@ -129,12 +130,12 @@ const HeroGrant = ({ data }) => {
 					}
 				`}
 			>
-				{grantees.map(grantee => {
+				{grantees.map((grantee, index) => {
 					return (
-						<div>
+						<div key={index}>
 							<Img
-								fluid={`${grantee.image}?w=768&h=768&fit=crop&crop=faces`}
-								alt=""
+								fluid={grantee.image.fluid}
+								alt={grantee.image.alt}
 							/>
 							<p>
 								<strong>{grantee.name}</strong>

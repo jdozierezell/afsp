@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import Img from 'gatsby-image'
 
 import { styles } from '../../css/css'
 
@@ -16,6 +17,7 @@ const solidBioCSS = css`
 	h1,
 	div {
 		color: ${styles.colors.white};
+		min-width: 350px;
 		max-width: 700px;
 		font-family: ${styles.fonts.avenirRegular};
 	}
@@ -47,10 +49,7 @@ const HeroBio = ({ data }) => {
 				<div>{title}</div>
 			</div>
 			<div>
-				<img
-					src={`${photo.url}?w=768&h=768&fit=crop&crop=faces`}
-					alt={photo.alt}
-				/>
+				<Img fluid={photo.fluid} alt={photo.alt} />
 			</div>
 		</div>
 	)
