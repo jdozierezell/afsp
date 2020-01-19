@@ -101,18 +101,18 @@ export const query = graphql`
 			channelList {
 				image {
 					url
-					# fluid(
-					# 	maxWidth: 200
-					# 	imgixParams: {
-					# 		auto: "format"
-					# 		fit: "crop"
-					# 		crop: "faces"
-					# 		w: "200"
-					# 		h: "200"
-					# 	}
-					# ) {
-					# 	...GatsbyDatoCmsFluid
-					# }
+					fluid(
+						maxWidth: 200
+						imgixParams: {
+							auto: "format"
+							fit: "crop"
+							crop: "faces"
+							w: "200"
+							h: "200"
+						}
+					) {
+						...GatsbyDatoCmsFluid
+					}
 				}
 				heading
 				brief

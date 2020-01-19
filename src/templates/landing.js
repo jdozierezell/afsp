@@ -19,12 +19,9 @@ const landingTitle = css`
 	}
 `
 
-const landingBrief = css`
+const landingBriefCSS = css`
 	padding: 0 24px;
 	margin: 0;
-	@media (min-width: ${styles.screens.tablet}px) {
-		padding: 0 ${styles.scale.px50} ${styles.scale.px50};
-	}
 `
 
 const channelCSS = css`
@@ -49,7 +46,19 @@ const Landing = ({ data: { landing } }) => {
 		<Layout theme={styles.logo.mobileDarkDesktopDark}>
 			<HelmetDatoCms seo={landing.seoMetaTags} />
 			<h1 css={landingTitle}>{landing.title}</h1>
-			<p css={landingBrief}>{landing.seo.description}</p>
+			<p
+				css={css`
+					${landingBriefCSS};
+					@media (min-width: ${styles.screens.tablet}px) {
+						padding: 0 ${styles.scale.px50}
+							${landing.channelList.length !== 0
+								? 0
+								: styles.scale.px50};
+					}
+				`}
+			>
+				{landing.seo.description}
+			</p>
 			{landing.channelList.length !== 0 && (
 				<ChannelContainer
 					channelList={landing.channelList}

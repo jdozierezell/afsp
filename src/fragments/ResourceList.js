@@ -48,6 +48,7 @@ export const ResourceList = graphql`
 							...GatsbyDatoCmsFluid
 						}
 					}
+					description
 				}
 			}
 		}
