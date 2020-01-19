@@ -100,7 +100,7 @@ export const query = graphql`
 						fluid(
 							maxWidth: 600
 							imgixParams: {
-								fm: "jpg"
+								auto: "format"
 								fit: "crop"
 								crop: "faces"
 								w: "600"

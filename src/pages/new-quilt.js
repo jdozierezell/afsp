@@ -46,7 +46,7 @@ export const query = graphql`
 				# fluid(
 				# 	maxWidth: 769
 				# 	imgixParams: {
-				# 		fm: "jpg"
+				# 		auto: "format"
 				# 		fit: "crop"
 				# 		crop: "faces"
 				# 		w: "769"
@@ -61,7 +61,7 @@ export const query = graphql`
 				# fluid(
 				# 	maxWidth: 1920
 				# 	imgixParams: {
-				# 		fm: "jpg"
+				# 		auto: "format"
 				# 		fit: "crop"
 				# 		crop: "faces"
 				# 		ar: 2.5

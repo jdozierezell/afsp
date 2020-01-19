@@ -112,18 +112,18 @@ export const query = graphql`
 			channelList {
 				image {
 					url
-					# fluid(
-					# 	maxWidth: 200
-					# 	imgixParams: {
-					# 		fm: "jpg"
-					# 		fit: "crop"
-					# 		crop: "faces"
-					# 		w: "200"
-					# 		h: "200"
-					# 	}
-					# ) {
-					# 	...GatsbyDatoCmsFluid
-					# }
+					fluid(
+						maxWidth: 200
+						imgixParams: {
+							auto: "format"
+							fit: "crop"
+							crop: "faces"
+							w: "200"
+							h: "200"
+						}
+					) {
+						...GatsbyDatoCmsFluid
+					}
 				}
 				heading
 				link {
@@ -149,18 +149,18 @@ export const query = graphql`
 								description
 								image {
 									url
-									# fluid(
-									# 	maxWidth: 600
-									# 	imgixParams: {
-									# 		fm: "jpg"
-									# 		fit: "crop"
-									# 		crop: "faces"
-									# 		w: "600"
-									# 		h: "370"
-									# 	}
-									# ) {
-									# 	...GatsbyDatoCmsFluid
-									# }
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -172,18 +172,18 @@ export const query = graphql`
 								description
 								image {
 									url
-									# fluid(
-									# 	maxWidth: 600
-									# 	imgixParams: {
-									# 		fm: "jpg"
-									# 		fit: "crop"
-									# 		crop: "faces"
-									# 		w: "600"
-									# 		h: "370"
-									# 	}
-									# ) {
-									# 	...GatsbyDatoCmsFluid
-									# }
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}

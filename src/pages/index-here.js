@@ -122,7 +122,7 @@ export const query = graphql`
 					# fluid(
 					# 	maxWidth: 200
 					# 	imgixParams: {
-					# 		fm: "jpg"
+					# 		auto: "format"
 					# 		fit: "crop"
 					# 		crop: "faces"
 					# 		w: "200"
@@ -158,6 +158,7 @@ export const query = graphql`
 					showChapterConnection
 				}
 				... on DatoCmsResourceList {
+					__typename
 					...ResourceList
 				}
 			}

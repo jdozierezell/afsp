@@ -11,6 +11,18 @@ export const ResourceList = graphql`
 				seo {
 					image {
 						url
+						fluid(
+							maxWidth: 600
+							imgixParams: {
+								auto: "format"
+								fit: "crop"
+								crop: "faces"
+								w: "600"
+								h: "370"
+							}
+						) {
+							...GatsbyDatoCmsFluid
+						}
 					}
 					description
 				}
@@ -23,6 +35,18 @@ export const ResourceList = graphql`
 				seo {
 					image {
 						url
+						fluid(
+							maxWidth: 600
+							imgixParams: {
+								auto: "format"
+								fit: "crop"
+								crop: "faces"
+								w: "600"
+								h: "370"
+							}
+						) {
+							...GatsbyDatoCmsFluid
+						}
 					}
 				}
 			}

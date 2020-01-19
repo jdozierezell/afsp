@@ -1,6 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import Img from 'gatsby-image'
 
 import { styles } from '../../css/css'
 import buildUrl from '../../utils/buildUrl'
@@ -27,10 +28,7 @@ const featuredCSS = css`
 const FeaturedResources = ({ data }) => {
 	return (
 		<div css={featuredCSS}>
-			<img
-				src={`${data.seo.image.url}?w=600&h=370&fit=crop&crop=faces`}
-				alt=""
-			/>
+			<Img fluid={data.seo.image.fluid} alt="" />
 			<h2 dangerouslySetInnerHTML={{ __html: data.title }}></h2>
 			<p
 				dangerouslySetInnerHTML={{

@@ -13,7 +13,7 @@ export const ChapterSearch = graphql`
 						fluid(
 							maxWidth: 1080
 							imgixParams: {
-								fm: "jpg"
+								auto: "format"
 								fit: "crop"
 								crop: "faces"
 								w: "1080"
@@ -29,7 +29,7 @@ export const ChapterSearch = graphql`
 					fluid(
 						maxWidth: 600
 						imgixParams: {
-							fm: "jpg"
+							auto: "format"
 							fit: "crop"
 							crop: "faces"
 							w: "600"

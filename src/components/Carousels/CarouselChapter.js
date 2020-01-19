@@ -37,7 +37,7 @@ const CarouselChapter = ({ title, titleHref, image }) => {
 			<AniLink
 				fade
 				duration={styles.duration}
-				to={buildUrl('chapter', titleHref)}
+				to={buildUrl('/chapter', titleHref)}
 				css={carouselTitleCSS}
 			>
 				{title}
