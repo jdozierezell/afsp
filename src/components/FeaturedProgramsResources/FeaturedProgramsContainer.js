@@ -35,7 +35,7 @@ const containerCSS = css`
 	}
 `
 
-const FeaturedResourcesContainer = ({ resources, addCSS }) => {
+const FeaturedProgramsContainer = ({ resources, addCSS }) => {
 	return (
 		<section
 			css={css`
@@ -53,4 +53,4 @@ const FeaturedResourcesContainer = ({ resources, addCSS }) => {
 	)
 }
 
-export default FeaturedResourcesContainer
+export default FeaturedProgramsContainer

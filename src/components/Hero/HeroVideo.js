@@ -110,7 +110,7 @@ const HeroVideo = ({
 		<section
 			css={css`
 				${videoHeroCSS};
-				background-image: url(${`${posterUrl}?w=1920&h=1080&fit=crop&crop=faces`});
+				background-image: url(${`${posterUrl}?auto=format&w=1920&h=1080&fit=crop&crop=faces`});
 			`}
 		>
 			{videoUrl && (

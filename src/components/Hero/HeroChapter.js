@@ -108,7 +108,7 @@ const HeroChapter = ({ title, video, poster, brief }) => {
 			<div
 				css={css`
 					${videoImageCoverCSS};
-					background-image: url(${`${poster}?w=1920&h=1080&fit=crop&crop=faces`});
+					background-image: url(${`${poster}?auto=format&w=1920&h=1080&fit=crop&crop=faces`});
 				`}
 			>
 				{video && (

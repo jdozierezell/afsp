@@ -94,12 +94,12 @@ const CTAVideo = ({ cta }) => {
 		external,
 	} = cta
 	const video = backgroundVideo ? backgroundVideo.url : null
-	const poster = `${backgroundImage.url}?w=1920&h=1080&fit=crop&crop=faces`
+	const poster = `${backgroundImage.url}?auto=format&w=1920&h=1080&fit=crop&crop=faces`
 	return (
 		<section
 			css={css`
 				${videoCTACSS};
-				background-image: url(${`${poster}?w=1920&h=1080&fit=crop&crop=faces`});
+				background-image: url(${poster});
 			`}
 		>
 			{video && (

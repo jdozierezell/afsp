@@ -202,14 +202,51 @@ export const query = graphql`
 				}
 			}
 			featuredPrograms {
-				... on DatoCmsDetail {
+				... on DatoCmsLanding {
+					__typename
 					title
 					slug
 					seo {
-						description
 						image {
 							url
+							fluid(
+								maxWidth: 600
+								imgixParams: {
+									auto: "format"
+									fit: "crop"
+									crop: "faces"
+									w: "600"
+									h: "370"
+								}
+							) {
+								...GatsbyDatoCmsFluid
+							}
 						}
+						description
+					}
+				}
+				... on DatoCmsDetail {
+					__typename
+					title
+					slug
+					brief
+					seo {
+						image {
+							url
+							fluid(
+								maxWidth: 600
+								imgixParams: {
+									auto: "format"
+									fit: "crop"
+									crop: "faces"
+									w: "600"
+									h: "370"
+								}
+							) {
+								...GatsbyDatoCmsFluid
+							}
+						}
+						description
 					}
 				}
 			}

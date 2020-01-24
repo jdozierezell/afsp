@@ -44,7 +44,6 @@ const channelImageCSS = css`
 
 const Channel = ({ channel }) => {
 	const { image, heading, brief, linkText, link } = channel
-	console.log(image)
 	return (
 		<div css={channelCSS}>
 			{!linkText && (
