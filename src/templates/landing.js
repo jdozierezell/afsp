@@ -173,6 +173,29 @@ export const query = graphql`
 								}
 							}
 						}
+						... on DatoCmsDetailTagged {
+							__typename
+							title
+							slug
+							seo {
+								description
+								image {
+									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
+								}
+							}
+						}
 						... on DatoCmsLanding {
 							__typename
 							title
@@ -204,6 +227,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -218,6 +253,8 @@ export const query = graphql`
 				... on DatoCmsDetailSquare {
 					__typename
 					detail {
+						title
+						slug
 						details {
 							... on DatoCmsContent {
 								__typename
@@ -225,8 +262,6 @@ export const query = graphql`
 								contentHeading
 							}
 						}
-						title
-						slug
 					}
 				}
 				... on DatoCmsChapterConnection {

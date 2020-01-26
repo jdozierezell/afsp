@@ -69,7 +69,7 @@ const carouselButtonsCSS = css`
 	}
 `
 
-const CarouselChapterContainer = ({ location, carouselCSS }) => {
+const CarouselChapterContainer = ({ carouselCSS }) => {
 	const data = useStaticQuery(graphql`
 		query {
 			chapters: allDatoCmsChapterHomePage {
@@ -122,9 +122,12 @@ const CarouselChapterContainer = ({ location, carouselCSS }) => {
 					Find a chapter
 				</a>
 			</div>
-			<p>
-				Local chapters near <strong>{location}</strong>
-			</p>
+			{displayChapters.length >= 1 && (
+				<p>
+					Local chapters near {displayChapters[0][1]}
+					<strong>{displayChapters.primaryZip}</strong>
+				</p>
+			)}
 			{displayChapters.length >= 1 && (
 				<div className="glide-chapter">
 					<div data-glide-el="track">
@@ -133,9 +136,9 @@ const CarouselChapterContainer = ({ location, carouselCSS }) => {
 								return (
 									<CarouselChapter
 										key={index}
-										title={chapter.title}
-										titleHref={chapter.slug}
-										image={chapter.heroPoster.fluid}
+										title={chapter[0].title}
+										titleHref={chapter[0].slug}
+										image={chapter[0].heroPoster.fluid}
 									/>
 								)
 							})}

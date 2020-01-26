@@ -10,13 +10,14 @@ const chapterSearchResults = (chapters, response) => {
 					response.primaryZip
 				)
 			) {
-				chapterArray.unshift(chapter.node)
+				chapterArray.unshift([chapter.node, response.primaryZip])
 			} else if (
 				chapter.node.chapterInformation.zipCode.zips.some(zip =>
 					response.otherZips.includes(zip)
 				)
 			) {
-				chapterArray.push(chapter.node)
+				chapter.node['location'] = response.primaryZip
+				chapterArray.push([chapter.node, response.primaryZip])
 			}
 		}
 	})

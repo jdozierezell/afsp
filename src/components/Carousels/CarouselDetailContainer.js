@@ -92,54 +92,62 @@ const CarouselDetailContainer = ({
 				<div data-glide-el="track">
 					<ul className="glide__slides">
 						{details.map((section, index) => {
-							if (section.__typename === 'DatoCmsContent') {
-								const anchor = `/detail/${slug}/#${createAnchor(
-									section.contentHeading
-								)}`
-								return (
-									<CarouselDetail
-										key={index}
-										content={section.contentHeading}
-										anchor={anchor}
-										addCSS={addCSS}
-									/>
-								)
-							} else if (section.__typename === 'Event') {
-								return (
-									<CarouselDetail
-										key={index}
-										content={section.date}
-										title={section.title}
-										externalAnchor={true}
-										anchor={section.url}
-										addCSS={addCSS}
-									/>
-								)
+							if (!section) {
+								console.log('empty')
+							} else {
+								if (section.__typename === 'DatoCmsContent') {
+									const anchor = `/${slug}/#${createAnchor(
+										section.contentHeading
+									)}`
+									return (
+										<CarouselDetail
+											key={index}
+											content={section.contentHeading}
+											anchor={anchor}
+											addCSS={addCSS}
+										/>
+									)
+								} else if (section.__typename === 'Event') {
+									return (
+										<CarouselDetail
+											key={index}
+											content={section.date}
+											title={section.title}
+											externalAnchor={true}
+											anchor={section.url}
+											addCSS={addCSS}
+										/>
+									)
+								}
+								return ''
 							}
-							return ''
 						})}
 					</ul>
 				</div>
 				<div data-glide-el="controls[nav]" css={carouselButtonsCSS}>
 					{details.map((section, index) => {
-						if (section.__typename === 'DatoCmsContent') {
-							count++
-							return (
-								<button
-									key={index}
-									data-glide-dir={`=${count - 1}`}
-								></button>
-							)
-						} else if (section.__typename === 'Event') {
-							count++
-							return (
-								<button
-									key={index}
-									data-glide-dir={`=${count - 1}`}
-								></button>
-							)
+						if (!section) {
+							console.log('empty')
+						} else {
+							if (section.__typename === 'DatoCmsContent') {
+								count++
+								return (
+									<button
+										key={index}
+										data-glide-dir={`=${count - 1}`}
+									></button>
+								)
+							} else if (section.__typename === 'Event') {
+								count++
+								return (
+									<button
+										key={index}
+										data-glide-dir={`=${count - 1}`}
+									></button>
+								)
+							}
+							return ''
 						}
-						return ''
 					})}
 				</div>
 			</div>
