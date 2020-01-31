@@ -258,7 +258,17 @@ export const query = graphql`
 							title
 							slug
 							details {
-								__typename
+								... on DatoCmsContent {
+									__typename
+									id
+									contentHeading
+								}
+							}
+						}
+						... on DatoCmsDetailTagged {
+							title
+							slug
+							details {
 								... on DatoCmsContent {
 									__typename
 									id
