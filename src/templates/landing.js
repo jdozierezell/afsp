@@ -253,13 +253,17 @@ export const query = graphql`
 				... on DatoCmsDetailSquare {
 					__typename
 					detail {
-						title
-						slug
-						details {
-							... on DatoCmsContent {
+						__typename
+						... on DatoCmsDetail {
+							title
+							slug
+							details {
 								__typename
-								id
-								contentHeading
+								... on DatoCmsContent {
+									__typename
+									id
+									contentHeading
+								}
 							}
 						}
 					}

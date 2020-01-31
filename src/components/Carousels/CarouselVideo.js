@@ -34,8 +34,9 @@ const CarouselVideo = ({ video, poster, title }) => {
 			<div>
 				<video
 					controls
+					preload="none"
 					src={video}
-					poster={`${poster}?w=1280&h=720&fit=crop&crop=faces`}
+					poster={`${poster}?w=720&h=405&fit=crop&crop=faces`}
 				>
 					<track default kind="captions" srcLang="en" src="#" />
 				</video>

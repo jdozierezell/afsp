@@ -75,10 +75,13 @@ const searchMapCSS = css`
 `
 
 const ChapterSearchResult = ({ chapter }) => {
-	const heroBackgroundImg = `${chapter.heroPoster.url}?w=1080&h=1080&fit=crop&crop=faces`
-	const chapterBackgroundImg = `${chapter.chapterInformation.chapterMap.url}?w=1080&h=1080`
+	const heroBackgroundImg = chapter[0].heroPoster.fluid.src
+	const chapterBackgroundImg =
+		chapter[0].chapterInformation.chapterMap.fluid.src
+
 	return (
 		<div css={searchResultCSS}>
+			{console.log(chapter)}
 			<div
 				css={css`
 					${searchImageCSS};
@@ -86,26 +89,26 @@ const ChapterSearchResult = ({ chapter }) => {
 				`}
 			></div>
 			<div css={searchInfoCSS}>
-				<h2>AFSP {chapter.title}</h2>
+				<h2>AFSP {chapter[0].title}</h2>
 				<h3>Community contact:</h3>
 				<address>
-					<strong>{chapter.staffName}</strong>
+					<strong>{chapter[0].staffName}</strong>
 					<br />
-					{chapter.staffTitle}
+					{chapter[0].staffTitle}
 					<br />
-					<a href={`mailto:${chapter.staffEmail}`}>
-						{chapter.staffEmail}
+					<a href={`mailto:${chapter[0].staffEmail}`}>
+						{chapter[0].staffEmail}
 					</a>
 					<br />
-					<a href={`tel:${chapter.staffPhone}`}>
-						{chapter.staffPhone}
+					<a href={`tel:${chapter[0].staffPhone}`}>
+						{chapter[0].staffPhone}
 					</a>
 				</address>
 				<AniLink
 					className="secondary-button"
 					fade
 					duration={styles.duration}
-					to={`/chapter/${chapter.slug}`}
+					to={`/chapter/${chapter[0].slug}`}
 				>
 					More info
 				</AniLink>

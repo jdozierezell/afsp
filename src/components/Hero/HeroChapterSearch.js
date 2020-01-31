@@ -95,6 +95,7 @@ const HeroChapterSearch = ({
 	title,
 	description,
 	handleClick,
+	handleSubmit,
 	radius,
 	updateRadius,
 	zip,
@@ -104,12 +105,18 @@ const HeroChapterSearch = ({
 		<div css={solidHeroCSS}>
 			<h1>{title}</h1>
 			<h3 css={subHeaderCSS}>{description}</h3>
-			<form>
+			<form
+				onSubmit={e => {
+					e.preventDefault()
+					console.log('enter')
+					handleSubmit()
+				}}
+			>
 				<div css={inputCSS}>
 					<input
 						type="text"
 						placeholder="Search by zip"
-						onBlur={e => {
+						onChange={e => {
 							updateZip(e.target.value)
 						}}
 					/>
@@ -128,12 +135,9 @@ const HeroChapterSearch = ({
 					<option value="100">100 Miles</option>
 				</select>
 				<button
+					type="submit"
 					className="secondary-button"
 					id="search-button"
-					onClick={e => {
-						e.preventDefault()
-						handleClick()
-					}}
 				>
 					Search
 				</button>

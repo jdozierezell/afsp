@@ -36,12 +36,6 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 	const updateRadius = newRadius => setRadius(newRadius)
 	const updateZip = newZip => setZip(newZip)
 
-	// useEffect(() => {
-	// 	if (query.zip && query.radius) {
-	// 		handleSearchClick(query.zip, query.radius)
-	// 	}
-	// }, [query])
-
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HelmetDatoCms seo={search.seoMetaTags} />
@@ -49,6 +43,7 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 				title={search.title}
 				description={search.seo.description}
 				handleClick={handleSearchClick}
+				handleSubmit={handleSearchClick}
 				radius={query.radius}
 				updateRadius={updateRadius}
 				zip={query.zip}

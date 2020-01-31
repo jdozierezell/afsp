@@ -76,6 +76,7 @@ const videoDescriptionCSS = css`
 `
 
 const descriptionWrapperCSS = css`
+	word-wrap: initial;
 	@media (min-width: ${styles.screens.tablet}px) {
 		position: absolute;
 		top: ${styles.scale.px80};

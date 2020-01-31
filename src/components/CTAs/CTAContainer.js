@@ -8,8 +8,8 @@ import CTANoDescription from './CTANoDescription'
 import { styles } from '../../css/css'
 
 import background1 from '../SVGs/BackgroundOneBlueGreen.svg'
-import background2 from '../SVGs/BackgroundOneBlueYellow.svg'
-import background3 from '../SVGs/BackgroundOneFuchsiaDarkBlue.svg'
+import background2 from '../SVGs/BackgroundOneFuchsiaDarkBlue.svg'
+import background3 from '../SVGs/BackgroundOneBlueYellow.svg'
 import background4 from '../SVGs/BackgroundOneWhiteGreen.svg'
 import background5 from '../SVGs/BackgroundOneGreenYellow.svg'
 

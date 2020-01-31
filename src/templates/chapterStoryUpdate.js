@@ -45,35 +45,35 @@ export const query = graphql`
 			}
 			mobileCover: coverImage {
 				url
-				# fluid(
-				# 	maxWidth: 769
-				# 	imgixParams: {
-				# 		auto: "format"
-				# 		fit: "crop"
-				# 		crop: "faces"
-				# 		w: "769"
-				# 		h: "475"
-				# 	}
-				# ) {
-				# 	...GatsbyDatoCmsFluid
-				# }
+				fluid(
+					maxWidth: 769
+					imgixParams: {
+						auto: "format"
+						fit: "crop"
+						crop: "faces"
+						w: "769"
+						h: "475"
+					}
+				) {
+					...GatsbyDatoCmsFluid
+				}
 			}
 			desktopCover: coverImage {
 				url
-				# fluid(
-				# 	maxWidth: 1920
-				# 	imgixParams: {
-				# 		auto: "format"
-				# 		fit: "crop"
-				# 		crop: "faces"
-				# 		ar: 2.5
-				# 		w: "1920"
-				# 		blendMode: "hardlight"
-				# 		blend: "555"
-				# 	}
-				# ) {
-				# 	...GatsbyDatoCmsFluid
-				# }
+				fluid(
+					maxWidth: 1920
+					imgixParams: {
+						auto: "format"
+						fit: "crop"
+						crop: "faces"
+						w: "1920"
+						h: "768"
+						blendMode: "hardlight"
+						blend: "555"
+					}
+				) {
+					...GatsbyDatoCmsFluid
+				}
 			}
 			article {
 				... on DatoCmsBody {
@@ -90,15 +90,19 @@ export const query = graphql`
 				... on DatoCmsDetailSquare {
 					__typename
 					detail {
-						details {
-							... on DatoCmsContent {
+						__typename
+						... on DatoCmsDetail {
+							title
+							slug
+							details {
 								__typename
-								id
-								contentHeading
+								... on DatoCmsContent {
+									__typename
+									id
+									contentHeading
+								}
 							}
 						}
-						title
-						slug
 					}
 				}
 			}
