@@ -42,8 +42,9 @@ const ContentGeneric = ({ data }) => {
 						<RecommendationsVideoStories
 							key={index}
 							videoData={{
-								title: detail.videoTitle,
-								url: detail.videoUrl,
+								title: detail.video.title,
+								url: detail.video.url,
+								poster: detail.poster.fluid.src,
 							}}
 							storyData={detail.storyRecommendation}
 						/>

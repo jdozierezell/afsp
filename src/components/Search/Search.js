@@ -4,6 +4,7 @@ import algoliasearch from 'algoliasearch/lite'
 import {
 	InstantSearch,
 	SearchBox,
+	Index,
 	Hits,
 	Highlight,
 } from 'react-instantsearch-dom'

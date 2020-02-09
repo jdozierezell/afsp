@@ -8,6 +8,18 @@ export const Recommendation = graphql`
 		}
 		poster {
 			url
+			fluid(
+				maxWidth: 600
+				imgixParams: {
+					auto: "format"
+					fit: "crop"
+					crop: "faces"
+					w: "1920"
+					h: "1080"
+				}
+			) {
+				...GatsbyDatoCmsFluid
+			}
 		}
 		storyRecommendation {
 			title

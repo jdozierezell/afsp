@@ -16,9 +16,9 @@ const storyHeroCSS = css`
 		margin: 0;
 		align-items: center;
 		text-align: center;
-		background-blend-mode: soft-light;
 		background-size: cover;
 		background-position: center;
+		background-color: ${styles.colors.darkGray};
 	}
 `
 
@@ -41,6 +41,7 @@ const storyMetaCSS = css`
 	a {
 		font-size: ${styles.scale.px18};
 		font-family: ${styles.fonts.avenirDemi};
+		color: ${styles.colors.white};
 		@media (min-width: ${styles.screens.tablet}px) {
 			font-size: ${styles.scale.px18};
 		}
@@ -59,7 +60,6 @@ const storyMetaCSS = css`
 		margin-left: ${styles.scale.px5};
 	}
 	li {
-		color: ${styles.colors.poppy};
 		display: inline-block;
 		margin-right: ${styles.scale.px5};
 	}
@@ -115,9 +115,12 @@ const storyButtonCSS = css`
 	display: inline-block;
 	background: transparent;
 	border: 0;
-	width: ${styles.scale.px40};
 	margin-bottom: ${styles.scale.px30};
 	text-align: center;
+	text-decoration: none;
+	svg {
+		width: ${styles.scale.px40};
+	}
 `
 
 const HeroStories = ({ data, prev, next }) => {
@@ -150,12 +153,7 @@ const HeroStories = ({ data, prev, next }) => {
 			css={css`
 				${storyHeroCSS};
 				@media (min-width: ${styles.screens.tablet}px) {
-					background-image: linear-gradient(
-							to right,
-							${styles.colors.darkGray},
-							${styles.colors.darkGray}
-						),
-						url(${desktopCover.url});
+					background-image: url(${desktopCover.fluid.src});
 				}
 			`}
 		>
@@ -225,8 +223,8 @@ const HeroStories = ({ data, prev, next }) => {
 							color={styles.colors.white}
 							direction="left"
 						/>
+						<p>{prev.title}</p>
 					</AniLink>
-					<p>{prev.title}</p>
 				</div>
 			)}
 			{next && (
@@ -241,8 +239,8 @@ const HeroStories = ({ data, prev, next }) => {
 							color={styles.colors.white}
 							direction="right"
 						/>
+						<p>{next.title}</p>
 					</AniLink>
-					<p>{next.title}</p>
 				</div>
 			)}
 		</section>

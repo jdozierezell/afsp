@@ -44,7 +44,7 @@ const Recommendations = ({ data }) => {
 	return (
 		<div css={recommendationsCSS}>
 			<h2>{data.heading}</h2>
-			{data.stories.map((story, index) => (
+			{data.map((story, index) => (
 				<div key={index} css={storyCSS}>
 					<AniLink
 						fade

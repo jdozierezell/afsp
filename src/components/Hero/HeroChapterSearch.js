@@ -108,7 +108,6 @@ const HeroChapterSearch = ({
 			<form
 				onSubmit={e => {
 					e.preventDefault()
-					console.log('enter')
 					handleSubmit()
 				}}
 			>

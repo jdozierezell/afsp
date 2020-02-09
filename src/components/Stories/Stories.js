@@ -48,6 +48,7 @@ const featuredCSS = css`
 `
 
 const Stories = ({ story: { node } }) => {
+	console.log(node)
 	return (
 		<div css={featuredCSS}>
 			<Img fluid={node.coverImage.fluid} alt="" />
@@ -57,8 +58,8 @@ const Stories = ({ story: { node } }) => {
 					duration={styles.duration}
 					to={
 						node.type
-							? buildUrl(node.type, createAnchor(node.title))
-							: buildUrl('DatoCmsStory', createAnchor(node.title))
+							? buildUrl(node.type, createAnchor(node.slug))
+							: buildUrl('DatoCmsStory', createAnchor(node.slug))
 					}
 				>
 					{node.title}

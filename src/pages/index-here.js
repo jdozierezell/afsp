@@ -119,18 +119,18 @@ export const query = graphql`
 			channelList {
 				image {
 					url
-					# fluid(
-					# 	maxWidth: 200
-					# 	imgixParams: {
-					# 		auto: "format"
-					# 		fit: "crop"
-					# 		crop: "faces"
-					# 		w: "200"
-					# 		h: "200"
-					# 	}
-					# ) {
-					# 	...GatsbyDatoCmsFluid
-					# }
+					fluid(
+						maxWidth: 200
+						imgixParams: {
+							auto: "format"
+							fit: "crop"
+							crop: "faces"
+							w: "200"
+							h: "200"
+						}
+					) {
+						...GatsbyDatoCmsFluid
+					}
 				}
 				heading
 				brief
@@ -159,7 +159,100 @@ export const query = graphql`
 				}
 				... on DatoCmsResourceList {
 					__typename
-					...ResourceList
+					resource {
+						... on DatoCmsDetail {
+							__typename
+							title
+							slug
+							seo {
+								description
+								image {
+									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
+								}
+							}
+						}
+						... on DatoCmsDetailTagged {
+							__typename
+							title
+							slug
+							seo {
+								description
+								image {
+									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
+								}
+							}
+						}
+						... on DatoCmsLanding {
+							__typename
+							title
+							slug
+							seo {
+								description
+								image {
+									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
+								}
+							}
+						}
+						... on DatoCmsQuilt {
+							__typename
+							title
+							slug
+							seo {
+								description
+								image {
+									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 			instagramClass

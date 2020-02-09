@@ -68,10 +68,11 @@ export const query = graphql`
 					maxWidth: 1920
 					imgixParams: {
 						auto: "format"
-						fit: "crop"
+						fit: "fill"
+						fill: "blur"
 						crop: "faces"
-						ar: "2.5"
 						w: "1920"
+						h: "540"
 						blendMode: "hardlight"
 						blend: "555"
 					}

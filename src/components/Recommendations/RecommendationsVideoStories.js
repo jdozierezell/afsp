@@ -46,6 +46,7 @@ const RecommendationsVideoStories = ({ videoData, storyData }) => {
 				preload="metadata"
 				css={videoCSS}
 				src={videoData.url}
+				poster={videoData.poster}
 				onPlay={() => setIsPlaying(true)}
 				onPause={() => setIsPlaying(false)}
 				onEnded={() => setIsPlaying(false)}

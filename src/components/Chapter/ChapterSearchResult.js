@@ -81,7 +81,6 @@ const ChapterSearchResult = ({ chapter }) => {
 
 	return (
 		<div css={searchResultCSS}>
-			{console.log(chapter)}
 			<div
 				css={css`
 					${searchImageCSS};
