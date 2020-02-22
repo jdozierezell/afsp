@@ -1,13 +1,9 @@
 import React, { useState } from 'react'
 import { css } from '@emotion/core'
 import algoliasearch from 'algoliasearch/lite'
-import {
-	InstantSearch,
-	SearchBox,
-	Index,
-	Hits,
-	Highlight,
-} from 'react-instantsearch-dom'
+import { InstantSearch, SearchBox } from 'react-instantsearch-dom'
+
+import SearchHits from './SearchHits'
 
 import { styles } from '../../css/css'
 
@@ -52,35 +48,39 @@ const searchCSS = css`
 	li {
 		margin: 0;
 	}
-	p {
-		color: ${styles.colors.white};
-		border-bottom: 2px solid ${styles.colors.white};
-		padding: ${styles.scale.px12} 0;
-	}
 	li:last-of-type p {
 		border-bottom: none;
 	}
 `
 
-const Hit = ({ hit }) => {
-	// console.log(hit)
-	return (
-		<p>
-			<Highlight attribute="title" hit={hit} tagName="mark" />
-		</p>
-	)
-}
+// const SearchHits = ({ hits }) => (
+// 	<ol>
+// 		{hits.map(hit => (
+// 			<li key={hit.objectID}>{hit.title}</li>
+// 		))}
+// 	</ol>
+// )
 
 const Search = () => {
 	const [hasQuery, setQuery] = useState(null)
 	return (
 		<div css={searchCSS}>
-			<InstantSearch indexName="AFSP" searchClient={searchClient}>
+			<InstantSearch
+				indexName="afsporg-detail"
+				searchClient={searchClient}
+			>
 				<SearchBox
 					onChange={e => setQuery(e.target.value)}
 					translations={{ placeholder: 'What are you looking for?' }}
+					onSubmit={event => {
+						event.preventDefault()
+						console.log(event.currentTarget[0].value)
+						window.location.assign(
+							`/search-results?query=${event.currentTarget[0].value}`
+						)
+					}}
 				/>
-				{hasQuery && <Hits hitComponent={Hit} />}
+				{hasQuery && <SearchHits />}
 			</InstantSearch>
 		</div>
 	)
