@@ -54,6 +54,12 @@ const searchBoxCSS = css`
 	}
 `
 
+const indexWrapperCSS = css`
+	h2 {
+		margin: ${styles.scale.px36} 0 ${styles.scale.px24};
+	}
+`
+
 const SearchDetail = ({ visibility, searchState, handleSearchChange }) => {
 	const [displayNumber, setDisplayNumber] = useState({
 		pages: 5,
@@ -81,7 +87,7 @@ const SearchDetail = ({ visibility, searchState, handleSearchChange }) => {
 					}}
 				/>
 				{searchState.query !== '' && (
-					<>
+					<div css={indexWrapperCSS}>
 						<Index indexName="afsporg-page">
 							<h2 id="pages">Pages</h2>
 							<CustomStateResults />
@@ -112,7 +118,7 @@ const SearchDetail = ({ visibility, searchState, handleSearchChange }) => {
 							<CustomStateResults />
 							<SearchHits />
 						</Index>
-					</>
+					</div>
 				)}
 			</InstantSearch>
 		</div>

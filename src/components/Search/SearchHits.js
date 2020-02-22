@@ -11,6 +11,7 @@ import { styles } from '../../css/css'
 const customHitsCSS = css`
 	list-style: none;
 	margin-left: 0;
+	margin-bottom: ${styles.scale.px24};
 `
 
 const hitCSS = css`
@@ -30,7 +31,12 @@ const hitCSS = css`
 	}
 `
 
+const buttonCSS = css`
+	margin: 0;
+`
+
 const CustomHits = data => {
+	console.log(data)
 	const [display, setDisplay] = useState(5)
 	return (
 		<>
@@ -48,6 +54,7 @@ const CustomHits = data => {
 			{data.hasMore && (
 				<button
 					className="secondary-button"
+					css={buttonCSS}
 					onClick={() => {
 						setDisplay(display + 5)
 					}}
