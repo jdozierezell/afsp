@@ -19,12 +19,23 @@ const Detail = () => {
 	const [visibility, setVisibility] = useState(
 		hasQuery.length === 0 ? 'inherit' : 'hidden'
 	)
-	const [searchIndices, setSearchIndices] = useState({ details: [] })
-	const [searchDetails, setSearchDetails] = useState([])
+
+	const searchIndices = {
+		details: [
+			{ __typename: 'search', searchHeading: 'Pages' },
+			{ __typename: 'search', searchHeading: 'Stories' },
+			{ __typename: 'search', searchHeading: 'Events' },
+			{ __typename: 'search', searchHeading: 'Grants' },
+			{ __typename: 'search', searchHeading: 'Topics' },
+			{ __typename: 'search', searchHeading: 'Authors' },
+		],
+	}
+
 	const handleHeroClick = () => {
 		setVisibility('inherit')
 		setSearchState({ query: '' })
 	}
+
 	const handleSearchChange = event => {
 		setSearchState({
 			query: event.target.value,

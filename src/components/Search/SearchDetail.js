@@ -3,12 +3,12 @@ import { css } from '@emotion/core'
 import algoliasearch from 'algoliasearch/lite'
 import {
 	InstantSearch,
-	Hits,
 	Index,
 	connectStateResults,
 	SearchBox,
 } from 'react-instantsearch-dom'
 
+import SearchStateResults from '../../components/Search/SearchStateResults'
 import SearchHits from '../../components/Search/SearchHits'
 
 import { styles } from '../../css/css'
@@ -18,22 +18,7 @@ const searchClient = algoliasearch(
 	'dc6a5a451c85739a43419955d7a505c1'
 )
 
-const StateResults = ({ searchResults, searchState }) => {
-	const hasResults =
-		searchState.query !== '' && searchResults && searchResults.nbHits !== 0
-	const nbHits =
-		searchState.query !== '' && searchResults && searchResults.nbHits
-
-	return (
-		<div>
-			<div hidden={!hasResults}>There are {nbHits} results</div>
-			<div hidden={hasResults}>There are no results</div>
-			<div>{searchState.query}</div>
-		</div>
-	)
-}
-
-const CustomStateResults = connectStateResults(StateResults)
+const CustomStateResults = connectStateResults(SearchStateResults)
 
 const searchDetailCSS = css`
 	max-width: 623px;
@@ -70,6 +55,14 @@ const searchBoxCSS = css`
 `
 
 const SearchDetail = ({ visibility, searchState, handleSearchChange }) => {
+	const [displayNumber, setDisplayNumber] = useState({
+		pages: 5,
+		stories: 5,
+		events: 5,
+		grants: 5,
+		topics: 5,
+		authors: 5,
+	})
 	return (
 		<div css={searchDetailCSS}>
 			<InstantSearch
@@ -87,16 +80,36 @@ const SearchDetail = ({ visibility, searchState, handleSearchChange }) => {
 						placeholder: 'Looking for something? We can help.',
 					}}
 				/>
-				<CustomStateResults />
-				{console.log(searchState)}
 				{searchState.query !== '' && (
 					<>
-						<Index indexName="afsporg-detail">
-							<h2>Pages</h2>
+						<Index indexName="afsporg-page">
+							<h2 id="pages">Pages</h2>
+							<CustomStateResults />
 							<SearchHits />
 						</Index>
 						<Index indexName="afsporg-story">
-							<h2>Stories</h2>
+							<h2 id="stories">Stories</h2>
+							<CustomStateResults />
+							<SearchHits />
+						</Index>
+						<Index indexName="afsporg-event">
+							<h2 id="stories">Events</h2>
+							<CustomStateResults />
+							<SearchHits />
+						</Index>
+						<Index indexName="afsporg-grant">
+							<h2 id="stories">Grants</h2>
+							<CustomStateResults />
+							<SearchHits />
+						</Index>
+						<Index indexName="afsporg-tag">
+							<h2 id="stories">Topics</h2>
+							<CustomStateResults />
+							<SearchHits />
+						</Index>
+						<Index indexName="afsporg-author">
+							<h2 id="stories">Authors</h2>
+							<CustomStateResults />
 							<SearchHits />
 						</Index>
 					</>

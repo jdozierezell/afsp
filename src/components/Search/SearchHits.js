@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { css } from '@emotion/core'
-import { Highlight, connectHits } from 'react-instantsearch-dom'
+import {
+	Highlight,
+	connectInfiniteHits,
+	Configure,
+} from 'react-instantsearch-dom'
 
 import { styles } from '../../css/css'
 
@@ -26,19 +30,35 @@ const hitCSS = css`
 	}
 `
 
-const CustomHits = ({ hits }) => (
-	<ul css={customHitsCSS}>
-		{hits.map(hit => (
-			<li key={hit.objectID}>
-				<a href={hit.url} css={hitCSS}>
-					<img src="https://placekitten.com/126" alt="" />
-					<p>{hit.title}</p>
-				</a>
-			</li>
-		))}
-	</ul>
-)
+const CustomHits = data => {
+	const [display, setDisplay] = useState(5)
+	return (
+		<>
+			<Configure hitsPerPage={display} />
+			<ul css={customHitsCSS}>
+				{data.hits.map(hit => (
+					<li key={hit.objectID}>
+						<a href={hit.url} css={hitCSS}>
+							<img src="https://placekitten.com/126" alt="" />
+							<p>{hit.title}</p>
+						</a>
+					</li>
+				))}
+			</ul>
+			{data.hasMore && (
+				<button
+					className="secondary-button"
+					onClick={() => {
+						setDisplay(display + 5)
+					}}
+				>
+					Load more
+				</button>
+			)}
+		</>
+	)
+}
 
-const SearchHits = connectHits(CustomHits)
+const SearchHits = connectInfiniteHits(CustomHits)
 
 export default SearchHits
