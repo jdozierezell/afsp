@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import qs from 'qs'
 
 import Layout from '../components/Layout'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroSearch from '../components/Hero/HeroSearch'
 import NavigationSide from '../components/Navigation/NavigationSide'
-import ContentGeneric from '../components/Content/ContentGeneric'
 import SearchDetail from '../components/Search/SearchDetail'
 
 import { styles } from '../css/css'
@@ -16,7 +15,12 @@ const Detail = () => {
 			? qs.parse(window.location.search.slice(1))
 			: { query: '' }
 	)
-	const [visibility, setVisibility] = useState('hidden')
+	const hasQuery = searchState.query ? searchState.query : '' // running a check here prevents undefined error
+	const [visibility, setVisibility] = useState(
+		hasQuery.length === 0 ? 'inherit' : 'hidden'
+	)
+	const [searchIndices, setSearchIndices] = useState({ details: [] })
+	const [searchDetails, setSearchDetails] = useState([])
 	const handleHeroClick = () => {
 		setVisibility('inherit')
 		setSearchState({ query: '' })
@@ -34,6 +38,7 @@ const Detail = () => {
 			`${window.location.pathname}?${params}`
 		)
 	}
+
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HelmetDatoCms
@@ -48,13 +53,13 @@ const Detail = () => {
 			/>
 			<HeroSearch
 				data={{
-					title: `Search results for ${searchState.query}`,
+					title: searchState.query,
 					handleHeroClick: handleHeroClick,
 					visibility: visibility,
+					searchState: searchState,
 				}}
 			/>
-			{/* <NavigationSide data={detail} />
-			<ContentGeneric data={detail} /> */}
+			<NavigationSide data={searchIndices} navRoot={'search-results'} />
 			<SearchDetail
 				visibility={visibility}
 				searchState={searchState}

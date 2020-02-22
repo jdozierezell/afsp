@@ -50,7 +50,6 @@ const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
 			return ''
 		})
 	}
-
 	data.details.map(detail => {
 		if (detail.__typename === 'DatoCmsContent') {
 			if (detail.contentHeading) {
@@ -75,6 +74,9 @@ const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
 				heading: `${detail.tag.tag}s`,
 				anchor: `${anchor}s`,
 			})
+		} else if (detail.__typename === 'search') {
+			const anchor = createAnchor(detail.searchHeading)
+			headings.push({ heading: detail.searchHeading, anchor })
 		}
 		return headings
 	})

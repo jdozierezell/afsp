@@ -14,7 +14,8 @@ const solidHeroCSS = css`
 	}
 	li,
 	h1,
-	div {
+	div,
+	p {
 		color: ${styles.colors.white};
 		max-width: 700px;
 		font-family: ${styles.fonts.avenirRegular};
@@ -28,18 +29,38 @@ const solidHeroCSS = css`
 			margin: ${styles.scale.px40} 0;
 		}
 	}
+	p {
+		display: inline-block;
+		margin: 0 ${styles.scale.px16} ${styles.scale.px35} 0;
+	}
+	button {
+		margin-top: 0;
+	}
 `
 
 const HeroSearch = ({ data: { title, handleHeroClick, visibility } }) => {
 	return (
 		<div css={solidHeroCSS}>
-			<h1 dangerouslySetInnerHTML={{ __html: title }}></h1>
-			<div>
-				Can't find what you're looking for?{' '}
-				<button onClick={handleHeroClick}>
-					Search again. {visibility}
-				</button>
-			</div>
+			{title && (
+				<>
+					<h1>Search results for {title}</h1>
+					<div>
+						<p>Can't find what you're looking for?</p>
+						<button
+							onClick={handleHeroClick}
+							className="secondary-button"
+						>
+							Search again
+						</button>
+					</div>
+				</>
+			)}
+			{!title && visibility === 'inherit' && (
+				<>
+					<h1>Looking for something?</h1>
+					<div>Start searching below.</div>
+				</>
+			)}
 		</div>
 	)
 }

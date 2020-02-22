@@ -32,6 +32,7 @@ const searchCSS = css`
 		padding: 0;
 		width: ${styles.scale.px24};
 		height: ${styles.scale.px36};
+		cursor: pointer;
 	}
 	svg {
 		width: 20px;
@@ -65,10 +66,7 @@ const Search = () => {
 	const [hasQuery, setQuery] = useState(null)
 	return (
 		<div css={searchCSS}>
-			<InstantSearch
-				indexName="afsporg-detail"
-				searchClient={searchClient}
-			>
+			<InstantSearch indexName="afsporg-page" searchClient={searchClient}>
 				<SearchBox
 					onChange={e => setQuery(e.target.value)}
 					translations={{ placeholder: 'What are you looking for?' }}
