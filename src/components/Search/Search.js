@@ -54,14 +54,6 @@ const searchCSS = css`
 	}
 `
 
-// const SearchHits = ({ hits }) => (
-// 	<ol>
-// 		{hits.map(hit => (
-// 			<li key={hit.objectID}>{hit.title}</li>
-// 		))}
-// 	</ol>
-// )
-
 const Search = () => {
 	const [hasQuery, setQuery] = useState(null)
 	return (
@@ -69,6 +61,7 @@ const Search = () => {
 			<InstantSearch indexName="afsporg-page" searchClient={searchClient}>
 				<SearchBox
 					onChange={e => setQuery(e.target.value)}
+					searchAsYouType={false}
 					translations={{ placeholder: 'What are you looking for?' }}
 					onSubmit={event => {
 						event.preventDefault()
@@ -78,7 +71,6 @@ const Search = () => {
 						)
 					}}
 				/>
-				{hasQuery && <SearchHits />}
 			</InstantSearch>
 		</div>
 	)

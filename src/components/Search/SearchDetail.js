@@ -8,7 +8,10 @@ import {
 	connectStateResults,
 	SearchBox,
 } from 'react-instantsearch-dom'
-import qs from 'qs'
+
+import SearchHits from '../../components/Search/SearchHits'
+
+import { styles } from '../../css/css'
 
 const searchClient = algoliasearch(
 	'BONWJFMMRS',
@@ -32,9 +35,43 @@ const StateResults = ({ searchResults, searchState }) => {
 
 const CustomStateResults = connectStateResults(StateResults)
 
+const searchDetailCSS = css`
+	max-width: 623px;
+	margin: ${styles.scale.px50} ${styles.scale.px24};
+	@media (min-width: ${styles.screens.mobile}px) {
+		margin: ${styles.scale.px80} ${styles.scale.px50};
+	}
+`
+
+const searchBoxCSS = css`
+	position: relative;
+	input {
+		width: 100%;
+		padding-top: 4px;
+	}
+	button {
+		position: absolute;
+		right: ${styles.scale.px24};
+		top: ${styles.scale.px16};
+		background-color: transparent;
+		border: none;
+		padding: 0;
+		width: ${styles.scale.px24};
+		height: ${styles.scale.px36};
+		cursor: pointer;
+	}
+	svg {
+		width: 20px;
+		height: 20px;
+	}
+	.ais-SearchBox-reset {
+		display: none;
+	}
+`
+
 const SearchDetail = ({ visibility, searchState, handleSearchChange }) => {
 	return (
-		<div>
+		<div css={searchDetailCSS}>
 			<InstantSearch
 				indexName="afsporg-detail"
 				searchClient={searchClient}
@@ -42,9 +79,13 @@ const SearchDetail = ({ visibility, searchState, handleSearchChange }) => {
 			>
 				<SearchBox
 					css={css`
+						${searchBoxCSS};
 						visibility: ${visibility};
 					`}
 					onChange={handleSearchChange}
+					translations={{
+						placeholder: 'Looking for something? We can help.',
+					}}
 				/>
 				<CustomStateResults />
 				{console.log(searchState)}
@@ -52,11 +93,11 @@ const SearchDetail = ({ visibility, searchState, handleSearchChange }) => {
 					<>
 						<Index indexName="afsporg-detail">
 							<h2>Pages</h2>
-							<Hits />
+							<SearchHits />
 						</Index>
 						<Index indexName="afsporg-story">
 							<h2>Stories</h2>
-							<Hits />
+							<SearchHits />
 						</Index>
 					</>
 				)}
