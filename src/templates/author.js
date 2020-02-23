@@ -31,6 +31,7 @@ export const query = graphql`
 			edges {
 				node {
 					title
+					slug
 					tags {
 						tag
 						slug
