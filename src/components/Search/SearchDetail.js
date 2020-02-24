@@ -60,7 +60,12 @@ const indexWrapperCSS = css`
 	}
 `
 
-const SearchDetail = ({ visibility, searchState, handleSearchChange }) => {
+const SearchDetail = ({
+	visibility,
+	searchState,
+	handleSearchChange,
+	indexResults,
+}) => {
 	const [displayNumber, setDisplayNumber] = useState({
 		pages: 5,
 		stories: 5,
@@ -69,6 +74,7 @@ const SearchDetail = ({ visibility, searchState, handleSearchChange }) => {
 		topics: 5,
 		authors: 5,
 	})
+
 	return (
 		<div css={searchDetailCSS}>
 			<InstantSearch
@@ -90,32 +96,32 @@ const SearchDetail = ({ visibility, searchState, handleSearchChange }) => {
 					<div css={indexWrapperCSS}>
 						<Index indexName="afsporg-page">
 							<h2 id="pages">Pages</h2>
-							<CustomStateResults />
+							<CustomStateResults indexResults={indexResults} />
 							<SearchHits />
 						</Index>
 						<Index indexName="afsporg-story">
 							<h2 id="stories">Stories</h2>
-							<CustomStateResults />
+							<CustomStateResults indexResults={indexResults} />
 							<SearchHits />
 						</Index>
 						<Index indexName="afsporg-event">
 							<h2 id="stories">Events</h2>
-							<CustomStateResults />
+							<CustomStateResults indexResults={indexResults} />
 							<SearchHits />
 						</Index>
 						<Index indexName="afsporg-grant">
 							<h2 id="stories">Grants</h2>
-							<CustomStateResults />
+							<CustomStateResults indexResults={indexResults} />
 							<SearchHits />
 						</Index>
 						<Index indexName="afsporg-tag">
 							<h2 id="stories">Topics</h2>
-							<CustomStateResults />
+							<CustomStateResults indexResults={indexResults} />
 							<SearchHits />
 						</Index>
 						<Index indexName="afsporg-author">
 							<h2 id="stories">Authors</h2>
-							<CustomStateResults />
+							<CustomStateResults indexResults={indexResults} />
 							<SearchHits />
 						</Index>
 					</div>

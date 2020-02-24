@@ -20,7 +20,7 @@ const Detail = () => {
 		hasQuery.length === 0 ? 'inherit' : 'hidden'
 	)
 
-	const searchIndices = {
+	const [searchIndices, setSearchIndices] = useState({
 		details: [
 			{ __typename: 'search', searchHeading: 'Pages' },
 			{ __typename: 'search', searchHeading: 'Stories' },
@@ -29,7 +29,7 @@ const Detail = () => {
 			{ __typename: 'search', searchHeading: 'Topics' },
 			{ __typename: 'search', searchHeading: 'Authors' },
 		],
-	}
+	})
 
 	const handleHeroClick = () => {
 		setVisibility('inherit')
@@ -50,8 +50,57 @@ const Detail = () => {
 		)
 	}
 
+	const indexResults = (hasResults, searchResults) => {
+		let indexType = ''
+		const tempIndices = searchIndices
+		if (searchResults) {
+			switch (searchResults.index) {
+				case 'afsporg-page':
+					indexType = 'Pages'
+					break
+				case 'afsporg-story':
+					indexType = 'Stories'
+					break
+				case 'afsporg-event':
+					indexType = 'Events'
+					break
+				case 'afsporg-grant':
+					indexType = 'Grants'
+					break
+				case 'afsporg-tag':
+					indexType = 'Topics'
+					break
+				case 'afsporg-author':
+					indexType = 'Authors'
+					break
+			}
+			tempIndices.details.filter(
+				detail => detail.searchHeading !== indexType
+			)
+			tempIndices.details.forEach(detail =>
+				console.log(detail.searchHeading)
+			)
+			console.log(tempIndices)
+			console.log(indexType)
+			if (hasResults) {
+				tempIndices.details.push({
+					__typename: 'search',
+					searchHeading: indexType,
+				})
+			}
+			setSearchIndices(tempIndices)
+		} else {
+			// setSearchIndices({ details: [] })
+		}
+	}
+
+	useEffect(() => {
+		// just hanging out to force a rerender
+	}, [searchIndices])
+
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
+			{console.log(searchIndices.details)}
 			<HelmetDatoCms
 				seo={{
 					tags: [
@@ -75,6 +124,7 @@ const Detail = () => {
 				visibility={visibility}
 				searchState={searchState}
 				handleSearchChange={handleSearchChange}
+				indexResults={indexResults}
 			/>
 		</Layout>
 	)
