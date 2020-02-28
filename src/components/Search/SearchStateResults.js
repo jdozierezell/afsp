@@ -6,7 +6,7 @@ import { styles } from '../../css/css'
 const stateResultsCSS = css`
 	font-family: ${styles.fonts.avenirRegular};
 `
-const SearchStateResults = ({ searchState, searchResults, indexResults }) => {
+const SearchStateResults = ({ searchState, searchResults }) => {
 	let indexType = ''
 	if (searchResults) {
 		switch (searchResults.index) {
@@ -36,8 +36,6 @@ const SearchStateResults = ({ searchState, searchResults, indexResults }) => {
 
 	const nbHits =
 		searchState.query !== '' && searchResults && searchResults.nbHits
-
-	indexResults(hasResults, searchResults)
 
 	return (
 		<div css={stateResultsCSS}>

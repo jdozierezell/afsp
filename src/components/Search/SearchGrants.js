@@ -61,61 +61,31 @@ const indexWrapperCSS = css`
 	}
 `
 
-const SearchDetail = ({
-	visibility,
-	searchState,
-	handleSearchChange,
-	indexResults,
-}) => {
+const SearchGrants = ({ searchState, handleSearchChange, indexResults }) => {
 	return (
 		<div css={searchDetailCSS}>
 			<InstantSearch
-				indexName="afsporg-detail"
+				indexName="afsporg-grant"
 				searchClient={searchClient}
 				searchState={searchState}
 			>
 				<SearchBox
-					css={css`
-						${searchBoxCSS};
-						visibility: ${visibility};
-					`}
+					css={searchBoxCSS}
 					onChange={handleSearchChange}
 					translations={{
-						placeholder: 'Looking for something? We can help.',
+						placeholder: 'Start your search',
 					}}
 				/>
 				{searchState.query !== '' && (
 					<div css={indexWrapperCSS}>
-						<Configure hitsPerPage={10} />
-						<Index indexName="AFSP">
-							<CustomStateResults indexResults={indexResults} />
-							<SearchHits />
-						</Index>
-						{/* <Index indexName="afsporg-story">
-							<CustomStateResults indexResults={indexResults} />
-							<SearchHits />
-						</Index>
-						<Index indexName="afsporg-event">
-							<CustomStateResults indexResults={indexResults} />
-							<SearchHits />
-						</Index>
-						<Index indexName="afsporg-grant">
-							<CustomStateResults indexResults={indexResults} />
-							<SearchHits />
-						</Index>
-						<Index indexName="afsporg-tag">
-							<CustomStateResults indexResults={indexResults} />
-							<SearchHits />
-						</Index>
-						<Index indexName="afsporg-author">
-							<CustomStateResults indexResults={indexResults} />
-							<SearchHits />
-						</Index> */}
+						<CustomStateResults indexResults={indexResults} />
+						<SearchHits />
 					</div>
 				)}
 			</InstantSearch>
+			foo
 		</div>
 	)
 }
 
-export default SearchDetail
+export default SearchGrants

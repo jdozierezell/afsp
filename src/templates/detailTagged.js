@@ -111,10 +111,7 @@ export const query = graphql`
 				}
 			}
 			seoMetaTags {
-				tags
-				internal {
-					description
-				}
+				...GatsbyDatoCmsSeoMetaTags
 			}
 		}
 		stories: allDatoCmsStory(

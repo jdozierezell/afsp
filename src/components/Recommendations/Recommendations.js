@@ -40,10 +40,10 @@ const storyCSS = css`
 	}
 `
 
-const Recommendations = ({ data }) => {
+const Recommendations = ({ data, heading }) => {
 	return (
 		<div css={recommendationsCSS}>
-			<h2>{data.heading}</h2>
+			{heading && <h2>{heading}</h2>}
 			{data.map((story, index) => (
 				<div key={index} css={storyCSS}>
 					<AniLink

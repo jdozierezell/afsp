@@ -70,7 +70,7 @@ export const query = graphql`
 		grant: datoCmsGrant(slug: { eq: $slug }) {
 			title
 			seoMetaTags {
-				tags
+				...GatsbyDatoCmsSeoMetaTags
 			}
 			grantInformation {
 				__typename

@@ -31,7 +31,7 @@ const MenuCTA = ({ width, margin }) => {
 				width: ${width};
 				margin: ${margin};
 			`}
-			href="https://afsp.donordrive.com/index.cfm?fuseaction=donate.event&eventID=1"
+			href="/give-a-gift"
 		>
 			Donate
 		</a>

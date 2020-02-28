@@ -39,7 +39,8 @@ const RecommendationsContentStories = ({ data }) => {
 				<div dangerouslySetInnerHTML={{ __html: data.content }}></div>
 			</div>
 			<Recommendations
-				data={{ stories: data.storyLink, heading: data.storiesHeading }}
+				data={data.storyLink}
+				heading={data.storiesHeading}
 			/>
 		</section>
 	)

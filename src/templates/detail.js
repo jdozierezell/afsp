@@ -85,10 +85,7 @@ export const query = graphql`
 			}
 			overrideWidth
 			seoMetaTags {
-				tags
-				internal {
-					description
-				}
+				...GatsbyDatoCmsSeoMetaTags
 			}
 		}
 	}

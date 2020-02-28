@@ -11,7 +11,13 @@ import { styles } from '../../css/css'
 const customHitsCSS = css`
 	list-style: none;
 	margin-left: 0;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
 	margin-bottom: ${styles.scale.px24};
+	li {
+		width: calc(50% - ${styles.scale.px24});
+	}
 `
 
 const hitCSS = css`
@@ -22,6 +28,7 @@ const hitCSS = css`
 	border-radius: ${styles.scale.px5};
 	img {
 		min-width: ${styles.scale.px126};
+		max-width: ${styles.scale.px126};
 		display: inline-block;
 		margin: 0;
 	}
@@ -36,15 +43,16 @@ const buttonCSS = css`
 `
 
 const CustomHits = data => {
-	const [display, setDisplay] = useState(5)
+	const [display, setDisplay] = useState(20)
 	return (
 		<>
 			<Configure hitsPerPage={display} />
 			<ul css={customHitsCSS}>
 				{data.hits.map(hit => (
-					<li key={hit.objectID}>
+					<li key={hit} data-type={hit.type}>
+						{console.log(hit)}
 						<a href={hit.url} css={hitCSS}>
-							<img src="https://placekitten.com/126" alt="" />
+							<img src={hit.image} alt="result primary" />
 							<p>{hit.title}</p>
 						</a>
 					</li>
@@ -55,7 +63,7 @@ const CustomHits = data => {
 					className="secondary-button"
 					css={buttonCSS}
 					onClick={() => {
-						setDisplay(display + 5)
+						setDisplay(display + 10)
 					}}
 				>
 					Load more

@@ -263,8 +263,12 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 									{...getLabelProps()}
 									htmlFor="state-input"
 								>
-									Search state to add to the list to compare
-									statistics
+									Download our{' '}
+									<a href="https://www.datocms-assets.com/12810/1582813931-usfactsfiguresflyer.pdf">
+										Suicide Facts &amp; Figures
+									</a>{' '}
+									national fact sheet <br />
+									or search below to view state statistics
 								</label>
 								<input
 									{...getInputProps()}
