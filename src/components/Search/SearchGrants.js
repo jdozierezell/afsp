@@ -3,14 +3,12 @@ import { css } from '@emotion/core'
 import algoliasearch from 'algoliasearch/lite'
 import {
 	InstantSearch,
-	Index,
 	connectStateResults,
 	SearchBox,
-	Configure,
 } from 'react-instantsearch-dom'
 
-import SearchStateResults from '../../components/Search/SearchStateResults'
 import SearchHits from '../../components/Search/SearchHits'
+import SearchGrantRefinement from '../../components/Search/SearchGrantRefinement'
 
 import { styles } from '../../css/css'
 
@@ -18,8 +16,6 @@ const searchClient = algoliasearch(
 	'BONWJFMMRS',
 	'dc6a5a451c85739a43419955d7a505c1'
 )
-
-const CustomStateResults = connectStateResults(SearchStateResults)
 
 const searchDetailCSS = css`
 	/* max-width: 623px; */
@@ -56,6 +52,10 @@ const searchBoxCSS = css`
 `
 
 const indexWrapperCSS = css`
+	@media (min-width: ${styles.screens.tablet}px) {
+		display: grid;
+		grid-template-columns: 400px 1fr;
+	}
 	h2 {
 		margin: ${styles.scale.px36} 0 ${styles.scale.px24};
 	}
@@ -76,14 +76,28 @@ const SearchGrants = ({ searchState, handleSearchChange, indexResults }) => {
 						placeholder: 'Start your search',
 					}}
 				/>
-				{searchState.query !== '' && (
-					<div css={indexWrapperCSS}>
-						<CustomStateResults indexResults={indexResults} />
+				<div css={indexWrapperCSS}>
+					<div>
+						<SearchGrantRefinement
+							attribute="area"
+							displayAttribute="Research Area"
+							searchState={searchState}
+							handleSearchChange={handleSearchChange}
+							searchable
+						/>
+						<SearchGrantRefinement
+							attribute="grantType"
+							displayAttribute="Grant Type"
+							searchState={searchState}
+							handleSearchChange={handleSearchChange}
+							searchable
+						/>
+					</div>
+					<div>
 						<SearchHits />
 					</div>
-				)}
+				</div>
 			</InstantSearch>
-			foo
 		</div>
 	)
 }

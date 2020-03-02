@@ -16,14 +16,17 @@ const customHitsCSS = css`
 	justify-content: space-between;
 	margin-bottom: ${styles.scale.px24};
 	li {
-		width: calc(50% - ${styles.scale.px24});
+		width: 100%;
+		@media (min-width: ${styles.screens.tablet}px) {
+			width: calc(50% - ${styles.scale.px24});
+		}
 	}
 `
 
 const hitCSS = css`
 	display: flex;
 	flex-flow: row no-wrap;
-	align-items: center;
+	align-items: stretch;
 	border: ${styles.colors.darkGray} solid ${styles.scale.px2};
 	border-radius: ${styles.scale.px5};
 	img {
@@ -31,6 +34,7 @@ const hitCSS = css`
 		max-width: ${styles.scale.px126};
 		display: inline-block;
 		margin: 0;
+		object-fit: cover;
 	}
 	p {
 		padding: ${styles.scale.px24};
@@ -49,8 +53,7 @@ const CustomHits = data => {
 			<Configure hitsPerPage={display} />
 			<ul css={customHitsCSS}>
 				{data.hits.map(hit => (
-					<li key={hit} data-type={hit.type}>
-						{console.log(hit)}
+					<li key={hit.objectID} data-type={hit.type}>
 						<a href={hit.url} css={hitCSS}>
 							<img src={hit.image} alt="result primary" />
 							<p>{hit.title}</p>

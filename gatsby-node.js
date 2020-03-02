@@ -135,6 +135,14 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
+			imageLists: allDatoCmsImageList {
+				edges {
+					node {
+						slug
+						title
+					}
+				}
+			}
 		}
 	`)
 	const stories = data.stories.edges
@@ -148,6 +156,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	const detailsTagged = data.detailsTagged.edges
 	const landings = data.landings.edges
 	const chapterHomes = data.chapterHomes.edges
+	const imageLists = data.imageLists.edges
 
 	stories.forEach(({ node }, index) => {
 		createPage({
@@ -268,6 +277,16 @@ exports.createPages = async ({ graphql, actions }) => {
 			context: {
 				slug: node.slug,
 				tag: `AFSP ${node.title}`,
+			},
+		})
+	})
+
+	imageLists.forEach(({ node }) => {
+		createPage({
+			path: `${node.slug}`,
+			component: path.resolve('./src/templates/imageList.js'),
+			context: {
+				slug: node.slug,
 			},
 		})
 	})
