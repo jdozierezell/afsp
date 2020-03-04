@@ -28,6 +28,12 @@ const solidHeroCSS = css`
 			margin: ${styles.scale.px40} 0;
 		}
 	}
+	a {
+		color: ${styles.colors.yellow};
+		:hover {
+			color: ${styles.colors.white};
+		}
+	}
 `
 
 const HeroSolid = ({ data }) => {
