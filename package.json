@@ -56,6 +56,7 @@
 		"react-dom": "^16.8.6",
 		"react-facebook": "^8.1.4",
 		"react-helmet": "^5.2.1",
+		"react-hook-form": "^5.0.1",
 		"react-instantsearch-dom": "^5.7.0",
 		"react-konva": "^16.12.0-0",
 		"react-load-script": "^0.0.6",
