@@ -38,7 +38,6 @@ const ContentGeneric = ({ data }) => {
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsRecommendation') {
-					console.log(detail.storyRecommendation)
 					return (
 						<RecommendationsVideoStories
 							key={index}

@@ -29,7 +29,6 @@ const ImageListContainer = ({ images }) => {
 	return (
 		<div css={imageListCSS}>
 			{images.map(image => {
-				console.log(image)
 				return (
 					<div css={imageWrapperCSS}>
 						<a

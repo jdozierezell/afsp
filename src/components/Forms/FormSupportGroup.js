@@ -5,8 +5,9 @@ import * as Yup from 'yup'
 import { css } from '@emotion/core'
 import axios from 'axios'
 
+// import FormStateSelect from '../Forms/FormStateSelect'
+
 import stateList from '../../utils/stateList'
-import countryList from '../../utils/countryList'
 
 import { styles } from '../../css/css'
 
@@ -53,106 +54,77 @@ const formWrapperCSS = css`
 		display: block;
 		/* margin-top: -${styles.scale.px24};
 		margin-bottom: ${styles.scale.px36}; */
-    }
-    p {
-        color: ${styles.colors.poppy}
-    }
+	}
+`
+const selectCSS = css`
+	margin-bottom: ${styles.scale.px36};
+	.react-select__control {
+		border: 2px solid ${styles.colors.darkGray};
+		border-radius: 5px;
+	}
+	.react-select__input {
+		max-height: ${styles.scale.px42};
+	}
 `
 
-const FormSupportGroup = () => {
-	// const schema = Yup.object().shape({
-	// 	supportGroupName: Yup.string().required(
-	// 		'A support group name is required. Please enter your group name and resubmit.'
-	// 	),
-	// 	supportGroupWebsite: Yup.string().url('Invalid web address'),
-	// 	hostingSponsoringOrganizationWebsite: Yup.string().url(
-	// 		'Invalid web address'
-	// 	),
-	// 	contactName: Yup.string().required(
-	// 		"A contact name is required. Please enter the group contact's name and resubmit."
-	// 	),
-	// 	contactEmail: Yup.string()
-	// 		.email('Invalid email address')
-	// 		.required(
-	// 			"A contact email is required. Please enter the group contact's email and resubmit."
-	// 		),
-	// 	meetingSchedule: Yup.string().required(
-	// 		"A description of your meeting schedule is required. Please enter the group's schedule and resubmit."
-	// 	),
-	// 	nameOfMeetingSite: Yup.string().required(
-	// 		'The name of your meeting site is required. Please enter the site name and resubmit.'
-	// 	),
-	// 	meetingCountry: Yup.string().required(
-	// 		"Your meeting site's country is required. Please select the country and resubmit."
-	// 	),
-	// 	meetingAddress: Yup.string().required(
-	// 		"Your meeting site's address is required. Please enter the address and resubmit."
-	// 	),
-	// 	meetingCity: Yup.string().required(
-	// 		"Your meeting site's city is required. Please enter the city and resubmit."
-	// 	),
-	// 	meetingZipPostalCode: Yup.string().required(
-	// 		"Your meeting site's zip or postal code is required. Please enter the code and resubmit."
-	// 	),
-	// 	facilitator: Yup.string().required(
-	// 		"Information about your meeting site's facilitator(s) is required. Please make a selection and resubmit."
-	// 	),
-	// })
-
-	const {
-		register,
-		control,
-		handleSubmit,
-		watch,
-		errors,
-		setValue,
-	} = useForm()
-
+const QuiltForm = () => {
+	const { register, handleSubmit, watch, errors, setValue } = useForm()
 	const [values, setReactSelectValue] = useState({ selectedOption: [] })
-
-	const meetingCountry = watch('meetingCountry') // watch input value by passing the name of it
-
+	const schema = Yup.object().shape({
+		quiltTitle: Yup.string().required(
+			'A title is required. Please enter your title and resubmit your square.'
+		),
+		name: Yup.string().required(
+			'Your name is required. Please enter your name and resubmit your square.'
+		),
+		email: Yup.string()
+			.email('Invalid email address')
+			.required(
+				'Your email address is required. Please enter your email and resubmit your square.'
+			),
+		state: Yup.string().required(
+			'Your state was not selected. Please select your state and resubmit your square.'
+		),
+		image: Yup.mixed().required(
+			'An image is required to create your square. Please select an image and resubmit.'
+		),
+	})
 	const onSubmit = data => {
 		const form = document.querySelector('form')
 		let formData = new FormData(form)
+		formData.append('state', data.state.value)
 		console.log(data)
+		console.log(formData)
 		axios
 			.post(
 				'https://serene-dusk-44738.herokuapp.com/create-support-group',
-				data
+				formData,
+				{
+					headers: {
+						'Content-Type': 'multipart/form-data',
+					},
+				}
 			)
 			.then(response => console.log(response))
 			.catch(error => console.log(error))
 	}
 
-	const selectCSS = css`
-		margin-bottom: ${styles.scale.px36};
-		.react-select__control {
-			border: 2px solid ${styles.colors.darkGray};
-			border-radius: 5px;
-		}
-		.react-select__input {
-			max-height: ${styles.scale.px42};
-		}
-	`
-
 	const handleMultiChange = selectedOption => {
-		setValue('reactSelect', selectedOption)
+		setValue('state', selectedOption)
 		setReactSelectValue({ selectedOption })
 	}
 
 	useEffect(() => {
-		register({ name: 'reactSelect' })
+		register({ name: 'state' })
 	}, [register])
 
 	return (
 		<form css={formWrapperCSS} onSubmit={handleSubmit(onSubmit)}>
-			{/* register your input into the hook by invoking the "register" function */}
 			<label htmlFor="supportGroupName">Support Group Name</label>
 			{errors.supportGroupName && (
 				<p>{errors.supportGroupName.message}</p>
 			)}
-			<input name="supportGroupName" ref={register({ required: true })} />
+			<input name="supportGroupName" ref={register} />
 
 			<label htmlFor="supportGroupWebsite">Support Group Website</label>
 			{errors.supportGroupWebsite && (
@@ -224,9 +196,7 @@ const FormSupportGroup = () => {
 			{errors.meetingCity && <p>{errors.meetingCity.message}</p>}
 			<input name="meetingCity" ref={register} />
 
-			{meetingCountry === 'United States'}
 			<label htmlFor="meetingState">Meeting State</label>
-
 			<Select
 				css={selectCSS}
 				className="react-select"
@@ -262,10 +232,10 @@ const FormSupportGroup = () => {
 				`}
 				className="secondary-button"
 				type="submit"
-				value="Submit Support Group"
+				value="Submit Quilt"
 			/>
 		</form>
 	)
 }
 
-export default FormSupportGroup
+export default QuiltForm

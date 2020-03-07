@@ -80,8 +80,6 @@ const ShareableContainer = ({ instructions }) => {
 
 	const rotateImage = e => {
 		setImageRotation(imageRotation + 90)
-		console.log(imageOffsetX)
-		console.log(imageOffsetY)
 	}
 
 	const downloadImage = async e => {

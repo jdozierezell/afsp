@@ -65,7 +65,6 @@ const Search = () => {
 					translations={{ placeholder: 'What are you looking for?' }}
 					onSubmit={event => {
 						event.preventDefault()
-						console.log(event.currentTarget[0].value)
 						window.location.assign(
 							`/search-results?query=${event.currentTarget[0].value}`
 						)

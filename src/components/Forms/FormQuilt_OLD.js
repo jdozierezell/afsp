@@ -1,15 +1,34 @@
-import React, { useState, useEffect } from 'react'
-import { useForm } from 'react-hook-form'
-import Select from 'react-select'
+import React from 'react'
+import { Form, Input, FileInput } from '@rocketseat/unform'
 import * as Yup from 'yup'
 import { css } from '@emotion/core'
 import axios from 'axios'
 
-// import FormStateSelect from '../Forms/FormStateSelect'
+import FormStateSelect from '../Forms/FormStateSelect'
 
-import stateListModel from '../../utils/stateListModel'
+import stateList from '../../utils/stateList'
 
 import { styles } from '../../css/css'
+
+const schema = Yup.object().shape({
+	quiltTitle: Yup.string().required(
+		'A title is required. Please enter your title and resubmit your square.'
+	),
+	name: Yup.string().required(
+		'Your name is required. Please enter your name and resubmit your square.'
+	),
+	email: Yup.string()
+		.email('Invalid email address')
+		.required(
+			'Your email address is required. Please enter your email and resubmit your square.'
+		),
+	state: Yup.string().required(
+		'Your state was not selected. Please select your state and resubmit your square.'
+	),
+	image: Yup.mixed().required(
+		'An image is required to create your square. Please select an image and resubmit.'
+	),
+})
 
 const formWrapperCSS = css`
 	font-family: ${styles.fonts.avenirRegular};
@@ -56,49 +75,16 @@ const formWrapperCSS = css`
 		margin-bottom: ${styles.scale.px36}; */
 	}
 `
-const selectCSS = css`
-	margin-bottom: ${styles.scale.px36};
-	.react-select__control {
-		border: 2px solid ${styles.colors.darkGray};
-		border-radius: 5px;
-	}
-	.react-select__input {
-		max-height: ${styles.scale.px42};
-	}
-`
 
 const QuiltForm = () => {
-	const { register, handleSubmit, watch, errors, setValue } = useForm()
-	const [values, setReactSelectValue] = useState({ selectedOption: [] })
-	const schema = Yup.object().shape({
-		quiltTitle: Yup.string().required(
-			'A title is required. Please enter your title and resubmit your square.'
-		),
-		name: Yup.string().required(
-			'Your name is required. Please enter your name and resubmit your square.'
-		),
-		email: Yup.string()
-			.email('Invalid email address')
-			.required(
-				'Your email address is required. Please enter your email and resubmit your square.'
-			),
-		state: Yup.string().required(
-			'Your state was not selected. Please select your state and resubmit your square.'
-		),
-		image: Yup.mixed().required(
-			'An image is required to create your square. Please select an image and resubmit.'
-		),
-	})
-	const onSubmit = data => {
+	function handleProgress(progress, event) {}
+	const handleSubmit = data => {
 		const form = document.querySelector('form')
 		let formData = new FormData(form)
 		formData.append('image', data.image)
-		formData.append('state', data.state.value)
-		console.log(data)
-		console.log(formData)
 		axios
 			.post(
-				'https://serene-dusk-44738.herokuapp.com/create-support-group',
+				'https://serene-dusk-44738.herokuapp.com/create-quilt',
 				formData,
 				{
 					headers: {
@@ -109,26 +95,12 @@ const QuiltForm = () => {
 			.then(response => console.log(response))
 			.catch(error => console.log(error))
 	}
-
-	const handleMultiChange = selectedOption => {
-		setValue('state', selectedOption)
-		setReactSelectValue({ selectedOption })
-	}
-
-	useEffect(() => {
-		register({ name: 'state' })
-	}, [register])
-
 	return (
-		<form css={formWrapperCSS} onSubmit={handleSubmit(onSubmit)}>
+		<Form schema={schema} onSubmit={handleSubmit} css={formWrapperCSS}>
 			<label htmlFor="quiltTitle">Square Title/Name of Person Lost</label>
-			{errors.quiltTitle && <p>{errors.quiltTitle.message}</p>}
-			<input name="quiltTitle" ref={register} />
-
+			<Input name="quiltTitle" />
 			<label htmlFor="name">Your Name</label>
-			{errors.name && <p>{errors.name.message}</p>}
-			<input name="name" ref={register} />
-
+			<Input name="name" />
 			<label htmlFor="email">Your Email Address</label>
 			<p>
 				We will not share or sell your email address to other
@@ -136,34 +108,21 @@ const QuiltForm = () => {
 				email address to identify you should you request changes to your
 				square later on.
 			</p>
-			{errors.email && <p>{errors.email.message}</p>}
-			<input name="email" type="email" ref={register} />
-
+			<Input name="email" type="email" />
 			<label htmlFor="state">Your State</label>
 			<p>
 				Select the state where you live. If you live outside of the
 				U.S., select 'Not Applicable' at the bottom of the list of
 				choices. We will not share your information with any 3rd party.
 			</p>
-			{errors.state && <p>{errors.state.message}</p>}
-
-			<Select
-				css={selectCSS}
-				className="react-select"
-				classNamePrefix="react-select"
-				value={values.selectedOption}
-				options={stateListModel}
-				onChange={handleMultiChange}
-			/>
-
+			<FormStateSelect name="state" options={stateList} />
 			<label htmlFor="file">Square Image</label>
 			<p>
 				Please note, images do not need to be square when uploading.
 				They will appear as squares automatically.
 			</p>
 			<label htmlFor="image">Click here to upload your image</label>
-			<input name="image" id="image" type="file" ref={register} />
-
+			<FileInput name="image" onStartProgress={handleProgress} />
 			<label htmlFor="description">Square Description</label>
 			<p>
 				Enter a brief description of your quilt square. This can be
@@ -171,18 +130,11 @@ const QuiltForm = () => {
 				favorite moment or memory. If you like, you may leave this
 				section blank. This field is not required.
 			</p>
-			{errors.description && <p>{errors.description.message}</p>}
-			<textarea name="description" ref={register} />
-
-			<input
-				css={css`
-					margin-top: ${styles.scale.px64};
-				`}
-				className="secondary-button"
-				type="submit"
-				value="Submit Quilt"
-			/>
-		</form>
+			<Input name="description" multiline rows="5" cols="33" />
+			<button className="secondary-button" type="submit">
+				Submit
+			</button>
+		</Form>
 	)
 }
 

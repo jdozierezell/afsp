@@ -10,7 +10,6 @@ import { styles } from '../css/css'
 
 const CustomShareable = ({ data }) => {
 	const { customShareables } = data
-	console.log(customShareables)
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HelmetDatoCms seo={customShareables.seoMetaTags} />
