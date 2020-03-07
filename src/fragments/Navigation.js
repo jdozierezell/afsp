@@ -16,7 +16,7 @@ export const Navigation = graphql`
 						__typename
 						slug
 					}
-					... on DatoCmsChapterSearch {
+					... on DatoCmsSearchPage {
 						__typename
 						slug
 					}
@@ -34,7 +34,7 @@ export const Navigation = graphql`
 								__typename
 								slug
 							}
-							... on DatoCmsChapterSearch {
+							... on DatoCmsSearchPage {
 								__typename
 								slug
 							}

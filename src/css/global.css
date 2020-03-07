@@ -69,3 +69,38 @@ input {
 	text-decoration: none;
 	cursor: pointer;
 }
+
+.full-width {
+	width: 100%;
+}
+
+.secondary-button-group {
+	text-align: center;
+	background-color: hsla(0, 0%, 100%, 1);
+	border-radius: 30px;
+	border: solid 2px hsla(355, 84.3%, 50%, 1);
+	padding: 0px 32px;
+	margin-top: 24px;
+	margin-bottom: 24px;
+	display: inline-block;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.secondary-button-group button,
+.secondary-button-group label {
+	font-family: AvenirNextLTPro-Bold, Arial, sans-serif;
+	font-size: 18px;
+	line-height: 50px;
+	min-height: 50px;
+	display: inline-block;
+	color: hsla(355, 84.3%, 50%, 1);
+	width: 50%;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+.secondary-button-group *:first-child {
+	border-right: solid 2px hsla(355, 84.3%, 50%, 1);
+}

@@ -18,7 +18,7 @@ const buildUrl = (typename = '', slug = '') => {
 		case 'DatoCmsLanding':
 		case 'DatoCmsDetail':
 		case 'DatoCmsHomePage':
-		case 'DatoCmsChapterSearch':
+		case 'DatoCmsSearchPage':
 		case 'DatoCmsQuilt':
 		case 'DatoCmsStatistic':
 		case 'DatoCmsPartnerPage':

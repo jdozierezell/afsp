@@ -11,9 +11,23 @@ exports.createPages = async ({ graphql, actions }) => {
 	const { createPage, createRedirect } = actions
 	const { data } = await graphql(`
 		query {
-			stories: allDatoCmsStory(
-				sort: { fields: publicationDate, order: DESC }
-			) {
+			authors: allDatoCmsAuthor {
+				edges {
+					node {
+						authorName
+						slug
+					}
+				}
+			}
+			bios: allDatoCmsBio {
+				edges {
+					node {
+						slug
+						name
+					}
+				}
+			}
+			chapterHomes: allDatoCmsChapterHomePage {
 				edges {
 					node {
 						slug
@@ -31,39 +45,7 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
-			tags: allDatoCmsTag {
-				edges {
-					node {
-						slug
-						tag
-					}
-				}
-			}
-			authors: allDatoCmsAuthor {
-				edges {
-					node {
-						authorName
-						slug
-					}
-				}
-			}
-			redirects: allDatoCmsRedirect {
-				edges {
-					node {
-						aliasUrl
-						destinationUrl
-					}
-				}
-			}
-			bios: allDatoCmsBio {
-				edges {
-					node {
-						slug
-						name
-					}
-				}
-			}
-			grants: allDatoCmsGrant {
+			customShareables: allDatoCmsCustomShareable {
 				edges {
 					node {
 						slug
@@ -119,15 +101,7 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
-			landings: allDatoCmsLanding {
-				edges {
-					node {
-						slug
-						title
-					}
-				}
-			}
-			chapterHomes: allDatoCmsChapterHomePage {
+			grants: allDatoCmsGrant {
 				edges {
 					node {
 						slug
@@ -143,32 +117,102 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
+			landings: allDatoCmsLanding {
+				edges {
+					node {
+						slug
+						title
+					}
+				}
+			}
+			newRecords: allDatoCmsNewRecord {
+				edges {
+					node {
+						slug
+						title
+					}
+				}
+			}
+			searchPages: allDatoCmsSearchPage {
+				edges {
+					node {
+						slug
+						title
+					}
+				}
+			}
+			stories: allDatoCmsStory(
+				sort: { fields: publicationDate, order: DESC }
+			) {
+				edges {
+					node {
+						slug
+						title
+					}
+				}
+			}
+			tags: allDatoCmsTag {
+				edges {
+					node {
+						slug
+						tag
+					}
+				}
+			}
+			redirects: allDatoCmsRedirect {
+				edges {
+					node {
+						aliasUrl
+						destinationUrl
+					}
+				}
+			}
 		}
 	`)
-	const stories = data.stories.edges
-	const chapterStoriesUpdates = data.chapterStoriesUpdates.edges
-	const tags = data.tags.edges
 	const authors = data.authors.edges
-	const redirects = data.redirects.edges
 	const bios = data.bios.edges
-	const grants = data.grants.edges
+	const chapterHomes = data.chapterHomes.edges
+	const chapterStoriesUpdates = data.chapterStoriesUpdates.edges
+	const customShareables = data.customShareables.edges
 	const details = data.details.edges
 	const detailsTagged = data.detailsTagged.edges
-	const landings = data.landings.edges
-	const chapterHomes = data.chapterHomes.edges
+	const grants = data.grants.edges
 	const imageLists = data.imageLists.edges
+	const landings = data.landings.edges
+	const newRecords = data.newRecords.edges
+	const searchPages = data.searchPages.edges
+	const stories = data.stories.edges
+	const tags = data.tags.edges
+	const redirects = data.redirects.edges
 
-	stories.forEach(({ node }, index) => {
+	authors.forEach(({ node }) => {
 		createPage({
-			path: `story/${node.slug}`,
-			component: path.resolve('./src/templates/story.js'),
+			path: `author/${node.slug}`,
+			component: path.resolve('./src/templates/author.js'),
 			context: {
 				slug: node.slug,
-				prev: index === 0 ? null : stories[index - 1].node,
-				next:
-					index === stories.length - 1
-						? null
-						: stories[index + 1].node,
+				title: node.authorName,
+			},
+		})
+	})
+
+	bios.forEach(({ node }) => {
+		createPage({
+			path: `bio/${node.slug}`,
+			component: path.resolve('./src/templates/bio.js'),
+			context: {
+				slug: node.slug,
+			},
+		})
+	})
+
+	chapterHomes.forEach(({ node }) => {
+		createPage({
+			path: `chapter/${node.slug}`,
+			component: path.resolve('./src/templates/chapterHome.js'),
+			context: {
+				slug: node.slug,
+				tag: `AFSP ${node.title}`,
 			},
 		})
 	})
@@ -183,50 +227,10 @@ exports.createPages = async ({ graphql, actions }) => {
 		})
 	})
 
-	tags.forEach(({ node }) => {
+	customShareables.forEach(({ node }) => {
 		createPage({
-			path: `tag/${node.slug}`,
-			component: path.resolve('./src/templates/tag.js'),
-			context: {
-				slug: node.slug,
-				title: node.tag,
-			},
-		})
-	})
-
-	authors.forEach(({ node }) => {
-		createPage({
-			path: `author/${node.slug}`,
-			component: path.resolve('./src/templates/author.js'),
-			context: {
-				slug: node.slug,
-				title: node.authorName,
-			},
-		})
-	})
-
-	redirects.forEach(({ node }) => {
-		createRedirect({
-			fromPath: node.aliasUrl,
-			toPath: node.destinationUrl,
-			isPermanent: true,
-		})
-	})
-
-	bios.forEach(({ node }) => {
-		createPage({
-			path: `bio/${node.slug}`,
-			component: path.resolve('./src/templates/bio.js'),
-			context: {
-				slug: node.slug,
-			},
-		})
-	})
-
-	grants.forEach(({ node }) => {
-		createPage({
-			path: `grant/${node.slug}`,
-			component: path.resolve('./src/templates/grant.js'),
+			path: `${node.slug}`,
+			component: path.resolve('./src/templates/customShareable.js'),
 			context: {
 				slug: node.slug,
 			},
@@ -260,23 +264,12 @@ exports.createPages = async ({ graphql, actions }) => {
 		})
 	})
 
-	landings.forEach(({ node }) => {
+	grants.forEach(({ node }) => {
 		createPage({
-			path: `${node.slug}`,
-			component: path.resolve('./src/templates/landing.js'),
+			path: `grant/${node.slug}`,
+			component: path.resolve('./src/templates/grant.js'),
 			context: {
 				slug: node.slug,
-			},
-		})
-	})
-
-	chapterHomes.forEach(({ node }) => {
-		createPage({
-			path: `chapter/${node.slug}`,
-			component: path.resolve('./src/templates/chapterHome.js'),
-			context: {
-				slug: node.slug,
-				tag: `AFSP ${node.title}`,
 			},
 		})
 	})
@@ -288,6 +281,70 @@ exports.createPages = async ({ graphql, actions }) => {
 			context: {
 				slug: node.slug,
 			},
+		})
+	})
+
+	landings.forEach(({ node }) => {
+		createPage({
+			path: `${node.slug}`,
+			component: path.resolve('./src/templates/landing.js'),
+			context: {
+				slug: node.slug,
+			},
+		})
+	})
+
+	newRecords.forEach(({ node }) => {
+		createPage({
+			path: `${node.slug}`,
+			component: path.resolve('./src/templates/newRecord.js'),
+			context: {
+				slug: node.slug,
+			},
+		})
+	})
+
+	searchPages.forEach(({ node }) => {
+		createPage({
+			path: `${node.slug}`,
+			component: path.resolve('./src/templates/searchPage.js'),
+			context: {
+				slug: node.slug,
+			},
+		})
+	})
+
+	stories.forEach(({ node }, index) => {
+		createPage({
+			path: `story/${node.slug}`,
+			component: path.resolve('./src/templates/story.js'),
+			context: {
+				slug: node.slug,
+				prev: index === 0 ? null : stories[index - 1].node,
+				next:
+					index === stories.length - 1
+						? null
+						: stories[index + 1].node,
+			},
+		})
+	})
+
+	tags.forEach(({ node }) => {
+		createPage({
+			path: `tag/${node.slug}`,
+			component: path.resolve('./src/templates/tag.js'),
+			context: {
+				slug: node.slug,
+				title: node.tag,
+			},
+		})
+	})
+
+	redirects.forEach(({ node }) => {
+		createRedirect({
+			fromPath: node.aliasUrl,
+			toPath: node.destinationUrl,
+			isPermanent: true,
 		})
 	})
 }

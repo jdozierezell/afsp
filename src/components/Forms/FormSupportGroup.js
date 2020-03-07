@@ -4,29 +4,46 @@ import * as Yup from 'yup'
 import { css } from '@emotion/core'
 import axios from 'axios'
 
-import QuiltStateSelect from './QuiltStateSelect'
+import FormStateSelect from '../Forms/FormStateSelect'
 
 import stateList from '../../utils/stateList'
 
 import { styles } from '../../css/css'
 
 const schema = Yup.object().shape({
-	quiltTitle: Yup.string().required(
-		'A title is required. Please enter your title and resubmit your square.'
+	supportGroupName: Yup.string().required(
+		'A support group name is required. Please enter your group name and resubmit.'
 	),
-	name: Yup.string().required(
-		'Your name is required. Please enter your name and resubmit your square.'
+	supportGroupWebsite: Yup.string().url('Invalid web address'),
+	hostingSponsoringOrganizationWebsite: Yup.string.url('Invalid web address'),
+	contactName: Yup.string().required(
+		"A contact name is required. Please enter the group contact's name and resubmit."
 	),
-	email: Yup.string()
+	contactEmail: Yup.string()
 		.email('Invalid email address')
 		.required(
-			'Your email address is required. Please enter your email and resubmit your square.'
+			"A contact email is required. Please enter the group contact's email and resubmit."
 		),
-	state: Yup.string().required(
-		'Your state was not selected. Please select your state and resubmit your square.'
+	meetingSchedule: Yup.string().required(
+		"A description of your meeting schedule is required. Please enter the group's schedule and resubmit."
 	),
-	image: Yup.mixed().required(
-		'An image is required to create your square. Please select an image and resubmit.'
+	nameOfMeetingSite: Yup.string().required(
+		'The name of your meeting site is required. Please enter the site name and resubmit.'
+	),
+	meetingCountry: Yup.string().required(
+		"Your meeting site's country is required. Please select the country and resubmit."
+	),
+	meetingAddress: Yup.string().required(
+		"Your meeting site's address is required. Please enter the address and resubmit."
+	),
+	meetingCity: Yup.string().required(
+		"Your meeting site's city is required. Please enter the city and resubmit."
+	),
+	meetingZipPostalCode: Yup.string().required(
+		"Your meeting site's zip or postal code is required. Please enter the code and resubmit."
+	),
+	facilitator: Yup.string().required(
+		"Information about your meeting site's facilitator(s) is required. Please make a selection and resubmit."
 	),
 })
 
@@ -84,7 +101,7 @@ const QuiltForm = () => {
 		formData.append('image', data.image)
 		axios
 			.post(
-				'https://serene-dusk-44738.herokuapp.com/create-quilt',
+				'https://serene-dusk-44738.herokuapp.com/create-support-group',
 				formData,
 				{
 					headers: {
@@ -97,10 +114,18 @@ const QuiltForm = () => {
 	}
 	return (
 		<Form schema={schema} onSubmit={handleSubmit} css={formWrapperCSS}>
-			<label htmlFor="quiltTitle">Square Title/Name of Person Lost</label>
-			<Input name="quiltTitle" />
-			<label htmlFor="name">Your Name</label>
-			<Input name="name" />
+			<label htmlFor="supportGroupName">Support Group Name</label>
+			<Input name="supportGroupName" />
+			<label htmlFor="supportGroupWebsite">Support Group Website</label>
+			<Input name="supportGroupWebsite" />
+			<label htmlFor="hostingSponsoringOrganization">
+				Hosting or Sponsoring Organization
+			</label>
+			<Input name="hostingSponsoringOrganization" />
+			<label htmlFor="hostingSponsoringOrganizationWebsite">
+				Hosting or Sponsoring Organization Website
+			</label>
+			<Input name="hostingSponsoringOrganizationWebsite" />
 			<label htmlFor="email">Your Email Address</label>
 			<p>
 				We will not share or sell your email address to other
@@ -115,7 +140,7 @@ const QuiltForm = () => {
 				U.S., select 'Not Applicable' at the bottom of the list of
 				choices. We will not share your information with any 3rd party.
 			</p>
-			<QuiltStateSelect name="state" options={stateList} />
+			<FormStateSelect name="state" options={stateList} />
 			<label htmlFor="file">Square Image</label>
 			<p>
 				Please note, images do not need to be square when uploading.

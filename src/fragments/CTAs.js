@@ -42,7 +42,7 @@ export const CTAs = graphql`
 							__typename
 							slug
 						}
-						... on DatoCmsChapterSearch {
+						... on DatoCmsSearchPage {
 							__typename
 							slug
 						}
@@ -84,7 +84,7 @@ export const CTAs = graphql`
 							__typename
 							slug
 						}
-						... on DatoCmsChapterSearch {
+						... on DatoCmsSearchPage {
 							__typename
 							slug
 						}
@@ -125,7 +125,7 @@ export const CTAs = graphql`
 							__typename
 							slug
 						}
-						... on DatoCmsChapterSearch {
+						... on DatoCmsSearchPage {
 							__typename
 							slug
 						}
