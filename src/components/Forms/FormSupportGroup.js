@@ -92,7 +92,7 @@ const QuiltForm = () => {
 	const onSubmit = data => {
 		const form = document.querySelector('form')
 		let formData = new FormData(form)
-		formData.append('state', data.state.value)
+		formData.append('state', data.meetingState.value)
 		console.log(data)
 		console.log(formData)
 		axios
@@ -110,12 +110,12 @@ const QuiltForm = () => {
 	}
 
 	const handleMultiChange = selectedOption => {
-		setValue('state', selectedOption)
+		setValue('meetingState', selectedOption)
 		setReactSelectValue({ selectedOption })
 	}
 
 	useEffect(() => {
-		register({ name: 'state' })
+		register({ name: 'meetingState' })
 	}, [register])
 
 	return (
