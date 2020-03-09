@@ -5,11 +5,17 @@ import ShareableOverlays from './ShareableOverlays'
 
 import { styles } from '../../css/css'
 
-const ShareableControls = ({ updateImage, rotateImage, downloadImage }) => {
+const ShareableControls = ({
+	updateImage,
+	rotateImage,
+	downloadImage,
+	overlays,
+	updateOverlay,
+}) => {
 	return (
 		<div
 			css={css`
-				max-width: 600px;
+				width: 100%;
 			`}
 		>
 			<div className="secondary-button-group full-width">
@@ -27,7 +33,10 @@ const ShareableControls = ({ updateImage, rotateImage, downloadImage }) => {
 				/>
 				<button onClick={e => rotateImage(e)}>Rotate</button>
 			</div>
-			<ShareableOverlays />
+			<ShareableOverlays
+				overlays={overlays}
+				updateOverlay={updateOverlay}
+			/>
 			<button
 				onClick={e => downloadImage(e)}
 				className="secondary-button"

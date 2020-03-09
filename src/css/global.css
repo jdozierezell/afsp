@@ -11,6 +11,7 @@ h6 {
 p,
 a,
 input,
+textarea,
 li {
 	font-family: AvenirNextLTPro-Regular, Arial, sans-serif;
 }
@@ -50,6 +51,16 @@ input {
 	border-radius: 5px;
 	border: solid 2px hsla(0, 0%, 14.9%, 1);
 	padding: 0px 16px 0px 16px;
+}
+
+textarea {
+	color: hsla(0, 0%, 14.9%, 1);
+	font-size: 18px;
+	background-color: hsla(0, 0%, 100%, 1);
+	border-radius: 5px;
+	border: solid 2px hsla(0, 0%, 14.9%, 1);
+	padding: 16px;
+	min-height: 128px;
 }
 
 .secondary-button {

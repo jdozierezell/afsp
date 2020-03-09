@@ -14,7 +14,11 @@ const CustomShareable = ({ data }) => {
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HelmetDatoCms seo={customShareables.seoMetaTags} />
 			<HeroSolid data={customShareables} />
-			<ShareableContainer instructions={customShareables.instructions} />
+			<ShareableContainer
+				instructions={customShareables.instructions}
+				overlays={customShareables.shareableOverlays}
+				backgroundImage={customShareables.backgroundImage.url}
+			/>
 		</Layout>
 	)
 }
@@ -30,18 +34,6 @@ export const query = graphql`
 			instructions
 			backgroundImage {
 				url
-				fluid(
-					maxWidth: 600
-					imgixParams: {
-						auto: "format"
-						fit: "crop"
-						crop: "faces"
-						w: "600"
-						h: "600"
-					}
-				) {
-					...GatsbyDatoCmsFluid
-				}
 			}
 			shareableOverlays {
 				image {

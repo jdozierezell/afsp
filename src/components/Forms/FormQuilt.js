@@ -45,10 +45,6 @@ const formWrapperCSS = css`
 		color: ${styles.colors.white};
 		cursor: pointer;
 	}
-	textarea {
-		border: 2px solid ${styles.colors.darkGray};
-		border-radius: 5px;
-	}
 	span {
 		color: ${styles.colors.poppy};
 		display: block;
@@ -162,7 +158,28 @@ const QuiltForm = () => {
 				They will appear as squares automatically.
 			</p>
 			<label htmlFor="image">Click here to upload your image</label>
-			<input name="image" id="image" type="file" ref={register} />
+			<input
+				name="image"
+				id="image"
+				type="file"
+				ref={register}
+				onChange={e => {
+					const img = document.createElement('img')
+					const div = document.getElementById('imageDisplay')
+					const oldImg = document.getElementById('loadedImage')
+					if (oldImg) oldImg.remove()
+					img.src = URL.createObjectURL(e.target.files[0])
+					img.style.backgroundColor = styles.colors.lightGray
+					img.height = 200
+					img.id = 'loadedImage'
+					img.onload = function() {
+						URL.revokeObjectURL(this.src)
+					}
+					div.appendChild(img)
+					console.log(e.target.files)
+				}}
+			/>
+			<div id="imageDisplay"></div>
 
 			<label htmlFor="description">Square Description</label>
 			<p>

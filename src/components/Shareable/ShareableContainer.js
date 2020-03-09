@@ -10,7 +10,9 @@ import { css } from '@emotion/core'
 
 import ShareableControls from './ShareableControls'
 
-const konvaContainer = css`
+import { styles } from '../../css/css'
+
+const konvaContainerCSS = css`
 	display: grid;
 	grid-template-columns: 1fr;
 	margin: 24px;
@@ -19,11 +21,17 @@ const konvaContainer = css`
 	}
 `
 
-const ShareableContainer = ({ instructions }) => {
+const shareableControlsCSS = css`
+	margin-right: ${styles.scale.px36};
+`
+
+const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 	const [width, setWidth] = useState(0)
 	const [height, setHeight] = useState(0)
 	const [url, setUrl] = useState(null)
 	const [image] = useImage(url)
+	const [urlOverlay, setUrlOverlay] = useState(null)
+	const [imageOverlay] = useImage(urlOverlay)
 	const [imageWidth, setImageWidth] = useState(180)
 	const [imageHeight, setImageHeight] = useState(180)
 	const [imageX, setImageX] = useState(null)
@@ -31,10 +39,6 @@ const ShareableContainer = ({ instructions }) => {
 	const [imageOffsetX, setImageOffsetX] = useState(null)
 	const [imageOffsetY, setImageOffsetY] = useState(null)
 	const [imageRotation, setImageRotation] = useState(0)
-	const [image2] = useImage(
-		'https://chapterland.imgix.net/wp-content/uploads/sites/13/2019/11/13972_AFSP_iGiveBoldly_Image_Overlay_Page_m1.png?auto=compress',
-		'Anonymous'
-	)
 	const [isSelected, setSelected] = useState(false)
 	const trRef = useRef(null)
 	const imageRef = useRef(null)
@@ -65,16 +69,25 @@ const ShareableContainer = ({ instructions }) => {
 		reader.readAsDataURL(file)
 	}
 
+	const updateOverlay = overlay => {
+		console.log(overlay)
+		const newImage = new Image()
+		newImage.crossOrigin = 'anonymous'
+		newImage.src = overlay.src
+		console.log(newImage.src)
+		setUrlOverlay(newImage.src)
+	}
+
 	const setStateDimensions = () => {
 		if (window.innerWidth < 768) {
 			setWidth(window.innerWidth)
 			setHeight(window.innerWidth)
 		} else if (window.innerWidth < 1200) {
-			setWidth(window.innerWidth - 400)
-			setHeight(window.innerWidth - 400)
+			setWidth(window.innerWidth - 600)
+			setHeight(window.innerWidth - 600)
 		} else {
-			setWidth(1200 - 400)
-			setHeight(1200 - 400)
+			setWidth(1200 - 600)
+			setHeight(1200 - 600)
 		}
 	}
 
@@ -116,18 +129,22 @@ const ShareableContainer = ({ instructions }) => {
 		imageOffsetY,
 	])
 	return (
-		<div css={konvaContainer}>
-			{console.log(instructions)}
-			<div>
+		<div css={konvaContainerCSS}>
+			<div css={shareableControlsCSS}>
 				<div dangerouslySetInnerHTML={{ __html: instructions }}></div>
 				<ShareableControls
 					updateImage={updateImage}
 					rotateImage={rotateImage}
 					downloadImage={downloadImage}
+					overlays={overlays}
+					updateOverlay={updateOverlay}
 				/>
 			</div>
 			<div id="konva">
 				<Stage
+					css={css`
+						background-image: url('${backgroundImage}?w=600');
+					`}
 					width={width}
 					height={height}
 					onMouseDown={e => {
@@ -159,7 +176,7 @@ const ShareableContainer = ({ instructions }) => {
 							}}
 						/>
 						<KonvaImage
-							image={image2}
+							image={imageOverlay}
 							width={width}
 							height={height}
 							listening={false} // this lets clicks pass through to the image underneath
