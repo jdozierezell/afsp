@@ -1,0 +1,5 @@
+/new-support-group
+    Basic-Auth: groupuser:grouppassword
+
+/*
+    Basic-Auth: someuser:somepassword
