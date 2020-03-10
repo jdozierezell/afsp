@@ -20,9 +20,10 @@ const shareableOverlaysCSS = css`
 const ShareableOverlays = ({ overlays, updateOverlay }) => {
 	return (
 		<div css={shareableOverlaysCSS}>
-			{overlays.map(overlay => {
+			{overlays.map((overlay, index) => {
 				return (
-					<div onClick={e => updateOverlay(e.target)}>
+					<div key={index} onClick={e => updateOverlay(e.target)}>
+						{/* <img src={overlay.image.url} alt="" /> */}
 						<Img fluid={overlay.image.fluid} />
 					</div>
 				)

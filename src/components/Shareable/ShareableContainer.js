@@ -40,8 +40,11 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 	const [imageOffsetY, setImageOffsetY] = useState(null)
 	const [imageRotation, setImageRotation] = useState(0)
 	const [isSelected, setSelected] = useState(false)
+	const [position, setPosition] = useState('220px')
+	const [top, setTop] = useState('220px')
 	const trRef = useRef(null)
 	const imageRef = useRef(null)
+	const konvaRef = useRef(null)
 
 	const updateImage = e => {
 		// set url, imageWidth, and imageHight to null so that previous image dimensions don't affect next render
@@ -70,12 +73,18 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 	}
 
 	const updateOverlay = overlay => {
-		console.log(overlay)
-		const newImage = new Image()
-		newImage.crossOrigin = 'anonymous'
-		newImage.src = overlay.src
-		console.log(newImage.src)
-		setUrlOverlay(newImage.src)
+		// converting image to base64 to circumvent cors; more info at https://stackoverflow.com/a/20285053
+		var xhr = new XMLHttpRequest()
+		xhr.onload = function() {
+			var reader = new FileReader()
+			reader.onloadend = function() {
+				setUrlOverlay(reader.result)
+			}
+			reader.readAsDataURL(xhr.response)
+		}
+		xhr.open('GET', overlay.src)
+		xhr.responseType = 'blob'
+		xhr.send()
 	}
 
 	const setStateDimensions = () => {
@@ -106,6 +115,19 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 			a.click()
 		}, 50) // timeout function gives setSelected enough time to re-render canvas so we lose the transformer handles
 	}
+	const handleScroll = () => {
+		if (
+			konvaRef.current.getBoundingClientRect().y <= 0 &&
+			window.scrollY >= 150
+		) {
+			console.log('foo')
+			setPosition('fixed')
+			setTop('10px')
+		} else {
+			setPosition('absolute')
+			setTop('120px')
+		}
+	}
 
 	useEffect(() => {
 		if (isSelected) {
@@ -119,6 +141,8 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 		setImageOffsetX(imageWidth / 2)
 		setImageOffsetY(imageHeight / 2)
 		setStateDimensions()
+		window.addEventListener('scroll', handleScroll)
+		// return () => window.removeEventListener('scroll', handleScroll)
 	}, [
 		isSelected,
 		imageWidth,
@@ -140,7 +164,14 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 					updateOverlay={updateOverlay}
 				/>
 			</div>
-			<div id="konva">
+			<div
+				id="konva"
+				ref={konvaRef}
+				css={css`
+					top: ${top};
+					position: ${position};
+				`}
+			>
 				<Stage
 					css={css`
 						background-image: url('${backgroundImage}?w=600');

@@ -22,19 +22,17 @@ const mainCSS = css`
 
 const NewRecord = ({ data: { newRecord } }) => {
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={newRecord.seoMetaTags} />
-			<HeroSolid data={newRecord} />
-			<main css={mainCSS}>
-				{newRecord.disclaimer && (
-					<FormDisclaimer disclaimer={newRecord.disclaimer} />
-				)}
-				{newRecord.recordType === 'Quilt' && <FormQuilt />}
-				{newRecord.recordType === 'Support Group' && (
-					<FormSupportGroup />
-				)}
-			</main>
-		</Layout>
+		<main css={mainCSS}>
+			{newRecord.disclaimer && (
+				<FormDisclaimer disclaimer={newRecord.disclaimer} />
+			)}
+			{newRecord.recordType === 'Quilt' && <FormQuilt />}
+			{newRecord.recordType === 'Support Group' && <FormSupportGroup />}
+		</main>
+		// <Layout theme={styles.logo.mobileLightDesktopLight}>
+		// 	<HelmetDatoCms seo={newRecord.seoMetaTags} />
+		// 	<HeroSolid data={newRecord} />
+		// </Layout>
 	)
 }
 
