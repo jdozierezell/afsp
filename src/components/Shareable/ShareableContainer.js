@@ -121,10 +121,8 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 			window.scrollY >= 150
 		) {
 			console.log('foo')
-			setPosition('fixed')
 			setTop('10px')
 		} else {
-			setPosition('absolute')
 			setTop('120px')
 		}
 	}
@@ -142,7 +140,7 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 		setImageOffsetY(imageHeight / 2)
 		setStateDimensions()
 		window.addEventListener('scroll', handleScroll)
-		// return () => window.removeEventListener('scroll', handleScroll)
+		return () => window.removeEventListener('scroll', handleScroll)
 	}, [
 		isSelected,
 		imageWidth,
@@ -169,7 +167,7 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 				ref={konvaRef}
 				css={css`
 					top: ${top};
-					position: ${position};
+					position: fixed;
 				`}
 			>
 				<Stage

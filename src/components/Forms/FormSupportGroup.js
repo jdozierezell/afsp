@@ -11,6 +11,7 @@ import 'react-toggle/style.css'
 
 import FormSubmitted from './FormSubmitted'
 import FormError from './FormError'
+import FormClockLoader from './FormClockLoader'
 
 import stateList from '../../utils/stateList'
 import countryList from '../../utils/countryList'
@@ -51,7 +52,7 @@ const formWrapperCSS = css`
 		color: ${styles.colors.white};
 		cursor: pointer;
 	}
-	label[for='newMembers'], label[for='differentSubmitter'] {
+	label[for='newMembers'], label[for='differentSubmitter'], label[for='attendedTraining'] {
 		display: inline-block;
 		width: auto;
 		margin: 0 ${styles.scale.px24} ${styles.scale.px12};
@@ -148,7 +149,7 @@ const SupportGroupForm = () => {
 		meetingZipPostalCode: Yup.string().required(
 			"Your meeting site's zip or postal code is required. Please enter the code and resubmit."
 		),
-		facilitator: Yup.string().required(
+		facilitator: Yup.object().required(
 			"Information about your meeting site's facilitator(s) is required. Please make a selection and resubmit."
 		),
 	})
@@ -163,14 +164,10 @@ const SupportGroupForm = () => {
 	const [showState, setShowState] = useState(false)
 	const [submitted, setSubmitted] = useState(false)
 	const [submitError, setSubmitError] = useState(false)
+	const [loading, setLoading] = useState(false)
 
 	const Element = Scroll.Element
 	const scroller = Scroll.scroller
-
-	const handleStateSelectChange = selectedOption => {
-		setValue('meetingState', selectedOption)
-		setReactSelectValue({ selectedOption })
-	}
 
 	const handleCountrySelectChange = selectedOption => {
 		if (selectedOption.value === 'United States of America') {
@@ -182,13 +179,29 @@ const SupportGroupForm = () => {
 		setReactSelectValue({ selectedOption })
 	}
 
+	const handleStateSelectChange = selectedOption => {
+		setValue('meetingState', selectedOption)
+		setReactSelectValue({ selectedOption })
+	}
+
+	const handleFacilitatorSelectChange = selectedOption => {
+		setValue('facilitator', selectedOption)
+		setReactSelectValue({ selectedOption })
+	}
+
 	const handleToggleChange = toggleValue => {
+		console.log(toggleValue.target)
 		const value = toggleValue.target.checked
-		setValue('newMembers', value)
+		if (toggleValue.target.id === 'newMembers') {
+			setValue('newMembers', value)
+		} else if (toggleValue.target.id === 'attendedTraining') {
+			setValue('attendedTraining', value)
+		}
 		setReactSelectValue({ value })
 	}
 
 	const onSubmit = data => {
+		console.log(data)
 		const form = document.querySelector('form')
 		let formData = new FormData(form)
 		formData.append(
@@ -205,8 +218,17 @@ const SupportGroupForm = () => {
 			'newMembers',
 			data.newMembers === `undefined` ? data.newMembers : true
 		)
-		console.log(data)
-		console.log(formData)
+		formData.append(
+			'facilitator',
+			data.facilitator ? data.facilitator.value : ''
+		)
+		formData.append(
+			'attendedTraining',
+			data.attendedTraining === `undefined`
+				? data.attendedTraining.value
+				: false
+		)
+		setLoading(true)
 		axios
 			.post(
 				'https://serene-dusk-44738.herokuapp.com/create-support-group',
@@ -228,6 +250,7 @@ const SupportGroupForm = () => {
 					smooth: true,
 					offset: -100,
 				})
+				setLoading(false)
 			})
 			.catch(error => {
 				setSubmitError(true)
@@ -241,281 +264,335 @@ const SupportGroupForm = () => {
 	useEffect(() => {
 		register({ name: 'meetingState' })
 		register({ name: 'meetingCountry' })
+		register({ name: 'facilitator' })
 		register({ name: 'newMembers' })
+		register({ name: 'attendedTraining' })
 	}, [register])
 
 	return (
-		<Element name="form">
-			{submitError && !submitted && (
-				<FormError formType="support group" resetFunction={onError} />
-			)}
-			{submitted && <FormSubmitted formType="support group" />}
-			{!submitted && !submitError && (
-				<form css={formWrapperCSS} onSubmit={handleSubmit(onSubmit)}>
-					<label htmlFor="supportGroupName">
-						Support Group Name <span>*</span>
-					</label>
-					{errors.supportGroupName && (
-						<span>{errors.supportGroupName.message}</span>
-					)}
-					<input name="supportGroupName" ref={register} />
-
-					<label htmlFor="supportGroupWebsite">
-						Support Group Website
-					</label>
-					<p>
-						Please enter a valid URL beginning with http:// or
-						https://
-					</p>
-					{errors.supportGroupWebsite && (
-						<span>{errors.supportGroupWebsite.message}</span>
-					)}
-					<input name="supportGroupWebsite" ref={register} />
-
-					<label htmlFor="hostingSponsoringOrganization">
-						Hosting/Sponsoring Organization
-					</label>
-					<input
-						name="hostingSponsoringOrganization"
-						ref={register}
+		<>
+			<FormClockLoader loading={loading} />
+			<Element name="form">
+				{submitError && !submitted && (
+					<FormError
+						formType="support group"
+						resetFunction={onError}
 					/>
-
-					<label htmlFor="hostingSponsoringOrganizationWebsite">
-						Hosting/Sponsoring Organization Website
-					</label>
-					<p>
-						Please enter a valid URL beginning with http:// or
-						https://
-					</p>
-					{errors.hostingSponsoringOrganizationWebsite && (
-						<span>
-							{
-								errors.hostingSponsoringOrganizationWebsite
-									.message
-							}
-						</span>
-					)}
-					<input
-						name="hostingSponsoringOrganizationWebsite"
-						ref={register}
-					/>
-
-					<label htmlFor="groupDemographic">Group Demographic</label>
-					<p>
-						Is your support group for a specific demographic (e.g.,
-						parents who lost a child, men only, LGBTQ loss, teens)?
-						If so, please explain.
-					</p>
-					{errors.supportGroupName && (
-						<span>{errors.supportGroupName.message}</span>
-					)}
-					<textarea name="groupDemographic" ref={register} />
-
-					<Toggle
-						onChange={handleToggleChange}
-						defaultChecked={true}
-					/>
-					<label htmlFor="newMembers">New Members</label>
-					<p className="toggleInstructions">
-						A group is considered open if new members may join at
-						any time. A group is considered closed if new members
-						may join only at specific times or under certain
-						circumstances. Groups are assumed to be open by default.
-					</p>
-
-					<label htmlFor="contactName">
-						Contact Name <span>*</span>
-					</label>
-					{errors.contactName && (
-						<span>{errors.contactName.message}</span>
-					)}
-					<input name="contactName" ref={register} />
-
-					<label htmlFor="contactEmail">
-						Contact Email <span>*</span>
-					</label>
-					<p>Please enter a valid email address</p>
-					{errors.contactEmail && (
-						<span>{errors.contactEmail.message}</span>
-					)}
-					<input name="contactEmail" ref={register} />
-
-					<label htmlFor="contactPhone">Contact Phone</label>
-					<input name="contactPhone" ref={register} />
-
-					<Toggle
-						name="differentSubmitter"
-						onChange={e => {
-							if (e.target.checked) {
-								setShowSubmitter(true)
-							} else {
-								setShowSubmitter(false)
-							}
-						}}
-					/>
-
-					<label htmlFor="differentSubmitter">
-						My Information is Different from Group Contact
-					</label>
-					<p className="toggleInstructions">
-						Select if your information is different from the group
-						contact information above.
-					</p>
-
-					<div
-						css={css`
-							display: ${showSubmitter === false
-								? 'none'
-								: 'inherit'};
-						`}
+				)}
+				{submitted && <FormSubmitted formType="support group" />}
+				{!submitted && !submitError && (
+					<form
+						css={formWrapperCSS}
+						onSubmit={handleSubmit(onSubmit)}
 					>
-						<label htmlFor="submitterName">
-							Submitter Name <span>*</span>
+						<label htmlFor="supportGroupName">
+							Support Group Name <span>*</span>
 						</label>
-						<input name="submitterName" ref={register} />
+						{errors.supportGroupName && (
+							<span>{errors.supportGroupName.message}</span>
+						)}
+						<input name="supportGroupName" ref={register} />
 
-						<label htmlFor="submitterEmail">
-							Submitter Email <span>*</span>
+						<label htmlFor="supportGroupWebsite">
+							Support Group Website
+						</label>
+						<p>
+							Please enter a valid URL beginning with http:// or
+							https://
+						</p>
+						{errors.supportGroupWebsite && (
+							<span>{errors.supportGroupWebsite.message}</span>
+						)}
+						<input name="supportGroupWebsite" ref={register} />
+
+						<label htmlFor="hostingSponsoringOrganization">
+							Hosting/Sponsoring Organization
+						</label>
+						<input
+							name="hostingSponsoringOrganization"
+							ref={register}
+						/>
+
+						<label htmlFor="hostingSponsoringOrganizationWebsite">
+							Hosting/Sponsoring Organization Website
+						</label>
+						<p>
+							Please enter a valid URL beginning with http:// or
+							https://
+						</p>
+						{errors.hostingSponsoringOrganizationWebsite && (
+							<span>
+								{
+									errors.hostingSponsoringOrganizationWebsite
+										.message
+								}
+							</span>
+						)}
+						<input
+							name="hostingSponsoringOrganizationWebsite"
+							ref={register}
+						/>
+
+						<label htmlFor="groupDemographic">
+							Group Demographic
+						</label>
+						<p>
+							Is your support group for a specific demographic
+							(e.g., parents who lost a child, men only, LGBTQ
+							loss, teens)? If so, please explain.
+						</p>
+						{errors.supportGroupName && (
+							<span>{errors.supportGroupName.message}</span>
+						)}
+						<textarea name="groupDemographic" ref={register} />
+
+						<Toggle
+							id="newMembers"
+							onChange={handleToggleChange}
+							defaultChecked={true}
+						/>
+						<label htmlFor="newMembers">New Members</label>
+						<p className="toggleInstructions">
+							A group is considered open if new members may join
+							at any time. A group is considered closed if new
+							members may join only at specific times or under
+							certain circumstances. Groups are assumed to be open
+							by default.
+						</p>
+
+						<label htmlFor="contactName">
+							Contact Name <span>*</span>
+						</label>
+						{errors.contactName && (
+							<span>{errors.contactName.message}</span>
+						)}
+						<input name="contactName" ref={register} />
+
+						<label htmlFor="contactEmail">
+							Contact Email <span>*</span>
 						</label>
 						<p>Please enter a valid email address</p>
-						{errors.submitterEmail && (
-							<span>{errors.submitterEmail.message}</span>
+						{errors.contactEmail && (
+							<span>{errors.contactEmail.message}</span>
 						)}
-						<input name="submitterEmail" ref={register} />
-					</div>
+						<input name="contactEmail" ref={register} />
 
-					<label htmlFor="registrationProcess">
-						Registration Process
-					</label>
-					<textarea name="registrationProcess" ref={register} />
+						<label htmlFor="contactPhone">Contact Phone</label>
+						<input name="contactPhone" ref={register} />
 
-					<label htmlFor="meetingSchedule">
-						Meeting Schedule <span>*</span>
-					</label>
-					<p>
-						Briefly describe how frequently your group meets along
-						with specific days and times (e.g., "This group meets
-						continuously throughout the year on the second Tuesday
-						of every month at 7 pm.").
-					</p>
-					{errors.meetingSchedule && (
-						<span>{errors.meetingSchedule.message}</span>
-					)}
-					<textarea name="meetingSchedule" ref={register} />
+						<Toggle
+							name="differentSubmitter"
+							onChange={e => {
+								if (e.target.checked) {
+									setShowSubmitter(true)
+								} else {
+									setShowSubmitter(false)
+								}
+							}}
+						/>
 
-					<label htmlFor="nameOfMeetingSite">
-						Name of Meeting Site <span>*</span>
-					</label>
-					{errors.nameOfMeetingSite && (
-						<span>{errors.nameOfMeetingSite.message}</span>
-					)}
-					<input name="nameOfMeetingSite" ref={register} />
+						<label htmlFor="differentSubmitter">
+							My Information is Different from Group Contact
+						</label>
+						<p className="toggleInstructions">
+							Select if your information is different from the
+							group contact information above.
+						</p>
 
-					<label htmlFor="meetingCountry">
-						Meeting Country <span>*</span>
-					</label>
-					<p>Select your meeting location's country.</p>
-					{errors.meetingCountry && (
-						<span>{errors.meetingCountry.message}</span>
-					)}
-					<Select
-						css={selectCSS}
-						id="countrySelect"
-						className="react-select"
-						classNamePrefix="react-select"
-						value={values.selectedCountryOption}
-						options={countryList}
-						onChange={handleCountrySelectChange}
-					/>
-
-					<label htmlFor="meetingAddress">
-						Meeting Address <span>*</span>
-					</label>
-					<p>
-						Enter your meeting location's street address (no P.O.
-						Boxes). If your location varies, write "Varies."
-					</p>
-					{errors.meetingAddress && (
-						<span>{errors.meetingAddress.message}</span>
-					)}
-					<input name="meetingAddress" ref={register} />
-
-					<label htmlFor="meetingCity">
-						Meeting City <span>*</span>
-					</label>
-					<p>Enter your meeting location's city.</p>
-					{errors.meetingCity && (
-						<span>{errors.meetingCity.message}</span>
-					)}
-					<input name="meetingCity" ref={register} />
-
-					{showState && (
-						<>
-							<label htmlFor="meetingState">
-								Meeting State <span>*</span>
+						<div
+							css={css`
+								display: ${showSubmitter === false
+									? 'none'
+									: 'inherit'};
+							`}
+						>
+							<label htmlFor="submitterName">
+								Submitter Name <span>*</span>
 							</label>
-							<p>Select your meeting location's state.</p>
-							{errors.meetingState && (
-								<span>{errors.meetingState.message}</span>
+							<input name="submitterName" ref={register} />
+
+							<label htmlFor="submitterEmail">
+								Submitter Email <span>*</span>
+							</label>
+							<p>Please enter a valid email address</p>
+							{errors.submitterEmail && (
+								<span>{errors.submitterEmail.message}</span>
 							)}
-							<Select
-								css={selectCSS}
-								id="stateSelect"
-								className="react-select"
-								classNamePrefix="react-select"
-								value={values.selectedStateOption}
-								options={stateList}
-								onChange={handleStateSelectChange}
-							/>
-						</>
-					)}
+							<input name="submitterEmail" ref={register} />
+						</div>
 
-					<label htmlFor="meetingZipPostalCode">
-						Meeting Zip/Postal Code <span>*</span>
-					</label>
-					<p>Enter your meeting location's zip or postal code.</p>
-					{errors.meetingZipPostalCode && (
-						<span>{errors.meetingZipPostalCode.message}</span>
-					)}
-					<input name="meetingZipPostalCode" ref={register} />
+						<label htmlFor="registrationProcess">
+							Registration Process
+						</label>
+						<textarea name="registrationProcess" ref={register} />
 
-					<label htmlFor="facilitator">
-						Facilitator <span>*</span>
-					</label>
-					{errors.facilitator && (
-						<span>{errors.facilitator.message}</span>
-					)}
-					<input name="facilitator" ref={register} />
+						<label htmlFor="meetingSchedule">
+							Meeting Schedule <span>*</span>
+						</label>
+						<p>
+							Briefly describe how frequently your group meets
+							along with specific days and times (e.g., "This
+							group meets continuously throughout the year on the
+							second Tuesday of every month at 7 pm.").
+						</p>
+						{errors.meetingSchedule && (
+							<span>{errors.meetingSchedule.message}</span>
+						)}
+						<textarea name="meetingSchedule" ref={register} />
 
-					<label htmlFor="costToAttend">Cost to Attend</label>
-					<p>
-						Indicate how much your support group costs to attend.
-						Leave blank if no fee is charged.
-					</p>
-					<input name="costToAttend" ref={register} />
+						<label htmlFor="nameOfMeetingSite">
+							Name of Meeting Site <span>*</span>
+						</label>
+						{errors.nameOfMeetingSite && (
+							<span>{errors.nameOfMeetingSite.message}</span>
+						)}
+						<input name="nameOfMeetingSite" ref={register} />
 
-					<label htmlFor="additionalInformation">
-						Additional Information
-					</label>
-					<p>
-						Use this field to add information about parking,
-						exceptions to your meeting schedule, or other
-						information you feel may be useful to potential group
-						participants.
-					</p>
-					<textarea name="additionalInformation" ref={register} />
+						<label htmlFor="meetingCountry">
+							Meeting Country <span>*</span>
+						</label>
+						<p>Select your meeting location's country.</p>
+						{errors.meetingCountry && (
+							<span>{errors.meetingCountry.message}</span>
+						)}
+						<Select
+							css={selectCSS}
+							id="countrySelect"
+							className="react-select"
+							classNamePrefix="react-select"
+							value={values.selectedCountryOption}
+							options={countryList}
+							onChange={handleCountrySelectChange}
+						/>
 
-					<input
-						css={css`
-							margin-top: ${styles.scale.px64};
-						`}
-						className="secondary-button"
-						type="submit"
-						value="Submit Support Group"
-					/>
-				</form>
-			)}
-		</Element>
+						<label htmlFor="meetingAddress">
+							Meeting Address <span>*</span>
+						</label>
+						<p>
+							Enter your meeting location's street address (no
+							P.O. Boxes). If your location varies, write
+							"Varies."
+						</p>
+						{errors.meetingAddress && (
+							<span>{errors.meetingAddress.message}</span>
+						)}
+						<input name="meetingAddress" ref={register} />
+
+						<label htmlFor="meetingCity">
+							Meeting City <span>*</span>
+						</label>
+						<p>Enter your meeting location's city.</p>
+						{errors.meetingCity && (
+							<span>{errors.meetingCity.message}</span>
+						)}
+						<input name="meetingCity" ref={register} />
+
+						{showState && (
+							<>
+								<label htmlFor="meetingState">
+									Meeting State <span>*</span>
+								</label>
+								<p>Select your meeting location's state.</p>
+								{errors.meetingState && (
+									<span>{errors.meetingState.message}</span>
+								)}
+								<Select
+									css={selectCSS}
+									id="stateSelect"
+									className="react-select"
+									classNamePrefix="react-select"
+									value={values.selectedStateOption}
+									options={stateList}
+									onChange={handleStateSelectChange}
+								/>
+							</>
+						)}
+
+						<label htmlFor="meetingZipPostalCode">
+							Meeting Zip/Postal Code <span>*</span>
+						</label>
+						<p>Enter your meeting location's zip or postal code.</p>
+						{errors.meetingZipPostalCode && (
+							<span>{errors.meetingZipPostalCode.message}</span>
+						)}
+						<input name="meetingZipPostalCode" ref={register} />
+
+						<label htmlFor="facilitator">
+							Facilitator <span>*</span>
+						</label>
+						<p>
+							Select the option that best describes your group's
+							facilitator(s).
+						</p>
+						{errors.facilitator && (
+							<span>{errors.facilitator.message}</span>
+						)}
+						<Select
+							css={selectCSS}
+							id="facilitator"
+							className="react-select"
+							classNamePrefix="react-select"
+							value={values.selectedStateOption}
+							options={[
+								{
+									value: 'Peer',
+									label: 'Peer',
+								},
+								{
+									value: 'Mental Health Professional',
+									label: 'Mental Health Professional',
+								},
+								{
+									value: 'Peer & Mental Health Professional',
+									label: 'Peer & Mental Health Professional',
+								},
+							]}
+							onChange={handleFacilitatorSelectChange}
+						/>
+
+						<Toggle
+							id="attendedTraining"
+							onChange={handleToggleChange}
+						/>
+						<label htmlFor="attendedTraining">
+							Attended AFSP Support Group Facilitator Training
+						</label>
+						<p className="toggleInstructions">
+							Select if your support group facilitator has
+							attended and completed AFSP's training: Facilitating
+							a Suicide Bereavement Support Group.
+						</p>
+
+						<label htmlFor="costToAttend">Cost to Attend</label>
+						<p>
+							Indicate how much your support group costs to
+							attend. Leave blank if no fee is charged.
+						</p>
+						<input name="costToAttend" ref={register} />
+
+						<label htmlFor="additionalInformation">
+							Additional Information
+						</label>
+						<p>
+							Use this field to add information about parking,
+							exceptions to your meeting schedule, or other
+							information you feel may be useful to potential
+							group participants.
+						</p>
+						<textarea name="additionalInformation" ref={register} />
+
+						<input
+							css={css`
+								margin-top: ${styles.scale.px64};
+							`}
+							className="secondary-button"
+							type="submit"
+							value="Submit Support Group"
+						/>
+					</form>
+				)}
+			</Element>
+		</>
 	)
 }
 
