@@ -6,8 +6,11 @@ import ShareableOverlays from './ShareableOverlays'
 import { styles } from '../../css/css'
 
 const buttonGroupCSS = css`
-	margin-right: ${styles.scale.px24};
-	width: calc(100% - ${styles.scale.px24});
+	width: 100%;
+	@media (min-width: ${styles.screens.tablet}px) {
+		margin-right: ${styles.scale.px16};
+		width: calc(100% - ${styles.scale.px16});
+	}
 `
 
 const ShareableControls = ({
@@ -25,7 +28,7 @@ const ShareableControls = ({
 		>
 			<div css={buttonGroupCSS} className="secondary-button-group">
 				<label htmlFor="image" className="">
-					Click to upload
+					Upload
 				</label>
 				<input
 					id="image"

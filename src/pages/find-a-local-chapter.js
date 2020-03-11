@@ -13,7 +13,7 @@ import { chapterSearchResults } from '../utils/chapterSearchResults'
 
 import { styles } from '../css/css'
 
-const SearchPage = ({ data: { search, chapters } }) => {
+const FindALocalChapter = ({ data: { search, chapters } }) => {
 	const [radius, setRadius] = useState(15)
 	const [zip, setZip] = useState()
 	const [searchResults, setSearchResults] = useState([])
@@ -67,17 +67,18 @@ const SearchPage = ({ data: { search, chapters } }) => {
 	)
 }
 
-export default SearchPage
+export default FindALocalChapter
 
 export const query = graphql`
-	query($slug: String) {
-		search: datoCmsSearchPage(slug: { eq: $slug }) {
-			seoMetaTags {
-				...GatsbyDatoCmsSeoMetaTags
-			}
+	query {
+		search: datoCmsSearchPage(slug: { eq: "find-a-local-chapter" }) {
 			title
+			slug
 			seo {
 				description
+			}
+			seoMetaTags {
+				...GatsbyDatoCmsSeoMetaTags
 			}
 			callsToAction {
 				... on DatoCmsCallToAction {

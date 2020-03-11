@@ -131,9 +131,6 @@ const SupportGroupForm = () => {
 		meetingCountry: Yup.object().required(
 			"Your meeting site's country is required. Please select the country and resubmit."
 		),
-		meetingAddress: Yup.string().required(
-			"Your meeting site's address is required. Please enter the address and resubmit."
-		),
 		meetingCity: Yup.string().required(
 			"Your meeting site's city is required. Please enter the city and resubmit."
 		),
@@ -441,8 +438,14 @@ const SupportGroupForm = () => {
 						<textarea name="meetingSchedule" ref={register} />
 
 						<label htmlFor="nameOfMeetingSite">
-							Name of Meeting Site <span>*</span>
+							Name of Meeting Site
 						</label>
+						<p>
+							Enter the name of your meeting site, e.g. "Anytown
+							Public Library." If your meeting site varies or if
+							you'd prefer not to list the site name, you may
+							leave this field blank.
+						</p>
 						{errors.nameOfMeetingSite && (
 							<span>{errors.nameOfMeetingSite.message}</span>
 						)}
@@ -465,13 +468,12 @@ const SupportGroupForm = () => {
 							onChange={handleCountrySelectChange}
 						/>
 
-						<label htmlFor="meetingAddress">
-							Meeting Address <span>*</span>
-						</label>
+						<label htmlFor="meetingAddress">Meeting Address</label>
 						<p>
 							Enter your meeting location's street address (no
-							P.O. Boxes). If your location varies, write
-							"Varies."
+							P.O. Boxes). If your meeting site varies or if you'd
+							prefer not to list the address, you may leave this
+							field blank.
 						</p>
 						{errors.meetingAddress && (
 							<span>{errors.meetingAddress.message}</span>

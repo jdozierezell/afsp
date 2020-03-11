@@ -10,10 +10,15 @@ const shareableOverlaysCSS = css`
 	justify-content: flex-start;
 	align-items: center;
 	> div {
-		margin: ${styles.scale.px16};
-		width: calc(100% / 3 - ${styles.scale.px16} * 2);
-		height: calc(100% / 3 - ${styles.scale.px16} * 2);
 		background-color: ${styles.colors.lightGray};
+		margin: ${styles.scale.px12} auto;
+		width: calc(100% - ${styles.scale.px24});
+		height: calc(100% - ${styles.scale.px24});
+		@media (min-width: ${styles.screens.tablet}px) {
+			margin: ${styles.scale.px16};
+			width: calc(100% / 3 - ${styles.scale.px16} * 2);
+			height: calc(100% / 3 - ${styles.scale.px16} * 2);
+		}
 	}
 `
 

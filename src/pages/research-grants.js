@@ -66,6 +66,9 @@ export const query = graphql`
 			title
 			slug
 			brief
+			seoMetaTags {
+				...GatsbyDatoCmsSeoMetaTags
+			}
 		}
 		grants: allDatoCmsGrant {
 			edges {

@@ -22,8 +22,23 @@ const konvaContainerCSS = css`
 	}
 `
 
+const konvaCSS = css`
+	border: ${styles.scale.px12} solid ${styles.colors.white};
+	z-index: 10;
+	@media (min-width: 768px) {
+		right: ${styles.scale.px50};
+		border: ${styles.scale.px24} solid ${styles.colors.white};
+		grid-column: 2 / 3;
+		grid-row: 1 / 2;
+	}
+`
+
 const shareableControlsCSS = css`
-	margin-right: ${styles.scale.px36};
+	@media (min-width: 768px) {
+		margin-right: ${styles.scale.px36};
+		grid-column: 1 / 2;
+		grid-row: 1 / 2;
+	}
 `
 
 const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
@@ -41,7 +56,7 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 	const [imageOffsetY, setImageOffsetY] = useState(null)
 	const [imageRotation, setImageRotation] = useState(0)
 	const [isSelected, setSelected] = useState(false)
-	const [position, setPosition] = useState('220px')
+	const [position, setPosition] = useState(null)
 	const [top, setTop] = useState('220px')
 	const trRef = useRef(null)
 	const imageRef = useRef(null)
@@ -90,8 +105,8 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 
 	const setStateDimensions = () => {
 		if (window.innerWidth < 768) {
-			setWidth(window.innerWidth)
-			setHeight(window.innerWidth)
+			setWidth(window.innerWidth - 48 - 24)
+			setHeight(window.innerWidth - 48 - 24)
 		} else if (window.innerWidth < 1200) {
 			setWidth(window.innerWidth - 600)
 			setHeight(window.innerWidth - 600)
@@ -117,17 +132,29 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 		}, 50) // timeout function gives setSelected enough time to re-render canvas so we lose the transformer handles
 	}
 	const handleScroll = () => {
-		if (
-			konvaRef.current.getBoundingClientRect().y <= 0 &&
-			window.scrollY >= 150
-		) {
-			setPosition('fixed')
-			setTop(0)
+		if (window.innerWidth > 768) {
+			if (
+				konvaRef.current.getBoundingClientRect().y <= 0 &&
+				window.scrollY >= 150
+			) {
+				setPosition('fixed')
+				setTop(0)
+			} else {
+				setPosition('absolute')
+				setTop('220px')
+			}
 		} else {
-			setPosition('absolute')
-			setTop('220px')
+			if (
+				konvaRef.current.getBoundingClientRect().y <= 0 &&
+				window.scrollY >= 150
+			) {
+				setPosition('fixed')
+				setTop(0)
+			} else {
+				setPosition('initial')
+				setTop('220px')
+			}
 		}
-		console.log(position, top)
 	}
 
 	useEffect(() => {
@@ -142,34 +169,31 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 		setImageOffsetX(imageWidth / 2)
 		setImageOffsetY(imageHeight / 2)
 		setStateDimensions()
+		if (position === null) {
+			if (window.innerWidth < 768) {
+				setPosition('initial')
+			} else {
+				setPosition('absolute')
+			}
+		}
 		window.addEventListener('scroll', handleScroll)
 		return () => window.removeEventListener('scroll', handleScroll)
 	})
 	return (
 		<div css={konvaContainerCSS}>
-			<div css={shareableControlsCSS}>
-				<div dangerouslySetInnerHTML={{ __html: instructions }}></div>
-				<ShareableControls
-					updateImage={updateImage}
-					rotateImage={rotateImage}
-					downloadImage={downloadImage}
-					overlays={overlays}
-					updateOverlay={updateOverlay}
-				/>
-			</div>
+			{console.log(position)}
 			<div
 				id="konva"
 				ref={konvaRef}
 				css={css`
+					${konvaCSS};
 					top: ${top};
 					position: ${position};
-					right: ${styles.scale.px50};
-					border: ${styles.scale.px24} solid ${styles.colors.white};
 				`}
 			>
 				<Stage
 					css={css`
-						background-image: url('${backgroundImage}?w=600');
+						background-image: url('${backgroundImage}?w=${width}');
 					`}
 					width={width}
 					height={height}
@@ -221,6 +245,16 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 						)}
 					</Layer>
 				</Stage>
+			</div>
+			<div css={shareableControlsCSS}>
+				<div dangerouslySetInnerHTML={{ __html: instructions }}></div>
+				<ShareableControls
+					updateImage={updateImage}
+					rotateImage={rotateImage}
+					downloadImage={downloadImage}
+					overlays={overlays}
+					updateOverlay={updateOverlay}
+				/>
 			</div>
 		</div>
 	)
