@@ -1,7 +1,8 @@
 import React from 'react'
 import { css } from '@emotion/core'
 
-import ChapterSearchResult from './ChapterSearchResult'
+import SearchChapters from './SearchChapters'
+import SearchSupportGroups from './SearchSupportGroups'
 
 import { styles } from '../../css/css'
 
@@ -16,17 +17,22 @@ const searchContainerCSS = css`
 	}
 `
 
-const ChapterSearchResultContainer = ({ chapters, radius, zip }) => {
+const SearchModelContainer = ({ chapters, supportGroups, radius, zip }) => {
 	return (
 		<section css={searchContainerCSS}>
 			<p>
 				Showing results within {radius} miles of <strong>{zip}</strong>
 			</p>
-			{chapters.map((chapter, index) => {
-				return <ChapterSearchResult key={index} chapter={chapter} />
-			})}
+			{chapters &&
+				chapters.map((chapter, index) => {
+					return <SearchChapters key={index} chapter={chapter} />
+				})}
+			{supportGroups &&
+				chapters.map((chapter, index) => {
+					return <SearchSupportGroups key={index} chapter={chapter} />
+				})}
 		</section>
 	)
 }
 
-export default ChapterSearchResultContainer
+export default SearchModelContainer

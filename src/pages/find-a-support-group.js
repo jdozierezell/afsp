@@ -9,11 +9,9 @@ import HeroModelSearch from '../components/Hero/HeroModelSearch'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import SearchModelContainer from '../components/Search/SearchModelContainer'
 
-import { chapterSearchResults } from '../utils/chapterSearchResults'
-
 import { styles } from '../css/css'
 
-const FindALocalChapter = ({ data: { search, chapters } }) => {
+const FindALocalChapter = ({ data: { search, supportGroups } }) => {
 	const [radius, setRadius] = useState(15)
 	const [zip, setZip] = useState()
 	const [searchResults, setSearchResults] = useState([])
@@ -21,13 +19,44 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 		zip: NumberParam,
 		radius: NumberParam,
 	})
+
+	const supportGroupSearchResults = (supportGroups, response) => {
+		const supportGroupArray = []
+		supportGroups.edges.forEach(supportGroup => {
+			console.log(supportGroup)
+			if (supportGroup.node.supportGroupInformation.zipCode) {
+				if (
+					supportGroup.node.supportGroupInformation.zipCode.zips.includes(
+						response.primaryZip
+					)
+				) {
+					supportGroupArray.unshift([
+						supportGroup.node,
+						response.primaryZip,
+					])
+				} else if (
+					supportGroup.node.supportGroupInformation.zipCode.zips.some(
+						zip => response.otherZips.includes(zip)
+					)
+				) {
+					supportGroup.node['location'] = response.primaryZip
+					supportGroupArray.push([
+						supportGroup.node,
+						response.primaryZip,
+					])
+				}
+			}
+		})
+		return supportGroupArray
+	}
+
 	const handleSearchClick = () => {
 		setQuery({
 			zip: zip,
 			radius: radius,
 		})
 		setSearchResults(
-			chapterSearchResults(chapters, {
+			supportGroupSearchResults(supportGroups, {
 				primaryZip: zip,
 				otherZips: zipcodes.radius(zip, radius),
 			})
@@ -71,7 +100,7 @@ export default FindALocalChapter
 
 export const query = graphql`
 	query {
-		search: datoCmsSearchPage(slug: { eq: "find-a-local-chapter" }) {
+		search: datoCmsSearchPage(slug: { eq: "find-a-support-group" }) {
 			title
 			slug
 			seo {
@@ -87,8 +116,33 @@ export const query = graphql`
 				}
 			}
 		}
-		chapters: allDatoCmsChapterHomePage {
-			...ChapterSearch
+		supportGroups: allDatoCmsSupportGroup {
+			edges {
+				node {
+					supportGroupName
+					slug
+					supportGroupWebsite
+					hostingSponsoringOrganization
+					hostingSponsoringOrganizationWebsite
+					groupDemographic
+					newMembers
+					contactName
+					contactEmail
+					contactPhone
+					registrationProcess
+					meetingSchedule
+					nameOfMeetingSite
+					meetingCountry
+					meetingAddress
+					meetingCity
+					meetingState
+					meetingZipPostalCode
+					facilitator
+					attendedTraining
+					costToAttend
+					additionalInformation
+				}
+			}
 		}
 	}
 `
