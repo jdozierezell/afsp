@@ -15,9 +15,10 @@ import { styles } from '../../css/css'
 const konvaContainerCSS = css`
 	display: grid;
 	grid-template-columns: 1fr;
-	margin: 24px;
+	margin: ${styles.scale.px24};
 	@media (min-width: 768px) {
 		grid-template-columns: 1fr 600px;
+		margin: ${styles.scale.px80} ${styles.scale.px50};
 	}
 `
 
@@ -120,11 +121,13 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 			konvaRef.current.getBoundingClientRect().y <= 0 &&
 			window.scrollY >= 150
 		) {
-			console.log('foo')
-			setTop('10px')
+			setPosition('fixed')
+			setTop(0)
 		} else {
-			setTop('120px')
+			setPosition('absolute')
+			setTop('220px')
 		}
+		console.log(position, top)
 	}
 
 	useEffect(() => {
@@ -141,15 +144,7 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 		setStateDimensions()
 		window.addEventListener('scroll', handleScroll)
 		return () => window.removeEventListener('scroll', handleScroll)
-	}, [
-		isSelected,
-		imageWidth,
-		imageHeight,
-		imageX,
-		imageY,
-		imageOffsetX,
-		imageOffsetY,
-	])
+	})
 	return (
 		<div css={konvaContainerCSS}>
 			<div css={shareableControlsCSS}>
@@ -167,7 +162,9 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 				ref={konvaRef}
 				css={css`
 					top: ${top};
-					position: fixed;
+					position: ${position};
+					right: ${styles.scale.px50};
+					border: ${styles.scale.px24} solid ${styles.colors.white};
 				`}
 			>
 				<Stage

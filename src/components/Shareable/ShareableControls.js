@@ -5,6 +5,11 @@ import ShareableOverlays from './ShareableOverlays'
 
 import { styles } from '../../css/css'
 
+const buttonGroupCSS = css`
+	margin-right: ${styles.scale.px24};
+	width: calc(100% - ${styles.scale.px24});
+`
+
 const ShareableControls = ({
 	updateImage,
 	rotateImage,
@@ -18,7 +23,7 @@ const ShareableControls = ({
 				width: 100%;
 			`}
 		>
-			<div className="secondary-button-group full-width">
+			<div css={buttonGroupCSS} className="secondary-button-group">
 				<label htmlFor="image" className="">
 					Click to upload
 				</label>
