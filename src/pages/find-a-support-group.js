@@ -23,20 +23,19 @@ const FindALocalChapter = ({ data: { search, supportGroups } }) => {
 	const supportGroupSearchResults = (supportGroups, response) => {
 		const supportGroupArray = []
 		supportGroups.edges.forEach(supportGroup => {
-			console.log(supportGroup)
-			if (supportGroup.node.supportGroupInformation.zipCode) {
+			console.log(response.otherZips)
+			if (supportGroup.node.meetingZipPostalCode) {
 				if (
-					supportGroup.node.supportGroupInformation.zipCode.zips.includes(
-						response.primaryZip
-					)
+					supportGroup.node.meetingZipPostalCode ===
+					response.primaryZip
 				) {
 					supportGroupArray.unshift([
 						supportGroup.node,
 						response.primaryZip,
 					])
 				} else if (
-					supportGroup.node.supportGroupInformation.zipCode.zips.some(
-						zip => response.otherZips.includes(zip)
+					response.otherZips.includes(
+						supportGroup.node.meetingZipPostalCode
 					)
 				) {
 					supportGroup.node['location'] = response.primaryZip
@@ -80,7 +79,7 @@ const FindALocalChapter = ({ data: { search, supportGroups } }) => {
 			/>
 			{searchResults.length >= 1 && (
 				<SearchModelContainer
-					chapters={searchResults}
+					supportGroups={searchResults}
 					radius={query.radius}
 					zip={query.zip}
 				/>

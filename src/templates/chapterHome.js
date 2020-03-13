@@ -11,6 +11,7 @@ import ChapterAboutContact from '../components/Chapter/ChapterAboutContact'
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
 import FeaturedProgramsContainer from '../components/FeaturedProgramsResources/FeaturedProgramsContainer'
 import CTAContainer from '../components/CTAs/CTAContainer'
+import ChapterSocials from '../components/Social/ChapterSocials'
 import StoriesContainer from '../components/Stories/StoriesContainer'
 
 import { styles } from '../css/css'
@@ -31,6 +32,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 		chapterEmailApiKey,
 		featuredPrograms,
 		volunteerSignupUrl,
+		socialAccounts,
 		chapterInformation,
 	} = chapter
 	const chapterDonorDriveId = chapterInformation.chapterDonorDriveId.toLowerCase()
@@ -164,6 +166,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					external: true,
 				}}
 			/>
+			<ChapterSocials socialAccounts={socialAccounts} />
 			{stories[0] !== 'no stories' && (
 				<StoriesContainer
 					header="Stories and updates"
@@ -251,6 +254,10 @@ export const query = graphql`
 				}
 			}
 			volunteerSignupUrl
+			socialAccounts {
+				socialPlatform
+				accountHandle
+			}
 			chapterInformation {
 				instagramClass
 				chapterDonorDriveId

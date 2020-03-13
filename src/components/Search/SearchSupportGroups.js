@@ -2,50 +2,42 @@ import React from 'react'
 import { css } from '@emotion/core'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
+import IconExternalLink from '../SVGs/IconExternalLink'
+
 import { styles } from '../../css/css'
 
 const searchResultCSS = css`
 	display: grid;
 	grid-column-gap: 0;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
+	grid-gap: ${styles.scale.px36};
 	background-color: ${styles.colors.white};
 	margin-bottom: ${styles.scale.px16};
+	padding: ${styles.scale.px24};
 	border-radius: ${styles.scale.px5};
 	overflow: hidden;
+	position: relative;
 	@media (min-width: ${styles.screens.tablet}px) {
 		grid-template-columns: 1fr 1fr 1fr;
+		grid-gap: ${styles.scale.px24};
 		margin-bottom: ${styles.scale.px20};
 	}
-	:last-of-type {
+	:last-of-type,
+	p:last-child {
 		margin-bottom: 0;
 	}
-`
-
-const searchImageCSS = css`
-	grid-area: 1 / 1 / 2 / 2;
-	overflow: hidden;
-	background-position: center;
-	background-size: cover;
-	@media (min-width: ${styles.screens.tablet}px) {
-		grid-area: 1 / 2 / 2 / 3;
-	}
-`
-
-const searchInfoCSS = css`
-	grid-area: 2 / 1 / 3 / 3;
-	margin-top: ${styles.scale.px40};
-	padding: 0 ${styles.scale.px20};
-	@media (min-width: ${styles.screens.tablet}px) {
-		grid-area: 1 / 1 / 2 / 2;
-	}
 	h2 {
-		margin: 0;
-	}
-	h3 {
-		margin: ${styles.scale.px35} 0;
+		margin-right: ${styles.scale.px28};
+		margin-bottom: 0;
+		span {
+			font-size: ${styles.scale.px18};
+			font-family: ${styles.fonts.avenirRegular};
+		}
+		@media (min-width: ${styles.screens.tablet}px) {
+			margin-right: 0;
+		}
 	}
 	address {
-		margin-bottom: ${styles.scale.px40};
 		font-family: ${styles.fonts.avenirRegular};
 		font-style: normal;
 		a {
@@ -55,71 +47,137 @@ const searchInfoCSS = css`
 			}
 		}
 	}
-	.secondary-button {
-		margin-bottom: ${styles.scale.px30};
-		@media (min-width: ${styles.screens.tablet}px) {
-			margin-bottom: ${styles.scale.px40};
-		}
+`
+
+const meetingSiteCSS = css`
+	h4 {
+		margin-bottom: 0;
 	}
 `
 
-const searchMapCSS = css`
-	grid-area: 1 / 1 / 2 / 2;
-	overflow: hidden;
-	background-position: center;
-	background-size: contain;
-	background-repeat: no-repeat;
+const externalLinkCSS = css`
+	display: inline-block;
+	width: ${styles.scale.px24};
+	position: absolute;
+	right: ${styles.scale.px24};
 	@media (min-width: ${styles.screens.tablet}px) {
-		grid-area: 1 / 3 / 2 / 4;
+		position: initial;
+		margin-left: ${styles.scale.px16};
 	}
 `
 
-const ChapterSearchResult = ({ chapter }) => {
-	const heroBackgroundImg = chapter[0].heroPoster.fluid.src
-	const chapterBackgroundImg =
-		chapter[0].chapterInformation.chapterMap.fluid.src
-
+const SearchSupportGroups = ({ supportGroup }) => {
+	const {
+		additionalInformation,
+		attendedTraining,
+		contactEmail,
+		contactName,
+		contactPhone,
+		costToAttend,
+		facilitator,
+		groupDemographic,
+		hostingSponsoringOrganization,
+		hostingSponsoringOrganizationWebsite,
+		meetingCountry,
+		meetingAddress,
+		meetingCity,
+		meetingSchedule,
+		meetingState,
+		meetingZipPostalCode,
+		nameOfMeetingSite,
+		newMembers,
+		registrationProcess,
+		supportGroupName,
+		supportGroupWebsite,
+	} = supportGroup
 	return (
 		<div css={searchResultCSS}>
-			<div
+			<h2
 				css={css`
-					${searchImageCSS};
-					background-image: url(${heroBackgroundImg});
+					@media (min-width: ${styles.screens.tablet}px) {
+						grid-column: 1 / 4;
+					}
 				`}
-			></div>
-			<div css={searchInfoCSS}>
-				<h2>AFSP {chapter[0].title}</h2>
-				<h3>Community contact:</h3>
+			>
+				{supportGroupName}
+				{supportGroupWebsite && (
+					<a
+						css={externalLinkCSS}
+						href={supportGroupWebsite}
+						target="_blank"
+						rel="noopener nofollow"
+					>
+						<IconExternalLink color={styles.colors.blue} />
+					</a>
+				)}
+				{hostingSponsoringOrganization && (
+					<>
+						<br />
+						<span>
+							Hosted or sponsored by{' '}
+							{hostingSponsoringOrganizationWebsite && (
+								<a
+									href={hostingSponsoringOrganizationWebsite}
+									target="_blank"
+									rel="noopener nofollow"
+								>
+									{hostingSponsoringOrganization}
+								</a>
+							)}
+							{!hostingSponsoringOrganizationWebsite && (
+								<span>hostingSponsoringOrganization</span>
+							)}
+						</span>
+					</>
+				)}
+			</h2>
+			<div css={meetingSiteCSS}>
 				<address>
-					<strong>{chapter[0].staffName}</strong>
-					<br />
-					{chapter[0].staffTitle}
-					<br />
-					<a href={`mailto:${chapter[0].staffEmail}`}>
-						{chapter[0].staffEmail}
-					</a>
-					<br />
-					<a href={`tel:${chapter[0].staffPhone}`}>
-						{chapter[0].staffPhone}
-					</a>
+					{nameOfMeetingSite && <h4>{nameOfMeetingSite}</h4>}
+					<p>
+						{meetingAddress ? meetingAddress : ''}
+						{meetingAddress && <br />}
+						{meetingCity}, {meetingState ? `${meetingState},` : ''}{' '}
+						{meetingZipPostalCode}
+						<br />
+						{meetingCountry}
+					</p>
 				</address>
-				<AniLink
-					className="secondary-button"
-					fade
-					duration={styles.duration}
-					to={`/chapter/${chapter[0].slug}`}
-				>
-					More info
-				</AniLink>
+				<p>
+					Our facilitator is a {facilitator.toLowerCase()} who{' '}
+					{attendedTraining ? 'has' : 'has not'} attended AFSP's
+					Facilitating a Suicide Bereavement Support Group training.
+				</p>
+				<p>
+					We {newMembers ? 'are' : 'are not'} currently accepting new
+					members.
+				</p>
 			</div>
-			<div
-				css={css`
-					${searchMapCSS};
-					background-image: url(${chapterBackgroundImg});
-				`}
-			></div>
+			<div>
+				<h4>Additional information</h4>
+				<p>{meetingSchedule}</p>
+				<p>{groupDemographic}</p>
+				<p>{registrationProcess}</p>
+				{costToAttend && (
+					<p>
+						We charge {costToAttend} to cover the cost of
+						attendance.
+					</p>
+				)}
+				<p>{additionalInformation}</p>
+			</div>
+			<div>
+				<h4>Have questions? Reach out</h4>
+				<address>
+					{contactEmail}
+					<br />
+					{contactName}
+					<br />
+					{contactPhone}
+				</address>
+			</div>
 		</div>
 	)
 }
 
-export default ChapterSearchResult
+export default SearchSupportGroups

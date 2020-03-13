@@ -28,8 +28,13 @@ const SearchModelContainer = ({ chapters, supportGroups, radius, zip }) => {
 					return <SearchChapters key={index} chapter={chapter} />
 				})}
 			{supportGroups &&
-				chapters.map((chapter, index) => {
-					return <SearchSupportGroups key={index} chapter={chapter} />
+				supportGroups.map((supportGroup, index) => {
+					return (
+						<SearchSupportGroups
+							key={index}
+							supportGroup={supportGroup[0]}
+						/>
+					)
 				})}
 		</section>
 	)

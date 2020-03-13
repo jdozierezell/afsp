@@ -66,11 +66,11 @@ const videoHeaderCSS = css`
 
 const videoDescriptionCSS = css`
 	margin: 0 ${styles.scale.px24};
-	max-width: 500px;
 	z-index: 1;
 	@media (min-width: ${styles.screens.tablet}px) {
 		grid-area: 3 / 1 / 4 / 2;
 		margin: 0 ${styles.scale.px50};
+		max-width: 500px;
 	}
 	:first-of-type {
 		margin-top: ${styles.scale.px25};
@@ -110,7 +110,9 @@ const HeroVideo = ({
 		<section
 			css={css`
 				${videoHeroCSS};
-				background-image: url(${`${posterUrl}?auto=format&w=1920&h=1080&fit=crop&crop=faces`});
+				@media (min-width: ${styles.screens.tablet}px) {
+					background-image: url(${`${posterUrl}?auto=format&w=1920&h=1080&fit=crop&crop=faces`});
+				}
 			`}
 		>
 			{videoUrl && (
