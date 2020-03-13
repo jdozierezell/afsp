@@ -1,6 +1,5 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import IconExternalLink from '../SVGs/IconExternalLink'
 
@@ -105,7 +104,7 @@ const SearchSupportGroups = ({ supportGroup }) => {
 						css={externalLinkCSS}
 						href={supportGroupWebsite}
 						target="_blank"
-						rel="noopener nofollow"
+						rel="noopener noreferrer"
 					>
 						<IconExternalLink color={styles.colors.blue} />
 					</a>
@@ -119,7 +118,7 @@ const SearchSupportGroups = ({ supportGroup }) => {
 								<a
 									href={hostingSponsoringOrganizationWebsite}
 									target="_blank"
-									rel="noopener nofollow"
+									rel="noopener noreferrer"
 								>
 									{hostingSponsoringOrganization}
 								</a>

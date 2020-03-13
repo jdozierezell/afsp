@@ -9,11 +9,14 @@ const shareableOverlaysCSS = css`
 	flex-flow: row wrap;
 	justify-content: flex-start;
 	align-items: center;
-	> div {
+	> button {
+		border: none;
+		padding: 0;
 		background-color: ${styles.colors.lightGray};
 		margin: ${styles.scale.px12} auto;
 		width: calc(100% - ${styles.scale.px24});
 		height: calc(100% - ${styles.scale.px24});
+		cursor: pointer;
 		@media (min-width: ${styles.screens.tablet}px) {
 			margin: ${styles.scale.px16};
 			width: calc(100% / 3 - ${styles.scale.px16} * 2);
@@ -27,10 +30,10 @@ const ShareableOverlays = ({ overlays, updateOverlay }) => {
 		<div css={shareableOverlaysCSS}>
 			{overlays.map((overlay, index) => {
 				return (
-					<div key={index} onClick={e => updateOverlay(e.target)}>
+					<button key={index} onClick={e => updateOverlay(e.target)}>
 						{/* <img src={overlay.image.url} alt="" /> */}
 						<Img fluid={overlay.image.fluid} />
-					</div>
+					</button>
 				)
 			})}
 		</div>

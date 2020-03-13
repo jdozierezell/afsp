@@ -50,8 +50,6 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 	const [imageOverlay] = useImage(urlOverlay)
 	const [imageWidth, setImageWidth] = useState(180)
 	const [imageHeight, setImageHeight] = useState(180)
-	const [imageX, setImageX] = useState(null)
-	const [imageY, setImageY] = useState(null)
 	const [imageOffsetX, setImageOffsetX] = useState(null)
 	const [imageOffsetY, setImageOffsetY] = useState(null)
 	const [imageRotation, setImageRotation] = useState(0)
@@ -157,6 +155,14 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 		}
 	}
 
+	if (position === null) {
+		if (window.innerWidth < 768) {
+			setPosition('initial')
+		} else {
+			setPosition('absolute')
+		}
+	}
+
 	useEffect(() => {
 		if (isSelected) {
 			// we need to attach transformer manually
@@ -169,16 +175,9 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 		setImageOffsetX(imageWidth / 2)
 		setImageOffsetY(imageHeight / 2)
 		setStateDimensions()
-		if (position === null) {
-			if (window.innerWidth < 768) {
-				setPosition('initial')
-			} else {
-				setPosition('absolute')
-			}
-		}
 		window.addEventListener('scroll', handleScroll)
 		return () => window.removeEventListener('scroll', handleScroll)
-	})
+	}, [isSelected, imageWidth, imageHeight])
 	return (
 		<div css={konvaContainerCSS}>
 			{console.log(position)}
@@ -220,10 +219,6 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 								setSelected(true)
 							}}
 							draggable
-							onDragEnd={e => {
-								setImageX(e.target.x())
-								setImageY(e.target.y())
-							}}
 						/>
 						<KonvaImage
 							image={imageOverlay}

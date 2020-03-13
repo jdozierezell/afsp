@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { css } from '@emotion/core'
 import algoliasearch from 'algoliasearch/lite'
-import {
-	InstantSearch,
-	connectStateResults,
-	SearchBox,
-} from 'react-instantsearch-dom'
+import { InstantSearch, SearchBox } from 'react-instantsearch-dom'
 
 import SearchHits from '../../components/Search/SearchHits'
 import SearchGrantRefinement from '../../components/Search/SearchGrantRefinement'

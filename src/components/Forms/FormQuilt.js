@@ -64,7 +64,6 @@ const selectCSS = css`
 `
 
 const QuiltForm = () => {
-	const { register, handleSubmit, watch, errors, setValue } = useForm()
 	const [values, setReactSelectValue] = useState({ selectedOption: [] })
 	const schema = Yup.object().shape({
 		quiltTitle: Yup.string().required(
@@ -84,6 +83,9 @@ const QuiltForm = () => {
 		image: Yup.mixed().required(
 			'An image is required to create your square. Please select an image and resubmit.'
 		),
+	})
+	const { register, handleSubmit, errors, setValue } = useForm({
+		validationSchema: schema,
 	})
 	const onSubmit = data => {
 		const form = document.querySelector('form')

@@ -93,7 +93,7 @@ const CarouselDetailContainer = ({
 					<ul className="glide__slides">
 						{details.map((section, index) => {
 							if (!section) {
-								// code here
+								return ''
 							} else {
 								if (section.__typename === 'DatoCmsContent') {
 									const anchor = `/${slug}/#${createAnchor(
@@ -127,7 +127,7 @@ const CarouselDetailContainer = ({
 				<div data-glide-el="controls[nav]" css={carouselButtonsCSS}>
 					{details.map((section, index) => {
 						if (!section) {
-							// code here
+							return ''
 						} else {
 							if (section.__typename === 'DatoCmsContent') {
 								count++

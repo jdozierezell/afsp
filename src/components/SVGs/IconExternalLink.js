@@ -1,11 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 
-const IconArrow = ({ color, direction, iconCSS }) => {
-	const transform =
-		direction === 'right'
-			? 'translate(0 -4.674)'
-			: 'translate(31.49 26.816) rotate(180)'
+const IconArrow = ({ color, iconCSS }) => {
 	return (
 		<svg
 			viewBox="0 0 62.5 62.5"

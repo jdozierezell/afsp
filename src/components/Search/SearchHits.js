@@ -1,10 +1,6 @@
 import React, { useState } from 'react'
 import { css } from '@emotion/core'
-import {
-	Highlight,
-	connectInfiniteHits,
-	Configure,
-} from 'react-instantsearch-dom'
+import { connectInfiniteHits, Configure } from 'react-instantsearch-dom'
 
 import { styles } from '../../css/css'
 

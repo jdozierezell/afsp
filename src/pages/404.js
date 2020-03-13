@@ -10,7 +10,7 @@ const Redirect404 = () => {
 	}
 	useEffect(() => {
 		navigate(`/search-results/?query=${pathString}`)
-	}, [])
+	}, [pathString])
 	return null
 }
 

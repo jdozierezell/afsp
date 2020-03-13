@@ -28,14 +28,13 @@ const SearchStateResults = ({ searchState, searchResults }) => {
 			case 'afsporg-author':
 				indexType = 'authors'
 				break
+			default:
+				break
 		}
 	}
 
 	const hasResults =
 		searchState.query !== '' && searchResults && searchResults.nbHits !== 0
-
-	const nbHits =
-		searchState.query !== '' && searchResults && searchResults.nbHits
 
 	return (
 		<div css={stateResultsCSS}>

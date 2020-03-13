@@ -1,6 +1,5 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import * as Scroll from 'react-scroll'
 
 import { styles } from '../../css/css'
 

@@ -141,6 +141,7 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 				background-color: ${navBackground};
 				color: ${navColor};
 			`}
+			role="navigation"
 			onMouseEnter={() => setHover(true)}
 			onMouseLeave={() => setHover(false)}
 		>

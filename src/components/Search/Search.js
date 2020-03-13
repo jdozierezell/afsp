@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { css } from '@emotion/core'
 import algoliasearch from 'algoliasearch/lite'
 import { InstantSearch, SearchBox } from 'react-instantsearch-dom'
-
-import SearchHits from './SearchHits'
 
 import { styles } from '../../css/css'
 
@@ -55,12 +53,10 @@ const searchCSS = css`
 `
 
 const Search = () => {
-	const [hasQuery, setQuery] = useState(null)
 	return (
 		<div css={searchCSS}>
 			<InstantSearch indexName="afsporg-page" searchClient={searchClient}>
 				<SearchBox
-					onChange={e => setQuery(e.target.value)}
 					searchAsYouType={false}
 					translations={{ placeholder: 'What are you looking for?' }}
 					onSubmit={event => {

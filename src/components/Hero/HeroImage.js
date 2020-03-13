@@ -43,7 +43,6 @@ const mobileImageCSS = css`
 
 const HeroStories = ({ data }) => {
 	const { title, mobileCover, desktopCover } = data
-	const mobileHeroImg = `${mobileCover.url}?w=769&h=475&fit=crop&crop=faces`
 	const desktopHeroImg = `${desktopCover.url}?w=1920&h=768&fit=crop&crop=faces`
 	return (
 		<section
