@@ -36,15 +36,20 @@ const commentCSS = css`
 const FacebookComments = () => {
 	const [fbDefined, setFbDefined] = useState(false)
 	useEffect(() => {
-		// eslint-disable-next-line no-undef
 		if (typeof FB !== `undefined`) {
 			setFbDefined(true)
 			// eslint-disable-next-line no-undef
 			FB.XFBML.parse() // this is part of the SDK that needs to run upon each refresh, so it's pulled out here and dropped into useEffect
 		} else {
-			setFbDefined(false)
+			if (typeof window !== `undefined`) {
+				window.onload = () => {
+					setFbDefined(true)
+					// eslint-disable-next-line no-undef
+					FB.XFBML.parse() // this is part of the SDK that needs to run upon each refresh, so it's pulled out here and dropped into useEffect
+				}
+			}
 		}
-	}, [fbDefined])
+	})
 	const location = typeof window !== `undefined` ? window.location : ''
 	return (
 		<>
