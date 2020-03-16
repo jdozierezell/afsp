@@ -31,7 +31,6 @@ const ShareableOverlays = ({ overlays, updateOverlay }) => {
 			{overlays.map((overlay, index) => {
 				return (
 					<button key={index} onClick={e => updateOverlay(e.target)}>
-						{/* <img src={overlay.image.url} alt="" /> */}
 						<Img fluid={overlay.image.fluid} />
 					</button>
 				)

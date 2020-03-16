@@ -111,7 +111,7 @@ const HeroVideo = ({
 			css={css`
 				${videoHeroCSS};
 				@media (min-width: ${styles.screens.tablet}px) {
-					background-image: url(${`${posterUrl}?auto=format&w=1920&h=1080&fit=crop&crop=faces`});
+					background-image: url(${`${posterUrl}?auto=format&w=1920&h=1080&fit=crop&crop=faces&q=30`});
 				}
 			`}
 		>
@@ -120,9 +120,9 @@ const HeroVideo = ({
 					autoPlay
 					muted
 					loop
+					playsInline
 					css={videoCoverCSS}
 					src={videoUrl}
-					poster={`${posterUrl}?w=720`}
 				></video>
 			)}
 			<div css={descriptionBackgroundCSS}></div>

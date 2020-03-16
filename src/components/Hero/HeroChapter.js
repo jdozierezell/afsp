@@ -108,17 +108,11 @@ const HeroChapter = ({ title, video, poster, brief }) => {
 			<div
 				css={css`
 					${videoImageCoverCSS};
-					background-image: url(${`${poster}?auto=format&w=1920&h=1080&fit=crop&crop=faces`});
+					background-image: url(${`${poster}?auto=format&w=1920&h=1080&fit=crop&crop=faces&q=30`});
 				`}
 			>
 				{video && (
-					<video
-						autoPlay
-						muted
-						loop
-						src={video}
-						poster={`${poster}?w=1920&h=1080&fit=crop&crop=faces`}
-					></video>
+					<video autoPlay muted loop playsInline src={video}></video>
 				)}
 			</div>
 			<div css={descriptionBackgroundCSS}></div>

@@ -95,7 +95,7 @@ const CTAVideo = ({ cta }) => {
 		external,
 	} = cta
 	const video = backgroundVideo ? backgroundVideo.url : null
-	const poster = `${backgroundImage.url}?auto=format&w=1920&h=1080&fit=crop&crop=faces`
+	const poster = `${backgroundImage.url}?auto=format&w=1920&h=1080&fit=crop&crop=faces&q=30`
 	return (
 		<section
 			css={css`
@@ -108,9 +108,10 @@ const CTAVideo = ({ cta }) => {
 					autoPlay
 					muted
 					loop
+					playsInline
 					css={videoCoverCSS}
 					src={video}
-					poster={`${poster}?w=1920&h=1080&fit=crop&crop=faces`}
+					// poster={`${poster}?w=1920&h=1080&fit=crop&crop=faces`}
 				></video>
 			)}
 			<div css={videoDescriptionCSS}>
