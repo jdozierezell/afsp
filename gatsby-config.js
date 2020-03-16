@@ -16,7 +16,7 @@ module.exports = {
 		`gatsby-plugin-react-helmet`,
 		`gatsby-plugin-transition-link`,
 		`gatsby-plugin-netlify-cache`,
-		// `gatsby-transformer-remark`,
+		`gatsby-plugin-sitemap`,
 		`gatsby-plugin-playground`,
 		{
 			resolve: `gatsby-source-filesystem`,
@@ -34,12 +34,6 @@ module.exports = {
 				disabledLiveReload: false,
 			},
 		},
-		// {
-		// 	resolve: `gatsby-plugin-layout`,
-		// 	options: {
-		// 		component: require.resolve(`./src/components/Layout.js`),
-		// 	},
-		// },
 		// this (optional) plugin enables Progressive Web App + Offline functionality
 		// To learn more, visit: https://gatsby.dev/offline
 		// `gatsby-plugin-offline`,

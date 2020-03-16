@@ -89,9 +89,11 @@ const SupportGroupForm = () => {
 		supportGroupName: Yup.string().required(
 			'A support group name is required. Please enter your group name and resubmit.'
 		),
-		supportGroupWebsite: Yup.string().url('Invalid web address'),
+		supportGroupWebsite: Yup.string().url(
+			'Invalid web address. Address must start with http:// or https://'
+		),
 		hostingSponsoringOrganizationWebsite: Yup.string().url(
-			'Invalid web address'
+			'Invalid web address. Address must start with http:// or https://'
 		),
 		contactName: Yup.string().required(
 			"A contact name is required. Please enter the group contact's name and resubmit."

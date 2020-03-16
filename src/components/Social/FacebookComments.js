@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 import { FacebookProvider, Comments } from 'react-facebook'
 
@@ -34,21 +34,30 @@ const commentCSS = css`
 	}
 `
 const FacebookComments = () => {
+	const [fbDefined, setFbDefined] = useState(false)
 	useEffect(() => {
 		// eslint-disable-next-line no-undef
 		if (typeof FB !== `undefined`) {
+			setFbDefined(true)
 			// eslint-disable-next-line no-undef
 			FB.XFBML.parse() // this is part of the SDK that needs to run upon each refresh, so it's pulled out here and dropped into useEffect
+		} else {
+			setFbDefined(false)
 		}
-	})
+	}, [fbDefined])
 	const location = typeof window !== `undefined` ? window.location : ''
 	return (
-		<aside css={commentCSS}>
-			<h2>Comments</h2>
-			<FacebookProvider appId="2546027162151797">
-				<Comments href={location} width="100%" />
-			</FacebookProvider>
-		</aside>
+		<>
+			{// eslint-disable-next-line no-undef
+			fbDefined && (
+				<aside css={commentCSS}>
+					<h2>Comments</h2>
+					<FacebookProvider appId="925475567867156">
+						<Comments href={location} width="100%" />
+					</FacebookProvider>
+				</aside>
+			)}
+		</>
 	)
 }
 

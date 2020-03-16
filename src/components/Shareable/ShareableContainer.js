@@ -155,7 +155,7 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 		}
 	}
 
-	if (position === null) {
+	if (position === null && typeof window !== `undefined`) {
 		if (window.innerWidth < 768) {
 			setPosition('initial')
 		} else {
