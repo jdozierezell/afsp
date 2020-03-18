@@ -11,6 +11,19 @@ export const CTAs = graphql`
 					}
 					backgroundImage {
 						url
+						fluid(
+							maxWidth: 1920
+							imgixParams: {
+								auto: "format"
+								fit: "crop"
+								crop: "faces"
+								w: "1920"
+								h: "1080"
+								q: 30
+							}
+						) {
+							...GatsbyDatoCmsFluid
+						}
 					}
 					heading
 					brief

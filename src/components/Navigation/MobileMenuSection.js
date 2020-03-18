@@ -20,6 +20,7 @@ const menuTitleCSS = css`
 		font-size: ${styles.scale.px18};
 		margin: 0;
 		text-decoration: none;
+		z-index: 1;
 	}
 `
 
@@ -37,6 +38,7 @@ const menuListCSS = css`
 	list-style: none;
 	margin: 0px 0px;
 	position: relative;
+	z-index: 0;
 	li {
 		margin-bottom: ${styles.scale.px30};
 	}

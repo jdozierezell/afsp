@@ -23,16 +23,18 @@ const mainCSS = css`
 const NewRecord = ({ data: { newRecord } }) => {
 	return (
 		<main css={mainCSS}>
-			{newRecord.disclaimer && (
-				<FormDisclaimer disclaimer={newRecord.disclaimer} />
-			)}
-			{newRecord.recordType === 'Quilt' && <FormQuilt />}
-			{newRecord.recordType === 'Support Group' && <FormSupportGroup />}
+			<Layout theme={styles.logo.mobileLightDesktopLight}>
+				<HelmetDatoCms seo={newRecord.seoMetaTags} />
+				<HeroSolid data={newRecord} />
+				{newRecord.disclaimer && (
+					<FormDisclaimer disclaimer={newRecord.disclaimer} />
+				)}
+				{newRecord.recordType === 'Quilt' && <FormQuilt />}
+				{newRecord.recordType === 'Support Group' && (
+					<FormSupportGroup />
+				)}
+			</Layout>
 		</main>
-		// <Layout theme={styles.logo.mobileLightDesktopLight}>
-		// 	<HelmetDatoCms seo={newRecord.seoMetaTags} />
-		// 	<HeroSolid data={newRecord} />
-		// </Layout>
 	)
 }
 

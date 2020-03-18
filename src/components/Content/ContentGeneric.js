@@ -8,6 +8,7 @@ import ContentVideo from './ContentVideo'
 import ContentAudio from './ContentAudio'
 import ContentTag from './ContentTag'
 import ContentHeading from './ContentHeading'
+import ContentEmbed from './ContentEmbed'
 import CardContainer from '../Cards/CardContainer'
 
 import { styles } from '../../css/css'
@@ -75,6 +76,13 @@ const ContentGeneric = ({ data }) => {
 							key={index}
 							heading={detail.heading}
 							level={detail.headingLevel}
+						/>
+					)
+				} else if (detail.__typename === 'DatoCmsEmbed') {
+					return (
+						<ContentEmbed
+							key={index}
+							embedCode={detail.embedCode}
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsFeaturedStoryTag') {

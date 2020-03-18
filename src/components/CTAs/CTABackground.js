@@ -1,6 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import BackgroundImage from 'gatsby-background-image'
 
 import { styles } from '../../css/css'
 
@@ -95,13 +96,11 @@ const CTAVideo = ({ cta }) => {
 		external,
 	} = cta
 	const video = backgroundVideo ? backgroundVideo.url : null
-	const poster = `${backgroundImage.url}?auto=format&w=1920&h=1080&fit=crop&crop=faces&q=30`
 	return (
-		<section
-			css={css`
-				${videoCTACSS};
-				background-image: url(${poster});
-			`}
+		<BackgroundImage
+			Tag="section"
+			fluid={backgroundImage.fluid}
+			css={videoCTACSS}
 		>
 			{video && (
 				<video
@@ -111,7 +110,6 @@ const CTAVideo = ({ cta }) => {
 					playsInline
 					css={videoCoverCSS}
 					src={video}
-					// poster={`${poster}?w=1920&h=1080&fit=crop&crop=faces`}
 				></video>
 			)}
 			<div css={videoDescriptionCSS}>
@@ -139,7 +137,7 @@ const CTAVideo = ({ cta }) => {
 					)}
 				</div>
 			</div>
-		</section>
+		</BackgroundImage>
 	)
 }
 

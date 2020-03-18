@@ -82,6 +82,10 @@ export const query = graphql`
 					headingLevel
 					heading
 				}
+				... on DatoCmsEmbed {
+					__typename
+					embedCode
+				}
 			}
 			overrideWidth
 			seoMetaTags {

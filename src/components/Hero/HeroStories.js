@@ -153,7 +153,7 @@ const HeroStories = ({ data, prev, next }) => {
 			css={css`
 				${storyHeroCSS};
 				@media (min-width: ${styles.screens.tablet}px) {
-					background-image: url(${desktopCover.fluid.src});
+					background-image: url(${`${desktopCover.fluid.src}?auto=format&w=1920&h=1080&fit=crop&crop=faces&q=30`});
 				}
 			`}
 		>

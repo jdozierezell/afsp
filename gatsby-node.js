@@ -154,8 +154,8 @@ exports.createPages = async ({ graphql, actions }) => {
 			redirects: allDatoCmsRedirect {
 				edges {
 					node {
-						aliasUrl
-						destinationUrl
+						alias
+						destination
 					}
 				}
 			}
@@ -323,8 +323,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
 	redirects.forEach(({ node }) => {
 		createRedirect({
-			fromPath: node.aliasUrl,
-			toPath: node.destinationUrl,
+			fromPath: node.alias,
+			toPath: node.destination,
 			isPermanent: true,
 		})
 	})

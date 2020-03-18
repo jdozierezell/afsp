@@ -104,6 +104,11 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 			: styles.colors.darkGray
 	)
 	const [activeMegaMenu, setActiveMegaMenu] = useState('')
+	const [currentPath, setCurrentPath] = useState(
+		typeof window !== `undefined`
+			? new URL(window.location).pathname.replace(/\/+$/, '')
+			: ''
+	)
 
 	useEffect(() => {
 		setMobileLight(theme.mobile === 'light')
@@ -127,12 +132,19 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 		isDesktopLight,
 	])
 
-	const handleMouseEnter = id => {
-		setActiveMegaMenu(id)
+	const handleMouseEnter = (e, id) => {
+		// mouse pointer sometimes targets the li and sometimes the a element, so we check for firstChild before assigning
+		const hoverPath = e.target.firstChild.href
+			? new URL(e.target.firstChild.href).pathname
+			: new URL(e.target.href).pathname
+		if (currentPath !== hoverPath && hoverPath.length > 0) {
+			setActiveMegaMenu(id)
+		}
 	}
 
-	const handleMouseLeave = id => {
+	const handleMouseLeave = () => {
 		setActiveMegaMenu('')
+		setCurrentPath(null)
 	}
 	return (
 		<div

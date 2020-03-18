@@ -78,7 +78,7 @@ const featuredCSS = css`
 	}
 `
 
-const MenuItems = ({
+const DeskMenu = ({
 	deskMenuCSS,
 	items,
 	activeItem,
@@ -97,8 +97,8 @@ const MenuItems = ({
 						<li
 							key={index}
 							id={item.id}
-							onMouseEnter={() => handleMouseEnter(item.id)}
-							onMouseLeave={() => handleMouseLeave(item.id)}
+							onMouseEnter={e => handleMouseEnter(e, item.id)}
+							onMouseLeave={() => handleMouseLeave()}
 						>
 							<AniLink fade duration={styles.duration} to={url}>
 								{item.displayTitle}
@@ -125,27 +125,39 @@ const MenuItems = ({
 															css={megaLinkCSS}
 															key={index}
 														>
-															<AniLink
-																fade
-																duration={1}
-																to={url}
-															>
-																{
-																	link.childHeading
-																}
-															</AniLink>
+															{link.childLink && (
+																<AniLink
+																	fade
+																	duration={1}
+																	to={url}
+																>
+																	{
+																		link.childHeading
+																	}
+																</AniLink>
+															)}
+															{!link.childLink && (
+																<a
+																	href={url}
+																	target="_blank"
+																	rel="noopener noreferrer"
+																>
+																	{
+																		link.childHeading
+																	}
+																</a>
+															)}
 														</li>
 													)
 												} else if (
 													link.__typename ===
 													'DatoCmsFeaturedItem'
 												) {
-													const featuredImage = `${link.featuredLink.seo.image.url}?w=768&h=475&fit=crop&crop=faces`
 													return (
 														<li
 															css={css`
 																${featuredCSS};
-																background-image: url(${featuredImage});
+																background-image: url(${`${link.featuredLink.seo.image.url}?w=768&h=475&fit=crop&crop=faces&q=30`});
 															`}
 															key={index}
 														>
@@ -181,4 +193,4 @@ const MenuItems = ({
 	)
 }
 
-export default MenuItems
+export default DeskMenu

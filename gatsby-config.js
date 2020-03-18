@@ -18,6 +18,8 @@ module.exports = {
 		`gatsby-plugin-netlify-cache`,
 		`gatsby-plugin-sitemap`,
 		`gatsby-plugin-playground`,
+		`gatsby-transformer-sharp`,
+		`gatsby-plugin-netlify`,
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
@@ -25,7 +27,6 @@ module.exports = {
 				path: `${__dirname}/src/images`,
 			},
 		},
-		`gatsby-transformer-sharp`,
 		{
 			resolve: `gatsby-source-datocms`,
 			options: {
