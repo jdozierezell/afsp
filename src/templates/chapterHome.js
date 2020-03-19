@@ -9,7 +9,7 @@ import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroChapter from '../components/Hero/HeroChapter'
 import ChapterAboutContact from '../components/Chapter/ChapterAboutContact'
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
-import FeaturedProgramsContainer from '../components/FeaturedProgramsResources/FeaturedProgramsContainer'
+import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import ChapterSocials from '../components/Social/ChapterSocials'
 import StoriesContainer from '../components/Stories/StoriesContainer'
@@ -156,7 +156,10 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				content={events}
 				addCSS={eventCarouselCSS}
 			/>
-			<FeaturedProgramsContainer resources={featuredPrograms} />
+			<FeaturedResourcesContainer
+				heading="Featured Programs"
+				resources={featuredPrograms}
+			/>
 			<CTAContainer
 				cta={{
 					__typename: 'DatoCmsCtaWithDescription',

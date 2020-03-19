@@ -10,7 +10,7 @@ const solidGrantCSS = css`
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
-	align-items: center;
+	align-items: flex-start;
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px180} ${styles.scale.px50} ${styles.scale.px80};
 	}
@@ -39,6 +39,7 @@ const granteeInformationCSS = css`
 	margin-top: ${styles.scale.px24};
 	@media (min-width: ${styles.screens.navigation}px) {
 		width: calc(100vw - 600px - 150px);
+		margin-top: 0;
 	}
 	div {
 		min-width: 100px;
@@ -48,12 +49,18 @@ const granteeInformationCSS = css`
 		}
 	}
 	img {
-		border-radius: 50%;
+		@media (min-width: ${styles.screens.navigation}px) {
+			border-radius: 50%;
+		}
 	}
 	p {
-		text-align: center;
+		text-align: left;
 		color: ${styles.colors.white};
 		direction: ltr;
+		margin-bottom: 0;
+		@media (min-width: ${styles.screens.navigation}px) {
+			text-align: center;
+		}
 	}
 `
 
@@ -136,6 +143,14 @@ const HeroGrant = ({ data }) => {
 							<Img
 								fluid={grantee.image.fluid}
 								alt={grantee.image.alt}
+								css={css`
+									margin: 0 0 ${styles.scale.px36};
+									@media (min-width: ${styles.screens
+											.navigation}px) {
+										margin: 0 ${styles.scale.px36}
+											${styles.scale.px36};
+									}
+								`}
 							/>
 							<p>
 								<strong>{grantee.name}</strong>

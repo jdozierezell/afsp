@@ -9,7 +9,7 @@ import StatisticsSummary from '../components/Statistics/StatisticsSummary'
 import StatisticsContainer from '../components/Statistics/StatisticsContainer'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import RecommendationsContentStories from '../components/Recommendations/RecommendationsContentStories'
-import FeaturedResourcesContainer from '../components/FeaturedProgramsResources/FeaturedResourcesContainer'
+import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
 
 import { styles } from '../css/css'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 
-import FeaturedResources from './FeaturedProgramsResources'
+import FeaturedResources from './FeaturedResources'
 
 import { styles } from '../../css/css'
 
@@ -15,7 +15,6 @@ const containerCSS = css`
 		grid-template-columns: 1fr;
 		grid-row-gap: ${styles.scale.px50};
 		grid-column-gap: ${styles.scale.px40};
-		align-items: stretch;
 		@media (min-width: ${styles.screens.tablet}px) {
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
@@ -24,20 +23,27 @@ const containerCSS = css`
 			width: 100%;
 		}
 	}
-	> p {
+	> h2 {
 		margin-bottom: ${styles.scale.px30};
+		font-size: ${styles.scale.px17};
+		font-family: ${styles.fonts.avenirRegular};
+		@media (min-width: ${styles.screens.tablet}px) {
+			margin-bottom: ${styles.scale.px60};
+			font-size: ${styles.scale.px44};
+			font-family: ${styles.fonts.paul};
+		}
 	}
 `
 
-const FeaturedResourcesContainer = ({ resources, addCSS }) => {
+const FeaturedProgramsContainer = ({ resources, addCSS }) => {
 	return (
 		<section
 			css={css`
 				${containerCSS};
-				${addCSS}
+				${addCSS};
 			`}
 		>
-			<p>Featured resources</p>
+			<h2>Featured programs</h2>
 			<div>
 				{resources.map((resource, index) => (
 					<FeaturedResources key={index} data={resource} />
@@ -47,4 +53,4 @@ const FeaturedResourcesContainer = ({ resources, addCSS }) => {
 	)
 }
 
-export default FeaturedResourcesContainer
+export default FeaturedProgramsContainer

@@ -8,7 +8,7 @@ import HeroVideo from '../components/Hero/HeroVideo'
 import ChannelContainer from '../components/Channel/ChannelContainer'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 import CTAContainer from '../components/CTAs/CTAContainer'
-import FeaturedResourcesContainer from '../components/FeaturedProgramsResources/FeaturedResourcesContainer'
+import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
 import InstagramFeed from '../components/Social/InstagramFeed'
 
 import { styles } from '../css/css'
@@ -68,6 +68,7 @@ const App = ({ data: { home } }) => {
 					return (
 						<FeaturedResourcesContainer
 							key={index}
+							heading={item.listHeading}
 							resources={item.resource}
 						/>
 					)
@@ -140,6 +141,7 @@ export const query = graphql`
 				}
 				... on DatoCmsResourceList {
 					__typename
+					listHeading
 					resource {
 						... on DatoCmsDetail {
 							__typename

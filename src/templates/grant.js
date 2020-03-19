@@ -22,7 +22,7 @@ const grantCSS = css`
 	}
 `
 
-const Bio = ({ data }) => {
+const Grant = ({ data }) => {
 	const { grant } = data
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
@@ -63,7 +63,7 @@ const Bio = ({ data }) => {
 	)
 }
 
-export default Bio
+export default Grant
 
 export const query = graphql`
 	query($slug: String) {

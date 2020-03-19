@@ -101,6 +101,14 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
+			embeds: allDatoCmsEmbedPage {
+				edges {
+					node {
+						slug
+						title
+					}
+				}
+			}
 			grants: allDatoCmsGrant {
 				edges {
 					node {
@@ -168,6 +176,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	const customShareables = data.customShareables.edges
 	const details = data.details.edges
 	const detailsTagged = data.detailsTagged.edges
+	const embeds = data.embeds.edges
 	const grants = data.grants.edges
 	const imageLists = data.imageLists.edges
 	const landings = data.landings.edges
@@ -251,6 +260,16 @@ exports.createPages = async ({ graphql, actions }) => {
 			context: {
 				slug: node.slug,
 				tag: tag,
+			},
+		})
+	})
+
+	embeds.forEach(({ node }) => {
+		createPage({
+			path: `${node.slug}`,
+			component: path.resolve('./src/templates/embed.js'),
+			context: {
+				slug: node.slug,
 			},
 		})
 	})

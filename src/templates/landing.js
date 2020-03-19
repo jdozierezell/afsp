@@ -8,7 +8,7 @@ import ChannelContainer from '../components/Channel/ChannelContainer'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
-import FeaturedResourcesContainer from '../components/FeaturedProgramsResources/FeaturedResourcesContainer'
+import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
 
 import { styles } from '../css/css'
 
@@ -82,6 +82,7 @@ const Landing = ({ data: { landing } }) => {
 					return (
 						<FeaturedResourcesContainer
 							key={index}
+							heading={item.listHeading}
 							resources={item.resource}
 							addCSS={resourcesCSS}
 						/>
@@ -149,6 +150,7 @@ export const query = graphql`
 			ctaChapterResourceDetailList {
 				... on DatoCmsResourceList {
 					__typename
+					listHeading
 					resource {
 						... on DatoCmsDetail {
 							__typename
