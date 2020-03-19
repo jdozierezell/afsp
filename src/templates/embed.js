@@ -4,19 +4,21 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroSolid from '../components/Hero/HeroSolid'
+import Embed from '../components/Embed/Embed'
 
 import { styles } from '../css/css'
 
-const Embed = ({ data: { embed } }) => {
+const EmbedPage = ({ data: { embed } }) => {
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HelmetDatoCms seo={embed.seoMetaTags} />
 			<HeroSolid data={embed} />
+			<Embed embed={embed.embed} />
 		</Layout>
 	)
 }
 
-export default Embed
+export default EmbedPage
 
 export const query = graphql`
 	query($slug: String) {
