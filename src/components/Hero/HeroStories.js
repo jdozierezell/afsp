@@ -41,9 +41,9 @@ const storyMetaCSS = css`
 	a {
 		font-size: ${styles.scale.px18};
 		font-family: ${styles.fonts.avenirDemi};
-		color: ${styles.colors.white};
 		@media (min-width: ${styles.screens.tablet}px) {
 			font-size: ${styles.scale.px18};
+			color: ${styles.colors.white};
 		}
 	}
 	h3 {
@@ -86,6 +86,7 @@ const byLineCSS = css`
 const previousStoryCSS = css`
 	display: none;
 	@media (min-width: ${styles.screens.tablet}px) {
+		grid-area: 1 / 1 / 2 / 2;
 		display: block;
 		margin: 0 ${styles.scale.px24};
 		p {
@@ -97,6 +98,7 @@ const previousStoryCSS = css`
 const followingStoryCSS = css`
 	display: none;
 	@media (min-width: ${styles.screens.tablet}px) {
+		grid-area: 1 / 3 / 2 / 4;
 		display: block;
 		margin: 0 ${styles.scale.px24};
 		p {
@@ -148,12 +150,11 @@ const HeroStories = ({ data, prev, next }) => {
 	const timeToRead = readTime(fullStory)
 
 	return (
-		// todo: convert background image to gatsby image
 		<section
 			css={css`
 				${storyHeroCSS};
 				@media (min-width: ${styles.screens.tablet}px) {
-					background-image: url(${`${desktopCover.fluid.src}?auto=format&w=1920&h=1080&fit=crop&crop=faces&q=30`});
+					background-image: url(${`${desktopCover.fluid.src}`});
 				}
 			`}
 		>

@@ -32,6 +32,7 @@ const desktopFooterCSS = css`
 `
 
 const logoLegalCSS = css`
+	z-index: 1;
 	@media (min-width: ${styles.screens.footer}px) {
 		display: grid;
 		grid-template-columns: repeat(6, 1fr) 320px;
@@ -47,6 +48,7 @@ const grid782 = css`
 
 const logoCSS = css`
 	width: ${styles.scale.px126};
+	margin-top: ${styles.scale.px30};
 	@media (min-width: ${styles.screens.footer}px) {
 		grid-area: 2 / 1 / 2 / 2;
 		align-self: end;
