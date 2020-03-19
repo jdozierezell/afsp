@@ -9,6 +9,8 @@ import { styles } from '../../css/css'
 
 const containerCSS = css`
 	padding: ${styles.scale.px50} ${styles.scale.px24};
+	z-index: 1;
+	position: relative;
 	@media (min-width: ${styles.screens.tablet}px) {
 		padding: ${styles.scale.px80} ${styles.scale.px50};
 	}
@@ -45,11 +47,20 @@ const moreButtonCSS = css`
 	}
 `
 
-const StoriesContainer = ({ header, first, offset, more, stories }) => {
+const StoriesContainer = ({ header, first, offset, more, intro, stories }) => {
 	const [displayNumber, setDisplayNumber] = useState(3)
 	return (
 		<section css={containerCSS} id={header ? createAnchor(header) : null}>
 			{header && <h2>{header}</h2>}
+			{intro && (
+				<div
+					css={css`
+						margin-top: -${styles.scale.px24};
+						margin-bottom: ${styles.scale.px36};
+					`}
+					dangerouslySetInnerHTML={{ __html: intro }}
+				></div>
+			)}
 			{first && (
 				<div css={storiesCSS}>
 					{stories.map(

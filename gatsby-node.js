@@ -93,6 +93,7 @@ exports.createPages = async ({ graphql, actions }) => {
 							}
 							... on DatoCmsFeaturedStoryTag {
 								__typename
+								introCopy
 								tag {
 									tag
 								}
@@ -249,9 +250,11 @@ exports.createPages = async ({ graphql, actions }) => {
 
 	detailsTagged.forEach(({ node }) => {
 		let tag = ''
+		let intro = ''
 		node.details.forEach(detail => {
 			if (detail.__typename === 'DatoCmsFeaturedStoryTag') {
 				tag = detail.tag.tag
+				intro = detail.introCopy
 			}
 		})
 		createPage({
@@ -260,6 +263,7 @@ exports.createPages = async ({ graphql, actions }) => {
 			context: {
 				slug: node.slug,
 				tag: tag,
+				intro: intro,
 			},
 		})
 	})

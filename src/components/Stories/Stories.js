@@ -9,6 +9,7 @@ import buildUrl from '../../utils/buildUrl'
 import createAnchor from '../../utils/createAnchor'
 
 const featuredCSS = css`
+	background-color: ${styles.colors.white};
 	img {
 		margin: 0;
 	}

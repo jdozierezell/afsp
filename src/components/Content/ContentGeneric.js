@@ -6,7 +6,6 @@ import Content from './Content'
 import ContentImage from './ContentImage'
 import ContentVideo from './ContentVideo'
 import ContentAudio from './ContentAudio'
-import ContentTag from './ContentTag'
 import ContentHeading from './ContentHeading'
 import ContentEmbed from './ContentEmbed'
 import CardContainer from '../Cards/CardContainer'
@@ -86,7 +85,7 @@ const ContentGeneric = ({ data }) => {
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsFeaturedStoryTag') {
-					return <ContentTag key={index} tag={detail.tag.tag} />
+					return null
 				} else if (detail.__typename === 'DatoCmsActionButton') {
 					return (
 						<a

@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
+import Script from 'react-load-script'
 
 import { styles } from '../../css/css'
 
@@ -11,8 +12,28 @@ const embedCSS = css`
 `
 
 const Embed = ({ embed }) => {
+	const [scriptSrc, setScriptSrc] = useState(null)
+	useEffect(() => {
+		// super convoluted way to make script replacement tags work, but hey, it works
+		const wrapper = document.createElement('div')
+		wrapper.innerHTML = embed
+		wrapper.childNodes.forEach(
+			node => {
+				if (node.localName === 'script' && scriptSrc !== node.src) {
+					setScriptSrc(node.src)
+				}
+			},
+			[scriptSrc]
+		)
+	})
 	return (
-		<div css={embedCSS} dangerouslySetInnerHTML={{ __html: embed }}></div>
+		<div>
+			<div
+				css={embedCSS}
+				dangerouslySetInnerHTML={{ __html: embed }}
+			></div>
+			{scriptSrc && <Script url={scriptSrc} />}
+		</div>
 	)
 }
 

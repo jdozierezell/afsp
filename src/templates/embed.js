@@ -9,6 +9,7 @@ import Embed from '../components/Embed/Embed'
 import { styles } from '../css/css'
 
 const EmbedPage = ({ data: { embed } }) => {
+	embed.brief = embed.seo.description
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HelmetDatoCms seo={embed.seoMetaTags} />

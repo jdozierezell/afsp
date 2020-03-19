@@ -29,8 +29,10 @@ const Detail = ({ data, pageContext }) => {
 			<HeroSolid data={tagged} />
 			<NavigationSide data={tagged} />
 			<ContentGeneric data={tagged} />
+			{console.log(pageContext)}
 			<StoriesContainer
 				header={`${pageContext.tag}s`}
+				intro={pageContext.intro}
 				more="releases"
 				stories={taggedStories}
 			/>
@@ -105,6 +107,7 @@ export const query = graphql`
 				}
 				... on DatoCmsFeaturedStoryTag {
 					__typename
+					introCopy
 					tag {
 						tag
 					}
