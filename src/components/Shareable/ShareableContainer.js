@@ -41,7 +41,12 @@ const shareableControlsCSS = css`
 	}
 `
 
-const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
+const ShareableContainer = ({
+	instructions,
+	fileName,
+	overlays,
+	backgroundImage,
+}) => {
 	const [width, setWidth] = useState(0)
 	const [height, setHeight] = useState(0)
 	const [url, setUrl] = useState(null)
@@ -124,7 +129,7 @@ const ShareableContainer = ({ instructions, overlays, backgroundImage }) => {
 			const canvas = document.getElementsByTagName('canvas')
 			const image = canvas[0].toDataURL('image/jpeg', 1.0)
 			const a = document.createElement('a')
-			a.download = 'iGiveBoldly.jpg'
+			a.download = fileName
 			a.href = image
 			a.click()
 		}, 50) // timeout function gives setSelected enough time to re-render canvas so we lose the transformer handles

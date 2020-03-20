@@ -84,7 +84,8 @@ const videoDescriptionCSS = css`
 			margin-bottom: ${styles.scale.px60};
 		}
 	}
-	p {
+	p,
+	a {
 		color: ${styles.colors.white};
 	}
 `

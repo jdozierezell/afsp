@@ -16,6 +16,7 @@ const CustomShareable = ({ data }) => {
 			<HeroSolid data={customShareables} />
 			<ShareableContainer
 				instructions={customShareables.instructions}
+				fileName={customShareables.fileName}
 				overlays={customShareables.shareableOverlays}
 				backgroundImage={customShareables.backgroundImage.url}
 			/>
@@ -32,6 +33,7 @@ export const query = graphql`
 			slug
 			brief
 			instructions
+			fileName
 			backgroundImage {
 				url
 			}
