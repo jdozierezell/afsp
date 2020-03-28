@@ -31,7 +31,7 @@ const Layout = ({ theme, overrideLight, children }) => {
 				overrideLight={overrideLight}
 			/>
 			<main>{children}</main>
-			<EmailSignup formId="KxgQRb">
+			<EmailSignup formId="Mi4wSE">
 				<div>
 					<h2>Sign up for email alerts</h2>
 					<p>Join our network and be the first to take action</p>

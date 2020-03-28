@@ -62,6 +62,10 @@ const subHeaderCSS = css`
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin: ${styles.scale.px40} 0 ${styles.scale.px60};
 	}
+	p,
+	a {
+		color: ${styles.colors.white};
+	}
 `
 
 const inputCSS = css`
@@ -104,7 +108,10 @@ const HeroChapterSearch = ({
 	return (
 		<div css={solidHeroCSS}>
 			<h1>{title}</h1>
-			<h3 css={subHeaderCSS}>{description}</h3>
+			<div
+				css={subHeaderCSS}
+				dangerouslySetInnerHTML={{ __html: description }}
+			></div>
 			<form
 				onSubmit={e => {
 					e.preventDefault()

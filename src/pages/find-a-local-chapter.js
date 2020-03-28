@@ -41,7 +41,7 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 			<HelmetDatoCms seo={search.seoMetaTags} />
 			<HeroModelSearch
 				title={search.title}
-				description={search.seo.description}
+				description={search.brief}
 				handleClick={handleSearchClick}
 				handleSubmit={handleSearchClick}
 				radius={query.radius}
@@ -74,9 +74,7 @@ export const query = graphql`
 		search: datoCmsSearchPage(slug: { eq: "find-a-local-chapter" }) {
 			title
 			slug
-			seo {
-				description
-			}
+			brief
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}
