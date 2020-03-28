@@ -26,23 +26,46 @@ const featuredCSS = css`
 `
 
 const FeaturedResources = ({ data }) => {
+	console.log(data)
+	let fluidImage, description
+	if (data.coverImage) {
+		fluidImage = data.coverImage.fluid
+	} else if (data.seo && data.seo.image) {
+		fluidImage = data.seo.image.fluid
+	}
+	if (data.externalDescription) {
+		description = data.externalDescription
+	} else if (data.seo) {
+		description = data.seo.description
+	}
 	return (
 		<div css={featuredCSS}>
-			<Img fluid={data.seo.image.fluid} alt="" />
+			<Img fluid={fluidImage} alt="" />
 			<h2 dangerouslySetInnerHTML={{ __html: data.title }}></h2>
 			<p
 				dangerouslySetInnerHTML={{
-					__html: data.seo.description,
+					__html: description,
 				}}
 			></p>
-			<AniLink
-				fade
-				duration={styles.duration}
-				to={buildUrl(data.__typename, data.slug)}
-				className="featured-link"
-			>
-				Learn more
-			</AniLink>
+			{data.externalUrl && (
+				<a
+					href={data.externalUrl}
+					target="_blank"
+					rel="noreferrer noopener"
+				>
+					Learn more
+				</a>
+			)}
+			{!data.externalUrl && (
+				<AniLink
+					fade
+					duration={styles.duration}
+					to={buildUrl(data.__typename, data.slug)}
+					className="featured-link"
+				>
+					Learn more
+				</AniLink>
+			)}
 		</div>
 	)
 }

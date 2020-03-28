@@ -42,7 +42,12 @@ const App = ({ data: { home } }) => {
 				heading={home.heroHeading}
 				brief={home.heroBrief}
 				buttonCta={home.heroButtonCta}
-				buttonUrl={home.heroButtonLink.slug}
+				buttonExternal={home.heroButtonExternal}
+				buttonUrl={
+					home.heroButtonExternal
+						? home.heroButtonExternalLink
+						: home.heroButtonInternalLink.slug
+				}
 			/>
 			<div css={walkBar}>
 				<span>Want to walk with us?</span>{' '}
@@ -97,7 +102,22 @@ export const query = graphql`
 			heroHeading
 			heroBrief
 			heroButtonCta
-			heroButtonLink
+			heroButtonExternal
+			heroButtonExternalLink
+			heroButtonInternalLink {
+				... on DatoCmsRealStory {
+					slug
+				}
+				... on DatoCmsLanding {
+					slug
+				}
+				... on DatoCmsDetail {
+					slug
+				}
+				... on DatoCmsDetailTagged {
+					slug
+				}
+			}
 			channelList {
 				image {
 					url

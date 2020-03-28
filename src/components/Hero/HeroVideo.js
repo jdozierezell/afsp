@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import { Link } from 'gatsby'
 
 import { styles } from '../../css/css'
 
@@ -105,8 +106,10 @@ const HeroVideo = ({
 	heading,
 	brief,
 	buttonCta,
+	buttonExternal,
 	buttonUrl,
 }) => {
+	console.log(buttonUrl)
 	return (
 		<section
 			css={css`
@@ -135,9 +138,15 @@ const HeroVideo = ({
 				dangerouslySetInnerHTML={{ __html: brief }}
 			></p>
 			<div css={buttonWrapperCSS}>
-				<a className="secondary-button" href={buttonUrl}>
-					{buttonCta}
-				</a>
+				{buttonExternal ? (
+					<a className="secondary-button" href={buttonUrl}>
+						{buttonCta}
+					</a>
+				) : (
+					<Link className="secondary-button" to={buttonUrl}>
+						{buttonCta}
+					</Link>
+				)}
 			</div>
 		</section>
 	)

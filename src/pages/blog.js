@@ -15,6 +15,7 @@ const RealStories = ({ data: { real, stories } }) => {
 	stories.edges.forEach(story => {
 		story.node.type = 'story'
 	})
+	console.log(real)
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HelmetDatoCms seo={real.seoMetaTags} />
@@ -24,7 +25,12 @@ const RealStories = ({ data: { real, stories } }) => {
 				heading={real.heroHeading}
 				brief={real.heroBrief}
 				buttonCta={real.heroButtonCta}
-				buttonUrl={real.heroButtonLink}
+				buttonExternal={real.heroButtonExternal}
+				buttonUrl={
+					real.heroButtonExternal
+						? real.heroButtonExternalLink
+						: real.heroButtonInternalLink.slug
+				}
 			/>
 			<CarouselVideoContainer videos={real.featuredVideo} />
 			<StoriesContainer
@@ -67,7 +73,22 @@ export const query = graphql`
 			heroBrief
 			heroHeading
 			heroButtonCta
-			heroButtonLink
+			heroButtonExternal
+			heroButtonExternalLink
+			heroButtonInternalLink {
+				... on DatoCmsRealStory {
+					slug
+				}
+				... on DatoCmsLanding {
+					slug
+				}
+				... on DatoCmsDetail {
+					slug
+				}
+				... on DatoCmsDetailTagged {
+					slug
+				}
+			}
 			featuredVideo {
 				... on DatoCmsFeaturedVideo {
 					video {

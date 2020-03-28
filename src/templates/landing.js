@@ -221,6 +221,50 @@ export const query = graphql`
 								}
 							}
 						}
+						... on DatoCmsStory {
+							__typename
+							title
+							slug
+							coverImage {
+								url
+								fluid(
+									maxWidth: 600
+									imgixParams: {
+										auto: "format"
+										fit: "crop"
+										crop: "faces"
+										w: "600"
+										h: "370"
+									}
+								) {
+									...GatsbyDatoCmsFluid
+								}
+							}
+							seo {
+								description
+							}
+						}
+						... on DatoCmsExternalResource {
+							__typename
+							title
+							externalUrl
+							externalDescription
+							coverImage {
+								url
+								fluid(
+									maxWidth: 600
+									imgixParams: {
+										auto: "format"
+										fit: "crop"
+										crop: "faces"
+										w: "600"
+										h: "370"
+									}
+								) {
+									...GatsbyDatoCmsFluid
+								}
+							}
+						}
 						... on DatoCmsQuilt {
 							__typename
 							title
