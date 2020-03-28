@@ -83,6 +83,7 @@
 	"scripts": {
 		"bs": "gatsby build && gatsby serve",
 		"build": "gatsby build",
+		"profile": "gatsby build -- --profile",
 		"develop": "gatsby develop -- --https",
 		"format": "prettier --write src/**/*.{js,jsx}",
 		"serve": "gatsby serve",
