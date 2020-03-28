@@ -20,7 +20,7 @@ const containerCSS = css`
 	}
 `
 
-const ChannelContainer = ({ channelList, addCSS }) => {
+const ChannelContainer = ({ slug, channelList, addCSS }) => {
 	let columns = 0
 	switch (channelList.length) {
 		case 2:
@@ -45,7 +45,7 @@ const ChannelContainer = ({ channelList, addCSS }) => {
 			`}
 		>
 			{channelList.map((channel, index) => (
-				<Channel key={index} channel={channel} />
+				<Channel key={index} slug={slug} channel={channel} />
 			))}
 		</section>
 	)

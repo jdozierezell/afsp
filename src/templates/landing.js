@@ -99,6 +99,7 @@ const Landing = ({ data: { landing } }) => {
 			})}
 			{landing.channelList.length !== 0 && (
 				<ChannelContainer
+					slug={landing.slug}
 					channelList={landing.channelList}
 					addCSS={channelCSS}
 				/>
@@ -116,6 +117,7 @@ export const query = graphql`
 				...GatsbyDatoCmsSeoMetaTags
 			}
 			title
+			slug
 			seo {
 				description
 			}
@@ -136,14 +138,67 @@ export const query = graphql`
 					}
 				}
 				heading
-				link {
-					... on DatoCmsDetail {
+				channelLink {
+					... on DatoCmsInternalLink {
 						__typename
-						slug
+						link {
+							... on DatoCmsDetail {
+								__typename
+								slug
+							}
+							... on DatoCmsLanding {
+								__typename
+								slug
+							}
+							... on DatoCmsRealStory {
+								__typename
+								slug
+							}
+							... on DatoCmsSearchPage {
+								__typename
+								slug
+							}
+							... on DatoCmsStatistic {
+								__typename
+								slug
+							}
+							... on DatoCmsQuilt {
+								__typename
+								slug
+							}
+							... on DatoCmsDetailTagged {
+								__typename
+								slug
+							}
+							... on DatoCmsPartnerPage {
+								__typename
+								slug
+							}
+							... on DatoCmsGrantsPage {
+								__typename
+								slug
+							}
+							... on DatoCmsImageList {
+								__typename
+								slug
+							}
+							... on DatoCmsCustomShareable {
+								__typename
+								slug
+							}
+							... on DatoCmsNewRecord {
+								__typename
+								slug
+							}
+							... on DatoCmsEmbedPage {
+								__typename
+								slug
+							}
+						}
 					}
-					... on DatoCmsLanding {
+					... on DatoCmsAnchor {
 						__typename
-						slug
+						anchor
 					}
 				}
 			}
@@ -164,8 +219,8 @@ export const query = graphql`
 										maxWidth: 600
 										imgixParams: {
 											auto: "format"
-											fit: "crop"
-											crop: "faces"
+											fit: "fill"
+											fill: "blur"
 											w: "600"
 											h: "370"
 										}
@@ -187,8 +242,8 @@ export const query = graphql`
 										maxWidth: 600
 										imgixParams: {
 											auto: "format"
-											fit: "crop"
-											crop: "faces"
+											fit: "fill"
+											fill: "blur"
 											w: "600"
 											h: "370"
 										}
@@ -210,8 +265,8 @@ export const query = graphql`
 										maxWidth: 600
 										imgixParams: {
 											auto: "format"
-											fit: "crop"
-											crop: "faces"
+											fit: "fill"
+											fill: "blur"
 											w: "600"
 											h: "370"
 										}
@@ -231,8 +286,8 @@ export const query = graphql`
 									maxWidth: 600
 									imgixParams: {
 										auto: "format"
-										fit: "crop"
-										crop: "faces"
+										fit: "fill"
+										fill: "blur"
 										w: "600"
 										h: "370"
 									}
@@ -247,7 +302,6 @@ export const query = graphql`
 						... on DatoCmsExternalResource {
 							__typename
 							title
-							externalUrl
 							externalDescription
 							coverImage {
 								url
@@ -255,13 +309,27 @@ export const query = graphql`
 									maxWidth: 600
 									imgixParams: {
 										auto: "format"
-										fit: "crop"
-										crop: "faces"
+										fit: "fill"
+										fill: "blur"
 										w: "600"
 										h: "370"
 									}
 								) {
 									...GatsbyDatoCmsFluid
+								}
+							}
+							resourceLink {
+								... on DatoCmsExternalUrl {
+									__typename
+									id
+									externalUrl
+								}
+								... on DatoCmsDownload {
+									__typename
+									id
+									download {
+										url
+									}
 								}
 							}
 						}
@@ -277,8 +345,8 @@ export const query = graphql`
 										maxWidth: 600
 										imgixParams: {
 											auto: "format"
-											fit: "crop"
-											crop: "faces"
+											fit: "fill"
+											fill: "blur"
 											w: "600"
 											h: "370"
 										}

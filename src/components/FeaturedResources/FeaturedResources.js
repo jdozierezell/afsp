@@ -26,18 +26,31 @@ const featuredCSS = css`
 `
 
 const FeaturedResources = ({ data }) => {
-	console.log(data)
-	let fluidImage, description
+	let fluidImage, description, url
+
 	if (data.coverImage) {
 		fluidImage = data.coverImage.fluid
 	} else if (data.seo && data.seo.image) {
 		fluidImage = data.seo.image.fluid
 	}
+
 	if (data.externalDescription) {
 		description = data.externalDescription
 	} else if (data.seo) {
 		description = data.seo.description
 	}
+
+	if (data.resourceLink) {
+		const resource = data.resourceLink[0]
+		if (resource.__typename === 'DatoCmsExternalUrl') {
+			url = resource.externalUrl
+		} else if (resource.__typename === 'DatoCmsDownload') {
+			url = resource.download.url
+		}
+	} else {
+		url = data.slug
+	}
+
 	return (
 		<div css={featuredCSS}>
 			<Img fluid={fluidImage} alt="" />
@@ -47,20 +60,18 @@ const FeaturedResources = ({ data }) => {
 					__html: description,
 				}}
 			></p>
-			{data.externalUrl && (
-				<a
-					href={data.externalUrl}
-					target="_blank"
-					rel="noreferrer noopener"
-				>
-					Learn more
+			{data.resourceLink && (
+				<a href={url} target="_blank" rel="noreferrer noopener">
+					{data.resourceLink[0].__typename === 'DatoCmsDownload'
+						? 'Download and share'
+						: 'Learn more'}
 				</a>
 			)}
-			{!data.externalUrl && (
+			{!data.resourceLink && (
 				<AniLink
 					fade
 					duration={styles.duration}
-					to={buildUrl(data.__typename, data.slug)}
+					to={buildUrl(data.__typename, url)}
 					className="featured-link"
 				>
 					Learn more

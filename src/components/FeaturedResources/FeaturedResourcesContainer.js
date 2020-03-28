@@ -3,6 +3,8 @@ import { css } from '@emotion/core'
 
 import FeaturedResources from './FeaturedResources'
 
+import createAnchor from '../../utils/createAnchor'
+
 import { styles } from '../../css/css'
 
 const containerCSS = css`
@@ -37,7 +39,7 @@ const FeaturedResourcesContainer = ({ heading, resources, addCSS }) => {
 				${addCSS}
 			`}
 		>
-			{heading && <p>{heading}</p>}
+			{heading && <p id={createAnchor(heading)}>{heading}</p>}
 			<div>
 				{resources.map((resource, index) => (
 					<FeaturedResources key={index} data={resource} />
