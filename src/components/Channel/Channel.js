@@ -58,8 +58,8 @@ const Channel = ({ slug, channel }) => {
 		let url
 		if (typeof window !== `undefined`) {
 			url = new URL(window.location)
+			anchor = `${url.pathname}/${channelLink.anchor}`
 		}
-		anchor = `${url.pathname}/${channelLink.anchor}`
 	}
 	return (
 		<div css={channelCSS}>
