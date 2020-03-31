@@ -27,7 +27,16 @@ const p = css`
 `
 
 const CTAWithDescription = ({ cta }) => {
-	const { heading, brief, linkText, linkUrl, link, external } = cta
+	const {
+		heading,
+		brief,
+		file,
+		fileAsset,
+		linkText,
+		linkUrl,
+		link,
+		external,
+	} = cta
 	return (
 		<>
 			<h2 css={h2}>{heading}</h2>
@@ -37,12 +46,17 @@ const CTAWithDescription = ({ cta }) => {
 					__html: brief,
 				}}
 			></p>
-			{external && (
+			{file && (
+				<a href={fileAsset.url} className="secondary-button">
+					{linkText}
+				</a>
+			)}
+			{!file && external && (
 				<a href={linkUrl} className="secondary-button">
 					{linkText}
 				</a>
 			)}
-			{!external && (
+			{!file && !external && (
 				<AniLink
 					className="secondary-button"
 					fade

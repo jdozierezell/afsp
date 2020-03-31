@@ -28,6 +28,10 @@ export const CTAs = graphql`
 					heading
 					brief
 					linkText
+					file
+					fileAsset {
+						url
+					}
 					external
 					linkUrl
 					link {
@@ -70,6 +74,10 @@ export const CTAs = graphql`
 					heading
 					brief
 					linkText
+					file
+					fileAsset {
+						url
+					}
 					external
 					linkUrl
 					link {
@@ -111,6 +119,10 @@ export const CTAs = graphql`
 					__typename
 					heading
 					linkText
+					file
+					fileAsset {
+						url
+					}
 					external
 					linkUrl
 					link {

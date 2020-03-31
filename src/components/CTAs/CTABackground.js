@@ -91,6 +91,8 @@ const CTAVideo = ({ cta }) => {
 		heading,
 		brief,
 		linkText,
+		file,
+		fileAsset,
 		linkUrl,
 		link,
 		external,
@@ -120,12 +122,17 @@ const CTAVideo = ({ cta }) => {
 							__html: brief,
 						}}
 					></p>
-					{external && (
+					{file && (
+						<a href={fileAsset.url} className="secondary-button">
+							{linkText}
+						</a>
+					)}
+					{!file && external && (
 						<a href={linkUrl} className="secondary-button">
 							{linkText}
 						</a>
 					)}
-					{!external && (
+					{!file && !external && (
 						<AniLink
 							className="secondary-button"
 							fade

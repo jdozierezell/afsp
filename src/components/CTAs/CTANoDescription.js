@@ -19,16 +19,21 @@ const h2 = css`
 `
 
 const CTANoDescription = ({ cta }) => {
-	const { heading, linkText, linkUrl, link, external } = cta
+	const { heading, linkText, file, fileAsset, linkUrl, link, external } = cta
 	return (
 		<>
 			<h2 css={h2}>{heading}</h2>
-			{external && (
+			{file && (
+				<a href={fileAsset.url} className="secondary-button">
+					{linkText}
+				</a>
+			)}
+			{!file && external && (
 				<a href={linkUrl} className="secondary-button">
 					{linkText}
 				</a>
 			)}
-			{!external && (
+			{!file && !external && (
 				<AniLink
 					className="secondary-button"
 					fade
