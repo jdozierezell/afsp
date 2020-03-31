@@ -92,8 +92,6 @@ const QuiltForm = () => {
 		let formData = new FormData(form)
 		formData.append('image', data.image)
 		formData.append('state', data.state.value)
-		console.log(data)
-		console.log(formData)
 		axios
 			.post(
 				'https://serene-dusk-44738.herokuapp.com/create-support-group',
@@ -178,7 +176,6 @@ const QuiltForm = () => {
 						URL.revokeObjectURL(this.src)
 					}
 					div.appendChild(img)
-					console.log(e.target.files)
 				}}
 			/>
 			<div id="imageDisplay"></div>

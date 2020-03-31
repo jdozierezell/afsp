@@ -189,7 +189,6 @@ const SupportGroupForm = () => {
 	}
 
 	const handleToggleChange = toggleValue => {
-		console.log(toggleValue.target)
 		const value = toggleValue.target.checked
 		if (toggleValue.target.id === 'newMembers') {
 			setValue('newMembers', value)
@@ -200,7 +199,6 @@ const SupportGroupForm = () => {
 	}
 
 	const onSubmit = data => {
-		console.log(data)
 		const form = document.querySelector('form')
 		let formData = new FormData(form)
 		formData.append(

@@ -171,7 +171,6 @@ const ShareableContainer = ({
 	useEffect(() => {
 		if (isSelected) {
 			// we need to attach transformer manually
-			console.log(trRef.current)
 			trRef.current.setNode(imageRef.current)
 			trRef.current.getLayer().batchDraw()
 		}
@@ -185,7 +184,6 @@ const ShareableContainer = ({
 	}, [isSelected, imageWidth, imageHeight])
 	return (
 		<div css={konvaContainerCSS}>
-			{console.log(position)}
 			<div
 				id="konva"
 				ref={konvaRef}

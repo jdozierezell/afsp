@@ -23,7 +23,6 @@ const FindALocalChapter = ({ data: { search, supportGroups } }) => {
 	const supportGroupSearchResults = (supportGroups, response) => {
 		const supportGroupArray = []
 		supportGroups.edges.forEach(supportGroup => {
-			console.log(response.otherZips)
 			if (supportGroup.node.meetingZipPostalCode) {
 				if (
 					supportGroup.node.meetingZipPostalCode ===

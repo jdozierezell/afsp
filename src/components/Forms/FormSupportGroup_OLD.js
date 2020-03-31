@@ -92,8 +92,6 @@ const FormSupportGroup = () => {
 		let formData = new FormData(form)
 		formData.append('image', data.image)
 		formData.append('state', data.state.value)
-		console.log(data)
-		console.log(formData)
 		axios
 			.post(
 				'https://serene-dusk-44738.herokuapp.com/create-support-group',

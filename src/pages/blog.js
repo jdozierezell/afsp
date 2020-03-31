@@ -15,7 +15,6 @@ const RealStories = ({ data: { real, stories } }) => {
 	stories.edges.forEach(story => {
 		story.node.type = 'story'
 	})
-	console.log(real)
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HelmetDatoCms seo={real.seoMetaTags} />

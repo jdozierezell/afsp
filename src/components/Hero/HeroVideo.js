@@ -109,7 +109,6 @@ const HeroVideo = ({
 	buttonExternal,
 	buttonUrl,
 }) => {
-	console.log(buttonUrl)
 	return (
 		<section
 			css={css`

@@ -49,7 +49,6 @@ const channelCSS = css`
 `
 
 const Landing = ({ data: { landing } }) => {
-	console.log(landing)
 	let adjacent = 0
 	return (
 		<Layout theme={styles.logo.mobileDarkDesktopDark}>
@@ -108,7 +107,6 @@ const Landing = ({ data: { landing } }) => {
 						return <CarouselChapterContainer key={index} />
 					}
 				} else if (item.__typename === 'DatoCmsResourceList') {
-					console.log(adjacent)
 					return (
 						<FeaturedResourcesContainer
 							key={index}
