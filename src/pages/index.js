@@ -136,18 +136,8 @@ export const query = graphql`
 				}
 				heading
 				brief
-				linkText
-				link {
-					... on DatoCmsLanding {
-						__typename
-						title
-						slug
-					}
-					... on DatoCmsDetail {
-						__typename
-						title
-						slug
-					}
+				channelLink {
+					...ChannelLink
 				}
 			}
 			ctaChapterResourceList {

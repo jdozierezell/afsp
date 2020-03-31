@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 
@@ -24,6 +24,20 @@ const landingBriefCSS = css`
 	margin: 0;
 `
 
+const introCopyCSS = css`
+	background-color: ${styles.colors.lightGray};
+	margin: -${styles.scale.px36} 0 -${styles.scale.px24};
+	div {
+		padding: ${styles.scale.px24};
+		font-family: ${styles.fonts.avenirRegular};
+		@media (min-width: ${styles.screens.mobile}px) {
+			max-width: calc(623px * 3);
+			columns: 3;
+			padding: ${styles.scale.px50};
+		}
+	}
+`
+
 const channelCSS = css`
 	background-color: ${styles.colors.white};
 	grid-template-columns: repeat(2, 1fr);
@@ -34,38 +48,53 @@ const channelCSS = css`
 	}
 `
 
-const resourcesCSS = css`
-	background-color: ${styles.colors.lightGray};
-	@media (min-width: ${styles.screens.tablet}px) {
-		background-color: ${styles.colors.white};
-	}
-`
-
 const Landing = ({ data: { landing } }) => {
+	console.log(landing)
+	let adjacent = 0
 	return (
 		<Layout theme={styles.logo.mobileDarkDesktopDark}>
 			<HelmetDatoCms seo={landing.seoMetaTags} />
 			<h1 css={landingTitle}>{landing.title}</h1>
-			<p
-				css={css`
-					${landingBriefCSS};
-					@media (min-width: ${styles.screens.tablet}px) {
-						padding: 0 ${styles.scale.px50}
-							${landing.channelList.length !== 0
-								? 0
-								: styles.scale.px50};
-					}
-				`}
-			>
-				{landing.seo.description}
-			</p>
+			{!landing.introCopy && (
+				<p
+					css={css`
+						${landingBriefCSS};
+						@media (min-width: ${styles.screens.tablet}px) {
+							padding: 0 ${styles.scale.px50}
+								${landing.channelList.length !== 0
+									? 0
+									: styles.scale.px50};
+						}
+					`}
+				>
+					{landing.seo.description}
+				</p>
+			)}
 			{landing.channelList.length !== 0 && (
 				<ChannelContainer
 					channelList={landing.channelList}
 					addCSS={channelCSS}
 				/>
 			)}
+			{landing.introCopy && (
+				<div css={introCopyCSS}>
+					<div
+						dangerouslySetInnerHTML={{ __html: landing.introCopy }}
+					></div>
+				</div>
+			)}
 			{landing.ctaChapterResourceDetailList.map((item, index) => {
+				const prevIndex = index > 0 ? index - 1 : null
+				if (
+					prevIndex !== null &&
+					landing.ctaChapterResourceDetailList[index].__typename ===
+						landing.ctaChapterResourceDetailList[prevIndex]
+							.__typename
+				) {
+					adjacent++
+				} else {
+					adjacent = 0
+				}
 				if (item.__typename === 'DatoCmsCallToAction') {
 					return (
 						<CTAContainer
@@ -79,12 +108,17 @@ const Landing = ({ data: { landing } }) => {
 						return <CarouselChapterContainer key={index} />
 					}
 				} else if (item.__typename === 'DatoCmsResourceList') {
+					console.log(adjacent)
 					return (
 						<FeaturedResourcesContainer
 							key={index}
 							heading={item.listHeading}
 							resources={item.resource}
-							addCSS={resourcesCSS}
+							addCSS={css`
+								background-color: ${adjacent % 2 === 1
+									? styles.colors.lightGray
+									: styles.colors.white};
+							`}
 						/>
 					)
 				} else if (item.__typename === 'DatoCmsDetailSquare') {
@@ -97,13 +131,6 @@ const Landing = ({ data: { landing } }) => {
 				}
 				return ''
 			})}
-			{landing.channelList.length !== 0 && (
-				<ChannelContainer
-					slug={landing.slug}
-					channelList={landing.channelList}
-					addCSS={channelCSS}
-				/>
-			)}
 		</Layout>
 	)
 }
@@ -139,69 +166,10 @@ export const query = graphql`
 				}
 				heading
 				channelLink {
-					... on DatoCmsInternalLink {
-						__typename
-						link {
-							... on DatoCmsDetail {
-								__typename
-								slug
-							}
-							... on DatoCmsLanding {
-								__typename
-								slug
-							}
-							... on DatoCmsRealStory {
-								__typename
-								slug
-							}
-							... on DatoCmsSearchPage {
-								__typename
-								slug
-							}
-							... on DatoCmsStatistic {
-								__typename
-								slug
-							}
-							... on DatoCmsQuilt {
-								__typename
-								slug
-							}
-							... on DatoCmsDetailTagged {
-								__typename
-								slug
-							}
-							... on DatoCmsPartnerPage {
-								__typename
-								slug
-							}
-							... on DatoCmsGrantsPage {
-								__typename
-								slug
-							}
-							... on DatoCmsImageList {
-								__typename
-								slug
-							}
-							... on DatoCmsCustomShareable {
-								__typename
-								slug
-							}
-							... on DatoCmsNewRecord {
-								__typename
-								slug
-							}
-							... on DatoCmsEmbedPage {
-								__typename
-								slug
-							}
-						}
-					}
-					... on DatoCmsAnchor {
-						__typename
-						anchor
-					}
+					...ChannelLink
 				}
 			}
+			introCopy
 			ctaChapterResourceDetailList {
 				... on DatoCmsResourceList {
 					__typename

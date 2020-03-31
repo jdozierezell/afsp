@@ -32,8 +32,12 @@ const channelCSS = css`
 			display: inline-block;
 			margin: ${styles.scale.px30} 0 0;
 		}
-		:hover span {
+		:hover span,
+		:hover p:last-of-type {
 			text-decoration: underline;
+		}
+		p:last-of-type {
+			color: ${styles.colors.poppy};
 		}
 	}
 `
@@ -47,7 +51,7 @@ const channelImageCSS = css`
 `
 
 const Channel = ({ slug, channel }) => {
-	const { image, heading } = channel
+	const { image, heading, brief } = channel
 	const channelLink = channel.channelLink[0]
 	let anchor
 	if (channelLink.__typename === 'DatoCmsAnchor') {
@@ -70,6 +74,8 @@ const Channel = ({ slug, channel }) => {
 				>
 					<Img css={channelImageCSS} fluid={image.fluid} alt="" />
 					<span>{heading}</span>
+					<p>{brief}</p>
+					<p>Learn more</p>
 				</AniLink>
 			)}
 			{channelLink.__typename === 'DatoCmsAnchor' && (
@@ -77,6 +83,7 @@ const Channel = ({ slug, channel }) => {
 					<Link to={anchor}>
 						<Img css={channelImageCSS} fluid={image.fluid} alt="" />
 						<span>{heading}</span>
+						<p>{brief}</p>
 					</Link>
 				</>
 			)}
