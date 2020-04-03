@@ -7,6 +7,7 @@ import { HelmetDatoCms } from 'gatsby-source-datocms'
 import ChannelContainer from '../components/Channel/ChannelContainer'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
+import CarouselResourceContainer from '../components/Carousels/CarouselResourceContainer'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
 
@@ -107,18 +108,28 @@ const Landing = ({ data: { landing } }) => {
 						return <CarouselChapterContainer key={index} />
 					}
 				} else if (item.__typename === 'DatoCmsResourceList') {
-					return (
-						<FeaturedResourcesContainer
-							key={index}
-							heading={item.listHeading}
-							resources={item.resource}
-							addCSS={css`
-								background-color: ${adjacent % 2 === 1
-									? styles.colors.lightGray
-									: styles.colors.white};
-							`}
-						/>
-					)
+					if (item.displayAsCarousel) {
+						return (
+							<CarouselResourceContainer
+								key={index}
+								listHeading={item.listHeading}
+								resources={item.resource}
+							/>
+						)
+					} else {
+						return (
+							<FeaturedResourcesContainer
+								key={index}
+								heading={item.listHeading}
+								resources={item.resource}
+								addCSS={css`
+									background-color: ${adjacent % 2 === 1
+										? styles.colors.lightGray
+										: styles.colors.white};
+								`}
+							/>
+						)
+					}
 				} else if (item.__typename === 'DatoCmsDetailSquare') {
 					return (
 						<CarouselDetailContainer
@@ -172,6 +183,7 @@ export const query = graphql`
 				... on DatoCmsResourceList {
 					__typename
 					listHeading
+					displayAsCarousel
 					resource {
 						... on DatoCmsDetail {
 							__typename

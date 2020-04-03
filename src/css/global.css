@@ -3,6 +3,24 @@ h2,
 h3,
 h4,
 h5,
+h6,
+p,
+a,
+input,
+textarea,
+li,
+th,
+td,
+button,
+div {
+	font-display: swap;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
 h6 {
 	font-family: PaulGroteskSoft-Bold, Arial, sans-serif;
 	color: hsla(0, 0%, 14.9%, 1);
