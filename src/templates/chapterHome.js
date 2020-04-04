@@ -35,7 +35,9 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 		socialAccounts,
 		chapterInformation,
 	} = chapter
-	const chapterDonorDriveId = chapterInformation.chapterDonorDriveId.toLowerCase()
+	const chapterDonorDriveId = chapterInformation.chapterDonorDriveId
+		.replace(' ', '')
+		.toLowerCase()
 	const [events, setEvents] = useState({ details: [] })
 	const [stories, setStories] = useState([])
 
