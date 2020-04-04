@@ -41,7 +41,7 @@ const HeroSearch = ({ data: { title, handleHeroClick, visibility } }) => {
 		<div css={solidHeroCSS}>
 			{title && (
 				<>
-					<h1>Search results for {title}</h1>
+					<h1>Search results for "{title}"</h1>
 					<div>
 						<p>Can't find what you're looking for?</p>
 						<button

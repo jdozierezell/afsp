@@ -51,7 +51,7 @@ const CustomHits = data => {
 				{data.hits.map(hit => (
 					<li key={hit.objectID} data-type={hit.type}>
 						<a href={hit.url} css={hitCSS}>
-							<img src={hit.image} alt="result primary" />
+							<img src={hit.image} alt="result thumbnail" />
 							<p>{hit.title}</p>
 						</a>
 					</li>
