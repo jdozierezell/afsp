@@ -38,7 +38,10 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	const chapterDonorDriveId = chapterInformation.chapterDonorDriveId
 		.replace(' ', '')
 		.toLowerCase()
-	const [events, setEvents] = useState({ details: [] })
+	const [events, setEvents] = useState({
+		title: 'Upcoming events',
+		details: [],
+	})
 	const [stories, setStories] = useState([])
 
 	const storiesUpdates = []
@@ -102,11 +105,8 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					return response.json()
 				})
 				.then(response => {
-					const eventDetails = {
-						title: 'Upcoming events',
-						details: [],
-					}
 					if (response.next) {
+						const details = []
 						response.next.forEach(event => {
 							const eventObject = {
 								__typename: 'Event',
@@ -114,11 +114,11 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 								date: moment(event.startdate).format('MMMM D'),
 								url: `https://afsp.donordrive.com/index.cfm?fuseaction=donorDrive.event&eventID=${event.recordid}`,
 							}
-							eventDetails.details.push(eventObject)
+							details.push(eventObject)
 						})
-						setEvents(eventDetails)
+						setEvents({ ...events, details })
 					} else {
-						setEvents({ details: ['no events'] })
+						setEvents({ ...events, details: ['no events'] })
 					}
 				})
 		}
