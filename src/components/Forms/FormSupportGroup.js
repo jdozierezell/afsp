@@ -52,7 +52,7 @@ const formWrapperCSS = css`
 		color: ${styles.colors.white};
 		cursor: pointer;
 	}
-	label[for='newMembers'], label[for='differentSubmitter'], label[for='attendedTraining'] {
+	label[for='newMembers'], label[for='secondContact'], label[for='differentSubmitter'], label[for='attendedTraining'] {
 		display: inline-block;
 		width: auto;
 		margin: 0 ${styles.scale.px24} ${styles.scale.px12};
@@ -103,27 +103,40 @@ const SupportGroupForm = () => {
 			.required(
 				"A contact email is required. Please enter the group contact's email and resubmit."
 			),
-		submitterName: Yup.string()
-			.notRequired()
-			.when('differentSubmitter', {
-				is: val => val === 'checked',
-				then: Yup.string().required(
-					'Your name is required. Please enter your name and resubmit.'
+		secondContactName: Yup.string().when('secondContact', {
+			is: val => document.querySelector('[name="secondContact"]').checked,
+			then: Yup.string().required(
+				'Your name is required. Please enter your name and resubmit.'
+			),
+			otherwise: Yup.string().notRequired(),
+		}),
+		secondContactEmail: Yup.string().when('secondContact', {
+			is: val => document.querySelector('[name="secondContact"]').checked,
+			then: Yup.string()
+				.email('Invalid email address')
+				.required(
+					'Your email is required. Please enter your email and resubmit.'
 				),
-				otherwise: Yup.string().notRequired(),
-			}),
-		submitterEmail: Yup.string()
-			.notRequired()
-			.when('differentSubmitter', {
-				is: val => val === 'checked',
-				then: Yup.string()
-					.email('Invalid email address')
-
-					.required(
-						'Your email is required. Please enter your email and resubmit.'
-					),
-				otherwise: Yup.string().notRequired(),
-			}),
+			otherwise: Yup.string().notRequired(),
+		}),
+		submitterName: Yup.string().when('differentSubmitter', {
+			is: val =>
+				document.querySelector('[name="differentSubmitter"]').checked,
+			then: Yup.string().required(
+				'Your name is required. Please enter your name and resubmit.'
+			),
+			otherwise: Yup.string().notRequired(),
+		}),
+		submitterEmail: Yup.string().when('differentSubmitter', {
+			is: val =>
+				document.querySelector('[name="differentSubmitter"]').checked,
+			then: Yup.string()
+				.email('Invalid email address')
+				.required(
+					'Your email is required. Please enter your email and resubmit.'
+				),
+			otherwise: Yup.string().notRequired(),
+		}),
 		meetingSchedule: Yup.string().required(
 			"A description of your meeting schedule is required. Please enter the group's schedule and resubmit."
 		),
@@ -136,15 +149,15 @@ const SupportGroupForm = () => {
 		meetingCity: Yup.string().required(
 			"Your meeting site's city is required. Please enter the city and resubmit."
 		),
-		meetingState: Yup.object()
-			.notRequired()
-			.when('meetingCountry', {
-				is: val => val === 'United States of America',
-				then: Yup.object().required(
-					"Your meeting site's state is required. Please select the state and resubmit."
-				),
-				otherwise: Yup.object().notRequired(),
-			}),
+		meetingState: Yup.object().when('meetingCountry', {
+			is: val =>
+				document.querySelector('.react-select__single-value')
+					.innerText === 'United States of America',
+			then: Yup.object().required(
+				"Your meeting site's state is required. Please select the state and resubmit."
+			),
+			otherwise: Yup.object().notRequired(),
+		}),
 		meetingZipPostalCode: Yup.string().required(
 			"Your meeting site's zip or postal code is required. Please enter the code and resubmit."
 		),
@@ -160,6 +173,7 @@ const SupportGroupForm = () => {
 		selectedStateOption: [],
 	})
 	const [showSubmitter, setShowSubmitter] = useState(false)
+	const [showSecondContact, setShowSecondContact] = useState(false)
 	const [showState, setShowState] = useState(false)
 	const [submitted, setSubmitted] = useState(false)
 	const [submitError, setSubmitError] = useState(false)
@@ -251,6 +265,7 @@ const SupportGroupForm = () => {
 			})
 			.catch(error => {
 				setSubmitError(true)
+				setLoading(false)
 			})
 	}
 
@@ -264,6 +279,8 @@ const SupportGroupForm = () => {
 		register({ name: 'facilitator' })
 		register({ name: 'newMembers' })
 		register({ name: 'attendedTraining' })
+		register({ name: 'differentSubmitter' })
+		register({ name: 'secondContact' })
 	}, [register])
 
 	return (
@@ -378,6 +395,58 @@ const SupportGroupForm = () => {
 						<input name="contactPhone" ref={register} />
 
 						<Toggle
+							name="secondContact"
+							onChange={e => {
+								if (e.target.checked) {
+									setShowSecondContact(true)
+								} else {
+									setShowSecondContact(false)
+								}
+							}}
+						/>
+						{errors.secondContact && (
+							<span>{errors.secondContact.message}</span>
+						)}
+
+						<label htmlFor="secondContact">
+							My Group Includes a Second Group Contact
+						</label>
+						<p className="toggleInstructions">
+							Select if your information is different from the
+							group contact information above.
+						</p>
+
+						<div
+							css={css`
+								display: ${showSecondContact === false
+									? 'none'
+									: 'inherit'};
+							`}
+						>
+							<label htmlFor="secondContactName">
+								Second Contact Name <span>*</span>
+							</label>
+							{errors.secondContactName && (
+								<span>{errors.secondContactName.message}</span>
+							)}
+							<input name="secondContactName" ref={register} />
+
+							<label htmlFor="secondContactEmail">
+								Second Contact Email <span>*</span>
+							</label>
+							<p>Please enter a valid email address</p>
+							{errors.secondContactEmail && (
+								<span>{errors.secondContactEmail.message}</span>
+							)}
+							<input name="secondContactEmail" ref={register} />
+
+							<label htmlFor="secondContactPhone">
+								Second Contact Phone
+							</label>
+							<input name="secondContactPhone" ref={register} />
+						</div>
+
+						<Toggle
 							name="differentSubmitter"
 							onChange={e => {
 								if (e.target.checked) {
@@ -387,7 +456,6 @@ const SupportGroupForm = () => {
 								}
 							}}
 						/>
-
 						<label htmlFor="differentSubmitter">
 							My Information is Different from Group Contact
 						</label>
@@ -406,6 +474,9 @@ const SupportGroupForm = () => {
 							<label htmlFor="submitterName">
 								Submitter Name <span>*</span>
 							</label>
+							{errors.submitterName && (
+								<span>{errors.submitterName.message}</span>
+							)}
 							<input name="submitterName" ref={register} />
 
 							<label htmlFor="submitterEmail">

@@ -54,9 +54,10 @@ const carouselButtonsCSS = css`
 	}
 `
 
-const CarouselResourceContainer = ({ listHeading, resources }) => {
+const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
+	const id = createAnchor(listHeading)
 	useEffect(() => {
-		new Glide('.glide-resource', {
+		new Glide(`.glide-resource-${id}`, {
 			perView: 3,
 			peek: { before: 0, after: styles.scale.px126 },
 			breakpoints: {
@@ -72,17 +73,32 @@ const CarouselResourceContainer = ({ listHeading, resources }) => {
 		}).mount()
 	}, [])
 	return (
-		<section css={carouselCSS}>
-			<p id={createAnchor(listHeading)}>{listHeading}</p>
-			<div className="glide-resource">
+		<section
+			id={id}
+			css={css`
+				${carouselCSS};
+				${addCSS};
+			`}
+		>
+			<p>{listHeading}</p>
+			<div className={`glide-resource-${id}`}>
 				<div data-glide-el="track">
 					<ul className="glide__slides">
 						{resources.map((resource, index) => {
 							let title, image, link, linkText, external
 							title = resource.title
-							image = resource.coverImage.fluid
 							if (resource.__typename === 'DatoCmsStory') {
+								image = resource.coverImage.fluid
 								link = `/story/${resource.slug}`
+								linkText = 'Learn more'
+								external = false
+							} else if (
+								resource.__typename === 'DatoCmsDetail' ||
+								resource.__typename === 'DatoCmsDetailTagged' ||
+								resource.__typename === 'DatoCmsLanding'
+							) {
+								image = resource.seo.image.fluid
+								link = `/${resource.slug}`
 								linkText = 'Learn more'
 								external = false
 							} else if (
@@ -93,6 +109,7 @@ const CarouselResourceContainer = ({ listHeading, resources }) => {
 									resource.resourceLink[0].__typename ===
 									'DatoCmsDownload'
 								) {
+									image = resource.coverImage.fluid
 									link = resource.resourceLink[0].download.url
 									linkText = 'Download and share'
 									external = false
@@ -100,6 +117,7 @@ const CarouselResourceContainer = ({ listHeading, resources }) => {
 									resource.resourceLink[0].__typename ===
 									'DatoCmsExternalUrl'
 								) {
+									image = resource.coverImage.fluid
 									link = resource.resourceLink[0].externalUrl
 									linkText = 'Learn more'
 									external = true

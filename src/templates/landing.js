@@ -109,11 +109,17 @@ const Landing = ({ data: { landing } }) => {
 					}
 				} else if (item.__typename === 'DatoCmsResourceList') {
 					if (item.displayAsCarousel) {
+						console.log(adjacent)
 						return (
 							<CarouselResourceContainer
 								key={index}
 								listHeading={item.listHeading}
 								resources={item.resource}
+								addCSS={css`
+									background-color: ${adjacent % 2 === 1
+										? styles.colors.lightGray
+										: styles.colors.white};
+								`}
 							/>
 						)
 					} else {

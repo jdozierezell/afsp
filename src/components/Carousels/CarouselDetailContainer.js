@@ -69,8 +69,9 @@ const CarouselDetailContainer = ({
 	addCSS,
 }) => {
 	let count = 0
+	const id = createAnchor(title)
 	useEffect(() => {
-		new Glide('.glide-story', {
+		new Glide(`.glide-story-${id}`, {
 			perView: 4,
 			gap: styles.gridGap.desktop,
 			breakpoints: {
@@ -88,7 +89,7 @@ const CarouselDetailContainer = ({
 	return (
 		<div css={carouselCSS}>
 			<h2>{title}</h2>
-			<div className="glide-story">
+			<div className={`glide-story-${id}`}>
 				<div data-glide-el="track">
 					<ul className="glide__slides">
 						{details.map((section, index) => {

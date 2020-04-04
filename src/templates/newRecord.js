@@ -22,10 +22,10 @@ const mainCSS = css`
 
 const NewRecord = ({ data: { newRecord } }) => {
 	return (
-		<main css={mainCSS}>
-			<Layout theme={styles.logo.mobileLightDesktopLight}>
-				<HelmetDatoCms seo={newRecord.seoMetaTags} />
-				<HeroSolid data={newRecord} />
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
+			<HelmetDatoCms seo={newRecord.seoMetaTags} />
+			<HeroSolid data={newRecord} />
+			<main css={mainCSS}>
 				{newRecord.disclaimer && (
 					<FormDisclaimer disclaimer={newRecord.disclaimer} />
 				)}
@@ -33,8 +33,8 @@ const NewRecord = ({ data: { newRecord } }) => {
 				{newRecord.recordType === 'Support Group' && (
 					<FormSupportGroup />
 				)}
-			</Layout>
-		</main>
+			</main>
+		</Layout>
 	)
 }
 
