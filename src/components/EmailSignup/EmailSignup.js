@@ -12,6 +12,7 @@ const emailCSS = css`
 	color: ${styles.colors.black};
 	text-align: center;
 	position: relative;
+	z-index: 100;
 	@media (min-width: ${styles.screens.tablet}px) {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);

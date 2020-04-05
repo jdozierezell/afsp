@@ -67,12 +67,15 @@ const ShareableControls = ({
 					>
 						Type your custom message here
 					</h2>
-					<p>Messages are limited to 280 characters.</p>
+					<p>
+						Messages are limited to {customValues.characterCount}{' '}
+						characters.
+					</p>
 					<textarea
 						name=""
 						id=""
 						css={textAreaCSS}
-						maxLength="280"
+						maxLength={customValues.characterCount}
 						value={message}
 						onChange={e => updateMessage(e.target.value)}
 					></textarea>

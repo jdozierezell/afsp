@@ -15,6 +15,7 @@ const footerCSS = css`
 	color: ${styles.colors.white};
 	font-family: ${styles.fonts.avenirRegular};
 	position: relative;
+	z-index: 100;
 `
 
 const mobileFooterCSS = css`

@@ -49,13 +49,13 @@ export const query = graphql`
 					url
 					alt
 					fluid(
-						maxWidth: 600
+						maxWidth: 1080
 						imgixParams: {
 							auto: "format"
 							fit: "crop"
 							crop: "faces"
-							w: "600"
-							h: "600"
+							w: "1080"
+							h: "1080"
 						}
 					) {
 						...GatsbyDatoCmsFluid

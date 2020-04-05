@@ -36,7 +36,7 @@ const konvaCSS = css`
 
 const shareableControlsCSS = css`
 	@media (min-width: 768px) {
-		margin-right: ${styles.scale.px36};
+		margin-right: ${styles.scale.px50};
 		grid-column: 1 / 2;
 		grid-row: 1 / 2;
 	}
