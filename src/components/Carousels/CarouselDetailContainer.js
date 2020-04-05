@@ -73,7 +73,7 @@ const CarouselDetailContainer = ({
 	useEffect(() => {
 		new Glide(`.glide-story-${id}`, {
 			perView: 4,
-			gap: styles.gridGap.desktop,
+			peek: { before: 0, after: styles.scale.px24 },
 			breakpoints: {
 				1080: {
 					perView: 2,
@@ -85,7 +85,7 @@ const CarouselDetailContainer = ({
 				},
 			},
 		}).mount()
-	}, [])
+	}, [details])
 	return (
 		<div css={carouselCSS}>
 			<h2>{title}</h2>

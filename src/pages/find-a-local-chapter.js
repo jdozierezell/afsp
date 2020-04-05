@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import qs from 'qs'
 import { graphql } from 'gatsby'
 import zipcodes from 'zipcodes'
 import { useQueryParams, NumberParam } from 'use-query-params'
@@ -14,13 +15,24 @@ import { chapterSearchResults } from '../utils/chapterSearchResults'
 import { styles } from '../css/css'
 
 const FindALocalChapter = ({ data: { search, chapters } }) => {
-	const [radius, setRadius] = useState(15)
-	const [zip, setZip] = useState()
+	const existingSearch =
+		typeof window !== `undefined`
+			? qs.parse(window.location.search.slice(1))
+			: {}
+	const [radius, setRadius] = useState(
+		existingSearch.radius ? existingSearch.radius : 15
+	)
+	const [zip, setZip] = useState(existingSearch.zip ? existingSearch.zip : '')
 	const [searchResults, setSearchResults] = useState([])
 	const [query, setQuery] = useQueryParams({
 		zip: NumberParam,
 		radius: NumberParam,
 	})
+
+	const updateRadius = newRadius => setRadius(newRadius)
+
+	const updateZip = newZip => setZip(newZip)
+
 	const handleSearchClick = () => {
 		setQuery({
 			zip: zip,
@@ -33,8 +45,15 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 			})
 		)
 	}
-	const updateRadius = newRadius => setRadius(newRadius)
-	const updateZip = newZip => setZip(newZip)
+
+	useEffect(() => {
+		setSearchResults(
+			chapterSearchResults(chapters, {
+				primaryZip: zip,
+				otherZips: zipcodes.radius(zip, radius),
+			})
+		)
+	}, [])
 
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
@@ -42,7 +61,6 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 			<HeroModelSearch
 				title={search.title}
 				description={search.brief}
-				handleClick={handleSearchClick}
 				handleSubmit={handleSearchClick}
 				radius={query.radius}
 				updateRadius={updateRadius}

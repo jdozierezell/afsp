@@ -96,7 +96,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 		}
 		if (events.details.length === 0 && events.details[0] !== 'no events') {
 			fetch(
-				`//aws-fetch.s3.amazonaws.com/merged-events-${chapterDonorDriveId}.json`
+				`//aws-fetch.s3.amazonaws.com/events/merged-events-${chapterDonorDriveId}.json`
 			)
 				.then(response => {
 					if (response.status >= 400) {
@@ -109,10 +109,10 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 						const details = []
 						response.next.forEach(event => {
 							const eventObject = {
-								__typename: 'Event',
-								title: event.name,
-								date: moment(event.startdate).format('MMMM D'),
-								url: `https://afsp.donordrive.com/index.cfm?fuseaction=donorDrive.event&eventID=${event.recordid}`,
+								__typename: event.__typename,
+								title: event.title,
+								date: event.date,
+								url: event.url,
 							}
 							details.push(eventObject)
 						})

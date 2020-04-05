@@ -95,10 +95,9 @@ const dropDownCSS = css`
 	}
 `
 
-const HeroChapterSearch = ({
+const HeroModelSearch = ({
 	title,
 	description,
-	handleClick,
 	handleSubmit,
 	radius,
 	updateRadius,
@@ -122,6 +121,7 @@ const HeroChapterSearch = ({
 					<input
 						type="text"
 						placeholder="Search by zip"
+						value={zip}
 						onChange={e => {
 							updateZip(e.target.value)
 						}}
@@ -131,7 +131,8 @@ const HeroChapterSearch = ({
 				<select
 					css={dropDownCSS}
 					name="radius"
-					onBlur={e => {
+					value={radius}
+					onChange={e => {
 						updateRadius(e.target.value)
 					}}
 				>
@@ -152,4 +153,4 @@ const HeroChapterSearch = ({
 	)
 }
 
-export default HeroChapterSearch
+export default HeroModelSearch
