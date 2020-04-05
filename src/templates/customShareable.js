@@ -10,6 +10,7 @@ import { styles } from '../css/css'
 
 const CustomShareable = ({ data }) => {
 	const { customShareables } = data
+	console.log(customShareables.customText)
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HelmetDatoCms seo={customShareables.seoMetaTags} />
@@ -17,6 +18,10 @@ const CustomShareable = ({ data }) => {
 			<ShareableContainer
 				instructions={customShareables.instructions}
 				fileName={customShareables.fileName}
+				customText={{
+					isCustom: customShareables.customText,
+					customValues: customShareables.textBoxValues,
+				}}
 				overlays={customShareables.shareableOverlays}
 				backgroundImage={customShareables.backgroundImage.url}
 			/>
@@ -33,6 +38,8 @@ export const query = graphql`
 			slug
 			brief
 			instructions
+			customText
+			textBoxValues
 			fileName
 			backgroundImage {
 				url

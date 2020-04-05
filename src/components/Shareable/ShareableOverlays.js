@@ -28,6 +28,14 @@ const shareableOverlaysCSS = css`
 const ShareableOverlays = ({ overlays, updateOverlay }) => {
 	return (
 		<div css={shareableOverlaysCSS}>
+			<h2
+				css={css`
+					width: 100%;
+					margin-top: ${styles.scale.px36};
+				`}
+			>
+				Select your message graphic
+			</h2>
 			{overlays.map((overlay, index) => {
 				return (
 					<button key={index} onClick={e => updateOverlay(e.target)}>

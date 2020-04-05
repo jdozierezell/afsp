@@ -44,6 +44,7 @@ const shareableControlsCSS = css`
 const ShareableContainer = ({
 	instructions,
 	fileName,
+	customText,
 	overlays,
 	backgroundImage,
 }) => {
@@ -61,6 +62,7 @@ const ShareableContainer = ({
 	const [isSelected, setSelected] = useState(false)
 	const [position, setPosition] = useState(null)
 	const [top, setTop] = useState('220px')
+	const [message, setMessage] = useState()
 	const trRef = useRef(null)
 	const imageRef = useRef(null)
 	const konvaRef = useRef(null)
@@ -104,6 +106,10 @@ const ShareableContainer = ({
 		xhr.open('GET', overlay.src)
 		xhr.responseType = 'blob'
 		xhr.send()
+	}
+
+	const updateMessage = message => {
+		console.log(message)
 	}
 
 	const setStateDimensions = () => {
@@ -249,9 +255,11 @@ const ShareableContainer = ({
 				<ShareableControls
 					updateImage={updateImage}
 					rotateImage={rotateImage}
+					customText={{ ...customText, message }}
 					downloadImage={downloadImage}
 					overlays={overlays}
 					updateOverlay={updateOverlay}
+					updateMessage={updateMessage}
 				/>
 			</div>
 		</div>

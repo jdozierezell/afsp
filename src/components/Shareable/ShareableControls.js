@@ -13,12 +13,22 @@ const buttonGroupCSS = css`
 	}
 `
 
+const textAreaCSS = css`
+	width: 100%;
+	@media (min-width: ${styles.screens.tablet}px) {
+		margin-right: ${styles.scale.px16};
+		width: calc(100% - ${styles.scale.px16});
+	}
+`
+
 const ShareableControls = ({
 	updateImage,
 	rotateImage,
+	customText: { isCustom, customValues, message },
 	downloadImage,
 	overlays,
 	updateOverlay,
+	updateMessage,
 }) => {
 	return (
 		<div
@@ -26,25 +36,48 @@ const ShareableControls = ({
 				width: 100%;
 			`}
 		>
-			<div css={buttonGroupCSS} className="secondary-button-group">
-				<label htmlFor="image" className="">
-					Upload
-				</label>
-				<input
-					id="image"
-					type="file"
-					accept="image/png, image/jpeg"
-					onChange={e => updateImage(e)}
-					css={css`
-						display: none;
-					`}
-				/>
-				<button onClick={e => rotateImage(e)}>Rotate</button>
-			</div>
+			{!isCustom && (
+				<div css={buttonGroupCSS} className="secondary-button-group">
+					<label htmlFor="image" className="">
+						Upload
+					</label>
+					<input
+						id="image"
+						type="file"
+						accept="image/png, image/jpeg"
+						onChange={e => updateImage(e)}
+						css={css`
+							display: none;
+						`}
+					/>
+					<button onClick={e => rotateImage(e)}>Rotate</button>
+				</div>
+			)}
 			<ShareableOverlays
 				overlays={overlays}
 				updateOverlay={updateOverlay}
 			/>
+			{isCustom && (
+				<div>
+					<h2
+						css={css`
+							width: 100%;
+							margin-top: ${styles.scale.px36};
+						`}
+					>
+						Type your custom message here
+					</h2>
+					<p>Messages are limited to 280 characters.</p>
+					<textarea
+						name=""
+						id=""
+						css={textAreaCSS}
+						maxLength="280"
+						value={message}
+						onChange={e => updateMessage(e.target.value)}
+					></textarea>
+				</div>
+			)}
 			<button
 				onClick={e => downloadImage(e)}
 				className="secondary-button"
