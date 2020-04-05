@@ -3,6 +3,7 @@ import {
 	Stage,
 	Layer,
 	Transformer,
+	Text,
 	Image as KonvaImage, // rename Image to KonvaImage so doesn't conflict with global Image()
 } from 'react-konva'
 import useImage from 'use-image'
@@ -67,6 +68,8 @@ const ShareableContainer = ({
 	const imageRef = useRef(null)
 	const konvaRef = useRef(null)
 
+	const squareImage = 1080
+
 	const updateImage = e => {
 		// set url, imageWidth, and imageHight to null so that previous image dimensions don't affect next render
 		setUrl(null)
@@ -109,7 +112,7 @@ const ShareableContainer = ({
 	}
 
 	const updateMessage = message => {
-		console.log(message)
+		setMessage(message)
 	}
 
 	const setStateDimensions = () => {
@@ -234,6 +237,32 @@ const ShareableContainer = ({
 							width={width}
 							height={height}
 							listening={false} // this lets clicks pass through to the image underneath
+						/>
+						<Text
+							text={message}
+							fontFamily={styles.fonts.avenirRegular}
+							fontSize={
+								(customText.customValues.fontSize * width) /
+								squareImage
+							}
+							lineHeight={1.15}
+							fill={styles.colors.white}
+							x={
+								(customText.customValues.x * width) /
+								squareImage
+							}
+							y={
+								(customText.customValues.y * height) /
+								squareImage
+							}
+							width={
+								(customText.customValues.width * height) /
+								squareImage
+							}
+							height={
+								(customText.customValues.height * height) /
+								squareImage
+							}
 						/>
 						{isSelected && (
 							<Transformer
