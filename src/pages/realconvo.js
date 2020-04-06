@@ -5,11 +5,13 @@ import { css } from '@emotion/core'
 import Layout from '../components/Layout'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import ChannelContainer from '../components/Channel/ChannelContainer'
+import ConvoContainer from '../components/Convo/ConvoContainer'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
 import CarouselResourceContainer from '../components/Carousels/CarouselResourceContainer'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
+import Calendar from '../components/Calendar/Calendar'
 
 import { styles } from '../css/css'
 
@@ -23,6 +25,7 @@ const landingTitle = css`
 const landingBriefCSS = css`
 	padding: 0 24px;
 	margin: 0;
+	max-width: 920px;
 `
 
 const introCopyCSS = css`
@@ -49,46 +52,49 @@ const channelCSS = css`
 	}
 `
 
-const Landing = ({ data: { landing } }) => {
+const RealConvo = ({ data: { realConvo } }) => {
 	let adjacent = 0
 	return (
 		<Layout theme={styles.logo.mobileDarkDesktopDark}>
-			<HelmetDatoCms seo={landing.seoMetaTags} />
-			<h1 css={landingTitle}>{landing.title}</h1>
-			{!landing.introCopy && (
+			<HelmetDatoCms seo={realConvo.seoMetaTags} />
+			<h1 css={landingTitle}>{realConvo.title}</h1>
+			{!realConvo.introCopy && (
 				<p
 					css={css`
 						${landingBriefCSS};
 						@media (min-width: ${styles.screens.tablet}px) {
 							padding: 0 ${styles.scale.px50}
-								${landing.channelList.length !== 0
+								${realConvo.channelList.length !== 0
 									? 0
 									: styles.scale.px50};
 						}
 					`}
 				>
-					{landing.seo.description}
+					{realConvo.seo.description}
 				</p>
 			)}
-			{landing.channelList.length !== 0 && (
+			{realConvo.channelList.length !== 0 && (
 				<ChannelContainer
-					channelList={landing.channelList}
+					channelList={realConvo.channelList}
 					addCSS={channelCSS}
 				/>
 			)}
-			{landing.introCopy && (
+			{realConvo.introCopy && (
 				<div css={introCopyCSS}>
 					<div
-						dangerouslySetInnerHTML={{ __html: landing.introCopy }}
+						dangerouslySetInnerHTML={{
+							__html: realConvo.introCopy,
+						}}
 					></div>
 				</div>
 			)}
-			{landing.ctaChapterResourceDetailList.map((item, index) => {
+			<ConvoContainer convos={realConvo.convos} />
+			{realConvo.ctaChapterResourceDetailList.map((item, index) => {
 				const prevIndex = index > 0 ? index - 1 : null
 				if (
 					prevIndex !== null &&
-					landing.ctaChapterResourceDetailList[index].__typename ===
-						landing.ctaChapterResourceDetailList[prevIndex]
+					realConvo.ctaChapterResourceDetailList[index].__typename ===
+						realConvo.ctaChapterResourceDetailList[prevIndex]
 							.__typename
 				) {
 					adjacent++
@@ -103,10 +109,6 @@ const Landing = ({ data: { landing } }) => {
 							cta={item.cta.callToAction[0]}
 						/>
 					)
-				} else if (item.__typename === 'DatoCmsChapterConnection') {
-					if (item.showChapterConnection === true) {
-						return <CarouselChapterContainer key={index} />
-					}
 				} else if (item.__typename === 'DatoCmsResourceList') {
 					if (item.displayAsCarousel) {
 						return (
@@ -145,15 +147,23 @@ const Landing = ({ data: { landing } }) => {
 				}
 				return ''
 			})}
+			<Calendar events={realConvo.eventCalendar} />
+			<CarouselChapterContainer
+				carouselCSS={css`
+					@media (min-width: ${styles.screens.mobile}px) {
+						background-color: ${styles.colors.white};
+					}
+				`}
+			/>
 		</Layout>
 	)
 }
 
-export default Landing
+export default RealConvo
 
 export const query = graphql`
-	query($slug: String) {
-		landing: datoCmsLanding(slug: { eq: $slug }) {
+	query {
+		realConvo: datoCmsRealconvo {
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}
@@ -161,6 +171,31 @@ export const query = graphql`
 			slug
 			seo {
 				description
+			}
+			eventCalendar {
+				eventTitle
+				eventDateAndTime
+				url
+				brief
+			}
+			convos {
+				title
+				video {
+					url
+				}
+				posterImage {
+					url
+					fluid(
+						maxWidth: 1080
+						imgixParams: { auto: "format", w: "1080" }
+					) {
+						...GatsbyDatoCmsFluid
+					}
+				}
+				bodyCopy
+				fullConvoFile {
+					url
+				}
 			}
 			channelList {
 				image {
@@ -374,10 +409,6 @@ export const query = graphql`
 							}
 						}
 					}
-				}
-				... on DatoCmsChapterConnection {
-					__typename
-					showChapterConnection
 				}
 			}
 		}

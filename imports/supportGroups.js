@@ -28,7 +28,6 @@ fs.createReadStream('support-group-renewal-form_entries_4-4-20-missing.csv')
 			let anchor = supportGroupName.replace(/[^A-Za-z0-9]/g, '-')
 			while (anchor.includes('--')) {
 				anchor = anchor.replace('--', '-')
-				console.log(anchor)
 			}
 			while (anchor.endsWith('?') || anchor.endsWith('-')) {
 				anchor = anchor.substring(0, anchor.length - 1)

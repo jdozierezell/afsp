@@ -112,8 +112,8 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 	return (
 		<div
 			css={css`
-				${defaultCarouselCSS}
-				${carouselCSS}
+				${defaultCarouselCSS};
+				${carouselCSS};
 			`}
 		>
 			<div css={carouselHeaderWrapperCSS}>

@@ -19,6 +19,7 @@ const resourceComponentCSS = css`
 	}
 	p {
 		color: ${styles.colors.poppy};
+		margin: ${styles.scale.px12} 0;
 	}
 `
 
