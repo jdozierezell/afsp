@@ -16,6 +16,7 @@ import { styles } from '../../css/css'
 const konvaContainerCSS = css`
 	display: grid;
 	grid-template-columns: 1fr;
+	grid-gap: ${styles.scale.px46};
 	margin: ${styles.scale.px24};
 	@media (min-width: 768px) {
 		grid-template-columns: 1fr 600px;
@@ -36,7 +37,6 @@ const konvaCSS = css`
 
 const shareableControlsCSS = css`
 	@media (min-width: 768px) {
-		margin-right: ${styles.scale.px50};
 		grid-column: 1 / 2;
 		grid-row: 1 / 2;
 	}
