@@ -10,6 +10,7 @@ const ConvoContainer = ({ convos }) => {
 		<div id="read-the-guides">
 			{convos.map((convo, index) => (
 				<Convo
+					key={index}
 					convo={convo}
 					addCSS={css`
 						background-color: ${index % 2 === 0

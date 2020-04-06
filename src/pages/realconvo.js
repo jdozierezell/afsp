@@ -75,6 +75,7 @@ const RealConvo = ({ data: { realConvo } }) => {
 			)}
 			{realConvo.channelList.length !== 0 && (
 				<ChannelContainer
+					slug={realConvo.slug}
 					channelList={realConvo.channelList}
 					addCSS={channelCSS}
 				/>
