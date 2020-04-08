@@ -22,6 +22,7 @@ const featuredCSS = css`
 	.featured-link {
 		position: absolute;
 		bottom: 0;
+		font-family: ${styles.fonts.avenirRegular};
 	}
 `
 
@@ -61,7 +62,12 @@ const FeaturedResources = ({ data }) => {
 				}}
 			></p>
 			{data.resourceLink && (
-				<a href={url} target="_blank" rel="noreferrer noopener">
+				<a
+					className="featured-link"
+					href={url}
+					target="_blank"
+					rel="noreferrer noopener"
+				>
 					{data.resourceLink[0].__typename === 'DatoCmsDownload'
 						? 'Download and share'
 						: 'Learn more'}

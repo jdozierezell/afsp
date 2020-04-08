@@ -5,7 +5,7 @@ h4,
 h5,
 h6,
 p,
-a,
+label,
 input,
 textarea,
 li,
@@ -27,7 +27,7 @@ h6 {
 }
 
 p,
-a,
+label,
 input,
 textarea,
 li {
@@ -42,6 +42,10 @@ em {
 	font-family: AvenirNextLTPro-It, Arial, sans-serif;
 }
 
+strong em {
+	font-family: AvenirNextLTPro-DemiIt, Arial, sans-serif;
+}
+
 p {
 	color: hsla(0, 0%, 14.9%, 1);
 	font-size: 17px;
@@ -49,7 +53,6 @@ p {
 
 a {
 	color: hsla(355, 84.3%, 50%, 1);
-	font-size: 18px;
 }
 
 a:hover {

@@ -20,6 +20,7 @@ const solidBioCSS = css`
 		min-width: 350px;
 		max-width: 700px;
 		font-family: ${styles.fonts.avenirRegular};
+		flex: 1;
 	}
 	h1 {
 		font-family: ${styles.fonts.paul};

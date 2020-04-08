@@ -46,6 +46,7 @@ const contentBodyCSS = css`
 		}
 	}
 	tbody {
+		vertical-align: initial;
 		td {
 			min-width: 200px;
 			padding: ${styles.scale.px12};

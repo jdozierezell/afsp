@@ -17,18 +17,33 @@ const searchContainerCSS = css`
 	}
 `
 
-const SearchModelContainer = ({ chapters, supportGroups, radius, zip }) => {
+const SearchModelContainer = ({
+	chapters,
+	supportGroups,
+	radius,
+	zip,
+	nonus,
+	country,
+}) => {
 	return (
 		<section css={searchContainerCSS}>
-			<p>
-				Showing results within {radius} miles of <strong>{zip}</strong>
-			</p>
+			{nonus ? (
+				<p>
+					Showing results in <strong>{country}</strong>
+				</p>
+			) : (
+				<p>
+					Showing results within {radius} miles of{' '}
+					<strong>{zip}</strong>
+				</p>
+			)}
 			{chapters &&
 				chapters.map((chapter, index) => {
 					return <SearchChapters key={index} chapter={chapter} />
 				})}
 			{supportGroups &&
 				supportGroups.map((supportGroup, index) => {
+					console.log(supportGroup)
 					return (
 						<SearchSupportGroups
 							key={index}

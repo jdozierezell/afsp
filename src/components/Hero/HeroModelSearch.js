@@ -1,5 +1,9 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import Toggle from 'react-toggle'
+
+import HeroModelSearchFormUs from './HeroModelSearchFormUs'
+import HeroModelSearchFormNonUs from './HeroModelSearchFormNonUs'
 
 import SolidArrow from '../SVGs/IconSolidArrow.svg'
 
@@ -88,6 +92,7 @@ const dropDownCSS = css`
 	background-color: ${styles.colors.white};
 	border-radius: 5px;
 	padding: 0 ${styles.scale.px16};
+	margin-top: ${styles.scale.px16};
 	font-family: ${styles.fonts.avenirRegular};
 	appearance: none;
 	@media (min-width: ${styles.screens.tablet}px) {
@@ -95,15 +100,27 @@ const dropDownCSS = css`
 	}
 `
 
+const toggleLabelCSS = css`
+	color: ${styles.colors.white};
+	vertical-align: text-bottom;
+	margin-left: ${styles.scale.px16};
+`
+
 const HeroModelSearch = ({
 	title,
 	description,
 	handleSubmit,
+	nonus,
 	radius,
-	updateRadius,
 	zip,
+	country,
+	updateRadius,
 	updateZip,
+	updateNonus,
+	updateCountry,
+	countryOptions,
 }) => {
+	console.log('nonus', nonus)
 	return (
 		<div css={solidHeroCSS}>
 			<h1>{title}</h1>
@@ -111,44 +128,30 @@ const HeroModelSearch = ({
 				css={subHeaderCSS}
 				dangerouslySetInnerHTML={{ __html: description }}
 			></div>
-			<form
-				onSubmit={e => {
-					e.preventDefault()
-					handleSubmit()
-				}}
-			>
-				<div css={inputCSS}>
-					<input
-						type="text"
-						placeholder="Search by zip"
-						value={zip}
-						onChange={e => {
-							updateZip(e.target.value)
-						}}
-					/>
-				</div>
-				<span>within</span>
-				<select
-					css={dropDownCSS}
-					name="radius"
-					value={radius}
-					onChange={e => {
-						updateRadius(e.target.value)
-					}}
-				>
-					<option value="15">15 Miles</option>
-					<option value="25">25 Miles</option>
-					<option value="50">50 Miles</option>
-					<option value="100">100 Miles</option>
-				</select>
-				<button
-					type="submit"
-					className="secondary-button"
-					id="search-button"
-				>
-					Search
-				</button>
-			</form>
+			<Toggle defaultChecked={nonus} onChange={updateNonus} />
+			<label css={toggleLabelCSS} htmlFor="">
+				Search outside the U.S.
+			</label>
+			{nonus === false && (
+				<HeroModelSearchFormUs
+					handleSubmit={handleSubmit}
+					radius={radius}
+					zip={zip}
+					updateRadius={updateRadius}
+					updateZip={updateZip}
+					dropDownCSS={dropDownCSS}
+					inputCSS={inputCSS}
+				/>
+			)}
+			{nonus === true && (
+				<HeroModelSearchFormNonUs
+					handleSubmit={handleSubmit}
+					country={country}
+					updateCountry={updateCountry}
+					countryOptions={countryOptions}
+					dropDownCSS={dropDownCSS}
+				/>
+			)}
 		</div>
 	)
 }

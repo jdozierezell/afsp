@@ -22,14 +22,36 @@ const ContentHeading = ({ heading, level }) => {
 	return (
 		<>
 			{level === 'Level 2 (will be included in sidebar)' && (
-				<h2 id={createAnchor(heading)} css={levelTwoHeadingCSS}>
-					{heading}
-				</h2>
+				<h2
+					id={createAnchor(heading)}
+					css={levelTwoHeadingCSS}
+					dangerouslySetInnerHTML={{ __html: heading }}
+				></h2>
 			)}
-			{level === 'Level 3' && <h3 css={headingCSS}>{heading}</h3>}
-			{level === 'Level 4' && <h3 css={headingCSS}>{heading}</h3>}
-			{level === 'Level 5' && <h3 css={headingCSS}>{heading}</h3>}
-			{level === 'Level 6' && <h3 css={headingCSS}>{heading}</h3>}
+			{level === 'Level 3' && (
+				<h3
+					css={headingCSS}
+					dangerouslySetInnerHTML={{ __html: heading }}
+				></h3>
+			)}
+			{level === 'Level 4' && (
+				<h4
+					css={headingCSS}
+					dangerouslySetInnerHTML={{ __html: heading }}
+				></h4>
+			)}
+			{level === 'Level 5' && (
+				<h5
+					css={headingCSS}
+					dangerouslySetInnerHTML={{ __html: heading }}
+				></h5>
+			)}
+			{level === 'Level 6' && (
+				<h6
+					css={headingCSS}
+					dangerouslySetInnerHTML={{ __html: heading }}
+				></h6>
+			)}
 		</>
 	)
 }
