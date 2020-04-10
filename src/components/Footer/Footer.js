@@ -73,6 +73,7 @@ const Footer = ({ nav }) => {
 	useEffect(() => {
 		const siteImprove = document.createElement('script')
 		siteImprove.type = 'text/javascript'
+		siteImprove.id = 'siteimprove'
 		siteImprove.async = true
 		siteImprove.src = '//siteimproveanalytics.com/js/siteanalyze_6019066.js'
 		const s = document.getElementsByTagName('script')[0]
