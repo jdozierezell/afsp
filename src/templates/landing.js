@@ -14,9 +14,12 @@ import FeaturedResourcesContainer from '../components/FeaturedResources/Featured
 import { styles } from '../css/css'
 
 const landingTitle = css`
-	margin: 150px 24px 35px;
+	margin: 150px 24px 0;
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin: 180px 50px 40px;
+	}
+	+ div {
+		margin: ${styles.scale.px36} 0 -${styles.scale.px24};
 	}
 `
 
@@ -32,6 +35,11 @@ const introCopyCSS = css`
 		padding: ${styles.scale.px24};
 		font-family: ${styles.fonts.avenirRegular};
 		@media (min-width: ${styles.screens.mobile}px) {
+			max-width: calc(623px * 2);
+			columns: 2;
+			padding: ${styles.scale.px50};
+		}
+		@media (min-width: ${styles.screens.navigation}px) {
 			max-width: calc(623px * 3);
 			columns: 3;
 			padding: ${styles.scale.px50};
@@ -72,6 +80,7 @@ const Landing = ({ data: { landing } }) => {
 			)}
 			{landing.channelList.length !== 0 && (
 				<ChannelContainer
+					slug={landing.slug}
 					channelList={landing.channelList}
 					addCSS={channelCSS}
 				/>
@@ -237,6 +246,29 @@ export const query = graphql`
 							}
 						}
 						... on DatoCmsLanding {
+							__typename
+							title
+							slug
+							seo {
+								description
+								image {
+									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "fill"
+											fill: "blur"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
+								}
+							}
+						}
+						... on DatoCmsSearchPage {
 							__typename
 							title
 							slug

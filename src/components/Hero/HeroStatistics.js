@@ -26,6 +26,7 @@ const heroStatisticsCSS = css`
 		max-width: 700px;
 		@media (min-width: ${styles.screens.mobile}px) {
 			margin: ${styles.scale.px40} 0;
+			font-size: ${styles.scale.px44};
 		}
 	}
 `
@@ -41,7 +42,7 @@ const calloutContainerCSS = css`
 		display: grid;
 		grid-template-columns: 1fr;
 		grid-gap: ${styles.gridGap.desktop};
-		@media (min-width: ${styles.screens.tablet}px) {
+		@media (min-width: ${styles.screens.video}px) {
 			grid-template-columns: repeat(5, 1fr);
 			margin: ${styles.scale.px30} 0 0;
 		}

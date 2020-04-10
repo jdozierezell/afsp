@@ -16,6 +16,10 @@ div {
 	font-display: swap;
 }
 
+::selection {
+	background-color: hsla(48, 100%, 51.6%, 1);
+}
+
 h1,
 h2,
 h3,

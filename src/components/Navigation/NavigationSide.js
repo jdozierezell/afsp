@@ -129,11 +129,19 @@ const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
 						<li key={index}>
 							{navRoot ? (
 								<Link to={`${navRoot}#${heading.anchor}`}>
-									{heading.heading}
+									<span
+										dangerouslySetInnerHTML={{
+											__html: heading.heading,
+										}}
+									/>
 								</Link>
 							) : (
 								<Link to={`/${data.slug}#${heading.anchor}`}>
-									{heading.heading}
+									<span
+										dangerouslySetInnerHTML={{
+											__html: heading.heading,
+										}}
+									/>
 								</Link>
 							)}
 						</li>

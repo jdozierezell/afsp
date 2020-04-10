@@ -17,6 +17,9 @@ const storyContentCSS = css`
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin: ${styles.scale.px80} ${styles.scale.px50};
 	}
+	.secondary-button {
+		margin-right: ${styles.scale.px24};
+	}
 `
 
 const ContentGeneric = ({ data }) => {

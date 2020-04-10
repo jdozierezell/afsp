@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { css } from '@emotion/core'
+import Script from 'react-load-script'
 
 import FooterAside from './FooterAside'
 import FooterSocials from './FooterSocials'
@@ -69,6 +70,15 @@ const copyrightCSS = css`
 	}
 `
 const Footer = ({ nav }) => {
+	useEffect(() => {
+		const siteImprove = document.createElement('script')
+		siteImprove.type = 'text/javascript'
+		siteImprove.async = true
+		siteImprove.src = '//siteimproveanalytics.com/js/siteanalyze_6019066.js'
+		const s = document.getElementsByTagName('script')[0]
+		s.parentNode.insertBefore(siteImprove, s)
+	}, [])
+
 	return (
 		<footer css={footerCSS}>
 			<div css={desktopFooterCSS}>

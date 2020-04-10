@@ -48,12 +48,26 @@ const searchBoxCSS = css`
 `
 
 const indexWrapperCSS = css`
-	@media (min-width: ${styles.screens.tablet}px) {
+	width: 100%;
+	@media (min-width: ${styles.screens.video}px) {
 		display: grid;
 		grid-template-columns: 400px 1fr;
 	}
 	h2 {
 		margin: ${styles.scale.px36} 0 ${styles.scale.px24};
+	}
+`
+
+const refinementCSS = css`
+	margin-bottom: ${styles.scale.px36};
+	border-bottom: 1px solid ${styles.colors.darkGray};
+	@media (min-width: ${styles.screens.tablet}px) {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (min-width: ${styles.screens.video}px) {
+		display: block;
+		border-bottom: none;
 	}
 `
 
@@ -73,7 +87,7 @@ const SearchGrants = ({ searchState, handleSearchChange, indexResults }) => {
 					}}
 				/>
 				<div css={indexWrapperCSS}>
-					<div>
+					<div css={refinementCSS}>
 						<SearchGrantRefinement
 							attribute="area"
 							displayAttribute="Research Area"

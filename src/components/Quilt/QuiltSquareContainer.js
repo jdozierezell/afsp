@@ -11,6 +11,9 @@ const sectionCSS = css`
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	@media (min-width: ${styles.screens.tablet}px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	@media (min-width: ${styles.screens.navigation}px) {
 		grid-template-columns: repeat(6, 1fr);
 	}
 	/* below classes based on index of quilt square determine grid column location */
@@ -19,9 +22,6 @@ const sectionCSS = css`
 	}
 	.quilt-col-1 {
 		grid-column: 2 / 3;
-		@media (min-width: ${styles.screens.tablet}px) {
-			grid-column: 2 / 3;
-		}
 	}
 	.quilt-col-2 {
 		grid-column: 1 / 2;
@@ -32,18 +32,27 @@ const sectionCSS = css`
 	.quilt-col-3 {
 		grid-column: 2 / 3;
 		@media (min-width: ${styles.screens.tablet}px) {
+			grid-column: 1 / 2;
+		}
+		@media (min-width: ${styles.screens.navigation}px) {
 			grid-column: 4 / 5;
 		}
 	}
 	.quilt-col-4 {
 		grid-column: 1 / 2;
 		@media (min-width: ${styles.screens.tablet}px) {
+			grid-column: 2 / 3;
+		}
+		@media (min-width: ${styles.screens.navigation}px) {
 			grid-column: 5 / 6;
 		}
 	}
 	.quilt-col-5 {
 		grid-column: 2 / 3;
 		@media (min-width: ${styles.screens.tablet}px) {
+			grid-column: 3 / 4;
+		}
+		@media (min-width: ${styles.screens.navigation}px) {
 			grid-column: 6 / 7;
 		}
 	}

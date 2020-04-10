@@ -36,6 +36,14 @@ const hitCSS = css`
 		padding: ${styles.scale.px24};
 		color: ${styles.colors.poppy};
 	}
+	@media (min-width: ${styles.screens.video}px) and (max-width: ${styles
+			.screens.navigation}px) {
+		flex-flow: row wrap;
+		img {
+			width: 100%;
+			max-width: initial;
+		}
+	}
 `
 
 const buttonCSS = css`

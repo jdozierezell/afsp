@@ -24,7 +24,8 @@ const solidHeroCSS = css`
 		margin: ${styles.scale.px35} 0;
 		font-size: ${styles.scale.px36};
 		max-width: 700px;
-		@media (min-width: ${styles.screens.mobile}) {
+		@media (min-width: ${styles.screens.mobile}px) {
+			font-size: ${styles.scale.px44};
 			margin: ${styles.scale.px40} 0;
 		}
 	}
