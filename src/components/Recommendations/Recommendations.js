@@ -9,24 +9,44 @@ import buildUrl from '../../utils/buildUrl'
 const recommendationsCSS = css`
 	background-color: ${styles.colors.blue};
 	padding: ${styles.scale.px50} ${styles.scale.px24};
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: ${styles.scale.px36};
+	h2 {
+		margin-bottom: 0;
+		color: ${styles.colors.white};
+	}
+	@media (min-width: ${styles.screens.mobile}px) {
+		h2 {
+			grid-column: 1 / 3;
+		}
+	}
 	@media (min-width: ${styles.screens.tablet}px) {
 		padding: ${styles.scale.px36} ${styles.scale.px50} ${styles.scale.px36};
 		${styles.scale.px24};
+		h2 {
+			font-family: ${styles.fonts.avenirBold};
+			font-size: ${styles.scale.px36};
+			grid-column: 1 / 3;
+		}
 	}
-	h2 {
-		font-family: ${styles.fonts.avenirBold};
-		font-size: ${styles.scale.px17};
-		color: ${styles.colors.white};
+	@media (min-width: ${styles.screens.navigation}px) {
+		h2 {
+			grid-column: 1 / 2;
+		}
+	}
+	@media (min-width: ${styles.screens.mobile}px) and (max-width: ${styles
+			.screens.navigation}px) {
+		grid-template-columns: repeat(2, 1fr);
 	}
 `
 
 const storyCSS = css`
-	margin-bottom: ${styles.scale.px60};
 	:last-of-type {
 		margin-bottom: 0;
 	}
 	h3 {
-		margin: ${styles.scale.px45} 0 ${styles.scale.px35};
+		margin: 0 0 ${styles.scale.px35};
 		color: ${styles.colors.white};
 		font-size: ${styles.scale.px24};
 		font-family: ${styles.fonts.avenirBold};
@@ -44,6 +64,7 @@ const Recommendations = ({ data, heading }) => {
 	return (
 		<div css={recommendationsCSS}>
 			{heading && <h2>{heading}</h2>}
+			{console.log(data)}
 			{data.map((story, index) => (
 				<div key={index} css={storyCSS}>
 					<AniLink

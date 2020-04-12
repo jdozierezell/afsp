@@ -7,8 +7,9 @@ import { useQueryParams, NumberParam } from 'use-query-params'
 import Layout from '../components/Layout'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroModelSearch from '../components/Hero/HeroModelSearch'
-import CTAContainer from '../components/CTAs/CTAContainer'
 import SearchModelContainer from '../components/Search/SearchModelContainer'
+import SearchNoResults from '../components/Search/SearchNoResults'
+import CTAContainer from '../components/CTAs/CTAContainer'
 
 import { chapterSearchResults } from '../utils/chapterSearchResults'
 
@@ -23,6 +24,7 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 		existingSearch.radius ? existingSearch.radius : 15
 	)
 	const [zip, setZip] = useState(existingSearch.zip ? existingSearch.zip : '')
+	const [noResults, setNoResults] = useState(false)
 	const [searchResults, setSearchResults] = useState([])
 	const [query, setQuery] = useQueryParams({
 		zip: NumberParam,
@@ -31,19 +33,26 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 
 	const updateRadius = newRadius => setRadius(newRadius)
 
-	const updateZip = newZip => setZip(newZip)
+	const updateZip = newZip => {
+		console.log(newZip)
+		setZip(newZip)
+	}
 
 	const handleSearchClick = () => {
 		setQuery({
 			zip: zip,
 			radius: radius,
 		})
-		setSearchResults(
-			chapterSearchResults(chapters, {
-				primaryZip: zip,
-				otherZips: zipcodes.radius(zip, radius),
-			})
-		)
+		const tempSearchResults = chapterSearchResults(chapters, {
+			primaryZip: zip,
+			otherZips: zipcodes.radius(zip, radius),
+		})
+		setSearchResults(tempSearchResults)
+		if (tempSearchResults.length === 0 && zip.length !== 0) {
+			setNoResults(true)
+		} else {
+			setNoResults(false)
+		}
 	}
 
 	useEffect(() => {
@@ -61,19 +70,21 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 			<HeroModelSearch
 				title={search.title}
 				description={search.brief}
+				searchType={'chapter'}
 				handleSubmit={handleSearchClick}
-				radius={query.radius}
+				radius={radius}
 				updateRadius={updateRadius}
-				zip={query.zip}
+				zip={zip}
 				updateZip={updateZip}
 			/>
 			{searchResults.length >= 1 && (
 				<SearchModelContainer
 					chapters={searchResults}
-					radius={query.radius}
-					zip={query.zip}
+					radius={radius}
+					zip={zip}
 				/>
 			)}
+			{noResults && <SearchNoResults type="support group" />}
 			{search.callsToAction.map((item, index) => (
 				<CTAContainer
 					key={index}

@@ -110,6 +110,7 @@ const toggleLabelCSS = css`
 const HeroModelSearch = ({
 	title,
 	description,
+	searchType,
 	handleSubmit,
 	nonus,
 	radius,
@@ -121,7 +122,6 @@ const HeroModelSearch = ({
 	updateCountry,
 	countryOptions,
 }) => {
-	console.log('nonus', nonus)
 	return (
 		<div css={solidHeroCSS}>
 			<h1>{title}</h1>
@@ -129,11 +129,15 @@ const HeroModelSearch = ({
 				css={subHeaderCSS}
 				dangerouslySetInnerHTML={{ __html: description }}
 			></div>
-			<Toggle defaultChecked={nonus} onChange={updateNonus} />
-			<label css={toggleLabelCSS} htmlFor="">
-				Search outside the U.S.
-			</label>
-			{nonus === false && (
+			{searchType === 'supportGroup' && (
+				<>
+					<Toggle defaultChecked={nonus} onChange={updateNonus} />
+					<label css={toggleLabelCSS} htmlFor="">
+						Search outside the U.S.
+					</label>
+				</>
+			)}
+			{searchType === 'chapter' && (
 				<HeroModelSearchFormUs
 					handleSubmit={handleSubmit}
 					radius={radius}
@@ -144,7 +148,18 @@ const HeroModelSearch = ({
 					inputCSS={inputCSS}
 				/>
 			)}
-			{nonus === true && (
+			{searchType === 'supportGroup' && nonus === false && (
+				<HeroModelSearchFormUs
+					handleSubmit={handleSubmit}
+					radius={radius}
+					zip={zip}
+					updateRadius={updateRadius}
+					updateZip={updateZip}
+					dropDownCSS={dropDownCSS}
+					inputCSS={inputCSS}
+				/>
+			)}
+			{searchType === 'supportGroup' && nonus === true && (
 				<HeroModelSearchFormNonUs
 					handleSubmit={handleSubmit}
 					country={country}

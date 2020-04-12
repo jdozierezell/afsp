@@ -15,43 +15,53 @@ const containerCSS = css`
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin-left: -${styles.scale.px50};
 	}
-	@media (min-width: ${styles.screens.tablet}px) {
-		grid-template-columns: 2fr 1fr;
+	@media (min-width: ${styles.screens.navigation}px) {
+		grid-template-columns: repeat(3, 1fr);
 		align-items: stretch;
 		margin-left: -${styles.scale.px50};
 	}
 `
 
+const videoContainerCSS = css`
+	grid-column: 1 / 2;
+	@media (min-width: ${styles.screens.navigation}px) {
+		grid-column: 1 / 3;
+	}
+`
+
 const videoCSS = css`
-	width: 100vw;
-	height: calc(100vw / 1.78);
+	width: 100%;
 	object-fit: cover;
 	align-self: center;
-	@media (min-width: ${styles.screens.tablet}px) {
+	@media (min-width: ${styles.screens.navigation}px) {
 		width: calc((100vw * 2) / 3);
 		height: calc((100vw * 2) / (3 * 1.78));
 	}
 `
 
 const videoTitleCSS = css`
-	position: absolute;
-	top: ${styles.scale.px36};
-	left: ${styles.scale.px24};
-	right: ${styles.scale.px24};
-	color: ${styles.colors.white};
-	font-size: ${styles.scale.px24};
-	width: calc(100vw - 48px);
+	display: none;
+	@media (min-width: ${styles.screens.mobile}px) {
+		display: block;
+		position: absolute;
+		top: ${styles.scale.px36};
+		left: ${styles.scale.px24};
+		right: ${styles.scale.px24};
+		color: ${styles.colors.white};
+		font-size: ${styles.scale.px36};
+		width: calc(100vw - 48px);
+	}
 	@media (min-width: ${styles.screens.tablet}px) {
 		left: ${styles.scale.px50};
 		width: calc(100vw * 2 / 3 - 100px);
 	}
 `
 
-const RecommendationsVideoStories = ({ videoData, storyData }) => {
+const RecommendationsVideoStories = ({ videoData, storyData, heading }) => {
 	const [isPlaying, setIsPlaying] = useState(false)
 	return (
 		<div css={containerCSS}>
-			<div>
+			<div css={videoContainerCSS}>
 				<video
 					controls
 					preload="metadata"
@@ -66,7 +76,7 @@ const RecommendationsVideoStories = ({ videoData, storyData }) => {
 				</video>
 				{!isPlaying && <h2 css={videoTitleCSS}>{videoData.title}</h2>}
 			</div>
-			<Recommendations data={storyData} />
+			<Recommendations data={storyData} heading={heading} />
 		</div>
 	)
 }

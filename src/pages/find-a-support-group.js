@@ -18,7 +18,7 @@ import CTAContainer from '../components/CTAs/CTAContainer'
 
 import { styles } from '../css/css'
 
-const FindALocalChapter = ({ data: { search, supportGroups } }) => {
+const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 	const existingSearch =
 		typeof window !== `undefined`
 			? qs.parse(window.location.search.slice(1))
@@ -128,6 +128,7 @@ const FindALocalChapter = ({ data: { search, supportGroups } }) => {
 			<HeroModelSearch
 				title={search.title}
 				description={search.brief}
+				searchType={'supportGroup'}
 				handleSubmit={handleSearchClick}
 				nonus={nonus}
 				radius={radius}
@@ -160,7 +161,7 @@ const FindALocalChapter = ({ data: { search, supportGroups } }) => {
 	)
 }
 
-export default FindALocalChapter
+export default FindASupportGroup
 
 export const query = graphql`
 	query {

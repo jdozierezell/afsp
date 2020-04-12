@@ -96,7 +96,10 @@ const CarouselDetailContainer = ({
 							if (!section) {
 								return ''
 							} else {
-								if (section.__typename === 'DatoCmsContent') {
+								if (
+									section.__typename === 'DatoCmsContent' &&
+									section.contentHeading
+								) {
 									const anchor = `/${slug}/#${createAnchor(
 										section.contentHeading
 									)}`

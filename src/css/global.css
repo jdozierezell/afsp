@@ -18,6 +18,11 @@ div {
 
 ::selection {
 	background-color: hsla(48, 100%, 51.6%, 1);
+	color: hsla(0, 0%, 14.9%, 1);
+}
+
+:focus {
+	border: 1px solid red;
 }
 
 h1,

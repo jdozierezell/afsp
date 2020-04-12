@@ -21,7 +21,9 @@ export const Recommendation = graphql`
 				...GatsbyDatoCmsFluid
 			}
 		}
+		recommendationHeading
 		storyRecommendation {
+			__typename
 			title
 			slug
 			author {
