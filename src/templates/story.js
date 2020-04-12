@@ -57,6 +57,7 @@ export const query = graphql`
 			}
 			mobileCover: coverImage {
 				url
+				alt
 				fluid(
 					maxWidth: 769
 					imgixParams: {
@@ -72,6 +73,7 @@ export const query = graphql`
 			}
 			desktopCover: coverImage {
 				url
+				alt
 				fluid(
 					maxWidth: 1920
 					imgixParams: {

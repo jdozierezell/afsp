@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import Img from 'gatsby-image'
+import BackgroundImage from 'gatsby-background-image'
 
 import IconArrow from '../SVGs/IconArrow'
 import readTime from '../../utils/readTime'
@@ -18,7 +19,6 @@ const storyHeroCSS = css`
 		text-align: center;
 		background-size: cover;
 		background-position: center;
-		background-color: ${styles.colors.darkGray};
 	}
 `
 
@@ -148,17 +148,30 @@ const HeroStories = ({ data, prev, next }) => {
 	})
 
 	const timeToRead = readTime(fullStory)
+	console.log(desktopCover.fluid)
 
+	const blankFluidImage = {
+		base64:
+			'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAALCAYAAAATD/9GAAAAAXNSR0IArs4c6QAAACpJREFUOE9j/P///3+GQQiYCCkYKDDqMFLBqMNIBaMOIxWMOoxUMGgdBgB4KAQS/gyn/wAAAABJRU5ErkJggg==',
+		aspectRatio: 3.5555555555555554,
+		src:
+			'https://www.datocms-assets.com/12810/1586718479-white.png?auto=format&crop=faces&fill=blur&fit=fill&h=540&w=1920',
+		srcSet:
+			'https://www.datocms-assets.com/12810/1586718479-white.png?auto=format&crop=faces&dpr=0.25&fill=blur&fit=fill&h=540&w=1920 480w,\nhttps://www.datocms-assets.com/12810/1586718479-white.png?auto=format&crop=faces&dpr=0.5&fill=blur&fit=fill&h=540&w=1920 960w,\nhttps://www.datocms-assets.com/12810/1586718479-white.png?auto=format&crop=faces&dpr=1&fill=blur&fit=fill&h=540&w=1920 1920w',
+		sizes: '(max-width: 1920px) 100vw, 1920px',
+	}
+
+	const sources = [
+		blankFluidImage,
+		{
+			...desktopCover.fluid,
+			media: `(min-width: ${styles.screens.tablet}px)`,
+		},
+	]
 	return (
-		<section
-			css={css`
-				${storyHeroCSS};
-				@media (min-width: ${styles.screens.tablet}px) {
-					background-image: url(${`${desktopCover.fluid.src}`});
-				}
-			`}
-		>
+		<BackgroundImage Tag="section" fluid={sources} css={storyHeroCSS}>
 			<div css={storyMetaCSS}>
+				{console.log(desktopCover.fluid)}
 				<h1>{title}</h1>
 				<p css={dateLineCSS}>
 					{publicationDate} — {timeToRead.humanizedDuration} min read
@@ -210,7 +223,11 @@ const HeroStories = ({ data, prev, next }) => {
 							})}
 					</ul>
 				</h3>
-				<Img css={mobileImageCSS} fluid={mobileCover.fluid} alt="" />
+				<Img
+					css={mobileImageCSS}
+					fluid={mobileCover.fluid}
+					alt={mobileCover.alt}
+				/>
 			</div>
 			{prev && (
 				<div css={previousStoryCSS}>
@@ -244,7 +261,7 @@ const HeroStories = ({ data, prev, next }) => {
 					</AniLink>
 				</div>
 			)}
-		</section>
+		</BackgroundImage>
 	)
 }
 
