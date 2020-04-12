@@ -1,37 +1,52 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
+import fetch from 'isomorphic-fetch'
 
 import Layout from '../components/Layout'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroSolid from '../components/Hero/HeroSolid'
 import NavigationSide from '../components/Navigation/NavigationSide'
 import ContentGeneric from '../components/Content/ContentGeneric'
+import Events from '../components/Events/Events'
 
 import { styles } from '../css/css'
 
-const Detail = ({ data, pageContext }) => {
-	const { detail } = data
+const Program = ({ data: { program } }) => {
+	const [programEvents, setProgramEvents] = useState([])
+	const programEventName = program.programEventName.replace(' ', '-')
+	const header = `${program.programEventName} Events`
+	useEffect(() => {
+		fetch(
+			`//aws-fetch.s3.amazonaws.com/events/merged-events-${programEventName}.json`
+		)
+			.then(response => {
+				if (response.status >= 400) {
+					throw new Error('Bad response from server')
+				}
+				return response.json()
+			})
+			.then(response => setProgramEvents(response))
+	}, [programEventName])
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={detail.seoMetaTags} />
-			<HeroSolid data={detail} />
-			<NavigationSide data={detail} />
-			<ContentGeneric data={detail} />
+			<HelmetDatoCms seo={program.seoMetaTags} />
+			<HeroSolid data={program} />
+			<NavigationSide data={program} afterAnchors={[header]} />
+			<ContentGeneric data={program} />
+			<Events header={header} events={programEvents} />
 		</Layout>
 	)
 }
 
-export default Detail
+export default Program
 
 export const query = graphql`
 	query($slug: String) {
-		detail: datoCmsDetail(slug: { eq: $slug }) {
+		program: datoCmsProgram(slug: { eq: $slug }) {
 			title
 			slug
 			brief
-			parentPage {
-				...ParentList
-			}
+			programEventName
 			details {
 				... on DatoCmsContent {
 					__typename
@@ -56,24 +71,6 @@ export const query = graphql`
 						cardButtonUrl
 					}
 				}
-				... on DatoCmsDetailSquare {
-					__typename
-					detail {
-						__typename
-						... on DatoCmsDetail {
-							title
-							slug
-							details {
-								__typename
-								... on DatoCmsContent {
-									__typename
-									id
-									contentHeading
-								}
-							}
-						}
-					}
-				}
 				... on DatoCmsActionButton {
 					__typename
 					buttonText
@@ -93,18 +90,13 @@ export const query = graphql`
 					}
 					poster {
 						url
-						fluid(
-							maxWidth: 1280
-							imgixParams: {
-								auto: "format"
-								fit: "crop"
-								crop: "faces"
-								w: "1280"
-								h: "720"
-							}
-						) {
-							...GatsbyDatoCmsFluid
-						}
+					}
+				}
+				... on DatoCmsAudio {
+					__typename
+					audio {
+						url
+						title
 					}
 				}
 				... on DatoCmsHeading {
@@ -112,12 +104,7 @@ export const query = graphql`
 					headingLevel
 					heading
 				}
-				... on DatoCmsEmbed {
-					__typename
-					embedCode
-				}
 			}
-			overrideWidth
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}

@@ -37,10 +37,15 @@ const solidHeroCSS = css`
 	}
 `
 
-const HeroSolid = ({ data }) => {
+const HeroSolid = ({ data, addCSS }) => {
 	const { title, brief, parentPage } = data
 	return (
-		<div css={solidHeroCSS}>
+		<div
+			css={css`
+				${solidHeroCSS};
+				${addCSS};
+			`}
+		>
 			{parentPage && parentPage.parentPage && (
 				<Breadcrumbs parentPage={parentPage} child={title} />
 			)}

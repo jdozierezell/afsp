@@ -17,8 +17,8 @@ const solidBioCSS = css`
 	h1,
 	div {
 		color: ${styles.colors.white};
-		min-width: 350px;
-		max-width: 700px;
+		min-width: 300px;
+		max-width: 400px;
 		font-family: ${styles.fonts.avenirRegular};
 		flex: 1;
 	}
@@ -35,7 +35,7 @@ const solidBioCSS = css`
 	img {
 		margin-top: ${styles.scale.px50};
 		@media (min-width: ${styles.screens.tablet}px) {
-			max-height: 360px;
+			/* max-height: 360px; */
 			border-radius: 50%;
 			margin-top: 0;
 		}

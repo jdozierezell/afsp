@@ -8,11 +8,11 @@ import createAnchor from '../../utils/createAnchor'
 import { styles } from '../../css/css'
 
 const containerCSS = css`
-	padding: ${styles.scale.px50} ${styles.scale.px24};
+	margin: ${styles.scale.px50} ${styles.scale.px24};
 	z-index: 1;
 	position: relative;
 	@media (min-width: ${styles.screens.tablet}px) {
-		padding: ${styles.scale.px80} ${styles.scale.px50};
+		margin: ${styles.scale.px80} ${styles.scale.px50};
 	}
 	> h2 {
 		margin-bottom: ${styles.scale.px35};

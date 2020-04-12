@@ -10,11 +10,11 @@ import ContentImage from './ContentImage'
 import ContentAudio from './ContentAudio'
 import ContentVideo from './ContentVideo'
 import ContentHeading from './ContentHeading'
+import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
 
 import { styles } from '../../css/css'
 
 import '@glidejs/glide/dist/css/glide.core.min.css'
-import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
 
 const storyContentCSS = css`
 	margin: ${styles.scale.px50} 0;

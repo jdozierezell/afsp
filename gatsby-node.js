@@ -142,6 +142,14 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
+			programs: allDatoCmsProgram {
+				edges {
+					node {
+						slug
+						title
+					}
+				}
+			}
 			stories: allDatoCmsStory(
 				sort: { fields: publicationDate, order: DESC }
 			) {
@@ -182,6 +190,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	const imageLists = data.imageLists.edges
 	const landings = data.landings.edges
 	const newRecords = data.newRecords.edges
+	const programs = data.programs.edges
 	const stories = data.stories.edges
 	const tags = data.tags.edges
 	const redirects = data.redirects.edges
@@ -312,6 +321,16 @@ exports.createPages = async ({ graphql, actions }) => {
 		createPage({
 			path: `${node.slug}`,
 			component: path.resolve('./src/templates/newRecord.js'),
+			context: {
+				slug: node.slug,
+			},
+		})
+	})
+
+	programs.forEach(({ node }) => {
+		createPage({
+			path: `${node.slug}`,
+			component: path.resolve('./src/templates/program.js'),
 			context: {
 				slug: node.slug,
 			},

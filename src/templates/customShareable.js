@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
@@ -8,13 +9,24 @@ import ShareableContainer from '../components/Shareable/ShareableContainer'
 
 import { styles } from '../css/css'
 
+const addCSS = css`
+	h1,
+	div {
+		@media (min-width: ${styles.screens.tablet}px) {
+			width: calc(100vw / 2);
+		}
+		@media (min-width: 1200px) {
+			width: calc(100vw / 2.5);
+		}
+	}
+`
+
 const CustomShareable = ({ data }) => {
 	const { customShareables } = data
-	console.log(customShareables.customText)
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HelmetDatoCms seo={customShareables.seoMetaTags} />
-			<HeroSolid data={customShareables} />
+			<HeroSolid data={customShareables} addCSS={addCSS} />
 			<ShareableContainer
 				instructions={customShareables.instructions}
 				fileName={customShareables.fileName}

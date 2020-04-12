@@ -9,13 +9,13 @@ export const Recommendation = graphql`
 		poster {
 			url
 			fluid(
-				maxWidth: 600
+				maxWidth: 1280
 				imgixParams: {
 					auto: "format"
 					fit: "crop"
 					crop: "faces"
-					w: "1920"
-					h: "1080"
+					w: "1280"
+					h: "720"
 				}
 			) {
 				...GatsbyDatoCmsFluid

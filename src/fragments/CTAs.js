@@ -67,6 +67,10 @@ export const CTAs = graphql`
 							__typename
 							slug
 						}
+						... on DatoCmsGrantsPage {
+							__typename
+							slug
+						}
 					}
 				}
 				... on DatoCmsCtaWithDescription {
@@ -113,6 +117,10 @@ export const CTAs = graphql`
 							__typename
 							slug
 						}
+						... on DatoCmsGrantsPage {
+							__typename
+							slug
+						}
 					}
 				}
 				... on DatoCmsCtaNoDescription {
@@ -155,6 +163,10 @@ export const CTAs = graphql`
 							slug
 						}
 						... on DatoCmsStatistic {
+							__typename
+							slug
+						}
+						... on DatoCmsGrantsPage {
 							__typename
 							slug
 						}

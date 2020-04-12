@@ -10,39 +10,36 @@ import HeroSolid from '../components/Hero/HeroSolid'
 import { styles } from '../css/css'
 
 const partnerContainerCSS = css`
-	display: flex;
-	flex-flow: column nowrap;
-	margin: ${styles.scale.px50} ${styles.scale.px24} 0;
-	@media (min-width: ${styles.screens.tablet}px) {
-		margin: ${styles.scale.px80} ${styles.scale.px50} 0;
+	margin: ${styles.scale.px50} ${styles.scale.px24};
+	@media (min-width: ${styles.screens.mobile}px) {
+		margin: ${styles.scale.px80} ${styles.scale.px50};
 	}
-	> div {
-		display: flex;
-		flex-flow: row wrap;
-		align-items: flex-start;
-		margin-bottom: ${styles.scale.px80};
+`
+
+const partnerCSS = css`
+	display: flex;
+	flex-flow: row wrap;
+	margin-bottom: ${styles.scale.px60};
+	justify-content: flex-start;
+	align-items: flex-start;
+	.gatsby-image-wrapper {
+		width: 100%;
 		@media (min-width: ${styles.screens.tablet}px) {
-			flex-flow: row nowrap;
+			width: 255px;
 		}
-		img {
-			display: block;
-			flex: 0 0 244px;
-			@media (min-width: ${styles.screens.tablet}px) {
-				max-width: 200px;
-			}
-		}
-		> div {
-			flex: 1 1 0;
-			max-width: 623px;
-			@media (min-width: ${styles.screens.tablet}px) {
-				margin-left: ${styles.scale.px50};
-			}
-			p:first-of-type {
-				margin-top: 0;
-			}
-			p:last-of-type {
-				margin-bottom: 0;
-			}
+	}
+`
+
+const partnerInfoCSS = css`
+	flex: 1 1 300px;
+	max-width: 623px;
+	@media (min-width: ${styles.screens.tablet}px) {
+		margin-left: ${styles.scale.px36};
+	}
+	h3 {
+		margin-top: ${styles.scale.px24};
+		@media (min-width: ${styles.screens.tablet}px) {
+			margin-top: 0;
 		}
 	}
 `
@@ -55,12 +52,12 @@ const Partners = ({ data: { partners } }) => {
 			<section css={partnerContainerCSS}>
 				{partners.partnerList.map(partner => {
 					return (
-						<div>
+						<div css={partnerCSS}>
 							<Img
 								fluid={partner.partnerLogo.fluid}
 								alt={`${partner.partnerName} logo`}
 							/>
-							<div>
+							<div css={partnerInfoCSS}>
 								<h3>{partner.partnerName}</h3>
 								<div
 									dangerouslySetInnerHTML={{

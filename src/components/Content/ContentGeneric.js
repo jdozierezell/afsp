@@ -9,6 +9,7 @@ import ContentAudio from './ContentAudio'
 import ContentHeading from './ContentHeading'
 import ContentEmbed from './ContentEmbed'
 import CardContainer from '../Cards/CardContainer'
+import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
 
 import { styles } from '../../css/css'
 
@@ -19,6 +20,13 @@ const storyContentCSS = css`
 	}
 	.secondary-button {
 		margin-right: ${styles.scale.px24};
+	}
+`
+
+const detailCarouselCSS = css`
+	margin: ${styles.scale.px50} 0 ${styles.scale.px50} -${styles.scale.px24};
+	@media (min-width: ${styles.screens.mobile}px) {
+		margin: ${styles.scale.px80} 0 ${styles.scale.px80} -${styles.scale.px50};
 	}
 `
 
@@ -41,6 +49,7 @@ const ContentGeneric = ({ data }) => {
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsRecommendation') {
+					console.log(detail)
 					return (
 						<RecommendationsVideoStories
 							key={index}
@@ -69,6 +78,21 @@ const ContentGeneric = ({ data }) => {
 							video={detail.video.url}
 							poster={detail.poster.url}
 						/>
+					)
+				} else if (detail.__typename === 'DatoCmsDetailSquare') {
+					return (
+						<div
+							css={css`
+								${detailCarouselCSS};
+								grid-column: 1 / 4;
+							`}
+							key={index}
+						>
+							<CarouselDetailContainer
+								key={index}
+								content={detail.detail}
+							/>
+						</div>
 					)
 				} else if (detail.__typename === 'DatoCmsAudio') {
 					return <ContentAudio key={index} audio={detail.audio} />

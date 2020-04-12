@@ -11,6 +11,7 @@ const Tag = ({ data: { stories }, pageContext: { title } }) => {
 	const heroData = {
 		title: `Tagged: ${title}`,
 	}
+	console.log(stories)
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HeroSolid data={heroData} />
@@ -62,3 +63,45 @@ export const query = graphql`
 		}
 	}
 `
+
+// export const query = graphql`
+// 	query($slug: String) {
+// 		stories: allDatoCmsStory(
+// 			filter: { tags: { elemMatch: { slug: { eq: $slug } } } }
+// 			sort: { fields: publicationDate, order: DESC }
+// 		) {
+// 			edges {
+// 				node {
+// 					title
+// 					slug
+// 					tags {
+// 						tag
+// 						slug
+// 					}
+// 					publicationDate(formatString: "D MMM YYYY")
+// 					coverImage {
+// 						url
+// 						fluid(
+// 							maxWidth: 769
+// 							imgixParams: {
+// 								auto: "format"
+// 								fit: "crop"
+// 								crop: "faces"
+// 								w: "769"
+// 								h: "475"
+// 							}
+// 						) {
+// 							...GatsbyDatoCmsFluid
+// 						}
+// 					}
+// 					author {
+// 						authorName
+// 					}
+// 					seo {
+// 						description
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// `

@@ -18,8 +18,8 @@ const konvaContainerCSS = css`
 	grid-template-columns: 1fr;
 	grid-gap: ${styles.scale.px46};
 	margin: ${styles.scale.px24};
-	@media (min-width: 768px) {
-		grid-template-columns: 1fr 600px;
+	@media (min-width: ${styles.screens.tablet}px) {
+		grid-template-columns: repeat(2, minmax(300px, 623px));
 		margin: ${styles.scale.px80} ${styles.scale.px50};
 	}
 `
@@ -32,6 +32,7 @@ const konvaCSS = css`
 		border: ${styles.scale.px24} solid ${styles.colors.white};
 		grid-column: 2 / 3;
 		grid-row: 1 / 2;
+		min-width: calc(100vw / 3);
 	}
 `
 
@@ -61,7 +62,8 @@ const ShareableContainer = ({
 	const [imageOffsetY, setImageOffsetY] = useState(null)
 	const [imageRotation, setImageRotation] = useState(0)
 	const [isSelected, setSelected] = useState(false)
-	const [position, setPosition] = useState(null)
+	const [konvaPosition, setKonvaPosition] = useState(null)
+	const [controlPosition, setControlPosition] = useState(null)
 	const [top, setTop] = useState('220px')
 	const [message, setMessage] = useState()
 	const trRef = useRef(null)
@@ -120,11 +122,11 @@ const ShareableContainer = ({
 			setWidth(window.innerWidth - 48 - 24)
 			setHeight(window.innerWidth - 48 - 24)
 		} else if (window.innerWidth < 1200) {
-			setWidth(window.innerWidth - 600)
-			setHeight(window.innerWidth - 600)
+			setWidth(window.innerWidth / 3)
+			setHeight(window.innerWidth / 3)
 		} else {
-			setWidth(1200 - 600)
-			setHeight(1200 - 600)
+			setWidth(1200 - 648)
+			setHeight(1200 - 648)
 		}
 	}
 
@@ -144,36 +146,46 @@ const ShareableContainer = ({
 		}, 50) // timeout function gives setSelected enough time to re-render canvas so we lose the transformer handles
 	}
 	const handleScroll = () => {
-		if (window.innerWidth > 768) {
+		console.log(window.scrollY)
+		if (window.innerWidth >= 768) {
 			if (
-				konvaRef.current.getBoundingClientRect().y <= 0 &&
-				window.scrollY >= 150
+				// konvaRef.current.getBoundingClientRect().y <= 0 &&
+				window.scrollY >= 220
 			) {
-				setPosition('fixed')
+				setKonvaPosition('fixed')
 				setTop(0)
 			} else {
-				setPosition('absolute')
+				setKonvaPosition('absolute')
+				setTop('220px')
+			}
+		} else if (window.innerWidth < 768 && window.innerWidth > 414) {
+			if (window.scrollY >= 750) {
+				setKonvaPosition('fixed')
+				setControlPosition('relative')
+				setTop(0)
+			} else {
+				setKonvaPosition('initial')
+				setControlPosition('initial')
 				setTop('220px')
 			}
 		} else {
-			if (
-				konvaRef.current.getBoundingClientRect().y <= 0 &&
-				window.scrollY >= 150
-			) {
-				setPosition('fixed')
+			if (window.scrollY >= 550) {
+				setKonvaPosition('fixed')
+				setControlPosition('relative')
 				setTop(0)
 			} else {
-				setPosition('initial')
+				setKonvaPosition('initial')
+				setControlPosition('initial')
 				setTop('220px')
 			}
 		}
 	}
 
-	if (position === null && typeof window !== `undefined`) {
+	if (konvaPosition === null && typeof window !== `undefined`) {
 		if (window.innerWidth < 768) {
-			setPosition('initial')
+			setKonvaPosition('initial')
 		} else {
-			setPosition('absolute')
+			setKonvaPosition('absolute')
 		}
 	}
 
@@ -199,7 +211,7 @@ const ShareableContainer = ({
 				css={css`
 					${konvaCSS};
 					top: ${top};
-					position: ${position};
+					position: ${konvaPosition};
 				`}
 			>
 				<Stage
@@ -279,7 +291,13 @@ const ShareableContainer = ({
 					</Layer>
 				</Stage>
 			</div>
-			<div css={shareableControlsCSS}>
+			<div
+				css={css`
+					${shareableControlsCSS};
+					position: ${controlPosition};
+					top: ${height + 50}px;
+				`}
+			>
 				<div dangerouslySetInnerHTML={{ __html: instructions }}></div>
 				<ShareableControls
 					updateImage={updateImage}

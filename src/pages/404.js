@@ -7,7 +7,7 @@ const Redirect404 = () => {
 		const pathArray = window.location.pathname.split('/')
 		pathArray.shift()
 		pathString = pathArray.join('+')
-		pathString = pathString.replace('-', '+')
+		pathString = pathString.replace(/-/g, '+') // the regex replacement string matches all occurances
 	}
 	useEffect(() => {
 		navigate(`/search-results/?query=${pathString}`)
