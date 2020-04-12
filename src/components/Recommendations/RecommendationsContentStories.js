@@ -41,6 +41,7 @@ const RecommendationsContentStories = ({ data }) => {
 			<Recommendations
 				data={data.storyLink}
 				heading={data.storiesHeading}
+				video={false}
 			/>
 		</section>
 	)

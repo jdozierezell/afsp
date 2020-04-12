@@ -6,7 +6,7 @@ import { styles } from '../../css/css'
 
 import buildUrl from '../../utils/buildUrl'
 
-const recommendationsCSS = css`
+const recommendationsVideoCSS = css`
 	background-color: ${styles.colors.blue};
 	padding: ${styles.scale.px50} ${styles.scale.px24};
 	display: grid;
@@ -41,6 +41,26 @@ const recommendationsCSS = css`
 	}
 `
 
+const recommendationsNoVideoCSS = css`
+	background-color: ${styles.colors.blue};
+	padding: ${styles.scale.px50} ${styles.scale.px24};
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: ${styles.scale.px36};
+	h2 {
+		margin-bottom: 0;
+		color: ${styles.colors.white};
+	}
+	@media (min-width: ${styles.screens.tablet}px) {
+		padding: ${styles.scale.px36} ${styles.scale.px50} ${styles.scale.px36};
+		${styles.scale.px24};
+		h2 {
+			font-family: ${styles.fonts.avenirBold};
+			font-size: ${styles.scale.px36};
+		}
+	}
+`
+
 const storyCSS = css`
 	:last-of-type {
 		margin-bottom: 0;
@@ -60,9 +80,10 @@ const storyCSS = css`
 	}
 `
 
-const Recommendations = ({ data, heading }) => {
+const Recommendations = ({ data, heading, video }) => {
+	const cssStyle = video ? recommendationsVideoCSS : recommendationsNoVideoCSS
 	return (
-		<div css={recommendationsCSS}>
+		<div css={cssStyle}>
 			{heading && <h2>{heading}</h2>}
 			{console.log(data)}
 			{data.map((story, index) => (

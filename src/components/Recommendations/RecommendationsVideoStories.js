@@ -76,7 +76,7 @@ const RecommendationsVideoStories = ({ videoData, storyData, heading }) => {
 				</video>
 				{!isPlaying && <h2 css={videoTitleCSS}>{videoData.title}</h2>}
 			</div>
-			<Recommendations data={storyData} heading={heading} />
+			<Recommendations data={storyData} heading={heading} video={true} />
 		</div>
 	)
 }
