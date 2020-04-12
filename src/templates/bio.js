@@ -25,7 +25,9 @@ const Bio = ({ data }) => {
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			{/* <SEO meta={bio} /> */}
-			<HelmetDatoCms seo={bio.seoMetaTags} />
+			<HelmetDatoCms seo={bio.seoMetaTags}>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<HeroBio data={bio} />
 			<main
 				css={biographyCSS}

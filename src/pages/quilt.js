@@ -47,7 +47,9 @@ const Quilt = ({ data: { quiltQuery } }) => {
 	return (
 		<ApolloProvider client={client}>
 			<Layout theme={styles.logo.mobileLightDesktopLight}>
-				<HelmetDatoCms seo={quiltQuery.seoMetaTags} />
+				<HelmetDatoCms seo={quiltQuery.seoMetaTags}>
+					<html lang="en" />
+				</HelmetDatoCms>
 				<HeroImage data={quiltQuery} />
 				<main css={containerCSS}>
 					<h3

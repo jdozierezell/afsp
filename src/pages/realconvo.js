@@ -56,7 +56,9 @@ const RealConvo = ({ data: { realConvo } }) => {
 	let adjacent = 0
 	return (
 		<Layout theme={styles.logo.mobileDarkDesktopDark}>
-			<HelmetDatoCms seo={realConvo.seoMetaTags} />
+			<HelmetDatoCms seo={realConvo.seoMetaTags}>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<h1 css={landingTitle}>{realConvo.title}</h1>
 			{!realConvo.introCopy && (
 				<p

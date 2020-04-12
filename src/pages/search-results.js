@@ -49,7 +49,9 @@ const SearchResults = () => {
 						},
 					],
 				}}
-			/>
+			>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<HeroSearch
 				data={{
 					title: searchState.query,

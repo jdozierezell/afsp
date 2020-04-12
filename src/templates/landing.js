@@ -61,7 +61,9 @@ const Landing = ({ data: { landing } }) => {
 	let adjacent = 0
 	return (
 		<Layout theme={styles.logo.mobileDarkDesktopDark}>
-			<HelmetDatoCms seo={landing.seoMetaTags} />
+			<HelmetDatoCms seo={landing.seoMetaTags}>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<h1 css={landingTitle}>{landing.title}</h1>
 			{!landing.introCopy && (
 				<p

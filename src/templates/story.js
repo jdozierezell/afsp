@@ -22,13 +22,8 @@ const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 	return (
 		<Layout theme={styles.logo.mobileDarkDesktopLight} overrideLight={true}>
 			<HelmetDatoCms seo={story.seoMetaTags}>
+				<html lang="en" />
 				<meta property="fb:app_id" content="925475567867156" />
-				{/* <script
-					async
-					defer
-					type="text/javascript"
-					src="https://connect.facebook.net/en_US/sdk.js"
-				></script> */}
 			</HelmetDatoCms>
 			<HeroStories data={story} prev={prev} next={next} />
 			<ContentStory data={story} />

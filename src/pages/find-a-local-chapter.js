@@ -66,7 +66,9 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={search.seoMetaTags} />
+			<HelmetDatoCms seo={search.seoMetaTags}>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<HeroModelSearch
 				title={search.title}
 				description={search.brief}

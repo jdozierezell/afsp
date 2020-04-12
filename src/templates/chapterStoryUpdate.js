@@ -21,7 +21,9 @@ const carouselCSS = css`
 const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 	return (
 		<Layout theme={styles.logo.mobileDarkDesktopLight}>
-			<HelmetDatoCms seo={story.seoMetaTags} />
+			<HelmetDatoCms seo={story.seoMetaTags}>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<HeroStories data={story} prev={prev} next={next} />
 			<ContentStory data={story} />
 			<CarouselChapterContainer carouselCSS={carouselCSS} />

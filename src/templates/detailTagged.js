@@ -25,7 +25,9 @@ const Detail = ({ data, pageContext }) => {
 	}, [stories, pageContext.tag])
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={tagged.seoMetaTags} />
+			<HelmetDatoCms seo={tagged.seoMetaTags}>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<HeroSolid data={tagged} />
 			<NavigationSide data={tagged} />
 			<ContentGeneric data={tagged} />

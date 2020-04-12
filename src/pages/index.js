@@ -35,7 +35,9 @@ const walkBar = css`
 const App = ({ data: { home } }) => {
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={home.seoMetaTags} />
+			<HelmetDatoCms seo={home.seoMetaTags}>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<HeroVideo
 				videoUrl={home.heroVideo.url}
 				posterUrl={home.heroPoster.url}

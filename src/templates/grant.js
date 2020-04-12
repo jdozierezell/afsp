@@ -26,7 +26,9 @@ const Grant = ({ data }) => {
 	const { grant } = data
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={grant.seoMetaTags} />
+			<HelmetDatoCms seo={grant.seoMetaTags}>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<HeroGrant data={grant} />
 			<main css={grantCSS}>
 				{grant.grantDetails.map((detail, index) => {

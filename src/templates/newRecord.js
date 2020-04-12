@@ -23,7 +23,9 @@ const mainCSS = css`
 const NewRecord = ({ data: { newRecord } }) => {
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={newRecord.seoMetaTags} />
+			<HelmetDatoCms seo={newRecord.seoMetaTags}>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<HeroSolid data={newRecord} />
 			<main css={mainCSS}>
 				{newRecord.disclaimer && (

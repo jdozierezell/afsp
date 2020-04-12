@@ -12,7 +12,9 @@ const EmbedPage = ({ data: { embed } }) => {
 	embed.brief = embed.seo.description
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={embed.seoMetaTags} />
+			<HelmetDatoCms seo={embed.seoMetaTags}>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<HeroSolid data={embed} />
 			<Embed embed={embed.embed} />
 		</Layout>

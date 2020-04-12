@@ -17,7 +17,9 @@ const RealStories = ({ data: { real, stories } }) => {
 	})
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={real.seoMetaTags} />
+			<HelmetDatoCms seo={real.seoMetaTags}>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<HeroVideo
 				videoUrl={real.heroVideo.url}
 				posterUrl={real.heroPoster.url}

@@ -25,7 +25,9 @@ const CustomShareable = ({ data }) => {
 	const { customShareables } = data
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={customShareables.seoMetaTags} />
+			<HelmetDatoCms seo={customShareables.seoMetaTags}>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<HeroSolid data={customShareables} addCSS={addCSS} />
 			<ShareableContainer
 				instructions={customShareables.instructions}

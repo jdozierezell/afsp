@@ -137,7 +137,9 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			instagram={chapterInformation.instagramClass}
 			email={chapterEmailApiKey}
 		>
-			<HelmetDatoCms seo={chapter.seoMetaTags} />
+			<HelmetDatoCms seo={chapter.seoMetaTags}>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<HeroChapter
 				title={title}
 				video={heroVideoUrl}

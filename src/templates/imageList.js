@@ -12,7 +12,9 @@ const ImageList = ({ data }) => {
 	const { imageList } = data
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={imageList.seoMetaTags} />
+			<HelmetDatoCms seo={imageList.seoMetaTags}>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<HeroSolid data={imageList} />
 			<ImageListContainer images={imageList.images}></ImageListContainer>
 		</Layout>

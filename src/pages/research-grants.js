@@ -48,7 +48,9 @@ const ResearchGrants = ({ data: { grantsPage, grants } }) => {
 	}
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={grantsPage.seoMetaTags} />
+			<HelmetDatoCms seo={grantsPage.seoMetaTags}>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<HeroSolid data={grantsPage} />
 			<SearchGrants
 				searchState={searchState}

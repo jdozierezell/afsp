@@ -29,7 +29,9 @@ const Program = ({ data: { program } }) => {
 	}, [programEventName])
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={program.seoMetaTags} />
+			<HelmetDatoCms seo={program.seoMetaTags}>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<HeroSolid data={program} />
 			<NavigationSide data={program} afterAnchors={[header]} />
 			<ContentGeneric data={program} />
