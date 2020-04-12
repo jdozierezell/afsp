@@ -13,7 +13,17 @@ const Tag = ({ data: { stories }, pageContext: { title } }) => {
 	}
 	console.log(stories)
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={{
+				tags: [
+					{
+						tagName: 'title',
+						content: `${title} | AFSP`,
+					},
+				],
+			}}
+		>
 			<HeroSolid data={heroData} />
 			<StoriesContainer stories={stories.edges} more={true} />
 		</Layout>

@@ -65,10 +65,10 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 	}, [])
 
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={search.seoMetaTags}>
-				<html lang="en" />
-			</HelmetDatoCms>
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={search.seoMetaTags}
+		>
 			<HeroModelSearch
 				title={search.title}
 				description={search.brief}

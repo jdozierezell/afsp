@@ -20,11 +20,12 @@ const carouselCSS = css`
 
 const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 	return (
-		<Layout theme={styles.logo.mobileDarkDesktopLight} overrideLight={true}>
-			<HelmetDatoCms seo={story.seoMetaTags}>
-				<html lang="en" />
-				<meta property="fb:app_id" content="925475567867156" />
-			</HelmetDatoCms>
+		<Layout
+			theme={styles.logo.mobileDarkDesktopLight}
+			overrideLight={true}
+			seo={story.seoMetaTags}
+			facebook={true}
+		>
 			<HeroStories data={story} prev={prev} next={next} />
 			<ContentStory data={story} />
 			<CarouselChapterContainer carouselCSS={carouselCSS} />

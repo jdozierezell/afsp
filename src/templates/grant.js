@@ -25,10 +25,10 @@ const grantCSS = css`
 const Grant = ({ data }) => {
 	const { grant } = data
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={grant.seoMetaTags}>
-				<html lang="en" />
-			</HelmetDatoCms>
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={grant.seoMetaTags}
+		>
 			<HeroGrant data={grant} />
 			<main css={grantCSS}>
 				{grant.grantDetails.map((detail, index) => {

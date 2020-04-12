@@ -1,5 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import Header from './Header/Header'
 import InstagramFeed from '../components/Social/InstagramFeed'
@@ -12,6 +13,7 @@ const LayoutChapter = ({
 	instagram,
 	email,
 	children,
+	seo,
 }) => {
 	const data = useStaticQuery(graphql`
 		query {
@@ -32,6 +34,9 @@ const LayoutChapter = ({
 	})
 	return (
 		<>
+			<HelmetDatoCms seo={seo}>
+				<html lang="en" />
+			</HelmetDatoCms>
 			<Header
 				nav={headerNav}
 				theme={theme}

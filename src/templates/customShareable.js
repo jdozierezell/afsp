@@ -24,10 +24,10 @@ const addCSS = css`
 const CustomShareable = ({ data }) => {
 	const { customShareables } = data
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={customShareables.seoMetaTags}>
-				<html lang="en" />
-			</HelmetDatoCms>
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={customShareables.seoMetaTags}
+		>
 			<HeroSolid data={customShareables} addCSS={addCSS} />
 			<ShareableContainer
 				instructions={customShareables.instructions}

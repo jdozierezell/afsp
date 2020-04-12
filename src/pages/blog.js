@@ -16,10 +16,10 @@ const RealStories = ({ data: { real, stories } }) => {
 		story.node.type = 'story'
 	})
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={real.seoMetaTags}>
-				<html lang="en" />
-			</HelmetDatoCms>
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={real.seoMetaTags}
+		>
 			<HeroVideo
 				videoUrl={real.heroVideo.url}
 				posterUrl={real.heroPoster.url}

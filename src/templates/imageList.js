@@ -11,10 +11,10 @@ import { styles } from '../css/css'
 const ImageList = ({ data }) => {
 	const { imageList } = data
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={imageList.seoMetaTags}>
-				<html lang="en" />
-			</HelmetDatoCms>
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={imageList.seoMetaTags}
+		>
 			<HeroSolid data={imageList} />
 			<ImageListContainer images={imageList.images}></ImageListContainer>
 		</Layout>

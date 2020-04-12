@@ -11,10 +11,10 @@ import { styles } from '../css/css'
 const EmbedPage = ({ data: { embed } }) => {
 	embed.brief = embed.seo.description
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={embed.seoMetaTags}>
-				<html lang="en" />
-			</HelmetDatoCms>
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={embed.seoMetaTags}
+		>
 			<HeroSolid data={embed} />
 			<Embed embed={embed.embed} />
 		</Layout>

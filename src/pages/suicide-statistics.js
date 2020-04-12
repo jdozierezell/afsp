@@ -15,10 +15,10 @@ import { styles } from '../css/css'
 
 const SuicideStatistics = ({ data: { statistics } }) => {
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={statistics.seoMetaTags}>
-				<html lang="en" />
-			</HelmetDatoCms>
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={statistics.seoMetaTags}
+		>
 			<HeroStatistics data={statistics} />
 			<StatisticsSummary data={statistics} />
 			<StatisticsContainer data={statistics} />

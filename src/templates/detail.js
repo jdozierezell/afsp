@@ -12,10 +12,10 @@ import { styles } from '../css/css'
 const Detail = ({ data, pageContext }) => {
 	const { detail } = data
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={detail.seoMetaTags}>
-				<html lang="en" />
-			</HelmetDatoCms>
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={detail.seoMetaTags}
+		>
 			<HeroSolid data={detail} />
 			<NavigationSide data={detail} />
 			<ContentGeneric data={detail} />

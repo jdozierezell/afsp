@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
@@ -13,7 +14,17 @@ const Tag = ({ data: { stories }, pageContext: { title } }) => {
 	}
 
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={{
+				tags: [
+					{
+						tagName: 'title',
+						content: `${title} | AFSP`,
+					},
+				],
+			}}
+		>
 			<HeroSolid data={heroData} />
 			<StoriesContainer stories={stories.edges} more={`${title}s`} />
 		</Layout>

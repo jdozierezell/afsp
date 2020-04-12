@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import Layout from '../components/Layout'
 // import { HelmetDatoCms } from 'gatsby-source-datocms'
@@ -23,11 +22,10 @@ const biographyCSS = css`
 const Bio = ({ data }) => {
 	const { bio } = data
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			{/* <SEO meta={bio} /> */}
-			<HelmetDatoCms seo={bio.seoMetaTags}>
-				<html lang="en" />
-			</HelmetDatoCms>
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={bio.seoMetaTags}
+		>
 			<HeroBio data={bio} />
 			<main
 				css={biographyCSS}

@@ -46,10 +46,10 @@ const partnerInfoCSS = css`
 
 const Partners = ({ data: { partners } }) => {
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={partners.seoMetaTags}>
-				<html lang="en" />
-			</HelmetDatoCms>
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={partners.seoMetaTags}
+		>
 			<HeroSolid data={partners} />
 			<section css={partnerContainerCSS}>
 				{partners.partnerList.map(partner => {

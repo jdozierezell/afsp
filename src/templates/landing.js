@@ -60,10 +60,10 @@ const channelCSS = css`
 const Landing = ({ data: { landing } }) => {
 	let adjacent = 0
 	return (
-		<Layout theme={styles.logo.mobileDarkDesktopDark}>
-			<HelmetDatoCms seo={landing.seoMetaTags}>
-				<html lang="en" />
-			</HelmetDatoCms>
+		<Layout
+			theme={styles.logo.mobileDarkDesktopDark}
+			seo={landing.seoMetaTags}
+		>
 			<h1 css={landingTitle}>{landing.title}</h1>
 			{!landing.introCopy && (
 				<p

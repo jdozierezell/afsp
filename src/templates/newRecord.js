@@ -22,10 +22,10 @@ const mainCSS = css`
 
 const NewRecord = ({ data: { newRecord } }) => {
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={newRecord.seoMetaTags}>
-				<html lang="en" />
-			</HelmetDatoCms>
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={newRecord.seoMetaTags}
+		>
 			<HeroSolid data={newRecord} />
 			<main css={mainCSS}>
 				{newRecord.disclaimer && (

@@ -28,10 +28,10 @@ const Program = ({ data: { program } }) => {
 			.then(response => setProgramEvents(response))
 	}, [programEventName])
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={program.seoMetaTags}>
-				<html lang="en" />
-			</HelmetDatoCms>
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={program.seoMetaTags}
+		>
 			<HeroSolid data={program} />
 			<NavigationSide data={program} afterAnchors={[header]} />
 			<ContentGeneric data={program} />

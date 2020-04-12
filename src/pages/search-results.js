@@ -39,19 +39,17 @@ const SearchResults = () => {
 	}
 
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms
-				seo={{
-					tags: [
-						{
-							tagName: 'title',
-							content: `Search results for ${searchState.query} | AFSP`,
-						},
-					],
-				}}
-			>
-				<html lang="en" />
-			</HelmetDatoCms>
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={{
+				tags: [
+					{
+						tagName: 'title',
+						content: `Search results for ${searchState.query} | AFSP`,
+					},
+				],
+			}}
+		>
 			<HeroSearch
 				data={{
 					title: searchState.query,

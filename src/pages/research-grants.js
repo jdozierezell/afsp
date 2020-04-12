@@ -47,10 +47,10 @@ const ResearchGrants = ({ data: { grantsPage, grants } }) => {
 		searchURL(tempSearch)
 	}
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HelmetDatoCms seo={grantsPage.seoMetaTags}>
-				<html lang="en" />
-			</HelmetDatoCms>
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={grantsPage.seoMetaTags}
+		>
 			<HeroSolid data={grantsPage} />
 			<SearchGrants
 				searchState={searchState}

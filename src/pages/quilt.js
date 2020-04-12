@@ -46,10 +46,10 @@ const containerCSS = css`
 const Quilt = ({ data: { quiltQuery } }) => {
 	return (
 		<ApolloProvider client={client}>
-			<Layout theme={styles.logo.mobileLightDesktopLight}>
-				<HelmetDatoCms seo={quiltQuery.seoMetaTags}>
-					<html lang="en" />
-				</HelmetDatoCms>
+			<Layout
+				theme={styles.logo.mobileLightDesktopLight}
+				seo={quiltQuery.seoMetaTags}
+			>
 				<HeroImage data={quiltQuery} />
 				<main css={containerCSS}>
 					<h3

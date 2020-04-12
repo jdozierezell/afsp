@@ -1,15 +1,21 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import Header from './Header/Header'
 import EmailSignup from './EmailSignup/EmailSignup'
 import Footer from './Footer/Footer'
 
-const Layout = ({ theme, overrideLight, children }) => {
+const Layout = ({ theme, overrideLight, children, seo, facebook }) => {
 	const data = useStaticQuery(graphql`
 		query {
 			nav: allDatoCmsNavigation(sort: { fields: position, order: ASC }) {
 				...Navigation
+			}
+			site: datoCmsSite {
+				faviconMetaTags {
+					...GatsbyDatoCmsFaviconMetaTags
+				}
 			}
 		}
 	`)
@@ -25,6 +31,12 @@ const Layout = ({ theme, overrideLight, children }) => {
 	})
 	return (
 		<>
+			<HelmetDatoCms seo={seo} favicon={data.site.faviconMetaTags}>
+				<html lang="en" />
+				{facebook && (
+					<meta property="fb:app_id" content="925475567867156" />
+				)}
+			</HelmetDatoCms>
 			<Header
 				nav={headerNav}
 				theme={theme}
