@@ -117,15 +117,25 @@ const QuiltForm = () => {
 
 	return (
 		<form css={formWrapperCSS} onSubmit={handleSubmit(onSubmit)}>
-			<label htmlFor="quiltTitle">Square Title/Name of Person Lost</label>
+			<label id="quiltTitle" htmlFor="quiltTitle">
+				Square Title/Name of Person Lost
+			</label>
 			{errors.quiltTitle && <p>{errors.quiltTitle.message}</p>}
-			<input name="quiltTitle" ref={register} />
+			<input
+				aria-describedby="quiltTitle"
+				name="quiltTitle"
+				ref={register}
+			/>
 
-			<label htmlFor="name">Your Name</label>
+			<label id="name" htmlFor="name">
+				Your Name
+			</label>
 			{errors.name && <p>{errors.name.message}</p>}
-			<input name="name" ref={register} />
+			<input aria-describedby="name" name="name" ref={register} />
 
-			<label htmlFor="email">Your Email Address</label>
+			<label id="email" htmlFor="email">
+				Your Email Address
+			</label>
 			<p>
 				We will not share or sell your email address to other
 				organizations. We hate spam as much as you do. We will use your
@@ -133,9 +143,16 @@ const QuiltForm = () => {
 				square later on.
 			</p>
 			{errors.email && <p>{errors.email.message}</p>}
-			<input name="email" type="email" ref={register} />
+			<input
+				aria-describedby="email"
+				name="email"
+				type="email"
+				ref={register}
+			/>
 
-			<label htmlFor="state">Your State</label>
+			<label id="state" htmlFor="state">
+				Your State
+			</label>
 			<p>
 				Select the state where you live. If you live outside of the
 				U.S., select 'Not Applicable' at the bottom of the list of
@@ -152,13 +169,18 @@ const QuiltForm = () => {
 				onChange={handleMultiChange}
 			/>
 
-			<label htmlFor="file">Square Image</label>
+			<label id="file" htmlFor="file">
+				Square Image
+			</label>
 			<p>
 				Please note, images do not need to be square when uploading.
 				They will appear as squares automatically.
 			</p>
-			<label htmlFor="image">Click here to upload your image</label>
+			<label id="image" htmlFor="image">
+				Click here to upload your image
+			</label>
 			<input
+				aria-describedby="image"
 				name="image"
 				id="image"
 				type="file"
@@ -180,7 +202,9 @@ const QuiltForm = () => {
 			/>
 			<div id="imageDisplay"></div>
 
-			<label htmlFor="description">Square Description</label>
+			<label id="description" htmlFor="description">
+				Square Description
+			</label>
 			<p>
 				Enter a brief description of your quilt square. This can be
 				anything from a description of the person you have lost to a

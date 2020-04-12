@@ -17,7 +17,12 @@ const HeroModelSearchFormUs = ({
 			}}
 		>
 			<div css={inputCSS}>
+				<label id="zipLabel" htmlFor="zip" className="sr-only">
+					Enter your locality's zip code
+				</label>
 				<input
+					name="zip"
+					aria-describedby="zipLabel"
 					type="text"
 					placeholder="Search by zip"
 					value={zip}

@@ -38,10 +38,11 @@ const ShareableControls = ({
 		>
 			{!isCustom && (
 				<div css={buttonGroupCSS} className="secondary-button-group">
-					<label htmlFor="image" className="">
+					<label id="imageLabel" htmlFor="image" className="">
 						Upload
 					</label>
 					<input
+						aria-describedby="imageLabel"
 						id="image"
 						type="file"
 						accept="image/png, image/jpeg"

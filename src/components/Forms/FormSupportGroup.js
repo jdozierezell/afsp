@@ -299,15 +299,22 @@ const SupportGroupForm = () => {
 						css={formWrapperCSS}
 						onSubmit={handleSubmit(onSubmit)}
 					>
-						<label htmlFor="supportGroupName">
+						<label id="supportGroupName" htmlFor="supportGroupName">
 							Support Group Name <span>*</span>
 						</label>
 						{errors.supportGroupName && (
 							<span>{errors.supportGroupName.message}</span>
 						)}
-						<input name="supportGroupName" ref={register} />
+						<input
+							aria-describedby="supportGroupName"
+							name="supportGroupName"
+							ref={register}
+						/>
 
-						<label htmlFor="supportGroupWebsite">
+						<label
+							id="supportGroupWebsite"
+							htmlFor="supportGroupWebsite"
+						>
 							Support Group Website
 						</label>
 						<p>
@@ -317,17 +324,28 @@ const SupportGroupForm = () => {
 						{errors.supportGroupWebsite && (
 							<span>{errors.supportGroupWebsite.message}</span>
 						)}
-						<input name="supportGroupWebsite" ref={register} />
+						<input
+							aria-describedby="supportGroupWebsite"
+							name="supportGroupWebsite"
+							ref={register}
+						/>
 
-						<label htmlFor="hostingSponsoringOrganization">
+						<label
+							id="hostingSponsoringOrganization"
+							htmlFor="hostingSponsoringOrganization"
+						>
 							Hosting/Sponsoring Organization
 						</label>
 						<input
+							aria-describedby="hostingSponsoringOrganization"
 							name="hostingSponsoringOrganization"
 							ref={register}
 						/>
 
-						<label htmlFor="hostingSponsoringOrganizationWebsite">
+						<label
+							id="hostingSponsoringOrganizationWebsite"
+							htmlFor="hostingSponsoringOrganizationWebsite"
+						>
 							Hosting/Sponsoring Organization Website
 						</label>
 						<p>
@@ -343,11 +361,12 @@ const SupportGroupForm = () => {
 							</span>
 						)}
 						<input
+							aria-describedby="hostingSponsoringOrganizationWebsite"
 							name="hostingSponsoringOrganizationWebsite"
 							ref={register}
 						/>
 
-						<label htmlFor="groupDemographic">
+						<label id="groupDemographic" htmlFor="groupDemographic">
 							Group Demographic
 						</label>
 						<p>
@@ -365,7 +384,9 @@ const SupportGroupForm = () => {
 							onChange={handleToggleChange}
 							defaultChecked={true}
 						/>
-						<label htmlFor="newMembers">New Members</label>
+						<label id="newMembers" htmlFor="newMembers">
+							New Members
+						</label>
 						<p className="toggleInstructions">
 							A group is considered open if new members may join
 							at any time. A group is considered closed if new
@@ -374,25 +395,39 @@ const SupportGroupForm = () => {
 							by default.
 						</p>
 
-						<label htmlFor="contactName">
+						<label id="contactName" htmlFor="contactName">
 							Contact Name <span>*</span>
 						</label>
 						{errors.contactName && (
 							<span>{errors.contactName.message}</span>
 						)}
-						<input name="contactName" ref={register} />
+						<input
+							aria-describedby="contactName"
+							name="contactName"
+							ref={register}
+						/>
 
-						<label htmlFor="contactEmail">
+						<label id="contactEmail" htmlFor="contactEmail">
 							Contact Email <span>*</span>
 						</label>
 						<p>Please enter a valid email address</p>
 						{errors.contactEmail && (
 							<span>{errors.contactEmail.message}</span>
 						)}
-						<input name="contactEmail" ref={register} />
+						<input
+							aria-describedby="contactEmail"
+							name="contactEmail"
+							ref={register}
+						/>
 
-						<label htmlFor="contactPhone">Contact Phone</label>
-						<input name="contactPhone" ref={register} />
+						<label id="contactPhone" htmlFor="contactPhone">
+							Contact Phone
+						</label>
+						<input
+							aria-describedby="contactPhone"
+							name="contactPhone"
+							ref={register}
+						/>
 
 						<Toggle
 							name="secondContact"
@@ -408,7 +443,7 @@ const SupportGroupForm = () => {
 							<span>{errors.secondContact.message}</span>
 						)}
 
-						<label htmlFor="secondContact">
+						<label id="secondContact" htmlFor="secondContact">
 							My Group Includes a Second Group Contact
 						</label>
 						<p className="toggleInstructions">
@@ -423,27 +458,48 @@ const SupportGroupForm = () => {
 									: 'inherit'};
 							`}
 						>
-							<label htmlFor="secondContactName">
+							<label
+								id="secondContactName"
+								htmlFor="secondContactName"
+							>
 								Second Contact Name <span>*</span>
 							</label>
 							{errors.secondContactName && (
 								<span>{errors.secondContactName.message}</span>
 							)}
-							<input name="secondContactName" ref={register} />
+							<input
+								aria-describedby="secondContactName"
+								name="secondContactName"
+								ref={register}
+							/>
 
-							<label htmlFor="secondContactEmail">
+							<label
+								id="secondContactEmail"
+								htmlFor="secondContactEmail"
+							>
 								Second Contact Email <span>*</span>
 							</label>
 							<p>Please enter a valid email address</p>
 							{errors.secondContactEmail && (
 								<span>{errors.secondContactEmail.message}</span>
 							)}
-							<input name="secondContactEmail" ref={register} />
+							<input
+								aria-describedby="secondContactEmail"
+								name="secondContactEmail"
+								ref={register}
+							/>
 
-							<label htmlFor="secondContactPhone">
+							<label
+								id="secondContactPhone"
+								htmlFor="secondContactPhone"
+							>
 								Second Contact Phone
 							</label>
-							<input name="secondContactPhone" ref={register} />
+							<input
+								aria-describedby="secondContactPhone"
+								name="secondContactPhone"
+								ref={register}
+							/>
 						</div>
 
 						<Toggle
@@ -456,7 +512,10 @@ const SupportGroupForm = () => {
 								}
 							}}
 						/>
-						<label htmlFor="differentSubmitter">
+						<label
+							id="differentSubmitter"
+							htmlFor="differentSubmitter"
+						>
 							My Information is Different from Group Contact
 						</label>
 						<p className="toggleInstructions">
@@ -471,30 +530,41 @@ const SupportGroupForm = () => {
 									: 'inherit'};
 							`}
 						>
-							<label htmlFor="submitterName">
+							<label id="submitterName" htmlFor="submitterName">
 								Submitter Name <span>*</span>
 							</label>
 							{errors.submitterName && (
 								<span>{errors.submitterName.message}</span>
 							)}
-							<input name="submitterName" ref={register} />
+							<input
+								aria-describedby="submitterName"
+								name="submitterName"
+								ref={register}
+							/>
 
-							<label htmlFor="submitterEmail">
+							<label id="submitterEmail" htmlFor="submitterEmail">
 								Submitter Email <span>*</span>
 							</label>
 							<p>Please enter a valid email address</p>
 							{errors.submitterEmail && (
 								<span>{errors.submitterEmail.message}</span>
 							)}
-							<input name="submitterEmail" ref={register} />
+							<input
+								aria-describedby="submitterEmail"
+								name="submitterEmail"
+								ref={register}
+							/>
 						</div>
 
-						<label htmlFor="registrationProcess">
+						<label
+							id="registrationProcess"
+							htmlFor="registrationProcess"
+						>
 							Registration Process
 						</label>
 						<textarea name="registrationProcess" ref={register} />
 
-						<label htmlFor="meetingSchedule">
+						<label id="meetingSchedule" htmlFor="meetingSchedule">
 							Meeting Schedule <span>*</span>
 						</label>
 						<p>
@@ -508,7 +578,10 @@ const SupportGroupForm = () => {
 						)}
 						<textarea name="meetingSchedule" ref={register} />
 
-						<label htmlFor="nameOfMeetingSite">
+						<label
+							id="nameOfMeetingSite"
+							htmlFor="nameOfMeetingSite"
+						>
 							Name of Meeting Site
 						</label>
 						<p>
@@ -520,9 +593,13 @@ const SupportGroupForm = () => {
 						{errors.nameOfMeetingSite && (
 							<span>{errors.nameOfMeetingSite.message}</span>
 						)}
-						<input name="nameOfMeetingSite" ref={register} />
+						<input
+							aria-describedby="nameOfMeetingSite"
+							name="nameOfMeetingSite"
+							ref={register}
+						/>
 
-						<label htmlFor="meetingCountry">
+						<label id="meetingCountry" htmlFor="meetingCountry">
 							Meeting Country <span>*</span>
 						</label>
 						<p>Select your meeting location's country.</p>
@@ -539,7 +616,9 @@ const SupportGroupForm = () => {
 							onChange={handleCountrySelectChange}
 						/>
 
-						<label htmlFor="meetingAddress">Meeting Address</label>
+						<label id="meetingAddress" htmlFor="meetingAddress">
+							Meeting Address
+						</label>
 						<p>
 							Enter your meeting location's street address (no
 							P.O. Boxes). If your meeting site varies or if you'd
@@ -549,20 +628,28 @@ const SupportGroupForm = () => {
 						{errors.meetingAddress && (
 							<span>{errors.meetingAddress.message}</span>
 						)}
-						<input name="meetingAddress" ref={register} />
+						<input
+							aria-describedby="meetingAddress"
+							name="meetingAddress"
+							ref={register}
+						/>
 
-						<label htmlFor="meetingCity">
+						<label id="meetingCity" htmlFor="meetingCity">
 							Meeting City <span>*</span>
 						</label>
 						<p>Enter your meeting location's city.</p>
 						{errors.meetingCity && (
 							<span>{errors.meetingCity.message}</span>
 						)}
-						<input name="meetingCity" ref={register} />
+						<input
+							aria-describedby="meetingCity"
+							name="meetingCity"
+							ref={register}
+						/>
 
 						{showState && (
 							<>
-								<label htmlFor="meetingState">
+								<label id="" htmlFor="meetingState">
 									Meeting State <span>*</span>
 								</label>
 								<p>Select your meeting location's state.</p>
@@ -581,16 +668,23 @@ const SupportGroupForm = () => {
 							</>
 						)}
 
-						<label htmlFor="meetingZipPostalCode">
+						<label
+							id="meetingZipPostalCode"
+							htmlFor="meetingZipPostalCode"
+						>
 							Meeting Zip/Postal Code <span>*</span>
 						</label>
 						<p>Enter your meeting location's zip or postal code.</p>
 						{errors.meetingZipPostalCode && (
 							<span>{errors.meetingZipPostalCode.message}</span>
 						)}
-						<input name="meetingZipPostalCode" ref={register} />
+						<input
+							aria-describedby="meetingZipPostalCode"
+							name="meetingZipPostalCode"
+							ref={register}
+						/>
 
-						<label htmlFor="facilitator">
+						<label id="facilitator" htmlFor="facilitator">
 							Facilitator <span>*</span>
 						</label>
 						<p>
@@ -627,7 +721,7 @@ const SupportGroupForm = () => {
 							id="attendedTraining"
 							onChange={handleToggleChange}
 						/>
-						<label htmlFor="attendedTraining">
+						<label id="attendedTraining" htmlFor="attendedTraining">
 							Attended AFSP Support Group Facilitator Training
 						</label>
 						<p className="toggleInstructions">
@@ -636,14 +730,23 @@ const SupportGroupForm = () => {
 							a Suicide Bereavement Support Group.
 						</p>
 
-						<label htmlFor="costToAttend">Cost to Attend</label>
+						<label id="costToAttend" htmlFor="costToAttend">
+							Cost to Attend
+						</label>
 						<p>
 							Indicate how much your support group costs to
 							attend. Leave blank if no fee is charged.
 						</p>
-						<input name="costToAttend" ref={register} />
+						<input
+							aria-describedby="costToAttend"
+							name="costToAttend"
+							ref={register}
+						/>
 
-						<label htmlFor="additionalInformation">
+						<label
+							id="costToAttend"
+							htmlFor="additionalInformation"
+						>
 							Additional Information
 						</label>
 						<p>

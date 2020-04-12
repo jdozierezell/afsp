@@ -21,10 +21,6 @@ div {
 	color: hsla(0, 0%, 14.9%, 1);
 }
 
-:focus {
-	border: 1px solid red;
-}
-
 h1,
 h2,
 h3,
@@ -144,4 +140,14 @@ textarea {
 
 .secondary-button-group *:first-child {
 	border-right: solid 2px hsla(355, 84.3%, 50%, 1);
+}
+
+.sr-only:not(:focus):not(:active) {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
 }

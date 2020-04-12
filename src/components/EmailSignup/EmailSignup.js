@@ -142,11 +142,20 @@ const EmailSignup = ({ formId, children }) => {
 				<input type="hidden" name="$fields" value="$consent" />
 				<input type="hidden" name="$list_fields" value="$consent" />
 				<div className={submitted ? 'hidden' : 'klaviyo_field_group'}>
+					<label
+						id="emailDescription"
+						htmlFor="email"
+						className="sr-only"
+					>
+						Enter your email here to receive updates from the
+						American Foundation for Suicide Prevention
+					</label>
 					<input
 						type="email"
 						name="email"
 						id="k_id_email"
 						placeholder="Type your email here..."
+						aria-describedby="emailDescription"
 					/>
 				</div>
 				<div className="klaviyo_messages">

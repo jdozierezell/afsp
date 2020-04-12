@@ -262,6 +262,7 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 								<label
 									{...getLabelProps()}
 									htmlFor="state-input"
+									id="stateInputLabel"
 								>
 									Download our{' '}
 									<a href="https://www.datocms-assets.com/12810/1582813931-usfactsfiguresflyer.pdf">
@@ -273,6 +274,7 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 								<input
 									{...getInputProps()}
 									id="state-input"
+									aria-describedby="stateInputLabel"
 									onKeyPress={e => {
 										if (e.key === 'Enter') {
 											const value = e.target.value.toLowerCase()
