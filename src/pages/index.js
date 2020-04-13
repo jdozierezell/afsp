@@ -58,9 +58,10 @@ const App = ({ data: { home } }) => {
 					Find a walk near you
 				</a>
 			</div>
-			<ChannelContainer channelList={home.channelList} />
 			{home.ctaChapterResourceList.map((item, index) => {
-				if (item.__typename === 'DatoCmsCallToAction') {
+				if (item.__typename === 'DatoCmsChannelList') {
+					return <ChannelContainer channelList={item.channels} />
+				} else if (item.__typename === 'DatoCmsCallToAction') {
 					return (
 						<CTAContainer
 							key={index}
@@ -145,6 +146,31 @@ export const query = graphql`
 				}
 			}
 			ctaChapterResourceList {
+				... on DatoCmsChannelList {
+					__typename
+					channels {
+						image {
+							url
+							fluid(
+								maxWidth: 200
+								imgixParams: {
+									auto: "format"
+									fit: "crop"
+									crop: "faces"
+									w: "200"
+									h: "200"
+								}
+							) {
+								...GatsbyDatoCmsFluid
+							}
+						}
+						heading
+						brief
+						channelLink {
+							...ChannelLink
+						}
+					}
+				}
 				... on DatoCmsCallToAction {
 					__typename
 					...CTAs
