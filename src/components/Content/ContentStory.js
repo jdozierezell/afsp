@@ -96,52 +96,55 @@ const ContentStory = ({ data }) => {
 					<EmailShare />
 				</div>
 			</aside>
-			{data.article.map((article, index) => {
-				if (article.__typename === 'DatoCmsBody') {
-					return (
-						<div
-							key={index}
-							className="storyContent"
-							dangerouslySetInnerHTML={{
-								__html: article.copy,
-							}}
-						></div>
-					)
-				} else if (article.__typename === 'DatoCmsImage') {
-					return <ContentImage key={index} image={article.images} />
-				} else if (article.__typename === 'DatoCmsDetailSquare') {
-					return (
-						<div
-							css={css`
-								grid-column: 1 / 4;
-							`}
-							key={index}
-						>
-							<CarouselDetailContainer
+			<div className="storyContent">
+				{data.article.map((article, index) => {
+					if (article.__typename === 'DatoCmsBody') {
+						return (
+							<div
 								key={index}
-								content={article.detail}
+								dangerouslySetInnerHTML={{
+									__html: article.copy,
+								}}
+							></div>
+						)
+					} else if (article.__typename === 'DatoCmsImage') {
+						return (
+							<ContentImage key={index} image={article.images} />
+						)
+					} else if (article.__typename === 'DatoCmsDetailSquare') {
+						return (
+							<div
+								css={css`
+									grid-column: 1 / 4;
+								`}
+								key={index}
+							>
+								<CarouselDetailContainer
+									key={index}
+									content={article.detail}
+								/>
+							</div>
+						)
+					} else if (article.__typename === 'DatoCmsVideo') {
+						return (
+							<ContentVideo
+								video={article.video.url}
+								poster={article.poster.url}
 							/>
-						</div>
-					)
-				} else if (article.__typename === 'DatoCmsVideo') {
-					return (
-						<ContentVideo
-							video={article.video.url}
-							poster={article.poster.url}
-						/>
-					)
-				} else if (article.__typename === 'DatoCmsAudio') {
-					return <ContentAudio audio={article.audio} />
-				} else if (article.__typename === 'DatoCmsHeading') {
-					return (
-						<ContentHeading
-							heading={article.heading}
-							level={article.headingLevel}
-						/>
-					)
-				}
-				return ''
-			})}
+						)
+					} else if (article.__typename === 'DatoCmsAudio') {
+						return <ContentAudio audio={article.audio} />
+					} else if (article.__typename === 'DatoCmsHeading') {
+						return (
+							<ContentHeading
+								heading={article.heading}
+								level={article.headingLevel}
+							/>
+						)
+					}
+					return ''
+				})}
+			</div>
 			<FacebookComments />
 		</section>
 	)
