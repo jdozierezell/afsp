@@ -20,6 +20,11 @@ const LayoutChapter = ({
 			nav: allDatoCmsNavigation(sort: { fields: position, order: ASC }) {
 				...Navigation
 			}
+			site: datoCmsSite {
+				faviconMetaTags {
+					...GatsbyDatoCmsFaviconMetaTags
+				}
+			}
 		}
 	`)
 	const { nav } = data
@@ -34,7 +39,7 @@ const LayoutChapter = ({
 	})
 	return (
 		<>
-			<HelmetDatoCms seo={seo}>
+			<HelmetDatoCms seo={seo} favicon={data.site.faviconMetaTags}>
 				<html lang="en" />
 			</HelmetDatoCms>
 			<Header
