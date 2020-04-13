@@ -4,7 +4,7 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import Logo from '../SVGs/Logo'
 import MobileMenu from './MobileMenu'
-import DeskMenuOld from './DeskMenuOld'
+import DeskMenu from './DeskMenu'
 import IconHamburger from '../SVGs/IconHamburger'
 import IconX from '../SVGs/IconX'
 import IconSearch from '../SVGs/IconSearch'
@@ -160,7 +160,7 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 					/>
 				</AniLink>
 			</div>
-			<DeskMenuOld
+			<DeskMenu
 				items={nav}
 				activeItem={activeMegaMenu}
 				handleMouseEnter={handleMouseEnter}

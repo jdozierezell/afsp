@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { css } from '@emotion/core'
-import { useSpring, animated as a } from 'react-spring'
+import { useTransition, animated as a } from 'react-spring'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import buildUrl from '../../utils/buildUrl'
@@ -22,6 +22,7 @@ const megaCSS = css`
 	margin: 0;
 	font-size: ${styles.scale.px17};
 	min-height: 350px;
+	max-height: 400px;
 `
 
 const megaLinkCSS = css`
@@ -43,7 +44,7 @@ const featuredCSS = css`
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	min-height: 300px;
+	height: 300px;
 	h5 {
 		margin: ${styles.scale.px35} ${styles.scale.px25} ${styles.scale.px25};
 		font-size: ${styles.scale.px18};
@@ -59,97 +60,121 @@ const featuredCSS = css`
 	}
 `
 
-const DeskMenuSection = ({ item, id }) => {
-	const [isActive, setIsActive] = useState(false)
-
-	const showMega = useSpring({
-		opacity: isActive ? 1 : 0,
-		maxHeight: isActive ? '400px' : '0px',
-		margin: isActive ? `${styles.scale.px60} 0px` : `0px 0px`,
-		borderBottom: isActive
-			? `${styles.scale.px6} solid hsla(0, 0%, 100%, 1)`
-			: `${styles.scale.px6} solid hsla(0, 0%, 100%, 0)`,
+const DeskMenuSection = ({ menuItem, id }) => {
+	const [showMenu, setShowMenu] = useState(false)
+	const transitions = useTransition(showMenu, null, {
+		from: { opacity: 0 },
+		enter: { opacity: 1 },
+		leave: { opacity: 0 },
 	})
 	return (
 		<>
 			<li
-				onMouseEnter={() => setIsActive(true)}
-				onMouseLeave={() => setIsActive(false)}
+				onMouseEnter={() => setShowMenu(true)}
+				onMouseLeave={() => setShowMenu(false)}
 			>
 				<AniLink
 					fade
 					duration={styles.duration}
 					to={buildUrl(
-						item.displayLink.__typename,
-						item.displayLink.slug
+						menuItem.displayLink.__typename,
+						menuItem.displayLink.slug
 					)}
 				>
-					{item.displayTitle}
+					{menuItem.displayTitle}
 				</AniLink>
-				{item.navigationItem.length >= 1 && (
-					<a.ul
-						css={css`
-							${megaCSS};
-							pointer-events: 'none';
-						`}
-						style={showMega}
-						onMouseEnter={() => setIsActive(true)}
-						onMouseLeave={() => setIsActive(false)}
-					>
-						{item.navigationItem.map((link, index) => {
-							if (link.__typename === 'DatoCmsChildItem') {
-								const url = link.childLink
-									? buildUrl(
-											link.childLink.__typename,
-											link.childLink.slug
-									  )
-									: link.childExternalLink
-								return (
-									<li key={index} css={megaLinkCSS}>
-										{link.childLink && (
-											<AniLink
-												fade
-												duration={styles.duration}
-												to={url}
-											>
-												{link.childHeading}
-											</AniLink>
-										)}
-										{!link.childLink && (
-											<a
-												href={url}
-												target="_blank"
-												rel="noopener noreferrer"
-											>
-												{link.childHeading}
-											</a>
-										)}
-									</li>
-								)
-							} else if (
-								link.__typename === 'DatoCmsFeaturedItem'
-							) {
-								return (
-									<li
-										css={css`
-											${featuredCSS};
-											background-image: url(${`${link.featuredLink.seo.image.url}?w=768&h=475&fit=crop&crop=faces&q=30`});
-										`}
-										key={index}
-									>
-										<h5>Featured</h5>
-										<h3>{link.featuredHeading}</h3>
-										<a href={link.featuredLink.slug}>
-											Learn more
-										</a>
-									</li>
-								)
-							} else {
-								return
-							}
-						})}
-					</a.ul>
-				)}
+				{menuItem.navigationItem.length >= 1 &&
+					transitions.map(
+						({ item, key, props }) =>
+							item && (
+								<a.ul
+									css={css`
+										${megaCSS};
+									`}
+									key={key}
+									style={props}
+								>
+									{menuItem.navigationItem.map(
+										(link, index) => {
+											if (
+												link.__typename ===
+												'DatoCmsChildItem'
+											) {
+												const url = link.childLink
+													? buildUrl(
+															link.childLink
+																.__typename,
+															link.childLink.slug
+													  )
+													: link.childExternalLink
+												return (
+													<li
+														key={index}
+														css={megaLinkCSS}
+													>
+														{link.childLink && (
+															<AniLink
+																fade
+																duration={
+																	styles.duration
+																}
+																to={url}
+															>
+																{
+																	link.childHeading
+																}
+															</AniLink>
+														)}
+														{!link.childLink && (
+															<a
+																href={url}
+																target="_blank"
+																rel="noopener noreferrer"
+															>
+																{
+																	link.childHeading
+																}
+															</a>
+														)}
+													</li>
+												)
+											} else if (
+												link.__typename ===
+												'DatoCmsFeaturedItem'
+											) {
+												return (
+													<li
+														css={css`
+															${featuredCSS};
+															background-image: url(${`${link.featuredLink.seo.image.url}?w=768&h=475&fit=crop&crop=faces&q=30`});
+														`}
+														key={index}
+													>
+														<h5>Featured</h5>
+														<h3>
+															{
+																link.featuredHeading
+															}
+														</h3>
+														<a
+															href={
+																link
+																	.featuredLink
+																	.slug
+															}
+														>
+															Learn more
+														</a>
+													</li>
+												)
+											} else {
+												return
+											}
+										}
+									)}
+								</a.ul>
+							)
+					)}
 			</li>
 		</>
 	)
