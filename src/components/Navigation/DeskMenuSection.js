@@ -29,7 +29,7 @@ const megaCSS = css`
 const megaLinkCSS = css`
 	list-style: none;
 	color: ${styles.colors.white};
-	margin: 0 0 ${styles.scale.px50};
+	margin: 0 0 ${styles.scale.px12};
 	a {
 		font-family: ${styles.fonts.avenirBold};
 		text-decoration: underline;

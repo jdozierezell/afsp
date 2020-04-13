@@ -51,7 +51,6 @@ const Events = ({ header, events }) => {
 			<ul>
 				{events.map((event, index) => (
 					<li key={index}>
-						{console.log(event)}
 						<a
 							href={event.url}
 							target="_blank"

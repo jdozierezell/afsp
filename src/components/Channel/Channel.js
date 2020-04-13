@@ -51,7 +51,6 @@ const channelImageCSS = css`
 `
 
 const Channel = ({ slug, channel }) => {
-	console.log(slug)
 	const { image, heading, brief } = channel
 	const channelLink = channel.channelLink[0]
 	return (

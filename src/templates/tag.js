@@ -11,7 +11,6 @@ const Tag = ({ data: { stories }, pageContext: { title } }) => {
 	const heroData = {
 		title: `Tagged: ${title}`,
 	}
-	console.log(stories)
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}

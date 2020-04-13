@@ -43,7 +43,6 @@ const SearchModelContainer = ({
 				})}
 			{supportGroups &&
 				supportGroups.map((supportGroup, index) => {
-					console.log(supportGroup)
 					return (
 						<SearchSupportGroups
 							key={index}

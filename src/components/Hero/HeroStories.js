@@ -148,7 +148,6 @@ const HeroStories = ({ data, prev, next }) => {
 	})
 
 	const timeToRead = readTime(fullStory)
-	console.log(desktopCover.fluid)
 
 	const blankFluidImage = {
 		base64:

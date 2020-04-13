@@ -146,7 +146,6 @@ const ShareableContainer = ({
 		}, 50) // timeout function gives setSelected enough time to re-render canvas so we lose the transformer handles
 	}
 	const handleScroll = () => {
-		console.log(window.scrollY)
 		if (window.innerWidth >= 768) {
 			if (
 				// konvaRef.current.getBoundingClientRect().y <= 0 &&

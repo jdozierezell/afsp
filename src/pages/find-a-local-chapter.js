@@ -34,7 +34,6 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 	const updateRadius = newRadius => setRadius(newRadius)
 
 	const updateZip = newZip => {
-		console.log(newZip)
 		setZip(newZip)
 	}
 

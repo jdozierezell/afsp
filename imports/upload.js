@@ -1,5 +1,4 @@
 const { SiteClient } = require('datocms-client')
-console.log(SiteClient)
 const client = new SiteClient('c59da171a82e4feb314339a6e4cc24')
 // upload file using URL:
 const upload = async () => {
@@ -11,7 +10,5 @@ const upload = async () => {
 	const newImage = await client.uploads.create({
 		path,
 	})
-	console.log(newImage)
 }
 upload()
-// console.log(upload)
