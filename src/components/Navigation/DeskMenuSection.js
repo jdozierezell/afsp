@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { css } from '@emotion/core'
 import { useTransition, animated as a } from 'react-spring'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 
 import buildUrl from '../../utils/buildUrl'
 import createAnchor from '../../utils/createAnchor'
@@ -104,16 +104,14 @@ const DeskMenuSection = ({ menuItem, id }) => {
 					/* pointer-events: ${currentPath === anchor ? 'none' : 'auto'}; */
 				`}
 			>
-				<AniLink
-					fade
-					duration={styles.duration}
+				<Link
 					to={buildUrl(
 						menuItem.displayLink.__typename,
 						menuItem.displayLink.slug
 					)}
 				>
 					{menuItem.displayTitle}
-				</AniLink>
+				</Link>
 				{menuItem.navigationItem.length >= 1 &&
 					transitions.map(
 						({ item, key, props }) =>
@@ -144,17 +142,11 @@ const DeskMenuSection = ({ menuItem, id }) => {
 														css={megaLinkCSS}
 													>
 														{link.childLink && (
-															<AniLink
-																fade
-																duration={
-																	styles.duration
-																}
-																to={url}
-															>
+															<Link to={url}>
 																{
 																	link.childHeading
 																}
-															</AniLink>
+															</Link>
 														)}
 														{!link.childLink && (
 															<a

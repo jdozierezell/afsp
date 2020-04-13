@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 
 import { styles } from '../../css/css'
 
@@ -103,14 +103,12 @@ const ChapterSearchResult = ({ chapter }) => {
 						{chapter[0].staffPhone}
 					</a>
 				</address>
-				<AniLink
+				<Link
 					className="secondary-button"
-					fade
-					duration={styles.duration}
 					to={`/chapter/${chapter[0].slug}`}
 				>
 					More info
-				</AniLink>
+				</Link>
 			</div>
 			<div
 				css={css`

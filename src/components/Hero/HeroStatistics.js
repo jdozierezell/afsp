@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 
 import buildUrl from '../../utils/buildUrl'
 
@@ -109,16 +109,14 @@ const HeroStatistics = ({ data }) => {
 										<a href={cta.linkUrl}>{cta.linkText}</a>
 									)}
 									{!cta.external && (
-										<AniLink
-											fade
-											duration={styles.duration}
+										<Link
 											to={buildUrl(
 												cta.link.__typename,
 												cta.link.slug
 											)}
 										>
 											{cta.linkText}
-										</AniLink>
+										</Link>
 									)}
 								</li>
 							)

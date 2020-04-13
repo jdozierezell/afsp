@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { css } from '@emotion/core'
 import { useSpring, animated as a } from 'react-spring'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 
 import buildUrl from '../../utils/buildUrl'
 
@@ -84,9 +84,7 @@ const MenuSection = ({ item }) => {
 			<div css={menuTitleCSS}>
 				<h2>
 					{url ? (
-						<AniLink fade duration={styles.duration} to={url}>
-							{item.displayTitle}
-						</AniLink>
+						<Link to={url}>{item.displayTitle}</Link>
 					) : (
 						item.displayTitle
 					)}
@@ -120,13 +118,7 @@ const MenuSection = ({ item }) => {
 									{navItem.childHeading}
 								</a>
 							) : (
-								<AniLink
-									fade
-									duration={styles.duration}
-									to={url}
-								>
-									{navItem.childHeading}
-								</AniLink>
+								<Link to={url}>{navItem.childHeading}</Link>
 							)}
 						</li>
 					)

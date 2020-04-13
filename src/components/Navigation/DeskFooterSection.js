@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 
 import FooterAside from '../Footer/FooterAside'
 
@@ -38,13 +38,7 @@ const DeskFooterSection = ({ item, index, length }) => {
 						)
 						return (
 							<li key={index}>
-								<AniLink
-									fade
-									duration={styles.duration}
-									to={url}
-								>
-									{link.childHeading}
-								</AniLink>
+								<Link to={url}>{link.childHeading}</Link>
 							</li>
 						)
 					} else if (link.childExternalLink) {

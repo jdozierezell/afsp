@@ -1,6 +1,5 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 
@@ -56,9 +55,7 @@ const Channel = ({ slug, channel }) => {
 	return (
 		<div css={channelCSS}>
 			{channelLink.__typename === 'DatoCmsInternalLink' && (
-				<AniLink
-					fade
-					duration={styles.duration}
+				<Link
 					to={buildUrl(
 						channelLink.link.__typename,
 						channelLink.link.slug
@@ -68,7 +65,7 @@ const Channel = ({ slug, channel }) => {
 					<span>{heading}</span>
 					<p>{brief}</p>
 					<p>Learn more</p>
-				</AniLink>
+				</Link>
 			)}
 			{channelLink.__typename === 'DatoCmsAnchor' && (
 				<>

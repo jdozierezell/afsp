@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import BackgroundImage from 'gatsby-background-image'
 
@@ -180,10 +180,8 @@ const HeroStories = ({ data, prev, next }) => {
 						{author.map((author, index) => {
 							if (author.authorName !== 'AFSP') {
 								return (
-									<AniLink
+									<Link
 										key={index}
-										fade
-										duration={styles.duration}
 										to={`/author/${author.slug}`}
 									>
 										{`${author.authorName}${
@@ -191,7 +189,7 @@ const HeroStories = ({ data, prev, next }) => {
 												? ', '
 												: ''
 										}`}
-									</AniLink>
+									</Link>
 								)
 							} else {
 								return `${author.authorName}${
@@ -208,13 +206,9 @@ const HeroStories = ({ data, prev, next }) => {
 							tags.map((tag, index) => {
 								return (
 									<li key={index}>
-										<AniLink
-											fade
-											duration={styles.duration}
-											to={`/tag/${tag.slug}`}
-										>
+										<Link to={`/tag/${tag.slug}`}>
 											{tag.tag}
-										</AniLink>
+										</Link>
 										{index + 1 < tags.length ? ',' : null}
 									</li>
 								)
@@ -229,34 +223,24 @@ const HeroStories = ({ data, prev, next }) => {
 			</div>
 			{prev && (
 				<div css={previousStoryCSS}>
-					<AniLink
-						fade
-						duration={styles.duration}
-						to={`/story/${prev.slug}`}
-						css={storyButtonCSS}
-					>
+					<Link to={`/story/${prev.slug}`} css={storyButtonCSS}>
 						<IconArrow
 							color={styles.colors.white}
 							direction="left"
 						/>
 						<p>{prev.title}</p>
-					</AniLink>
+					</Link>
 				</div>
 			)}
 			{next && (
 				<div css={followingStoryCSS}>
-					<AniLink
-						fade
-						duration={styles.duration}
-						to={`/story/${next.slug}`}
-						css={storyButtonCSS}
-					>
+					<Link to={`/story/${next.slug}`} css={storyButtonCSS}>
 						<IconArrow
 							color={styles.colors.white}
 							direction="right"
 						/>
 						<p>{next.title}</p>
-					</AniLink>
+					</Link>
 				</div>
 			)}
 		</BackgroundImage>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
 import { styles } from '../../css/css'
@@ -74,14 +74,12 @@ const FeaturedResources = ({ data }) => {
 				</a>
 			)}
 			{!data.resourceLink && (
-				<AniLink
-					fade
-					duration={styles.duration}
+				<Link
 					to={buildUrl(data.__typename, url)}
 					className="featured-link"
 				>
 					Learn more
-				</AniLink>
+				</Link>
 			)}
 		</div>
 	)

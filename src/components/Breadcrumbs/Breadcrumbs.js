@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 
 import buildUrl from '../../utils/buildUrl'
 
@@ -66,13 +66,9 @@ const Breadcrumbs = ({ parentPage, child }) => {
 				return (
 					crumb && (
 						<li key={index}>
-							<AniLink
-								fade
-								duration={styles.duration}
-								to={buildUrl(crumb.type, crumb.slug)}
-							>
+							<Link to={buildUrl(crumb.type, crumb.slug)}>
 								{crumb.title}
-							</AniLink>
+							</Link>
 						</li>
 					)
 				)

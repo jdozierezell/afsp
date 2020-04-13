@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 
 import { styles } from '../../css/css'
 
@@ -87,16 +87,14 @@ const Recommendations = ({ data, heading, video }) => {
 			{heading && <h2>{heading}</h2>}
 			{data.map((story, index) => (
 				<div key={index} css={storyCSS}>
-					<AniLink
-						fade
-						duration={styles.duration}
+					<Link
 						to={buildUrl(story.__typename, story.slug)}
 						css={css`
 							text-decoration: none;
 						`}
 					>
 						<h3>{story.title}</h3>
-					</AniLink>
+					</Link>
 					<h4>
 						By{' '}
 						{story.author.map((author, index) =>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 
 import buildUrl from '../../utils/buildUrl'
 
@@ -114,14 +114,12 @@ const StoriesReference = ({ data }) => {
 					<track default kind="captions" srcLang="en" src="#" />
 				</video>
 				<p>{videoDescription}</p>
-				<AniLink
-					fade
-					duration={styles.duration}
+				<Link
 					to={buildUrl(videoLink.__typename, videoLink.slug)}
 					className="secondary-button"
 				>
 					{videoLinkText}
-				</AniLink>
+				</Link>
 			</aside>
 		</section>
 	)

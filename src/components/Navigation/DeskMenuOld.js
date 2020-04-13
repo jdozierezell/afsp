@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 
 import buildUrl from '../../utils/buildUrl'
 
@@ -100,9 +100,7 @@ const DeskMenu = ({
 							onMouseEnter={e => handleMouseEnter(e, item.id)}
 							onMouseLeave={() => handleMouseLeave()}
 						>
-							<AniLink fade duration={styles.duration} to={url}>
-								{item.displayTitle}
-							</AniLink>
+							<Link to={url}>{item.displayTitle}</Link>
 							{activeItem === item.id &&
 								item.navigationItem.length >= 1 && (
 									<ul css={megaCSS}>
@@ -126,15 +124,11 @@ const DeskMenu = ({
 															key={index}
 														>
 															{link.childLink && (
-																<AniLink
-																	fade
-																	duration={1}
-																	to={url}
-																>
+																<Link to={url}>
 																	{
 																		link.childHeading
 																	}
-																</AniLink>
+																</Link>
 															)}
 															{!link.childLink && (
 																<a

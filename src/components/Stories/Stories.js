@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
 import { styles } from '../../css/css'
@@ -53,9 +53,7 @@ const Stories = ({ story: { node } }) => {
 		<div css={featuredCSS}>
 			<Img fluid={node.coverImage.fluid} alt="" />
 			<h2>
-				<AniLink
-					fade
-					duration={styles.duration}
+				<Link
 					to={
 						node.type
 							? buildUrl(node.type, createAnchor(node.slug))
@@ -63,7 +61,7 @@ const Stories = ({ story: { node } }) => {
 					}
 				>
 					{node.title}
-				</AniLink>
+				</Link>
 			</h2>
 			<p>{node.seo.description}</p>
 			{node.author && (
@@ -72,14 +70,9 @@ const Stories = ({ story: { node } }) => {
 					{node.author.map((author, index) => {
 						if (author.authorName !== 'AFSP') {
 							return (
-								<AniLink
-									key={index}
-									fade
-									duration={styles.duration}
-									to={`/author/${author.slug}`}
-								>
+								<Link key={index} to={`/author/${author.slug}`}>
 									{author.authorName}
-								</AniLink>
+								</Link>
 							)
 						} else {
 							return author.authorName

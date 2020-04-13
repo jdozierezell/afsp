@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 
 import Logo from '../SVGs/Logo'
 import MobileMenu from './MobileMenu'
@@ -130,14 +130,14 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 			onMouseLeave={() => setHover(false)}
 		>
 			<div css={logoCSS}>
-				<AniLink fade duration={styles.duration} to={`/`}>
+				<Link to={`/`}>
 					<Logo
 						theme={theme}
 						overrideLight={overrideLight}
 						isHover={isHover}
 						isMenuActive={isMenuActive}
 					/>
-				</AniLink>
+				</Link>
 			</div>
 			<DeskMenu items={nav} />
 			<div css={navButtons}>

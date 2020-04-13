@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 
 import { styles } from '../../css/css'
@@ -134,14 +134,12 @@ const CTAVideo = ({ cta, id }) => {
 						</a>
 					)}
 					{!file && !external && (
-						<AniLink
+						<Link
 							className="secondary-button"
-							fade
-							duration={styles.duration}
 							to={buildUrl(link.__typename, link.slug)}
 						>
 							{linkText}
-						</AniLink>
+						</Link>
 					)}
 				</div>
 			</div>
