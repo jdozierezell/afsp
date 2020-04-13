@@ -13,24 +13,20 @@ const resourceComponentCSS = css`
 	h2 {
 		margin: ${styles.scale.px30} 0 0;
 		font-size: ${styles.scale.px20};
+		white-space: initial;
 	}
 	a {
 		text-decoration: none;
-	}
-	p {
-		color: ${styles.colors.poppy};
-		margin: ${styles.scale.px12} 0;
+		p {
+			color: ${styles.colors.poppy};
+			margin: ${styles.scale.px12} 0;
+		}
 	}
 `
 
 const CarouselResource = ({ title, image, link, linkText }) => {
 	return (
-		<div
-			css={css`
-				${resourceComponentCSS};
-			`}
-			draggable
-		>
+		<div css={resourceComponentCSS} draggable>
 			<a href={link}>
 				<Img fluid={image} />
 				<h2>{title}</h2>
