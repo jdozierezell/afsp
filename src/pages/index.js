@@ -60,7 +60,12 @@ const App = ({ data: { home } }) => {
 			</div>
 			{home.ctaChapterResourceList.map((item, index) => {
 				if (item.__typename === 'DatoCmsChannelList') {
-					return <ChannelContainer channelList={item.channels} />
+					return (
+						<ChannelContainer
+							key={index}
+							channelList={item.channels}
+						/>
+					)
 				} else if (item.__typename === 'DatoCmsCallToAction') {
 					return (
 						<CTAContainer

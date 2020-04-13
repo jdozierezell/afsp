@@ -20,12 +20,12 @@ const CTAContainer = ({ cta, number, id }) => {
 	switch (number + 1) {
 		case 1:
 		case 6:
-			background = background1
+			background = background2
 			color = styles.colors.white
 			break
 		case 2:
 		case 7:
-			background = background2
+			background = background1
 			color = styles.colors.white
 			break
 		case 3:
@@ -44,7 +44,7 @@ const CTAContainer = ({ cta, number, id }) => {
 			color = styles.colors.darkGray
 			break
 		default:
-			background = background1
+			background = background2
 			color = styles.colors.white
 	}
 
