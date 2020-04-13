@@ -85,7 +85,6 @@ const Recommendations = ({ data, heading, video }) => {
 	return (
 		<div css={cssStyle}>
 			{heading && <h2>{heading}</h2>}
-			{console.log(data)}
 			{data.map((story, index) => (
 				<div key={index} css={storyCSS}>
 					<AniLink

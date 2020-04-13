@@ -171,7 +171,6 @@ const HeroStories = ({ data, prev, next }) => {
 	return (
 		<BackgroundImage Tag="section" fluid={sources} css={storyHeroCSS}>
 			<div css={storyMetaCSS}>
-				{console.log(desktopCover.fluid)}
 				<h1>{title}</h1>
 				<p css={dateLineCSS}>
 					{publicationDate} — {timeToRead.humanizedDuration} min read

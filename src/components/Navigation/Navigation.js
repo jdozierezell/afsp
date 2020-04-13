@@ -4,7 +4,7 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import Logo from '../SVGs/Logo'
 import MobileMenu from './MobileMenu'
-import DeskMenu from './DeskMenu'
+import DeskMenuOld from './DeskMenuOld'
 import IconHamburger from '../SVGs/IconHamburger'
 import IconX from '../SVGs/IconX'
 import IconSearch from '../SVGs/IconSearch'
@@ -37,13 +37,6 @@ const logoCSS = css`
 		margin: ${styles.scale.px28} ${styles.scale.px50} ${styles.scale.px16};
 		padding-left: 0;
 		width: 126px;
-	}
-`
-
-const deskMenuCSS = css`
-	display: none;
-	@media (min-width: ${styles.screens.navigation}px) {
-		display: initial;
 	}
 `
 
@@ -167,8 +160,7 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 					/>
 				</AniLink>
 			</div>
-			<DeskMenu
-				deskMenuCSS={deskMenuCSS}
+			<DeskMenuOld
 				items={nav}
 				activeItem={activeMegaMenu}
 				handleMouseEnter={handleMouseEnter}
