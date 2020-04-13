@@ -47,7 +47,12 @@ const CarouselDetail = ({ anchor, content, title, externalAnchor, addCSS }) => {
 			<p css={carouselMessageCSS}>{content}</p>
 			{title && <h2 css={carouselTitleCSS}>{title}</h2>}
 			{externalAnchor ? (
-				<a href={anchor} css={carouselLinkCSS}>
+				<a
+					href={anchor}
+					css={carouselLinkCSS}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					Learn more
 				</a>
 			) : (

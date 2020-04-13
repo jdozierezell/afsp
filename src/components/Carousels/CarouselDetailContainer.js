@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Glide from '@glidejs/glide'
+import Glide, { Anchors } from '@glidejs/glide'
 import { css } from '@emotion/core'
 
 import CarouselDetail from './CarouselDetail'
@@ -85,7 +85,7 @@ const CarouselDetailContainer = ({
 					peek: { before: 0, after: styles.scale.px35 },
 				},
 			},
-		}).mount()
+		}).mount({ Anchors })
 	}, [details])
 	return (
 		<div id={id} css={carouselCSS}>
@@ -94,6 +94,7 @@ const CarouselDetailContainer = ({
 				<div data-glide-el="track">
 					<ul className="glide__slides">
 						{details.map((section, index) => {
+							console.log(section)
 							if (!section) {
 								return ''
 							} else {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import Glide from '@glidejs/glide'
+import Glide, { Anchors } from '@glidejs/glide'
 import { css } from '@emotion/core'
 
 import CarouselChapter from './CarouselChapter'
@@ -105,7 +105,7 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 						},
 					},
 				},
-			}).mount()
+			}).mount({ Anchors })
 		}
 	}, [chapters, displayChapters])
 

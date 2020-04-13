@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Glide from '@glidejs/glide'
+import Glide, { Anchors } from '@glidejs/glide'
 import { css } from '@emotion/core'
 
 import CarouselResource from './CarouselResource'
@@ -70,7 +70,7 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 					peek: { before: 0, after: styles.scale.px70 },
 				},
 			},
-		}).mount()
+		}).mount({ Anchors })
 	}, [])
 	return (
 		<section

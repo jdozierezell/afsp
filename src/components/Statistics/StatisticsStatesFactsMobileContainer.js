@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Glide from '@glidejs/glide'
+import Glide, { Anchors } from '@glidejs/glide'
 import { css } from '@emotion/core'
 
 import Card from '../Cards/Card'
@@ -71,7 +71,7 @@ const StatisticsStatesFactsMobileContainer = ({
 					peek: { before: 0, after: 50 },
 				},
 			},
-		}).mount()
+		}).mount({ Anchors })
 	}, [selection])
 	return (
 		<div css={carouselCSS}>

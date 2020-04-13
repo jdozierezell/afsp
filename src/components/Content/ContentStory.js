@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Glide from '@glidejs/glide'
+import Glide, { Anchors } from '@glidejs/glide'
 import { css } from '@emotion/core'
 
 import FacebookShare from '../Social/FacebookShare'
@@ -83,7 +83,7 @@ const ContentStory = ({ data }) => {
 		const hasImages = document.getElementsByClassName('glide-image')
 		if (hasImages.length > 0) {
 			const glide = new Glide('.glide-image', { perView: 1.2, gap: 20 })
-			glide.mount()
+			glide.mount({ Anchors })
 		}
 	}, [])
 	return (
