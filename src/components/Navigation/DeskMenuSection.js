@@ -65,7 +65,7 @@ const DeskMenuSection = ({ menuItem, id }) => {
 	const anchor = createAnchor(menuItem.displayTitle)
 	const [showMenu, setShowMenu] = useState(false)
 	const [currentPath, setCurrentPath] = useState(
-		typeof window !== undefined
+		typeof window !== `undefined`
 			? window.location.pathname.replace('/', '')
 			: false
 	)
