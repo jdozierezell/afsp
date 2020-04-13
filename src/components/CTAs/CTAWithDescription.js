@@ -26,7 +26,7 @@ const p = css`
 	}
 `
 
-const CTAWithDescription = ({ cta }) => {
+const CTAWithDescription = ({ cta, id }) => {
 	const {
 		heading,
 		brief,

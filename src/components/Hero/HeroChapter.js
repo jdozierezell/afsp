@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import { Link } from 'gatsby'
 
 import { styles } from '../../css/css'
 
@@ -102,7 +103,7 @@ const buttonWrapperCSS = css`
 	}
 `
 
-const HeroChapter = ({ title, video, poster, brief }) => {
+const HeroChapter = ({ title, video, poster, brief, slug }) => {
 	return (
 		<section css={videoHeroCSS}>
 			<div
@@ -121,18 +122,27 @@ const HeroChapter = ({ title, video, poster, brief }) => {
 			</h2>
 			<p css={chapterDescriptionCSS}>{brief}</p>
 			<div css={buttonWrapperCSS}>
-				<a className="secondary-button" href="https://example.com">
+				<Link
+					className="secondary-button"
+					to={`/chapter/${slug}#volunteer`}
+				>
 					Volunteer
-				</a>
-				<a className="secondary-button" href="https://example.com">
+				</Link>
+				<Link
+					className="secondary-button"
+					to={`/chapter/${slug}#events`}
+				>
 					Events
-				</a>
-				<a className="secondary-button" href="https://example.com">
+				</Link>
+				<Link
+					className="secondary-button"
+					to={`/chapter/${slug}#programs`}
+				>
 					Programs
-				</a>
-				<a className="secondary-button" href="https://example.com">
+				</Link>
+				<Link className="secondary-button" to={`/chapter/${slug}#news`}>
 					News
-				</a>
+				</Link>
 			</div>
 		</section>
 	)

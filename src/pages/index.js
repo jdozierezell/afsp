@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
+import BreakingNews from '../components/BreakingNews/BreakingNews'
 import HeroVideo from '../components/Hero/HeroVideo'
 import ChannelContainer from '../components/Channel/ChannelContainer'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
@@ -38,6 +38,7 @@ const App = ({ data: { home } }) => {
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={home.seoMetaTags}
 		>
+			{home.breakingNews && <BreakingNews news={home.breakingNews} />}
 			<HeroVideo
 				videoUrl={home.heroVideo.url}
 				posterUrl={home.heroPoster.url}
@@ -120,6 +121,7 @@ export const query = graphql`
 					slug
 				}
 			}
+			breakingNews
 			channelList {
 				image {
 					url

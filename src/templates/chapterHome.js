@@ -21,6 +21,7 @@ const eventCarouselCSS = css``
 const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	const {
 		title,
+		slug,
 		heroVideo,
 		heroPoster,
 		heroBrief,
@@ -143,6 +144,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				video={heroVideoUrl}
 				poster={heroPosterUrl}
 				brief={heroBrief}
+				slug={slug}
 			/>
 			<ChapterAboutContact
 				title={title}
@@ -157,10 +159,12 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			<CarouselDetailContainer
 				content={events}
 				addCSS={eventCarouselCSS}
+				id="events"
 			/>
 			<FeaturedResourcesContainer
 				heading="Featured Programs"
 				resources={featuredPrograms}
+				id="programs"
 			/>
 			<CTAContainer
 				cta={{
@@ -170,6 +174,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					linkUrl: volunteerSignupUrl,
 					external: true,
 				}}
+				id="volunteer"
 			/>
 			<ChapterSocials socialAccounts={socialAccounts} />
 			{stories[0] !== 'no stories' && (
@@ -178,6 +183,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					first={true}
 					stories={stories}
 					more={true}
+					id="news"
 				/>
 			)}
 		</LayoutChapter>
@@ -193,6 +199,7 @@ export const query = graphql`
 				...GatsbyDatoCmsSeoMetaTags
 			}
 			title
+			slug
 			heroVideo {
 				url
 			}

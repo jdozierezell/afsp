@@ -84,7 +84,7 @@ const descriptionWrapperCSS = css`
 	}
 `
 
-const CTAVideo = ({ cta }) => {
+const CTAVideo = ({ cta, id }) => {
 	const {
 		backgroundVideo,
 		backgroundImage,
@@ -100,6 +100,7 @@ const CTAVideo = ({ cta }) => {
 	const video = backgroundVideo ? backgroundVideo.url : null
 	return (
 		<BackgroundImage
+			id={id}
 			Tag="section"
 			fluid={backgroundImage.fluid}
 			css={videoCTACSS}

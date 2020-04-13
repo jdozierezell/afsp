@@ -31,9 +31,10 @@ const containerCSS = css`
 	}
 `
 
-const FeaturedResourcesContainer = ({ heading, resources, addCSS }) => {
+const FeaturedResourcesContainer = ({ heading, resources, addCSS, id }) => {
 	return (
 		<section
+			id={id}
 			css={css`
 				${containerCSS};
 				${addCSS}

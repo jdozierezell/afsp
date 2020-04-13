@@ -47,10 +47,25 @@ const moreButtonCSS = css`
 	}
 `
 
-const StoriesContainer = ({ header, first, offset, more, intro, stories }) => {
+const StoriesContainer = ({
+	header,
+	first,
+	offset,
+	more,
+	intro,
+	stories,
+	id,
+}) => {
 	const [displayNumber, setDisplayNumber] = useState(3)
+	let sectionId = ''
+	if (id) {
+		sectionId = id
+	} else if (header) {
+		sectionId = createAnchor(header)
+	}
+
 	return (
-		<section css={containerCSS} id={header ? createAnchor(header) : null}>
+		<section css={containerCSS} id={sectionId}>
 			{header && <h2>{header}</h2>}
 			{intro && (
 				<div

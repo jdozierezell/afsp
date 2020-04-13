@@ -67,11 +67,12 @@ const carouselButtonsCSS = css`
 const CarouselDetailContainer = ({
 	content: { details, title, slug },
 	addCSS,
+	id,
 }) => {
 	let count = 0
-	const id = createAnchor(title)
+	const carouselId = createAnchor(title)
 	useEffect(() => {
-		new Glide(`.glide-story-${id}`, {
+		new Glide(`.glide-story-${carouselId}`, {
 			perView: 4,
 			peek: { before: 0, after: styles.scale.px24 },
 			breakpoints: {
@@ -87,9 +88,9 @@ const CarouselDetailContainer = ({
 		}).mount()
 	}, [details])
 	return (
-		<div css={carouselCSS}>
+		<div id={id} css={carouselCSS}>
 			<h2>{title}</h2>
-			<div className={`glide-story-${id}`}>
+			<div className={`glide-story-${carouselId}`}>
 				<div data-glide-el="track">
 					<ul className="glide__slides">
 						{details.map((section, index) => {

@@ -13,7 +13,7 @@ import background3 from '../SVGs/BackgroundOneBlueYellow.svg'
 import background4 from '../SVGs/BackgroundOneWhiteGreen.svg'
 import background5 from '../SVGs/BackgroundOneGreenYellow.svg'
 
-const CTAContainer = ({ cta, number }) => {
+const CTAContainer = ({ cta, number, id }) => {
 	let background
 	let color
 
@@ -63,10 +63,11 @@ const CTAContainer = ({ cta, number }) => {
 	return (
 		<>
 			{cta.__typename === 'DatoCmsCtaBackground' && (
-				<CTABackground cta={cta} />
+				<CTABackground cta={cta} id={id} />
 			)}
 			{cta.__typename === 'DatoCmsCtaWithDescription' && (
 				<div
+					id={id}
 					css={css`
 						${CTACSS};
 						text-align: center;
@@ -80,6 +81,7 @@ const CTAContainer = ({ cta, number }) => {
 			)}
 			{cta.__typename === 'DatoCmsCtaNoDescription' && (
 				<div
+					id={id}
 					css={css`
 						${CTACSS};
 						display: flex;
