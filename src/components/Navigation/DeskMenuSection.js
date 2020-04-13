@@ -4,6 +4,7 @@ import { useTransition, animated as a } from 'react-spring'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import buildUrl from '../../utils/buildUrl'
+import createAnchor from '../../utils/createAnchor'
 
 import { styles } from '../../css/css'
 
@@ -61,17 +62,47 @@ const featuredCSS = css`
 `
 
 const DeskMenuSection = ({ menuItem, id }) => {
+	const anchor = createAnchor(menuItem.displayTitle)
 	const [showMenu, setShowMenu] = useState(false)
+	const [currentPath, setCurrentPath] = useState(
+		typeof window !== undefined
+			? window.location.pathname.replace('/', '')
+			: false
+	)
 	const transitions = useTransition(showMenu, null, {
 		from: { opacity: 0 },
 		enter: { opacity: 1 },
 		leave: { opacity: 0 },
 	})
+
+	// const handleNewPage = (e, id) => {
+	// 	// mouse pointer sometimes targets the li and sometimes the a element, so we check for firstChild before assigning
+	// 	const hoverPath = e.target.firstChild.href
+	// 		? new URL(e.target.firstChild.href).pathname
+	// 		: new URL(e.target.href).pathname
+	// 	if (currentPath !== hoverPath && hoverPath.length > 0) {
+	// 		setActiveMegaMenu(id)
+	// 	}
+	// }
+
 	return (
 		<>
 			<li
-				onMouseEnter={() => setShowMenu(true)}
-				onMouseLeave={() => setShowMenu(false)}
+				id={anchor}
+				onMouseOver={() => {
+					if (currentPath === anchor) {
+						return
+					} else {
+						setShowMenu(true)
+					}
+				}}
+				onMouseLeave={() => {
+					setCurrentPath(false)
+					setShowMenu(false)
+				}}
+				css={css`
+					/* pointer-events: ${currentPath === anchor ? 'none' : 'auto'}; */
+				`}
 			>
 				<AniLink
 					fade
