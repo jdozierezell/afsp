@@ -96,12 +96,6 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 			? styles.colors.white
 			: styles.colors.darkGray
 	)
-	const [activeMegaMenu, setActiveMegaMenu] = useState('')
-	const [currentPath, setCurrentPath] = useState(
-		typeof window !== `undefined`
-			? new URL(window.location).pathname.replace(/\/+$/, '')
-			: ''
-	)
 
 	useEffect(() => {
 		setMobileLight(theme.mobile === 'light')
@@ -124,21 +118,6 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 		isMobileLight,
 		isDesktopLight,
 	])
-
-	const handleMouseEnter = (e, id) => {
-		// mouse pointer sometimes targets the li and sometimes the a element, so we check for firstChild before assigning
-		const hoverPath = e.target.firstChild.href
-			? new URL(e.target.firstChild.href).pathname
-			: new URL(e.target.href).pathname
-		if (currentPath !== hoverPath && hoverPath.length > 0) {
-			setActiveMegaMenu(id)
-		}
-	}
-
-	const handleMouseLeave = () => {
-		setActiveMegaMenu('')
-		setCurrentPath(null)
-	}
 	return (
 		<div
 			css={css`
@@ -160,12 +139,7 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 					/>
 				</AniLink>
 			</div>
-			<DeskMenu
-				items={nav}
-				activeItem={activeMegaMenu}
-				handleMouseEnter={handleMouseEnter}
-				handleMouseLeave={handleMouseLeave}
-			/>
+			<DeskMenu items={nav} />
 			<div css={navButtons}>
 				<button
 					css={searchCSS}
