@@ -23,6 +23,8 @@ const Tag = ({ data: { stories }, pageContext: { title } }) => {
 				],
 			}}
 		>
+			{console.log(stories)}
+			{console.log(title)}
 			<HeroSolid data={heroData} />
 			<StoriesContainer stories={stories.edges} more={true} />
 		</Layout>
