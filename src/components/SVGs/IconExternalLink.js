@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 
-const IconArrow = ({ color, iconCSS }) => {
+const IconExternalLink = ({ color, iconCSS }) => {
 	return (
 		<svg
 			viewBox="0 0 62.5 62.5"
@@ -29,4 +29,4 @@ const IconArrow = ({ color, iconCSS }) => {
 	)
 }
 
-export default IconArrow
+export default IconExternalLink

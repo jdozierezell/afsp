@@ -11,6 +11,7 @@ const carouselComponentCSS = css`
 	border-radius: 5px;
 	position: relative;
 	min-height: 250px;
+	min-width: 150px;
 	@media (min-width: ${styles.screens.tablet}px) {
 		padding: ${styles.scale.px40} ${styles.scale.px40} ${styles.scale.px80};
 		min-height: 325px;

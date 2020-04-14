@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react'
-import Glide, { Anchors } from '@glidejs/glide/dist/glide.modular.esm'
+import Glide, {
+	Anchors,
+	Controls,
+	Breakpoints,
+} from '@glidejs/glide/dist/glide.modular.esm'
 import { css } from '@emotion/core'
 
 import CarouselDetail from './CarouselDetail'
+import IconArrowCircle from '../SVGs/IconArrowCircle'
 
 import { styles } from '../../css/css'
 import createAnchor from '../../utils/createAnchor'
@@ -14,6 +19,7 @@ const carouselCSS = css`
 	padding: ${styles.scale.px50} ${styles.scale.px24} ${styles.scale.px25};
 	overflow: hidden;
 	width: 100vw;
+	position: relative;
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px80} ${styles.scale.px50} ${styles.scale.px35};
 	}
@@ -42,22 +48,17 @@ const carouselCSS = css`
 `
 
 const carouselButtonsCSS = css`
-	text-align: center;
-	margin: ${styles.scale.px45} 0 0;
-	padding: 0;
-	line-height: 0;
-	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px35} 0 0;
+	position: absolute;
+	width: ${styles.scale.px126};
+	height: ${styles.scale.px126};
+	top: 50%;
+	margin-top: -${styles.scale.px126 / 2};
+	cursor: pointer;
+	:first-of-type {
+		left: ${styles.scale.px24};
 	}
-	button {
-		background: hsla(0, 0%, 100%, 0.5);
-		border: none;
-		margin: 0 5px;
-		padding: 0;
-		font-size: ${styles.scale.px28};
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
+	:last-of-type {
+		right: ${styles.scale.px24};
 	}
 	.glide__bullet--active {
 		background: hsla(0, 0%, 100%, 1);
@@ -69,13 +70,19 @@ const CarouselDetailContainer = ({
 	addCSS,
 	id,
 }) => {
-	let count = 0
 	const carouselId = createAnchor(title)
 	useEffect(() => {
 		new Glide(`.glide-story-${carouselId}`, {
-			perView: 4,
-			peek: { before: 0, after: styles.scale.px24 },
+			perView: 2,
 			breakpoints: {
+				1920: {
+					perView: 4,
+					peek: { before: 0, after: styles.scale.px35 },
+				},
+				1400: {
+					perView: 3,
+					peek: { before: 0, after: styles.scale.px35 },
+				},
 				1080: {
 					perView: 2,
 					peek: { before: 0, after: styles.scale.px35 },
@@ -85,7 +92,11 @@ const CarouselDetailContainer = ({
 					peek: { before: 0, after: styles.scale.px35 },
 				},
 			},
-		}).mount({ Anchors })
+		}).mount({
+			Anchors,
+			Controls,
+			Breakpoints,
+		})
 	}, [details])
 	return (
 		<div id={id} css={carouselCSS}>
@@ -129,31 +140,19 @@ const CarouselDetailContainer = ({
 						})}
 					</ul>
 				</div>
-				<div data-glide-el="controls[nav]" css={carouselButtonsCSS}>
-					{details.map((section, index) => {
-						if (!section) {
-							return ''
-						} else {
-							if (section.__typename === 'DatoCmsContent') {
-								count++
-								return (
-									<button
-										key={index}
-										data-glide-dir={`=${count - 1}`}
-									></button>
-								)
-							} else if (section.__typename === 'Event') {
-								count++
-								return (
-									<button
-										key={index}
-										data-glide-dir={`=${count - 1}`}
-									></button>
-								)
-							}
-							return ''
-						}
-					})}
+				<div data-glide-el="controls">
+					<div css={carouselButtonsCSS} data-glide-dir="<">
+						<IconArrowCircle
+							color="hsla(0, 0%, 14.9%, 0.2)"
+							direction="left"
+						/>
+					</div>
+					<div css={carouselButtonsCSS} data-glide-dir=">">
+						<IconArrowCircle
+							color="hsla(0, 0%, 14.9%, 0.2)"
+							direction="right"
+						/>
+					</div>
 				</div>
 			</div>
 		</div>

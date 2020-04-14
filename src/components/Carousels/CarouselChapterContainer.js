@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import Glide, { Anchors } from '@glidejs/glide/dist/glide.modular.esm'
+import Glide, {
+	Anchors,
+	Controls,
+	Breakpoints,
+} from '@glidejs/glide/dist/glide.modular.esm'
 import { css } from '@emotion/core'
 
 import CarouselChapter from './CarouselChapter'
+import IconArrowCircle from '../SVGs/IconArrowCircle'
 
 import { fetchChapters } from '../../utils/chapterSearchResults'
 
@@ -14,6 +19,7 @@ import '@glidejs/glide/dist/css/glide.core.min.css'
 const defaultCarouselCSS = css`
 	padding: ${styles.scale.px25} ${styles.scale.px24};
 	overflow: hidden;
+	position: relative;
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px80} ${styles.scale.px50} ${styles.scale.px35};
 		background-color: ${styles.colors.lightGray};
@@ -31,6 +37,7 @@ const defaultCarouselCSS = css`
 	}
 	.glide__slides {
 		margin: 0;
+		white-space: initial;
 	}
 	.secondary-button {
 		margin-bottom: ${styles.scale.px56};
@@ -47,22 +54,17 @@ const carouselHeaderWrapperCSS = css`
 `
 
 const carouselButtonsCSS = css`
-	text-align: center;
-	margin: ${styles.scale.px45} 0 0;
-	padding: 0;
-	line-height: 0;
-	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px35} 0 0;
+	position: absolute;
+	width: ${styles.scale.px126};
+	height: ${styles.scale.px126};
+	top: 55%;
+	margin-top: -${styles.scale.px126 / 2};
+	cursor: pointer;
+	:first-of-type {
+		left: ${styles.scale.px24};
 	}
-	button {
-		background: hsla(0, 0%, 14.9%, 0.5);
-		border: none;
-		margin: 0 5px;
-		padding: 0;
-		font-size: ${styles.scale.px28};
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
+	:last-of-type {
+		right: ${styles.scale.px24};
 	}
 	.glide__bullet--active {
 		background: hsla(0, 0%, 14.9%, 1);
@@ -87,25 +89,30 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 			fetchChapters(chapters, setDisplayChapters)
 		} else if (displayChapters.length >= 1) {
 			new Glide('.glide-chapter', {
-				perView: 3,
-				peek: { before: 0, after: styles.scale.px24 },
+				perView: 2,
 				breakpoints: {
+					1920: {
+						perView: 4,
+						peek: { before: 0, after: styles.scale.px35 },
+					},
+					1400: {
+						perView: 3,
+						peek: { before: 0, after: styles.scale.px35 },
+					},
 					1080: {
 						perView: 2,
-						peek: {
-							before: 0,
-							after: styles.scale.px35,
-						},
+						peek: { before: 0, after: styles.scale.px35 },
 					},
 					768: {
 						perView: 1,
-						peek: {
-							before: 0,
-							after: styles.scale.px35,
-						},
+						peek: { before: 0, after: styles.scale.px35 },
 					},
 				},
-			}).mount({ Anchors })
+			}).mount({
+				Anchors,
+				Controls,
+				Breakpoints,
+			})
 		}
 	}, [chapters, displayChapters])
 
@@ -144,15 +151,19 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 							})}
 						</ul>
 					</div>
-					<div data-glide-el="controls[nav]" css={carouselButtonsCSS}>
-						{displayChapters.map((__, index) => {
-							return (
-								<button
-									key={index}
-									data-glide-dir={`=${index}`}
-								></button>
-							)
-						})}
+					<div data-glide-el="controls">
+						<div css={carouselButtonsCSS} data-glide-dir="<">
+							<IconArrowCircle
+								color="hsla(0, 0%, 14.9%, 0.2)"
+								direction="left"
+							/>
+						</div>
+						<div css={carouselButtonsCSS} data-glide-dir=">">
+							<IconArrowCircle
+								color="hsla(0, 0%, 14.9%, 0.2)"
+								direction="right"
+							/>
+						</div>
 					</div>
 				</div>
 			)}
