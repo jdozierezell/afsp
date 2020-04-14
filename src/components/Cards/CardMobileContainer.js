@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Glide, { Anchors } from '@glidejs/glide'
+import Glide, { Anchors } from '@glidejs/glide/dist/glide.modular.esm'
 import { css } from '@emotion/core'
 
 import Card from './Card'

@@ -582,7 +582,7 @@ const SupportGroupForm = () => {
 							id="nameOfMeetingSite"
 							htmlFor="nameOfMeetingSite"
 						>
-							Name of Meeting Site
+							Name of Meeting Site <span>*</span>
 						</label>
 						<p>
 							Enter the name of your meeting site, e.g. "Anytown

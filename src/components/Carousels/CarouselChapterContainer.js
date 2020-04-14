@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import Glide, { Anchors } from '@glidejs/glide'
+import Glide, { Anchors } from '@glidejs/glide/dist/glide.modular.esm'
 import { css } from '@emotion/core'
 
 import CarouselChapter from './CarouselChapter'
