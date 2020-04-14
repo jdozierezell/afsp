@@ -74,6 +74,7 @@ const CarouselDetailContainer = ({
 	useEffect(() => {
 		new Glide(`.glide-story-${carouselId}`, {
 			perView: 2,
+			perTouch: 1,
 			breakpoints: {
 				1920: {
 					perView: 4,

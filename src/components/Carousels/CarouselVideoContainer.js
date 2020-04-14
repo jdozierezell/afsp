@@ -58,6 +58,7 @@ const CarouselVideoContainer = ({ videos }) => {
 	useEffect(() => {
 		new Glide('.glide-video', {
 			perView: 2,
+			perTouch: 1,
 			breakpoints: {
 				1920: {
 					perView: 4,

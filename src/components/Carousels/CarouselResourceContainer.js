@@ -61,6 +61,7 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 	useEffect(() => {
 		new Glide(`.glide-resource-${id}`, {
 			perView: 2,
+			perTouch: 1,
 			breakpoints: {
 				1920: {
 					perView: 4,

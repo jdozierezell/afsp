@@ -90,6 +90,7 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 		} else if (displayChapters.length >= 1) {
 			new Glide('.glide-chapter', {
 				perView: 2,
+				perTouch: 1,
 				breakpoints: {
 					1920: {
 						perView: 4,
