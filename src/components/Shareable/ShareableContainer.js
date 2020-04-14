@@ -64,11 +64,13 @@ const ShareableContainer = ({
 	const [isSelected, setSelected] = useState(false)
 	const [konvaPosition, setKonvaPosition] = useState(null)
 	const [controlPosition, setControlPosition] = useState(null)
+	const [controlHeight, setControlHeight] = useState(null)
 	const [top, setTop] = useState('220px')
 	const [message, setMessage] = useState()
 	const trRef = useRef(null)
 	const imageRef = useRef(null)
 	const konvaRef = useRef(null)
+	const controlRef = useRef(null)
 
 	const squareImage = 1080
 
@@ -194,6 +196,7 @@ const ShareableContainer = ({
 			trRef.current.setNode(imageRef.current)
 			trRef.current.getLayer().batchDraw()
 		}
+		setControlHeight(controlRef.current.offsetHeight + height + 50)
 		// set image coordinates to center based on width and height
 		window.addEventListener('resize', setStateDimensions)
 		setImageOffsetX(imageWidth / 2)
@@ -290,11 +293,17 @@ const ShareableContainer = ({
 					</Layer>
 				</Stage>
 			</div>
+			{console.log(controlHeight)}
 			<div
+				ref={controlRef}
 				css={css`
 					${shareableControlsCSS};
 					position: ${controlPosition};
 					top: ${height + 50}px;
+					height: ${controlPosition === 'relative'
+						? `${controlRef.current.offsetHeight +
+								(height + 100) / 2}px`
+						: 'auto'};
 				`}
 			>
 				<div dangerouslySetInnerHTML={{ __html: instructions }}></div>
