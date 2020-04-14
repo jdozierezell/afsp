@@ -12,8 +12,9 @@ const SearchResults = () => {
 	const [searchState, setSearchState] = useState(
 		typeof window !== `undefined`
 			? qs.parse(window.location.search.slice(1))
-			: { query: '' }
+			: { query: '', source: '' }
 	)
+	console.log(searchState)
 	const hasQuery = searchState.query ? searchState.query : '' // running a check here prevents undefined error
 	const [visibility, setVisibility] = useState(
 		hasQuery.length === 0 ? 'inherit' : 'hidden'
@@ -21,12 +22,13 @@ const SearchResults = () => {
 
 	const handleHeroClick = () => {
 		setVisibility('inherit')
-		setSearchState({ query: '' })
+		setSearchState({ query: '', source: '' })
 	}
 
 	const handleSearchChange = event => {
 		setSearchState({
 			query: event.target.value,
+			source: '',
 		})
 		// https://gist.github.com/excalq/2961415#gistcomment-2221360
 		const params = new URLSearchParams(searchState)
@@ -58,7 +60,6 @@ const SearchResults = () => {
 					searchState: searchState,
 				}}
 			/>
-			{/* <NavigationSide data={searchIndices} navRoot={'search-results'} /> */}
 			<SearchDetail
 				visibility={visibility}
 				searchState={searchState}

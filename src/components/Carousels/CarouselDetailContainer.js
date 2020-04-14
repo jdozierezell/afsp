@@ -94,7 +94,6 @@ const CarouselDetailContainer = ({
 				<div data-glide-el="track">
 					<ul className="glide__slides">
 						{details.map((section, index) => {
-							console.log(section)
 							if (!section) {
 								return ''
 							} else {

@@ -60,6 +60,7 @@ const chapterNameCSS = css`
 	color: ${styles.colors.white};
 	margin: 0 ${styles.scale.px24};
 	z-index: 1;
+	line-height: 1.3;
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin: 0 ${styles.scale.px60};
 	}

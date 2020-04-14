@@ -86,31 +86,11 @@ const SearchDetail = ({
 				/>
 				{searchState.query !== '' && (
 					<div css={indexWrapperCSS}>
-						<Configure hitsPerPage={10} />
+						<Configure hitsPerPage={20} />
 						<Index indexName="AFSP">
 							<CustomStateResults indexResults={indexResults} />
 							<SearchHits />
 						</Index>
-						{/* <Index indexName="afsporg-story">
-							<CustomStateResults indexResults={indexResults} />
-							<SearchHits />
-						</Index>
-						<Index indexName="afsporg-event">
-							<CustomStateResults indexResults={indexResults} />
-							<SearchHits />
-						</Index>
-						<Index indexName="afsporg-grant">
-							<CustomStateResults indexResults={indexResults} />
-							<SearchHits />
-						</Index>
-						<Index indexName="afsporg-tag">
-							<CustomStateResults indexResults={indexResults} />
-							<SearchHits />
-						</Index>
-						<Index indexName="afsporg-author">
-							<CustomStateResults indexResults={indexResults} />
-							<SearchHits />
-						</Index> */}
 					</div>
 				)}
 			</InstantSearch>
