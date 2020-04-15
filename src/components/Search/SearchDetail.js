@@ -67,12 +67,13 @@ const SearchDetail = ({
 	handleSearchChange,
 	indexResults,
 }) => {
+	console.log(searchState)
 	return (
 		<div css={searchDetailCSS}>
 			<InstantSearch
 				indexName="afsporg-detail"
 				searchClient={searchClient}
-				searchState={searchState}
+				searchState={searchState.query}
 			>
 				<SearchBox
 					css={css`

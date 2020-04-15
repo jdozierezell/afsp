@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import qs from 'qs'
 
 import Layout from '../components/Layout'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroSearch from '../components/Hero/HeroSearch'
 import SearchDetail from '../components/Search/SearchDetail'
 
@@ -55,6 +54,7 @@ const SearchResults = () => {
 			<HeroSearch
 				data={{
 					title: searchState.query,
+					source: searchState.source,
 					handleHeroClick: handleHeroClick,
 					visibility: visibility,
 					searchState: searchState,

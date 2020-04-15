@@ -7,27 +7,27 @@ import { styles } from '../../css/css'
 const customHitsCSS = css`
 	list-style: none;
 	margin-left: 0;
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
-	margin-bottom: ${styles.scale.px24};
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: ${styles.gridGap.desktop};
+	align-items: stretch;
+	@media (min-width: ${styles.screens.tablet}px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
 	li {
 		width: 100%;
-		@media (min-width: ${styles.screens.tablet}px) {
-			width: calc(50% - ${styles.scale.px24});
-		}
 	}
 `
 
 const hitCSS = css`
-	display: flex;
-	flex-flow: row no-wrap;
-	align-items: stretch;
+	display: grid;
+	grid-template-columns: 0.66fr 1.34fr;
+	grid-template-rows: 1fr;
+	grid-gap: ${styles.gridGap.mobile};
 	border: ${styles.colors.darkGray} solid ${styles.scale.px2};
 	border-radius: ${styles.scale.px5};
+	min-height: ${styles.scale.px46};
 	img {
-		min-width: ${styles.scale.px126};
-		max-width: ${styles.scale.px126};
 		display: inline-block;
 		margin: 0;
 		object-fit: cover;
@@ -36,13 +36,10 @@ const hitCSS = css`
 		padding: ${styles.scale.px24};
 		color: ${styles.colors.poppy};
 	}
-	@media (min-width: ${styles.screens.video}px) and (max-width: ${styles
-			.screens.navigation}px) {
-		flex-flow: row wrap;
-		img {
-			width: 100%;
-			max-width: initial;
-		}
+	@media (min-width: ${styles.screens.tablet}px) and (max-width: ${styles
+			.screens.video}px) {
+		grid-template-columns: 1fr;
+		grid-template-rows: 1.5fr 0.5fr;
 	}
 `
 

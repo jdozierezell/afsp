@@ -37,15 +37,31 @@ const solidHeroCSS = css`
 	}
 `
 
-const HeroSearch = ({ data: { title, handleHeroClick, visibility } }) => {
+const HeroSearch = ({
+	data: { title, source, handleHeroClick, visibility },
+}) => {
 	return (
 		<div css={solidHeroCSS}>
-			{title && (
+			{source && (
 				<>
 					<h1>
 						We're sorry, that page doesn't exist. Instead, let's
 						search for "{title}"
 					</h1>
+					<div>
+						<p>Can't find what you're looking for?</p>
+						<button
+							onClick={handleHeroClick}
+							className="secondary-button"
+						>
+							Search again
+						</button>
+					</div>
+				</>
+			)}
+			{!source && title && (
+				<>
+					<h1>Search results for "{title}"</h1>
 					<div>
 						<p>Can't find what you're looking for?</p>
 						<button
