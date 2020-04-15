@@ -14,10 +14,10 @@ export const ChapterSearch = graphql`
 							maxWidth: 1080
 							imgixParams: {
 								auto: "format"
-								fit: "crop"
-								crop: "faces"
+								fit: "fill"
+								fill: "blur"
 								w: "1080"
-								h: "645"
+								h: "1080"
 							}
 						) {
 							...GatsbyDatoCmsFluid
