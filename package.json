@@ -84,8 +84,9 @@
 		"bs": "gatsby build && gatsby serve",
 		"build": "gatsby build",
 		"profile": "gatsby build -- --profile",
-		"develop": "gatsby develop -- --https",
+		"develop": "gatsby develop",
 		"format": "prettier --write src/**/*.{js,jsx}",
+		"secure": "gatsby develop -- --https",
 		"serve": "gatsby serve",
 		"start": "npm run develop",
 		"test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""

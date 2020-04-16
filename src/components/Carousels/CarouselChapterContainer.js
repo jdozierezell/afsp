@@ -55,11 +55,15 @@ const carouselHeaderWrapperCSS = css`
 
 const carouselButtonsCSS = css`
 	position: absolute;
-	width: ${styles.scale.px126};
-	height: ${styles.scale.px126};
-	top: 55%;
+	width: ${styles.scale.px64};
+	height: ${styles.scale.px64};
+	top: 40%;
 	margin-top: -${styles.scale.px126 / 2};
 	cursor: pointer;
+	@media (min-width: ${styles.screens.tablet}px) {
+		width: ${styles.scale.px80};
+		height: ${styles.scale.px80};
+	}
 	:first-of-type {
 		left: ${styles.scale.px24};
 	}
@@ -105,7 +109,7 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 						peek: { before: 0, after: styles.scale.px35 },
 					},
 					768: {
-						perView: 1,
+						perView: 2,
 						peek: { before: 0, after: styles.scale.px35 },
 					},
 				},
