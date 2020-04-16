@@ -73,7 +73,8 @@ const SearchDetail = ({
 			<InstantSearch
 				indexName="afsporg-detail"
 				searchClient={searchClient}
-				searchState={searchState.query}
+				searchState={searchState}
+				stalledSearchDelay={500}
 			>
 				<SearchBox
 					css={css`

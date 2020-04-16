@@ -57,7 +57,9 @@ const CustomHits = data => {
 					<li key={hit.objectID} data-type={hit.type}>
 						<a href={hit.url} css={hitCSS}>
 							<img src={hit.image} alt="result thumbnail" />
-							<p>{hit.title}</p>
+							<p
+								dangerouslySetInnerHTML={{ __html: hit.title }}
+							></p>
 						</a>
 					</li>
 				))}

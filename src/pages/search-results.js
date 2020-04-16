@@ -8,11 +8,17 @@ import SearchDetail from '../components/Search/SearchDetail'
 import { styles } from '../css/css'
 
 const SearchResults = () => {
-	const [searchState, setSearchState] = useState(
+	const urlParams =
 		typeof window !== `undefined`
 			? qs.parse(window.location.search.slice(1))
-			: { query: '', source: '' }
+			: null
+	const [searchState, setSearchState] = useState(
+		urlParams ? { query: urlParams.query } : { query: '' }
 	)
+	const [source, setSource] = useState(
+		searchState.source ? searchState.source : ''
+	)
+	console.log(source)
 	console.log(searchState)
 	const hasQuery = searchState.query ? searchState.query : '' // running a check here prevents undefined error
 	const [visibility, setVisibility] = useState(
@@ -21,13 +27,12 @@ const SearchResults = () => {
 
 	const handleHeroClick = () => {
 		setVisibility('inherit')
-		setSearchState({ query: '', source: '' })
+		setSearchState({ query: '' })
 	}
 
 	const handleSearchChange = event => {
 		setSearchState({
 			query: event.target.value,
-			source: '',
 		})
 		// https://gist.github.com/excalq/2961415#gistcomment-2221360
 		const params = new URLSearchParams(searchState)
@@ -54,7 +59,7 @@ const SearchResults = () => {
 			<HeroSearch
 				data={{
 					title: searchState.query,
-					source: searchState.source,
+					source: source,
 					handleHeroClick: handleHeroClick,
 					visibility: visibility,
 					searchState: searchState,
