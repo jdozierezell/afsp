@@ -35,6 +35,10 @@ export const query = graphql`
 				...ParentList
 			}
 			details {
+				... on DatoCmsEventList {
+					__typename
+					programName
+				}
 				... on DatoCmsContent {
 					__typename
 					contentHeading

@@ -3,6 +3,7 @@ import { css } from '@emotion/core'
 
 import RecommendationsVideoStories from '../Recommendations/RecommendationsVideoStories'
 import Content from './Content'
+import ContentEvent from './ContentEvent'
 import ContentImage from './ContentImage'
 import ContentVideo from './ContentVideo'
 import ContentAudio from './ContentAudio'
@@ -40,7 +41,14 @@ const ContentGeneric = ({ data }) => {
 			`}
 		>
 			{details.map((detail, index) => {
-				if (detail.__typename === 'DatoCmsContent') {
+				if (detail.__typename === 'DatoCmsEventList') {
+					return (
+						<ContentEvent
+							key={index}
+							programName={detail.programName}
+						></ContentEvent>
+					)
+				} else if (detail.__typename === 'DatoCmsContent') {
 					return (
 						<Content
 							key={index}
