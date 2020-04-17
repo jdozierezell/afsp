@@ -185,6 +185,9 @@ export const query = graphql`
 				title
 				video {
 					url
+					video {
+						mp4Url(res: medium)
+					}
 				}
 				posterImage {
 					url

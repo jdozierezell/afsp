@@ -77,7 +77,11 @@ const Convo = ({ convo, addCSS }) => {
 						loop
 						playsInline
 						css={videoCoverCSS}
-						src={convo.video.url}
+						src={
+							convo.video.video
+								? convo.video.video.mp4url
+								: convo.video.url
+						}
 					></video>
 				)}
 			</BackgroundImage>

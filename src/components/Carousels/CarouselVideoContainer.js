@@ -98,7 +98,11 @@ const CarouselVideoContainer = ({ videos }) => {
 								<CarouselVideo
 									key={index}
 									title={video.video.title}
-									video={video.video.url}
+									video={
+										video.video.video
+											? video.video.video.mp4Url
+											: video.video.url
+									}
 									poster={video.poster.url}
 								/>
 							)

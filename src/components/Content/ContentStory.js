@@ -132,7 +132,11 @@ const ContentStory = ({ data }) => {
 					} else if (article.__typename === 'DatoCmsVideo') {
 						return (
 							<ContentVideo
-								video={article.video.url}
+								video={
+									article.video.video
+										? article.video.video.mp4Url
+										: article.video.url
+								}
 								poster={article.poster.url}
 							/>
 						)

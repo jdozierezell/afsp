@@ -110,7 +110,11 @@ const StoriesReference = ({ data }) => {
 					<p>More resources</p>
 					<h3>{videoHeader}</h3>
 				</div>
-				<video controls src={video.url} poster={videoPoster.url}>
+				<video
+					controls
+					src={video.video ? video.video.mp4Url : video.url}
+					poster={videoPoster.url}
+				>
 					<track default kind="captions" srcLang="en" src="#" />
 				</video>
 				<p>{videoDescription}</p>

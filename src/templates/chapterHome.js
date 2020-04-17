@@ -47,7 +47,11 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 
 	const storiesUpdates = []
 
-	const heroVideoUrl = heroVideo ? heroVideo.url : ''
+	if (heroVideo) {
+		heroVideo = heroVideo.video ? heroVideo.video.mp4Url : heroVideo.url
+	}
+
+	const heroVideoUrl = heroVideo ? heroVideo : ''
 	const heroPosterUrl = heroPoster ? heroPoster.url : ''
 
 	useEffect(() => {
@@ -202,6 +206,9 @@ export const query = graphql`
 			slug
 			heroVideo {
 				url
+				video {
+					mp4Url(res: medium)
+				}
 			}
 			heroPoster {
 				url

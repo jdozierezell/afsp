@@ -14,6 +14,7 @@ const videoCSS = css`
 `
 
 const ContentVideo = ({ video, poster }) => {
+	console.log(video)
 	return (
 		<div css={videoCSS}>
 			<video

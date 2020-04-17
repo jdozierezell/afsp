@@ -62,7 +62,9 @@ const ContentGeneric = ({ data }) => {
 							key={index}
 							videoData={{
 								title: detail.video.title,
-								url: detail.video.url,
+								url: detail.video.video
+									? detail.video.video.mp4Url
+									: detail.video.url,
 								poster: detail.poster.fluid.src,
 							}}
 							heading={detail.recommendationHeading}
@@ -83,7 +85,11 @@ const ContentGeneric = ({ data }) => {
 					return (
 						<ContentVideo
 							key={index}
-							video={detail.video.url}
+							video={
+								detail.video.video
+									? detail.video.video.mp4Url
+									: detail.video.url
+							}
 							poster={detail.poster.url}
 						/>
 					)

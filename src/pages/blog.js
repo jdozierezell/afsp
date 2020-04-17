@@ -21,7 +21,11 @@ const RealStories = ({ data: { real, stories } }) => {
 			seo={real.seoMetaTags}
 		>
 			<HeroVideo
-				videoUrl={real.heroVideo.url}
+				videoUrl={
+					real.heroVideo.video
+						? real.heroVideo.video.mp4Url
+						: real.heroVideo.url
+				}
 				posterUrl={real.heroPoster.url}
 				heading={real.heroHeading}
 				brief={real.heroBrief}
@@ -67,6 +71,9 @@ export const query = graphql`
 			}
 			heroVideo {
 				url
+				video {
+					mp4Url(res: medium)
+				}
 			}
 			heroPoster {
 				url
@@ -94,6 +101,9 @@ export const query = graphql`
 				... on DatoCmsFeaturedVideo {
 					video {
 						url
+						video {
+							mp4Url(res: medium)
+						}
 						title
 					}
 					poster {

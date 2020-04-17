@@ -52,7 +52,11 @@ const Grant = ({ data }) => {
 						return (
 							<ContentVideo
 								key={index}
-								video={detail.video.url}
+								video={
+									detail.video.video
+										? detail.video.video.mp4Url
+										: detail.video.url
+								}
 								poster={detail.poster.url}
 							/>
 						)
@@ -125,6 +129,9 @@ export const query = graphql`
 				... on DatoCmsVideo {
 					video {
 						url
+						video {
+							mp4Url(res: medium)
+						}
 					}
 					poster {
 						url
