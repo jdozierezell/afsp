@@ -96,6 +96,18 @@ export const query = graphql`
 					images {
 						url
 						alt
+						fluid(
+							maxWidth: 769
+							imgixParams: {
+								auto: "format"
+								fit: "fill"
+								fill: "blur"
+								w: "769"
+								h: "475"
+							}
+						) {
+							...GatsbyDatoCmsFluid
+						}
 					}
 				}
 				... on DatoCmsVideo {

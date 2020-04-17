@@ -40,7 +40,11 @@ const App = ({ data: { home } }) => {
 		>
 			{home.breakingNews && <BreakingNews news={home.breakingNews} />}
 			<HeroVideo
-				videoUrl={home.heroVideo.url}
+				videoUrl={
+					home.heroVideo.video
+						? home.heroVideo.video.mp4Url
+						: home.heroVideo.url
+				}
 				posterUrl={home.heroPoster.url}
 				heading={home.heroHeading}
 				brief={home.heroBrief}
@@ -104,6 +108,9 @@ export const query = graphql`
 			}
 			heroVideo {
 				url
+				video {
+					mp4Url(res: medium)
+				}
 			}
 			heroPoster {
 				url

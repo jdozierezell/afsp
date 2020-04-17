@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import Img from 'gatsby-image'
 
 import { styles } from '../../css/css'
 
@@ -30,10 +31,7 @@ const ContentImage = ({ image }) => {
 	return (
 		<div className="storyContent">
 			{image.length === 1 && (
-				<img
-					src={`${image[0].url}?w=769&h=475&fit=crop&crop=faces`}
-					alt={image[0].alt}
-				/>
+				<Img fluid={image[0].fluid} alt={image[0].alt} />
 			)}
 			{image.length > 1 && (
 				<div
