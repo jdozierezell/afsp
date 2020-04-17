@@ -103,8 +103,7 @@ const ContentEvent = ({ programName }) => {
 										<span>
 											Presented by the{' '}
 											<a href={chapterUrl}>
-												AFSP {chapterName}
-												Chapter
+												AFSP {chapterName} Chapter
 											</a>
 										</span>
 									)}

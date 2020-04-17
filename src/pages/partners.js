@@ -68,6 +68,8 @@ const Partners = ({ data: { partners } }) => {
 								></div>
 								<a
 									href={partner.partnerLink}
+									target="_blank"
+									rel="noreferrer noopener"
 									className="secondary-button"
 								>
 									Learn more

@@ -1,6 +1,7 @@
 import _ from 'lodash'
 
 const formatStatisticsCard = (data, state) => {
+	console.log(data)
 	const usIndex = data.findIndex(x => x.id.toLowerCase() === 'us average')
 	const stateIndex = data.findIndex(x => x.id.toLowerCase() === state.state)
 	const rate = data[stateIndex].rate
@@ -43,7 +44,7 @@ const formatStatisticsCard = (data, state) => {
 			},
 		},
 		cardButtonCta: 'View fact sheet',
-		cardButtonUrl: `https://aws-fetch.s3.amazonaws.com/state-fact-sheets/state-facts-${factSheet}.pdf`,
+		cardButtonUrl: `https://aws-fetch.s3.amazonaws.com/state-fact-sheets/2020/2020-state-fact-sheets-${factSheet}.pdf`,
 	}
 	return card
 }
