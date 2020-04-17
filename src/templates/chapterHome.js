@@ -47,11 +47,12 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 
 	const storiesUpdates = []
 
+	let heroVideoUrl
+
 	if (heroVideo) {
-		heroVideo = heroVideo.video ? heroVideo.video.mp4Url : heroVideo.url
+		heroVideoUrl = heroVideo.video ? heroVideo.video.mp4Url : heroVideo.url
 	}
 
-	const heroVideoUrl = heroVideo ? heroVideo : ''
 	const heroPosterUrl = heroPoster ? heroPoster.url : ''
 
 	useEffect(() => {
