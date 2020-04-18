@@ -46,26 +46,26 @@ export const query = graphql`
 						slug
 					}
 					publicationDate(formatString: "D MMM YYYY")
-					coverImage {
-						url
-						fluid(
-							maxWidth: 769
-							imgixParams: {
-								auto: "format"
-								fit: "crop"
-								crop: "faces"
-								w: "769"
-								h: "475"
-							}
-						) {
-							...GatsbyDatoCmsFluid
-						}
-					}
 					author {
 						authorName
 					}
 					seo {
 						description
+						image {
+							url
+							fluid(
+								maxWidth: 600
+								imgixParams: {
+									auto: "format"
+									fit: "fill"
+									fill: "blur"
+									w: "600"
+									h: "370"
+								}
+							) {
+								...GatsbyDatoCmsFluid
+							}
+						}
 					}
 				}
 			}
