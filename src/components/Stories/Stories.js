@@ -51,7 +51,7 @@ const featuredCSS = css`
 const Stories = ({ story: { node } }) => {
 	return (
 		<div css={featuredCSS}>
-			<Img fluid={node.coverImage.fluid} alt="" />
+			<Img fluid={node.seo.image.fluid} alt="" />
 			<h2>
 				<Link
 					to={
