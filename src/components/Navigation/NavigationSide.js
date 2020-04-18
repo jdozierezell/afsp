@@ -74,6 +74,12 @@ const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
 				heading: `${detail.tag.tag}s`,
 				anchor: `${anchor}s`,
 			})
+		} else if (detail.__typename === 'DatoCmsEventList') {
+			const anchor = createAnchor(detail.programName)
+			headings.push({
+				heading: `Upcoming ${detail.programName} events`,
+				anchor: `${anchor}-events`,
+			})
 		} else if (detail.__typename === 'search') {
 			const anchor = createAnchor(detail.searchHeading)
 			headings.push({ heading: detail.searchHeading, anchor })
@@ -111,6 +117,7 @@ const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
 		window.addEventListener('scroll', handleScroll)
 		return () => window.removeEventListener('scroll', handleScroll)
 	})
+	console.log(headings)
 	if (headings.length > 1) {
 		return (
 			<aside

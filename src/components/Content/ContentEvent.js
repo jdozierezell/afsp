@@ -60,7 +60,7 @@ const ContentEvent = ({ programName }) => {
 	return (
 		<>
 			{programEvents && (
-				<div>
+				<div id={`createAnchor(programName)-events`}>
 					<h2 css={programHeadingCSS}>
 						Upcoming {programName} events
 					</h2>

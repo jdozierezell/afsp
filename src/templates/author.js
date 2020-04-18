@@ -65,6 +65,7 @@ export const query = graphql`
 					}
 					author {
 						authorName
+						slug
 					}
 					seo {
 						description
