@@ -41,7 +41,13 @@ const sideNavigationCSS = css`
 	}
 `
 
-const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
+const NavigationSide = ({
+	data,
+	beforeAnchors,
+	afterAnchors,
+	navRoot,
+	hasEvents,
+}) => {
 	let headings = []
 	if (beforeAnchors) {
 		beforeAnchors.map(anchor => {
@@ -74,7 +80,7 @@ const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
 				heading: `${detail.tag.tag}s`,
 				anchor: `${anchor}s`,
 			})
-		} else if (detail.__typename === 'DatoCmsEventList') {
+		} else if (detail.__typename === 'DatoCmsEventList' && hasEvents) {
 			const anchor = createAnchor(detail.programName)
 			headings.push({
 				heading: `Upcoming ${detail.programName} events`,

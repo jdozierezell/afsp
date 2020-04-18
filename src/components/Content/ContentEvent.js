@@ -28,7 +28,7 @@ const eventCSS = css`
 	}
 `
 
-const ContentEvent = ({ programName }) => {
+const ContentEvent = ({ setEvents, programName }) => {
 	const awsProgramName = programName.replace(' ', '-')
 	const [programEvents, setProgramEvents] = useState([])
 
@@ -55,12 +55,17 @@ const ContentEvent = ({ programName }) => {
 				}
 				return response.json()
 			})
-			.then(response => setProgramEvents(response))
+			.then(response => {
+				if (response.length && response.length > 0) {
+					setEvents(true)
+				}
+				setProgramEvents(response)
+			})
 	}, [awsProgramName])
 	return (
 		<>
-			{programEvents && (
-				<div id={`createAnchor(programName)-events`}>
+			{programEvents.length > 0 && (
+				<div id={`${createAnchor(programName)}-events`}>
 					<h2 css={programHeadingCSS}>
 						Upcoming {programName} events
 					</h2>

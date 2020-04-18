@@ -31,7 +31,7 @@ const detailCarouselCSS = css`
 	}
 `
 
-const ContentGeneric = ({ data }) => {
+const ContentGeneric = ({ setEvents, data }) => {
 	const { details } = data
 	return (
 		<section
@@ -45,6 +45,7 @@ const ContentGeneric = ({ data }) => {
 					return (
 						<ContentEvent
 							key={index}
+							setEvents={setEvents}
 							programName={detail.programName}
 						></ContentEvent>
 					)

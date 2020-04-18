@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
@@ -11,14 +11,20 @@ import { styles } from '../css/css'
 
 const Detail = ({ data, pageContext }) => {
 	const { detail } = data
+	const [hasEvents, setHasEvents] = useState(false)
+	const setEvents = events => {
+		if (events) {
+			setHasEvents(true)
+		}
+	}
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={detail.seoMetaTags}
 		>
 			<HeroSolid data={detail} />
-			<NavigationSide data={detail} />
-			<ContentGeneric data={detail} />
+			<NavigationSide hasEvents={hasEvents} data={detail} />
+			<ContentGeneric setEvents={setEvents} data={detail} />
 		</Layout>
 	)
 }
