@@ -21,9 +21,10 @@ const customHitsCSS = css`
 
 const hitCSS = css`
 	display: grid;
-	grid-template-columns: 0.66fr 1.34fr;
+	grid-template-columns: 0.6fr 1.4fr;
 	grid-template-rows: 1fr;
 	grid-gap: ${styles.gridGap.mobile};
+	align-items: stretch;
 	border: ${styles.colors.darkGray} solid ${styles.scale.px2};
 	border-radius: ${styles.scale.px5};
 	min-height: ${styles.scale.px46};
@@ -33,7 +34,7 @@ const hitCSS = css`
 		object-fit: cover;
 	}
 	p {
-		padding: ${styles.scale.px24};
+		padding: ${styles.scale.px16};
 		color: ${styles.colors.poppy};
 	}
 	@media (min-width: ${styles.screens.tablet}px) and (max-width: ${styles

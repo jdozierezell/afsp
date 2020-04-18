@@ -31,7 +31,7 @@ const menuCSS = css`
 		}
 	}
 	a {
-		font-size: ${styles.scale.px17};
+		font-size: ${styles.scale.px16};
 		font-family: ${styles.fonts.avenirBold};
 		text-decoration: none;
 		text-align: center;

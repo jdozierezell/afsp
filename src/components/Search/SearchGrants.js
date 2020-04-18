@@ -49,7 +49,7 @@ const searchBoxCSS = css`
 
 const indexWrapperCSS = css`
 	width: 100%;
-	@media (min-width: ${styles.screens.video}px) {
+	@media (min-width: ${styles.screens.navigation}px) {
 		display: grid;
 		grid-template-columns: 400px 1fr;
 	}
@@ -65,7 +65,7 @@ const refinementCSS = css`
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 	}
-	@media (min-width: ${styles.screens.video}px) {
+	@media (min-width: ${styles.screens.navigation}px) {
 		display: block;
 		border-bottom: none;
 	}

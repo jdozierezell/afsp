@@ -52,7 +52,7 @@ const QuiltSquare = ({ quilt, selected, handleClick, index }) => {
 		transform: isSelected
 			? `translate(${location.horizontal}px, ${location.vertical}px) scale(${scale})`
 			: `translate(0px, 0px) scale(1)`,
-		border: isSelected ? `10px solid white` : `0px solid white`,
+		border: isSelected ? `8px solid white` : `0px solid white`,
 		config: { mass: 5, tension: 500, friction: 80 },
 	})
 

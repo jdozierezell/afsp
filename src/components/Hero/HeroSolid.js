@@ -16,7 +16,7 @@ const solidHeroCSS = css`
 	h1,
 	div {
 		color: ${styles.colors.white};
-		max-width: 700px;
+		max-width: 629px;
 		font-family: ${styles.fonts.avenirRegular};
 	}
 	h1 {

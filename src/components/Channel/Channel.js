@@ -42,7 +42,8 @@ const channelCSS = css`
 `
 
 const channelImageCSS = css`
-	width: 125px;
+	min-width: 125px;
+	max-width: 150px;
 	margin: 0 auto;
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin: 0;

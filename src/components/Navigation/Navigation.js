@@ -53,7 +53,7 @@ const navButtons = css`
 `
 
 const searchCSS = css`
-	margin: 0 ${styles.scale.px22} 0 0;
+	margin: 0 ${styles.scale.px17} 0 ${styles.scale.px5};
 	padding: ${styles.scale.px16} 0 0;
 	width: ${styles.scale.px24};
 	background: transparent;

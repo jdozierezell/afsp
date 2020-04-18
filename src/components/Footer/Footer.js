@@ -29,7 +29,7 @@ const desktopFooterCSS = css`
 	display: none;
 	@media (min-width: ${styles.screens.footer}px) {
 		display: grid;
-		grid-template-columns: repeat(6, 1fr) 320px;
+		grid-template-columns: repeat(6, auto) 320px;
 	}
 `
 

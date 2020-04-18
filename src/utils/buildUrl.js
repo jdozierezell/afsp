@@ -14,6 +14,7 @@ const buildUrl = (typename = '', slug = '') => {
 		case 'DatoCmsChapterStoryUpdate':
 			folder = '/chapter'
 			break
+		case 'DatoCmsGrantsPage':
 		case 'DatoCmsRealStory':
 		case 'DatoCmsLanding':
 		case 'DatoCmsDetail':

@@ -26,7 +26,7 @@ const MenuItems = ({ items }) => {
 			{items.map(item => (
 				<MobileMenuSection key={item.id} item={item} />
 			))}
-			<MenuCTA width="100%" margin={`${styles.scale.px45} 0 0`} />
+			<MenuCTA width="100%" margin={`${styles.scale.px23} 0 0`} />
 		</nav>
 	)
 }
