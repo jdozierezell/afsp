@@ -176,11 +176,11 @@ const QuiltForm = () => {
 				Please note, images do not need to be square when uploading.
 				They will appear as squares automatically.
 			</p>
-			<label id="image" htmlFor="image">
+			<label id="imageLabel" htmlFor="image">
 				Click here to upload your image
 			</label>
 			<input
-				aria-describedby="image"
+				aria-describedby="imageLabel"
 				name="image"
 				id="image"
 				type="file"
