@@ -9,6 +9,7 @@ import { styles } from '../../css/css'
 const breadcrumbCSS = css`
 	list-style: none;
 	margin: 0;
+	max-width: 629px;
 	li {
 		display: inline;
 		:not(:last-of-type) {
@@ -60,6 +61,9 @@ const Breadcrumbs = ({ parentPage, child }) => {
 			}
 		}
 	}
+	breadcrumbs.forEach(crumb => {
+		crumb.title = crumb.title.replace('<br />', ' ')
+	})
 	return (
 		<ul css={breadcrumbCSS}>
 			{breadcrumbs.map((crumb, index) => {
@@ -67,7 +71,11 @@ const Breadcrumbs = ({ parentPage, child }) => {
 					crumb && (
 						<li key={index}>
 							<Link to={buildUrl(crumb.type, crumb.slug)}>
-								{crumb.title}
+								<span
+									dangerouslySetInnerHTML={{
+										__html: crumb.title,
+									}}
+								></span>
 							</Link>
 						</li>
 					)

@@ -88,7 +88,7 @@ const Recommendations = ({ data, heading, video }) => {
 			{data.map((story, index) => (
 				<div key={index} css={storyCSS}>
 					<Link
-						to={buildUrl(story.__typename, story.slug)}
+						to={buildUrl('story', story.slug)}
 						css={css`
 							text-decoration: none;
 						`}
