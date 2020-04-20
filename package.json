@@ -89,12 +89,12 @@
 	"license": "MIT",
 	"scripts": {
 		"bs": "gatsby build && gatsby serve",
-		"build": "gatsby build",
+		"build": "set NODE_ENV=production&& gatsby build",
 		"profile": "gatsby build -- --profile",
-		"develop": "gatsby develop",
+		"develop": "set NODE_ENV=dev&&gatsby develop",
 		"format": "prettier --write src/**/*.{js,jsx}",
-		"secure": "gatsby develop -- --https",
-		"serve": "gatsby serve",
+		"secure": "set NODE_ENV=dev&&gatsby develop -- --https",
+		"serve": "set NODE_ENV=production&&gatsby serve",
 		"start": "npm run develop",
 		"test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
 	},

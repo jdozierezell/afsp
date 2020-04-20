@@ -1,6 +1,9 @@
 require('dotenv').config({
 	path: `.env.${process.env.NODE_ENV}`,
 })
+console.log(process.env.NODE_ENV)
+console.log(process.env.DATOCMS_API)
+console.log(process.env.PREVIEW_MODE)
 module.exports = {
 	siteMetadata: {
 		title: `Gatsby Default Starter`,
@@ -9,7 +12,7 @@ module.exports = {
 		siteUrl:
 			process.env.NODE_ENV === 'development'
 				? `http://localhost:8000`
-				: `https://reverent-payne-b0d24a.netlify.com`,
+				: `https://afsp.org`,
 	},
 	plugins: [
 		`gatsby-plugin-emotion`,
@@ -31,8 +34,7 @@ module.exports = {
 			resolve: `gatsby-source-datocms`,
 			options: {
 				apiToken: process.env.DATOCMS_API,
-				previewMode:
-					process.env.NODE_ENV === 'development' ? true : false,
+				previewMode: process.env.PREVIEW_MODE,
 				disabledLiveReload: false,
 			},
 		},
