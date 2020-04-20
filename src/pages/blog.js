@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroVideo from '../components/Hero/HeroVideo'
 import CarouselVideoContainer from '../components/Carousels/CarouselVideoContainer'
 import StoriesContainer from '../components/Stories/StoriesContainer'

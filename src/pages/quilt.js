@@ -10,7 +10,6 @@ import fetch from 'isomorphic-fetch'
 import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroImage from '../components/Hero/HeroImage'
 import QuiltSquareContainer from '../components/Quilt/QuiltSquareContainer'
 

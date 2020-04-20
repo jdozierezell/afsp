@@ -4,7 +4,6 @@ import { css } from '@emotion/core'
 import Img from 'gatsby-image'
 
 import Layout from '../components/Layout'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroSolid from '../components/Hero/HeroSolid'
 
 import { styles } from '../css/css'

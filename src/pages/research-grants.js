@@ -3,7 +3,6 @@ import qs from 'qs'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroSolid from '../components/Hero/HeroSolid'
 import SearchGrants from '../components/Search/SearchGrants'
 

@@ -3,7 +3,6 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroGrant from '../components/Hero/HeroGrant'
 import Content from '../components/Content/Content'
 import ContentHeading from '../components/Content/ContentHeading'

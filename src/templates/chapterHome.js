@@ -5,7 +5,6 @@ import fetch from 'isomorphic-fetch'
 import moment from 'moment'
 
 import LayoutChapter from '../components/LayoutChapter'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroChapter from '../components/Hero/HeroChapter'
 import ChapterAboutContact from '../components/Chapter/ChapterAboutContact'
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'

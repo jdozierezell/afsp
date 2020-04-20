@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'

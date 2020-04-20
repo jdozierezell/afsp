@@ -13,7 +13,7 @@ const convoCSS = css`
 	grid-gap: ${styles.gridGap.mobile};
 	padding: ${styles.scale.px50} ${styles.scale.px24};
 	@media (min-width: ${styles.screens.tablet}px) {
-		grid-template-columns: minmax(335px, 1fr) minmax(335px, 629px);
+		grid-template-columns: minmax(335px, 1fr) minmax(335px, 623px);
 		padding: ${styles.scale.px80} ${styles.scale.px50};
 		grid-gap: ${styles.gridGap.desktop};
 	}

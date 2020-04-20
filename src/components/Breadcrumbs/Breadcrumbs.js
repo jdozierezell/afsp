@@ -9,7 +9,7 @@ import { styles } from '../../css/css'
 const breadcrumbCSS = css`
 	list-style: none;
 	margin: 0;
-	max-width: 629px;
+	max-width: 623px;
 	li {
 		display: inline;
 		:not(:last-of-type) {

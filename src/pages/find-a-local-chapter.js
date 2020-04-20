@@ -5,7 +5,6 @@ import zipcodes from 'zipcodes'
 import { useQueryParams, NumberParam } from 'use-query-params'
 
 import Layout from '../components/Layout'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
 import HeroModelSearch from '../components/Hero/HeroModelSearch'
 import SearchModelContainer from '../components/Search/SearchModelContainer'
 import SearchNoResults from '../components/Search/SearchNoResults'
