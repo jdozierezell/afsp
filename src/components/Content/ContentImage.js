@@ -4,6 +4,10 @@ import Img from 'gatsby-image'
 
 import { styles } from '../../css/css'
 
+const singleCSS = css`
+	margin-bottom: ${styles.scale.px24};
+`
+
 const carouselButtonsCSS = css`
 	text-align: center;
 	margin: ${styles.scale.px45} 0 0;
@@ -31,7 +35,11 @@ const ContentImage = ({ image }) => {
 	return (
 		<div className="storyContent">
 			{image.length === 1 && (
-				<Img fluid={image[0].fluid} alt={image[0].alt} />
+				<Img
+					css={singleCSS}
+					fluid={image[0].fluid}
+					alt={image[0].alt}
+				/>
 			)}
 			{image.length > 1 && (
 				<div

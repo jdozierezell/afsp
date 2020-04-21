@@ -123,7 +123,6 @@ const NavigationSide = ({
 		window.addEventListener('scroll', handleScroll)
 		return () => window.removeEventListener('scroll', handleScroll)
 	})
-	console.log(headings)
 	if (headings.length > 1) {
 		return (
 			<aside
