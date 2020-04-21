@@ -106,7 +106,7 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 							let title, image, link, linkText, external
 							title = resource.title
 							if (resource.__typename === 'DatoCmsStory') {
-								image = resource.coverImage.fluid
+								image = resource.seo.image.fluid
 								link = `/story/${resource.slug}`
 								linkText = 'Learn more'
 								external = false

@@ -319,23 +319,23 @@ export const query = graphql`
 							__typename
 							title
 							slug
-							coverImage {
-								url
-								fluid(
-									maxWidth: 600
-									imgixParams: {
-										auto: "format"
-										fit: "fill"
-										fill: "blur"
-										w: "600"
-										h: "370"
-									}
-								) {
-									...GatsbyDatoCmsFluid
-								}
-							}
 							seo {
 								description
+								image {
+									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "fill"
+											fill: "blur"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
+								}
 							}
 						}
 						... on DatoCmsExternalResource {
