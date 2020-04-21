@@ -15,9 +15,7 @@ const SearchResults = () => {
 	const [searchState, setSearchState] = useState(
 		urlParams ? { query: urlParams.query } : { query: '' }
 	)
-	const [source, setSource] = useState(
-		urlParams.source ? urlParams.source : ''
-	)
+	const [source, setSource] = useState(urlParams ? urlParams.source : '')
 	const hasQuery = searchState.query ? searchState.query : '' // running a check here prevents undefined error
 	const [visibility, setVisibility] = useState(
 		hasQuery.length === 0 ? 'inherit' : 'hidden'
