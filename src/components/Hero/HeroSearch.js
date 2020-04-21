@@ -40,13 +40,17 @@ const solidHeroCSS = css`
 const HeroSearch = ({
 	data: { title, source, handleHeroClick, visibility },
 }) => {
+	if (source && source.includes('/search-results/')) {
+		source = source.replace('/search-results/', '')
+	}
 	return (
 		<div css={solidHeroCSS}>
+			{console.log(source)}
 			{source && (
 				<>
 					<h1>
-						We're sorry, that page doesn't exist. Instead, let's
-						search for "{title}"
+						We're sorry, that page doesn't exist. Let's search for "
+						{title}" instead
 					</h1>
 					<div>
 						<p>Can't find what you're looking for?</p>

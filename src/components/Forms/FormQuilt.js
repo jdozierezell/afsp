@@ -4,8 +4,11 @@ import Select from 'react-select'
 import * as Yup from 'yup'
 import { css } from '@emotion/core'
 import axios from 'axios'
+import * as Scroll from 'react-scroll'
 
-// import FormStateSelect from '../Forms/FormStateSelect'
+import FormSubmitted from './FormSubmitted'
+import FormError from './FormError'
+import FormClockLoader from './FormClockLoader'
 
 import stateListModel from '../../utils/stateListModel'
 
@@ -51,6 +54,10 @@ const formWrapperCSS = css`
 		/* margin-top: -${styles.scale.px24};
 		margin-bottom: ${styles.scale.px36}; */
 	}
+	label span {
+		display: inline-block;
+		line-height: 0;
+	}
 `
 const selectCSS = css`
 	margin-bottom: ${styles.scale.px36};
@@ -64,7 +71,6 @@ const selectCSS = css`
 `
 
 const QuiltForm = () => {
-	const [values, setReactSelectValue] = useState({ selectedOption: [] })
 	const schema = Yup.object().shape({
 		quiltTitle: Yup.string().required(
 			'A title is required. Please enter your title and resubmit your square.'
@@ -87,11 +93,32 @@ const QuiltForm = () => {
 	const { register, handleSubmit, errors, setValue } = useForm({
 		validationSchema: schema,
 	})
+
+	const [values, setReactSelectValue] = useState({ selectedOption: [] })
+	const [submitted, setSubmitted] = useState(false)
+	const [submitError, setSubmitError] = useState(false)
+	const [loading, setLoading] = useState(false)
+
+	const Element = Scroll.Element
+	const scroller = Scroll.scroller
+
+	const handleMultiChange = selectedOption => {
+		console.log(selectedOption)
+		setValue('state', selectedOption)
+		setReactSelectValue({ selectedOption })
+	}
+
 	const onSubmit = data => {
 		const form = document.querySelector('form')
 		let formData = new FormData(form)
 		formData.append('image', data.image)
-		formData.append('state', data.state.value)
+		formData.append('state', values.selectedOption.value)
+		console.log(values.selectedOption.value)
+		console.log(data)
+		for (let value of formData.values()) {
+			console.log(value)
+		}
+		setLoading(true)
 		axios
 			.post(
 				'https://serene-dusk-44738.herokuapp.com/create-quilt',
@@ -102,13 +129,27 @@ const QuiltForm = () => {
 					},
 				}
 			)
-			.then(response => console.log(response))
-			.catch(error => console.log(error))
+			.then(response => {
+				if (response.status === 200) {
+					setSubmitted(true)
+				} else {
+					setSubmitError(true)
+				}
+				scroller.scrollTo('form', {
+					duration: 250,
+					smooth: true,
+					offset: -100,
+				})
+				setLoading(false)
+			})
+			.catch(error => {
+				setSubmitError(true)
+				setLoading(false)
+			})
 	}
 
-	const handleMultiChange = selectedOption => {
-		setValue('state', selectedOption)
-		setReactSelectValue({ selectedOption })
+	const onError = () => {
+		setSubmitError(false)
 	}
 
 	useEffect(() => {
@@ -116,113 +157,145 @@ const QuiltForm = () => {
 	}, [register])
 
 	return (
-		<form css={formWrapperCSS} onSubmit={handleSubmit(onSubmit)}>
-			<label id="quiltTitle" htmlFor="quiltTitle">
-				Square Title/Name of Person Lost
-			</label>
-			{errors.quiltTitle && <p>{errors.quiltTitle.message}</p>}
-			<input
-				aria-describedby="quiltTitle"
-				name="quiltTitle"
-				ref={register}
-			/>
+		<>
+			<FormClockLoader loading={loading} />
+			<Element name="form">
+				{submitError && !submitted && (
+					<FormError
+						formType="support group"
+						resetFunction={onError}
+					/>
+				)}
+				{submitted && <FormSubmitted formType="support group" />}
+				{!submitted && !submitError && (
+					<form
+						css={formWrapperCSS}
+						onSubmit={handleSubmit(onSubmit)}
+					>
+						<label id="quiltTitle" htmlFor="quiltTitle">
+							Square Title/Name of Person Lost <span>*</span>
+						</label>
+						{errors.quiltTitle && (
+							<p>{errors.quiltTitle.message}</p>
+						)}
+						<input
+							aria-describedby="quiltTitle"
+							name="quiltTitle"
+							ref={register}
+						/>
 
-			<label id="name" htmlFor="name">
-				Your Name
-			</label>
-			{errors.name && <p>{errors.name.message}</p>}
-			<input aria-describedby="name" name="name" ref={register} />
+						<label id="name" htmlFor="name">
+							Your Name <span>*</span>
+						</label>
+						{errors.name && <p>{errors.name.message}</p>}
+						<input
+							aria-describedby="name"
+							name="name"
+							ref={register}
+						/>
 
-			<label id="email" htmlFor="email">
-				Your Email Address
-			</label>
-			<p>
-				We will not share or sell your email address to other
-				organizations. We hate spam as much as you do. We will use your
-				email address to identify you should you request changes to your
-				square later on.
-			</p>
-			{errors.email && <p>{errors.email.message}</p>}
-			<input
-				aria-describedby="email"
-				name="email"
-				type="email"
-				ref={register}
-			/>
+						<label id="email" htmlFor="email">
+							Your Email Address <span>*</span>
+						</label>
+						<p>
+							We will not share or sell your email address to
+							other organizations. We hate spam as much as you do.
+							We will use your email address to identify you
+							should you request changes to your square later on.
+						</p>
+						{errors.email && <p>{errors.email.message}</p>}
+						<input
+							aria-describedby="email"
+							name="email"
+							type="email"
+							ref={register}
+						/>
 
-			<label id="state" htmlFor="state">
-				Your State
-			</label>
-			<p>
-				Select the state where you live. If you live outside of the
-				U.S., select 'Not Applicable' at the bottom of the list of
-				choices. We will not share your information with any 3rd party.
-			</p>
-			{errors.state && <p>{errors.state.message}</p>}
+						<label id="state" htmlFor="state">
+							Your State <span>*</span>
+						</label>
+						<p>
+							Select the state where you live. If you live outside
+							of the U.S., select 'Not Applicable' at the bottom
+							of the list of choices. We will not share your
+							information with any 3rd party.
+						</p>
+						{errors.state && <p>{errors.state.message}</p>}
 
-			<Select
-				css={selectCSS}
-				className="react-select"
-				classNamePrefix="react-select"
-				value={values.selectedOption}
-				options={stateListModel}
-				onChange={handleMultiChange}
-			/>
+						<Select
+							name="state"
+							css={selectCSS}
+							className="react-select"
+							classNamePrefix="react-select"
+							value={values.selectedOption}
+							options={stateListModel}
+							onChange={handleMultiChange}
+						/>
 
-			<label id="file" htmlFor="file">
-				Square Image
-			</label>
-			<p>
-				Please note, images do not need to be square when uploading.
-				They will appear as squares automatically.
-			</p>
-			<label id="imageLabel" htmlFor="image">
-				Click here to upload your image
-			</label>
-			<input
-				aria-describedby="imageLabel"
-				name="image"
-				id="image"
-				type="file"
-				ref={register}
-				onChange={e => {
-					const img = document.createElement('img')
-					const div = document.getElementById('imageDisplay')
-					const oldImg = document.getElementById('loadedImage')
-					if (oldImg) oldImg.remove()
-					img.src = URL.createObjectURL(e.target.files[0])
-					img.style.backgroundColor = styles.colors.lightGray
-					img.height = 200
-					img.id = 'loadedImage'
-					img.onload = function() {
-						URL.revokeObjectURL(this.src)
-					}
-					div.appendChild(img)
-				}}
-			/>
-			<div id="imageDisplay"></div>
+						<label id="file" htmlFor="file">
+							Square Image <span>*</span>
+						</label>
+						{errors.description && <p>{errors.image.message}</p>}
+						<p>
+							Please note, images do not need to be square when
+							uploading. They will appear as squares
+							automatically.
+						</p>
+						<label id="imageLabel" htmlFor="image">
+							Click here to upload your image
+						</label>
+						<input
+							aria-describedby="imageLabel"
+							name="image"
+							id="image"
+							type="file"
+							ref={register}
+							onChange={e => {
+								const img = document.createElement('img')
+								const div = document.getElementById(
+									'imageDisplay'
+								)
+								const oldImg = document.getElementById(
+									'loadedImage'
+								)
+								if (oldImg) oldImg.remove()
+								img.src = URL.createObjectURL(e.target.files[0])
+								img.style.backgroundColor =
+									styles.colors.lightGray
+								img.height = 200
+								img.id = 'loadedImage'
+								img.onload = function() {
+									URL.revokeObjectURL(this.src)
+								}
+								div.appendChild(img)
+							}}
+						/>
+						<div id="imageDisplay"></div>
 
-			<label id="description" htmlFor="description">
-				Square Description
-			</label>
-			<p>
-				Enter a brief description of your quilt square. This can be
-				anything from a description of the person you have lost to a
-				favorite moment or memory. If you like, you may leave this
-				section blank. This field is not required.
-			</p>
-			{errors.description && <p>{errors.description.message}</p>}
-			<textarea name="description" ref={register} />
+						<label id="description" htmlFor="description">
+							Square Description
+						</label>
+						<p>
+							Enter a brief description of your quilt square. This
+							can be anything from a description of the person you
+							have lost to a favorite moment or memory. If you
+							like, you may leave this section blank. This field
+							is not required.
+						</p>
+						<textarea name="description" ref={register} />
 
-			<input
-				css={css`
-					margin-top: ${styles.scale.px64};
-				`}
-				className="secondary-button"
-				type="submit"
-				value="Submit Quilt"
-			/>
-		</form>
+						<input
+							css={css`
+								margin-top: ${styles.scale.px64};
+							`}
+							className="secondary-button"
+							type="submit"
+							value="Submit Quilt"
+						/>
+					</form>
+				)}
+			</Element>
+		</>
 	)
 }
 

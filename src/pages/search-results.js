@@ -16,10 +16,8 @@ const SearchResults = () => {
 		urlParams ? { query: urlParams.query } : { query: '' }
 	)
 	const [source, setSource] = useState(
-		searchState.source ? searchState.source : ''
+		urlParams.source ? urlParams.source : ''
 	)
-	console.log(source)
-	console.log(searchState)
 	const hasQuery = searchState.query ? searchState.query : '' // running a check here prevents undefined error
 	const [visibility, setVisibility] = useState(
 		hasQuery.length === 0 ? 'inherit' : 'hidden'
@@ -27,6 +25,7 @@ const SearchResults = () => {
 
 	const handleHeroClick = () => {
 		setVisibility('inherit')
+		setSource(false)
 		setSearchState({ query: '' })
 	}
 
