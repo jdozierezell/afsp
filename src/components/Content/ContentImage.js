@@ -1,37 +1,57 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import Glide, {
+	Anchors,
+	Controls,
+	Breakpoints,
+} from '@glidejs/glide/dist/glide.modular.esm'
 import { css } from '@emotion/core'
 import Img from 'gatsby-image'
 
+import IconArrowCircle from '../SVGs/IconArrowCircle'
+
 import { styles } from '../../css/css'
+
+import '@glidejs/glide/dist/css/glide.core.min.css'
 
 const singleCSS = css`
 	margin-bottom: ${styles.scale.px24};
 `
 
 const carouselButtonsCSS = css`
-	text-align: center;
-	margin: ${styles.scale.px45} 0 0;
-	padding: 0;
-	line-height: 0;
-	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px35} 0 0;
+	position: absolute;
+	width: ${styles.scale.px64};
+	height: ${styles.scale.px64};
+	top: 40%;
+	margin-top: -${styles.scale.px126 / 2};
+	cursor: pointer;
+	@media (min-width: ${styles.screens.tablet}px) {
+		width: ${styles.scale.px80};
+		height: ${styles.scale.px80};
 	}
-	button {
-		background: ${styles.colors.lightGray};
-		border: none;
-		margin: 0 5px;
-		padding: 0;
-		font-size: ${styles.scale.px28};
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
+	:first-of-type {
+		left: ${styles.scale.px24};
+	}
+	:last-of-type {
+		right: ${styles.scale.px24};
 	}
 	.glide__bullet--active {
-		background: ${styles.colors.darkGray};
+		background: hsla(0, 0%, 14.9%, 1);
 	}
 `
 
 const ContentImage = ({ image }) => {
+	useEffect(() => {
+		if (image.length > 1) {
+			new Glide(`.glide-image`, {
+				perView: 2,
+				perTouch: 1,
+			}).mount({
+				Anchors,
+				Controls,
+				Breakpoints,
+			})
+		}
+	}, [])
 	return (
 		<div className="storyContent">
 			{image.length === 1 && (
@@ -47,32 +67,33 @@ const ContentImage = ({ image }) => {
 					css={css`
 						overflow: hidden;
 						margin: ${styles.scale.px36} 0;
+						position: relative;
 					`}
 				>
 					<div data-glide-el="track">
 						<div className="glide__slides">
 							{image.map((image, index) => (
-								<img
+								<Img
 									key={index}
-									src={`${image.url}?w=769&h=475&fit=crop&crop=faces`}
+									fluid={image.fluid}
 									alt={image.alt}
-									css={css`
-										max-height: 500px;
-										width: auto !important;
-									`}
 								/>
 							))}
 						</div>
 					</div>
-					<div data-glide-el="controls[nav]" css={carouselButtonsCSS}>
-						{image.map((__, index) => {
-							return (
-								<button
-									key={index}
-									data-glide-dir={`=${index}`}
-								></button>
-							)
-						})}
+					<div data-glide-el="controls">
+						<div css={carouselButtonsCSS} data-glide-dir="<">
+							<IconArrowCircle
+								color="hsla(0, 0%, 14.9%, 0.2)"
+								direction="left"
+							/>
+						</div>
+						<div css={carouselButtonsCSS} data-glide-dir=">">
+							<IconArrowCircle
+								color="hsla(0, 0%, 14.9%, 0.2)"
+								direction="right"
+							/>
+						</div>
 					</div>
 				</div>
 			)}
