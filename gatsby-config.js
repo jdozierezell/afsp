@@ -1,9 +1,6 @@
 require('dotenv').config({
 	path: `.env.${process.env.NODE_ENV}`,
 })
-console.log(process.env.NODE_ENV)
-console.log(process.env.DATOCMS_API)
-console.log(process.env.PREVIEW_MODE)
 module.exports = {
 	siteMetadata: {
 		title: `Gatsby Default Starter`,

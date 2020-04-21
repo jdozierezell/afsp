@@ -128,23 +128,24 @@ export const query = graphql`
 				node {
 					title
 					slug
-					coverImage {
-						url
-						fluid(
-							maxWidth: 600
-							imgixParams: {
-								auto: "format"
-								fit: "crop"
-								crop: "faces"
-								w: "600"
-								h: "370"
-							}
-						) {
-							...GatsbyDatoCmsFluid
-						}
-					}
+
 					seo {
 						description
+						image {
+							url
+							fluid(
+								maxWidth: 600
+								imgixParams: {
+									auto: "format"
+									fit: "crop"
+									crop: "faces"
+									w: "600"
+									h: "370"
+								}
+							) {
+								...GatsbyDatoCmsFluid
+							}
+						}
 					}
 					author {
 						authorName
