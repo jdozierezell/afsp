@@ -94,7 +94,7 @@ const QuiltForm = () => {
 		formData.append('state', data.state.value)
 		axios
 			.post(
-				'https://serene-dusk-44738.herokuapp.com/create-support-group',
+				'https://serene-dusk-44738.herokuapp.com/create-quilt',
 				formData,
 				{
 					headers: {
