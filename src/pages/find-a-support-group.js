@@ -61,6 +61,7 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 		} else {
 			supportGroups.edges.forEach(supportGroup => {
 				if (supportGroup.node.meetingZipPostalCode) {
+					supportGroup.node.meetingZipPostalCode = supportGroup.node.meetingZipPostalCode.trim()
 					if (
 						supportGroup.node.meetingZipPostalCode ===
 						response.primaryZip
@@ -108,6 +109,7 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 
 	useEffect(() => {
 		const countryArray = []
+		console.log(supportGroups.edges.length)
 		supportGroups.edges.forEach(group => {
 			if (group.node.meetingCountry !== 'United States of America') {
 				countryArray.push(group.node.meetingCountry)
@@ -193,6 +195,9 @@ export const query = graphql`
 					contactName
 					contactEmail
 					contactPhone
+					secondContactName
+					secondContactEmail
+					secondContactPhone
 					registrationProcess
 					meetingSchedule
 					nameOfMeetingSite

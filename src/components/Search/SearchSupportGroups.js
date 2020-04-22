@@ -72,6 +72,9 @@ const SearchSupportGroups = ({ supportGroup }) => {
 		contactEmail,
 		contactName,
 		contactPhone,
+		secondContactEmail,
+		secondContactName,
+		secondContactPhone,
 		costToAttend,
 		facilitator,
 		groupDemographic,
@@ -143,13 +146,20 @@ const SearchSupportGroups = ({ supportGroup }) => {
 					</p>
 				</address>
 				<p>
-					Our facilitator is a {facilitator.toLowerCase()} who{' '}
-					{attendedTraining ? 'has' : 'has not'} attended AFSP's
-					Facilitating a Suicide Bereavement Support Group training.
+					<span>
+						Our facilitator is a {facilitator.toLowerCase()}
+					</span>
+					{attendedTraining && (
+						<span>
+							who has attended AFSP's Facilitating a Suicide
+							Bereavement Support Group training
+						</span>
+					)}
+					.
 				</p>
 				<p>
 					We {newMembers ? 'are' : 'are not'} currently accepting new
-					members.
+					loss survivors.
 				</p>
 			</div>
 			<div>
@@ -157,23 +167,38 @@ const SearchSupportGroups = ({ supportGroup }) => {
 				<p>{meetingSchedule}</p>
 				<p>{groupDemographic}</p>
 				<p>{registrationProcess}</p>
-				{costToAttend && (
-					<p>
-						We charge {costToAttend} to cover the cost of
-						attendance.
-					</p>
-				)}
+				{costToAttend &&
+					costToAttend.toLowerCase() !== 'free' &&
+					costToAttend.toLowerCase() !== 'none' && (
+						<p>
+							We charge {costToAttend} to cover the cost of
+							attendance.
+						</p>
+					)}
 				<p>{additionalInformation}</p>
 			</div>
 			<div>
 				<h4>Have questions? Reach out</h4>
 				<address>
-					{contactEmail}
-					<br />
 					{contactName}
 					<br />
-					{contactPhone}
+					<a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+					{contactPhone && <br />}
+					{contactPhone ? contactPhone : ''}
 				</address>
+				{secondContactName && (
+					<address>
+						{secondContactName}
+						{secondContactEmail && <br />}
+						{secondContactEmail && (
+							<a href={`mailto:${secondContactEmail}`}>
+								{secondContactEmail}
+							</a>
+						)}
+						{secondContactPhone && <br />}
+						{secondContactPhone ? contactPhone : ''}
+					</address>
+				)}
 			</div>
 		</div>
 	)

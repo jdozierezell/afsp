@@ -85,6 +85,18 @@ export const query = graphql`
 					__typename
 					images {
 						url
+						fluid(
+							maxWidth: 623
+							imgixParams: {
+								auto: "format"
+								fit: "fill"
+								fill: "blur"
+								w: "623"
+								h: "384"
+							}
+						) {
+							...GatsbyDatoCmsFluid
+						}
 						alt
 					}
 				}
