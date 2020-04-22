@@ -102,7 +102,7 @@ const QuiltForm = () => {
 	const Element = Scroll.Element
 	const scroller = Scroll.scroller
 
-	const handleMultiChange = selectedOption => {
+	const handleStateSelectChange = selectedOption => {
 		console.log(selectedOption)
 		setValue('state', selectedOption)
 		setReactSelectValue({ selectedOption })
@@ -112,13 +112,13 @@ const QuiltForm = () => {
 		const form = document.querySelector('form')
 		let formData = new FormData(form)
 		formData.append('image', data.image)
-		formData.append('state', values.selectedOption.value)
-		console.log(values.selectedOption.value)
-		console.log(data)
-		for (let value of formData.values()) {
-			console.log(value)
+		formData.append('state', values.selectedOption)
+		for (var pair of formData.entries()) {
+			console.log(pair[0] + ', ' + pair[1])
 		}
+
 		setLoading(true)
+
 		axios
 			.post(
 				'https://serene-dusk-44738.herokuapp.com/create-quilt',
@@ -229,7 +229,7 @@ const QuiltForm = () => {
 							classNamePrefix="react-select"
 							value={values.selectedOption}
 							options={stateListModel}
-							onChange={handleMultiChange}
+							onChange={handleStateSelectChange}
 						/>
 
 						<label id="file" htmlFor="file">

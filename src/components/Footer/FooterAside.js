@@ -33,7 +33,7 @@ const FooterAside = () => {
 				>
 					National Suicide Prevention Lifeline
 				</a>{' '}
-				at <a href="tel:+18002738255">800-273-8255</a>
+				at <a href="tel:+18002738255">800-273-8255</a>.
 			</p>
 			<p>
 				Or contact the{' '}

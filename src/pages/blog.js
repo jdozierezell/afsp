@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import moment from 'moment'
 
 import Layout from '../components/Layout'
 import HeroVideo from '../components/Hero/HeroVideo'
@@ -13,6 +14,11 @@ import { styles } from '../css/css'
 const RealStories = ({ data: { real, stories } }) => {
 	stories.edges.forEach(story => {
 		story.node.type = 'story'
+	})
+	const currentStories = stories.edges.filter(story => {
+		const today = moment()
+		const pubDate = moment(story.node.publicationDate, 'YYYY-MM-DD')
+		return pubDate <= today
 	})
 	return (
 		<Layout
@@ -40,7 +46,7 @@ const RealStories = ({ data: { real, stories } }) => {
 			<StoriesContainer
 				header="Stories"
 				first={true}
-				stories={stories.edges}
+				stories={currentStories}
 			/>
 			<CTAContainer
 				number={1}
@@ -49,7 +55,7 @@ const RealStories = ({ data: { real, stories } }) => {
 			<StoriesContainer
 				offset={3}
 				more="stories"
-				stories={stories.edges}
+				stories={currentStories}
 			/>
 			<CTAContainer
 				number={2}
@@ -126,6 +132,7 @@ export const query = graphql`
 				node {
 					title
 					slug
+					publicationDate
 					seo {
 						description
 						image {
