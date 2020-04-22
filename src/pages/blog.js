@@ -16,9 +16,13 @@ const RealStories = ({ data: { real, stories } }) => {
 		story.node.type = 'story'
 	})
 	const currentStories = stories.edges.filter(story => {
-		const today = moment()
-		const pubDate = moment(story.node.publicationDate, 'YYYY-MM-DD')
-		return pubDate <= today
+		if (story.node.publicationDate) {
+			const today = moment()
+			const pubDate = moment(story.node.publicationDate, 'YYYY-MM-DD')
+			return pubDate <= today
+		} else {
+			return false
+		}
 	})
 	return (
 		<Layout
