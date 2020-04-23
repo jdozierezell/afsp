@@ -121,7 +121,7 @@ const HeroVideo = ({
 			{videoUrl && (
 				<video
 					autoPlay
-					muted
+					muted={true}
 					loop
 					playsInline
 					css={videoCoverCSS}

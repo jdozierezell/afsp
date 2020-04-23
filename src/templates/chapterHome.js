@@ -224,6 +224,29 @@ export const query = graphql`
 				}
 			}
 			featuredPrograms {
+				... on DatoCmsActionCenter {
+					__typename
+					title
+					slug
+					seo {
+						image {
+							url
+							fluid(
+								maxWidth: 600
+								imgixParams: {
+									auto: "format"
+									fit: "crop"
+									crop: "faces"
+									w: "600"
+									h: "370"
+								}
+							) {
+								...GatsbyDatoCmsFluid
+							}
+						}
+						description
+					}
+				}
 				... on DatoCmsLanding {
 					__typename
 					title

@@ -108,7 +108,7 @@ const CTAVideo = ({ cta, id }) => {
 			{video && (
 				<video
 					autoPlay
-					muted
+					muted={true}
 					loop
 					playsInline
 					css={videoCoverCSS}

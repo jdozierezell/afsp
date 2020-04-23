@@ -35,6 +35,10 @@ export const CTAs = graphql`
 					external
 					linkUrl
 					link {
+						... on DatoCmsActionCenter {
+							__typename
+							slug
+						}
 						... on DatoCmsTag {
 							__typename
 							slug
@@ -85,6 +89,10 @@ export const CTAs = graphql`
 					external
 					linkUrl
 					link {
+						... on DatoCmsActionCenter {
+							__typename
+							slug
+						}
 						... on DatoCmsTag {
 							__typename
 							slug
@@ -134,6 +142,10 @@ export const CTAs = graphql`
 					external
 					linkUrl
 					link {
+						... on DatoCmsActionCenter {
+							__typename
+							slug
+						}
 						... on DatoCmsTag {
 							__typename
 							slug
