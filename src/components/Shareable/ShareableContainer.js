@@ -293,7 +293,6 @@ const ShareableContainer = ({
 					</Layer>
 				</Stage>
 			</div>
-			{console.log(controlHeight)}
 			<div
 				ref={controlRef}
 				css={css`

@@ -1,7 +1,6 @@
 import _ from 'lodash'
 
 const formatStatisticsCard = (data, state) => {
-	console.log(data)
 	const usIndex = data.findIndex(x => x.id.toLowerCase() === 'us average')
 	const stateIndex = data.findIndex(x => x.id.toLowerCase() === state.state)
 	const rate = data[stateIndex].rate

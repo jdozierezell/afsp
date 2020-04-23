@@ -109,7 +109,6 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 
 	useEffect(() => {
 		const countryArray = []
-		console.log(supportGroups.edges.length)
 		supportGroups.edges.forEach(group => {
 			if (group.node.meetingCountry !== 'United States of America') {
 				countryArray.push(group.node.meetingCountry)

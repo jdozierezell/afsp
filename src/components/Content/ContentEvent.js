@@ -73,7 +73,6 @@ const ContentEvent = ({ setEvents, programName }) => {
 					{/* {console.log(programEvents)} */}
 					{programEvents.map((event, index) => {
 						let chapterName = ''
-						console.log(event)
 						chapters.info.edges.forEach(chapter => {
 							chapter.node.chapterDonorDriveId = chapter.node.chapterDonorDriveId.replace(
 								' ',

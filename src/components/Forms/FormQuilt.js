@@ -103,7 +103,6 @@ const QuiltForm = () => {
 	const scroller = Scroll.scroller
 
 	const handleStateSelectChange = selectedOption => {
-		console.log(selectedOption)
 		setValue('state', selectedOption)
 		setReactSelectValue({ selectedOption })
 	}
@@ -113,9 +112,6 @@ const QuiltForm = () => {
 		let formData = new FormData(form)
 		formData.append('image', data.image)
 		formData.append('state', values.selectedOption)
-		for (var pair of formData.entries()) {
-			console.log(pair[0] + ', ' + pair[1])
-		}
 
 		setLoading(true)
 

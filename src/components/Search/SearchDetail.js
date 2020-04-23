@@ -67,7 +67,6 @@ const SearchDetail = ({
 	handleSearchChange,
 	indexResults,
 }) => {
-	console.log(searchState)
 	return (
 		<div css={searchDetailCSS}>
 			<InstantSearch

@@ -52,7 +52,6 @@ const ContentImage = ({ image }) => {
 			})
 		}
 	}, [])
-	console.log(image)
 	return (
 		<div className="storyContent">
 			{image.length === 1 && (

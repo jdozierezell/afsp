@@ -45,7 +45,6 @@ const HeroSearch = ({
 	}
 	return (
 		<div css={solidHeroCSS}>
-			{console.log(source)}
 			{source && (
 				<>
 					<h1>
