@@ -113,7 +113,11 @@ const ContentStory = ({ data }) => {
 						)
 					} else if (article.__typename === 'DatoCmsImage') {
 						return (
-							<ContentImage key={index} image={article.images} />
+							<ContentImage
+								key={index}
+								index={index}
+								image={article.images}
+							/>
 						)
 					} else if (article.__typename === 'DatoCmsDetailSquare') {
 						return (

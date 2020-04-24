@@ -39,10 +39,10 @@ const carouselButtonsCSS = css`
 	}
 `
 
-const ContentImage = ({ image }) => {
+const ContentImage = ({ image, index }) => {
 	useEffect(() => {
 		if (image.length > 1) {
-			new Glide(`.glide-image`, {
+			new Glide(`.glide-image-${index}`, {
 				perView: 2,
 				perTouch: 1,
 			}).mount({
@@ -63,7 +63,7 @@ const ContentImage = ({ image }) => {
 			)}
 			{image.length > 1 && (
 				<div
-					className="glide-image"
+					className={`glide-image-${index}`}
 					css={css`
 						overflow: hidden;
 						margin: ${styles.scale.px36} 0;
@@ -81,20 +81,22 @@ const ContentImage = ({ image }) => {
 							))}
 						</div>
 					</div>
-					<div data-glide-el="controls">
-						<div css={carouselButtonsCSS} data-glide-dir="<">
-							<IconArrowCircle
-								color="hsla(0, 0%, 14.9%, 0.2)"
-								direction="left"
-							/>
+					{image.length > 2 && (
+						<div data-glide-el="controls">
+							<div css={carouselButtonsCSS} data-glide-dir="<">
+								<IconArrowCircle
+									color="hsla(0, 0%, 14.9%, 0.2)"
+									direction="left"
+								/>
+							</div>
+							<div css={carouselButtonsCSS} data-glide-dir=">">
+								<IconArrowCircle
+									color="hsla(0, 0%, 14.9%, 0.2)"
+									direction="right"
+								/>
+							</div>
 						</div>
-						<div css={carouselButtonsCSS} data-glide-dir=">">
-							<IconArrowCircle
-								color="hsla(0, 0%, 14.9%, 0.2)"
-								direction="right"
-							/>
-						</div>
-					</div>
+					)}
 				</div>
 			)}
 		</div>
