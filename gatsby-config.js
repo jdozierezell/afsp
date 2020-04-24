@@ -1,6 +1,8 @@
 require('dotenv').config({
 	path: `.env.${process.env.NODE_ENV}`,
 })
+console.log(process.env.NODE_ENV)
+console.log(process.env.PREVIEW_MODE)
 module.exports = {
 	siteMetadata: {
 		title: `Gatsby Default Starter`,
@@ -32,7 +34,7 @@ module.exports = {
 			options: {
 				apiToken: process.env.DATOCMS_API,
 				previewMode: process.env.PREVIEW_MODE,
-				disabledLiveReload: false,
+				disableLiveReload: false,
 			},
 		},
 		`gatsby-plugin-client-side-redirect`, // keep it in last in list
