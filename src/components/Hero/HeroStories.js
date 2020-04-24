@@ -172,7 +172,7 @@ const HeroStories = ({ data, prev, next }) => {
 			<div css={storyMetaCSS}>
 				<h1>{title}</h1>
 				<p css={dateLineCSS}>
-					{publicationDate ? `publicationDate — ` : ''}
+					{publicationDate ? `${publicationDate} — ` : ''}
 					{timeToRead.humanizedDuration} min read
 				</p>
 				{author && (
