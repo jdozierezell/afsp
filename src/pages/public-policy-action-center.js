@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import Script from 'react-load-script'
 import { css } from '@emotion/core'
 
