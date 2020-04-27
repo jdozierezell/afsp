@@ -16,7 +16,6 @@ module.exports = {
 	plugins: [
 		`gatsby-plugin-emotion`,
 		`gatsby-plugin-react-helmet`,
-		`gatsby-plugin-transition-link`,
 		`gatsby-plugin-netlify-cache`,
 		`gatsby-plugin-sitemap`,
 		`gatsby-plugin-playground`,

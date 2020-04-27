@@ -71,57 +71,70 @@ const copyrightCSS = css`
 `
 const Footer = ({ nav }) => {
 	useEffect(() => {
-		const siteImprove = document.createElement('script')
-		siteImprove.type = 'text/javascript'
-		siteImprove.id = 'siteimprove'
-		siteImprove.async = true
-		siteImprove.src = '//siteimproveanalytics.com/js/siteanalyze_6019066.js'
-		const s = document.getElementsByTagName('script')[0]
-		s.parentNode.insertBefore(siteImprove, s)
+		// const siteImprove = document.createElement('script')
+		// siteImprove.type = 'text/javascript'
+		// siteImprove.id = 'siteimprove'
+		// siteImprove.async = true
+		// siteImprove.src = '//siteimproveanalytics.com/js/siteanalyze_6019066.js'
+		// const s = document.getElementsByTagName('script')[0]
+		// s.parentNode.insertBefore(siteImprove, s)
 	}, [])
 
 	return (
-		<footer css={footerCSS}>
-			<div css={desktopFooterCSS}>
-				{nav.map((item, index) => {
-					const leftEdge = index * 2 + 1
-					const rightEdge =
-						index + 1 < nav.length ? index * 2 + 3 : index * 2 + 2
-					return (
-						<div
-							key={index}
-							css={css`
-								grid-area: 1 / ${leftEdge} / 2 / ${rightEdge};
-							`}
-						>
-							<DeskFooterSection
-								item={item}
-								index={index}
-								length={nav.length}
-							/>
-						</div>
-					)
-				})}
-			</div>
-			<div css={mobileFooterCSS}>
-				<FooterAside />
-				{nav.map((item, index) => (
-					<MobileMenuSection key={index} item={item} />
-				))}
-			</div>
-			<div css={logoLegalCSS}>
-				<div css={grid782}>
-					<FooterSocials />
+		<>
+			<footer css={footerCSS}>
+				<div css={desktopFooterCSS}>
+					{nav.map((item, index) => {
+						const leftEdge = index * 2 + 1
+						const rightEdge =
+							index + 1 < nav.length
+								? index * 2 + 3
+								: index * 2 + 2
+						return (
+							<div
+								key={index}
+								css={css`
+									grid-area: 1 / ${leftEdge} / 2 /
+										${rightEdge};
+								`}
+							>
+								<DeskFooterSection
+									item={item}
+									index={index}
+									length={nav.length}
+								/>
+							</div>
+						)
+					})}
 				</div>
-				<div css={logoCSS}>
-					<LogoWhite />
+				<div css={mobileFooterCSS}>
+					<FooterAside />
+					{nav.map((item, index) => (
+						<MobileMenuSection key={index} item={item} />
+					))}
 				</div>
-				<small css={copyrightCSS}>
-					© {new Date().getFullYear()} American Foundation for Suicide
-					Prevention. All rights reserved.
-				</small>
-			</div>
-		</footer>
+				<div css={logoLegalCSS}>
+					<div css={grid782}>
+						<FooterSocials />
+					</div>
+					<div css={logoCSS}>
+						<LogoWhite />
+					</div>
+					<small css={copyrightCSS}>
+						© {new Date().getFullYear()} American Foundation for
+						Suicide Prevention. All rights reserved.
+					</small>
+				</div>
+			</footer>
+			<Script
+				attributes={{
+					id: 'siteimprove',
+					type: 'text/javascript',
+					async: '',
+				}}
+				url="//siteimproveanalytics.com/js/siteanalyze_6019066.js"
+			/>
+		</>
 	)
 }
 
