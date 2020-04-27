@@ -18,7 +18,7 @@ export const Recommendation = graphql`
 					h: "720"
 				}
 			) {
-				...GatsbyDatoCmsFluid
+				...GatsbyDatoCmsFluid_noBase64
 			}
 		}
 		recommendationHeading

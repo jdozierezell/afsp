@@ -43,13 +43,13 @@ export const query = graphql`
 							h: "370"
 						}
 					) {
-						...GatsbyDatoCmsFluid
+						...GatsbyDatoCmsFluid_noBase64
 					}
 					original: fluid(
 						maxWidth: 600
 						imgixParams: { auto: "format" }
 					) {
-						...GatsbyDatoCmsFluid
+						...GatsbyDatoCmsFluid_noBase64
 					}
 				}
 				linkToOther

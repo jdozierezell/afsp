@@ -21,7 +21,7 @@ export const ResourceList = graphql`
 								h: "370"
 							}
 						) {
-							...GatsbyDatoCmsFluid
+							...GatsbyDatoCmsFluid_noBase64
 						}
 					}
 				}
@@ -44,7 +44,7 @@ export const ResourceList = graphql`
 								h: "370"
 							}
 						) {
-							...GatsbyDatoCmsFluid
+							...GatsbyDatoCmsFluid_noBase64
 						}
 					}
 				}
@@ -67,7 +67,7 @@ export const ResourceList = graphql`
 								h: "370"
 							}
 						) {
-							...GatsbyDatoCmsFluid
+							...GatsbyDatoCmsFluid_noBase64
 						}
 					}
 				}
@@ -88,7 +88,7 @@ export const ResourceList = graphql`
 							h: "370"
 						}
 					) {
-						...GatsbyDatoCmsFluid
+						...GatsbyDatoCmsFluid_noBase64
 					}
 				}
 				seo {
@@ -111,7 +111,7 @@ export const ResourceList = graphql`
 							h: "370"
 						}
 					) {
-						...GatsbyDatoCmsFluid
+						...GatsbyDatoCmsFluid_noBase64
 					}
 				}
 			}
@@ -133,7 +133,7 @@ export const ResourceList = graphql`
 								h: "370"
 							}
 						) {
-							...GatsbyDatoCmsFluid
+							...GatsbyDatoCmsFluid_noBase64
 						}
 					}
 				}

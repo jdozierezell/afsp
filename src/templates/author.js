@@ -65,7 +65,7 @@ export const query = graphql`
 									h: "370"
 								}
 							) {
-								...GatsbyDatoCmsFluid
+								...GatsbyDatoCmsFluid_noBase64
 							}
 						}
 					}

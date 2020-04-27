@@ -82,7 +82,7 @@ export const query = graphql`
 						h: "475"
 					}
 				) {
-					...GatsbyDatoCmsFluid
+					...GatsbyDatoCmsFluid_noBase64
 				}
 			}
 			desktopCover: heroImage {
@@ -99,7 +99,7 @@ export const query = graphql`
 						blend: "555"
 					}
 				) {
-					...GatsbyDatoCmsFluid
+					...GatsbyDatoCmsFluid_noBase64
 				}
 			}
 			brief

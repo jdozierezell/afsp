@@ -194,7 +194,7 @@ export const query = graphql`
 						maxWidth: 1080
 						imgixParams: { auto: "format", w: "1080" }
 					) {
-						...GatsbyDatoCmsFluid
+						...GatsbyDatoCmsFluid_noBase64
 					}
 				}
 				bodyCopy
@@ -215,7 +215,7 @@ export const query = graphql`
 							h: "200"
 						}
 					) {
-						...GatsbyDatoCmsFluid
+						...GatsbyDatoCmsFluid_noBase64
 					}
 				}
 				heading
@@ -248,7 +248,7 @@ export const query = graphql`
 											h: "370"
 										}
 									) {
-										...GatsbyDatoCmsFluid
+										...GatsbyDatoCmsFluid_noBase64
 									}
 								}
 							}
@@ -271,7 +271,7 @@ export const query = graphql`
 											h: "370"
 										}
 									) {
-										...GatsbyDatoCmsFluid
+										...GatsbyDatoCmsFluid_noBase64
 									}
 								}
 							}
@@ -294,7 +294,7 @@ export const query = graphql`
 											h: "370"
 										}
 									) {
-										...GatsbyDatoCmsFluid
+										...GatsbyDatoCmsFluid_noBase64
 									}
 								}
 							}
@@ -315,7 +315,7 @@ export const query = graphql`
 										h: "370"
 									}
 								) {
-									...GatsbyDatoCmsFluid
+									...GatsbyDatoCmsFluid_noBase64
 								}
 							}
 							seo {
@@ -338,7 +338,7 @@ export const query = graphql`
 										h: "370"
 									}
 								) {
-									...GatsbyDatoCmsFluid
+									...GatsbyDatoCmsFluid_noBase64
 								}
 							}
 							resourceLink {
@@ -374,7 +374,7 @@ export const query = graphql`
 											h: "370"
 										}
 									) {
-										...GatsbyDatoCmsFluid
+										...GatsbyDatoCmsFluid_noBase64
 									}
 								}
 							}

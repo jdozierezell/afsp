@@ -22,7 +22,7 @@ export const CTAs = graphql`
 								q: 30
 							}
 						) {
-							...GatsbyDatoCmsFluid
+							...GatsbyDatoCmsFluid_noBase64
 						}
 					}
 					heading
