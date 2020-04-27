@@ -35,6 +35,13 @@ export const query = graphql`
 		detail: datoCmsDetail(slug: { eq: $slug }) {
 			title
 			slug
+			programLogo {
+				url
+				fluid(maxWidth: 623) {
+					...GatsbyDatoCmsFluid_noBase64
+				}
+				alt
+			}
 			brief
 			parentPage {
 				...ParentList

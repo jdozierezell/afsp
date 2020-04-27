@@ -44,7 +44,7 @@
 */
 
 /* @import must be at top of file, otherwise CSS will not work */
-@import url('//hello.myfonts.net/count/3a4a6d');
+/* @import url('//hello.myfonts.net/count/3a4a6d'); */
 
 @font-face {
 	font-family: 'AvenirNextLTPro-Regular';

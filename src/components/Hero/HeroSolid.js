@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import Img from 'gatsby-image'
 
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs'
 
@@ -29,6 +30,13 @@ const solidHeroCSS = css`
 			margin: ${styles.scale.px40} 0;
 		}
 	}
+	.gatsby-image-wrapper {
+		margin: ${styles.scale.px35} 0;
+		max-width: 623px;
+		@media (min-width: ${styles.screens.mobile}px) {
+			margin: ${styles.scale.px40} 0;
+		}
+	}
 	a {
 		color: ${styles.colors.yellow};
 		:hover {
@@ -38,7 +46,8 @@ const solidHeroCSS = css`
 `
 
 const HeroSolid = ({ data, addCSS }) => {
-	const { title, brief, parentPage } = data
+	const { title, brief, parentPage, programLogo } = data
+	console.log(programLogo)
 	return (
 		<div
 			css={css`
@@ -49,7 +58,12 @@ const HeroSolid = ({ data, addCSS }) => {
 			{parentPage && parentPage.parentPage && (
 				<Breadcrumbs parentPage={parentPage} child={title} />
 			)}
-			<h1 dangerouslySetInnerHTML={{ __html: title }}></h1>
+			{programLogo && (
+				<Img fluid={programLogo.fluid} alt={programLogo.alt} />
+			)}
+			{!programLogo && (
+				<h1 dangerouslySetInnerHTML={{ __html: title }}></h1>
+			)}
 			<div
 				dangerouslySetInnerHTML={{
 					__html: brief,
