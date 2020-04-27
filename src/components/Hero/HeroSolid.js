@@ -47,7 +47,6 @@ const solidHeroCSS = css`
 
 const HeroSolid = ({ data, addCSS }) => {
 	const { title, brief, parentPage, programLogo } = data
-	console.log(programLogo)
 	return (
 		<div
 			css={css`

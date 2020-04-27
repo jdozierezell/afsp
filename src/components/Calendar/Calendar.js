@@ -70,9 +70,9 @@ const Calendar = ({ events }) => {
 									'MMMM D @ h:mm a'
 								)}
 							</h4>
-							<p>{event.brief}</p>
+							{event.brief && <p>{event.brief}</p>}
 							<a class="secondary-button" href={event.url}>
-								Learn more
+								Add to your calendar
 							</a>
 						</li>
 					)
