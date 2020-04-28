@@ -70,20 +70,18 @@ const Convo = ({ convo, addCSS }) => {
 				fluid={convo.posterImage.fluid}
 				css={videoCTACSS}
 			>
-				{convo.video && (
-					<video
-						autoPlay
-						muted
-						loop
-						playsInline
-						css={videoCoverCSS}
-						src={
-							convo.video.video
-								? convo.video.video.mp4url
-								: convo.video.url
-						}
-					></video>
-				)}
+				<video
+					autoPlay
+					muted
+					loop
+					playsInline
+					css={videoCoverCSS}
+					src={
+						convo.video
+							? convo.video.video.mp4url
+							: convo.vimeoExternalUrl
+					}
+				></video>
 			</BackgroundImage>
 			<div>
 				<div dangerouslySetInnerHTML={{ __html: convo.bodyCopy }} />

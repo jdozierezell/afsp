@@ -71,7 +71,7 @@ const RealConvo = ({ data: { realConvo } }) => {
 						}
 					`}
 				>
-					{realConvo.seo.description}
+					{realConvo.brief}
 				</p>
 			)}
 			{realConvo.channelList.length !== 0 && (
@@ -171,6 +171,7 @@ export const query = graphql`
 			}
 			title
 			slug
+			brief
 			seo {
 				description
 			}
