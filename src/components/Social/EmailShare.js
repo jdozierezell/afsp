@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import IconLink from '../SVGs/IconLink'
+import IconEmail from '../SVGs/IconEmail'
 
 import { styles } from '../../css/css'
 
@@ -12,7 +12,7 @@ const EmailShare = () => {
 	}, [])
 	return (
 		<a href={`mailto:?&subject=&body=${uri}`}>
-			<IconLink color={styles.colors.darkGray} />
+			<IconEmail color={styles.colors.darkGray} />
 		</a>
 	)
 }
