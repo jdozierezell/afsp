@@ -70,9 +70,8 @@ const RealConvo = ({ data: { realConvo } }) => {
 									: styles.scale.px50};
 						}
 					`}
-				>
-					{realConvo.brief}
-				</p>
+					dangerouslySetInnerHTML={{ __html: realConvo.brief }}
+				></p>
 			)}
 			{realConvo.channelList.length !== 0 && (
 				<ChannelContainer
