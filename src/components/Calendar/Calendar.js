@@ -73,7 +73,7 @@ const Calendar = ({ events }) => {
 							</h4>
 							{event.brief && <p>{event.brief}</p>}
 							<a class="secondary-button" href={event.url}>
-								Add to your calendar
+								Add to calendar
 							</a>
 						</li>
 					)
