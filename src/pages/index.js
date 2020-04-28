@@ -32,7 +32,7 @@ const walkBar = css`
 	}
 `
 
-const App = ({ data: { home } }) => {
+const App = ({ data: { home, afspMedia } }) => {
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -68,6 +68,7 @@ const App = ({ data: { home } }) => {
 						<ChannelContainer
 							key={index}
 							channelList={item.channels}
+							channelListMedia={afspMedia.home.channelList}
 						/>
 					)
 				} else if (item.__typename === 'DatoCmsCallToAction') {
@@ -161,6 +162,7 @@ export const query = graphql`
 				... on DatoCmsChannelList {
 					__typename
 					channels {
+						id
 						image {
 							url
 							fluid(
@@ -291,6 +293,34 @@ export const query = graphql`
 				}
 			}
 			instagramClass
+		}
+		afspMedia: afspMedia {
+			home {
+				channelList {
+					id
+					image {
+						responsiveImage(
+							imgixParams: {
+								auto: format
+								crop: faces
+								fit: crop
+								h: "200"
+								w: "200"
+							}
+						) {
+							srcSet
+							webpSrcSet
+							sizes
+							src
+							width
+							height
+							aspectRatio
+							alt
+							title
+						}
+					}
+				}
+			}
 		}
 	}
 `

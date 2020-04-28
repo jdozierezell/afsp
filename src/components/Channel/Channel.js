@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+import Img from 'react-datocms'
 import { Link } from 'gatsby'
 
 import { styles } from '../../css/css'
@@ -62,7 +62,8 @@ const Channel = ({ slug, channel }) => {
 						channelLink.link.slug
 					)}
 				>
-					<Img css={channelImageCSS} fluid={image.fluid} alt="" />
+					{console.log(image.responsiveImage)}
+					<Img data={image.responsiveImage} />
 					<span>{heading}</span>
 					<p>{brief}</p>
 					<p>Learn more</p>
