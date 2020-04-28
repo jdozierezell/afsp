@@ -58,8 +58,8 @@ const calendarCSS = css`
 
 const Calendar = ({ events }) => {
 	return (
-		<div css={calendarCSS} id="calendar-of-events">
-			<h2>Calendar of events</h2>
+		<div css={calendarCSS} id="may-events-calendar">
+			<h2>May events calendar</h2>
 			<ul>
 				{events.map((event, index) => {
 					return (
