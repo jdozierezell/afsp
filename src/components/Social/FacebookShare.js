@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import IconFacebook from '../SVGs/IconFacebook'
 
 import { styles } from '../../css/css'
 
 const FacebookShare = () => {
-	const uri =
-		typeof window !== `undefined`
-			? encodeURIComponent(window.location)
-			: null
+	const [uri, setUri] = useState(null)
+
+	useEffect(() => {
+		setUri(encodeURIComponent(window.location))
+	}, [])
 	return (
 		<a
 			target="_blank"

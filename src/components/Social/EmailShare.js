@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import IconLink from '../SVGs/IconLink'
 
 import { styles } from '../../css/css'
 
 const EmailShare = () => {
-	const body = typeof window !== `undefined` ? window.location : ''
+	const [uri, setUri] = useState(null)
+
+	useEffect(() => {
+		setUri(encodeURIComponent(window.location))
+	}, [])
 	return (
-		<a href={`mailto:?&subject=&body=${body}`}>
+		<a href={`mailto:?&subject=&body=${uri}`}>
 			<IconLink color={styles.colors.darkGray} />
 		</a>
 	)

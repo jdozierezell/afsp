@@ -68,7 +68,8 @@ const Calendar = ({ events }) => {
 							<h4>
 								{moment(event.eventDateAndTime).format(
 									'MMMM D @ h:mm a'
-								)}
+								)}{' '}
+								EST
 							</h4>
 							{event.brief && <p>{event.brief}</p>}
 							<a class="secondary-button" href={event.url}>
