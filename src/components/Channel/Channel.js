@@ -53,6 +53,7 @@ const channelImageCSS = css`
 const Channel = ({ slug, channel }) => {
 	const { image, heading, brief } = channel
 	const channelLink = channel.channelLink[0]
+	console.log(image)
 	return (
 		<div css={channelCSS}>
 			{channelLink.__typename === 'DatoCmsInternalLink' && (
@@ -62,14 +63,13 @@ const Channel = ({ slug, channel }) => {
 						channelLink.link.slug
 					)}
 				>
-					{console.log(image.responsiveImage)}
 					<Img data={image.responsiveImage} />
 					<span>{heading}</span>
 					<p>{brief}</p>
 					<p>Learn more</p>
 				</Link>
 			)}
-			{channelLink.__typename === 'DatoCmsAnchor' && (
+			{/* {channelLink.__typename === 'DatoCmsAnchor' && (
 				<>
 					<Link to={`${slug}/${channelLink.anchor}`}>
 						<Img css={channelImageCSS} fluid={image.fluid} alt="" />
@@ -77,7 +77,7 @@ const Channel = ({ slug, channel }) => {
 						<p>{brief}</p>
 					</Link>
 				</>
-			)}
+			)} */}
 		</div>
 	)
 }

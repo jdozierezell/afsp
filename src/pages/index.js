@@ -103,6 +103,7 @@ export default App
 
 export const query = graphql`
 	query {
+		# gatsby-source-datocms
 		home: datoCmsHome {
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
@@ -136,28 +137,6 @@ export const query = graphql`
 				}
 			}
 			breakingNews
-			channelList {
-				image {
-					url
-					fluid(
-						maxWidth: 200
-						imgixParams: {
-							auto: "format"
-							fit: "crop"
-							crop: "faces"
-							w: "200"
-							h: "200"
-						}
-					) {
-						...GatsbyDatoCmsFluid_noBase64
-					}
-				}
-				heading
-				brief
-				channelLink {
-					...ChannelLink
-				}
-			}
 			ctaChapterResourceList {
 				... on DatoCmsChannelList {
 					__typename
@@ -294,6 +273,7 @@ export const query = graphql`
 			}
 			instagramClass
 		}
+		# gatsby-source-graphql
 		afspMedia: afspMedia {
 			home {
 				channelList {
