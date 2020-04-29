@@ -182,6 +182,7 @@ export const query = graphql`
 			}
 			convos {
 				title
+				vimeoExternalUrl
 				video {
 					url
 					video {

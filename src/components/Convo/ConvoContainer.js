@@ -12,14 +12,14 @@ const ConvoContainer = ({ convos }) => {
 				<Convo
 					key={index}
 					convo={convo}
-					// addCSS={css`
-					// 	background-color: ${index % 2 === 0
-					// 		? styles.colors.blue
-					// 		: styles.colors.lightGray};
-					// 	color: ${index % 2 === 0
-					// 		? styles.colors.white
-					// 		: styles.colors.darkGray};
-					// `}
+					addCSS={css`
+						background-color: ${index % 2 === 0
+							? styles.colors.blue
+							: styles.colors.lightGray};
+						color: ${index % 2 === 0
+							? styles.colors.white
+							: styles.colors.darkGray};
+					`}
 				/>
 			))}
 		</div>

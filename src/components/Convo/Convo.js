@@ -6,16 +6,15 @@ import { styles } from '../../css/css'
 
 const convoCSS = css`
 	width: 100vw;
-	min-height: 100vh;
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: max-content 1fr;
 	grid-gap: ${styles.gridGap.mobile};
 	padding: ${styles.scale.px50} ${styles.scale.px24};
 	@media (min-width: ${styles.screens.tablet}px) {
-		grid-template-columns: minmax(335px, 1fr) minmax(335px, 623px);
+		grid-template-columns: minmax(335px, 623px) minmax(335px, 1fr);
 		padding: ${styles.scale.px80} ${styles.scale.px50};
-		grid-gap: ${styles.gridGap.desktop};
+		grid-gap: ${styles.scale.px36};
 	}
 	h2 {
 		grid-column: 1 / 2;
@@ -23,6 +22,7 @@ const convoCSS = css`
 		color: inherit;
 		@media (min-width: ${styles.screens.tablet}px) {
 			grid-column: 1 / 3;
+			grid-row: 1 / 2;
 		}
 	}
 	p {
@@ -33,26 +33,26 @@ const videoCTACSS = css`
 	overflow: hidden;
 	position: relative;
 	min-height: 500px;
-	max-height: 580px;
 	line-height: 0;
 	background-size: contain;
-	background-position: center;
+	background-position: center top;
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin-bottom: 0;
 		line-height: initial;
+		grid-column: 1 / 2;
 	}
 `
 
 const videoCoverCSS = css`
 	position: relative;
 	line-height: 0;
-	height: calc(100vw / 1.78);
-	min-height: 500px;
-	max-height: 580px;
 	width: 100%;
 	object-fit: cover;
+`
+
+const convoDescriptionCSS = css`
 	@media (min-width: ${styles.screens.tablet}px) {
-		height: calc(100vw);
+		grid-column: 2 / 3;
 	}
 `
 
@@ -65,6 +65,7 @@ const Convo = ({ convo, addCSS }) => {
 			`}
 		>
 			<h2>{convo.title}</h2>
+			{console.log(convo)}
 			<BackgroundImage
 				Tag="section"
 				fluid={convo.posterImage.fluid}
@@ -76,14 +77,10 @@ const Convo = ({ convo, addCSS }) => {
 					loop
 					playsInline
 					css={videoCoverCSS}
-					src={
-						convo.video
-							? convo.video.video.mp4url
-							: convo.vimeoExternalUrl
-					}
+					src={convo.vimeoExternalUrl}
 				></video>
 			</BackgroundImage>
-			<div>
+			<div css={convoDescriptionCSS}>
 				<div dangerouslySetInnerHTML={{ __html: convo.bodyCopy }} />
 				<a className="secondary-button" href={convo.fullConvoFile.url}>
 					Download the full guide
