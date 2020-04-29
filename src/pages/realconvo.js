@@ -59,8 +59,8 @@ const RealConvo = ({ data: { realConvo } }) => {
 			seo={realConvo.seoMetaTags}
 		>
 			<h1 css={landingTitle}>{realConvo.title}</h1>
-			{!realConvo.introCopy && (
-				<p
+			{realConvo.brief && (
+				<div
 					css={css`
 						${landingBriefCSS};
 						@media (min-width: ${styles.screens.tablet}px) {
@@ -71,7 +71,7 @@ const RealConvo = ({ data: { realConvo } }) => {
 						}
 					`}
 					dangerouslySetInnerHTML={{ __html: realConvo.brief }}
-				></p>
+				></div>
 			)}
 			{realConvo.channelList.length !== 0 && (
 				<ChannelContainer
