@@ -20,7 +20,21 @@ const containerCSS = css`
 	}
 `
 
-const ChannelContainer = ({ slug, channelList, addCSS }) => {
+const ChannelContainer = ({ slug, channelList, channelListMedia, addCSS }) => {
+	if (channelListMedia) {
+		channelList.forEach(channel => {
+			channel.id = channel.id
+				.replace('DatoCmsChannel-', '')
+				.replace('-en', '')
+			channelListMedia.forEach(media => {
+				if (channel.id === media.id) {
+					channel.image = media.image
+				}
+			})
+		})
+	}
+	console.log(channelList)
+	console.log(channelListMedia)
 	let columns = 0
 	switch (channelList.length) {
 		case 2:

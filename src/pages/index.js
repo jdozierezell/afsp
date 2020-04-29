@@ -32,7 +32,7 @@ const walkBar = css`
 	}
 `
 
-const App = ({ data: { home } }) => {
+const App = ({ data: { home, afspMedia } }) => {
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -68,6 +68,7 @@ const App = ({ data: { home } }) => {
 						<ChannelContainer
 							key={index}
 							channelList={item.channels}
+							channelListMedia={afspMedia.home.channelList}
 						/>
 					)
 				} else if (item.__typename === 'DatoCmsCallToAction') {
@@ -102,6 +103,7 @@ export default App
 
 export const query = graphql`
 	query {
+		# gatsby-source-datocms
 		home: datoCmsHome {
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
@@ -135,47 +137,12 @@ export const query = graphql`
 				}
 			}
 			breakingNews
-			channelList {
-				image {
-					url
-					fluid(
-						maxWidth: 200
-						imgixParams: {
-							auto: "format"
-							fit: "crop"
-							crop: "faces"
-							w: "200"
-							h: "200"
-						}
-					) {
-						...GatsbyDatoCmsFluid_noBase64
-					}
-				}
-				heading
-				brief
-				channelLink {
-					...ChannelLink
-				}
-			}
 			ctaChapterResourceList {
 				... on DatoCmsChannelList {
 					__typename
 					channels {
-						image {
-							url
-							fluid(
-								maxWidth: 200
-								imgixParams: {
-									auto: "format"
-									fit: "crop"
-									crop: "faces"
-									w: "200"
-									h: "200"
-								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
-						}
+						id
+						# image imported in afspMedia
 						heading
 						brief
 						channelLink {
@@ -291,6 +258,35 @@ export const query = graphql`
 				}
 			}
 			instagramClass
+		}
+		# gatsby-source-graphql
+		afspMedia: afspMedia {
+			home {
+				channelList {
+					id
+					image {
+						responsiveImage(
+							imgixParams: {
+								auto: format
+								crop: faces
+								fit: crop
+								h: "200"
+								w: "200"
+							}
+						) {
+							srcSet
+							webpSrcSet
+							sizes
+							src
+							width
+							height
+							aspectRatio
+							alt
+							title
+						}
+					}
+				}
+			}
 		}
 	}
 `
