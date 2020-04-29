@@ -142,21 +142,7 @@ export const query = graphql`
 					__typename
 					channels {
 						id
-						image {
-							url
-							fluid(
-								maxWidth: 200
-								imgixParams: {
-									auto: "format"
-									fit: "crop"
-									crop: "faces"
-									w: "200"
-									h: "200"
-								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
-						}
+						# image imported in afspMedia
 						heading
 						brief
 						channelLink {

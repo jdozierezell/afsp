@@ -56,7 +56,7 @@ const channelCSS = css`
 	}
 `
 
-const Landing = ({ data: { landing } }) => {
+const Landing = ({ data: { landing, afspMedia } }) => {
 	let adjacent = 0
 	return (
 		<Layout
@@ -83,6 +83,7 @@ const Landing = ({ data: { landing } }) => {
 				<ChannelContainer
 					slug={landing.slug}
 					channelList={landing.channelList}
+					channelListMedia={afspMedia.landing.channelList}
 					addCSS={channelCSS}
 				/>
 			)}
@@ -173,21 +174,8 @@ export const query = graphql`
 				description
 			}
 			channelList {
-				image {
-					url
-					fluid(
-						maxWidth: 200
-						imgixParams: {
-							auto: "format"
-							fit: "crop"
-							crop: "faces"
-							w: "200"
-							h: "200"
-						}
-					) {
-						...GatsbyDatoCmsFluid_noBase64
-					}
-				}
+				id
+				# image imported in afspMedia
 				heading
 				channelLink {
 					...ChannelLink
@@ -434,6 +422,34 @@ export const query = graphql`
 				... on DatoCmsChapterConnection {
 					__typename
 					showChapterConnection
+				}
+			}
+		}
+		afspMedia: afspMedia {
+			landing: landing(filter: { slug: { eq: $slug } }) {
+				channelList {
+					id
+					heading
+					image {
+						responsiveImage(
+							imgixParams: {
+								w: "200"
+								h: "200"
+								crop: faces
+								fit: crop
+							}
+						) {
+							alt
+							srcSet
+							src
+							sizes
+							webpSrcSet
+							title
+							width
+							height
+							aspectRatio
+						}
+					}
 				}
 			}
 		}

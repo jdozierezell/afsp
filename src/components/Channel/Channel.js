@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import Img from 'react-datocms'
+import { Image } from 'react-datocms'
 import { Link } from 'gatsby'
 
 import { styles } from '../../css/css'
@@ -63,21 +63,35 @@ const Channel = ({ slug, channel }) => {
 						channelLink.link.slug
 					)}
 				>
-					<Img data={image.responsiveImage} />
+					<Image
+						css={channelImageCSS}
+						style={{
+							display: 'block',
+						}}
+						data={image.responsiveImage}
+						alt=""
+					/>
 					<span>{heading}</span>
 					<p>{brief}</p>
 					<p>Learn more</p>
 				</Link>
 			)}
-			{/* {channelLink.__typename === 'DatoCmsAnchor' && (
+			{channelLink.__typename === 'DatoCmsAnchor' && (
 				<>
 					<Link to={`${slug}/${channelLink.anchor}`}>
-						<Img css={channelImageCSS} fluid={image.fluid} alt="" />
+						<Image
+							css={channelImageCSS}
+							style={{
+								display: 'block',
+							}}
+							data={image.responsiveImage}
+							alt=""
+						/>
 						<span>{heading}</span>
 						<p>{brief}</p>
 					</Link>
 				</>
-			)} */}
+			)}
 		</div>
 	)
 }
