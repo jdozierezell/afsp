@@ -129,7 +129,14 @@ const CTAVideo = ({ cta, id }) => {
 						</a>
 					)}
 					{!file && external && (
-						<a href={linkUrl} className="secondary-button">
+						<a
+							href={linkUrl}
+							className="secondary-button"
+							href={linkUrl}
+							className="secondary-button"
+							target="_blank"
+							ref="noopener noreferrer"
+						>
 							{linkText}
 						</a>
 					)}
