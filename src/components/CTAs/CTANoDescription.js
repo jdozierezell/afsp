@@ -35,7 +35,7 @@ const CTANoDescription = ({ cta }) => {
 					href={linkUrl}
 					className="secondary-button"
 					target="_blank"
-					ref="noopener noreferrer"
+					rel="noopener noreferrer"
 				>
 					{linkText}
 				</a>
