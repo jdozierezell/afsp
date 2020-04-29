@@ -51,7 +51,7 @@ const channelCSS = css`
 	}
 `
 
-const RealConvo = ({ data: { realConvo } }) => {
+const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 	let adjacent = 0
 	return (
 		<Layout
@@ -77,6 +77,7 @@ const RealConvo = ({ data: { realConvo } }) => {
 				<ChannelContainer
 					slug={realConvo.slug}
 					channelList={realConvo.channelList}
+					channelListMedia={afspMedia.realconvo.channelList}
 					addCSS={channelCSS}
 				/>
 			)}
@@ -204,21 +205,8 @@ export const query = graphql`
 				}
 			}
 			channelList {
-				image {
-					url
-					fluid(
-						maxWidth: 200
-						imgixParams: {
-							auto: "format"
-							fit: "crop"
-							crop: "faces"
-							w: "200"
-							h: "200"
-						}
-					) {
-						...GatsbyDatoCmsFluid_noBase64
-					}
-				}
+				id
+				# image imported in afspMedia
 				heading
 				channelLink {
 					...ChannelLink
@@ -436,6 +424,33 @@ export const query = graphql`
 									contentHeading
 								}
 							}
+						}
+					}
+				}
+			}
+		}
+		afspMedia: afspMedia {
+			realconvo {
+				channelList {
+					id
+					image {
+						responsiveImage(
+							imgixParams: {
+								crop: faces
+								fit: crop
+								h: "200"
+								w: "200"
+							}
+						) {
+							alt
+							aspectRatio
+							height
+							sizes
+							src
+							srcSet
+							title
+							webpSrcSet
+							width
 						}
 					}
 				}
