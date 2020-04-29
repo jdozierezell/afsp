@@ -33,8 +33,6 @@ const ChannelContainer = ({ slug, channelList, channelListMedia, addCSS }) => {
 			})
 		})
 	}
-	console.log(channelList)
-	console.log(channelListMedia)
 	let columns = 0
 	switch (channelList.length) {
 		case 2:

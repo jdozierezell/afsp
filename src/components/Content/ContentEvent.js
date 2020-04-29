@@ -69,8 +69,6 @@ const ContentEvent = ({ setEvents, programName }) => {
 					<h2 css={programHeadingCSS}>
 						Upcoming {programName} events
 					</h2>
-					{/* {console.log(chapters.info.edges)} */}
-					{/* {console.log(programEvents)} */}
 					{programEvents.map((event, index) => {
 						let chapterName = ''
 						chapters.info.edges.forEach(chapter => {

@@ -65,7 +65,6 @@ const Convo = ({ convo, addCSS }) => {
 			`}
 		>
 			<h2>{convo.title}</h2>
-			{console.log(convo)}
 			<BackgroundImage
 				Tag="section"
 				fluid={convo.posterImage.fluid}
