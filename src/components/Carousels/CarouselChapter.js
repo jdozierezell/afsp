@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { Image } from 'react-datocms'
 
 import buildUrl from '../../utils/buildUrl'
 
@@ -33,7 +33,7 @@ const carouselTitleCSS = css`
 const CarouselChapter = ({ title, titleHref, image }) => {
 	return (
 		<div css={carouselComponentCSS}>
-			<Img fluid={image} css={carouselImageCSS} alt="" />
+			<Image data={image} css={carouselImageCSS} />
 			<Link to={buildUrl('/chapter', titleHref)} css={carouselTitleCSS}>
 				{title}
 			</Link>

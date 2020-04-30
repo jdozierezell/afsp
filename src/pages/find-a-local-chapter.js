@@ -14,7 +14,7 @@ import { chapterSearchResults } from '../utils/chapterSearchResults'
 
 import { styles } from '../css/css'
 
-const FindALocalChapter = ({ data: { search, chapters } }) => {
+const FindALocalChapter = ({ data: { search, chapters, afspMedia } }) => {
 	const existingSearch =
 		typeof window !== `undefined`
 			? qs.parse(window.location.search.slice(1))
@@ -52,6 +52,19 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 			setNoResults(false)
 		}
 	}
+
+	chapters.edges.forEach(chapter => {
+		chapter.node.id = chapter.node.id
+			.replace('DatoCmsChapterHomePage-', '')
+			.replace('-en', '')
+		afspMedia.allChapterHomePages.forEach(media => {
+			if (chapter.node.id === media.id) {
+				chapter.node.heroPoster = media.heroPoster
+				chapter.node.chapterInformation.chapterMap =
+					media.chapterInformation.chapterMap
+			}
+		})
+	})
 
 	useEffect(() => {
 		setSearchResults(
@@ -116,6 +129,53 @@ export const query = graphql`
 		}
 		chapters: allDatoCmsChapterHomePage {
 			...ChapterSearch
+		}
+		afspMedia: afspMedia {
+			allChapterHomePages(first: "80") {
+				id
+				heroPoster {
+					responsiveImage(
+						imgixParams: {
+							w: "600"
+							h: "360"
+							crop: faces
+							fit: crop
+						}
+					) {
+						alt
+						aspectRatio
+						height
+						sizes
+						src
+						srcSet
+						title
+						webpSrcSet
+						width
+					}
+				}
+				chapterInformation {
+					chapterMap {
+						responsiveImage(
+							imgixParams: {
+								fill: blur
+								fit: fill
+								h: "1080"
+								w: "1080"
+							}
+						) {
+							alt
+							aspectRatio
+							height
+							sizes
+							src
+							srcSet
+							title
+							webpSrcSet
+							width
+						}
+					}
+				}
+			}
 		}
 	}
 `

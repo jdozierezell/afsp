@@ -15,6 +15,7 @@ import { fetchChapters } from '../../utils/chapterSearchResults'
 import { styles } from '../../css/css'
 
 import '@glidejs/glide/dist/css/glide.core.min.css'
+import Channel from '../Channel/Channel'
 
 const defaultCarouselCSS = css`
 	padding: ${styles.scale.px25} ${styles.scale.px24};
@@ -81,11 +82,47 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 			chapters: allDatoCmsChapterHomePage {
 				...ChapterSearch
 			}
+			afspMedia: afspMedia {
+				allChapterHomePages(first: "80") {
+					id
+					heroPoster {
+						responsiveImage(
+							imgixParams: {
+								w: "600"
+								h: "360"
+								crop: faces
+								fit: crop
+							}
+						) {
+							alt
+							aspectRatio
+							height
+							sizes
+							src
+							srcSet
+							title
+							webpSrcSet
+							width
+						}
+					}
+				}
+			}
 		}
 	`)
-	const { chapters } = data
+	const { chapters, afspMedia } = data
 
 	const [displayChapters, setDisplayChapters] = useState([])
+
+	chapters.edges.forEach(chapter => {
+		chapter.node.id = chapter.node.id
+			.replace('DatoCmsChapterHomePage-', '')
+			.replace('-en', '')
+		afspMedia.allChapterHomePages.forEach(media => {
+			if (chapter.node.id === media.id) {
+				chapter.node.heroPoster = media.heroPoster
+			}
+		})
+	})
 
 	useEffect(() => {
 		// ipapi.co and ipregistry.co are also nice options if pro.ip-api.com fails
@@ -145,12 +182,16 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 					<div data-glide-el="track">
 						<ul className="glide__slides">
 							{displayChapters.map((chapter, index) => {
+								console.log(chapter)
 								return (
 									<CarouselChapter
 										key={index}
 										title={chapter[0].title}
 										titleHref={chapter[0].slug}
-										image={chapter[0].heroPoster.fluid}
+										image={
+											chapter[0].heroPoster
+												.responsiveImage
+										}
 									/>
 								)
 							})}
