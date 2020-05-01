@@ -181,7 +181,6 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 					<div data-glide-el="track">
 						<ul className="glide__slides">
 							{displayChapters.map((chapter, index) => {
-								console.log(chapter)
 								return (
 									<CarouselChapter
 										key={index}
