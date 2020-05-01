@@ -132,8 +132,6 @@ const CTAVideo = ({ cta, id }) => {
 						<a
 							href={linkUrl}
 							className="secondary-button"
-							href={linkUrl}
-							className="secondary-button"
 							target="_blank"
 							rel="noopener noreferrer"
 						>

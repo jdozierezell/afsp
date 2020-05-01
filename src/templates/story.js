@@ -13,7 +13,11 @@ import { styles } from '../css/css'
 
 const carouselCSS = css`
 	@media (min-width: ${styles.screens.mobile}px) {
+		padding-top: 0;
 		background-color: ${styles.colors.white};
+		.glide__slides > div {
+			border: 1px solid ${styles.colors.lightGray};
+		}
 	}
 `
 

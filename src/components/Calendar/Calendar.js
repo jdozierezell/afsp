@@ -2,7 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 import moment from 'moment'
 
-import createAnchor from '../../utils/createAnchor'
+// import createAnchor from '../../utils/createAnchor'
 
 import { styles } from '../../css/css'
 
@@ -65,12 +65,23 @@ const Calendar = ({ events }) => {
 					return (
 						<li key={index}>
 							<h3>{event.eventTitle}</h3>
-							<h4>
-								{moment(event.eventDateAndTime).format(
-									'MMMM D @ h:mm a'
-								)}{' '}
-								EST
-							</h4>
+							{console.log(event.eventDateAndTime)}
+							{event.eventDateAndTime.includes('00:00:00') && (
+								<h4>
+									All Day{' '}
+									{moment(event.eventDateAndTime)
+										.utcOffset(-4)
+										.format('MMMM D')}
+								</h4>
+							)}
+							{!event.eventDateAndTime.includes('00:00:00') && (
+								<h4>
+									{moment(event.eventDateAndTime)
+										.utcOffset(-4)
+										.format('MMMM D @ h:mm a')}{' '}
+									EST
+								</h4>
+							)}
 							{event.brief && <p>{event.brief}</p>}
 							<a className="secondary-button" href={event.url}>
 								Add to calendar

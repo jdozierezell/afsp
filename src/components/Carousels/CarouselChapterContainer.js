@@ -15,7 +15,6 @@ import { fetchChapters } from '../../utils/chapterSearchResults'
 import { styles } from '../../css/css'
 
 import '@glidejs/glide/dist/css/glide.core.min.css'
-import Channel from '../Channel/Channel'
 
 const defaultCarouselCSS = css`
 	padding: ${styles.scale.px25} ${styles.scale.px24};

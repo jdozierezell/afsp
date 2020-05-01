@@ -154,6 +154,9 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 				carouselCSS={css`
 					@media (min-width: ${styles.screens.mobile}px) {
 						background-color: ${styles.colors.white};
+						.glide__slides > div {
+							border: 1px solid ${styles.colors.lightGray};
+						}
 					}
 				`}
 			/>

@@ -3,8 +3,6 @@ import { css } from '@emotion/core'
 
 import DeskMenuSection from './DeskMenuSection'
 
-import buildUrl from '../../utils/buildUrl'
-
 import { styles } from '../../css/css'
 
 const deskMenuCSS = css`

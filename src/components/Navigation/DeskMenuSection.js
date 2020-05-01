@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState } from 'react'
 import { css } from '@emotion/core'
 import { useTransition, animated as a } from 'react-spring'
 import { Link } from 'gatsby'

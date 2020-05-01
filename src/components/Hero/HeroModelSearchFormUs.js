@@ -36,7 +36,7 @@ const HeroModelSearchFormUs = ({
 				css={dropDownCSS}
 				name="radius"
 				value={radius}
-				onChange={e => {
+				onBlur={e => {
 					updateRadius(e.target.value)
 				}}
 			>

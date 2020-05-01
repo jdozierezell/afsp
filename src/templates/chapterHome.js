@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import fetch from 'isomorphic-fetch'
-import moment from 'moment'
 
 import LayoutChapter from '../components/LayoutChapter'
 import HeroChapter from '../components/Hero/HeroChapter'
