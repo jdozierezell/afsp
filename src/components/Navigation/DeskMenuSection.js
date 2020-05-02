@@ -180,11 +180,7 @@ const DeskMenuSection = ({ menuItem, id }) => {
 															}
 														</h3>
 														<a
-															href={
-																link
-																	.featuredLink
-																	.slug
-															}
+															href={`/${link.featuredLink.slug}`}
 														>
 															Learn more
 														</a>
