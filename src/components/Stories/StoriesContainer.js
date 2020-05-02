@@ -65,14 +65,12 @@ const StoriesContainer = ({
 		sectionId = createAnchor(header)
 	}
 	stories.forEach(story => {
-		console.log(story)
 		story.node.id = story.node.id
 			.replace('DatoCmsStory-', '')
 			.replace('DatoCmsChapterStoryUpdate-', '')
 			.replace('-en', '')
 		storiesMedia.forEach(media => {
 			if (story.node.id === media.id) {
-				console.log('matched')
 				story.node.seo.image = media.seo.image
 			}
 		})

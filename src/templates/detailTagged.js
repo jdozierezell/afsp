@@ -10,7 +10,6 @@ import StoriesContainer from '../components/Stories/StoriesContainer'
 import { styles } from '../css/css'
 
 const Detail = ({ data: { tagged, stories, afspMedia }, pageContext }) => {
-	console.log(afspMedia)
 	const [taggedStories, setTaggedStories] = useState([])
 	useEffect(() => {
 		stories.edges.forEach(story => {

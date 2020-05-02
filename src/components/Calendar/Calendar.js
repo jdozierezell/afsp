@@ -65,7 +65,6 @@ const Calendar = ({ events }) => {
 					return (
 						<li key={index}>
 							<h3>{event.eventTitle}</h3>
-							{console.log(event.eventDateAndTime)}
 							{event.eventDateAndTime.includes('00:00:00') && (
 								<h4>
 									All Day{' '}

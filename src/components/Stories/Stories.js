@@ -52,7 +52,7 @@ const Stories = ({ story: { node } }) => {
 	console.log(node)
 	return (
 		<div css={featuredCSS}>
-			<Image data={node.seo.image.responsiveImage} />
+			{node.seo.image && <Image data={node.seo.image.responsiveImage} />}
 			<h2>
 				<Link
 					to={

@@ -7,7 +7,10 @@ import StoriesContainer from '../components/Stories/StoriesContainer'
 
 import { styles } from '../css/css'
 
-const Tag = ({ data: { stories, afspMedia }, pageContext: { title } }) => {
+const Tag = ({
+	data: { stories, afspMedia },
+	pageContext: { title, slug },
+}) => {
 	const heroData = {
 		title: `Tagged: ${title}`,
 	}
@@ -63,7 +66,7 @@ export const query = graphql`
 		afspMedia: afspMedia {
 			allStories(
 				first: 100
-				filter: { tags: { anyIn: $id } }
+				filter: { tags: { anyIn: $id }, seo: { exists: "true" } }
 				orderBy: publicationDate_DESC
 			) {
 				id
