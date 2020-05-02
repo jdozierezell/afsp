@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { Image } from 'react-datocms'
 
 import { styles } from '../../css/css'
 
@@ -49,9 +49,10 @@ const featuredCSS = css`
 `
 
 const Stories = ({ story: { node } }) => {
+	console.log(node)
 	return (
 		<div css={featuredCSS}>
-			<Img fluid={node.seo.image.fluid} alt="" />
+			<Image data={node.seo.image.responsiveImage} />
 			<h2>
 				<Link
 					to={

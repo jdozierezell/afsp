@@ -44,7 +44,6 @@ module.exports = {
 				fieldName: 'afspMedia',
 				url: 'https://graphql.datocms.com/',
 				headers: {
-					// Learn about environment variables: https://gatsby.dev/env-vars
 					Authorization: `Bearer ${process.env.DATOCMS_API}`,
 				},
 				refetchInterval: 60,

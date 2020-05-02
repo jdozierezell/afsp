@@ -11,7 +11,7 @@ import CarouselChapterContainer from '../components/Carousels/CarouselChapterCon
 
 import { styles } from '../css/css'
 
-const RealStories = ({ data: { real, stories } }) => {
+const RealStories = ({ data: { real, stories, afspMedia } }) => {
 	stories.edges.forEach(story => {
 		story.node.type = 'story'
 	})
@@ -24,6 +24,7 @@ const RealStories = ({ data: { real, stories } }) => {
 			return false
 		}
 	})
+
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -51,6 +52,7 @@ const RealStories = ({ data: { real, stories } }) => {
 				header="Stories"
 				first={true}
 				stories={currentStories}
+				storiesMedia={afspMedia.allStories}
 			/>
 			<CTAContainer
 				number={1}
@@ -60,6 +62,7 @@ const RealStories = ({ data: { real, stories } }) => {
 				offset={3}
 				more="stories"
 				stories={currentStories}
+				storiesMedia={afspMedia.allStories}
 			/>
 			<CTAContainer
 				number={2}
@@ -134,30 +137,43 @@ export const query = graphql`
 			totalCount
 			edges {
 				node {
+					id
 					title
 					slug
 					publicationDate
 					seo {
 						description
-						image {
-							url
-							fluid(
-								maxWidth: 600
-								imgixParams: {
-									auto: "format"
-									fit: "fill"
-									fill: "blur"
-									w: "600"
-									h: "370"
-								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
-						}
 					}
 					author {
 						authorName
 						slug
+					}
+				}
+			}
+		}
+		afspMedia: afspMedia {
+			allStories(first: "66", orderBy: publicationDate_DESC) {
+				id
+				seo {
+					image {
+						responsiveImage(
+							imgixParams: {
+								fill: blur
+								fit: fill
+								h: "370"
+								w: "600"
+							}
+						) {
+							alt
+							aspectRatio
+							height
+							sizes
+							src
+							srcSet
+							title
+							webpSrcSet
+							width
+						}
 					}
 				}
 			}

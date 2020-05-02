@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 
 import Stories from './Stories'
@@ -54,6 +54,7 @@ const StoriesContainer = ({
 	more,
 	intro,
 	stories,
+	storiesMedia,
 	id,
 }) => {
 	const [displayNumber, setDisplayNumber] = useState(3)
@@ -63,6 +64,19 @@ const StoriesContainer = ({
 	} else if (header) {
 		sectionId = createAnchor(header)
 	}
+	stories.forEach(story => {
+		console.log(story)
+		story.node.id = story.node.id
+			.replace('DatoCmsStory-', '')
+			.replace('DatoCmsChapterStoryUpdate-', '')
+			.replace('-en', '')
+		storiesMedia.forEach(media => {
+			if (story.node.id === media.id) {
+				console.log('matched')
+				story.node.seo.image = media.seo.image
+			}
+		})
+	})
 
 	return (
 		<section css={containerCSS} id={sectionId}>

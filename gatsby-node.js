@@ -155,6 +155,7 @@ exports.createPages = async ({ graphql, actions }) => {
 			tags: allDatoCmsTag {
 				edges {
 					node {
+						id
 						slug
 						tag
 					}
@@ -208,12 +209,24 @@ exports.createPages = async ({ graphql, actions }) => {
 	})
 
 	chapterHomes.forEach(({ node }) => {
+		const slug = node.slug
+		const tagName = `AFSP ${node.title}`
+		let tagId = ''
+		tags.forEach(tag => {
+			tag.node.id = tag.node.id
+				.replace('DatoCmsTag-', '')
+				.replace('-en', '')
+			if (tag.node.tag === tagName) {
+				tagId = tag.node.id
+			}
+		})
 		createPage({
 			path: `chapter/${node.slug}`,
 			component: path.resolve('./src/templates/chapterHome.js'),
 			context: {
-				slug: node.slug,
-				tag: `AFSP ${node.title}`,
+				slug: slug,
+				tag: tagName,
+				tagId: tagId,
 			},
 		})
 	})

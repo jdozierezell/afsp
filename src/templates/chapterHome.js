@@ -16,7 +16,9 @@ import { styles } from '../css/css'
 
 const eventCarouselCSS = css``
 
-const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
+const Chapter = ({
+	data: { chapter, realStories, chapterStoriesUpdates, afspMedia },
+}) => {
 	const {
 		title,
 		slug,
@@ -53,6 +55,10 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 
 	const heroPosterUrl = heroPoster ? heroPoster.url : ''
 
+	const storiesMedia = afspMedia.allChapterStoryUpdates.concat(
+		afspMedia.allStories
+	)
+
 	useEffect(() => {
 		if (stories.length === 0 && stories[0] !== 'no stories') {
 			// setStories(['no stories'])
@@ -63,26 +69,26 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				setStories(['no stories'])
 			} else {
 				realStories.edges.forEach(story => {
-					const coverImage = story.node.seo.image
+					const id = story.node.id
 					const title = story.node.title
 					const slug = story.node.slug
 					const seo = story.node.seo
 					const date = parseInt(story.node.publicationDate, 10)
 					const type = 'DatoCmsStory'
 					const node = {
-						node: { coverImage, title, slug, seo, date, type },
+						node: { id, title, slug, seo, date, type },
 					}
 					storiesUpdates.push(node)
 				})
 				chapterStoriesUpdates.edges.forEach(story => {
-					const coverImage = story.node.seo.image
+					const id = story.node.id
 					const title = story.node.title
 					const slug = story.node.slug
 					const seo = story.node.seo
 					const date = parseInt(story.node.publicationDate, 10)
 					const type = 'DatoCmsChapterStoryUpdate'
 					const node = {
-						node: { coverImage, title, slug, seo, date, type },
+						node: { id, title, slug, seo, date, type },
 					}
 					storiesUpdates.push(node)
 				})
@@ -185,6 +191,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					header="Stories and updates"
 					first={true}
 					stories={stories}
+					storiesMedia={storiesMedia}
 					more={true}
 					id="news"
 				/>
@@ -196,7 +203,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 export default Chapter
 
 export const query = graphql`
-	query($slug: String, $tag: String) {
+	query($slug: String, $tag: String, $tagId: [AFSPMedia_ItemId]) {
 		chapter: datoCmsChapterHomePage(slug: { eq: $slug }) {
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
@@ -310,26 +317,12 @@ export const query = graphql`
 		) {
 			edges {
 				node {
+					id
 					title
 					publicationDate(formatString: "x")
 					slug
 					seo {
 						description
-						image {
-							url
-							fluid(
-								maxWidth: 600
-								imgixParams: {
-									auto: "format"
-									fit: "crop"
-									crop: "faces"
-									w: "600"
-									h: "370"
-								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
-						}
 					}
 				}
 			}
@@ -339,27 +332,79 @@ export const query = graphql`
 		) {
 			edges {
 				node {
+					id
 					title
 					publicationDate(formatString: "x")
 					slug
 					seo {
 						description
-						image {
-							url
-							fluid(
-								maxWidth: 600
-								imgixParams: {
-									auto: "format"
-									fit: "crop"
-									crop: "faces"
-									w: "600"
-									h: "370"
-								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
+					}
+				}
+			}
+		}
+		afspMedia: afspMedia {
+			allChapterStoryUpdates(
+				first: 100
+				filter: { tags: { anyIn: $tagId } }
+				orderBy: publicationDate_DESC
+			) {
+				id
+				seo {
+					image {
+						responsiveImage(
+							imgixParams: {
+								fill: blur
+								fit: fill
+								h: "370"
+								w: "600"
 							}
+						) {
+							alt
+							aspectRatio
+							height
+							sizes
+							src
+							srcSet
+							title
+							webpSrcSet
+							width
 						}
 					}
+				}
+				tags {
+					id
+				}
+			}
+			allStories(
+				first: 100
+				filter: { tags: { anyIn: $tagId } }
+				orderBy: publicationDate_DESC
+			) {
+				id
+				seo {
+					image {
+						responsiveImage(
+							imgixParams: {
+								fill: blur
+								fit: fill
+								h: "370"
+								w: "600"
+							}
+						) {
+							alt
+							aspectRatio
+							height
+							sizes
+							src
+							srcSet
+							title
+							webpSrcSet
+							width
+						}
+					}
+				}
+				tags {
+					id
 				}
 			}
 		}
