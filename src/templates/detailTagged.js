@@ -9,8 +9,8 @@ import StoriesContainer from '../components/Stories/StoriesContainer'
 
 import { styles } from '../css/css'
 
-const Detail = ({ data, pageContext }) => {
-	const { tagged, stories } = data
+const Detail = ({ data: { tagged, stories, afspMedia }, pageContext }) => {
+	console.log(afspMedia)
 	const [taggedStories, setTaggedStories] = useState([])
 	useEffect(() => {
 		stories.edges.forEach(story => {
@@ -35,6 +35,7 @@ const Detail = ({ data, pageContext }) => {
 				intro={pageContext.intro}
 				more="releases"
 				stories={taggedStories}
+				storiesMedia={afspMedia.allStories}
 			/>
 		</Layout>
 	)
@@ -43,7 +44,7 @@ const Detail = ({ data, pageContext }) => {
 export default Detail
 
 export const query = graphql`
-	query($slug: String) {
+	query($slug: String, $tag: String, $id: [AFSPMedia_ItemId]) {
 		tagged: datoCmsDetailTagged(slug: { eq: $slug }) {
 			title
 			slug
@@ -121,6 +122,7 @@ export const query = graphql`
 			}
 		}
 		stories: allDatoCmsStory(
+			filter: { tags: { elemMatch: { tag: { eq: $tag } } } }
 			sort: { fields: publicationDate, order: DESC }
 		) {
 			totalCount
@@ -128,24 +130,9 @@ export const query = graphql`
 				node {
 					title
 					slug
-
+					id
 					seo {
 						description
-						image {
-							url
-							fluid(
-								maxWidth: 600
-								imgixParams: {
-									auto: "format"
-									fit: "crop"
-									crop: "faces"
-									w: "600"
-									h: "370"
-								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
-						}
 					}
 					author {
 						authorName
@@ -153,6 +140,37 @@ export const query = graphql`
 					}
 					tags {
 						tag
+					}
+				}
+			}
+		}
+		afspMedia: afspMedia {
+			allStories(
+				first: 100
+				orderBy: publicationDate_DESC
+				filter: { tags: { anyIn: $id } }
+			) {
+				id
+				seo {
+					image {
+						responsiveImage(
+							imgixParams: {
+								fill: blur
+								fit: fill
+								h: "370"
+								w: "600"
+							}
+						) {
+							alt
+							aspectRatio
+							height
+							sizes
+							src
+							srcSet
+							title
+							webpSrcSet
+							width
+						}
 					}
 				}
 			}

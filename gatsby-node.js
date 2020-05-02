@@ -14,6 +14,7 @@ exports.createPages = async ({ graphql, actions }) => {
 			authors: allDatoCmsAuthor {
 				edges {
 					node {
+						id
 						authorName
 						slug
 					}
@@ -95,6 +96,7 @@ exports.createPages = async ({ graphql, actions }) => {
 								__typename
 								introCopy
 								tag {
+									id
 									tag
 								}
 							}
@@ -192,6 +194,7 @@ exports.createPages = async ({ graphql, actions }) => {
 			path: `author/${node.slug}`,
 			component: path.resolve('./src/templates/author.js'),
 			context: {
+				id: node.id.replace('DatoCmsAuthor-', '').replace('-en', ''),
 				slug: node.slug,
 				title: node.authorName,
 			},
@@ -264,9 +267,11 @@ exports.createPages = async ({ graphql, actions }) => {
 	detailsTagged.forEach(({ node }) => {
 		let tag = ''
 		let intro = ''
+		let id = ''
 		node.details.forEach(detail => {
 			if (detail.__typename === 'DatoCmsFeaturedStoryTag') {
 				tag = detail.tag.tag
+				id = detail.tag.id.replace('DatoCmsTag-', '').replace('-en', '')
 				intro = detail.introCopy
 			}
 		})
@@ -277,6 +282,7 @@ exports.createPages = async ({ graphql, actions }) => {
 				slug: node.slug,
 				tag: tag,
 				intro: intro,
+				id: id,
 			},
 		})
 	})
@@ -353,6 +359,7 @@ exports.createPages = async ({ graphql, actions }) => {
 			context: {
 				slug: node.slug,
 				title: node.tag,
+				id: node.id,
 			},
 		})
 	})

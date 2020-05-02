@@ -7,7 +7,7 @@ import StoriesContainer from '../components/Stories/StoriesContainer'
 
 import { styles } from '../css/css'
 
-const Tag = ({ data: { stories }, pageContext: { title } }) => {
+const Tag = ({ data: { stories, afspMedia }, pageContext: { title } }) => {
 	const heroData = {
 		title: `Tagged: ${title}`,
 	}
@@ -24,7 +24,11 @@ const Tag = ({ data: { stories }, pageContext: { title } }) => {
 			}}
 		>
 			<HeroSolid data={heroData} />
-			<StoriesContainer stories={stories.edges} more={true} />
+			<StoriesContainer
+				stories={stories.edges}
+				storiesMedia={afspMedia.allStories}
+				more={true}
+			/>
 		</Layout>
 	)
 }
@@ -32,13 +36,14 @@ const Tag = ({ data: { stories }, pageContext: { title } }) => {
 export default Tag
 
 export const query = graphql`
-	query($slug: String) {
+	query($slug: String, $id: [AFSPMedia_ItemId]) {
 		stories: allDatoCmsStory(
 			filter: { tags: { elemMatch: { slug: { eq: $slug } } } }
 			sort: { fields: publicationDate, order: DESC }
 		) {
 			edges {
 				node {
+					id
 					title
 					slug
 					tags {
@@ -51,66 +56,41 @@ export const query = graphql`
 					}
 					seo {
 						description
-						image {
-							url
-							fluid(
-								maxWidth: 600
-								imgixParams: {
-									auto: "format"
-									fit: "fill"
-									fill: "blur"
-									w: "600"
-									h: "370"
-								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
+					}
+				}
+			}
+		}
+		afspMedia: afspMedia {
+			allStories(
+				first: 100
+				filter: { tags: { anyIn: $id } }
+				orderBy: publicationDate_DESC
+			) {
+				id
+				seo {
+					image {
+						responsiveImage(
+							imgixParams: {
+								fill: blur
+								fit: fill
+								h: "370"
+								w: "600"
 							}
+						) {
+							alt
+							aspectRatio
+							height
+							sizes
+							src
+							srcSet
+							title
+							webpSrcSet
+							width
 						}
+						tags
 					}
 				}
 			}
 		}
 	}
 `
-
-// export const query = graphql`
-// 	query($slug: String) {
-// 		stories: allDatoCmsStory(
-// 			filter: { tags: { elemMatch: { slug: { eq: $slug } } } }
-// 			sort: { fields: publicationDate, order: DESC }
-// 		) {
-// 			edges {
-// 				node {
-// 					title
-// 					slug
-// 					tags {
-// 						tag
-// 						slug
-// 					}
-// 					publicationDate(formatString: "D MMM YYYY")
-// 					coverImage {
-// 						url
-// 						fluid(
-// 							maxWidth: 769
-// 							imgixParams: {
-// 								auto: "format"
-// 								fit: "crop"
-// 								crop: "faces"
-// 								w: "769"
-// 								h: "475"
-// 							}
-// 						) {
-// 							...GatsbyDatoCmsFluid_noBase64
-// 						}
-// 					}
-// 					author {
-// 						authorName
-// 					}
-// 					seo {
-// 						description
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// `
