@@ -59,8 +59,8 @@ export const query = graphql`
 					maxWidth: 769
 					imgixParams: {
 						auto: "format"
-						fit: "crop"
-						crop: "faces"
+						fit: "fill"
+						fill: "blur"
 						w: "769"
 						h: "475"
 					}
@@ -74,8 +74,8 @@ export const query = graphql`
 					maxWidth: 1920
 					imgixParams: {
 						auto: "format"
-						fit: "crop"
-						crop: "faces"
+						fit: "fill"
+						fill: "blur"
 						w: "1920"
 						h: "768"
 						blendMode: "hardlight"
