@@ -21,7 +21,7 @@ const carouselCSS = css`
 	}
 `
 
-const Story = ({ data: { story }, pageContext: { prev, next } }) => {
+const Story = ({ data: { story, afspMedia }, pageContext: { prev, next } }) => {
 	return (
 		<Layout
 			theme={styles.logo.mobileDarkDesktopLight}
@@ -29,8 +29,13 @@ const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 			seo={story.seoMetaTags}
 			facebook={true}
 		>
-			<HeroStories data={story} prev={prev} next={next} />
-			<ContentStory data={story} />
+			<HeroStories
+				data={story}
+				dataMedia={afspMedia.story}
+				prev={prev}
+				next={next}
+			/>
+			<ContentStory data={story} dataMedia={afspMedia.story} />
 			<CarouselChapterContainer carouselCSS={carouselCSS} />
 		</Layout>
 	)
@@ -96,22 +101,7 @@ export const query = graphql`
 				}
 				... on DatoCmsImage {
 					__typename
-					images {
-						url
-						alt
-						fluid(
-							maxWidth: 769
-							imgixParams: {
-								auto: "format"
-								fit: "fill"
-								fill: "blur"
-								w: "769"
-								h: "475"
-							}
-						) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
-					}
+					id
 				}
 				... on DatoCmsVideo {
 					__typename
@@ -151,6 +141,35 @@ export const query = graphql`
 									id
 									contentHeading
 								}
+							}
+						}
+					}
+				}
+			}
+		}
+		afspMedia: afspMedia {
+			story(filter: { slug: { eq: $slug } }) {
+				article {
+					... on AFSPMedia_ImageRecord {
+						id
+						images {
+							responsiveImage(
+								imgixParams: {
+									auto: format
+									fit: fill
+									fill: blur
+									h: "384"
+									w: "623"
+								}
+							) {
+								alt
+								height
+								sizes
+								src
+								srcSet
+								title
+								webpSrcSet
+								width
 							}
 						}
 					}

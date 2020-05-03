@@ -82,7 +82,8 @@ const socialButtonsCSS = css`
 	}
 `
 
-const ContentStory = ({ data }) => {
+const ContentStory = ({ data, dataMedia }) => {
+	const articleMedia = dataMedia.article
 	useEffect(() => {
 		const hasImages = document.getElementsByClassName('glide-image')
 		if (hasImages.length > 0) {
@@ -112,6 +113,14 @@ const ContentStory = ({ data }) => {
 							></div>
 						)
 					} else if (article.__typename === 'DatoCmsImage') {
+						articleMedia.forEach(media => {
+							article.id = article.id
+								.replace('DatoCmsImage-', '')
+								.replace('-en', '')
+							if (article.id === media.id) {
+								article.images = media.images
+							}
+						})
 						return (
 							<ContentImage
 								key={index}

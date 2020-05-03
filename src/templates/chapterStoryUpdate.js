@@ -17,14 +17,23 @@ const carouselCSS = css`
 	}
 `
 
-const Story = ({ data: { story }, pageContext: { prev, next } }) => {
+const Story = ({ data, pageContext: { prev, next } }) => {
+	const { story, afspMedia } = data
 	return (
 		<Layout
 			theme={styles.logo.mobileDarkDesktopLight}
 			seo={story.seoMetaTags}
 		>
-			<HeroStories data={story} prev={prev} next={next} />
-			<ContentStory data={story} />
+			<HeroStories
+				data={story}
+				dataMedia={afspMedia.chapterStoryUpdate}
+				prev={prev}
+				next={next}
+			/>
+			<ContentStory
+				data={story}
+				dataMedia={afspMedia.chapterStoryUpdate}
+			/>
 			<CarouselChapterContainer carouselCSS={carouselCSS} />
 		</Layout>
 	)
@@ -83,22 +92,7 @@ export const query = graphql`
 				}
 				... on DatoCmsImage {
 					__typename
-					images {
-						url
-						fluid(
-							maxWidth: 623
-							imgixParams: {
-								auto: "format"
-								fit: "fill"
-								fill: "blur"
-								w: "623"
-								h: "384"
-							}
-						) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
-						alt
-					}
+					id
 				}
 				... on DatoCmsDetailSquare {
 					__typename
@@ -114,6 +108,35 @@ export const query = graphql`
 									id
 									contentHeading
 								}
+							}
+						}
+					}
+				}
+			}
+		}
+		afspMedia: afspMedia {
+			chapterStoryUpdate(filter: { slug: { eq: $slug } }) {
+				article {
+					... on AFSPMedia_ImageRecord {
+						id
+						images {
+							responsiveImage(
+								imgixParams: {
+									auto: format
+									fit: fill
+									fill: blur
+									h: "384"
+									w: "623"
+								}
+							) {
+								alt
+								height
+								sizes
+								src
+								srcSet
+								title
+								webpSrcSet
+								width
 							}
 						}
 					}

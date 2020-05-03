@@ -125,7 +125,7 @@ const storyButtonCSS = css`
 	}
 `
 
-const HeroStories = ({ data, prev, next }) => {
+const HeroStories = ({ data, dataMedia, prev, next }) => {
 	const {
 		title,
 		publicationDate,
@@ -134,15 +134,24 @@ const HeroStories = ({ data, prev, next }) => {
 		mobileCover,
 		desktopCover,
 	} = data
+	const articleMedia = dataMedia.article
 
 	let fullStory = ''
-	data.article.forEach(story => {
-		if (story.__typename === 'DatoCmsBody') {
-			fullStory += story.copy
+	data.article.forEach(article => {
+		if (article.__typename === 'DatoCmsBody') {
+			fullStory += article.copy
 		}
-		if (story.__typename === 'DatoCmsImage') {
-			story.images.forEach(image => {
-				fullStory += `<img src=${image.url} />`
+		if (article.__typename === 'DatoCmsImage') {
+			articleMedia.forEach(media => {
+				article.id = article.id
+					.replace('DatoCmsImage-', '')
+					.replace('-en', '')
+				if (article.id === media.id) {
+					article.images = media.images
+				}
+			})
+			article.images.forEach(image => {
+				fullStory += `<img src=${image.responsiveImage.src} />`
 			})
 		}
 	})

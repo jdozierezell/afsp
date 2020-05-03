@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+import { Image } from 'react-datocms'
 
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
@@ -21,11 +21,11 @@ const partnerCSS = css`
 	margin-bottom: ${styles.scale.px60};
 	justify-content: flex-start;
 	align-items: flex-start;
-	.gatsby-image-wrapper {
-		width: 100%;
-		@media (min-width: ${styles.screens.tablet}px) {
-			width: 255px;
-		}
+`
+
+const partnerImageCSS = css`
+	@media (min-width: ${styles.screens.tablet}px) {
+		width: 255px;
 	}
 `
 
@@ -43,7 +43,15 @@ const partnerInfoCSS = css`
 	}
 `
 
-const Partners = ({ data: { partners } }) => {
+const Partners = ({ data: { partners, afspMedia } }) => {
+	partners.partnerList.forEach(partner => {
+		afspMedia.partnerPage.partnerList.forEach(media => {
+			if (partner.partnerLogo.originalId === media.partnerLogo.id) {
+				partner.partnerLogo.responsiveImage =
+					media.partnerLogo.responsiveImage
+			}
+		})
+	})
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -54,9 +62,9 @@ const Partners = ({ data: { partners } }) => {
 				{partners.partnerList.map(partner => {
 					return (
 						<div css={partnerCSS}>
-							<Img
-								fluid={partner.partnerLogo.fluid}
-								alt={`${partner.partnerName} logo`}
+							<Image
+								css={partnerImageCSS}
+								data={partner.partnerLogo.responsiveImage}
 							/>
 							<div css={partnerInfoCSS}>
 								<h3>{partner.partnerName}</h3>
@@ -94,21 +102,38 @@ export const query = graphql`
 			partnerList {
 				partnerName
 				partnerLogo {
-					url
-					fluid(
-						maxWidth: 600
-						imgixParams: {
-							auto: "format"
-							fit: "crop"
-							crop: "faces"
-							w: "600"
-						}
-					) {
-						...GatsbyDatoCmsFluid_noBase64
-					}
+					originalId
 				}
 				partnerDescription
 				partnerLink
+			}
+		}
+		afspMedia: afspMedia {
+			partnerPage {
+				partnerList {
+					partnerLogo {
+						id
+						responsiveImage(
+							imgixParams: {
+								auto: format
+								fit: fill
+								w: "600"
+								fill: solid
+								fillColor: "#ffffff"
+							}
+						) {
+							alt
+							aspectRatio
+							height
+							sizes
+							src
+							srcSet
+							title
+							webpSrcSet
+							width
+						}
+					}
+				}
 			}
 		}
 	}

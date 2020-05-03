@@ -8,8 +8,8 @@ import ContentGeneric from '../components/Content/ContentGeneric'
 
 import { styles } from '../css/css'
 
-const Detail = ({ data, pageContext }) => {
-	const { detail } = data
+const Detail = ({ data }) => {
+	const { detail, afspMedia } = data
 	const [hasEvents, setHasEvents] = useState(false)
 	const setEvents = events => {
 		if (events) {
@@ -23,7 +23,11 @@ const Detail = ({ data, pageContext }) => {
 		>
 			<HeroSolid data={detail} />
 			<NavigationSide hasEvents={hasEvents} data={detail} />
-			<ContentGeneric setEvents={setEvents} data={detail} />
+			<ContentGeneric
+				setEvents={setEvents}
+				data={detail}
+				dataMedia={afspMedia.detail}
+			/>
 		</Layout>
 	)
 }
@@ -99,22 +103,7 @@ export const query = graphql`
 				}
 				... on DatoCmsImage {
 					__typename
-					images {
-						url
-						fluid(
-							maxWidth: 623
-							imgixParams: {
-								auto: "format"
-								fit: "fill"
-								fill: "blur"
-								w: "623"
-								h: "384"
-							}
-						) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
-						alt
-					}
+					id
 				}
 				... on DatoCmsVideo {
 					__typename
@@ -126,18 +115,6 @@ export const query = graphql`
 					}
 					poster {
 						url
-						fluid(
-							maxWidth: 1280
-							imgixParams: {
-								auto: "format"
-								fit: "crop"
-								crop: "faces"
-								w: "1280"
-								h: "720"
-							}
-						) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
 					}
 				}
 				... on DatoCmsHeading {
@@ -153,6 +130,35 @@ export const query = graphql`
 			overrideWidth
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
+			}
+		}
+		afspMedia: afspMedia {
+			detail(filter: { slug: { eq: $slug } }) {
+				details {
+					... on AFSPMedia_ImageRecord {
+						id
+						images {
+							responsiveImage(
+								imgixParams: {
+									auto: format
+									fit: fill
+									fill: blur
+									h: "384"
+									w: "623"
+								}
+							) {
+								alt
+								height
+								sizes
+								src
+								srcSet
+								title
+								webpSrcSet
+								width
+							}
+						}
+					}
+				}
 			}
 		}
 	}

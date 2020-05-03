@@ -5,7 +5,7 @@ import Glide, {
 	Breakpoints,
 } from '@glidejs/glide/dist/glide.modular.esm'
 import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+import { Image } from 'react-datocms'
 
 import IconArrowCircle from '../SVGs/IconArrowCircle'
 
@@ -55,11 +55,7 @@ const ContentImage = ({ image, index }) => {
 	return (
 		<div className="storyContent">
 			{image.length === 1 && (
-				<Img
-					css={singleCSS}
-					fluid={image[0].fluid}
-					alt={image[0].alt}
-				/>
+				<Image css={singleCSS} data={image[0].responsiveImage} />
 			)}
 			{image.length > 1 && (
 				<div
@@ -73,10 +69,9 @@ const ContentImage = ({ image, index }) => {
 					<div data-glide-el="track">
 						<div className="glide__slides">
 							{image.map((image, index) => (
-								<Img
+								<Image
 									key={index}
-									fluid={image.fluid}
-									alt={image.alt}
+									data={image.responsiveImage}
 								/>
 							))}
 						</div>

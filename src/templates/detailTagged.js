@@ -28,7 +28,7 @@ const Detail = ({ data: { tagged, stories, afspMedia }, pageContext }) => {
 		>
 			<HeroSolid data={tagged} />
 			<NavigationSide data={tagged} />
-			<ContentGeneric data={tagged} />
+			<ContentGeneric data={tagged} dataMedia={afspMedia.detailTagged} />
 			<StoriesContainer
 				header={`${pageContext.tag}s`}
 				intro={pageContext.intro}
@@ -169,6 +169,33 @@ export const query = graphql`
 							title
 							webpSrcSet
 							width
+						}
+					}
+				}
+			}
+			detailTagged(filter: { slug: { eq: $slug } }) {
+				details {
+					... on AFSPMedia_ImageRecord {
+						id
+						images {
+							responsiveImage(
+								imgixParams: {
+									auto: format
+									fit: fill
+									fill: blur
+									h: "384"
+									w: "623"
+								}
+							) {
+								alt
+								height
+								sizes
+								src
+								srcSet
+								title
+								webpSrcSet
+								width
+							}
 						}
 					}
 				}
