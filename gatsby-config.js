@@ -34,6 +34,7 @@ module.exports = {
 				apiToken: process.env.DATOCMS_API,
 				previewMode:
 					process.env.NODE_ENV === 'development' ? true : false,
+				disableLiveReload: false,
 			},
 		},
 		{
