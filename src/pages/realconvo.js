@@ -53,6 +53,49 @@ const channelCSS = css`
 
 const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 	let adjacent = 0
+	const realMedia = afspMedia.realconvo
+	realConvo.channelList.forEach(channel => {
+		channel.id = channel.id
+			.replace('DatoCmsChannel-', '')
+			.replace('-en', '')
+		realMedia.channelList.forEach(media => {
+			if (channel.id === media.id) {
+				channel.image = media.image
+			}
+		})
+	})
+	realConvo.ctaChapterResourceDetailList.forEach(resource => {
+		if (resource.resource) {
+			resource.resource.forEach(childResource => {
+				childResource.id = childResource.id
+					.replace('DatoCmsExternalResource-', '')
+					.replace('DatoCmsStory-', '')
+					.replace('DatoCmsLanding-', '')
+					.replace('DatoCmsDetailTagged-', '')
+					.replace('DatoCmsDetail-', '')
+					.replace('DatoCmsCustomShareable-', '')
+					.replace('-en', '')
+				realMedia.ctaChapterResourceDetailList.forEach(media => {
+					if (media.resource) {
+						media.resource.forEach(childMedia => {
+							if (childResource.id === childMedia.id) {
+								if (
+									childResource.__typename ===
+									'DatoCmsExternalResource'
+								) {
+									childResource.coverImage =
+										childMedia.coverImage
+								} else {
+									childResource.seo.image =
+										childMedia.seo.image
+								}
+							}
+						})
+					}
+				})
+			})
+		}
+	})
 	return (
 		<Layout
 			theme={styles.logo.mobileDarkDesktopDark}
@@ -73,14 +116,14 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 					dangerouslySetInnerHTML={{ __html: realConvo.brief }}
 				></div>
 			)}
-			{realConvo.channelList.length !== 0 && (
+			{/* {realConvo.channelList.length !== 0 && (
 				<ChannelContainer
 					slug={realConvo.slug}
 					channelList={realConvo.channelList}
 					channelListMedia={afspMedia.realconvo.channelList}
 					addCSS={channelCSS}
 				/>
-			)}
+			)} */}
 			{realConvo.introCopy && (
 				<div css={introCopyCSS}>
 					<div
@@ -224,9 +267,11 @@ export const query = graphql`
 					__typename
 					listHeading
 					displayAsCarousel
+					id
 					resource {
 						... on DatoCmsDetail {
 							__typename
+							id
 							title
 							slug
 							seo {
@@ -250,6 +295,7 @@ export const query = graphql`
 						}
 						... on DatoCmsCustomShareable {
 							__typename
+							id
 							title
 							slug
 							seo {
@@ -273,6 +319,7 @@ export const query = graphql`
 						}
 						... on DatoCmsDetailTagged {
 							__typename
+							id
 							title
 							slug
 							seo {
@@ -296,6 +343,7 @@ export const query = graphql`
 						}
 						... on DatoCmsLanding {
 							__typename
+							id
 							title
 							slug
 							seo {
@@ -319,6 +367,7 @@ export const query = graphql`
 						}
 						... on DatoCmsStory {
 							__typename
+							id
 							title
 							slug
 							coverImage {
@@ -342,6 +391,7 @@ export const query = graphql`
 						}
 						... on DatoCmsExternalResource {
 							__typename
+							id
 							title
 							externalDescription
 							coverImage {
@@ -376,6 +426,7 @@ export const query = graphql`
 						}
 						... on DatoCmsQuilt {
 							__typename
+							id
 							title
 							slug
 							seo {
@@ -457,6 +508,236 @@ export const query = graphql`
 							title
 							webpSrcSet
 							width
+						}
+					}
+				}
+				ctaChapterResourceDetailList {
+					... on AFSPMedia_ResourceListRecord {
+						id
+						resource {
+							... on AFSPMedia_ExternalResourceRecord {
+								id
+								coverImage {
+									responsiveImage(
+										imgixParams: {
+											fill: blur
+											fit: fill
+											h: "370"
+											w: "600"
+										}
+									) {
+										alt
+										aspectRatio
+										height
+										sizes
+										src
+										title
+										srcSet
+										width
+										webpSrcSet
+									}
+								}
+							}
+							... on AFSPMedia_CustomShareableRecord {
+								id
+								seo {
+									image {
+										responsiveImage(
+											imgixParams: {
+												fill: blur
+												fit: fill
+												h: "370"
+												w: "600"
+											}
+										) {
+											alt
+											aspectRatio
+											height
+											sizes
+											src
+											title
+											srcSet
+											width
+											webpSrcSet
+										}
+									}
+								}
+							}
+							... on AFSPMedia_ImageListRecord {
+								id
+								seo {
+									image {
+										responsiveImage(
+											imgixParams: {
+												fill: blur
+												fit: fill
+												h: "370"
+												w: "600"
+											}
+										) {
+											alt
+											aspectRatio
+											height
+											sizes
+											src
+											title
+											srcSet
+											width
+											webpSrcSet
+										}
+									}
+								}
+							}
+							... on AFSPMedia_DetailTaggedRecord {
+								id
+								seo {
+									image {
+										responsiveImage(
+											imgixParams: {
+												fill: blur
+												fit: fill
+												h: "370"
+												w: "600"
+											}
+										) {
+											alt
+											aspectRatio
+											height
+											sizes
+											src
+											title
+											srcSet
+											width
+											webpSrcSet
+										}
+									}
+								}
+							}
+							... on AFSPMedia_QuiltRecord {
+								id
+								seo {
+									image {
+										responsiveImage(
+											imgixParams: {
+												fill: blur
+												fit: fill
+												h: "370"
+												w: "600"
+											}
+										) {
+											alt
+											aspectRatio
+											height
+											sizes
+											src
+											title
+											srcSet
+											width
+											webpSrcSet
+										}
+									}
+								}
+							}
+							... on AFSPMedia_SearchPageRecord {
+								id
+								seo {
+									image {
+										responsiveImage(
+											imgixParams: {
+												fill: blur
+												fit: fill
+												h: "370"
+												w: "600"
+											}
+										) {
+											alt
+											aspectRatio
+											height
+											sizes
+											src
+											title
+											srcSet
+											width
+											webpSrcSet
+										}
+									}
+								}
+							}
+							... on AFSPMedia_LandingRecord {
+								id
+								seo {
+									image {
+										responsiveImage(
+											imgixParams: {
+												fill: blur
+												fit: fill
+												h: "370"
+												w: "600"
+											}
+										) {
+											alt
+											aspectRatio
+											height
+											sizes
+											src
+											title
+											srcSet
+											width
+											webpSrcSet
+										}
+									}
+								}
+							}
+							... on AFSPMedia_DetailRecord {
+								id
+								seo {
+									image {
+										responsiveImage(
+											imgixParams: {
+												fill: blur
+												fit: fill
+												h: "370"
+												w: "600"
+											}
+										) {
+											alt
+											aspectRatio
+											height
+											sizes
+											src
+											title
+											srcSet
+											width
+											webpSrcSet
+										}
+									}
+								}
+							}
+							... on AFSPMedia_StoryRecord {
+								id
+								seo {
+									image {
+										responsiveImage(
+											imgixParams: {
+												fill: blur
+												fit: fill
+												h: "370"
+												w: "600"
+											}
+										) {
+											alt
+											aspectRatio
+											height
+											sizes
+											src
+											title
+											srcSet
+											width
+											webpSrcSet
+										}
+									}
+								}
+							}
 						}
 					}
 				}

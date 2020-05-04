@@ -106,7 +106,7 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 							let title, image, link, linkText, external
 							title = resource.title
 							if (resource.__typename === 'DatoCmsStory') {
-								image = resource.seo.image.fluid
+								image = resource.seo.image.responsiveImage
 								link = `/story/${resource.slug}`
 								linkText = 'Learn more'
 								external = false
@@ -116,7 +116,7 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 								resource.__typename === 'DatoCmsLanding' ||
 								resource.__typename === 'DatoCmsCustomShareable'
 							) {
-								image = resource.seo.image.fluid
+								image = resource.seo.image.responsiveImage
 								link = `/${resource.slug}`
 								linkText = 'Learn more'
 								external = false
@@ -128,7 +128,7 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 									resource.resourceLink[0].__typename ===
 									'DatoCmsDownload'
 								) {
-									image = resource.coverImage.fluid
+									image = resource.coverImage.responsiveImage
 									link = resource.resourceLink[0].download.url
 									linkText = 'Download and share'
 									external = false
@@ -136,7 +136,7 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 									resource.resourceLink[0].__typename ===
 									'DatoCmsExternalUrl'
 								) {
-									image = resource.coverImage.fluid
+									image = resource.coverImage.responsiveImage
 									link = resource.resourceLink[0].externalUrl
 									linkText = 'Learn more'
 									external = true
