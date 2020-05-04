@@ -132,6 +132,9 @@ export const query = graphql`
 					id
 					seo {
 						description
+						image {
+							url
+						}
 					}
 					author {
 						authorName

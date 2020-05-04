@@ -323,6 +323,9 @@ export const query = graphql`
 					slug
 					seo {
 						description
+						image {
+							url
+						}
 					}
 				}
 			}
@@ -338,6 +341,9 @@ export const query = graphql`
 					slug
 					seo {
 						description
+						image {
+							url
+						}
 					}
 				}
 			}

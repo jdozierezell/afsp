@@ -209,6 +209,9 @@ export const query = graphql`
 			}
 			channelList {
 				id
+				image {
+					url
+				}
 				# image imported in afspMedia
 				heading
 				channelLink {

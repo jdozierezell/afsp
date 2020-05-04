@@ -62,10 +62,18 @@ const Partners = ({ data: { partners, afspMedia } }) => {
 				{partners.partnerList.map(partner => {
 					return (
 						<div css={partnerCSS}>
-							<Image
-								css={partnerImageCSS}
-								data={partner.partnerLogo.responsiveImage}
-							/>
+							{partner.partnerLogo.responsiveImage && (
+								<Image
+									css={partnerImageCSS}
+									data={partner.partnerLogo.responsiveImage}
+								/>
+							)}
+							{!partner.partnerLogo.responsiveImage && (
+								<img
+									css={partnerImageCSS}
+									src={partner.partnerLogo.url}
+								/>
+							)}
 							<div css={partnerInfoCSS}>
 								<h3>{partner.partnerName}</h3>
 								<div
@@ -103,6 +111,7 @@ export const query = graphql`
 				partnerName
 				partnerLogo {
 					originalId
+					url
 				}
 				partnerDescription
 				partnerLink

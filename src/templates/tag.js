@@ -59,6 +59,9 @@ export const query = graphql`
 					}
 					seo {
 						description
+						image {
+							url
+						}
 					}
 				}
 			}

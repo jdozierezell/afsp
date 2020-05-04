@@ -143,6 +143,9 @@ export const query = graphql`
 					publicationDate
 					seo {
 						description
+						image {
+							url
+						}
 					}
 					author {
 						authorName

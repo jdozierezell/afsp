@@ -104,6 +104,9 @@ export const query = graphql`
 				... on DatoCmsImage {
 					__typename
 					id
+					images {
+						url
+					}
 				}
 				... on DatoCmsVideo {
 					__typename

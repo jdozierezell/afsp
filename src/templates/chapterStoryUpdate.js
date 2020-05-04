@@ -18,6 +18,7 @@ const carouselCSS = css`
 `
 
 const Story = ({ data, pageContext: { prev, next } }) => {
+	console.log(data)
 	const { story, afspMedia } = data
 	return (
 		<Layout
@@ -93,6 +94,9 @@ export const query = graphql`
 				... on DatoCmsImage {
 					__typename
 					id
+					images {
+						url
+					}
 				}
 				... on DatoCmsDetailSquare {
 					__typename

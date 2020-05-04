@@ -62,14 +62,24 @@ const Channel = ({ slug, channel }) => {
 						channelLink.link.slug
 					)}
 				>
-					<Image
-						css={channelImageCSS}
-						style={{
-							display: 'block',
-						}}
-						data={image.responsiveImage}
-						alt=""
-					/>
+					{image.responsiveImage && (
+						<Image
+							css={channelImageCSS}
+							style={{
+								display: 'block',
+							}}
+							data={image.responsiveImage}
+						/>
+					)}
+					{!image.responsiveImage && (
+						<img
+							css={channelImageCSS}
+							style={{
+								display: 'block',
+							}}
+							src={image.url}
+						/>
+					)}
 					<span>{heading}</span>
 					<p>{brief}</p>
 					<p>Learn more</p>

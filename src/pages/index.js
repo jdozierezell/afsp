@@ -142,6 +142,9 @@ export const query = graphql`
 					__typename
 					channels {
 						id
+						image {
+							url
+						}
 						# image imported in afspMedia
 						heading
 						brief

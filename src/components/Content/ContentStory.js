@@ -83,7 +83,7 @@ const socialButtonsCSS = css`
 `
 
 const ContentStory = ({ data, dataMedia }) => {
-	const articleMedia = dataMedia.article
+	const articleMedia = dataMedia ? dataMedia.article : []
 	useEffect(() => {
 		const hasImages = document.getElementsByClassName('glide-image')
 		if (hasImages.length > 0) {

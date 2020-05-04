@@ -51,7 +51,12 @@ const featuredCSS = css`
 const Stories = ({ story: { node } }) => {
 	return (
 		<div css={featuredCSS}>
-			{node.seo.image && <Image data={node.seo.image.responsiveImage} />}
+			{node.seo.image.responsiveImage && (
+				<Image data={node.seo.image.responsiveImage} />
+			)}
+			{!node.seo.image.responsiveImage && (
+				<img src={node.seo.image.url} />
+			)}
 			<h2>
 				<Link
 					to={

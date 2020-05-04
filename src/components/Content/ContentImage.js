@@ -54,8 +54,11 @@ const ContentImage = ({ image, index }) => {
 	}, [])
 	return (
 		<div className="storyContent">
-			{image.length === 1 && (
+			{image.length === 1 && image[0].responsiveImage && (
 				<Image css={singleCSS} data={image[0].responsiveImage} />
+			)}
+			{image.length === 1 && !image[0].responsiveImage && (
+				<img css={singleCSS} src={image[0].url} />
 			)}
 			{image.length > 1 && (
 				<div
@@ -69,10 +72,17 @@ const ContentImage = ({ image, index }) => {
 					<div data-glide-el="track">
 						<div className="glide__slides">
 							{image.map((image, index) => (
-								<Image
-									key={index}
-									data={image.responsiveImage}
-								/>
+								<>
+									{image.responsiveImage && (
+										<Image
+											key={index}
+											data={image.responsiveImage}
+										/>
+									)}
+									{!image.responsiveImage && (
+										<img key={index} src={image.url} />
+									)}
+								</>
 							))}
 						</div>
 					</div>

@@ -190,6 +190,7 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 											chapter[0].heroPoster
 												.responsiveImage
 										}
+										imageUrl={chapter[0].heroPoster.url}
 									/>
 								)
 							})}

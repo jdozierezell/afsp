@@ -134,7 +134,7 @@ const HeroStories = ({ data, dataMedia, prev, next }) => {
 		mobileCover,
 		desktopCover,
 	} = data
-	const articleMedia = dataMedia.article
+	const articleMedia = dataMedia ? dataMedia.article : []
 
 	let fullStory = ''
 	data.article.forEach(article => {
