@@ -46,7 +46,6 @@ module.exports = {
 				headers: {
 					Authorization: `Bearer ${process.env.DATOCMS_API}`,
 				},
-				refetchInterval: 60,
 			},
 		},
 		`gatsby-plugin-client-side-redirect`, // keep it in last in list
