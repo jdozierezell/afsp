@@ -90,7 +90,7 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 					></div>
 				</div>
 			)}
-			<ConvoContainer convos={realConvo.convos} />
+			{/* <ConvoContainer convos={realConvo.convos} /> */}
 			{realConvo.ctaChapterResourceDetailList.map((item, index) => {
 				const prevIndex = index > 0 ? index - 1 : null
 				if (
@@ -196,6 +196,10 @@ export const query = graphql`
 				}
 			}
 			introCopy
+			convoLinks {
+				id
+				convoTitle
+			}
 			ctaChapterResourceDetailList {
 				... on DatoCmsResourceList {
 					__typename
@@ -435,6 +439,32 @@ export const query = graphql`
 							webpSrcSet
 							width
 						}
+					}
+				}
+				convoLinks {
+					id
+					convoImage {
+						responsiveImage(
+							imgixParams: {
+								crop: faces
+								fit: crop
+								h: "200"
+								w: "200"
+							}
+						) {
+							alt
+							aspectRatio
+							height
+							sizes
+							src
+							srcSet
+							title
+							webpSrcSet
+							width
+						}
+					}
+					convoFile {
+						url
 					}
 				}
 			}
