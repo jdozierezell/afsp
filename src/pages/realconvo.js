@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 
@@ -53,6 +53,19 @@ const channelCSS = css`
 
 const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 	let adjacent = 0
+	useEffect(() => {
+		realConvo.convoLinks.forEach(convo => {
+			convo.id = convo.id
+				.replace('DatoCmsConvoLink-', '')
+				.replace('-en', '')
+			afspMedia.realconvo.convoLinks.forEach(media => {
+				if (convo.id === media.id) {
+					console.log('match')
+					convo.convoImage = media.convoImage
+				}
+			})
+		})
+	}, [])
 	return (
 		<Layout
 			theme={styles.logo.mobileDarkDesktopDark}
@@ -90,7 +103,7 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 					></div>
 				</div>
 			)}
-			{/* <ConvoContainer convos={realConvo.convos} /> */}
+			<ConvoContainer convos={realConvo.convoLinks} />
 			{realConvo.ctaChapterResourceDetailList.map((item, index) => {
 				const prevIndex = index > 0 ? index - 1 : null
 				if (
@@ -199,6 +212,12 @@ export const query = graphql`
 			convoLinks {
 				id
 				convoTitle
+				draftConvoImage: convoImage {
+					url
+				}
+				convoFile {
+					url
+				}
 			}
 			ctaChapterResourceDetailList {
 				... on DatoCmsResourceList {
@@ -462,9 +481,6 @@ export const query = graphql`
 							webpSrcSet
 							width
 						}
-					}
-					convoFile {
-						url
 					}
 				}
 			}
