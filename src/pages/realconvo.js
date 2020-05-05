@@ -184,29 +184,6 @@ export const query = graphql`
 				url
 				brief
 			}
-			convos {
-				title
-				vimeoExternalUrl
-				video {
-					url
-					video {
-						mp4Url(res: medium)
-					}
-				}
-				posterImage {
-					url
-					fluid(
-						maxWidth: 1080
-						imgixParams: { auto: "format", w: "1080" }
-					) {
-						...GatsbyDatoCmsFluid_noBase64
-					}
-				}
-				bodyCopy
-				fullConvoFile {
-					url
-				}
-			}
 			channelList {
 				id
 				image {

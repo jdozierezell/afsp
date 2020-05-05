@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { css } from '@emotion/core'
 import Script from 'react-load-script'
 
@@ -70,23 +70,6 @@ const copyrightCSS = css`
 	}
 `
 const Footer = ({ nav }) => {
-	useEffect(() => {
-		// const siteImprove = document.createElement('script')
-		// siteImprove.type = 'text/javascript'
-		// siteImprove.id = 'siteimprove'
-		// siteImprove.async = true
-		// siteImprove.src = '//siteimproveanalytics.com/js/siteanalyze_6019066.js'
-		// const s = document.getElementsByTagName('script')[0]
-		// s.parentNode.insertBefore(siteImprove, s)
-
-		const rumMOKey = 'e08a9d9277df660f3085d88350c9325d'
-		const site24x7 = document.createElement('script')
-		site24x7.type = 'text/javascript'
-		site24x7.async = true
-		site24x7.src = `//static.site24x7rum.com/beacon/site24x7rum-min.js?appKey=${rumMOKey}`
-		document.getElementsByTagName('head')[0].appendChild(site24x7)
-	}, [])
-
 	return (
 		<>
 			<footer css={footerCSS}>
