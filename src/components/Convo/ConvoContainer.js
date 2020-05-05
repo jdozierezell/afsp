@@ -36,7 +36,7 @@ const ConvoContainer = ({ convos, videos }) => {
 	}
 	return (
 		<section id="read-the-guides">
-			<div
+			{/* <div
 				css={css`
 					${convoContainersCSS};
 					background-color: ${styles.colors.blue};
@@ -53,16 +53,16 @@ const ConvoContainer = ({ convos, videos }) => {
 				>
 					Watch the #RealConvo videos
 				</p>
-				{/* {videos.map((video, index) => (
+				{videos.map((video, index) => (
 					<ConvoVideo key={index} video={video} />
-				))} */}
-			</div>
+				))}
+			</div> */}
 			<div
 				css={css`
 					${convoContainersCSS};
 					background-color: ${styles.colors.lightGray};
 					@media (min-width: ${styles.screens.tablet}px) {
-						grid-template-columns: repeat(${columns}, 1fr);
+						grid-template-columns: repeat(4, 1fr);
 					}
 				`}
 			>
