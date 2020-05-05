@@ -103,7 +103,10 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 					></div>
 				</div>
 			)}
-			<ConvoContainer convos={realConvo.convoLinks} />
+			<ConvoContainer
+				convos={realConvo.convoLinks}
+				videos={realConvo.convoVideos}
+			/>
 			{realConvo.ctaChapterResourceDetailList.map((item, index) => {
 				const prevIndex = index > 0 ? index - 1 : null
 				if (
@@ -209,6 +212,11 @@ export const query = graphql`
 				}
 			}
 			introCopy
+			convoVideos {
+				video {
+					url
+				}
+			}
 			convoLinks {
 				id
 				convoTitle

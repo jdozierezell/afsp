@@ -2,12 +2,12 @@ import React from 'react'
 import { css } from '@emotion/core'
 
 import ConvoDownload from './ConvoDownload'
+import ConvoVideo from './ConvoVideo'
 
 import { styles } from '../../css/css'
 
-const containerCSS = css`
+const convoContainersCSS = css`
 	padding: ${styles.scale.px50} ${styles.scale.px24};
-	background-color: ${styles.colors.lightGray};
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-row-gap: ${styles.scale.px90};
@@ -20,7 +20,7 @@ const containerCSS = css`
 	}
 `
 
-const ConvoContainer = ({ convos }) => {
+const ConvoContainer = ({ convos, videos }) => {
 	let columns = 0
 	switch (convos.length) {
 		case 2:
@@ -35,29 +35,52 @@ const ConvoContainer = ({ convos }) => {
 			break
 	}
 	return (
-		<section
-			css={css`
-				${containerCSS};
-				@media (min-width: ${styles.screens.tablet}px) {
-					grid-template-columns: repeat(${columns}, 1fr);
-				}
-			`}
-			id="read-the-guides"
-		>
-			<p
+		<section id="read-the-guides">
+			<div
 				css={css`
-					margin-bottom: -90px;
+					${convoContainersCSS};
+					background-color: ${styles.colors.blue};
+				`}
+			>
+				<p
+					css={css`
+						margin-bottom: -90px;
+						@media (min-width: ${styles.screens.tablet}px) {
+							grid-column: 1 / ${columns + 1};
+							margin-bottom: 30px;
+						}
+					`}
+				>
+					Watch the #RealConvo videos
+				</p>
+				{/* {videos.map((video, index) => (
+					<ConvoVideo key={index} video={video} />
+				))} */}
+			</div>
+			<div
+				css={css`
+					${convoContainersCSS};
+					background-color: ${styles.colors.lightGray};
 					@media (min-width: ${styles.screens.tablet}px) {
-						grid-column: 1 / ${columns + 1};
-						margin-bottom: 30px;
+						grid-template-columns: repeat(${columns}, 1fr);
 					}
 				`}
 			>
-				Download the #RealConvo guides
-			</p>
-			{convos.map((convo, index) => (
-				<ConvoDownload key={index} convo={convo} />
-			))}
+				<p
+					css={css`
+						margin-bottom: -90px;
+						@media (min-width: ${styles.screens.tablet}px) {
+							grid-column: 1 / ${columns + 1};
+							margin-bottom: 30px;
+						}
+					`}
+				>
+					Download the #RealConvo guides
+				</p>
+				{convos.map((convo, index) => (
+					<ConvoDownload key={index} convo={convo} />
+				))}
+			</div>
 		</section>
 	)
 }

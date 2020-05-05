@@ -29,7 +29,7 @@ const eventCSS = css`
 `
 
 const ContentEvent = ({ setEvents, programName }) => {
-	const awsProgramName = programName.replace(' ', '-')
+	const awsProgramName = programName.replace(/ /g, '-')
 	const [programEvents, setProgramEvents] = useState([])
 
 	const chapters = useStaticQuery(graphql`
@@ -70,21 +70,48 @@ const ContentEvent = ({ setEvents, programName }) => {
 						Upcoming {programName} events
 					</h2>
 					{programEvents.map((event, index) => {
-						let chapterName = ''
+						console.log(event.chapterCode)
+						let chapterArray = []
 						chapters.info.edges.forEach(chapter => {
 							chapter.node.chapterDonorDriveId = chapter.node.chapterDonorDriveId.replace(
 								' ',
 								''
 							)
-							if (
-								chapter.node.chapterDonorDriveId ===
-								event.chapterCode
-							) {
-								chapterName = chapter.node.title
+							if (typeof event.chapterCode === 'string') {
+								event.chapterCode = event.chapterCode.replace(
+									' ',
+									''
+								)
+								if (
+									chapter.node.chapterDonorDriveId ===
+									event.chapterCode
+								) {
+									chapterArray.push({
+										name: chapter.node.title,
+										url: `https://afsp.org/${buildUrl(
+											'chapter',
+											createAnchor(chapter.node.title)
+										)}`,
+									})
+								}
+							} else {
+								event.chapterCode.forEach(code => {
+									code = code.replace(' ', '')
+									if (
+										chapter.node.chapterDonorDriveId ===
+										code
+									) {
+										chapterArray.push({
+											name: chapter.node.title,
+											url: `https://afsp.org/${buildUrl(
+												'chapter',
+												createAnchor(chapter.node.title)
+											)}`,
+										})
+									}
+								})
 							}
 						})
-						const chapterUrl = `https://afsp.org/
-											${buildUrl('chapter', createAnchor(chapterName))}`
 						return (
 							<div css={eventCSS} key={index}>
 								<h4
@@ -101,15 +128,42 @@ const ContentEvent = ({ setEvents, programName }) => {
 									</a>
 								</h4>
 								<p>
-									{chapterName && (
+									{chapterArray.length > 0 && (
 										<span>
 											Presented by the{' '}
-											<a href={chapterUrl}>
-												AFSP {chapterName} Chapter
-											</a>
+											{chapterArray.map(
+												(chapter, index) => {
+													return (
+														<span key={index}>
+															<a
+																href={
+																	chapter.url
+																}
+															>
+																AFSP{' '}
+																{chapter.name}{' '}
+																Chapter
+															</a>
+															{index <
+																chapterArray.length -
+																	2 && (
+																<span>, </span>
+															)}
+															{index ===
+																chapterArray.length -
+																	2 && (
+																<span>
+																	{' '}
+																	and{' '}
+																</span>
+															)}
+														</span>
+													)
+												}
+											)}
 										</span>
 									)}
-									{chapterName && <br />}
+									{chapterArray.length > 0 && <br />}
 									{event.date}
 									{event.venue !== ''
 										? ` ● ${event.venue}`
