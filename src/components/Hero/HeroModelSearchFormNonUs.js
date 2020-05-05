@@ -18,7 +18,7 @@ const HeroModelSearchFormNonUs = ({
 				css={dropDownCSS}
 				name="country"
 				value={country}
-				onBlur={e => {
+				onChange={e => {
 					updateCountry(e.target.value)
 				}}
 			>
