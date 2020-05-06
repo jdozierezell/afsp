@@ -23,29 +23,33 @@ const convoContainersCSS = css`
 const ConvoContainer = ({ convos, videos }) => {
 	let convoColumns = 0
 	let videoColumns = 0
-	switch (convos.length) {
-		case 2:
-			convoColumns = 2
-			break
-		case 3:
-			convoColumns = 3
-			break
-		default:
-			// four or more items
-			convoColumns = 4
-			break
+	if (convos) {
+		switch (convos.length) {
+			case 2:
+				convoColumns = 2
+				break
+			case 3:
+				convoColumns = 3
+				break
+			default:
+				// four or more items
+				convoColumns = 4
+				break
+		}
 	}
-	switch (videos.length) {
-		case 2:
-			videoColumns = 2
-			break
-		case 3:
-			videoColumns = 3
-			break
-		default:
-			// four or more items
-			videoColumns = 4
-			break
+	if (videos) {
+		switch (videos.length) {
+			case 2:
+				videoColumns = 2
+				break
+			case 3:
+				videoColumns = 3
+				break
+			default:
+				// four or more items
+				videoColumns = 4
+				break
+		}
 	}
 	return (
 		<section id="read-the-guides">

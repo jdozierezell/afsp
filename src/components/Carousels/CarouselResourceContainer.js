@@ -103,10 +103,16 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 				<div data-glide-el="track">
 					<ul className="glide__slides">
 						{resources.map((resource, index) => {
-							let title, image, link, linkText, external
+							let title,
+								image,
+								imageFallback,
+								link,
+								linkText,
+								external
 							title = resource.title
 							if (resource.__typename === 'DatoCmsStory') {
 								image = resource.seo.image.responsiveImage
+								imageFallback = resource.seo.image.url
 								link = `/story/${resource.slug}`
 								linkText = 'Learn more'
 								external = false
@@ -117,6 +123,7 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 								resource.__typename === 'DatoCmsCustomShareable'
 							) {
 								image = resource.seo.image.responsiveImage
+								imageFallback = resource.seo.image.url
 								link = `/${resource.slug}`
 								linkText = 'Learn more'
 								external = false
@@ -129,6 +136,7 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 									'DatoCmsDownload'
 								) {
 									image = resource.coverImage.responsiveImage
+									imageFallback = resource.coverImage.url
 									link = resource.resourceLink[0].download.url
 									linkText = 'Download and share'
 									external = false
@@ -137,6 +145,8 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 									'DatoCmsExternalUrl'
 								) {
 									image = resource.coverImage.responsiveImage
+
+									imageFallback = resource.coverImage.url
 									link = resource.resourceLink[0].externalUrl
 									linkText = 'Learn more'
 									external = true
@@ -147,6 +157,7 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 									key={index}
 									title={title}
 									image={image}
+									imageFallback={imageFallback}
 									link={link}
 									linkText={linkText}
 									external={external}

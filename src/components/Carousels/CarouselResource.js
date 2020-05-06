@@ -24,11 +24,16 @@ const resourceComponentCSS = css`
 	}
 `
 
-const CarouselResource = ({ title, image, link, linkText }) => {
+const CarouselResource = ({ title, image, imageFallback, link, linkText }) => {
 	return (
 		<div css={resourceComponentCSS} draggable>
 			<a href={link}>
-				<Image data={image} />
+				{image && <Image data={image} />}
+				{!image && (
+					<img
+						src={`${imageFallback}?auto=format&fit=fill&fill=blur&w=600&h=370`}
+					/>
+				)}
 				<h2>{title}</h2>
 				<p>{linkText}</p>
 			</a>
