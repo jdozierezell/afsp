@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { Image } from 'react-datocms'
 import { css } from '@emotion/core'
 
 import { styles } from '../../css/css'
@@ -22,6 +22,9 @@ const shareableOverlaysCSS = css`
 			width: calc(100% / 3 - ${styles.scale.px16} * 2);
 			height: calc(100% / 3 - ${styles.scale.px16} * 2);
 		}
+		> div {
+			display: block !important;
+		}
 	}
 `
 
@@ -39,7 +42,12 @@ const ShareableOverlays = ({ overlays, updateOverlay }) => {
 			{overlays.map((overlay, index) => {
 				return (
 					<button key={index} onClick={e => updateOverlay(e.target)}>
-						<Img fluid={overlay.image.fluid} />
+						{overlay.image.responsiveImage && (
+							<Image data={overlay.image.responsiveImage} />
+						)}
+						{!overlay.image.responsiveImage && (
+							<img src={overlay.image.url} />
+						)}
 					</button>
 				)
 			})}

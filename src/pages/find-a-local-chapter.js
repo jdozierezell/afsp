@@ -136,6 +136,7 @@ export const query = graphql`
 				heroPoster {
 					responsiveImage(
 						imgixParams: {
+							auto: format
 							w: "600"
 							h: "360"
 							crop: faces
@@ -157,6 +158,7 @@ export const query = graphql`
 					chapterMap {
 						responsiveImage(
 							imgixParams: {
+								auto: format
 								fill: blur
 								fit: fill
 								h: "1080"

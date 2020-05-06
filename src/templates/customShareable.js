@@ -20,8 +20,17 @@ const addCSS = css`
 	}
 `
 
-const CustomShareable = ({ data }) => {
-	const { customShareables } = data
+const CustomShareable = ({ data: { customShareables, afspMedia } }) => {
+	customShareables.shareableOverlays.forEach(overlay => {
+		overlay.id = overlay.id
+			.replace('DatoCmsOverlay-', '')
+			.replace('-en', '')
+		afspMedia.customShareable.shareableOverlays.forEach(media => {
+			if (overlay.id === media.id) {
+				overlay.image.responsiveImage = media.image.responsiveImage
+			}
+		})
+	})
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -58,25 +67,36 @@ export const query = graphql`
 				url
 			}
 			shareableOverlays {
+				id
 				image {
 					url
 					alt
-					fluid(
-						maxWidth: 1080
-						imgixParams: {
-							auto: "format"
-							fit: "crop"
-							crop: "faces"
-							w: "1080"
-							h: "1080"
-						}
-					) {
-						...GatsbyDatoCmsFluid_noBase64
-					}
 				}
 			}
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
+			}
+		}
+		afspMedia: afspMedia {
+			customShareable(filter: { slug: { eq: $slug } }) {
+				shareableOverlays {
+					id
+					image {
+						responsiveImage(
+							imgixParams: { auto: format, w: "1080" }
+						) {
+							alt
+							aspectRatio
+							height
+							sizes
+							src
+							title
+							srcSet
+							webpSrcSet
+							width
+						}
+					}
+				}
 			}
 		}
 	}

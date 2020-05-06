@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+import { Image } from 'react-datocms'
 
 import { styles } from '../../css/css'
 
@@ -37,13 +37,12 @@ const headerCSS = css`
 const mobileImageCSS = css`
 	grid-area: 1 / 1 / 2 / 2;
 	@media (min-width: ${styles.screens.tablet}px) {
-		display: none;
+		display: none !important;
 	}
 `
 
-const HeroStories = ({ data }) => {
-	const { title, mobileCover, desktopCover } = data
-	const desktopHeroImg = `${desktopCover.url}?auto=format&w=1920&h=1080&fit=crop&crop=faces&q=30`
+const HeroImage = ({ title, heroImage }) => {
+	const desktopHeroImg = `${heroImage.url}?auto=format&w=1920&h=1080&fit=crop&crop=faces&q=30`
 	return (
 		<section
 			css={css`
@@ -59,9 +58,9 @@ const HeroStories = ({ data }) => {
 			`}
 		>
 			<h2 css={headerCSS}>{title}</h2>
-			<Img css={mobileImageCSS} fluid={mobileCover.fluid} alt="" />
+			<Image css={mobileImageCSS} data={heroImage.responsiveImage} />
 		</section>
 	)
 }
 
-export default HeroStories
+export default HeroImage

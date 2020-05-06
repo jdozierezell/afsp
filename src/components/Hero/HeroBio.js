@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+import { Image } from 'react-datocms'
 
 import { styles } from '../../css/css'
 
@@ -42,8 +42,7 @@ const solidBioCSS = css`
 	}
 `
 
-const HeroBio = ({ data }) => {
-	const { name, title, photo } = data
+const HeroBio = ({ name, title, responsiveImage, staticImage }) => {
 	return (
 		<div css={solidBioCSS}>
 			<div>
@@ -51,7 +50,8 @@ const HeroBio = ({ data }) => {
 				<div>{title}</div>
 			</div>
 			<div>
-				<Img fluid={photo.fluid} alt={photo.alt} />
+				{responsiveImage && <Image data={responsiveImage} />}
+				{!responsiveImage && <img src={staticImage} />}
 			</div>
 		</div>
 	)

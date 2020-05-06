@@ -284,18 +284,6 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
-										imgixParams: {
-											auto: "format"
-											fit: "fill"
-											fill: "blur"
-											w: "600"
-											h: "370"
-										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
 								}
 							}
 						}
@@ -308,18 +296,6 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
-										imgixParams: {
-											auto: "format"
-											fit: "fill"
-											fill: "blur"
-											w: "600"
-											h: "370"
-										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
 								}
 							}
 						}
@@ -332,18 +308,6 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
-										imgixParams: {
-											auto: "format"
-											fit: "fill"
-											fill: "blur"
-											w: "600"
-											h: "370"
-										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
 								}
 							}
 						}
@@ -356,18 +320,6 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
-										imgixParams: {
-											auto: "format"
-											fit: "fill"
-											fill: "blur"
-											w: "600"
-											h: "370"
-										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
 								}
 							}
 						}
@@ -378,21 +330,12 @@ export const query = graphql`
 							slug
 							coverImage {
 								url
-								fluid(
-									maxWidth: 600
-									imgixParams: {
-										auto: "format"
-										fit: "fill"
-										fill: "blur"
-										w: "600"
-										h: "370"
-									}
-								) {
-									...GatsbyDatoCmsFluid_noBase64
-								}
 							}
 							seo {
 								description
+								image {
+									url
+								}
 							}
 						}
 						... on DatoCmsExternalResource {
@@ -402,18 +345,6 @@ export const query = graphql`
 							externalDescription
 							coverImage {
 								url
-								fluid(
-									maxWidth: 600
-									imgixParams: {
-										auto: "format"
-										fit: "fill"
-										fill: "blur"
-										w: "600"
-										h: "370"
-									}
-								) {
-									...GatsbyDatoCmsFluid_noBase64
-								}
 							}
 							resourceLink {
 								... on DatoCmsExternalUrl {
@@ -498,6 +429,7 @@ export const query = graphql`
 					image {
 						responsiveImage(
 							imgixParams: {
+								auto: format
 								crop: faces
 								fit: crop
 								h: "200"
@@ -521,6 +453,7 @@ export const query = graphql`
 					convoImage {
 						responsiveImage(
 							imgixParams: {
+								auto: format
 								crop: faces
 								fit: crop
 								h: "200"
@@ -548,6 +481,7 @@ export const query = graphql`
 								coverImage {
 									responsiveImage(
 										imgixParams: {
+											auto: format
 											fill: blur
 											fit: fill
 											h: "370"
@@ -572,6 +506,7 @@ export const query = graphql`
 									image {
 										responsiveImage(
 											imgixParams: {
+												auto: format
 												fill: blur
 												fit: fill
 												h: "370"
@@ -597,6 +532,7 @@ export const query = graphql`
 									image {
 										responsiveImage(
 											imgixParams: {
+												auto: format
 												fill: blur
 												fit: fill
 												h: "370"
@@ -622,6 +558,7 @@ export const query = graphql`
 									image {
 										responsiveImage(
 											imgixParams: {
+												auto: format
 												fill: blur
 												fit: fill
 												h: "370"
@@ -647,6 +584,7 @@ export const query = graphql`
 									image {
 										responsiveImage(
 											imgixParams: {
+												auto: format
 												fill: blur
 												fit: fill
 												h: "370"
@@ -672,6 +610,7 @@ export const query = graphql`
 									image {
 										responsiveImage(
 											imgixParams: {
+												auto: format
 												fill: blur
 												fit: fill
 												h: "370"
@@ -697,6 +636,7 @@ export const query = graphql`
 									image {
 										responsiveImage(
 											imgixParams: {
+												auto: format
 												fill: blur
 												fit: fill
 												h: "370"
@@ -722,6 +662,7 @@ export const query = graphql`
 									image {
 										responsiveImage(
 											imgixParams: {
+												auto: format
 												fill: blur
 												fit: fill
 												h: "370"
@@ -747,6 +688,7 @@ export const query = graphql`
 									image {
 										responsiveImage(
 											imgixParams: {
+												auto: format
 												fill: blur
 												fit: fill
 												h: "370"

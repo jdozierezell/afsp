@@ -87,6 +87,7 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 					heroPoster {
 						responsiveImage(
 							imgixParams: {
+								auto: format
 								w: "600"
 								h: "360"
 								crop: faces

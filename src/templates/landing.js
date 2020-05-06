@@ -435,6 +435,7 @@ export const query = graphql`
 					image {
 						responsiveImage(
 							imgixParams: {
+								auto: format
 								w: "200"
 								h: "200"
 								crop: faces

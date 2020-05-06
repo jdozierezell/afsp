@@ -8,8 +8,7 @@ import ContentGeneric from '../components/Content/ContentGeneric'
 
 import { styles } from '../css/css'
 
-const Detail = ({ data }) => {
-	const { detail, afspMedia } = data
+const Detail = ({ data: { detail, afspMedia } }) => {
 	const [hasEvents, setHasEvents] = useState(false)
 	const setEvents = events => {
 		if (events) {
@@ -21,7 +20,10 @@ const Detail = ({ data }) => {
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={detail.seoMetaTags}
 		>
-			<HeroSolid data={detail} />
+			<HeroSolid
+				data={detail}
+				programLogo={afspMedia.detail.programLogo}
+			/>
 			<NavigationSide hasEvents={hasEvents} data={detail} />
 			<ContentGeneric
 				setEvents={setEvents}
@@ -160,6 +162,18 @@ export const query = graphql`
 								width
 							}
 						}
+					}
+				}
+				programLogo {
+					responsiveImage(imgixParams: { w: "623" }) {
+						alt
+						height
+						sizes
+						src
+						srcSet
+						title
+						webpSrcSet
+						width
 					}
 				}
 			}
