@@ -54,6 +54,7 @@ const channelCSS = css`
 const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 	let adjacent = 0
 	const realMedia = afspMedia.realconvo
+
 	realConvo.channelList.forEach(channel => {
 		channel.id = channel.id
 			.replace('DatoCmsChannel-', '')
@@ -61,6 +62,15 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 		realMedia.channelList.forEach(media => {
 			if (channel.id === media.id) {
 				channel.image = media.image
+			}
+		})
+	})
+	realConvo.convoLinks.forEach(convo => {
+		convo.id = convo.id.replace('DatoCmsConvoLink-', '').replace('-en', '')
+		afspMedia.realconvo.convoLinks.forEach(media => {
+			if (convo.id === media.id) {
+				console.log('match')
+				convo.convoImage = media.convoImage
 			}
 		})
 	})
@@ -97,6 +107,7 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 			})
 		}
 	})
+
 	return (
 		<Layout
 			theme={styles.logo.mobileDarkDesktopDark}
@@ -117,14 +128,14 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 					dangerouslySetInnerHTML={{ __html: realConvo.brief }}
 				></div>
 			)}
-			{/* {realConvo.channelList.length !== 0 && (
+			{realConvo.channelList.length !== 0 && (
 				<ChannelContainer
 					slug={realConvo.slug}
 					channelList={realConvo.channelList}
 					channelListMedia={afspMedia.realconvo.channelList}
 					addCSS={channelCSS}
 				/>
-			)} */}
+			)}
 			{realConvo.introCopy && (
 				<div css={introCopyCSS}>
 					<div
@@ -134,7 +145,10 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 					></div>
 				</div>
 			)}
-			<ConvoContainer convos={realConvo.convos} />
+			<ConvoContainer
+				convos={realConvo.convoLinks}
+				videos={realConvo.convoVideos}
+			/>
 			{realConvo.ctaChapterResourceDetailList.map((item, index) => {
 				const prevIndex = index > 0 ? index - 1 : null
 				if (

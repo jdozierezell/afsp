@@ -142,7 +142,6 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 									external = true
 								}
 							}
-
 							return (
 								<CarouselResource
 									key={index}
