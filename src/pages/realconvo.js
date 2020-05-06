@@ -69,7 +69,6 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 		convo.id = convo.id.replace('DatoCmsConvoLink-', '').replace('-en', '')
 		afspMedia.realconvo.convoLinks.forEach(media => {
 			if (convo.id === media.id) {
-				console.log('match')
 				convo.convoImage = media.convoImage
 			}
 		})
@@ -77,7 +76,6 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 	realConvo.ctaChapterResourceDetailList.forEach(resource => {
 		if (resource.resource) {
 			resource.resource.forEach(childResource => {
-				console.log(childResource)
 				childResource.id = childResource.id
 					.replace('DatoCmsExternalResource-', '')
 					.replace('DatoCmsStory-', '')

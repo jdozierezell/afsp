@@ -33,9 +33,20 @@ const walkBar = css`
 `
 
 const App = ({ data: { home, afspMedia } }) => {
-	const homeMedia = afspMedia.home
-	console.log(homeMedia)
 	home.ctaChapterResourceList.forEach(resource => {
+		if (resource.channels) {
+			resource.channels.forEach(channel => {
+				channel.id = channel.id
+					.replace('DatoCmsChannel-', '')
+					.replace('-en', '')
+				afspMedia.home.channelList.forEach(media => {
+					if (channel.id === media.id) {
+						channel.image.responsiveImage =
+							media.image.responsiveImage
+					}
+				})
+			})
+		}
 		if (resource.resource) {
 			resource.resource.forEach(childResource => {
 				childResource.id = childResource.id
@@ -45,8 +56,10 @@ const App = ({ data: { home, afspMedia } }) => {
 					.replace('DatoCmsDetailTagged-', '')
 					.replace('DatoCmsDetail-', '')
 					.replace('DatoCmsCustomShareable-', '')
+					.replace('DatoCmsQuilt-', '')
+					.replace('DatoCmsSearchPage-', '')
 					.replace('-en', '')
-				homeMedia.ctaChapterResourceList.forEach(media => {
+				afspMedia.home.ctaChapterResourceList.forEach(media => {
 					if (media.resource) {
 						media.resource.forEach(childMedia => {
 							if (childResource.id === childMedia.id) {

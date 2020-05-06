@@ -48,7 +48,6 @@ const ImageListContainer = ({ images }) => {
 									: image.image.url
 							}
 						>
-							{console.log(responsiveImage)}
 							{responsiveImage && (
 								<Image data={responsiveImage} />
 							)}

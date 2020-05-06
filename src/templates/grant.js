@@ -36,9 +36,6 @@ const Grant = ({ data: { grant, afspMedia } }) => {
 		}
 	})
 
-	console.log(grant)
-	console.log(afspMedia)
-
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}

@@ -18,7 +18,6 @@ const carouselCSS = css`
 `
 
 const Story = ({ data, pageContext: { prev, next } }) => {
-	console.log(data)
 	const { story, afspMedia } = data
 	return (
 		<Layout
