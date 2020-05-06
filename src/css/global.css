@@ -95,12 +95,11 @@ textarea {
 	font-size: 18px;
 	color: hsla(355, 84.3%, 50%, 1);
 	text-align: center;
-	line-height: 50px;
 	min-height: 50px;
 	background-color: hsla(0, 0%, 100%, 1);
 	border-radius: 30px;
 	border: solid 2px hsla(355, 84.3%, 50%, 1);
-	padding: 0px 32px;
+	padding: 10px 32px;
 	margin-top: 24px;
 	margin-bottom: 24px;
 	display: inline-block;

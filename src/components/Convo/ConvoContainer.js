@@ -21,66 +21,87 @@ const convoContainersCSS = css`
 `
 
 const ConvoContainer = ({ convos, videos }) => {
-	let columns = 0
+	let convoColumns = 0
+	let videoColumns = 0
 	switch (convos.length) {
 		case 2:
-			columns = 2
+			convoColumns = 2
 			break
 		case 3:
-			columns = 3
+			convoColumns = 3
 			break
 		default:
 			// four or more items
-			columns = 4
+			convoColumns = 4
+			break
+	}
+	switch (videos.length) {
+		case 2:
+			videoColumns = 2
+			break
+		case 3:
+			videoColumns = 3
+			break
+		default:
+			// four or more items
+			videoColumns = 4
 			break
 	}
 	return (
 		<section id="read-the-guides">
-			{/* <div
-				css={css`
-					${convoContainersCSS};
-					background-color: ${styles.colors.blue};
-				`}
-			>
-				<p
+			{videos && (
+				<div
 					css={css`
-						margin-bottom: -90px;
+						${convoContainersCSS};
+						background-color: ${styles.colors.blue};
 						@media (min-width: ${styles.screens.tablet}px) {
-							grid-column: 1 / ${columns + 1};
-							margin-bottom: 30px;
+							grid-template-columns: repeat(${videoColumns}, 1fr);
 						}
 					`}
 				>
-					Watch the #RealConvo videos
-				</p>
-				{videos.map((video, index) => (
-					<ConvoVideo key={index} video={video} />
-				))}
-			</div> */}
-			<div
-				css={css`
-					${convoContainersCSS};
-					background-color: ${styles.colors.lightGray};
-					@media (min-width: ${styles.screens.tablet}px) {
-						grid-template-columns: repeat(4, 1fr);
-					}
-				`}
-			>
-				<p
+					<p
+						css={css`
+							margin-bottom: -90px;
+							color: ${styles.colors.white};
+							@media (min-width: ${styles.screens.tablet}px) {
+								grid-column: 1 / ${videoColumns + 1};
+								margin-bottom: 30px;
+							}
+						`}
+					>
+						Watch the #RealConvo videos
+					</p>
+					{videos.map((video, index) => (
+						<ConvoVideo key={index} video={video} />
+					))}
+				</div>
+			)}
+			{convos && (
+				<div
 					css={css`
-						margin-bottom: -90px;
+						${convoContainersCSS};
+						background-color: ${styles.colors.lightGray};
 						@media (min-width: ${styles.screens.tablet}px) {
-							grid-column: 1 / ${columns + 1};
-							margin-bottom: 30px;
+							grid-template-columns: repeat(${convoColumns}, 1fr);
 						}
 					`}
 				>
-					Download the #RealConvo guides
-				</p>
-				{convos.map((convo, index) => (
-					<ConvoDownload key={index} convo={convo} />
-				))}
-			</div>
+					<p
+						css={css`
+							margin-bottom: -90px;
+							@media (min-width: ${styles.screens.tablet}px) {
+								grid-column: 1 / ${convoColumns + 1};
+								margin-bottom: 30px;
+							}
+						`}
+					>
+						Download the #RealConvo guides
+					</p>
+					{convos.map((convo, index) => (
+						<ConvoDownload key={index} convo={convo} />
+					))}
+				</div>
+			)}
 		</section>
 	)
 }

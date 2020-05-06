@@ -145,7 +145,7 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 			)}
 			<ConvoContainer
 				convos={realConvo.convoLinks}
-				videos={realConvo.convoVideos}
+				// videos={realConvo.convoVideos} // not currently using video content
 			/>
 			{realConvo.ctaChapterResourceDetailList.map((item, index) => {
 				const prevIndex = index > 0 ? index - 1 : null
