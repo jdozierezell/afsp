@@ -67,6 +67,7 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 	realConvo.ctaChapterResourceDetailList.forEach(resource => {
 		if (resource.resource) {
 			resource.resource.forEach(childResource => {
+				console.log(childResource)
 				childResource.id = childResource.id
 					.replace('DatoCmsExternalResource-', '')
 					.replace('DatoCmsStory-', '')
@@ -227,29 +228,6 @@ export const query = graphql`
 				url
 				brief
 			}
-			convos {
-				title
-				vimeoExternalUrl
-				video {
-					url
-					video {
-						mp4Url(res: medium)
-					}
-				}
-				posterImage {
-					url
-					fluid(
-						maxWidth: 1080
-						imgixParams: { auto: "format", w: "1080" }
-					) {
-						...GatsbyDatoCmsFluid_noBase64
-					}
-				}
-				bodyCopy
-				fullConvoFile {
-					url
-				}
-			}
 			channelList {
 				id
 				image {
@@ -262,12 +240,26 @@ export const query = graphql`
 				}
 			}
 			introCopy
+			convoVideos {
+				video {
+					url
+				}
+			}
+			convoLinks {
+				id
+				convoTitle
+				draftConvoImage: convoImage {
+					url
+				}
+				convoFile {
+					url
+				}
+			}
 			ctaChapterResourceDetailList {
 				... on DatoCmsResourceList {
 					__typename
 					listHeading
 					displayAsCarousel
-					id
 					resource {
 						... on DatoCmsDetail {
 							__typename
@@ -426,7 +418,6 @@ export const query = graphql`
 						}
 						... on DatoCmsQuilt {
 							__typename
-							id
 							title
 							slug
 							seo {
@@ -511,6 +502,29 @@ export const query = graphql`
 						}
 					}
 				}
+				convoLinks {
+					id
+					convoImage {
+						responsiveImage(
+							imgixParams: {
+								crop: faces
+								fit: crop
+								h: "200"
+								w: "200"
+							}
+						) {
+							alt
+							aspectRatio
+							height
+							sizes
+							src
+							srcSet
+							title
+							webpSrcSet
+							width
+						}
+					}
+				}
 				ctaChapterResourceDetailList {
 					... on AFSPMedia_ResourceListRecord {
 						id
@@ -531,10 +545,10 @@ export const query = graphql`
 										height
 										sizes
 										src
-										title
 										srcSet
-										width
+										title
 										webpSrcSet
+										width
 									}
 								}
 							}
@@ -555,10 +569,10 @@ export const query = graphql`
 											height
 											sizes
 											src
-											title
 											srcSet
-											width
+											title
 											webpSrcSet
+											width
 										}
 									}
 								}
@@ -580,10 +594,10 @@ export const query = graphql`
 											height
 											sizes
 											src
-											title
 											srcSet
-											width
+											title
 											webpSrcSet
+											width
 										}
 									}
 								}
@@ -605,10 +619,10 @@ export const query = graphql`
 											height
 											sizes
 											src
-											title
 											srcSet
-											width
+											title
 											webpSrcSet
+											width
 										}
 									}
 								}
@@ -630,10 +644,10 @@ export const query = graphql`
 											height
 											sizes
 											src
-											title
 											srcSet
-											width
+											title
 											webpSrcSet
+											width
 										}
 									}
 								}
@@ -655,10 +669,10 @@ export const query = graphql`
 											height
 											sizes
 											src
-											title
 											srcSet
-											width
+											title
 											webpSrcSet
+											width
 										}
 									}
 								}
@@ -680,10 +694,10 @@ export const query = graphql`
 											height
 											sizes
 											src
-											title
 											srcSet
-											width
+											title
 											webpSrcSet
+											width
 										}
 									}
 								}
@@ -705,10 +719,10 @@ export const query = graphql`
 											height
 											sizes
 											src
-											title
 											srcSet
-											width
+											title
 											webpSrcSet
+											width
 										}
 									}
 								}
@@ -730,10 +744,10 @@ export const query = graphql`
 											height
 											sizes
 											src
-											title
 											srcSet
-											width
+											title
 											webpSrcSet
+											width
 										}
 									}
 								}
