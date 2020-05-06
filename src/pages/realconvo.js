@@ -53,21 +53,6 @@ const channelCSS = css`
 
 const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 	let adjacent = 0
-<<<<<<< HEAD
-	useEffect(() => {
-		realConvo.convoLinks.forEach(convo => {
-			convo.id = convo.id
-				.replace('DatoCmsConvoLink-', '')
-				.replace('-en', '')
-			afspMedia.realconvo.convoLinks.forEach(media => {
-				if (convo.id === media.id) {
-					console.log('match')
-					convo.convoImage = media.convoImage
-				}
-			})
-		})
-	}, [])
-=======
 	const realMedia = afspMedia.realconvo
 
 	realConvo.channelList.forEach(channel => {
@@ -121,7 +106,6 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 		}
 	})
 
->>>>>>> afspMedia
 	return (
 		<Layout
 			theme={styles.logo.mobileDarkDesktopDark}
@@ -486,28 +470,6 @@ export const query = graphql`
 						}
 					}
 				}
-<<<<<<< HEAD
-				convoLinks {
-					id
-					convoImage {
-						responsiveImage(
-							imgixParams: {
-								crop: faces
-								fit: crop
-								h: "200"
-								w: "200"
-							}
-						) {
-							alt
-							aspectRatio
-							height
-							sizes
-							src
-							srcSet
-							title
-							webpSrcSet
-							width
-=======
 				ctaChapterResourceDetailList {
 					... on AFSPMedia_ResourceListRecord {
 						id
@@ -744,7 +706,6 @@ export const query = graphql`
 									}
 								}
 							}
->>>>>>> afspMedia
 						}
 					}
 				}
