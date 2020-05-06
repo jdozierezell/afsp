@@ -39,7 +39,6 @@ const convoImageCSS = css`
 `
 
 const ConvoDownload = ({ convo }) => {
-	console.log(convo.convoImage)
 	return (
 		<a css={convoCSS} href={convo.convoFile.url}>
 			{convo.convoImage && (

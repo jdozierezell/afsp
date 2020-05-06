@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+import { Image } from 'react-datocms'
 
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs'
 
@@ -45,8 +45,8 @@ const solidHeroCSS = css`
 	}
 `
 
-const HeroSolid = ({ data, addCSS }) => {
-	const { title, brief, parentPage, programLogo } = data
+const HeroSolid = ({ data, programLogo, addCSS }) => {
+	const { title, brief, parentPage } = data
 	return (
 		<div
 			css={css`
@@ -57,9 +57,7 @@ const HeroSolid = ({ data, addCSS }) => {
 			{parentPage && parentPage.parentPage && (
 				<Breadcrumbs parentPage={parentPage} child={title} />
 			)}
-			{programLogo && (
-				<Img fluid={programLogo.fluid} alt={programLogo.alt} />
-			)}
+			{programLogo && <Image data={programLogo.responsiveImage} />}
 			{!programLogo && (
 				<h1 dangerouslySetInnerHTML={{ __html: title }}></h1>
 			)}

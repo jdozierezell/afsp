@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { Image } from 'react-datocms'
 
 import { styles } from '../../css/css'
 import buildUrl from '../../utils/buildUrl'
@@ -27,12 +27,16 @@ const featuredCSS = css`
 `
 
 const FeaturedResources = ({ data }) => {
-	let fluidImage, description, url
+	let responsiveImage, staticImage, description, url
 
-	if (data.coverImage) {
-		fluidImage = data.coverImage.fluid
-	} else if (data.seo && data.seo.image) {
-		fluidImage = data.seo.image.fluid
+	if (!data.seo && data.coverImage.responsiveImage) {
+		responsiveImage = data.coverImage.responsiveImage
+	} else if (!data.seo && !data.coverImage.responsiveImage) {
+		staticImage = data.coverImage.url
+	} else if (data.seo && data.seo.image.responsiveImage) {
+		responsiveImage = data.seo.image.responsiveImage
+	} else if (data.seo && !data.seo.image.responsiveImage) {
+		responsiveImage = data.seo.image.url
 	}
 
 	if (data.externalDescription) {
@@ -51,10 +55,10 @@ const FeaturedResources = ({ data }) => {
 	} else {
 		url = data.slug
 	}
-
 	return (
 		<div css={featuredCSS}>
-			<Img fluid={fluidImage} alt="" />
+			{responsiveImage && <Image data={responsiveImage} />}
+			{!responsiveImage && staticImage && <img src={staticImage} />}
 			<h2 dangerouslySetInnerHTML={{ __html: data.title }}></h2>
 			<p
 				dangerouslySetInnerHTML={{

@@ -359,6 +359,7 @@ export const query = graphql`
 					image {
 						responsiveImage(
 							imgixParams: {
+								auto: format
 								fill: blur
 								fit: fill
 								h: "370"
@@ -391,6 +392,7 @@ export const query = graphql`
 					image {
 						responsiveImage(
 							imgixParams: {
+								auto: format
 								fill: blur
 								fit: fill
 								h: "370"

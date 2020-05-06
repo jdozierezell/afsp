@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+import { Image } from 'react-datocms'
 
 import { styles } from '../../css/css'
 
@@ -28,7 +28,7 @@ const CarouselResource = ({ title, image, link, linkText }) => {
 	return (
 		<div css={resourceComponentCSS} draggable>
 			<a href={link}>
-				<Img fluid={image} />
+				<Image data={image} />
 				<h2>{title}</h2>
 				<p>{linkText}</p>
 			</a>

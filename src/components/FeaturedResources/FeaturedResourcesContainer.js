@@ -32,6 +32,7 @@ const containerCSS = css`
 `
 
 const FeaturedResourcesContainer = ({ heading, resources, addCSS, id }) => {
+	console.log(resources)
 	return (
 		<section
 			id={id}
