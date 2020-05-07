@@ -82,7 +82,6 @@ const Landing = ({ data: { landing, afspMedia } }) => {
 					.replace('DatoCmsQuilt-', '')
 					.replace('DatoCmsSearchPage-', '')
 					.replace('-en', '')
-				console.log(childResource)
 				afspMedia.landing.ctaChapterResourceDetailList.forEach(
 					media => {
 						if (media.resource) {

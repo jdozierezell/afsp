@@ -7,8 +7,7 @@ const solidHeroCSS = css`
 	background-color: ${styles.colors.blue};
 	padding: ${styles.scale.px150} ${styles.scale.px24} ${styles.scale.px50};
 	@media (min-width: ${styles.screens.mobile}px) {
-		padding: ${styles.scale.px180} ${styles.scale.px50}
-			${styles.scale.px160};
+		padding: ${styles.scale.px180} ${styles.scale.px50} ${styles.scale.px80};
 	}
 	li,
 	h1,

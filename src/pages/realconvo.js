@@ -104,7 +104,6 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 				})
 			})
 		}
-		console.log(resource.resource)
 	})
 
 	return (

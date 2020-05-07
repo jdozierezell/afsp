@@ -49,7 +49,7 @@ const calendarCSS = css`
 			grid-column: 3 / 4;
 		}
 	}
-	a {
+	.secondary-button {
 		position: absolute;
 		bottom: ${styles.scale.px12};
 		left: ${styles.scale.px12};
@@ -81,7 +81,13 @@ const Calendar = ({ events }) => {
 									EST
 								</h4>
 							)}
-							{event.brief && <p>{event.brief}</p>}
+							{event.brief && (
+								<p
+									dangerouslySetInnerHTML={{
+										__html: event.brief,
+									}}
+								></p>
+							)}
 							<a className="secondary-button" href={event.url}>
 								Add to calendar
 							</a>
