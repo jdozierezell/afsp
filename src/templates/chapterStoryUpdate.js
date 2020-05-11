@@ -53,38 +53,6 @@ export const query = graphql`
 				tag
 				slug
 			}
-			mobileCover: coverImage {
-				url
-				fluid(
-					maxWidth: 769
-					imgixParams: {
-						auto: "format"
-						fit: "fill"
-						fill: "blur"
-						w: "769"
-						h: "475"
-					}
-				) {
-					...GatsbyDatoCmsFluid_noBase64
-				}
-			}
-			desktopCover: coverImage {
-				url
-				fluid(
-					maxWidth: 1920
-					imgixParams: {
-						auto: "format"
-						fit: "fill"
-						fill: "blur"
-						w: "1920"
-						h: "768"
-						blendMode: "hardlight"
-						blend: "555"
-					}
-				) {
-					...GatsbyDatoCmsFluid_noBase64
-				}
-			}
 			article {
 				... on DatoCmsBody {
 					__typename
@@ -119,6 +87,27 @@ export const query = graphql`
 		}
 		afspMedia: afspMedia {
 			chapterStoryUpdate(filter: { slug: { eq: $slug } }) {
+				coverImage {
+					url
+					responsiveImage(
+						imgixParams: {
+							auto: format
+							fit: fill
+							fill: blur
+							h: "475"
+							w: "769"
+						}
+					) {
+						alt
+						height
+						sizes
+						src
+						srcSet
+						title
+						webpSrcSet
+						width
+					}
+				}
 				article {
 					... on AFSPMedia_ImageRecord {
 						id

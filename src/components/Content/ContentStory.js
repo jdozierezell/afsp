@@ -14,6 +14,7 @@ import ContentImage from './ContentImage'
 import ContentAudio from './ContentAudio'
 import ContentVideo from './ContentVideo'
 import ContentHeading from './ContentHeading'
+import ContentEmbed from './ContentEmbed'
 import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
 
 import { styles } from '../../css/css'
@@ -111,6 +112,13 @@ const ContentStory = ({ data, dataMedia }) => {
 									__html: article.copy,
 								}}
 							></div>
+						)
+					} else if (article.__typename === 'DatoCmsEmbed') {
+						return (
+							<ContentEmbed
+								key={index}
+								embedCode={article.embedCode}
+							/>
 						)
 					} else if (article.__typename === 'DatoCmsImage') {
 						articleMedia.forEach(media => {

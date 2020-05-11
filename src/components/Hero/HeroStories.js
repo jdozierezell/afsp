@@ -1,8 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
-import BackgroundImage from 'gatsby-background-image'
+import { Image } from 'react-datocms'
 
 import IconArrow from '../SVGs/IconArrow'
 import readTime from '../../utils/readTime'
@@ -109,7 +108,7 @@ const followingStoryCSS = css`
 
 const mobileImageCSS = css`
 	@media (min-width: ${styles.screens.tablet}px) {
-		display: none;
+		display: none !important;
 	}
 `
 
@@ -126,14 +125,7 @@ const storyButtonCSS = css`
 `
 
 const HeroStories = ({ data, dataMedia, prev, next }) => {
-	const {
-		title,
-		publicationDate,
-		author,
-		tags,
-		mobileCover,
-		desktopCover,
-	} = data
+	const { title, publicationDate, author, tags } = data
 	const articleMedia = dataMedia ? dataMedia.article : []
 
 	let fullStory = ''
@@ -155,29 +147,17 @@ const HeroStories = ({ data, dataMedia, prev, next }) => {
 			})
 		}
 	})
-
+	const backgroundImage = `${dataMedia.coverImage.url}?auto=format&crop=faces&fill=blur&fit=fill&h=540&w=1920&blend-mode=hardlight&blend64=MjYyNjI2&blend-alpha=50`
 	const timeToRead = readTime(fullStory)
-
-	const blankFluidImage = {
-		base64:
-			'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAALCAYAAAATD/9GAAAAAXNSR0IArs4c6QAAACpJREFUOE9j/P///3+GQQiYCCkYKDDqMFLBqMNIBaMOIxWMOoxUMGgdBgB4KAQS/gyn/wAAAABJRU5ErkJggg==',
-		aspectRatio: 3.5555555555555554,
-		src:
-			'https://www.datocms-assets.com/12810/1586718479-white.png?auto=format&crop=faces&fill=blur&fit=fill&h=540&w=1920',
-		srcSet:
-			'https://www.datocms-assets.com/12810/1586718479-white.png?auto=format&crop=faces&dpr=0.25&fill=blur&fit=fill&h=540&w=1920 480w,\nhttps://www.datocms-assets.com/12810/1586718479-white.png?auto=format&crop=faces&dpr=0.5&fill=blur&fit=fill&h=540&w=1920 960w,\nhttps://www.datocms-assets.com/12810/1586718479-white.png?auto=format&crop=faces&dpr=1&fill=blur&fit=fill&h=540&w=1920 1920w',
-		sizes: '(max-width: 1920px) 100vw, 1920px',
-	}
-
-	const sources = [
-		blankFluidImage,
-		{
-			...desktopCover.fluid,
-			media: `(min-width: ${styles.screens.tablet}px)`,
-		},
-	]
 	return (
-		<BackgroundImage Tag="section" fluid={sources} css={storyHeroCSS}>
+		<header
+			css={css`
+				${storyHeroCSS};
+				@media (min-width: ${styles.screens.tablet}px) {
+					background-image: url(${backgroundImage});
+				}
+			`}
+		>
 			<div css={storyMetaCSS}>
 				<h1>{title}</h1>
 				<p css={dateLineCSS}>
@@ -225,10 +205,9 @@ const HeroStories = ({ data, dataMedia, prev, next }) => {
 							})}
 					</ul>
 				</h3>
-				<Img
+				<Image
 					css={mobileImageCSS}
-					fluid={mobileCover.fluid}
-					alt={mobileCover.alt}
+					data={dataMedia.coverImage.responsiveImage}
 				/>
 			</div>
 			{prev && (
@@ -253,7 +232,7 @@ const HeroStories = ({ data, dataMedia, prev, next }) => {
 					</Link>
 				</div>
 			)}
-		</BackgroundImage>
+		</header>
 	)
 }
 

@@ -59,42 +59,11 @@ export const query = graphql`
 				tag
 				slug
 			}
-			mobileCover: coverImage {
-				url
-				alt
-				fluid(
-					maxWidth: 769
-					imgixParams: {
-						auto: "format"
-						fit: "crop"
-						crop: "faces"
-						w: "769"
-						h: "475"
-					}
-				) {
-					...GatsbyDatoCmsFluid_noBase64
-				}
-			}
-			desktopCover: coverImage {
-				url
-				alt
-				fluid(
-					maxWidth: 1920
-					imgixParams: {
-						auto: "format"
-						fit: "fill"
-						fill: "blur"
-						crop: "faces"
-						w: "1920"
-						h: "540"
-						blendMode: "hardlight"
-						blend: "555"
-					}
-				) {
-					...GatsbyDatoCmsFluid_noBase64
-				}
-			}
 			article {
+				... on DatoCmsEmbed {
+					__typename
+					embedCode
+				}
 				... on DatoCmsBody {
 					__typename
 					copy
@@ -152,6 +121,27 @@ export const query = graphql`
 		}
 		afspMedia: afspMedia {
 			story(filter: { slug: { eq: $slug } }) {
+				coverImage {
+					url
+					responsiveImage(
+						imgixParams: {
+							auto: format
+							fit: fill
+							fill: blur
+							h: "475"
+							w: "769"
+						}
+					) {
+						alt
+						height
+						sizes
+						src
+						srcSet
+						title
+						webpSrcSet
+						width
+					}
+				}
 				article {
 					... on AFSPMedia_ImageRecord {
 						id
