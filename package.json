@@ -92,7 +92,7 @@
 	"license": "MIT",
 	"scripts": {
 		"bs": "gatsby build && gatsby serve",
-		"build": "set NODE_ENV=production&& gatsby build",
+		"build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
 		"profile": "gatsby build -- --profile",
 		"develop": "set NODE_ENV=development&&gatsby develop",
 		"format": "prettier --write src/**/*.{js,jsx}",
