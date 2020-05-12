@@ -53,6 +53,9 @@ export const query = graphql`
 				tag
 				slug
 			}
+			coverImage {
+				url
+			}
 			article {
 				... on DatoCmsBody {
 					__typename

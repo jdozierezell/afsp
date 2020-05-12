@@ -8,7 +8,6 @@ const videoCSS = css`
 `
 
 const ConvoVideo = ({ video }) => {
-	console.log(video)
 	return (
 		<div>
 			<video css={videoCSS} controls src={video.video.url} />

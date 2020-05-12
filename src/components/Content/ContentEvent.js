@@ -70,7 +70,6 @@ const ContentEvent = ({ setEvents, programName }) => {
 						Upcoming {programName} events
 					</h2>
 					{programEvents.map((event, index) => {
-						console.log(event.chapterCode)
 						let chapterArray = []
 						chapters.info.edges.forEach(chapter => {
 							chapter.node.chapterDonorDriveId = chapter.node.chapterDonorDriveId.replace(

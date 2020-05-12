@@ -143,11 +143,13 @@ const HeroStories = ({ data, dataMedia, prev, next }) => {
 				}
 			})
 			article.images.forEach(image => {
-				fullStory += `<img src=${image.responsiveImage.src} />`
+				fullStory += `<img src=${image.url} />`
 			})
 		}
 	})
-	const backgroundImage = `${dataMedia.coverImage.url}?auto=format&crop=faces&fill=blur&fit=fill&h=540&w=1920&blend-mode=hardlight&blend64=MjYyNjI2&blend-alpha=50`
+	const backgroundImage = dataMedia
+		? `${dataMedia.coverImage.url}?auto=format&crop=faces&fill=blur&fit=fill&h=540&w=1920&blend-mode=hardlight&blend64=MjYyNjI2&blend-alpha=50`
+		: `${data.coverImage.url}?auto=format&crop=faces&fill=blur&fit=fill&h=540&w=1920&blend-mode=hardlight&blend64=MjYyNjI2&blend-alpha=50`
 	const timeToRead = readTime(fullStory)
 	return (
 		<header
@@ -205,10 +207,19 @@ const HeroStories = ({ data, dataMedia, prev, next }) => {
 							})}
 					</ul>
 				</h3>
-				<Image
-					css={mobileImageCSS}
-					data={dataMedia.coverImage.responsiveImage}
-				/>
+				{dataMedia && dataMedia.coverImage.responsiveImage && (
+					<Image
+						css={mobileImageCSS}
+						data={dataMedia.coverImage.responsiveImage}
+					/>
+				)}
+				{dataMedia && (
+					<>
+						{!dataMedia.coverImage.responsiveImage && (
+							<img src={dataMedia.coverImage.url} />
+						)}
+					</>
+				)}
 			</div>
 			{prev && (
 				<div css={previousStoryCSS}>
