@@ -16,18 +16,18 @@ module.exports = {
 	plugins: [
 		`gatsby-plugin-emotion`,
 		`gatsby-plugin-react-helmet`,
-		`gatsby-plugin-netlify-cache`,
+		// `gatsby-plugin-netlify-cache`,
 		`gatsby-plugin-sitemap`,
 		`gatsby-plugin-playground`,
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-netlify`,
-		{
-			resolve: `gatsby-source-filesystem`,
-			options: {
-				name: `images`,
-				path: `${__dirname}/src/images`,
-			},
-		},
+		// {
+		// 	resolve: `gatsby-source-filesystem`,
+		// 	options: {
+		// 		name: `images`,
+		// 		path: `${__dirname}/src/images`,
+		// 	},
+		// },
 		{
 			resolve: `gatsby-source-datocms`,
 			options: {
