@@ -48,9 +48,8 @@ const StatisticsContainer = ({ data }) => {
 							],
 							rank: result.Rank,
 							rate: result['Age-Adjusted Rate'],
-							factSheet: `${data.stateFactsYear}-${createAnchor(
-								result.State
-							)}`,
+							factSheetYear: data.stateFactsYear,
+							factSheetState: createAnchor(result.State),
 						})
 					}
 				})

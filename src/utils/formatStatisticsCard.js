@@ -5,7 +5,8 @@ const formatStatisticsCard = (data, state) => {
 	const stateIndex = data.findIndex(x => x.id.toLowerCase() === state.state)
 	const rate = data[stateIndex].rate
 	const rank = data[stateIndex].rank
-	const factSheet = data[stateIndex].factSheet
+	const factSheetYear = data[stateIndex].factSheetYear
+	const factSheetState = data[stateIndex].factSheetState
 	const place =
 		data[stateIndex].rank > data[usIndex].rank ? 'higher' : 'lower'
 	let formattedState = _.startCase(state.state).replace('Of', 'of')
@@ -43,7 +44,7 @@ const formatStatisticsCard = (data, state) => {
 			},
 		},
 		cardButtonCta: 'View fact sheet',
-		cardButtonUrl: `https://aws-fetch.s3.amazonaws.com/state-fact-sheets/2020/2020-state-fact-sheets-${factSheet}.pdf`,
+		cardButtonUrl: `https://aws-fetch.s3.amazonaws.com/state-fact-sheets/${factSheetYear}/${factSheetYear}-state-fact-sheets-${factSheetState}.pdf`,
 	}
 	return card
 }
