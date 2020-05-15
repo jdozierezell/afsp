@@ -44,6 +44,10 @@ const solidHeroCSS = css`
 	}
 `
 
+const logoCSS = css`
+	margin-bottom: ${styles.scale.px36};
+`
+
 const HeroSolid = ({ data, programLogo, addCSS }) => {
 	const { title, brief, parentPage } = data
 	return (
@@ -56,7 +60,9 @@ const HeroSolid = ({ data, programLogo, addCSS }) => {
 			{parentPage && parentPage.parentPage && (
 				<Breadcrumbs parentPage={parentPage} child={title} />
 			)}
-			{programLogo && <Image data={programLogo.responsiveImage} />}
+			{programLogo && (
+				<Image css={logoCSS} data={programLogo.responsiveImage} />
+			)}
 			{!programLogo && (
 				<h1 dangerouslySetInnerHTML={{ __html: title }}></h1>
 			)}
