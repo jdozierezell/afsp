@@ -169,6 +169,7 @@ const searchStateListCSS = css`
 // `
 
 const statisticsStatesFactsContainerCSS = css`
+	margin: 0 ${styles.gridGap.mobile} 0 0;
 	h2 {
 		font-size: ${styles.scale.px20};
 	}

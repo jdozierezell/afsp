@@ -8,9 +8,16 @@ import buildUrl from '../../utils/buildUrl'
 import { styles } from '../../css/css'
 
 const carouselComponentCSS = css`
-	margin: 0 ${styles.gridGap.desktop} 0 0;
+	display: block;
 	background-color: ${styles.colors.white};
 	border-radius: 5px;
+	text-decoration: none;
+	:hover {
+		text-decoration: underline;
+	}
+	@media (min-width: ${styles.screens.mobile}px) {
+		margin: 0 ${styles.gridGap.mobile} 0 0;
+	}
 `
 
 const carouselImageCSS = css`
@@ -24,21 +31,20 @@ const carouselImageCSS = css`
 const carouselTitleCSS = css`
 	display: block;
 	font-family: ${styles.fonts.avenirDemi};
-	margin: ${styles.scale.px7} 0 0;
-	@media (min-width: ${styles.screens.tablet}px) {
-		margin: ${styles.scale.px17} ${styles.scale.px30};
+	padding: ${styles.scale.px7} 0 0;
+	color: ${styles.colors.poppy};
+	@media (min-width: ${styles.screens.mobile}px) {
+		padding: ${styles.scale.px17} ${styles.scale.px30};
 	}
 `
 
 const CarouselChapter = ({ title, titleHref, image, imageUrl }) => {
 	return (
-		<div css={carouselComponentCSS}>
+		<Link css={carouselComponentCSS} to={buildUrl('/chapter', titleHref)}>
 			{image && <Image data={image} css={carouselImageCSS} />}
 			{!image && <img src={imageUrl} css={carouselImageCSS} />}
-			<Link to={buildUrl('/chapter', titleHref)} css={carouselTitleCSS}>
-				{title}
-			</Link>
-		</div>
+			<p css={carouselTitleCSS}>{title}</p>
+		</Link>
 	)
 }
 

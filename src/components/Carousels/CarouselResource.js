@@ -5,7 +5,6 @@ import { Image } from 'react-datocms'
 import { styles } from '../../css/css'
 
 const resourceComponentCSS = css`
-	margin: 0 ${styles.gridGap.mobile} 0 0;
 	flex-shrink: 0;
 	div {
 		border-radius: ${styles.scale.px7} / ${styles.scale.px5};
@@ -21,6 +20,9 @@ const resourceComponentCSS = css`
 			color: ${styles.colors.poppy};
 			margin: ${styles.scale.px12} 0;
 		}
+	}
+	@media (min-width: ${styles.screens.mobile}px) {
+		margin: 0 ${styles.gridGap.mobile} 0 0;
 	}
 `
 

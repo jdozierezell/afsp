@@ -1,95 +1,63 @@
-import React, { useEffect } from 'react'
-import Glide, {
-	Anchors,
-	Controls,
-	Breakpoints,
-} from '@glidejs/glide/dist/glide.modular.esm'
+import React from 'react'
+import Carousel from 'react-multi-carousel'
 import { css } from '@emotion/core'
 
 import CarouselResource from './CarouselResource'
-import IconArrowCircle from '../SVGs/IconArrowCircle'
 
 import createAnchor from '../../utils/createAnchor'
 
 import { styles } from '../../css/css'
 
-import '@glidejs/glide/dist/css/glide.core.min.css'
+import 'react-multi-carousel/lib/styles.css'
 
 const carouselCSS = css`
 	background-color: ${styles.colors.lightGray};
-	padding: ${styles.scale.px50} 0 ${styles.scale.px25};
+	padding: ${styles.scale.px50} ${styles.scale.px24} ${styles.scale.px25};
 	overflow: hidden;
 	position: relative;
 	@media (min-width: ${styles.screens.mobile}px) {
-		padding: ${styles.scale.px80} 0 ${styles.scale.px35};
+		padding: ${styles.scale.px80} ${styles.scale.px50} ${styles.scale.px35};
 	}
 	p {
-		margin: 0 ${styles.scale.px24} ${styles.scale.px30};
+		margin: 0 ${styles.scale.px24} ${styles.scale.px30} 0;
 		@media (min-width: ${styles.screens.mobile}px) {
-			margin: 0 ${styles.scale.px50} ${styles.scale.px30};
+			margin: 0 ${styles.scale.px50} ${styles.scale.px30} 0;
 		}
 	}
-	.glide__slides {
-		margin: 0 0 0 ${styles.scale.px24};
-		white-space: initial;
-		@media (min-width: ${styles.screens.mobile}px) {
-			margin: 0 0 0 ${styles.scale.px50};
+	@media (max-width: ${styles.screens.tablet}px) {
+		.react-multiple-carousel__arrow--left {
+			left: ${styles.gridGap.mobile};
 		}
-	}
-`
-
-const carouselButtonsCSS = css`
-	position: absolute;
-	width: ${styles.scale.px64};
-	height: ${styles.scale.px64};
-	top: 40%;
-	margin-top: -${styles.scale.px126 / 2};
-	cursor: pointer;
-	@media (min-width: ${styles.screens.tablet}px) {
-		width: ${styles.scale.px80};
-		height: ${styles.scale.px80};
-	}
-	:first-of-type {
-		left: ${styles.scale.px24};
-	}
-	:last-of-type {
-		right: ${styles.scale.px24};
-	}
-	.glide__bullet--active {
-		background: hsla(0, 0%, 14.9%, 1);
+		.react-multiple-carousel__arrow--right {
+			right: ${styles.gridGap.mobile};
+		}
 	}
 `
 
 const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 	const id = createAnchor(listHeading)
-	useEffect(() => {
-		new Glide(`.glide-resource-${id}`, {
-			perView: 2,
-			perTouch: 1,
-			breakpoints: {
-				1920: {
-					perView: 4,
-					peek: { before: 0, after: styles.scale.px35 },
-				},
-				1400: {
-					perView: 3,
-					peek: { before: 0, after: styles.scale.px35 },
-				},
-				1080: {
-					perView: 2,
-					peek: { before: 0, after: styles.scale.px35 },
-				},
-				768: {
-					perView: 2,
-					peek: { before: 0, after: styles.scale.px35 },
-				},
-			},
-		}).mount({
-			Anchors,
-			Controls,
-			Breakpoints,
-		})
-	}, [])
+	const responsive = {
+		superLargeDesktop: {
+			breakpoint: { max: 4000, min: 3000 },
+			items: 5,
+		},
+		largeDesktop: {
+			breakpoint: { max: 4000, min: 1200 },
+			items: 4,
+		},
+		desktop: {
+			breakpoint: { max: 1200, min: 1024 },
+			items: 3,
+		},
+		tablet: {
+			breakpoint: { max: 1024, min: 464 },
+			items: 2,
+		},
+		mobile: {
+			breakpoint: { max: 464, min: 0 },
+			items: 1,
+		},
+	}
 	return (
 		<section
 			id={id}
@@ -99,88 +67,64 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 			`}
 		>
 			<p>{listHeading}</p>
-			<div className={`glide-resource-${id}`}>
-				<div data-glide-el="track">
-					<ul className="glide__slides">
-						{resources.map((resource, index) => {
-							let title,
-								image,
-								imageFallback,
-								link,
-								linkText,
-								external
-							title = resource.title
-							if (resource.__typename === 'DatoCmsStory') {
-								image = resource.seo.image.responsiveImage
-								imageFallback = resource.seo.image.url
-								link = `/story/${resource.slug}`
-								linkText = 'Learn more'
-								external = false
-							} else if (
-								resource.__typename === 'DatoCmsDetail' ||
-								resource.__typename === 'DatoCmsDetailTagged' ||
-								resource.__typename === 'DatoCmsLanding' ||
-								resource.__typename === 'DatoCmsCustomShareable'
-							) {
-								image = resource.seo.image.responsiveImage
-								imageFallback = resource.seo.image.url
-								link = `/${resource.slug}`
-								linkText = 'Learn more'
-								external = false
-							} else if (
-								resource.__typename ===
-								'DatoCmsExternalResource'
-							) {
-								if (
-									resource.resourceLink[0].__typename ===
-									'DatoCmsDownload'
-								) {
-									image = resource.coverImage.responsiveImage
-									imageFallback = resource.coverImage.url
-									link = resource.resourceLink[0].download.url
-									linkText = 'Download and share'
-									external = false
-								} else if (
-									resource.resourceLink[0].__typename ===
-									'DatoCmsExternalUrl'
-								) {
-									image = resource.coverImage.responsiveImage
+			<Carousel responsive={responsive}>
+				{resources.map((resource, index) => {
+					let title, image, imageFallback, link, linkText, external
+					title = resource.title
+					if (resource.__typename === 'DatoCmsStory') {
+						image = resource.seo.image.responsiveImage
+						imageFallback = resource.seo.image.url
+						link = `/story/${resource.slug}`
+						linkText = 'Learn more'
+						external = false
+					} else if (
+						resource.__typename === 'DatoCmsDetail' ||
+						resource.__typename === 'DatoCmsDetailTagged' ||
+						resource.__typename === 'DatoCmsLanding' ||
+						resource.__typename === 'DatoCmsCustomShareable'
+					) {
+						image = resource.seo.image.responsiveImage
+						imageFallback = resource.seo.image.url
+						link = `/${resource.slug}`
+						linkText = 'Learn more'
+						external = false
+					} else if (
+						resource.__typename === 'DatoCmsExternalResource'
+					) {
+						if (
+							resource.resourceLink[0].__typename ===
+							'DatoCmsDownload'
+						) {
+							image = resource.coverImage.responsiveImage
+							imageFallback = resource.coverImage.url
+							link = resource.resourceLink[0].download.url
+							linkText = 'Download and share'
+							external = false
+						} else if (
+							resource.resourceLink[0].__typename ===
+							'DatoCmsExternalUrl'
+						) {
+							image = resource.coverImage.responsiveImage
 
-									imageFallback = resource.coverImage.url
-									link = resource.resourceLink[0].externalUrl
-									linkText = 'Learn more'
-									external = true
-								}
-							}
-							return (
-								<CarouselResource
-									key={index}
-									title={title}
-									image={image}
-									imageFallback={imageFallback}
-									link={link}
-									linkText={linkText}
-									external={external}
-								/>
-							)
-						})}
-					</ul>
-				</div>
-				<div data-glide-el="controls">
-					<div css={carouselButtonsCSS} data-glide-dir="<">
-						<IconArrowCircle
-							color="hsla(0, 0%, 14.9%, 0.2)"
-							direction="left"
+							imageFallback = resource.coverImage.url
+							link = resource.resourceLink[0].externalUrl
+							linkText = 'Learn more'
+							external = true
+						}
+					}
+					return (
+						<CarouselResource
+							key={index}
+							title={title}
+							image={image}
+							imageFallback={imageFallback}
+							link={link}
+							linkText={linkText}
+							external={external}
 						/>
-					</div>
-					<div css={carouselButtonsCSS} data-glide-dir=">">
-						<IconArrowCircle
-							color="hsla(0, 0%, 14.9%, 0.2)"
-							direction="right"
-						/>
-					</div>
-				</div>
-			</div>
+					)
+				})}
+			</Carousel>
 		</section>
 	)
 }

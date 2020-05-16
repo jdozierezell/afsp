@@ -19,6 +19,9 @@ const videoCTACSS = css`
 		margin-bottom: 0;
 		line-height: initial;
 	}
+	a {
+		line-height: initial;
+	}
 `
 
 const videoCoverCSS = css`

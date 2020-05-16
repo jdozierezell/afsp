@@ -1,9 +1,4 @@
-import React, { useEffect } from 'react'
-import Glide, {
-	Anchors,
-	Controls,
-	Breakpoints,
-} from '@glidejs/glide/dist/glide.modular.esm'
+import React from 'react'
 import { css } from '@emotion/core'
 
 import FacebookShare from '../Social/FacebookShare'
@@ -18,8 +13,6 @@ import ContentEmbed from './ContentEmbed'
 import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
 
 import { styles } from '../../css/css'
-
-import '@glidejs/glide/dist/css/glide.core.min.css'
 
 const storyContentCSS = css`
 	margin: ${styles.scale.px50} 0;
@@ -85,13 +78,6 @@ const socialButtonsCSS = css`
 
 const ContentStory = ({ data, dataMedia }) => {
 	const articleMedia = dataMedia ? dataMedia.article : []
-	useEffect(() => {
-		const hasImages = document.getElementsByClassName('glide-image')
-		if (hasImages.length > 0) {
-			const glide = new Glide('.glide-image', { perView: 1.2, gap: 20 })
-			glide.mount({ Anchors, Controls, Breakpoints })
-		}
-	}, [])
 	return (
 		<section css={storyContentCSS}>
 			<aside css={socialButtonsCSS}>

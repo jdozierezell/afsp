@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import Glide, {
-	Anchors,
-	Controls,
-	Breakpoints,
-} from '@glidejs/glide/dist/glide.modular.esm'
+import Carousel from 'react-multi-carousel'
 import { css } from '@emotion/core'
 
 import CarouselChapter from './CarouselChapter'
-import IconArrowCircle from '../SVGs/IconArrowCircle'
 
 import { fetchChapters } from '../../utils/chapterSearchResults'
 
 import { styles } from '../../css/css'
 
-import '@glidejs/glide/dist/css/glide.core.min.css'
+import 'react-multi-carousel/lib/styles.css'
 
 const defaultCarouselCSS = css`
 	padding: ${styles.scale.px25} ${styles.scale.px24};
@@ -29,18 +24,22 @@ const defaultCarouselCSS = css`
 		line-height: ${styles.scale.px42};
 		margin-bottom: ${styles.scale.px45};
 	}
-	p {
+	> p {
 		margin-bottom: ${styles.scale.px30};
 		@media (min-width: ${styles.screens.mobile}px) {
 			margin: 0 0 ${styles.scale.px30};
 		}
 	}
-	.glide__slides {
-		margin: 0;
-		white-space: initial;
-	}
 	.secondary-button {
 		margin-bottom: ${styles.scale.px56};
+	}
+	@media (max-width: ${styles.screens.tablet}px) {
+		.react-multiple-carousel__arrow--left {
+			left: ${styles.gridGap.mobile};
+		}
+		.react-multiple-carousel__arrow--right {
+			right: ${styles.gridGap.mobile};
+		}
 	}
 `
 
@@ -50,28 +49,6 @@ const carouselHeaderWrapperCSS = css`
 		flex-flow: row nowrap;
 		justify-content: space-between;
 		align-items: center;
-	}
-`
-
-const carouselButtonsCSS = css`
-	position: absolute;
-	width: ${styles.scale.px64};
-	height: ${styles.scale.px64};
-	top: 40%;
-	margin-top: -${styles.scale.px126 / 2};
-	cursor: pointer;
-	@media (min-width: ${styles.screens.tablet}px) {
-		width: ${styles.scale.px80};
-		height: ${styles.scale.px80};
-	}
-	:first-of-type {
-		left: ${styles.scale.px24};
-	}
-	:last-of-type {
-		right: ${styles.scale.px24};
-	}
-	.glide__bullet--active {
-		background: hsla(0, 0%, 14.9%, 1);
 	}
 `
 
@@ -124,37 +101,33 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 		})
 	})
 
+	const responsive = {
+		superLargeDesktop: {
+			breakpoint: { max: 4000, min: 3000 },
+			items: 5,
+		},
+		largeDesktop: {
+			breakpoint: { max: 4000, min: 1200 },
+			items: 4,
+		},
+		desktop: {
+			breakpoint: { max: 1200, min: 1024 },
+			items: 3,
+		},
+		tablet: {
+			breakpoint: { max: 1024, min: 464 },
+			items: 2,
+		},
+		mobile: {
+			breakpoint: { max: 464, min: 0 },
+			items: 1,
+		},
+	}
+
 	useEffect(() => {
 		// ipapi.co and ipregistry.co are also nice options if pro.ip-api.com fails
 		if (displayChapters.length === 0) {
 			fetchChapters(chapters, setDisplayChapters)
-		} else if (displayChapters.length >= 1) {
-			new Glide('.glide-chapter', {
-				perView: 2,
-				perTouch: 1,
-				breakpoints: {
-					1920: {
-						perView: 4,
-						peek: { before: 0, after: styles.scale.px35 },
-					},
-					1400: {
-						perView: 3,
-						peek: { before: 0, after: styles.scale.px35 },
-					},
-					1080: {
-						perView: 2,
-						peek: { before: 0, after: styles.scale.px35 },
-					},
-					768: {
-						perView: 2,
-						peek: { before: 0, after: styles.scale.px35 },
-					},
-				},
-			}).mount({
-				Anchors,
-				Controls,
-				Breakpoints,
-			})
 		}
 	}, [chapters, displayChapters])
 
@@ -178,40 +151,19 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 				</p>
 			)}
 			{displayChapters.length >= 1 && (
-				<div className="glide-chapter">
-					<div data-glide-el="track">
-						<ul className="glide__slides">
-							{displayChapters.map((chapter, index) => {
-								return (
-									<CarouselChapter
-										key={index}
-										title={chapter[0].title}
-										titleHref={chapter[0].slug}
-										image={
-											chapter[0].heroPoster
-												.responsiveImage
-										}
-										imageUrl={chapter[0].heroPoster.url}
-									/>
-								)
-							})}
-						</ul>
-					</div>
-					<div data-glide-el="controls">
-						<div css={carouselButtonsCSS} data-glide-dir="<">
-							<IconArrowCircle
-								color="hsla(0, 0%, 14.9%, 0.2)"
-								direction="left"
+				<Carousel responsive={responsive}>
+					{displayChapters.map((chapter, index) => {
+						return (
+							<CarouselChapter
+								key={index}
+								title={chapter[0].title}
+								titleHref={chapter[0].slug}
+								image={chapter[0].heroPoster.responsiveImage}
+								imageUrl={chapter[0].heroPoster.url}
 							/>
-						</div>
-						<div css={carouselButtonsCSS} data-glide-dir=">">
-							<IconArrowCircle
-								color="hsla(0, 0%, 14.9%, 0.2)"
-								direction="right"
-							/>
-						</div>
-					</div>
-				</div>
+						)
+					})}
+				</Carousel>
 			)}
 		</div>
 	)
