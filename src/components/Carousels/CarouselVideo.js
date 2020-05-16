@@ -28,7 +28,7 @@ const videoWrapperCSS = css`
 	}
 `
 
-const CarouselVideo = ({ video, poster, title }) => {
+const CarouselVideo = ({ vimeoId, title }) => {
 	return (
 		<div
 			css={css`
@@ -37,22 +37,9 @@ const CarouselVideo = ({ video, poster, title }) => {
 			draggable
 		>
 			<div>
-				{/* <video
-					controls
-					preload="none"
-					src={video}
-					poster={``}
-				>
-					<track default kind="captions" srcLang="en" src="#" />
-				</video> */}
-				<div
-					css={css`
-						${videoWrapperCSS};
-						/* background-image: url(${poster}?w=720&h=405&fit=crop&crop=faces); */
-					`}
-				>
+				<div css={videoWrapperCSS}>
 					<iframe
-						src="https://player.vimeo.com/video/417026359?color=396dff&title=0&byline=0&portrait=0"
+						src={`https://player.vimeo.com/video/${vimeoId}`}
 						style={{
 							position: 'absolute',
 							top: 0,
