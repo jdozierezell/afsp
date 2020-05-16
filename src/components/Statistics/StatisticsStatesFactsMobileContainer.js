@@ -1,9 +1,5 @@
-import React, { useEffect } from 'react'
-import Glide, {
-	Anchors,
-	Controls,
-	Breakpoints,
-} from '@glidejs/glide/dist/glide.modular.esm'
+import React from 'react'
+import Carousel from 'react-multi-carousel'
 import { css } from '@emotion/core'
 
 import Card from '../Cards/Card'
@@ -12,21 +8,23 @@ import formatStatisticsCard from '../../utils/formatStatisticsCard'
 
 import { styles } from '../../css/css'
 
-import '@glidejs/glide/dist/css/glide.core.min.css'
+import 'react-multi-carousel/lib/styles.css'
 
 const carouselCSS = css`
-	padding: ${styles.scale.px50} ${styles.scale.px24} 0;
+	padding: ${styles.scale.px50} 0 0;
 	overflow: hidden;
 	background-color: ${styles.colors.lightGray};
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px80} ${styles.scale.px50} ${styles.scale.px35};
 	}
-	@media (min-width: ${styles.screens.tablet}px) {
+	@media (min-width: ${styles.screens.video}px) {
 		display: none;
 	}
-	.glide__slides {
-		margin: 0;
-		white-space: break-spaces;
+	.react-multiple-carousel__arrow--left {
+		left: 0;
+	}
+	.react-multiple-carousel__arrow--right {
+		right: ${styles.gridGap.mobile};
 	}
 `
 
@@ -35,77 +33,43 @@ const carouselHeaderTitleCSS = css`
 	margin-bottom: ${styles.scale.px45};
 `
 
-const carouselButtonsCSS = css`
-	text-align: center;
-	margin: ${styles.scale.px25} 0;
-	padding: 0;
-	line-height: 0;
-	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px35} 0 0;
-	}
-	button {
-		background: hsla(0, 0%, 14.9%, 0.5);
-		border: none;
-		margin: 0 5px;
-		padding: 0;
-		font-size: ${styles.scale.px28};
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
-	}
-	.glide__bullet--active {
-		background: hsla(0, 0%, 14.9%, 1);
-	}
-`
-
 const StatisticsStatesFactsMobileContainer = ({
 	title,
 	data,
 	selection,
 	cardCSS,
 }) => {
-	useEffect(() => {
-		new Glide('.glide', {
-			breakpoints: {
-				1080: {
-					perView: 3,
-				},
-				768: {
-					perView: 1,
-					peek: { before: 0, after: 50 },
-				},
-			},
-		}).mount({ Anchors, Controls, Breakpoints })
-	}, [selection])
+	const responsive = {
+		superLargeDesktop: {
+			breakpoint: { max: 4000, min: 3000 },
+			items: 5,
+		},
+		largeDesktop: {
+			breakpoint: { max: 4000, min: 1200 },
+			items: 4,
+		},
+		desktop: {
+			breakpoint: { max: 1200, min: 1024 },
+			items: 3,
+		},
+		tablet: {
+			breakpoint: { max: 1024, min: 768 },
+			items: 2,
+		},
+		mobile: {
+			breakpoint: { max: 768, min: 0 },
+			items: 1,
+		},
+	}
 	return (
 		<div css={carouselCSS}>
 			{title && <h2 css={carouselHeaderTitleCSS}>{title}</h2>}
-			<div className="glide">
-				<div data-glide-el="track">
-					<ul className="glide__slides">
-						{selection.map((state, index) => {
-							const card = formatStatisticsCard(data, state)
-							return (
-								<Card
-									key={index}
-									card={card}
-									cardCSS={cardCSS}
-								/>
-							)
-						})}
-					</ul>
-				</div>
-				<div data-glide-el="controls[nav]" css={carouselButtonsCSS}>
-					{selection.map((__, index) => {
-						return (
-							<button
-								key={index}
-								data-glide-dir={`=${index}`}
-							></button>
-						)
-					})}
-				</div>
-			</div>
+			<Carousel responsive={responsive}>
+				{selection.map((state, index) => {
+					const card = formatStatisticsCard(data, state)
+					return <Card key={index} card={card} cardCSS={cardCSS} />
+				})}
+			</Carousel>
 		</div>
 	)
 }

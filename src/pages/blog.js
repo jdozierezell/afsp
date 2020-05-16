@@ -110,17 +110,9 @@ export const query = graphql`
 				}
 			}
 			featuredVideo {
-				... on DatoCmsFeaturedVideo {
-					video {
-						url
-						video {
-							mp4Url(res: medium)
-						}
-						title
-					}
-					poster {
-						url
-					}
+				... on DatoCmsVimeoVideo {
+					vimeoId
+					title
 				}
 			}
 			callsToAction {

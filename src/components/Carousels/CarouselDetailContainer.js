@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react'
-import Glide, {
-	Anchors,
-	Controls,
-	Breakpoints,
-} from '@glidejs/glide/dist/glide.modular.esm'
+import React from 'react'
 import { css } from '@emotion/core'
+import Carousel from 'react-multi-carousel'
 
 import CarouselDetail from './CarouselDetail'
-import IconArrowCircle from '../SVGs/IconArrowCircle'
 
 import { styles } from '../../css/css'
 import createAnchor from '../../utils/createAnchor'
 
-import '@glidejs/glide/dist/css/glide.core.min.css'
+import 'react-multi-carousel/lib/styles.css'
 
 const carouselCSS = css`
 	background-color: ${styles.colors.blue};
@@ -38,34 +33,8 @@ const carouselCSS = css`
 			margin: 0 0 ${styles.scale.px30};
 		}
 	}
-	.glide__slides {
-		margin: 0;
-		white-space: initial;
-	}
 	.secondary-button {
 		margin-bottom: ${styles.scale.px56};
-	}
-`
-
-const carouselButtonsCSS = css`
-	position: absolute;
-	width: ${styles.scale.px64};
-	height: ${styles.scale.px64};
-	top: 40%;
-	margin-top: -${styles.scale.px126 / 2};
-	cursor: pointer;
-	@media (min-width: ${styles.screens.tablet}px) {
-		width: ${styles.scale.px80};
-		height: ${styles.scale.px80};
-	}
-	:first-of-type {
-		left: ${styles.scale.px24};
-	}
-	:last-of-type {
-		right: ${styles.scale.px24};
-	}
-	.glide__bullet--active {
-		background: hsla(0, 0%, 100%, 1);
 	}
 `
 
@@ -75,91 +44,63 @@ const CarouselDetailContainer = ({
 	id,
 }) => {
 	const carouselId = createAnchor(title)
-	useEffect(() => {
-		new Glide(`.glide-story-${carouselId}`, {
-			perView: 2,
-			perTouch: 1,
-			breakpoints: {
-				1920: {
-					perView: 4,
-					peek: { before: 0, after: styles.scale.px35 },
-				},
-				1400: {
-					perView: 3,
-					peek: { before: 0, after: styles.scale.px35 },
-				},
-				1080: {
-					perView: 2,
-					peek: { before: 0, after: styles.scale.px35 },
-				},
-				768: {
-					perView: 2,
-					peek: { before: 0, after: styles.scale.px35 },
-				},
-			},
-		}).mount({
-			Anchors,
-			Controls,
-			Breakpoints,
-		})
-	}, [details])
+	const responsive = {
+		superLargeDesktop: {
+			breakpoint: { max: 4000, min: 3000 },
+			items: 5,
+		},
+		desktop: {
+			breakpoint: { max: 3000, min: 1024 },
+			items: 3,
+		},
+		tablet: {
+			breakpoint: { max: 1024, min: 464 },
+			items: 2,
+		},
+		mobile: {
+			breakpoint: { max: 464, min: 0 },
+			items: 1,
+		},
+	}
 	return (
 		<div id={id} css={carouselCSS}>
 			<h2>{title}</h2>
-			<div className={`glide-story-${carouselId}`}>
-				<div data-glide-el="track">
-					<ul className="glide__slides">
-						{details.map((section, index) => {
-							if (!section) {
-								return ''
-							} else {
-								if (
-									section.__typename === 'DatoCmsContent' &&
-									section.contentHeading
-								) {
-									const anchor = `/${slug}/#${createAnchor(
-										section.contentHeading
-									)}`
-									return (
-										<CarouselDetail
-											key={index}
-											content={section.contentHeading}
-											anchor={anchor}
-											addCSS={addCSS}
-										/>
-									)
-								} else if (section.__typename === 'Event') {
-									return (
-										<CarouselDetail
-											key={index}
-											content={section.date}
-											title={section.title}
-											externalAnchor={true}
-											anchor={section.url}
-											addCSS={addCSS}
-										/>
-									)
-								}
-								return ''
-							}
-						})}
-					</ul>
-				</div>
-				<div data-glide-el="controls">
-					<div css={carouselButtonsCSS} data-glide-dir="<">
-						<IconArrowCircle
-							color="hsla(0, 0%, 14.9%, 0.2)"
-							direction="left"
-						/>
-					</div>
-					<div css={carouselButtonsCSS} data-glide-dir=">">
-						<IconArrowCircle
-							color="hsla(0, 0%, 14.9%, 0.2)"
-							direction="right"
-						/>
-					</div>
-				</div>
-			</div>
+			<Carousel responsive={responsive}>
+				{details.map((section, index) => {
+					if (!section) {
+						return ''
+					} else {
+						if (
+							section.__typename === 'DatoCmsContent' &&
+							section.contentHeading
+						) {
+							const anchor = `/${slug}/#${createAnchor(
+								section.contentHeading
+							)}`
+							return (
+								<CarouselDetail
+									key={index}
+									content={section.contentHeading}
+									anchor={anchor}
+									addCSS={addCSS}
+								/>
+							)
+						} else if (section.__typename === 'Event') {
+							return (
+								<CarouselDetail
+									key={index}
+									content={section.date}
+									title={section.title}
+									externalAnchor={true}
+									anchor={section.url}
+									addCSS={addCSS}
+								/>
+							)
+						}
+						return ''
+					}
+				})}
+			</Carousel>
 		</div>
 	)
 }

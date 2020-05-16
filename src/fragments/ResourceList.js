@@ -98,7 +98,16 @@ export const ResourceList = graphql`
 			... on DatoCmsExternalResource {
 				__typename
 				title
-				slug: externalURL
+				slug: resourceLink {
+					... on DatoCmsExternalUrl {
+						externalUrl
+					}
+					... on DatoCmsDownload {
+						download {
+							url
+						}
+					}
+				}
 				coverImage {
 					url
 					fluid(

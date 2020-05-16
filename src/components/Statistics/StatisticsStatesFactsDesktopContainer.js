@@ -9,7 +9,7 @@ import { styles } from '../../css/css'
 
 const cardContainerCSS = css`
 	display: none;
-	@media (min-width: ${styles.screens.tablet}px) {
+	@media (min-width: ${styles.screens.video}px) {
 		display: block;
 		padding: ${styles.scale.px60} 0 ${styles.scale.px80};
 		background-color: ${styles.colors.lightGray};

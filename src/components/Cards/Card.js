@@ -7,7 +7,7 @@ const defaultCardCSS = css`
 	position: relative;
 	background-color: ${styles.colors.white};
 	border-radius: ${styles.scale.px5};
-	padding: ${styles.scale.px30} ${styles.scale.px30} ${styles.scale.px150};
+	padding: ${styles.scale.px30} ${styles.scale.px54} ${styles.scale.px150};
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px40} ${styles.scale.px40} ${styles.scale.px150};
 	}
