@@ -9,8 +9,8 @@ import {
 	Configure,
 } from 'react-instantsearch-dom'
 
-import SearchStateResults from '../../components/Search/SearchStateResults'
-import SearchHits from '../../components/Search/SearchHits'
+import SearchStateResults from './SearchStateResults'
+import SearchHits from './SearchHits'
 
 import { styles } from '../../css/css'
 
@@ -70,7 +70,7 @@ const SearchDetail = ({
 	return (
 		<div css={searchDetailCSS}>
 			<InstantSearch
-				indexName="afsporg-detail"
+				indexName="AFSP"
 				searchClient={searchClient}
 				searchState={searchState}
 				stalledSearchDelay={500}

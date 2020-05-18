@@ -1,35 +1,12 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-
-import { ApolloClient } from 'apollo-client'
-import { InMemoryCache } from 'apollo-cache-inmemory'
-import { HttpLink } from 'apollo-link-http'
-import { ApolloProvider } from '@apollo/react-hooks'
-import fetch from 'isomorphic-fetch'
-
+import React, { useState } from 'react'
+import qs from 'qs'
 import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
 import HeroImage from '../components/Hero/HeroImage'
-import QuiltSquareContainer from '../components/Quilt/QuiltSquareContainer'
+import SearchQuilts from '../components/Search/SearchQuilts'
 
 import { styles } from '../css/css'
-
-// token for accessing afsp-quilt
-const token = '17c3868770121b0a95844f825f90d8'
-// create apollo client
-const client = new ApolloClient({
-	cache: new InMemoryCache(),
-	link: new HttpLink({
-		uri: 'https://graphql.datocms.com/',
-		headers: {
-			Authorization: `Bearer ${token}`,
-			'Content-Type': 'application/json',
-			Accept: 'application/json',
-		},
-		fetch,
-	}),
-})
 
 const containerCSS = css`
 	margin: ${styles.scale.px24};
@@ -43,24 +20,51 @@ const containerCSS = css`
 `
 
 const Quilt = ({ data: { quiltQuery, afspMedia } }) => {
+	const urlParams =
+		typeof window !== `undefined`
+			? qs.parse(window.location.search.slice(1))
+			: null
+	const [searchState, setSearchState] = useState(
+		urlParams
+			? { query: urlParams.query, quilt: urlParams.quilt }
+			: { query: '', quilt: '' }
+	)
+	const hasQuery = searchState.query ? searchState.query : '' // running a check here prevents undefined error
+	const [visibility, setVisibility] = useState(
+		hasQuery.length === 0 ? 'inherit' : 'hidden'
+	)
+
+	const handleSearchChange = event => {
+		setSearchState({
+			query: event.target.value,
+		})
+		// https://gist.github.com/excalq/2961415#gistcomment-2221360
+		const params = new URLSearchParams(searchState)
+		params.set('query', event.target.value)
+		window.history.replaceState(
+			{},
+			'',
+			`${window.location.pathname}?${params}`
+		)
+	}
 	return (
-		<ApolloProvider client={client}>
-			<Layout
-				theme={styles.logo.mobileLightDesktopLight}
-				seo={quiltQuery.seoMetaTags}
-			>
-				<HeroImage
-					title={quiltQuery.title}
-					heroImage={afspMedia.quiltQuery.heroImage}
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={quiltQuery.seoMetaTags}
+		>
+			<HeroImage
+				title={quiltQuery.title}
+				heroImage={afspMedia.quiltQuery.heroImage}
+			/>
+			<main css={containerCSS}>
+				<h3 dangerouslySetInnerHTML={{ __html: quiltQuery.brief }}></h3>
+				<SearchQuilts
+					visibility={visibility}
+					searchState={searchState}
+					handleSearchChange={handleSearchChange}
 				/>
-				<main css={containerCSS}>
-					<h3
-						dangerouslySetInnerHTML={{ __html: quiltQuery.brief }}
-					></h3>
-					<QuiltSquareContainer />
-				</main>
-			</Layout>
-		</ApolloProvider>
+			</main>
+		</Layout>
 	)
 }
 

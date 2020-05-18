@@ -9,10 +9,23 @@ const squareCSS = css`
 	padding: 0;
 	position: relative;
 	z-index: 1;
+	cursor: pointer;
+	.quilt-title {
+		opacity: 0;
+		transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+	}
 `
 
 const selectedSquareCSS = css`
 	z-index: 1000;
+`
+
+const unSelectedSquareCSS = css`
+	:hover {
+		.quilt-title {
+			opacity: 1;
+		}
+	}
 `
 
 const imageCSS = css`
@@ -31,8 +44,8 @@ const descriptionCSS = css`
 	color: ${styles.colors.white};
 	background: ${styles.colors.darkGray};
 	padding: ${styles.scale.px12};
-	font-size: 10px;
-	line-height: ${styles.scale.px12};
+	font-size: 8px;
+	line-height: 10px;
 	@media (min-width: ${styles.screens.tablet}px) {
 		top: initial;
 		bottom: 0;
@@ -43,7 +56,7 @@ const descriptionCSS = css`
 `
 
 const QuiltSquare = ({ quilt, selected, handleClick, index }) => {
-	const isSelected = quilt.id === selected
+	const isSelected = quilt.objectID === selected
 
 	const [location, setLocation] = useState({ horizontal: 0, vertical: 0 })
 	const [scale, setScale] = useState(1)
@@ -91,30 +104,48 @@ const QuiltSquare = ({ quilt, selected, handleClick, index }) => {
 		<a.div
 			ref={squareRef}
 			style={{ transform, border }}
-			css={isSelected ? [squareCSS, selectedSquareCSS] : squareCSS}
-			key={quilt.id}
-			id={quilt.id}
+			css={
+				isSelected
+					? [squareCSS, selectedSquareCSS]
+					: [squareCSS, unSelectedSquareCSS]
+			}
+			key={quilt.objectID}
+			id={quilt.objectID}
 			className={`quilt-col-${(index + 6) % 6}`}
 			onClick={() => {
 				// update the window history to provide a deep link to quilt square
 				window.history.pushState(
-					{ id: quilt.id }, // give history state an id
+					{ id: quilt.objectID }, // give history state an id
 					`Memory Quilt | ${quilt.title}`, // give page a title
-					`?q=${quilt.id}` // create the new url with variables to base on render
+					`?quilt=${quilt.objectID}` // create the new url with variables to base on render
 				)
 				if (isSelected) {
 					handleClick(null)
 				} else {
-					handleClick(quilt.id)
+					handleClick(quilt.objectID)
 				}
 				resizeSelected()
 			}}
 		>
 			<img
 				css={imageCSS}
-				src={`${quilt.quiltImage.url}?w=1080&h=1080&fit=crop&crop=faces`}
+				src={`${quilt.quiltImage}?w=1080&h=1080&fit=crop&crop=faces`}
 				alt=""
 			/>
+			<p
+				className="quilt-title"
+				css={css`
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					right: 0;
+					background: hsla(0, 0%, 100%, 0.8);
+					text-align: center;
+					padding: ${styles.scale.px10} ${styles.scale.px5};
+				`}
+			>
+				{quilt.title}
+			</p>
 			{isSelected && (
 				<div
 					css={descriptionCSS}
