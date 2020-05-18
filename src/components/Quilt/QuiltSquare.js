@@ -129,7 +129,7 @@ const QuiltSquare = ({ quilt, selected, handleClick, index }) => {
 		>
 			<img
 				css={imageCSS}
-				src={`${quilt.quiltImage}?w=1080&h=1080&fit=crop&crop=faces`}
+				src={`${quilt.quiltImage}?w=700&h=700&fit=crop&crop=faces`}
 				alt=""
 			/>
 			<p
