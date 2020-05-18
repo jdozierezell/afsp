@@ -81,6 +81,7 @@ const Landing = ({ data: { landing, afspMedia } }) => {
 					.replace('DatoCmsCustomShareable-', '')
 					.replace('DatoCmsQuilt-', '')
 					.replace('DatoCmsSearchPage-', '')
+					.replace('DatoCmsImageList-', '')
 					.replace('-en', '')
 				afspMedia.landing.ctaChapterResourceDetailList.forEach(
 					media => {

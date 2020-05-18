@@ -24,6 +24,7 @@ const buildUrl = (typename = '', slug = '') => {
 		case 'DatoCmsStatistic':
 		case 'DatoCmsPartnerPage':
 		case 'DatoCmsActionCenter':
+		case 'DatoCmsImageList':
 			folder = ''
 			break
 		default:

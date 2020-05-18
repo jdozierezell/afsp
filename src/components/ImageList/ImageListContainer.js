@@ -39,9 +39,8 @@ const ImageListContainer = ({ images }) => {
 						: image.image.responsiveOriginal
 				}
 				return (
-					<div css={imageWrapperCSS}>
+					<div key={index} css={imageWrapperCSS}>
 						<a
-							key={index}
 							href={
 								image.linkToOther
 									? image.otherUrl
