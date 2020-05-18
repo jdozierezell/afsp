@@ -100,7 +100,12 @@ const CTAVideo = ({ cta, id }) => {
 		link,
 		external,
 	} = cta
-	const video = backgroundVideo ? backgroundVideo.url : null
+	let video
+	if (backgroundVideo) {
+		video = backgroundVideo.video
+			? backgroundVideo.video.mp4Url
+			: backgroundVideo.url
+	}
 	return (
 		<BackgroundImage
 			id={id}

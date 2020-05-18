@@ -8,6 +8,9 @@ export const CTAs = graphql`
 					__typename
 					backgroundVideo {
 						url
+						video {
+							mp4Url(res: medium)
+						}
 					}
 					backgroundImage {
 						url
