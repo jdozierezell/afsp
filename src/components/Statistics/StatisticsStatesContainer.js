@@ -266,7 +266,7 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 									id="stateInputLabel"
 								>
 									Download our{' '}
-									<a href="https://www.datocms-assets.com/12810/1582813931-usfactsfiguresflyer.pdf">
+									<a href="https://www.datocms-assets.com/12810/1587128056-usfactsfiguresflyer-2.pdf">
 										Suicide Facts &amp; Figures
 									</a>{' '}
 									national fact sheet <br />

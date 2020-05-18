@@ -38,9 +38,6 @@ const SuicideStatistics = ({ data: { statistics, afspMedia } }) => {
 		}
 	})
 
-	console.log(statistics.callsToAction)
-	console.log(afspMedia.statistics.callsToAction)
-
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
