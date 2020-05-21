@@ -26,7 +26,9 @@ const Detail = ({ data: { detail, afspMedia } }) => {
 				programLogo={
 					afspMedia.detail ? afspMedia.detail.programLogo : null
 				}
-				draftProgramLogo={detail.programLogo.url}
+				draftProgramLogo={
+					detail.programLogo ? detail.programLogo.url : ''
+				}
 			/>
 			<NavigationSide hasEvents={hasEvents} data={detail} />
 			<ContentGeneric
