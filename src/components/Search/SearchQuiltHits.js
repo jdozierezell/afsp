@@ -63,7 +63,6 @@ const buttonCSS = css`
 `
 
 const CustomHits = data => {
-	console.log(data)
 	const [display, setDisplay] = useState(24)
 	return (
 		<div>

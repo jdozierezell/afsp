@@ -22,6 +22,12 @@ const storyContentCSS = css`
 	.secondary-button {
 		margin-right: ${styles.scale.px24};
 	}
+	> a:not(:last-of-type) {
+		margin-bottom: ${styles.scale.px36};
+	}
+	p:last-of-type {
+		margin-bottom: 0;
+	}
 `
 
 const detailCarouselCSS = css`
@@ -33,7 +39,7 @@ const detailCarouselCSS = css`
 
 const ContentGeneric = ({ setEvents, data, dataMedia }) => {
 	const { details } = data
-	const detailsMedia = dataMedia.details
+	const detailsMedia = dataMedia ? dataMedia.details : null
 
 	return (
 		<section
@@ -83,14 +89,16 @@ const ContentGeneric = ({ setEvents, data, dataMedia }) => {
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsImage') {
-					detailsMedia.forEach(media => {
-						detail.id = detail.id
-							.replace('DatoCmsImage-', '')
-							.replace('-en', '')
-						if (detail.id === media.id) {
-							detail.images = media.images
-						}
-					})
+					if (detailsMedia) {
+						detailsMedia.forEach(media => {
+							detail.id = detail.id
+								.replace('DatoCmsImage-', '')
+								.replace('-en', '')
+							if (detail.id === media.id) {
+								detail.images = media.images
+							}
+						})
+					}
 					return <ContentImage key={index} image={detail.images} />
 				} else if (detail.__typename === 'DatoCmsVideo') {
 					return (

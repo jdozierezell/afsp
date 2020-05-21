@@ -1,6 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
+import Script from 'react-load-script'
 
 import Header from './Header/Header'
 import EmailSignup from './EmailSignup/EmailSignup'
@@ -50,6 +51,13 @@ const Layout = ({ theme, overrideLight, children, seo, facebook }) => {
 				</div>
 			</EmailSignup>
 			<Footer nav={footerNav} />
+			<Script
+				attributes={{
+					async: '',
+					type: 'text/javascript',
+				}}
+				url="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=JXzNvL"
+			/>
 		</>
 	)
 }

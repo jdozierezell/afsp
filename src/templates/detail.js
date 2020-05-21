@@ -9,6 +9,7 @@ import ContentGeneric from '../components/Content/ContentGeneric'
 import { styles } from '../css/css'
 
 const Detail = ({ data: { detail, afspMedia } }) => {
+	console.log(afspMedia)
 	const [hasEvents, setHasEvents] = useState(false)
 	const setEvents = events => {
 		if (events) {
@@ -22,7 +23,10 @@ const Detail = ({ data: { detail, afspMedia } }) => {
 		>
 			<HeroSolid
 				data={detail}
-				programLogo={afspMedia.detail.programLogo}
+				programLogo={
+					afspMedia.detail ? afspMedia.detail.programLogo : null
+				}
+				draftProgramLogo={detail.programLogo.url}
 			/>
 			<NavigationSide hasEvents={hasEvents} data={detail} />
 			<ContentGeneric
@@ -43,10 +47,6 @@ export const query = graphql`
 			slug
 			programLogo {
 				url
-				fluid(maxWidth: 623) {
-					...GatsbyDatoCmsFluid_noBase64
-				}
-				alt
 			}
 			brief
 			parentPage {

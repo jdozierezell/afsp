@@ -30,7 +30,6 @@ const Chapter = ({
 		staffTitle,
 		staffEmail,
 		staffPhone,
-		chapterEmailApiKey,
 		featuredPrograms,
 		volunteerSignupUrl,
 		socialAccounts,
@@ -58,6 +57,20 @@ const Chapter = ({
 	const storiesMedia = afspMedia.allChapterStoryUpdates.concat(
 		afspMedia.allStories
 	)
+
+	featuredPrograms.forEach(program => {
+		program.id = program.id
+			.replace('DatoCmsDetail-', '')
+			.replace('DatoCmsLanding-', '')
+			.replace('DatoCmsActionCenter-', '')
+			.replace('-en', '')
+		afspMedia.chapterHomePage.featuredPrograms.forEach(media => {
+			if (program.id === media.id) {
+				program.seo.image.responsiveImage =
+					media.seo.image.responsiveImage
+			}
+		})
+	})
 
 	useEffect(() => {
 		if (stories.length === 0 && stories[0] !== 'no stories') {
@@ -140,12 +153,11 @@ const Chapter = ({
 		events.length,
 		storiesUpdates,
 	])
-
 	return (
 		<LayoutChapter
 			theme={styles.logo.mobileLightDesktopLight}
 			instagram={chapterInformation.instagramClass}
-			email={chapterEmailApiKey}
+			email={chapterInformation.chapterEmailApiKey}
 			seo={chapter.seoMetaTags}
 		>
 			<HeroChapter
@@ -230,74 +242,38 @@ export const query = graphql`
 				}
 			}
 			featuredPrograms {
-				... on DatoCmsActionCenter {
-					__typename
-					title
-					slug
-					seo {
-						image {
-							url
-							fluid(
-								maxWidth: 600
-								imgixParams: {
-									auto: "format"
-									fit: "crop"
-									crop: "faces"
-									w: "600"
-									h: "370"
-								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
-						}
-						description
-					}
-				}
-				... on DatoCmsLanding {
-					__typename
-					title
-					slug
-					seo {
-						image {
-							url
-							fluid(
-								maxWidth: 600
-								imgixParams: {
-									auto: "format"
-									fit: "crop"
-									crop: "faces"
-									w: "600"
-									h: "370"
-								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
-						}
-						description
-					}
-				}
 				... on DatoCmsDetail {
-					__typename
+					id
 					title
 					slug
 					brief
 					seo {
+						description
 						image {
 							url
-							fluid(
-								maxWidth: 600
-								imgixParams: {
-									auto: "format"
-									fit: "crop"
-									crop: "faces"
-									w: "600"
-									h: "370"
-								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
 						}
+					}
+				}
+				... on DatoCmsLanding {
+					id
+					title
+					slug
+					seo {
 						description
+						image {
+							url
+						}
+					}
+				}
+				... on DatoCmsActionCenter {
+					id
+					title
+					slug
+					seo {
+						description
+						image {
+							url
+						}
 					}
 				}
 			}
@@ -349,6 +325,97 @@ export const query = graphql`
 			}
 		}
 		afspMedia: afspMedia {
+			chapterHomePage(filter: { slug: { eq: $slug } }) {
+				featuredPrograms {
+					... on AFSPMedia_ActionCenterRecord {
+						__typename
+						id
+						seo {
+							image {
+								url
+								responsiveImage(
+									imgixParams: {
+										auto: format
+										fill: blur
+										fit: fill
+										h: "370"
+										w: "600"
+									}
+								) {
+									alt
+									aspectRatio
+									height
+									sizes
+									src
+									srcSet
+									title
+									webpSrcSet
+									width
+								}
+							}
+							description
+						}
+					}
+					... on AFSPMedia_LandingRecord {
+						__typename
+						id
+						seo {
+							image {
+								url
+								responsiveImage(
+									imgixParams: {
+										auto: format
+										fill: blur
+										fit: fill
+										h: "370"
+										w: "600"
+									}
+								) {
+									alt
+									aspectRatio
+									height
+									sizes
+									src
+									srcSet
+									title
+									webpSrcSet
+									width
+								}
+							}
+							description
+						}
+					}
+					... on AFSPMedia_DetailRecord {
+						__typename
+						id
+						seo {
+							image {
+								url
+								responsiveImage(
+									imgixParams: {
+										auto: format
+										fill: blur
+										fit: fill
+										h: "370"
+										w: "600"
+									}
+								) {
+									alt
+									aspectRatio
+									height
+									sizes
+									src
+									srcSet
+									title
+									webpSrcSet
+									width
+								}
+							}
+							description
+						}
+					}
+				}
+			}
 			allChapterStoryUpdates(
 				first: 100
 				filter: { tags: { anyIn: $tagId } }

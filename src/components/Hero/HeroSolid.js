@@ -48,7 +48,7 @@ const logoCSS = css`
 	margin-bottom: ${styles.scale.px36};
 `
 
-const HeroSolid = ({ data, programLogo, addCSS }) => {
+const HeroSolid = ({ data, programLogo, draftProgramLogo, addCSS }) => {
 	const { title, brief, parentPage } = data
 	return (
 		<div
@@ -63,7 +63,10 @@ const HeroSolid = ({ data, programLogo, addCSS }) => {
 			{programLogo && (
 				<Image css={logoCSS} data={programLogo.responsiveImage} />
 			)}
-			{!programLogo && (
+			{programLogo && draftProgramLogo && (
+				<Image css={logoCSS} data={programLogo.responsiveImage} />
+			)}
+			{!programLogo && !draftProgramLogo && (
 				<h1 dangerouslySetInnerHTML={{ __html: title }}></h1>
 			)}
 			<div
