@@ -196,7 +196,7 @@ const SearchSupportGroups = ({ supportGroup }) => {
 							</a>
 						)}
 						{secondContactPhone && <br />}
-						{secondContactPhone ? contactPhone : ''}
+						{secondContactPhone ? secondContactPhone : ''}
 					</address>
 				)}
 			</div>
