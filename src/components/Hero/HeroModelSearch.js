@@ -129,7 +129,7 @@ const HeroModelSearch = ({
 				css={subHeaderCSS}
 				dangerouslySetInnerHTML={{ __html: description }}
 			></div>
-			{searchType === 'supportGroup' && (
+			{searchType === 'supportGroup' && countryOptions.length > 0 && (
 				<>
 					<Toggle defaultChecked={nonus} onChange={updateNonus} />
 					<label css={toggleLabelCSS} htmlFor="">
