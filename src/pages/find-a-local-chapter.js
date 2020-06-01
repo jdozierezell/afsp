@@ -97,7 +97,7 @@ const FindALocalChapter = ({ data: { search, chapters, afspMedia } }) => {
 					zip={zip}
 				/>
 			)}
-			{noResults && <SearchNoResults type="support group" />}
+			{noResults && <SearchNoResults type="chapter" />}
 			{search.callsToAction.map((item, index) => (
 				<CTAContainer
 					key={index}
