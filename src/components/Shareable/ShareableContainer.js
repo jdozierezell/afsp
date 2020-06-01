@@ -67,6 +67,7 @@ const ShareableContainer = ({
 	const [controlHeight, setControlHeight] = useState(null)
 	const [top, setTop] = useState('220px')
 	const [message, setMessage] = useState()
+	const [overlayText, setOverlayText] = useState(false)
 	const trRef = useRef(null)
 	const imageRef = useRef(null)
 	const konvaRef = useRef(null)
@@ -113,6 +114,10 @@ const ShareableContainer = ({
 		xhr.open('GET', overlay.src)
 		xhr.responseType = 'blob'
 		xhr.send()
+	}
+
+	const updateOverlayTextColor = useDarkText => {
+		setOverlayText(useDarkText)
 	}
 
 	const updateMessage = message => {
@@ -260,7 +265,11 @@ const ShareableContainer = ({
 								squareImage
 							}
 							lineHeight={1.15}
-							fill={styles.colors.white}
+							fill={
+								overlayText
+									? styles.colors.darkGray
+									: styles.colors.white
+							}
 							x={
 								(customText.customValues.x * width) /
 								squareImage
@@ -313,6 +322,7 @@ const ShareableContainer = ({
 					downloadImage={downloadImage}
 					overlays={overlays}
 					updateOverlay={updateOverlay}
+					updateOverlayTextColor={updateOverlayTextColor}
 					updateMessage={updateMessage}
 				/>
 			</div>

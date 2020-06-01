@@ -72,6 +72,7 @@ export const query = graphql`
 					url
 					alt
 				}
+				useDarkText
 			}
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags

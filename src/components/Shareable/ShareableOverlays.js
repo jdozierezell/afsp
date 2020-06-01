@@ -28,7 +28,11 @@ const shareableOverlaysCSS = css`
 	}
 `
 
-const ShareableOverlays = ({ overlays, updateOverlay }) => {
+const ShareableOverlays = ({
+	overlays,
+	updateOverlay,
+	updateOverlayTextColor,
+}) => {
 	return (
 		<div css={shareableOverlaysCSS}>
 			<h2
@@ -41,7 +45,13 @@ const ShareableOverlays = ({ overlays, updateOverlay }) => {
 			</h2>
 			{overlays.map((overlay, index) => {
 				return (
-					<button key={index} onClick={e => updateOverlay(e.target)}>
+					<button
+						key={index}
+						onClick={e => {
+							updateOverlay(e.target)
+							updateOverlayTextColor(overlay.useDarkText)
+						}}
+					>
 						{overlay.image.responsiveImage && (
 							<Image data={overlay.image.responsiveImage} />
 						)}

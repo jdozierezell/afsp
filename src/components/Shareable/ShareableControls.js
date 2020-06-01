@@ -28,6 +28,7 @@ const ShareableControls = ({
 	downloadImage,
 	overlays,
 	updateOverlay,
+	updateOverlayTextColor,
 	updateMessage,
 }) => {
 	return (
@@ -57,6 +58,7 @@ const ShareableControls = ({
 			<ShareableOverlays
 				overlays={overlays}
 				updateOverlay={updateOverlay}
+				updateOverlayTextColor={updateOverlayTextColor}
 			/>
 			{isCustom && (
 				<div>
