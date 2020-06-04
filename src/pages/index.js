@@ -10,6 +10,7 @@ import CarouselChapterContainer from '../components/Carousels/CarouselChapterCon
 import CTAContainer from '../components/CTAs/CTAContainer'
 import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
 import InstagramFeed from '../components/Social/InstagramFeed'
+import Ticker from '../components/Ticker/Ticker'
 
 import { styles } from '../css/css'
 
@@ -143,6 +144,9 @@ const App = ({ data: { home, afspMedia } }) => {
 				return ''
 			})}
 			<InstagramFeed instaClass={home.instagramClass} />
+			{home.ticker && home.ticker.length > 0 && (
+				<Ticker ticker={home.ticker} />
+			)}
 		</Layout>
 	)
 }
@@ -184,7 +188,9 @@ export const query = graphql`
 					slug
 				}
 			}
-			breakingNews
+			ticker {
+				tickerItem
+			}
 			ctaChapterResourceList {
 				... on DatoCmsChannelList {
 					__typename
