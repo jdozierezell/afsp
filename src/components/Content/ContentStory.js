@@ -122,6 +122,22 @@ const ContentStory = ({ data, dataMedia }) => {
 								image={article.images}
 							/>
 						)
+					} else if (article.__typename === 'DatoCmsVideo') {
+						articleMedia.forEach(media => {
+							article.id = article.id
+								.replace('DatoCmsVideo-', '')
+								.replace('-en', '')
+							if (article.id === media.id) {
+								article.video = media.video
+								article.poster = media.poster
+							}
+						})
+						return (
+							<ContentVideo
+								video={article.video.video.mp4Url}
+								poster={article.poster.url}
+							/>
+						)
 					} else if (article.__typename === 'DatoCmsDetailSquare') {
 						return (
 							<div
@@ -135,17 +151,6 @@ const ContentStory = ({ data, dataMedia }) => {
 									content={article.detail}
 								/>
 							</div>
-						)
-					} else if (article.__typename === 'DatoCmsVideo') {
-						return (
-							<ContentVideo
-								video={
-									article.video.video
-										? article.video.video.mp4Url
-										: article.video.url
-								}
-								poster={article.poster.url}
-							/>
 						)
 					} else if (article.__typename === 'DatoCmsAudio') {
 						return <ContentAudio audio={article.audio} />

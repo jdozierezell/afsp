@@ -19,6 +19,7 @@ const carouselCSS = css`
 
 const Story = ({ data, pageContext: { prev, next } }) => {
 	const { story, afspMedia } = data
+
 	return (
 		<Layout
 			theme={styles.logo.mobileDarkDesktopLight}
@@ -65,6 +66,18 @@ export const query = graphql`
 					__typename
 					id
 					images {
+						url
+					}
+				}
+				... on DatoCmsVideo {
+					__typename
+					id
+					video {
+						video {
+							mp4Url(res: medium)
+						}
+					}
+					poster {
 						url
 					}
 				}
@@ -133,6 +146,18 @@ export const query = graphql`
 								webpSrcSet
 								width
 							}
+						}
+					}
+					... on AFSPMedia_VideoRecord {
+						id
+						video {
+							id
+							video {
+								mp4Url(res: medium)
+							}
+						}
+						poster {
+							url
 						}
 					}
 				}
