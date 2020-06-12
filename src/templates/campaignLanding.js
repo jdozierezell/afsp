@@ -51,11 +51,11 @@ const channelCSS = css`
 	}
 `
 
-const RealConvo = ({ data: { realConvo, afspMedia } }) => {
+const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
 	let adjacent = 0
-	const realMedia = afspMedia.realconvo
+	const realMedia = afspMedia.campaignLanding
 
-	realConvo.channelList.forEach(channel => {
+	campaignLanding.channelList.forEach(channel => {
 		channel.id = channel.id
 			.replace('DatoCmsChannel-', '')
 			.replace('-en', '')
@@ -65,15 +65,15 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 			}
 		})
 	})
-	realConvo.convoLinks.forEach(convo => {
+	campaignLanding.convoLinks.forEach(convo => {
 		convo.id = convo.id.replace('DatoCmsConvoLink-', '').replace('-en', '')
-		afspMedia.realconvo.convoLinks.forEach(media => {
+		afspMedia.campaignLanding.convoLinks.forEach(media => {
 			if (convo.id === media.id) {
 				convo.convoImage = media.convoImage
 			}
 		})
 	})
-	realConvo.ctaChapterResourceDetailList.forEach(resource => {
+	campaignLanding.ctaChapterResourceDetailList.forEach(resource => {
 		if (resource.resource) {
 			resource.resource.forEach(childResource => {
 				childResource.id = childResource.id
@@ -109,50 +109,51 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 	return (
 		<Layout
 			theme={styles.logo.mobileDarkDesktopDark}
-			seo={realConvo.seoMetaTags}
+			seo={campaignLanding.seoMetaTags}
 		>
-			<h1 css={landingTitle}>{realConvo.title}</h1>
-			{realConvo.brief && (
+			<h1 css={landingTitle}>{campaignLanding.title}</h1>
+			{campaignLanding.brief && (
 				<div
 					css={css`
 						${landingBriefCSS};
 						@media (min-width: ${styles.screens.tablet}px) {
 							padding: 0 ${styles.scale.px50}
-								${realConvo.channelList.length !== 0
+								${campaignLanding.channelList.length !== 0
 									? 0
 									: styles.scale.px50};
 						}
 					`}
-					dangerouslySetInnerHTML={{ __html: realConvo.brief }}
+					dangerouslySetInnerHTML={{ __html: campaignLanding.brief }}
 				></div>
 			)}
-			{realConvo.channelList.length !== 0 && (
+			{campaignLanding.channelList.length !== 0 && (
 				<ChannelContainer
-					slug={realConvo.slug}
-					channelList={realConvo.channelList}
-					channelListMedia={afspMedia.realconvo.channelList}
+					slug={campaignLanding.slug}
+					channelList={campaignLanding.channelList}
+					channelListMedia={afspMedia.campaignLanding.channelList}
 					addCSS={channelCSS}
 				/>
 			)}
-			{realConvo.introCopy && (
+			{campaignLanding.introCopy && (
 				<div css={introCopyCSS}>
 					<div
 						dangerouslySetInnerHTML={{
-							__html: realConvo.introCopy,
+							__html: campaignLanding.introCopy,
 						}}
 					></div>
 				</div>
 			)}
 			<ConvoContainer
-				convos={realConvo.convoLinks}
-				// videos={realConvo.convoVideos} // not currently using video content
+				convos={campaignLanding.convoLinks}
+				// videos={campaignLanding.convoVideos} // not currently using video content
 			/>
-			{realConvo.ctaChapterResourceDetailList.map((item, index) => {
+			{campaignLanding.ctaChapterResourceDetailList.map((item, index) => {
 				const prevIndex = index > 0 ? index - 1 : null
 				if (
 					prevIndex !== null &&
-					realConvo.ctaChapterResourceDetailList[index].__typename ===
-						realConvo.ctaChapterResourceDetailList[prevIndex]
+					campaignLanding.ctaChapterResourceDetailList[index]
+						.__typename ===
+						campaignLanding.ctaChapterResourceDetailList[prevIndex]
 							.__typename
 				) {
 					adjacent++
@@ -205,7 +206,7 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 				}
 				return ''
 			})}
-			<Calendar events={realConvo.eventCalendar} />
+			<Calendar events={campaignLanding.eventCalendar} />
 			<CarouselChapterContainer
 				carouselCSS={css`
 					@media (min-width: ${styles.screens.mobile}px) {
@@ -220,11 +221,11 @@ const RealConvo = ({ data: { realConvo, afspMedia } }) => {
 	)
 }
 
-export default RealConvo
+export default CampaignLanding
 
 export const query = graphql`
-	query {
-		realConvo: datoCmsRealconvo {
+	query($slug: String) {
+		campaignLanding: datoCmsCampaignLanding(slug: { eq: $slug }) {
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}
@@ -421,7 +422,7 @@ export const query = graphql`
 			}
 		}
 		afspMedia: afspMedia {
-			realconvo {
+			campaignLanding(filter: { slug: { eq: $slug } }) {
 				channelList {
 					id
 					image {

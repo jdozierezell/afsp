@@ -9,7 +9,6 @@ import ContentGeneric from '../components/Content/ContentGeneric'
 import { styles } from '../css/css'
 
 const Detail = ({ data: { detail, afspMedia } }) => {
-	console.log(afspMedia)
 	const [hasEvents, setHasEvents] = useState(false)
 	const setEvents = events => {
 		if (events) {

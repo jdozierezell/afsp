@@ -28,6 +28,14 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
+			campaignLandings: allDatoCmsCampaignLanding {
+				edges {
+					node {
+						slug
+						title
+					}
+				}
+			}
 			chapterHomes: allDatoCmsChapterHomePage {
 				edges {
 					node {
@@ -175,6 +183,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	`)
 	const authors = data.authors.edges
 	const bios = data.bios.edges
+	const campaignLandings = data.campaignLandings.edges
 	const chapterHomes = data.chapterHomes.edges
 	const chapterStoriesUpdates = data.chapterStoriesUpdates.edges
 	const customShareables = data.customShareables.edges
@@ -205,6 +214,16 @@ exports.createPages = async ({ graphql, actions }) => {
 		createPage({
 			path: `bio/${node.slug}`,
 			component: path.resolve('./src/templates/bio.js'),
+			context: {
+				slug: node.slug,
+			},
+		})
+	})
+
+	campaignLandings.forEach(({ node }) => {
+		createPage({
+			path: `${node.slug}`,
+			component: path.resolve('./src/templates/campaignLanding.js'),
 			context: {
 				slug: node.slug,
 			},
