@@ -143,7 +143,7 @@ const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
 					></div>
 				</div>
 			)}
-			{campaignLanding.convoLinks && (
+			{campaignLanding.convoLinks.length > 0 && (
 				<ConvoContainer convos={campaignLanding.convoLinks} />
 			)}
 			{campaignLanding.ctaChapterResourceDetailList.map((item, index) => {
