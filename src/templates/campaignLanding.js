@@ -143,10 +143,9 @@ const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
 					></div>
 				</div>
 			)}
-			<ConvoContainer
-				convos={campaignLanding.convoLinks}
-				// videos={campaignLanding.convoVideos} // not currently using video content
-			/>
+			{campaignLanding.convoLinks && (
+				<ConvoContainer convos={campaignLanding.convoLinks} />
+			)}
 			{campaignLanding.ctaChapterResourceDetailList.map((item, index) => {
 				const prevIndex = index > 0 ? index - 1 : null
 				if (
@@ -206,6 +205,7 @@ const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
 				}
 				return ''
 			})}
+			{console.log(campaignLanding.eventCalendar)}
 			<Calendar events={campaignLanding.eventCalendar} />
 			<CarouselChapterContainer
 				carouselCSS={css`
@@ -236,10 +236,15 @@ export const query = graphql`
 				description
 			}
 			eventCalendar {
-				eventTitle
-				eventDateAndTime
-				url
-				brief
+				... on DatoCmsCampaignName {
+					campaignName
+				}
+				... on DatoCmsEvent {
+					eventTitle
+					eventDateAndTime
+					url
+					brief
+				}
 			}
 			channelList {
 				id
@@ -253,11 +258,6 @@ export const query = graphql`
 				}
 			}
 			introCopy
-			convoVideos {
-				video {
-					url
-				}
-			}
 			convoLinks {
 				id
 				convoTitle

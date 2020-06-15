@@ -57,11 +57,23 @@ const calendarCSS = css`
 `
 
 const Calendar = ({ events }) => {
+	let calendarTitle = ''
+	let eventArray = []
+	events.forEach(event => {
+		if (event.__typename === 'DatoCmsCampaignName') {
+			calendarTitle = event.campaignName
+		} else if (event.__typename === 'DatoCmsEvent') {
+			eventArray.push(event)
+		}
+	})
 	return (
-		<div css={calendarCSS} id="may-events-calendar">
-			<h2>May events calendar</h2>
+		<div
+			css={calendarCSS}
+			id={`${calendarTitle.toLowerCase()}-events-calendar`}
+		>
+			<h2>{calendarTitle} events calendar</h2>
 			<ul>
-				{events.map((event, index) => {
+				{eventArray.map((event, index) => {
 					return (
 						<li key={index}>
 							<h3>{event.eventTitle}</h3>
