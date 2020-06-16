@@ -206,7 +206,9 @@ const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
 				return ''
 			})}
 			{console.log(campaignLanding.eventCalendar)}
-			<Calendar events={campaignLanding.eventCalendar} />
+			{campaignLanding.eventCalendar.length > 0 && (
+				<Calendar events={campaignLanding.eventCalendar} />
+			)}
 			<CarouselChapterContainer
 				carouselCSS={css`
 					@media (min-width: ${styles.screens.mobile}px) {
