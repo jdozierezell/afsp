@@ -113,7 +113,9 @@ const Calendar = ({ events }) => {
 									className="secondary-button"
 									href={event.url}
 								>
-									Add to calendar
+									{event.buttonText
+										? event.buttonText
+										: 'Add to calendar'}
 								</a>
 							)}
 						</li>
