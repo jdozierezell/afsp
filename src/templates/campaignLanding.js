@@ -53,13 +53,13 @@ const channelCSS = css`
 
 const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
 	let adjacent = 0
-	const realMedia = afspMedia.campaignLanding
-
+	const campaignMedia = afspMedia.campaignLanding
+	console.log(afspMedia)
 	campaignLanding.channelList.forEach(channel => {
 		channel.id = channel.id
 			.replace('DatoCmsChannel-', '')
 			.replace('-en', '')
-		realMedia.channelList.forEach(media => {
+		campaignMedia.channelList.forEach(media => {
 			if (channel.id === media.id) {
 				channel.image = media.image
 			}
@@ -84,7 +84,7 @@ const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
 					.replace('DatoCmsDetail-', '')
 					.replace('DatoCmsCustomShareable-', '')
 					.replace('-en', '')
-				realMedia.ctaChapterResourceDetailList.forEach(media => {
+				campaignMedia.ctaChapterResourceDetailList.forEach(media => {
 					if (media.resource) {
 						media.resource.forEach(childMedia => {
 							if (childResource.id === childMedia.id) {
@@ -205,7 +205,6 @@ const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
 				}
 				return ''
 			})}
-			{console.log(campaignLanding.eventCalendar)}
 			{campaignLanding.eventCalendar.length > 0 && (
 				<Calendar events={campaignLanding.eventCalendar} />
 			)}
