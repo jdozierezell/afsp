@@ -21,6 +21,10 @@ const calendarCSS = css`
 		margin: 0;
 		padding: 0;
 		@media (min-width: ${styles.screens.tablet}px) {
+			grid-template-columns: repeat(2, 1fr);
+			grid-gap: ${styles.gridGap.desktop};
+		}
+		@media (min-width: ${styles.screens.navigation}px) {
 			grid-template-columns: repeat(3, 1fr);
 			grid-gap: ${styles.gridGap.desktop};
 		}
@@ -34,18 +38,28 @@ const calendarCSS = css`
 		border-radius: ${styles.scale.px5};
 		padding: ${styles.scale.px12} ${styles.scale.px12} ${styles.scale.px90};
 	}
-	li:nth-of-type(3n + 1) {
+	li:nth-of-type(2n + 1) {
 		@media (min-width: ${styles.screens.tablet}px) {
 			grid-column: 1 / 2;
 		}
 	}
-	li:nth-of-type(3n + 2) {
+	li:nth-of-type(2n + 2) {
 		@media (min-width: ${styles.screens.tablet}px) {
 			grid-column: 2 / 3;
 		}
 	}
+	li:nth-of-type(3n + 1) {
+		@media (min-width: ${styles.screens.navigation}px) {
+			grid-column: 1 / 2;
+		}
+	}
+	li:nth-of-type(3n + 2) {
+		@media (min-width: ${styles.screens.navigation}px) {
+			grid-column: 2 / 3;
+		}
+	}
 	li:nth-of-type(3n + 3) {
-		@media (min-width: ${styles.screens.tablet}px) {
+		@media (min-width: ${styles.screens.navigation}px) {
 			grid-column: 3 / 4;
 		}
 	}

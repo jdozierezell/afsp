@@ -27,20 +27,6 @@ const landingBriefCSS = css`
 	max-width: 920px;
 `
 
-const introCopyCSS = css`
-	background-color: ${styles.colors.lightGray};
-	margin: -${styles.scale.px36} 0 -${styles.scale.px24};
-	div {
-		padding: ${styles.scale.px24};
-		font-family: ${styles.fonts.avenirRegular};
-		@media (min-width: ${styles.screens.mobile}px) {
-			max-width: calc(623px * 3);
-			columns: 3;
-			padding: ${styles.scale.px50};
-		}
-	}
-`
-
 const channelCSS = css`
 	background-color: ${styles.colors.white};
 	grid-template-columns: repeat(2, 1fr);
@@ -52,6 +38,7 @@ const channelCSS = css`
 `
 
 const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
+	const [readMore, setReadMore] = useState(false)
 	let adjacent = 0
 	const campaignMedia = afspMedia.campaignLanding
 	console.log(afspMedia)
@@ -123,8 +110,34 @@ const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
 									: styles.scale.px50};
 						}
 					`}
-					dangerouslySetInnerHTML={{ __html: campaignLanding.brief }}
-				></div>
+				>
+					<div
+						dangerouslySetInnerHTML={{
+							__html: campaignLanding.brief,
+						}}
+					></div>
+					<p>
+						<a
+							onClick={() => setReadMore(true)}
+							css={css`
+								cursor: pointer;
+								display: ${readMore ? 'none' : 'block'};
+							`}
+						>
+							Read more...
+						</a>
+					</p>
+					{campaignLanding.readMore && (
+						<div
+							css={css`
+								display: ${readMore ? 'block' : 'none'};
+							`}
+							dangerouslySetInnerHTML={{
+								__html: campaignLanding.readMore,
+							}}
+						></div>
+					)}
+				</div>
 			)}
 			{campaignLanding.channelList.length !== 0 && (
 				<ChannelContainer
@@ -134,14 +147,8 @@ const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
 					addCSS={channelCSS}
 				/>
 			)}
-			{campaignLanding.introCopy && (
-				<div css={introCopyCSS}>
-					<div
-						dangerouslySetInnerHTML={{
-							__html: campaignLanding.introCopy,
-						}}
-					></div>
-				</div>
+			{campaignLanding.eventCalendar.length > 0 && (
+				<Calendar events={campaignLanding.eventCalendar} />
 			)}
 			{campaignLanding.convoLinks.length > 0 && (
 				<ConvoContainer convos={campaignLanding.convoLinks} />
@@ -205,9 +212,6 @@ const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
 				}
 				return ''
 			})}
-			{campaignLanding.eventCalendar.length > 0 && (
-				<Calendar events={campaignLanding.eventCalendar} />
-			)}
 			<CarouselChapterContainer
 				carouselCSS={css`
 					@media (min-width: ${styles.screens.mobile}px) {
@@ -259,7 +263,7 @@ export const query = graphql`
 					...ChannelLink
 				}
 			}
-			introCopy
+			readMore
 			convoLinks {
 				id
 				convoTitle
