@@ -2,7 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 import moment from 'moment'
 
-// import createAnchor from '../../utils/createAnchor'
+import createAnchor from '../../utils/createAnchor'
 
 import { styles } from '../../css/css'
 
@@ -83,7 +83,7 @@ const Calendar = ({ events }) => {
 	return (
 		<div
 			css={calendarCSS}
-			id={`${calendarTitle.toLowerCase()}-events-calendar`}
+			id={`${createAnchor(calendarTitle.toLowerCase())}-events-calendar`}
 		>
 			<h2>{calendarTitle} events calendar</h2>
 			<ul>
