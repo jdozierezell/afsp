@@ -89,33 +89,31 @@ const Calendar = ({ events }) => {
 			<h2>{calendarTitle} events calendar</h2>
 			<ul>
 				{eventArray.map((event, index) => {
+					let dateAndTime = ''
+					if (event.eventDateAndTime) {
+						if (event.eventDateAndTime.includes('00:00:00')) {
+							dateAndTime = `All Day, ${moment(
+								event.eventDateAndTime
+							)
+								.utcOffset(-4)
+								.format('MMMM D')}`
+						} else {
+							console.log(event.eventDateAndTime.indexOf('00:00'))
+							if (event.eventDateAndTime.indexOf('00:00') > 0) {
+								dateAndTime = `${moment(event.eventDateAndTime)
+									.utcOffset(-4)
+									.format('MMMM D @ h a')} ET`
+							} else {
+								dateAndTime = `${moment(event.eventDateAndTime)
+									.utcOffset(-4)
+									.format('MMMM D @ h:mm a')}	ET`
+							}
+						}
+					}
 					return (
 						<li key={index}>
 							<h3>{event.eventTitle}</h3>
-							{event.eventDateAndTime && (
-								<>
-									{event.eventDateAndTime.includes(
-										'00:00:00'
-									) && (
-										<h4>
-											All Day{' '}
-											{moment(event.eventDateAndTime)
-												.utcOffset(-4)
-												.format('MMMM D')}
-										</h4>
-									)}
-									{!event.eventDateAndTime.includes(
-										'00:00:00'
-									) && (
-										<h4>
-											{moment(event.eventDateAndTime)
-												.utcOffset(-4)
-												.format('MMMM D @ h:mm a')}{' '}
-											EST
-										</h4>
-									)}
-								</>
-							)}
+							{event.eventDateAndTime && <h4>{dateAndTime}</h4>}
 							{console.log(event.brief)}
 							<div
 								dangerouslySetInnerHTML={{

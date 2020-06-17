@@ -52,7 +52,8 @@ strong em {
 	font-family: AvenirNextLTPro-DemiIt, Arial, sans-serif;
 }
 
-p {
+p,
+li {
 	color: hsla(0, 0%, 14.9%, 1);
 	font-size: 17px;
 }

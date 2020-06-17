@@ -41,7 +41,6 @@ const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
 	const [readMore, setReadMore] = useState(false)
 	let adjacent = 0
 	const campaignMedia = afspMedia.campaignLanding
-	console.log(afspMedia)
 	campaignLanding.channelList.forEach(channel => {
 		channel.id = channel.id
 			.replace('DatoCmsChannel-', '')
