@@ -13,7 +13,7 @@ const calendarCSS = css`
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px80} ${styles.scale.px50};
 	}
-	ul {
+	> ul {
 		list-style: none;
 		display: grid;
 		grid-template-columns: 1fr;
@@ -28,39 +28,40 @@ const calendarCSS = css`
 			grid-template-columns: repeat(3, 1fr);
 			grid-gap: ${styles.gridGap.desktop};
 		}
-	}
-	li {
-		display: inline-block;
-		position: relative;
-		width: 100%;
-		background-color: ${styles.colors.lightGray};
-		border: ${styles.scale.px5} solid ${styles.colors.white};
-		border-radius: ${styles.scale.px5};
-		padding: ${styles.scale.px12} ${styles.scale.px12} ${styles.scale.px90};
-	}
-	li:nth-of-type(2n + 1) {
-		@media (min-width: ${styles.screens.tablet}px) {
-			grid-column: 1 / 2;
+		> li {
+			display: inline-block;
+			position: relative;
+			width: 100%;
+			background-color: ${styles.colors.lightGray};
+			border: ${styles.scale.px5} solid ${styles.colors.white};
+			border-radius: ${styles.scale.px5};
+			padding: ${styles.scale.px12} ${styles.scale.px12}
+				${styles.scale.px90};
 		}
-	}
-	li:nth-of-type(2n + 2) {
-		@media (min-width: ${styles.screens.tablet}px) {
-			grid-column: 2 / 3;
+		> li:nth-of-type(2n + 1) {
+			@media (min-width: ${styles.screens.tablet}px) {
+				grid-column: 1 / 2;
+			}
 		}
-	}
-	li:nth-of-type(3n + 1) {
-		@media (min-width: ${styles.screens.navigation}px) {
-			grid-column: 1 / 2;
+		> li:nth-of-type(2n + 2) {
+			@media (min-width: ${styles.screens.tablet}px) {
+				grid-column: 2 / 3;
+			}
 		}
-	}
-	li:nth-of-type(3n + 2) {
-		@media (min-width: ${styles.screens.navigation}px) {
-			grid-column: 2 / 3;
+		> li:nth-of-type(3n + 1) {
+			@media (min-width: ${styles.screens.navigation}px) {
+				grid-column: 1 / 2;
+			}
 		}
-	}
-	li:nth-of-type(3n + 3) {
-		@media (min-width: ${styles.screens.navigation}px) {
-			grid-column: 3 / 4;
+		> li:nth-of-type(3n + 2) {
+			@media (min-width: ${styles.screens.navigation}px) {
+				grid-column: 2 / 3;
+			}
+		}
+		> li:nth-of-type(3n + 3) {
+			@media (min-width: ${styles.screens.navigation}px) {
+				grid-column: 3 / 4;
+			}
 		}
 	}
 	.secondary-button {
