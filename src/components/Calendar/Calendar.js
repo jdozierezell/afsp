@@ -116,13 +116,12 @@ const Calendar = ({ events }) => {
 									)}
 								</>
 							)}
-							{event.brief && (
-								<p
-									dangerouslySetInnerHTML={{
-										__html: event.brief,
-									}}
-								></p>
-							)}
+							{console.log(event.brief)}
+							<p
+								dangerouslySetInnerHTML={{
+									__html: event.brief,
+								}}
+							></p>
 							{event.url && (
 								<a
 									className="secondary-button"
