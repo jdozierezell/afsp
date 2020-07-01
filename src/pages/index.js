@@ -7,6 +7,7 @@ import BreakingNews from '../components/BreakingNews/BreakingNews'
 import HeroVideo from '../components/Hero/HeroVideo'
 import ChannelContainer from '../components/Channel/ChannelContainer'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
+import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
 import InstagramFeed from '../components/Social/InstagramFeed'
@@ -34,6 +35,7 @@ const walkBar = css`
 `
 
 const App = ({ data: { home, afspMedia } }) => {
+	console.log(home)
 	home.ctaChapterResourceList.forEach(resource => {
 		if (resource.channels) {
 			resource.channels.forEach(channel => {
