@@ -34,6 +34,7 @@ const Chapter = ({
 		volunteerSignupUrl,
 		socialAccounts,
 		chapterInformation,
+		trackingCode,
 	} = chapter
 	const chapterDonorDriveId = chapterInformation.chapterDonorDriveId
 		.replace(' ', '')
@@ -208,6 +209,9 @@ const Chapter = ({
 					id="news"
 				/>
 			)}
+			{trackingCode && (
+				<div dangerouslySetInnerHTML={{ __html: trackingCode }}></div>
+			)}
 		</LayoutChapter>
 	)
 }
@@ -282,6 +286,7 @@ export const query = graphql`
 				socialPlatform
 				accountHandle
 			}
+			trackingCode
 			chapterInformation {
 				instagramClass
 				chapterDonorDriveId
