@@ -38,7 +38,7 @@ const menuCSS = css`
 	}
 `
 
-const DeskMenu = ({ items }) => {
+const DeskMenu = ({ items, overrideLight }) => {
 	return (
 		<nav css={deskMenuCSS}>
 			<ul css={menuCSS}>
@@ -47,6 +47,7 @@ const DeskMenu = ({ items }) => {
 						key={item.id}
 						id={item.id}
 						menuItem={item}
+						overrideLight={overrideLight}
 					/>
 				))}
 			</ul>

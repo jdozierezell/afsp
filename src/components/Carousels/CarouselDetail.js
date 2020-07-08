@@ -37,7 +37,14 @@ const carouselLinkCSS = css`
 	text-decoration: underline;
 `
 
-const CarouselDetail = ({ anchor, content, title, externalAnchor, addCSS }) => {
+const CarouselDetail = ({
+	anchor,
+	content,
+	title,
+	externalAnchor,
+	buttonText,
+	addCSS,
+}) => {
 	return (
 		<div
 			css={css`
@@ -54,11 +61,11 @@ const CarouselDetail = ({ anchor, content, title, externalAnchor, addCSS }) => {
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					Learn more
+					{buttonText ? buttonText : 'Learn more'}
 				</a>
 			) : (
 				<Link to={anchor} css={carouselLinkCSS}>
-					Learn more
+					{buttonText ? buttonText : 'Learn more'}
 				</Link>
 			)}
 		</div>

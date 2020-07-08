@@ -92,6 +92,7 @@ const CarouselDetailContainer = ({
 									content={section.date}
 									title={section.title}
 									externalAnchor={true}
+									buttonText={section.buttonText}
 									anchor={section.url}
 									addCSS={addCSS}
 								/>

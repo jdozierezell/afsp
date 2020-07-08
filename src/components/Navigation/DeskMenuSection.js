@@ -61,7 +61,7 @@ const featuredCSS = css`
 	}
 `
 
-const DeskMenuSection = ({ menuItem, id }) => {
+const DeskMenuSection = ({ menuItem, id, overrideLight }) => {
 	const anchor = createAnchor(menuItem.displayTitle)
 	const [showMenu, setShowMenu] = useState(false)
 	const [currentPath, setCurrentPath] = useState(

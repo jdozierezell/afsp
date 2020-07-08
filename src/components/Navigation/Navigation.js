@@ -123,7 +123,9 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 			css={css`
 				${navTopCSS};
 				background-color: ${navBackground};
-				color: ${navColor};
+				> nav > ul > li {
+					color: ${navColor};
+				}
 			`}
 			role="navigation"
 			onMouseEnter={() => setHover(true)}
@@ -139,7 +141,7 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 					/>
 				</Link>
 			</div>
-			<DeskMenu items={nav} />
+			<DeskMenu items={nav} overrideLight={overrideLight} />
 			<div css={navButtons}>
 				<button
 					css={searchCSS}

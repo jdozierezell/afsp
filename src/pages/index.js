@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
+import moment from 'moment-timezone'
 
 import Layout from '../components/Layout'
 import BreakingNews from '../components/BreakingNews/BreakingNews'
@@ -35,7 +36,6 @@ const walkBar = css`
 `
 
 const App = ({ data: { home, afspMedia } }) => {
-	console.log(home)
 	home.ctaChapterResourceList.forEach(resource => {
 		if (resource.channels) {
 			resource.channels.forEach(channel => {
@@ -84,6 +84,26 @@ const App = ({ data: { home, afspMedia } }) => {
 		}
 	})
 
+	let events = {
+		title: 'National suicide prevention events',
+		details: [],
+	}
+	if (home.eventsList.length > 0) {
+		const timeZone = moment.tz.guess()
+		home.eventsList.forEach(event => {
+			const eventObject = {
+				__typename: 'Event',
+				title: event.eventTitle,
+				date: moment
+					.tz(event.eventDateAndTime, timeZone)
+					.format('MMMM D @ h:mm a z'),
+				buttonText: event.buttonText,
+				url: event.url,
+			}
+			events.details.push(eventObject)
+		})
+	}
+
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -114,34 +134,73 @@ const App = ({ data: { home, afspMedia } }) => {
 				</a>
 			</div>
 			{home.ctaChapterResourceList.map((item, index) => {
-				if (item.__typename === 'DatoCmsChannelList') {
-					return (
-						<ChannelContainer
-							key={index}
-							channelList={item.channels}
-							channelListMedia={afspMedia.home.channelList}
-						/>
-					)
-				} else if (item.__typename === 'DatoCmsCallToAction') {
-					return (
-						<CTAContainer
-							key={index}
-							number={index}
-							cta={item.cta.callToAction[0]}
-						/>
-					)
-				} else if (item.__typename === 'DatoCmsChapterConnection') {
-					if (item.showChapterConnection === true) {
-						return <CarouselChapterContainer key={index} />
+				if (index <= 4) {
+					if (item.__typename === 'DatoCmsChannelList') {
+						return (
+							<ChannelContainer
+								key={index}
+								channelList={item.channels}
+								channelListMedia={afspMedia.home.channelList}
+							/>
+						)
+					} else if (item.__typename === 'DatoCmsCallToAction') {
+						return (
+							<CTAContainer
+								key={index}
+								number={index}
+								cta={item.cta.callToAction[0]}
+							/>
+						)
+					} else if (item.__typename === 'DatoCmsChapterConnection') {
+						if (item.showChapterConnection === true) {
+							return <CarouselChapterContainer key={index} />
+						}
+					} else if (item.__typename === 'DatoCmsResourceList') {
+						return (
+							<FeaturedResourcesContainer
+								key={index}
+								heading={item.listHeading}
+								resources={item.resource}
+							/>
+						)
 					}
-				} else if (item.__typename === 'DatoCmsResourceList') {
-					return (
-						<FeaturedResourcesContainer
-							key={index}
-							heading={item.listHeading}
-							resources={item.resource}
-						/>
-					)
+					return ''
+				}
+				return ''
+			})}
+			{events && <CarouselDetailContainer content={events} />}
+			{home.ctaChapterResourceList.map((item, index) => {
+				if (index > 4) {
+					if (item.__typename === 'DatoCmsChannelList') {
+						return (
+							<ChannelContainer
+								key={index}
+								channelList={item.channels}
+								channelListMedia={afspMedia.home.channelList}
+							/>
+						)
+					} else if (item.__typename === 'DatoCmsCallToAction') {
+						return (
+							<CTAContainer
+								key={index}
+								number={index}
+								cta={item.cta.callToAction[0]}
+							/>
+						)
+					} else if (item.__typename === 'DatoCmsChapterConnection') {
+						if (item.showChapterConnection === true) {
+							return <CarouselChapterContainer key={index} />
+						}
+					} else if (item.__typename === 'DatoCmsResourceList') {
+						return (
+							<FeaturedResourcesContainer
+								key={index}
+								heading={item.listHeading}
+								resources={item.resource}
+							/>
+						)
+					}
+					return ''
 				}
 				return ''
 			})}
@@ -192,6 +251,13 @@ export const query = graphql`
 			}
 			ticker {
 				tickerItem
+			}
+			eventsList {
+				eventTitle
+				eventDateAndTime
+				brief
+				buttonText
+				url
 			}
 			ctaChapterResourceList {
 				... on DatoCmsChannelList {
