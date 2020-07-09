@@ -85,7 +85,7 @@ const App = ({ data: { home, afspMedia } }) => {
 	})
 
 	let events = {
-		title: 'National suicide prevention events',
+		title: 'AFSP national events',
 		details: [],
 	}
 	if (home.eventsList.length > 0) {
