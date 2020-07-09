@@ -168,7 +168,12 @@ const App = ({ data: { home, afspMedia } }) => {
 				}
 				return ''
 			})}
-			{events && <CarouselDetailContainer content={events} />}
+			{events && (
+				<CarouselDetailContainer
+					content={events}
+					eventTitleSize="1.4em"
+				/>
+			)}
 			{home.ctaChapterResourceList.map((item, index) => {
 				if (index > 4) {
 					if (item.__typename === 'DatoCmsChannelList') {

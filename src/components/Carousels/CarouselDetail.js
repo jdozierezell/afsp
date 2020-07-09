@@ -44,6 +44,7 @@ const CarouselDetail = ({
 	externalAnchor,
 	buttonText,
 	addCSS,
+	eventTitleSize,
 }) => {
 	return (
 		<div
@@ -53,7 +54,18 @@ const CarouselDetail = ({
 			`}
 		>
 			<p css={carouselMessageCSS}>{content}</p>
-			{title && <h2 css={carouselTitleCSS}>{title}</h2>}
+			{title && (
+				<h2
+					css={css`
+						${carouselTitleCSS};
+						font-size: ${eventTitleSize
+							? eventTitleSize
+							: 'inherit'};
+					`}
+				>
+					{title}
+				</h2>
+			)}
 			{externalAnchor ? (
 				<a
 					href={anchor}

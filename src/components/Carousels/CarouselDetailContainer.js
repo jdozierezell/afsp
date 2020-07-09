@@ -40,6 +40,7 @@ const carouselCSS = css`
 
 const CarouselDetailContainer = ({
 	content: { details, title, slug },
+	eventTitleSize,
 	addCSS,
 	id,
 }) => {
@@ -95,6 +96,7 @@ const CarouselDetailContainer = ({
 									buttonText={section.buttonText}
 									anchor={section.url}
 									addCSS={addCSS}
+									eventTitleSize={eventTitleSize}
 								/>
 							)
 						}
