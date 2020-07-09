@@ -127,6 +127,7 @@ export const query = graphql`
 			totalCount
 			edges {
 				node {
+					__typename
 					title
 					slug
 					id

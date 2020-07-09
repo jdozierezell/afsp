@@ -58,13 +58,8 @@ const Stories = ({ story: { node } }) => {
 				<img src={node.seo.image.url} />
 			)}
 			<h2>
-				<Link
-					to={
-						node.type
-							? buildUrl(node.type, createAnchor(node.slug))
-							: buildUrl('DatoCmsStory', createAnchor(node.slug))
-					}
-				>
+				{console.log(node)}
+				<Link to={buildUrl(node.__typename, createAnchor(node.slug))}>
 					{node.title}
 				</Link>
 			</h2>

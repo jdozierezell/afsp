@@ -44,6 +44,7 @@ export const query = graphql`
 		) {
 			edges {
 				node {
+					__typename
 					id
 					title
 					slug
