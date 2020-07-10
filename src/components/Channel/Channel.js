@@ -87,7 +87,7 @@ const Channel = ({ slug, channel }) => {
 			)}
 			{channelLink.__typename === 'DatoCmsAnchor' && (
 				<>
-					<Link to={`${slug}/${channelLink.anchor}`}>
+					<Link to={`${channelLink.anchor}`}>
 						<Image
 							css={channelImageCSS}
 							style={{
