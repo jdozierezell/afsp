@@ -82,7 +82,6 @@ const storyCSS = css`
 
 const Recommendations = ({ data, heading, video }) => {
 	const cssStyle = video ? recommendationsVideoCSS : recommendationsNoVideoCSS
-	console.log(data)
 	return (
 		<div css={cssStyle}>
 			{heading && <h2>{heading}</h2>}

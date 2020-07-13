@@ -58,7 +58,6 @@ const Stories = ({ story: { node } }) => {
 				<img src={node.seo.image.url} />
 			)}
 			<h2>
-				{console.log(node)}
 				<Link to={buildUrl(node.__typename, createAnchor(node.slug))}>
 					{node.title}
 				</Link>
