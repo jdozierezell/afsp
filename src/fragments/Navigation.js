@@ -50,6 +50,10 @@ export const Navigation = graphql`
 								__typename
 								slug
 							}
+							... on DatoCmsStory {
+								__typename
+								slug
+							}
 						}
 						childExternalLink
 					}

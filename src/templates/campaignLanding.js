@@ -51,14 +51,6 @@ const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
 			}
 		})
 	})
-	campaignLanding.convoLinks.forEach(convo => {
-		convo.id = convo.id.replace('DatoCmsConvoLink-', '').replace('-en', '')
-		afspMedia.campaignLanding.convoLinks.forEach(media => {
-			if (convo.id === media.id) {
-				convo.convoImage = media.convoImage
-			}
-		})
-	})
 	campaignLanding.ctaChapterResourceDetailList.forEach(resource => {
 		if (resource.resource) {
 			resource.resource.forEach(childResource => {
@@ -148,9 +140,6 @@ const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
 			)}
 			{campaignLanding.eventCalendar.length > 0 && (
 				<Calendar events={campaignLanding.eventCalendar} />
-			)}
-			{campaignLanding.convoLinks.length > 0 && (
-				<ConvoContainer convos={campaignLanding.convoLinks} />
 			)}
 			{campaignLanding.ctaChapterResourceDetailList.map((item, index) => {
 				const prevIndex = index > 0 ? index - 1 : null
@@ -263,16 +252,6 @@ export const query = graphql`
 				}
 			}
 			readMore
-			convoLinks {
-				id
-				convoTitle
-				draftConvoImage: convoImage {
-					url
-				}
-				convoFile {
-					url
-				}
-			}
 			ctaChapterResourceDetailList {
 				... on DatoCmsResourceList {
 					__typename
@@ -431,30 +410,6 @@ export const query = graphql`
 				channelList {
 					id
 					image {
-						responsiveImage(
-							imgixParams: {
-								auto: format
-								crop: faces
-								fit: crop
-								h: "200"
-								w: "200"
-							}
-						) {
-							alt
-							aspectRatio
-							height
-							sizes
-							src
-							srcSet
-							title
-							webpSrcSet
-							width
-						}
-					}
-				}
-				convoLinks {
-					id
-					convoImage {
 						responsiveImage(
 							imgixParams: {
 								auto: format
