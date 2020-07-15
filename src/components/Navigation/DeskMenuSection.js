@@ -29,6 +29,7 @@ const megaCSS = css`
 const megaLinkCSS = css`
 	list-style: none;
 	color: ${styles.colors.white};
+	line-height: 1.4;
 	margin: 0 0 ${styles.scale.px12};
 	a {
 		font-family: ${styles.fonts.avenirBold};
