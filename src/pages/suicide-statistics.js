@@ -269,6 +269,7 @@ export const query = graphql`
 					content
 					storiesHeading
 					storyLink {
+						__typename
 						title
 						slug
 						author {
