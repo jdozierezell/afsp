@@ -272,9 +272,10 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 									</a>{' '}
 									national fact sheet <br />
 									or search below to view state statistics.
-									You can also{' '}
+									You can also
+									<br />
 									<Link to={'/state-fact-sheets'}>
-										view all of our state fact sheets here
+										view all of our state fact sheets
 									</Link>
 									.
 								</label>
