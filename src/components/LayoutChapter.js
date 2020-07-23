@@ -52,7 +52,7 @@ const LayoutChapter = ({
 			{email && (
 				<EmailSignup formId={email}>
 					<div>
-						<h2>Sign up for chapter news</h2>
+						<h2 id="klaviyo-signup">Sign up for chapter news</h2>
 					</div>
 				</EmailSignup>
 			)}

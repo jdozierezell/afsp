@@ -144,7 +144,7 @@ const EmailSignup = ({ formId, children }) => {
 				<div className={submitted ? 'hidden' : 'klaviyo_field_group'}>
 					<label
 						id="emailDescription"
-						htmlFor="email"
+						htmlFor="k_id_email"
 						className="sr-only"
 					>
 						Enter your email here to receive updates from the
@@ -155,6 +155,7 @@ const EmailSignup = ({ formId, children }) => {
 						name="email"
 						id="k_id_email"
 						placeholder="Type your email here..."
+						aria-labelledby="klaviyo-signup"
 						aria-describedby="emailDescription"
 					/>
 				</div>

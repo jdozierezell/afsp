@@ -46,8 +46,11 @@ const Layout = ({ theme, overrideLight, children, seo, facebook }) => {
 			<main>{children}</main>
 			<EmailSignup formId="M2qiJq">
 				<div>
-					<h2>Sign up for email alerts</h2>
-					<p>Join our network and be the first to take action</p>
+					<h2 id="klaviyo-signup">Sign up for email alerts</h2>
+					<p>
+						Receive updates from the American Foundation for Suicide
+						Prevention
+					</p>
 				</div>
 			</EmailSignup>
 			<Footer nav={footerNav} />
