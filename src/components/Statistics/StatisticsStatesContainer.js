@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { css } from '@emotion/core'
+import { Link } from 'gatsby'
 
 import IconX from '../SVGs/IconX'
 import StatisticsStatesGraph from './StatisticsStatesGraph'
@@ -270,7 +271,12 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 										Suicide Facts &amp; Figures
 									</a>{' '}
 									national fact sheet <br />
-									or search below to view state statistics
+									or search below to view state statistics.
+									You can also{' '}
+									<Link to={'/state-fact-sheets'}>
+										view all of our state fact sheets here
+									</Link>
+									.
 								</label>
 								<input
 									{...getInputProps()}
