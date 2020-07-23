@@ -9,6 +9,7 @@
 		"@emotion/core": "^10.0.17",
 		"@emotion/styled": "^10.0.17",
 		"@fullcalendar/daygrid": "^5.0.1",
+		"@fullcalendar/list": "^5.1.0",
 		"@fullcalendar/react": "^5.0.0",
 		"@loadable/component": "^5.13.2",
 		"@nivo/line": "^0.59.3",
