@@ -153,6 +153,7 @@ const EmailSignup = ({ formId, children }) => {
 					<input
 						type="email"
 						name="email"
+						title="email"
 						id="k_id_email"
 						placeholder="Type your email here..."
 						aria-labelledby="klaviyo-signup"

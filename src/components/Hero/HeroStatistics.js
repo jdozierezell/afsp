@@ -70,7 +70,7 @@ const calloutContainerCSS = css`
 		flex-flow: column wrap;
 		justify-content: space-between;
 		a {
-			color: ${styles.colors.poppy};
+			color: ${styles.colors.white};
 		}
 	}
 `

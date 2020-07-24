@@ -259,7 +259,7 @@ const ShareableContainer = ({
 						/>
 						<Text
 							text={message}
-							fontFamily={styles.fonts.avenirRegular}
+							fontFamily={customText.customValues.fontFamily}
 							fontSize={
 								(customText.customValues.fontSize * width) /
 								squareImage

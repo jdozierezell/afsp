@@ -31,11 +31,31 @@ const CustomShareable = ({ data: { customShareables, afspMedia } }) => {
 			}
 		})
 	})
+	let fontLink
+	console.log(customShareables.textBoxValues)
+	if (customShareables.textBoxValues) {
+		if (customShareables.textBoxValues.fontFamily) {
+			if (
+				customShareables.textBoxValues.fontFamily ===
+				"'Marck Script', cursive"
+			) {
+				fontLink =
+					'https://fonts.googleapis.com/css2?family=Marck+Script&display=swap'
+			} else if (
+				customShareables.textBoxValues.fontFamily !==
+				'AvenirNextLTPro-Regular, Arial, sans-serif'
+			) {
+				customShareables.textBoxValues.fontFamily =
+					'AvenirNextLTPro-Regular, Arial, sans-serif'
+			}
+		}
+	}
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={customShareables.seoMetaTags}
 		>
+			{fontLink && <link href={fontLink} rel="stylesheet" />}
 			<HeroSolid data={customShareables} addCSS={addCSS} />
 			<ShareableContainer
 				instructions={customShareables.instructions}
