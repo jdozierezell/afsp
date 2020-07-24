@@ -102,6 +102,7 @@ const buttonWrapperCSS = css`
 
 const HeroVideo = ({
 	videoUrl,
+	videoAlt,
 	posterUrl,
 	heading,
 	brief,
@@ -119,14 +120,20 @@ const HeroVideo = ({
 			`}
 		>
 			{videoUrl && (
-				<video
-					autoPlay
-					muted={true}
-					loop
-					playsInline
-					css={videoCoverCSS}
-					src={videoUrl}
-				></video>
+				<>
+					<video
+						autoPlay
+						muted={true}
+						loop
+						playsInline
+						css={videoCoverCSS}
+						src={videoUrl}
+						aria-describedby="videoDescription"
+					></video>
+					<p class="sr-only" id="videoDescription">
+						{videoAlt}
+					</p>
+				</>
 			)}
 			<div css={descriptionBackgroundCSS}></div>
 			<h2 css={videoHeaderCSS}>

@@ -116,6 +116,7 @@ const App = ({ data: { home, afspMedia } }) => {
 						? home.heroVideo.video.mp4Url
 						: home.heroVideo.url
 				}
+				videoAlt={home.heroVideo.alt}
 				posterUrl={home.heroPoster.url}
 				heading={home.heroHeading}
 				brief={home.heroBrief}
@@ -227,6 +228,7 @@ export const query = graphql`
 				...GatsbyDatoCmsSeoMetaTags
 			}
 			heroVideo {
+				alt
 				url
 				video {
 					mp4Url(res: medium)
