@@ -87,7 +87,7 @@ const descriptionWrapperCSS = css`
 	}
 `
 
-const CTAVideo = ({ cta, id }) => {
+const CTAVideo = ({ cta, number, id }) => {
 	const {
 		backgroundVideo,
 		backgroundImage,
@@ -114,14 +114,20 @@ const CTAVideo = ({ cta, id }) => {
 			css={videoCTACSS}
 		>
 			{video && (
-				<video
-					autoPlay
-					muted={true}
-					loop
-					playsInline
-					css={videoCoverCSS}
-					src={video}
-				></video>
+				<>
+					<video
+						autoPlay
+						muted={true}
+						loop
+						playsInline
+						css={videoCoverCSS}
+						src={video}
+						aria-describedby={`videoDescription-${number}`}
+					></video>
+					<p class="sr-only" id={`videoDescription-${number}`}>
+						{backgroundVideo.alt}
+					</p>
+				</>
 			)}
 			<div css={videoDescriptionCSS}>
 				<div css={descriptionWrapperCSS}>

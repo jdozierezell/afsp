@@ -7,6 +7,7 @@ export const CTAs = graphql`
 				... on DatoCmsCtaBackground {
 					__typename
 					backgroundVideo {
+						alt
 						url
 						video {
 							mp4Url(res: medium)

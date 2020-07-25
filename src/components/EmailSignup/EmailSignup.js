@@ -127,7 +127,7 @@ const EmailSignup = ({ formId, children }) => {
 	const [submitted, setSubmitted] = useState(false)
 
 	return (
-		<div css={emailCSS}>
+		<aside css={emailCSS}>
 			{children}
 			<form
 				css={formCSS}
@@ -201,7 +201,7 @@ const EmailSignup = ({ formId, children }) => {
 					Subscribe
 				</a>
 			</div> */}
-		</div>
+		</aside>
 	)
 }
 

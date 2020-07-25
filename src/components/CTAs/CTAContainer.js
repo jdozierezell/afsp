@@ -63,7 +63,7 @@ const CTAContainer = ({ cta, number, id }) => {
 	return (
 		<>
 			{cta.__typename === 'DatoCmsCtaBackground' && (
-				<CTABackground cta={cta} id={id} />
+				<CTABackground cta={cta} number={number} id={id} />
 			)}
 			{cta.__typename === 'DatoCmsCtaWithDescription' && (
 				<div

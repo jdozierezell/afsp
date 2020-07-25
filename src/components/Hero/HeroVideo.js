@@ -72,11 +72,15 @@ const videoDescriptionCSS = css`
 		grid-area: 3 / 1 / 4 / 2;
 		margin: 0 ${styles.scale.px50};
 		max-width: 500px;
+		p,
+		a {
+			color: ${styles.colors.white};
+		}
 	}
-	:first-of-type {
+	p:first-of-type {
 		margin-top: ${styles.scale.px25};
 	}
-	:last-of-type {
+	p:last-of-type {
 		margin-bottom: ${styles.scale.px40};
 		@media (min-width: ${styles.screens.tablet}px) {
 			color: ${styles.colors.white};
@@ -84,10 +88,6 @@ const videoDescriptionCSS = css`
 		@media (min-width: ${styles.screens.video}px) {
 			margin-bottom: ${styles.scale.px60};
 		}
-	}
-	p,
-	a {
-		color: ${styles.colors.white};
 	}
 `
 
@@ -136,13 +136,12 @@ const HeroVideo = ({
 				</>
 			)}
 			<div css={descriptionBackgroundCSS}></div>
-			<h2 css={videoHeaderCSS}>
+			<h1 css={videoHeaderCSS}>
 				<span>{heading}</span>
-			</h2>
-			<p
-				css={videoDescriptionCSS}
-				dangerouslySetInnerHTML={{ __html: brief }}
-			></p>
+			</h1>
+			<div css={videoDescriptionCSS}>
+				<p dangerouslySetInnerHTML={{ __html: brief }}></p>
+			</div>
 			<div css={buttonWrapperCSS}>
 				{buttonExternal ? (
 					<a className="secondary-button" href={buttonUrl}>
