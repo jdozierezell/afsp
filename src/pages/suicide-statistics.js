@@ -37,6 +37,23 @@ const SuicideStatistics = ({ data: { statistics, afspMedia } }) => {
 			})
 		}
 	})
+	statistics.stateData = {
+		url:
+			'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/suicide-state-2018.csv',
+	}
+	statistics.ageData = {
+		url:
+			'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/ratesbyage.csv',
+	}
+	statistics.raceData = {
+		url:
+			'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/ratesbyethnicity.csv',
+	}
+	statistics.methodData = {
+		url:
+			'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/ratesbymethod.csv',
+	}
+	console.log(statistics)
 
 	return (
 		<Layout
@@ -125,20 +142,8 @@ export const query = graphql`
 					slug
 				}
 			}
-			stateData {
-				url
-			}
-			ageData {
-				url
-			}
 			ageBrief
-			raceData {
-				url
-			}
 			raceBrief
-			methodData {
-				url
-			}
 			methodBrief
 			callsToAction {
 				... on DatoCmsCallToAction {

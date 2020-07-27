@@ -43,7 +43,7 @@ const calloutContainerCSS = css`
 		grid-template-columns: 1fr;
 		grid-gap: ${styles.gridGap.desktop};
 		@media (min-width: ${styles.screens.video}px) {
-			grid-template-columns: repeat(5, 1fr);
+			grid-template-columns: repeat(4, 1fr);
 			margin: ${styles.scale.px30} 0 0;
 		}
 	}
