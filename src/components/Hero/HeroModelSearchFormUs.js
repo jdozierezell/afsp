@@ -22,6 +22,8 @@ const HeroModelSearchFormUs = ({
 				</label>
 				<input
 					name="zip"
+					title="zip"
+					id="zip"
 					aria-describedby="zipLabel"
 					type="text"
 					placeholder="Search by zip"

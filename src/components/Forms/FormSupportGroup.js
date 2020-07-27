@@ -299,20 +299,25 @@ const SupportGroupForm = () => {
 						css={formWrapperCSS}
 						onSubmit={handleSubmit(onSubmit)}
 					>
-						<label id="supportGroupName" htmlFor="supportGroupName">
+						<label
+							id="supportGroupNameLabel"
+							htmlFor="supportGroupName"
+						>
 							Support Group Name <span>*</span>
 						</label>
 						{errors.supportGroupName && (
 							<span>{errors.supportGroupName.message}</span>
 						)}
 						<input
-							aria-describedby="supportGroupName"
+							aria-describedby="supportGroupNameLabel"
 							name="supportGroupName"
+							id="supportGroupName"
+							title="supportGroupName"
 							ref={register}
 						/>
 
 						<label
-							id="supportGroupWebsite"
+							id="supportGroupWebsiteLabel"
 							htmlFor="supportGroupWebsite"
 						>
 							Support Group Website
@@ -325,25 +330,29 @@ const SupportGroupForm = () => {
 							<span>{errors.supportGroupWebsite.message}</span>
 						)}
 						<input
-							aria-describedby="supportGroupWebsite"
+							aria-describedby="supportGroupWebsiteLabel"
 							name="supportGroupWebsite"
+							id="supportGroupWebsite"
+							title="supportGroupWebsite"
 							ref={register}
 						/>
 
 						<label
-							id="hostingSponsoringOrganization"
+							id="hostingSponsoringOrganizationLabel"
 							htmlFor="hostingSponsoringOrganization"
 						>
 							Hosting/Sponsoring Organization
 						</label>
 						<input
-							aria-describedby="hostingSponsoringOrganization"
+							aria-describedby="hostingSponsoringOrganizationLabel"
 							name="hostingSponsoringOrganization"
+							id="hostingSponsoringOrganization"
+							title="hostingSponsoringOrganization"
 							ref={register}
 						/>
 
 						<label
-							id="hostingSponsoringOrganizationWebsite"
+							id="hostingSponsoringOrganizationWebsiteLabel"
 							htmlFor="hostingSponsoringOrganizationWebsite"
 						>
 							Hosting/Sponsoring Organization Website
@@ -361,12 +370,17 @@ const SupportGroupForm = () => {
 							</span>
 						)}
 						<input
-							aria-describedby="hostingSponsoringOrganizationWebsite"
+							aria-describedby="hostingSponsoringOrganizationWebsiteLabel"
 							name="hostingSponsoringOrganizationWebsite"
+							id="hostingSponsoringOrganizationWebsite"
+							title="hostingSponsoringOrganizationWebsite"
 							ref={register}
 						/>
 
-						<label id="groupDemographic" htmlFor="groupDemographic">
+						<label
+							id="groupDemographicLabel"
+							htmlFor="groupDemographic"
+						>
 							Group Demographic
 						</label>
 						<p>
@@ -377,7 +391,12 @@ const SupportGroupForm = () => {
 						{errors.supportGroupName && (
 							<span>{errors.supportGroupName.message}</span>
 						)}
-						<textarea name="groupDemographic" ref={register} />
+						<textarea
+							name="groupDemographic"
+							id="groupDemographic"
+							title="groupDemographic"
+							ref={register}
+						/>
 
 						<Toggle
 							id="newMembers"
@@ -395,19 +414,21 @@ const SupportGroupForm = () => {
 							by default.
 						</p>
 
-						<label id="contactName" htmlFor="contactName">
+						<label id="contactNameLabel" htmlFor="contactName">
 							Contact Name <span>*</span>
 						</label>
 						{errors.contactName && (
 							<span>{errors.contactName.message}</span>
 						)}
 						<input
-							aria-describedby="contactName"
+							aria-describedby="contactNameLabel"
 							name="contactName"
+							id="contactName"
+							title="contactName"
 							ref={register}
 						/>
 
-						<label id="contactEmail" htmlFor="contactEmail">
+						<label id="contactEmailLabel" htmlFor="contactEmail">
 							Contact Email <span>*</span>
 						</label>
 						<p>Please enter a valid email address</p>
@@ -415,17 +436,21 @@ const SupportGroupForm = () => {
 							<span>{errors.contactEmail.message}</span>
 						)}
 						<input
-							aria-describedby="contactEmail"
+							aria-describedby="contactEmailLabel"
 							name="contactEmail"
+							id="contactEmail"
+							title="contactEmail"
 							ref={register}
 						/>
 
-						<label id="contactPhone" htmlFor="contactPhone">
+						<label id="contactPhoneLabel" htmlFor="contactPhone">
 							Contact Phone
 						</label>
 						<input
-							aria-describedby="contactPhone"
+							aria-describedby="contactPhoneLabel"
 							name="contactPhone"
+							id="contactPhone"
+							title="contactPhone"
 							ref={register}
 						/>
 
@@ -459,7 +484,7 @@ const SupportGroupForm = () => {
 							`}
 						>
 							<label
-								id="secondContactName"
+								id="secondContactNameLabel"
 								htmlFor="secondContactName"
 							>
 								Second Contact Name <span>*</span>
@@ -468,13 +493,15 @@ const SupportGroupForm = () => {
 								<span>{errors.secondContactName.message}</span>
 							)}
 							<input
-								aria-describedby="secondContactName"
+								aria-describedby="secondContactNameLabel"
 								name="secondContactName"
+								id="secondContactName"
+								title="secondContactName"
 								ref={register}
 							/>
 
 							<label
-								id="secondContactEmail"
+								id="secondContactEmailLabel"
 								htmlFor="secondContactEmail"
 							>
 								Second Contact Email <span>*</span>
@@ -484,20 +511,24 @@ const SupportGroupForm = () => {
 								<span>{errors.secondContactEmail.message}</span>
 							)}
 							<input
-								aria-describedby="secondContactEmail"
+								aria-describedby="secondContactEmailLabel"
 								name="secondContactEmail"
+								id="secondContactEmail"
+								title="secondContactEmail"
 								ref={register}
 							/>
 
 							<label
-								id="secondContactPhone"
+								id="secondContactPhoneLabel"
 								htmlFor="secondContactPhone"
 							>
 								Second Contact Phone
 							</label>
 							<input
-								aria-describedby="secondContactPhone"
+								aria-describedby="secondContactPhoneLabel"
 								name="secondContactPhone"
+								id="secondContactPhone"
+								title="secondContactPhone"
 								ref={register}
 							/>
 						</div>
@@ -530,19 +561,27 @@ const SupportGroupForm = () => {
 									: 'inherit'};
 							`}
 						>
-							<label id="submitterName" htmlFor="submitterName">
+							<label
+								id="submitterNameLabel"
+								htmlFor="submitterName"
+							>
 								Submitter Name <span>*</span>
 							</label>
 							{errors.submitterName && (
 								<span>{errors.submitterName.message}</span>
 							)}
 							<input
-								aria-describedby="submitterName"
+								aria-describedby="submitterNameLabel"
 								name="submitterName"
+								id="submitterName"
+								title="submitterName"
 								ref={register}
 							/>
 
-							<label id="submitterEmail" htmlFor="submitterEmail">
+							<label
+								id="submitterEmailLabel"
+								htmlFor="submitterEmail"
+							>
 								Submitter Email <span>*</span>
 							</label>
 							<p>Please enter a valid email address</p>
@@ -550,21 +589,31 @@ const SupportGroupForm = () => {
 								<span>{errors.submitterEmail.message}</span>
 							)}
 							<input
-								aria-describedby="submitterEmail"
+								aria-describedby="submitterEmailLabel"
 								name="submitterEmail"
+								id="submitterEmail"
+								title="submitterEmail"
 								ref={register}
 							/>
 						</div>
 
 						<label
-							id="registrationProcess"
+							id="registrationProcessLabel"
 							htmlFor="registrationProcess"
 						>
 							Registration Process
 						</label>
-						<textarea name="registrationProcess" ref={register} />
+						<textarea
+							name="registrationProcess"
+							id="registrationProcess"
+							title="registrationProcess"
+							ref={register}
+						/>
 
-						<label id="meetingSchedule" htmlFor="meetingSchedule">
+						<label
+							id="meetingScheduleLabel"
+							htmlFor="meetingSchedule"
+						>
 							Meeting Schedule <span>*</span>
 						</label>
 						<p>
@@ -576,10 +625,15 @@ const SupportGroupForm = () => {
 						{errors.meetingSchedule && (
 							<span>{errors.meetingSchedule.message}</span>
 						)}
-						<textarea name="meetingSchedule" ref={register} />
+						<textarea
+							name="meetingSchedule"
+							id="meetingSchedule"
+							title="meetingSchedule"
+							ref={register}
+						/>
 
 						<label
-							id="nameOfMeetingSite"
+							id="nameOfMeetingSiteLabel"
 							htmlFor="nameOfMeetingSite"
 						>
 							Name of Meeting Site <span>*</span>
@@ -594,12 +648,17 @@ const SupportGroupForm = () => {
 							<span>{errors.nameOfMeetingSite.message}</span>
 						)}
 						<input
-							aria-describedby="nameOfMeetingSite"
+							aria-describedby="nameOfMeetingSiteLabel"
 							name="nameOfMeetingSite"
+							id="nameOfMeetingSite"
+							title="nameOfMeetingSite"
 							ref={register}
 						/>
 
-						<label id="meetingCountry" htmlFor="meetingCountry">
+						<label
+							id="meetingCountryLabel"
+							htmlFor="meetingCountry"
+						>
 							Meeting Country <span>*</span>
 						</label>
 						<p>Select your meeting location's country.</p>
@@ -608,7 +667,7 @@ const SupportGroupForm = () => {
 						)}
 						<Select
 							css={selectCSS}
-							id="countrySelect"
+							id="meetingCountry"
 							className="react-select"
 							classNamePrefix="react-select"
 							value={values.selectedCountryOption}
@@ -616,7 +675,10 @@ const SupportGroupForm = () => {
 							onChange={handleCountrySelectChange}
 						/>
 
-						<label id="meetingAddress" htmlFor="meetingAddress">
+						<label
+							id="meetingAddressLabel"
+							htmlFor="meetingAddress"
+						>
 							Meeting Address
 						</label>
 						<p>
@@ -629,12 +691,14 @@ const SupportGroupForm = () => {
 							<span>{errors.meetingAddress.message}</span>
 						)}
 						<input
-							aria-describedby="meetingAddress"
+							aria-describedby="meetingAddressLabel"
 							name="meetingAddress"
+							id="meetingAddress"
+							title="meetingAddress"
 							ref={register}
 						/>
 
-						<label id="meetingCity" htmlFor="meetingCity">
+						<label id="meetingCityLabel" htmlFor="meetingCity">
 							Meeting City <span>*</span>
 						</label>
 						<p>Enter your meeting location's city.</p>
@@ -642,14 +706,19 @@ const SupportGroupForm = () => {
 							<span>{errors.meetingCity.message}</span>
 						)}
 						<input
-							aria-describedby="meetingCity"
+							aria-describedby="meetingCityLabel"
 							name="meetingCity"
+							id="meetingCity"
+							title="meetingCity"
 							ref={register}
 						/>
 
 						{showState && (
 							<>
-								<label id="" htmlFor="meetingState">
+								<label
+									id="meetingStateLabel"
+									htmlFor="meetingState"
+								>
 									Meeting State <span>*</span>
 								</label>
 								<p>Select your meeting location's state.</p>
@@ -658,7 +727,7 @@ const SupportGroupForm = () => {
 								)}
 								<Select
 									css={selectCSS}
-									id="stateSelect"
+									id="meetingState"
 									className="react-select"
 									classNamePrefix="react-select"
 									value={values.selectedStateOption}
@@ -669,7 +738,7 @@ const SupportGroupForm = () => {
 						)}
 
 						<label
-							id="meetingZipPostalCode"
+							id="meetingZipPostalCodeLabel"
 							htmlFor="meetingZipPostalCode"
 						>
 							Meeting Zip/Postal Code <span>*</span>
@@ -679,12 +748,14 @@ const SupportGroupForm = () => {
 							<span>{errors.meetingZipPostalCode.message}</span>
 						)}
 						<input
-							aria-describedby="meetingZipPostalCode"
+							aria-describedby="meetingZipPostalCodeLabel"
 							name="meetingZipPostalCode"
+							id="meetingZipPostalCode"
+							title="meetingZipPostalCode"
 							ref={register}
 						/>
 
-						<label id="facilitator" htmlFor="facilitator">
+						<label id="facilitatorLabel" htmlFor="facilitator">
 							Facilitator <span>*</span>
 						</label>
 						<p>
@@ -721,7 +792,10 @@ const SupportGroupForm = () => {
 							id="attendedTraining"
 							onChange={handleToggleChange}
 						/>
-						<label id="attendedTraining" htmlFor="attendedTraining">
+						<label
+							id="attendedTrainingLabel"
+							htmlFor="attendedTraining"
+						>
 							Attended AFSP Support Group Facilitator Training
 						</label>
 						<p className="toggleInstructions">
@@ -730,7 +804,7 @@ const SupportGroupForm = () => {
 							a Suicide Bereavement Support Group.
 						</p>
 
-						<label id="costToAttend" htmlFor="costToAttend">
+						<label id="costToAttendLabel" htmlFor="costToAttend">
 							Cost to Attend
 						</label>
 						<p>
@@ -738,13 +812,15 @@ const SupportGroupForm = () => {
 							attend. Leave blank if no fee is charged.
 						</p>
 						<input
-							aria-describedby="costToAttend"
+							aria-describedby="costToAttendLabel"
 							name="costToAttend"
+							id="costToAttend"
+							title="costToAttend"
 							ref={register}
 						/>
 
 						<label
-							id="costToAttend"
+							id="additionalInformationLabel"
 							htmlFor="additionalInformation"
 						>
 							Additional Information
@@ -755,7 +831,12 @@ const SupportGroupForm = () => {
 							information you feel may be useful to potential
 							group participants.
 						</p>
-						<textarea name="additionalInformation" ref={register} />
+						<textarea
+							name="additionalInformation"
+							id="additionalInformation"
+							title="additionalInformation"
+							ref={register}
+						/>
 
 						<input
 							css={css`

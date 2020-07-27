@@ -168,29 +168,33 @@ const QuiltForm = () => {
 						css={formWrapperCSS}
 						onSubmit={handleSubmit(onSubmit)}
 					>
-						<label id="quiltTitle" htmlFor="quiltTitle">
+						<label id="quiltTitleLabel" htmlFor="quiltTitle">
 							Square Title/Name of Person Lost <span>*</span>
 						</label>
 						{errors.quiltTitle && (
 							<p>{errors.quiltTitle.message}</p>
 						)}
 						<input
-							aria-describedby="quiltTitle"
+							aria-describedby="quiltTitleLabel"
 							name="quiltTitle"
+							id="quiltTitle"
+							title="quiltTitle"
 							ref={register}
 						/>
 
-						<label id="name" htmlFor="name">
+						<label id="nameLabel" htmlFor="name">
 							Your Name <span>*</span>
 						</label>
 						{errors.name && <p>{errors.name.message}</p>}
 						<input
-							aria-describedby="name"
+							aria-describedby="nameLabel"
 							name="name"
+							id="name"
+							title="name"
 							ref={register}
 						/>
 
-						<label id="email" htmlFor="email">
+						<label id="emailLabel" htmlFor="email">
 							Your Email Address <span>*</span>
 						</label>
 						<p>
@@ -201,13 +205,15 @@ const QuiltForm = () => {
 						</p>
 						{errors.email && <p>{errors.email.message}</p>}
 						<input
-							aria-describedby="email"
+							aria-describedby="emailLabel"
 							name="email"
+							id="email"
+							title="email"
 							type="email"
 							ref={register}
 						/>
 
-						<label id="state" htmlFor="state">
+						<label id="stateLabel" htmlFor="state">
 							Your State <span>*</span>
 						</label>
 						<p>
@@ -220,6 +226,8 @@ const QuiltForm = () => {
 
 						<Select
 							name="state"
+							id="state"
+							title="state"
 							css={selectCSS}
 							className="react-select"
 							classNamePrefix="react-select"
@@ -228,7 +236,7 @@ const QuiltForm = () => {
 							onChange={handleStateSelectChange}
 						/>
 
-						<label id="file" htmlFor="file">
+						<label id="fileLabel" htmlFor="file">
 							Square Image <span>*</span>
 						</label>
 						{errors.description && <p>{errors.image.message}</p>}
@@ -244,6 +252,7 @@ const QuiltForm = () => {
 							aria-describedby="imageLabel"
 							name="image"
 							id="image"
+							title="image"
 							type="file"
 							ref={register}
 							onChange={e => {
@@ -268,7 +277,7 @@ const QuiltForm = () => {
 						/>
 						<div id="imageDisplay"></div>
 
-						<label id="description" htmlFor="description">
+						<label id="descriptionLabel" htmlFor="description">
 							Square Description
 						</label>
 						<p>
@@ -278,7 +287,12 @@ const QuiltForm = () => {
 							like, you may leave this section blank. This field
 							is not required.
 						</p>
-						<textarea name="description" ref={register} />
+						<textarea
+							name="description"
+							id="description"
+							title="description"
+							ref={register}
+						/>
 
 						<input
 							css={css`
