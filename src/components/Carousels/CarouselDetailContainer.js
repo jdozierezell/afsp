@@ -87,10 +87,17 @@ const CarouselDetailContainer = ({
 								/>
 							)
 						} else if (section.__typename === 'Event') {
+							let date
+							if (section.startDate) {
+								date = section.startDate
+							}
+							if (section.endDate) {
+								date += ` - ${section.endDate}`
+							}
 							return (
 								<CarouselDetail
 									key={index}
-									content={section.date}
+									content={date}
 									title={section.title}
 									externalAnchor={true}
 									buttonText={section.buttonText}

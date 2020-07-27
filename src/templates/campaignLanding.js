@@ -234,7 +234,8 @@ export const query = graphql`
 				}
 				... on DatoCmsEvent {
 					eventTitle
-					eventDateAndTime
+					eventStartDateAndTime
+					eventEndDateAndTime
 					buttonText
 					url
 					brief

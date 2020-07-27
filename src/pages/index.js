@@ -94,9 +94,16 @@ const App = ({ data: { home, afspMedia } }) => {
 			const eventObject = {
 				__typename: 'Event',
 				title: event.eventTitle,
-				date: moment
-					.tz(event.eventDateAndTime, timeZone)
-					.format('MMMM D @ h:mm a z'),
+				startDate: event.eventStartDateAndTime
+					? moment
+							.tz(event.eventStartDateAndTime, timeZone)
+							.format('MMMM D @ h:mm a z')
+					: null,
+				endDate: event.eventEndDateAndTime
+					? moment
+							.tz(event.eventEndDateAndTime, timeZone)
+							.format('MMMM D @ h:mm a z')
+					: null,
 				buttonText: event.buttonText,
 				url: event.url,
 			}
@@ -261,7 +268,8 @@ export const query = graphql`
 			}
 			eventsList {
 				eventTitle
-				eventDateAndTime
+				eventStartDateAndTime
+				eventEndDateAndTime
 				brief
 				buttonText
 				url

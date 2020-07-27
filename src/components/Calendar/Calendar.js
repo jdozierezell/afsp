@@ -90,21 +90,57 @@ const Calendar = ({ events }) => {
 			<ul>
 				{eventArray.map((event, index) => {
 					let dateAndTime = ''
-					if (event.eventDateAndTime) {
-						if (event.eventDateAndTime.includes('00:00:00')) {
+					if (event.eventStartDateAndTime) {
+						if (event.eventStartDateAndTime.includes('00:00:00')) {
 							dateAndTime = `All Day, ${moment(
-								event.eventDateAndTime
+								event.eventStartDateAndTime
 							)
 								.utcOffset(-4)
 								.format('MMMM D')}`
 						} else {
-							console.log(event.eventDateAndTime.indexOf('00:00'))
-							if (event.eventDateAndTime.indexOf('00:00') > 0) {
-								dateAndTime = `${moment(event.eventDateAndTime)
+							console.log(
+								event.eventStartDateAndTime.indexOf('00:00')
+							)
+							if (
+								event.eventStartDateAndTime.indexOf('00:00') > 0
+							) {
+								dateAndTime = `${moment(
+									event.eventStartDateAndTime
+								)
 									.utcOffset(-4)
 									.format('MMMM D @ h a')} ET`
 							} else {
-								dateAndTime = `${moment(event.eventDateAndTime)
+								dateAndTime = `${moment(
+									event.eventStartDateAndTime
+								)
+									.utcOffset(-4)
+									.format('MMMM D @ h:mm a')}	ET`
+							}
+						}
+					}
+					if (event.eventEndDateAndTime) {
+						if (event.eventEndDateAndTime.includes('00:00:00')) {
+							dateAndTime += ` - All Day, ${moment(
+								event.eventEndDateAndTime
+							)
+								.utcOffset(-4)
+								.format('MMMM D')}`
+						} else {
+							console.log(
+								event.eventEndDateAndTime.indexOf('00:00')
+							)
+							if (
+								event.eventEndDateAndTime.indexOf('00:00') > 0
+							) {
+								dateAndTime += ` - ${moment(
+									event.eventEndDateAndTime
+								)
+									.utcOffset(-4)
+									.format('MMMM D @ h a')} ET`
+							} else {
+								dateAndTime += ` - ${moment(
+									event.eventEndDateAndTime
+								)
 									.utcOffset(-4)
 									.format('MMMM D @ h:mm a')}	ET`
 							}
@@ -113,7 +149,9 @@ const Calendar = ({ events }) => {
 					return (
 						<li key={index}>
 							<h3>{event.eventTitle}</h3>
-							{event.eventDateAndTime && <h4>{dateAndTime}</h4>}
+							{event.eventStartDateAndTime && (
+								<h4>{dateAndTime}</h4>
+							)}
 							{console.log(event.brief)}
 							<div
 								dangerouslySetInnerHTML={{
