@@ -55,11 +55,13 @@ const ShareableControls = ({
 					<button onClick={e => rotateImage(e)}>Rotate</button>
 				</div>
 			)}
-			<ShareableOverlays
-				overlays={overlays}
-				updateOverlay={updateOverlay}
-				updateOverlayTextColor={updateOverlayTextColor}
-			/>
+			{overlays.length > 0 && (
+				<ShareableOverlays
+					overlays={overlays}
+					updateOverlay={updateOverlay}
+					updateOverlayTextColor={updateOverlayTextColor}
+				/>
+			)}
 			{isCustom && (
 				<div>
 					<h2

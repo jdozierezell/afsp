@@ -268,8 +268,9 @@ const ShareableContainer = ({
 							fill={
 								overlayText
 									? styles.colors.darkGray
-									: styles.colors.white
+									: customText.customValues.defaultColor
 							}
+							align={customText.customValues.align}
 							x={
 								(customText.customValues.x * width) /
 								squareImage
