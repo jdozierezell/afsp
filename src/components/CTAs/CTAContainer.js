@@ -16,7 +16,7 @@ import background5 from '../SVGs/BackgroundOneGreenYellow.svg'
 const CTAContainer = ({ cta, number, id }) => {
 	let background
 	let color
-
+	const ctaId = `CTA-${number}`
 	switch (number + 1) {
 		case 1:
 		case 6:
@@ -63,7 +63,12 @@ const CTAContainer = ({ cta, number, id }) => {
 	return (
 		<>
 			{cta.__typename === 'DatoCmsCtaBackground' && (
-				<CTABackground cta={cta} number={number} id={id} />
+				<CTABackground
+					cta={cta}
+					number={number}
+					id={id}
+					describedby={ctaId}
+				/>
 			)}
 			{cta.__typename === 'DatoCmsCtaWithDescription' && (
 				<div
@@ -76,7 +81,7 @@ const CTAContainer = ({ cta, number, id }) => {
 						}
 					`}
 				>
-					<CTAWithDescription cta={cta} />
+					<CTAWithDescription cta={cta} describedby={ctaId} />
 				</div>
 			)}
 			{cta.__typename === 'DatoCmsCtaNoDescription' && (
@@ -90,7 +95,7 @@ const CTAContainer = ({ cta, number, id }) => {
 						align-items: center;
 					`}
 				>
-					<CTANoDescription cta={cta} />
+					<CTANoDescription cta={cta} describedby={ctaId} />
 				</div>
 			)}
 		</>

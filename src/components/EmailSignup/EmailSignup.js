@@ -127,7 +127,7 @@ const EmailSignup = ({ formId, children }) => {
 	const [submitted, setSubmitted] = useState(false)
 
 	return (
-		<aside css={emailCSS}>
+		<aside css={emailCSS} aria-label="email signup form">
 			{children}
 			<form
 				css={formCSS}

@@ -26,7 +26,7 @@ const p = css`
 	}
 `
 
-const CTAWithDescription = ({ cta, id }) => {
+const CTAWithDescription = ({ cta, describedby }) => {
 	const {
 		heading,
 		brief,
@@ -45,9 +45,14 @@ const CTAWithDescription = ({ cta, id }) => {
 				dangerouslySetInnerHTML={{
 					__html: brief,
 				}}
+				id={describedby}
 			></p>
 			{file && (
-				<a href={fileAsset.url} className="secondary-button">
+				<a
+					href={fileAsset.url}
+					className="secondary-button"
+					aria-describedby={describedby}
+				>
 					{linkText}
 				</a>
 			)}
@@ -57,6 +62,7 @@ const CTAWithDescription = ({ cta, id }) => {
 					className="secondary-button"
 					target="_blank"
 					rel="noopener noreferrer"
+					aria-describedby={describedby}
 				>
 					{linkText}
 				</a>
@@ -65,6 +71,7 @@ const CTAWithDescription = ({ cta, id }) => {
 				<Link
 					className="secondary-button"
 					to={buildUrl(link.__typename, link.slug)}
+					aria-describedby={describedby}
 				>
 					{linkText}
 				</Link>

@@ -20,7 +20,7 @@ const footerAsideCSS = css`
 
 const FooterAside = () => {
 	return (
-		<aside css={footerAsideCSS}>
+		<aside css={footerAsideCSS} aria-label="footer crisis resources">
 			<p>
 				<strong>Are you in a crisis?</strong>
 			</p>
@@ -33,7 +33,11 @@ const FooterAside = () => {
 				>
 					National Suicide Prevention Lifeline
 				</a>{' '}
-				at <a href="tel:+18002738255">800-273-8255</a>.
+				at{' '}
+				<a aria-label="lifeline phone number" href="tel:+18002738255">
+					800-273-8255
+				</a>
+				.
 			</p>
 			<p>
 				Or contact the{' '}
@@ -44,7 +48,14 @@ const FooterAside = () => {
 				>
 					Crisis Text Line
 				</a>{' '}
-				by texting <a href="sms:741741&body=TALK">TALK to 741741</a>.
+				by texting{' '}
+				<a
+					aria-label="crisis text line text number"
+					href="sms:741741&body=TALK"
+				>
+					TALK to 741741
+				</a>
+				.
 			</p>
 		</aside>
 	)

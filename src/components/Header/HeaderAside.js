@@ -22,13 +22,14 @@ const headerAsideCSS = css`
 
 const HeaderAside = () => {
 	return (
-		<aside css={headerAsideCSS}>
+		<aside css={headerAsideCSS} aria-label="crisis resources">
 			<p>
 				<strong>Are you in a crisis?</strong> Call{' '}
 				<a
 					href="https://suicidepreventionlifeline.org"
 					target="_blank"
 					rel="noopener noreferrer"
+					aria-label="lifeline website link"
 				>
 					800-273-8255
 				</a>{' '}
@@ -37,6 +38,7 @@ const HeaderAside = () => {
 					href="https://crisistextline.org"
 					target="_blank"
 					rel="noopener noreferrer"
+					aria-label="crisis text line website link"
 				>
 					TALK to 741741
 				</a>

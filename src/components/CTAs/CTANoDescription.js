@@ -18,13 +18,19 @@ const h2 = css`
 	}
 `
 
-const CTANoDescription = ({ cta }) => {
+const CTANoDescription = ({ cta, describedby }) => {
 	const { heading, linkText, file, fileAsset, linkUrl, link, external } = cta
 	return (
 		<>
-			<h2 css={h2}>{heading}</h2>
+			<h2 css={h2} id={describedby}>
+				{heading}
+			</h2>
 			{file && (
-				<a href={fileAsset.url} className="secondary-button">
+				<a
+					href={fileAsset.url}
+					className="secondary-button"
+					aria-describedby={describedby}
+				>
 					{linkText}
 				</a>
 			)}
@@ -34,6 +40,7 @@ const CTANoDescription = ({ cta }) => {
 					className="secondary-button"
 					target="_blank"
 					rel="noopener noreferrer"
+					aria-describedby={describedby}
 				>
 					{linkText}
 				</a>
@@ -42,6 +49,7 @@ const CTANoDescription = ({ cta }) => {
 				<Link
 					className="secondary-button"
 					to={buildUrl(link.__typename, link.slug)}
+					aria-describedby={describedby}
 				>
 					{linkText}
 				</Link>
