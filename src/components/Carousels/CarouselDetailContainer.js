@@ -63,7 +63,6 @@ const CarouselDetailContainer = ({
 			items: 1,
 		},
 	}
-	console.log(details)
 	return (
 		<div id={id} css={carouselCSS}>
 			<h2>{title}</h2>

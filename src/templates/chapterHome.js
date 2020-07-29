@@ -132,17 +132,10 @@ const Chapter = ({
 					if (response.next) {
 						const details = []
 						response.next.forEach(event => {
-							let date
-							if (event.startDate) {
-								date = event.startDate
-							}
-							if (event.endDate) {
-								date += ` - ${event.endDate}`
-							}
 							const eventObject = {
 								__typename: event.__typename,
 								title: event.title,
-								date: date,
+								date: event.date,
 								url: event.url,
 							}
 							details.push(eventObject)
@@ -185,7 +178,6 @@ const Chapter = ({
 					phone: staffPhone,
 				}}
 			/>
-			{console.log(events)}
 			<CarouselDetailContainer
 				content={events}
 				addCSS={eventCarouselCSS}
