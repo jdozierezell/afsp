@@ -15,18 +15,15 @@ import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
 import { styles } from '../../css/css'
 
 const storyContentCSS = css`
-	margin: ${styles.scale.px50} ${styles.scale.px24};
+	margin: ${styles.scale.px50} ${styles.scale.px24} 0;
 	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px80} ${styles.scale.px50};
+		margin: ${styles.scale.px80} ${styles.scale.px50} 0;
 	}
 	.secondary-button {
 		margin-right: ${styles.scale.px24};
 	}
 	> a:not(:last-of-type) {
 		margin-bottom: ${styles.scale.px36};
-	}
-	p:last-of-type {
-		margin-bottom: 0;
 	}
 `
 

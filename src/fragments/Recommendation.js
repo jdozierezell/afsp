@@ -24,10 +24,23 @@ export const Recommendation = graphql`
 		recommendationHeading
 		storyRecommendation {
 			__typename
-			title
-			slug
-			author {
-				authorName
+			... on DatoCmsStory {
+				__typename
+				title
+				slug
+				author {
+					authorName
+				}
+			}
+			... on DatoCmsDetail {
+				__typename
+				title
+				slug
+			}
+			... on DatoCmsCampaignLanding {
+				__typename
+				title
+				slug
 			}
 		}
 	}

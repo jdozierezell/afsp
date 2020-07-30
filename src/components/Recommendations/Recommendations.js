@@ -96,12 +96,13 @@ const Recommendations = ({ data, heading, video }) => {
 						<h3>{story.title}</h3>
 					</Link>
 					<h4>
-						By{' '}
-						{story.author.map((author, index) =>
-							index + 1 < story.author.length
-								? `${author.authorName}, `
-								: author.authorName
-						)}
+						{story.author && `By `}
+						{story.author &&
+							story.author.map((author, index) =>
+								index + 1 < story.author.length
+									? `${author.authorName}, `
+									: author.authorName
+							)}
 					</h4>
 				</div>
 			))}

@@ -5,6 +5,7 @@ import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
 import NavigationSide from '../components/Navigation/NavigationSide'
 import ContentGeneric from '../components/Content/ContentGeneric'
+import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 
 import { styles } from '../css/css'
 
@@ -35,6 +36,7 @@ const Detail = ({ data: { detail, afspMedia } }) => {
 				data={detail}
 				dataMedia={afspMedia.detail}
 			/>
+			<CarouselChapterContainer />
 		</Layout>
 	)
 }
