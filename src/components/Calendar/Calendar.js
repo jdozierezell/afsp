@@ -4,6 +4,8 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import Script from 'react-load-script'
 
+import CalendarFilter from './CalendarFilter'
+
 import createAnchor from '../../utils/createAnchor'
 
 import { styles } from '../../css/css'

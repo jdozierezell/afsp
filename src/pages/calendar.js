@@ -7,12 +7,14 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import listPlugin from '@fullcalendar/list'
 
 import Layout from '../components/Layout'
+import CalendarFilter from '../components/Calendar/CalendarFilter'
 
 import { styles } from '../css/css'
 
 const calendarCSS = css`
 	font-family: ${styles.fonts.avenirRegular};
 	padding: ${styles.scale.px150} ${styles.scale.px24} ${styles.scale.px50};
+	position: relative;
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px180} ${styles.scale.px50} ${styles.scale.px80};
 	}
@@ -59,12 +61,16 @@ const calendarCSS = css`
 
 const mobileCalendarCSS = css`
 	display: block;
+	position: relative;
+	z-index: 0;
 	@media (min-width: ${styles.screens.navigation}px) {
 		display: none;
 	}
 `
 const deskCalendarCSS = css`
 	display: none;
+	position: relative;
+	z-index: 0;
 	@media (min-width: ${styles.screens.navigation}px) {
 		display: block;
 	}
@@ -72,6 +78,11 @@ const deskCalendarCSS = css`
 
 const AFSPCalendar = ({ data }) => {
 	const [events, setEvents] = useState([])
+	const [chapterFilter, setChapterFilter] = useState(null)
+	const [programFilter, setProgramFilter] = useState(null)
+
+	const handleChapterSelectChange = chapter => setChapterFilter(chapter.value)
+	const handleProgramSelectChange = program => setProgramFilter(program.value)
 
 	useEffect(() => {
 		if (events.length === 0 && events[0] !== 'no events') {
@@ -83,10 +94,38 @@ const AFSPCalendar = ({ data }) => {
 					return response.json()
 				})
 				.then(response => {
-					setEvents(response.events)
+					let filteredEvents = response.events
+					if (chapterFilter) {
+						console.log(chapterFilter)
+						filteredEvents = filteredEvents.filter(
+							event => event.chapterCode === chapterFilter
+						)
+					}
+					if (programFilter) {
+						console.log(programFilter)
+						filteredEvents = filteredEvents.filter(
+							event => event.programcode === programFilter
+						)
+					}
+					setEvents(filteredEvents ? filteredEvents : response.events)
 				})
+		} else {
+			let filteredEvents = events
+			if (chapterFilter) {
+				console.log(chapterFilter)
+				filteredEvents = filteredEvents.filter(
+					event => event.chapterCode === chapterFilter
+				)
+			}
+			if (programFilter) {
+				console.log(programFilter)
+				filteredEvents = filteredEvents.filter(
+					event => event.programcode === programFilter
+				)
+			}
+			setEvents(filteredEvents)
 		}
-	})
+	}, [chapterFilter, programFilter])
 
 	return (
 		<Layout
@@ -100,6 +139,11 @@ const AFSPCalendar = ({ data }) => {
 					perferendis, ex vero consectetur officia cum at, itaque
 					error omnis eligendi nesciunt.
 				</p>
+				<CalendarFilter
+					zIndex="1"
+					handleChapterSelectChange={handleChapterSelectChange}
+					handleProgramSelectChange={handleProgramSelectChange}
+				/>
 				<div css={mobileCalendarCSS}>
 					<FullCalendar
 						plugins={[listPlugin, dayGridPlugin]}
@@ -107,6 +151,7 @@ const AFSPCalendar = ({ data }) => {
 						events={events}
 					/>
 				</div>
+				{console.log(events)}
 				<div css={deskCalendarCSS}>
 					<FullCalendar
 						plugins={[dayGridPlugin, listPlugin]}
