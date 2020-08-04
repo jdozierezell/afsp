@@ -103,6 +103,9 @@ const ShareableContainer = ({
 
 	const updateOverlay = overlay => {
 		// converting image to base64 to circumvent cors; more info at https://stackoverflow.com/a/20285053
+		if (overlay.src) {
+			overlay = overlay.src
+		}
 		var xhr = new XMLHttpRequest()
 		xhr.onload = function() {
 			var reader = new FileReader()
@@ -111,7 +114,7 @@ const ShareableContainer = ({
 			}
 			reader.readAsDataURL(xhr.response)
 		}
-		xhr.open('GET', overlay.src)
+		xhr.open('GET', overlay)
 		xhr.responseType = 'blob'
 		xhr.send()
 	}
@@ -196,6 +199,9 @@ const ShareableContainer = ({
 	}
 
 	useEffect(() => {
+		if (overlays.length < 1) {
+			updateOverlay(backgroundImage)
+		}
 		if (isSelected) {
 			// we need to attach transformer manually
 			trRef.current.setNode(imageRef.current)

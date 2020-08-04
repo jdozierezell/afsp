@@ -32,7 +32,6 @@ const CustomShareable = ({ data: { customShareables, afspMedia } }) => {
 		})
 	})
 	let fontLink
-	console.log(customShareables.textBoxValues)
 	if (customShareables.textBoxValues) {
 		if (customShareables.textBoxValues.fontFamily) {
 			if (
