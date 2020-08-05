@@ -71,11 +71,17 @@ const refinementCSS = css`
 	}
 `
 
-const SearchGrants = ({ searchState, handleSearchChange, indexResults }) => {
+const SearchGrants = ({
+	searchState,
+	handleSearchChange,
+	indexName,
+	placeholder,
+	refinements,
+}) => {
 	return (
 		<div css={searchDetailCSS}>
 			<InstantSearch
-				indexName="afsporg-grant"
+				indexName={indexName}
 				searchClient={searchClient}
 				searchState={searchState}
 			>
@@ -83,25 +89,20 @@ const SearchGrants = ({ searchState, handleSearchChange, indexResults }) => {
 					css={searchBoxCSS}
 					onChange={handleSearchChange}
 					translations={{
-						placeholder: 'Start your search',
+						placeholder: placeholder,
 					}}
 				/>
 				<div css={indexWrapperCSS}>
 					<div css={refinementCSS}>
-						<SearchGrantRefinement
-							attribute="area"
-							displayAttribute="Research Area"
-							searchState={searchState}
-							handleSearchChange={handleSearchChange}
-							searchable
-						/>
-						<SearchGrantRefinement
-							attribute="grantType"
-							displayAttribute="Grant Type"
-							searchState={searchState}
-							handleSearchChange={handleSearchChange}
-							searchable
-						/>
+						{refinements.map(refinement => (
+							<SearchGrantRefinement
+								attribute={refinement.attribute}
+								displayAttribute={refinement.displayAttribute}
+								searchState={searchState}
+								handleSearchChange={handleSearchChange}
+								searchable
+							/>
+						))}
 					</div>
 					<div>
 						<SearchHits />

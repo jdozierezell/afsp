@@ -19,6 +19,9 @@ const solidHeroCSS = css`
 		max-width: 623px;
 		font-family: ${styles.fonts.avenirRegular};
 	}
+	p {
+		color: ${styles.colors.white};
+	}
 	h1 {
 		font-family: ${styles.fonts.paul};
 		margin: ${styles.scale.px35} 0;

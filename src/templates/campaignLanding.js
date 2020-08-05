@@ -107,26 +107,29 @@ const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
 							__html: campaignLanding.brief,
 						}}
 					></div>
-					<p>
-						<a
-							onClick={() => setReadMore(true)}
-							css={css`
-								cursor: pointer;
-								display: ${readMore ? 'none' : 'block'};
-							`}
-						>
-							Read more...
-						</a>
-					</p>
 					{campaignLanding.readMore && (
-						<div
-							css={css`
-								display: ${readMore ? 'block' : 'none'};
-							`}
-							dangerouslySetInnerHTML={{
-								__html: campaignLanding.readMore,
-							}}
-						></div>
+						<>
+							<p>
+								<a
+									onClick={() => setReadMore(true)}
+									css={css`
+										cursor: pointer;
+										display: ${readMore ? 'none' : 'block'};
+									`}
+								>
+									Read more...
+								</a>
+							</p>
+
+							<div
+								css={css`
+									display: ${readMore ? 'block' : 'none'};
+								`}
+								dangerouslySetInnerHTML={{
+									__html: campaignLanding.readMore,
+								}}
+							></div>
+						</>
 					)}
 				</div>
 			)}

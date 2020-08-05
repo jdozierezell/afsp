@@ -5,12 +5,13 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
 import SearchGrants from '../components/Search/SearchGrants'
+import CTAContainer from '../components/CTAs/CTAContainer'
 
 import searchURL from '../utils/searchURL'
 
 import { styles } from '../css/css'
 
-const ResearchGrants = ({ data: { grantsPage, grants } }) => {
+const SuicideResearchVideos = ({ data: { search } }) => {
 	let query =
 		typeof window !== `undefined`
 			? qs.parse(window.location.search.slice(1))
@@ -45,12 +46,13 @@ const ResearchGrants = ({ data: { grantsPage, grants } }) => {
 
 		searchURL(tempSearch)
 	}
+
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
-			seo={grantsPage.seoMetaTags}
+			seo={search.seoMetaTags}
 		>
-			<HeroSolid data={grantsPage} />
+			<HeroSolid data={search} />
 			<SearchGrants
 				searchState={searchState}
 				handleSearchChange={handleSearchChange}
@@ -61,20 +63,33 @@ const ResearchGrants = ({ data: { grantsPage, grants } }) => {
 					{ attribute: 'grantType', displayAttribute: 'Grant Type' },
 				]}
 			/>
+			{search.callsToAction.map((item, index) => (
+				<CTAContainer
+					key={index}
+					number={index}
+					cta={item.cta.callToAction[0]}
+				/>
+			))}
 		</Layout>
 	)
 }
 
-export default ResearchGrants
+export default SuicideResearchVideos
 
 export const query = graphql`
 	query {
-		grantsPage: datoCmsGrantsPage {
+		search: datoCmsSearchPage(slug: { eq: "suicide-research-videos" }) {
 			title
 			slug
 			brief
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
+			}
+			callsToAction {
+				... on DatoCmsCallToAction {
+					__typename
+					...CTAs
+				}
 			}
 		}
 	}
