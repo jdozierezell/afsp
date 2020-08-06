@@ -76,6 +76,7 @@ const Landing = ({ data: { landing, afspMedia } }) => {
 					.replace('DatoCmsExternalResource-', '')
 					.replace('DatoCmsStory-', '')
 					.replace('DatoCmsLanding-', '')
+					.replace('DatoCmsCampaignLanding-', '')
 					.replace('DatoCmsDetailTagged-', '')
 					.replace('DatoCmsDetail-', '')
 					.replace('DatoCmsCustomShareable-', '')
@@ -264,6 +265,18 @@ export const query = graphql`
 							}
 						}
 						... on DatoCmsLanding {
+							__typename
+							id
+							title
+							slug
+							seo {
+								description
+								image {
+									url
+								}
+							}
+						}
+						... on DatoCmsCampaignLanding {
 							__typename
 							id
 							title
@@ -600,6 +613,32 @@ export const query = graphql`
 								}
 							}
 							... on AFSPMedia_LandingRecord {
+								id
+								seo {
+									image {
+										responsiveImage(
+											imgixParams: {
+												auto: format
+												fill: blur
+												fit: fill
+												h: "370"
+												w: "600"
+											}
+										) {
+											alt
+											aspectRatio
+											height
+											sizes
+											src
+											srcSet
+											title
+											webpSrcSet
+											width
+										}
+									}
+								}
+							}
+							... on AFSPMedia_CampaignLandingRecord {
 								id
 								seo {
 									image {

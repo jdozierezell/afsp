@@ -78,6 +78,7 @@ const SearchGrants = ({
 	placeholder,
 	refinements,
 }) => {
+	console.log(indexName)
 	return (
 		<div css={searchDetailCSS}>
 			<InstantSearch
@@ -105,7 +106,7 @@ const SearchGrants = ({
 						))}
 					</div>
 					<div>
-						<SearchHits />
+						<SearchHits indexName={indexName} />
 					</div>
 				</div>
 			</InstantSearch>

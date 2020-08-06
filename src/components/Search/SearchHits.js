@@ -50,21 +50,60 @@ const buttonCSS = css`
 
 const CustomHits = data => {
 	const [display, setDisplay] = useState(20)
+	console.log(data)
 	return (
 		<>
 			<Configure hitsPerPage={display} />
-			<ul css={customHitsCSS}>
-				{data.hits.map(hit => (
-					<li key={hit.objectID} data-type={hit.type}>
-						<a href={hit.url} css={hitCSS}>
-							<img src={hit.image} alt="result thumbnail" />
-							<p
-								dangerouslySetInnerHTML={{ __html: hit.title }}
-							></p>
-						</a>
-					</li>
-				))}
-			</ul>
+			{data.indexName === 'afsporg-grant' && (
+				<ul css={customHitsCSS}>
+					{data.hits.map(hit => (
+						<li key={hit.objectID} data-type={hit.type}>
+							<a href={hit.url} css={hitCSS}>
+								<img src={hit.image} alt="result thumbnail" />
+								<p
+									dangerouslySetInnerHTML={{
+										__html: hit.title,
+									}}
+								></p>
+							</a>
+						</li>
+					))}
+				</ul>
+			)}
+			{data.indexName === 'afsporg-research-videos' && (
+				<ul css={customHitsCSS}>
+					{data.hits.map(hit => (
+						<li key={hit.objectID} data-type={hit.type}>
+							<iframe
+								src="https://player.vimeo.com/video/290683317"
+								width="1920"
+								height="1080"
+								frameborder="0"
+								webkitallowfullscreen
+								mozallowfullscreen
+								allowfullscreen
+							></iframe>
+							<p>
+								<a href="https://vimeo.com/290683317">
+									Gordon - Universal Screening in Emergency
+									Departments
+								</a>{' '}
+								from{' '}
+								<a href="https://vimeo.com/user4370286">AFSP</a>{' '}
+								on <a href="https://vimeo.com">Vimeo</a>.
+							</p>
+							<a href={hit.url} css={hitCSS}>
+								<img src={hit.image} alt="result thumbnail" />
+								<p
+									dangerouslySetInnerHTML={{
+										__html: hit.title,
+									}}
+								></p>
+							</a>
+						</li>
+					))}
+				</ul>
+			)}
 			{data.hasMore && (
 				<button
 					className="secondary-button"

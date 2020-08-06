@@ -124,7 +124,7 @@ const CTAVideo = ({ cta, number, id }) => {
 						src={video}
 						aria-describedby={`videoDescription-${number}`}
 					></video>
-					<p class="sr-only" id={`videoDescription-${number}`}>
+					<p className="sr-only" id={`videoDescription-${number}`}>
 						{backgroundVideo.alt}
 					</p>
 				</>
