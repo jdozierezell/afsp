@@ -54,7 +54,7 @@ const CustomHits = data => {
 	return (
 		<>
 			<Configure hitsPerPage={display} />
-			{data.indexName === 'afsporg-grant' && (
+			{data.indexName !== 'afsporg-research-videos' && (
 				<ul css={customHitsCSS}>
 					{data.hits.map(hit => (
 						<li key={hit.objectID} data-type={hit.type}>
