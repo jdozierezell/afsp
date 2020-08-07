@@ -66,7 +66,7 @@ const CarouselDetail = ({
 					{title}
 				</h2>
 			)}
-			{externalAnchor ? (
+			{anchor && externalAnchor && (
 				<a
 					href={anchor}
 					css={carouselLinkCSS}
@@ -75,7 +75,8 @@ const CarouselDetail = ({
 				>
 					{buttonText ? buttonText : 'Learn more'}
 				</a>
-			) : (
+			)}
+			{anchor && !externalAnchor && (
 				<Link to={anchor} css={carouselLinkCSS}>
 					{buttonText ? buttonText : 'Learn more'}
 				</Link>
