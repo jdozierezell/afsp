@@ -1,6 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import moment from 'moment'
+import Script from 'react-load-script'
 
 import createAnchor from '../../utils/createAnchor'
 
@@ -36,7 +37,7 @@ const calendarCSS = css`
 			border: ${styles.scale.px5} solid ${styles.colors.white};
 			border-radius: ${styles.scale.px5};
 			padding: ${styles.scale.px12} ${styles.scale.px12}
-				${styles.scale.px90};
+				${styles.scale.px126};
 		}
 		> li:nth-of-type(2n + 1) {
 			@media (min-width: ${styles.screens.tablet}px) {
@@ -69,6 +70,29 @@ const calendarCSS = css`
 		bottom: ${styles.scale.px12};
 		left: ${styles.scale.px12};
 	}
+	.addeventatc {
+		font-family: ${styles.fonts.avenirBold};
+		font-size: ${styles.scale.px18};
+		font-weight: inherit;
+		line-height: inherit;
+		color: ${styles.colors.poppy} !important;
+		background-color: ${styles.colors.white};
+		border-radius: ${styles.scale.px30};
+		border: solid 2px ${styles.colors.poppy};
+		padding: ${styles.scale.px10} ${styles.scale.px32};
+		margin-bottom: ${styles.scale.px24};
+		display: inline-block;
+		text-decoration: none;
+		cursor: pointer;
+		:hover {
+			background-color: ${styles.colors.white};
+			color: ${styles.colors.poppy} !important;
+			font-size: ${styles.scale.px18};
+		}
+		.addeventatc_icon {
+			top: 14px;
+		}
+	}
 `
 
 const Calendar = ({ events }) => {
@@ -77,8 +101,8 @@ const Calendar = ({ events }) => {
 	events.forEach(event => {
 		if (event.__typename === 'DatoCmsCampaignName') {
 			calendarTitle = event.campaignName
-		} else if (event.__typename === 'DatoCmsEvent') {
-			eventArray.push(event)
+		} else if (event.__typename === 'DatoCmsEventsList') {
+			event.events.forEach(e => eventArray.push(e))
 		}
 	})
 	return (
@@ -90,56 +114,42 @@ const Calendar = ({ events }) => {
 			<ul>
 				{eventArray.map((event, index) => {
 					let dateAndTime = ''
-					if (event.eventStartDateAndTime) {
-						if (event.eventStartDateAndTime.includes('00:00:00')) {
+					if (event.startDateAndTime) {
+						if (event.startDateAndTime.includes('00:00:00')) {
 							dateAndTime = `All Day, ${moment(
-								event.eventStartDateAndTime
+								event.startDateAndTime
 							)
 								.utcOffset(-4)
 								.format('MMMM D')}`
 						} else {
-							console.log(
-								event.eventStartDateAndTime.indexOf('00:00')
-							)
-							if (
-								event.eventStartDateAndTime.indexOf('00:00') > 0
-							) {
-								dateAndTime = `${moment(
-									event.eventStartDateAndTime
-								)
+							if (event.startDateAndTime.indexOf('00:00') > 0) {
+								dateAndTime = `${moment(event.startDateAndTime)
 									.utcOffset(-4)
 									.format('MMMM D @ h a')} ET`
 							} else {
-								dateAndTime = `${moment(
-									event.eventStartDateAndTime
-								)
+								dateAndTime = `${moment(event.startDateAndTime)
 									.utcOffset(-4)
 									.format('MMMM D @ h:mm a')}	ET`
 							}
 						}
 					}
-					if (event.eventEndDateAndTime) {
-						if (event.eventEndDateAndTime.includes('00:00:00')) {
+					if (event.endDateAndTime) {
+						if (event.endDateAndTime.includes('00:00:00')) {
 							dateAndTime += ` - All Day, ${moment(
-								event.eventEndDateAndTime
+								event.endDateAndTime
 							)
 								.utcOffset(-4)
 								.format('MMMM D')}`
 						} else {
-							console.log(
-								event.eventEndDateAndTime.indexOf('00:00')
-							)
-							if (
-								event.eventEndDateAndTime.indexOf('00:00') > 0
-							) {
+							if (event.endDateAndTime.indexOf('00:00') > 0) {
 								dateAndTime += ` - ${moment(
-									event.eventEndDateAndTime
+									event.endDateAndTime
 								)
 									.utcOffset(-4)
 									.format('MMMM D @ h a')} ET`
 							} else {
 								dateAndTime += ` - ${moment(
-									event.eventEndDateAndTime
+									event.endDateAndTime
 								)
 									.utcOffset(-4)
 									.format('MMMM D @ h:mm a')}	ET`
@@ -148,20 +158,29 @@ const Calendar = ({ events }) => {
 					}
 					return (
 						<li key={index}>
-							<h3>{event.eventTitle}</h3>
-							{event.eventStartDateAndTime && (
-								<h4>{dateAndTime}</h4>
-							)}
-							{console.log(event.brief)}
+							<h3>{event.title}</h3>
+							{event.startDateAndTime && <h4>{dateAndTime}</h4>}
 							<div
 								dangerouslySetInnerHTML={{
 									__html: event.brief,
 								}}
 							></div>
-							{event.url && (
+							{event.url && !event.eventCode && (
 								<a
 									className="secondary-button"
 									href={event.url}
+								>
+									{event.buttonText
+										? event.buttonText
+										: 'Add to calendar'}
+								</a>
+							)}
+							{event.eventCode && (
+								<a
+									title="Add to Calendar"
+									className="secondary-button addeventatc"
+									data-id="Vz5063017"
+									href="https://www.addevent.com/event/Vz5063017"
 								>
 									{event.buttonText
 										? event.buttonText
@@ -172,6 +191,13 @@ const Calendar = ({ events }) => {
 					)
 				})}
 			</ul>
+			<Script
+				attributes={{
+					async: '',
+					type: 'text/javascript',
+				}}
+				url="//addevent.com/libs/atc/1.6.1/atc.min.js"
+			/>
 		</div>
 	)
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import moment from 'moment-timezone'
+import Script from 'react-load-script'
 
 import Layout from '../components/Layout'
 import BreakingNews from '../components/BreakingNews/BreakingNews'
@@ -91,23 +92,48 @@ const App = ({ data: { home, afspMedia } }) => {
 	if (home.eventsList.length > 0) {
 		const timeZone = moment.tz.guess()
 		home.eventsList.forEach(event => {
-			const eventObject = {
-				__typename: 'Event',
-				title: event.eventTitle,
-				startDate: event.eventStartDateAndTime
-					? moment
-							.tz(event.eventStartDateAndTime, timeZone)
-							.format('MMMM D @ h:mm a z')
-					: null,
-				endDate: event.eventEndDateAndTime
-					? moment
-							.tz(event.eventEndDateAndTime, timeZone)
-							.format('MMMM D @ h:mm a z')
-					: null,
-				buttonText: event.buttonText,
-				url: event.url,
+			if (event.__typename === 'DatoCmsEventsList') {
+				event.events.forEach(e => {
+					let eventObject = {
+						__typename: 'Event',
+						title: e.title,
+						startDate: e.startDateAndTime
+							? moment
+									.tz(e.startDateAndTime, timeZone)
+									.format('MMMM D @ h:mm a z')
+							: null,
+						endDate: e.endDateAndTime
+							? moment
+									.tz(e.endDateAndTime, timeZone)
+									.format('MMMM D @ h:mm a z')
+							: null,
+						buttonText: e.buttonText,
+						url: e.url,
+						eventCode: e.eventCode,
+					}
+					eventObject.date =
+						e.startDateAndTime.indexOf('00:00:00') === -1
+							? moment
+									.tz(e.startDateAndTime, timeZone)
+									.format('MMMM D @ h:mm a z')
+							: moment
+									.tz(e.startDateAndTime, timeZone)
+									.format('MMMM D')
+					if (e.endDateAndTime) {
+						eventObject.date += ` — 
+					${
+						e.endDateAndTime.indexOf('00:00:00') === -1
+							? moment
+									.tz(e.endDateAndTime, timeZone)
+									.format('MMMM D @ h:mm a z')
+							: moment
+									.tz(e.endDateAndTime, timeZone)
+									.format('MMMM D')
+					}`
+					}
+					events.details.push(eventObject)
+				})
 			}
-			events.details.push(eventObject)
 		})
 	}
 
@@ -221,6 +247,13 @@ const App = ({ data: { home, afspMedia } }) => {
 			{home.ticker && home.ticker.length > 0 && (
 				<Ticker ticker={home.ticker} />
 			)}
+			<Script
+				attributes={{
+					async: '',
+					type: 'text/javascript',
+				}}
+				url="//addevent.com/libs/atc/1.6.1/atc.min.js"
+			/>
 		</Layout>
 	)
 }
@@ -267,12 +300,27 @@ export const query = graphql`
 				tickerItem
 			}
 			eventsList {
-				eventTitle
-				eventStartDateAndTime
-				eventEndDateAndTime
-				brief
-				buttonText
-				url
+				... on DatoCmsEventsList {
+					__typename
+					events {
+						title
+						startDateAndTime
+						endDateAndTime
+						brief
+						buttonText
+						url
+						eventCode
+					}
+				}
+				... on DatoCmsEvent {
+					eventTitle
+					eventStartDateAndTime
+					eventEndDateAndTime
+					buttonText
+					url
+					eventCode
+					brief
+				}
 			}
 			ctaChapterResourceList {
 				... on DatoCmsChannelList {

@@ -236,12 +236,25 @@ export const query = graphql`
 				... on DatoCmsCampaignName {
 					campaignName
 				}
+				... on DatoCmsEventsList {
+					__typename
+					events {
+						title
+						startDateAndTime
+						endDateAndTime
+						brief
+						buttonText
+						url
+						eventCode
+					}
+				}
 				... on DatoCmsEvent {
 					eventTitle
 					eventStartDateAndTime
 					eventEndDateAndTime
 					buttonText
 					url
+					eventCode
 					brief
 				}
 			}

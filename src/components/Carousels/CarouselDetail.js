@@ -16,6 +16,27 @@ const carouselComponentCSS = css`
 		padding: ${styles.scale.px40} ${styles.scale.px40} ${styles.scale.px80};
 		min-height: 325px;
 	}
+	.addeventatc {
+		color: ${styles.colors.poppy} !important;
+		font-weight: initial;
+		padding-top: 0;
+		padding-bottom: 0;
+		font-size: ${styles.scale.px17};
+		box-shadow: none !important;
+		line-height: inherit;
+		position: absolute !important;
+		bottom: ${styles.scale.px40};
+		font-family: ${styles.fonts.avenirDemi} !important;
+		text-decoration: underline !important;
+		:hover {
+			font-size: ${styles.scale.px17};
+			background-color: ${styles.colors.white};
+			text-decoration: none;
+		}
+		.addeventatc_icon {
+			top: 0;
+		}
+	}
 `
 
 const carouselMessageCSS = css`
@@ -38,7 +59,9 @@ const carouselLinkCSS = css`
 `
 
 const CarouselDetail = ({
+	type,
 	anchor,
+	eventCode,
 	content,
 	title,
 	externalAnchor,
@@ -46,6 +69,17 @@ const CarouselDetail = ({
 	addCSS,
 	eventTitleSize,
 }) => {
+	let internalSrc, externalSrc, eventSrc
+	if (type === 'Event') {
+		if (anchor.length < 1) {
+			eventSrc = `https://www.addevent.com/event/${eventCode}`
+		} else {
+			externalSrc = anchor
+		}
+	} else {
+		internalSrc = anchor
+		externalSrc = externalAnchor
+	}
 	return (
 		<div
 			css={css`
@@ -66,9 +100,9 @@ const CarouselDetail = ({
 					{title}
 				</h2>
 			)}
-			{anchor && externalAnchor && (
+			{externalSrc && (
 				<a
-					href={anchor}
+					href={externalSrc}
 					css={carouselLinkCSS}
 					target="_blank"
 					rel="noopener noreferrer"
@@ -76,8 +110,18 @@ const CarouselDetail = ({
 					{buttonText ? buttonText : 'Learn more'}
 				</a>
 			)}
-			{anchor && !externalAnchor && (
-				<Link to={anchor} css={carouselLinkCSS}>
+			{eventSrc && !externalSrc && (
+				<a
+					title="Add to Calendar"
+					className="addeventatc"
+					data-id={eventCode}
+					href={`https://www.addevent.com/event/${eventCode}`}
+				>
+					{buttonText ? buttonText : 'Add to calendar'}
+				</a>
+			)}
+			{internalSrc && !externalSrc && (
+				<Link to={internalSrc} css={carouselLinkCSS}>
 					{buttonText ? buttonText : 'Learn more'}
 				</Link>
 			)}

@@ -87,14 +87,17 @@ const CarouselDetailContainer = ({
 								/>
 							)
 						} else if (section.__typename === 'Event') {
+							console.log(section)
 							return (
 								<CarouselDetail
 									key={index}
+									type={section.__typename}
 									content={section.date}
 									title={section.title}
 									externalAnchor={true}
 									buttonText={section.buttonText}
 									anchor={section.url}
+									eventCode={section.eventCode}
 									addCSS={addCSS}
 									eventTitleSize={eventTitleSize}
 								/>
