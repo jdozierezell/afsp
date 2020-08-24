@@ -48,9 +48,25 @@ const buttonCSS = css`
 	margin: 0;
 `
 
+const videoWrapperCSS = css`
+	background-size: cover;
+	background-position: center;
+	border-radius: ${styles.scale.px7} / ${styles.scale.px5};
+	padding: 56.25% 0 0 0;
+	position: relative;
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		border-radius: 5px;
+		border: none;
+	}
+`
+
 const CustomHits = data => {
 	const [display, setDisplay] = useState(20)
-	console.log(data)
 	return (
 		<>
 			<Configure hitsPerPage={display} />
@@ -74,32 +90,26 @@ const CustomHits = data => {
 				<ul css={customHitsCSS}>
 					{data.hits.map(hit => (
 						<li key={hit.objectID} data-type={hit.type}>
-							<iframe
-								src="https://player.vimeo.com/video/290683317"
-								width="1920"
-								height="1080"
-								frameborder="0"
-								webkitallowfullscreen
-								mozallowfullscreen
-								allowfullscreen
-							></iframe>
-							<p>
-								<a href="https://vimeo.com/290683317">
-									Gordon - Universal Screening in Emergency
-									Departments
-								</a>{' '}
-								from{' '}
-								<a href="https://vimeo.com/user4370286">AFSP</a>{' '}
-								on <a href="https://vimeo.com">Vimeo</a>.
-							</p>
-							<a href={hit.url} css={hitCSS}>
-								<img src={hit.image} alt="result thumbnail" />
-								<p
-									dangerouslySetInnerHTML={{
-										__html: hit.title,
+							<div css={videoWrapperCSS}>
+								<iframe
+									src={`https://player.vimeo.com/video/${hit.vimeoId}`}
+									style={{
+										position: 'absolute',
+										top: 0,
+										left: 0,
+										width: '100%',
+										height: '100%',
 									}}
-								></p>
-							</a>
+								></iframe>
+							</div>
+							<h3
+								dangerouslySetInnerHTML={{
+									__html: hit.title,
+								}}
+								css={css`
+									margin-top: ${styles.scale.px18};
+								`}
+							></h3>
 						</li>
 					))}
 				</ul>

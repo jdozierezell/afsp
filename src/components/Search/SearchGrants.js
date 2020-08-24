@@ -78,7 +78,6 @@ const SearchGrants = ({
 	placeholder,
 	refinements,
 }) => {
-	console.log(indexName)
 	return (
 		<div css={searchDetailCSS}>
 			<InstantSearch
