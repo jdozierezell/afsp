@@ -18,6 +18,7 @@ const eventCarouselCSS = css``
 
 const Chapter = ({
 	data: { chapter, realStories, chapterStoriesUpdates, afspMedia },
+	pageContext,
 }) => {
 	const {
 		title,

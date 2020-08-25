@@ -232,7 +232,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
 	chapterHomes.forEach(({ node }) => {
 		const slug = node.slug
-		const tagName = `AFSP ${node.title}`
+		const tagName = `AFSP ${node.title.replace("'", '')}`
 		let tagId = ''
 		tags.forEach(tag => {
 			tag.node.id = tag.node.id
