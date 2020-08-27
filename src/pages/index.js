@@ -116,9 +116,7 @@ const App = ({ data: { home, afspMedia } }) => {
 							? moment
 									.tz(e.startDateAndTime, timeZone)
 									.format('MMMM D @ h:mm a z')
-							: moment
-									.tz(e.startDateAndTime, timeZone)
-									.format('MMMM D')
+							: moment(e.startDateAndTime).format('MMMM D')
 					if (e.endDateAndTime) {
 						eventObject.date += ` — 
 					${
@@ -126,9 +124,7 @@ const App = ({ data: { home, afspMedia } }) => {
 							? moment
 									.tz(e.endDateAndTime, timeZone)
 									.format('MMMM D @ h:mm a z')
-							: moment
-									.tz(e.endDateAndTime, timeZone)
-									.format('MMMM D')
+							: moment(e.endDateAndTime).format('MMMM D')
 					}`
 					}
 					events.details.push(eventObject)

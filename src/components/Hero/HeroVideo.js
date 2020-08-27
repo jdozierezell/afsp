@@ -130,7 +130,7 @@ const HeroVideo = ({
 						src={videoUrl}
 						aria-describedby="videoDescription"
 					></video>
-					<p class="sr-only" id="videoDescription">
+					<p className="sr-only" id="videoDescription">
 						{videoAlt}
 					</p>
 				</>

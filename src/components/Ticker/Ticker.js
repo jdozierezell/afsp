@@ -70,8 +70,9 @@ const Ticker = ({ ticker }) => {
 				`}
 			>
 				<div css={tickerItem}>Happening now: </div>
-				{ticker.map(item => (
+				{ticker.map((item, index) => (
 					<div
+						key={index}
 						css={tickerItem}
 						dangerouslySetInnerHTML={{ __html: item.tickerItem }}
 					></div>

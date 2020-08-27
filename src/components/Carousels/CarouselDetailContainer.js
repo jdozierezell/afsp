@@ -87,7 +87,6 @@ const CarouselDetailContainer = ({
 								/>
 							)
 						} else if (section.__typename === 'Event') {
-							console.log(section)
 							return (
 								<CarouselDetail
 									key={index}
