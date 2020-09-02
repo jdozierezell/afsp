@@ -39,7 +39,12 @@ const CTAWithDescription = ({ cta, describedby }) => {
 	} = cta
 	return (
 		<>
-			<h2 css={h2}>{heading}</h2>
+			<h2
+				css={h2}
+				dangerouslySetInnerHTML={{
+					__html: heading,
+				}}
+			></h2>
 			<p
 				css={p}
 				dangerouslySetInnerHTML={{
