@@ -91,7 +91,6 @@ const App = ({ data: { home } }) => {
 			seo={home.seoMetaTags}
 		>
 			{home.breakingNews && <BreakingNews news={home.breakingNews} />}
-			{console.log(home)}
 			<HeroVideo
 				videoUrl={
 					home.heroVideo.video

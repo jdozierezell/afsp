@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
-import { Image } from 'react-datocms'
+import Img from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
@@ -43,15 +43,7 @@ const partnerInfoCSS = css`
 	}
 `
 
-const Partners = ({ data: { partners, afspMedia } }) => {
-	partners.partnerList.forEach(partner => {
-		afspMedia.partnerPage.partnerList.forEach(media => {
-			if (partner.partnerLogo.originalId === media.partnerLogo.id) {
-				partner.partnerLogo.responsiveImage =
-					media.partnerLogo.responsiveImage
-			}
-		})
-	})
+const Partners = ({ data: { partners } }) => {
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -59,21 +51,16 @@ const Partners = ({ data: { partners, afspMedia } }) => {
 		>
 			<HeroSolid data={partners} />
 			<section css={partnerContainerCSS}>
-				{partners.partnerList.map(partner => {
+				{partners.partnerList.map((partner, index) => {
 					return (
-						<div css={partnerCSS}>
-							{partner.partnerLogo.responsiveImage && (
-								<Image
-									css={partnerImageCSS}
-									data={partner.partnerLogo.responsiveImage}
-								/>
-							)}
-							{!partner.partnerLogo.responsiveImage && (
-								<img
-									css={partnerImageCSS}
-									src={partner.partnerLogo.url}
-								/>
-							)}
+						<div key={index} css={partnerCSS}>
+							<Img
+								fluid={partner.partnerLogo.fluid}
+								css={partnerImageCSS}
+								style={{
+									display: 'block',
+								}}
+							/>
 							<div css={partnerInfoCSS}>
 								<h3>{partner.partnerName}</h3>
 								<div
@@ -112,37 +99,22 @@ export const query = graphql`
 				partnerLogo {
 					originalId
 					url
+					fluid(
+						maxWidth: 600
+						imgixParams: {
+							auto: "format"
+							fit: "fill"
+							fill: "solid"
+							fillColor: "#ffffff"
+							w: "600"
+							h: "200"
+						}
+					) {
+						...GatsbyDatoCmsFluid
+					}
 				}
 				partnerDescription
 				partnerLink
-			}
-		}
-		afspMedia: afspMedia {
-			partnerPage {
-				partnerList {
-					partnerLogo {
-						id
-						responsiveImage(
-							imgixParams: {
-								auto: format
-								fit: fill
-								w: "600"
-								fill: solid
-								fillColor: "#ffffff"
-							}
-						) {
-							alt
-							aspectRatio
-							height
-							sizes
-							src
-							srcSet
-							title
-							webpSrcSet
-							width
-						}
-					}
-				}
 			}
 		}
 	}
