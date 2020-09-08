@@ -12,6 +12,18 @@ export const ChapterSearch = graphql`
 				}
 				heroPoster {
 					url
+					fluid(
+						maxWidth: 200
+						imgixParams: {
+							auto: "format"
+							fit: "crop"
+							crop: "faces"
+							w: "600"
+							h: "360"
+						}
+					) {
+						...GatsbyDatoCmsFluid
+					}
 				}
 				staffName
 				staffTitle

@@ -36,55 +36,7 @@ const walkBar = css`
 	}
 `
 
-const App = ({ data: { home, afspMedia } }) => {
-	home.ctaChapterResourceList.forEach(resource => {
-		if (resource.channels) {
-			resource.channels.forEach(channel => {
-				channel.id = channel.id
-					.replace('DatoCmsChannel-', '')
-					.replace('-en', '')
-				afspMedia.home.channelList.forEach(media => {
-					if (channel.id === media.id) {
-						channel.image.responsiveImage =
-							media.image.responsiveImage
-					}
-				})
-			})
-		}
-		if (resource.resource) {
-			resource.resource.forEach(childResource => {
-				childResource.id = childResource.id
-					.replace('DatoCmsExternalResource-', '')
-					.replace('DatoCmsStory-', '')
-					.replace('DatoCmsLanding-', '')
-					.replace('DatoCmsDetailTagged-', '')
-					.replace('DatoCmsDetail-', '')
-					.replace('DatoCmsCustomShareable-', '')
-					.replace('DatoCmsQuilt-', '')
-					.replace('DatoCmsSearchPage-', '')
-					.replace('-en', '')
-				afspMedia.home.ctaChapterResourceList.forEach(media => {
-					if (media.resource) {
-						media.resource.forEach(childMedia => {
-							if (childResource.id === childMedia.id) {
-								if (
-									childResource.__typename ===
-									'DatoCmsExternalResource'
-								) {
-									childResource.coverImage.responsiveImage =
-										childMedia.coverImage.responsiveImage
-								} else {
-									childResource.seo.image.responsiveImage =
-										childMedia.seo.image.responsiveImage
-								}
-							}
-						})
-					}
-				})
-			})
-		}
-	})
-
+const App = ({ data: { home } }) => {
 	let events = {
 		title: 'AFSP national events',
 		details: [],
@@ -139,6 +91,7 @@ const App = ({ data: { home, afspMedia } }) => {
 			seo={home.seoMetaTags}
 		>
 			{home.breakingNews && <BreakingNews news={home.breakingNews} />}
+			{console.log(home)}
 			<HeroVideo
 				videoUrl={
 					home.heroVideo.video
@@ -170,7 +123,7 @@ const App = ({ data: { home, afspMedia } }) => {
 							<ChannelContainer
 								key={index}
 								channelList={item.channels}
-								channelListMedia={afspMedia.home.channelList}
+								// channelListMedia={afspMedia.home.channelList}
 							/>
 						)
 					} else if (item.__typename === 'DatoCmsCallToAction') {
@@ -211,7 +164,7 @@ const App = ({ data: { home, afspMedia } }) => {
 							<ChannelContainer
 								key={index}
 								channelList={item.channels}
-								channelListMedia={afspMedia.home.channelList}
+								// channelListMedia={afspMedia.home.channelList}
 							/>
 						)
 					} else if (item.__typename === 'DatoCmsCallToAction') {
@@ -258,7 +211,6 @@ export default App
 
 export const query = graphql`
 	query {
-		# gatsby-source-datocms
 		home: datoCmsHome {
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
@@ -325,8 +277,19 @@ export const query = graphql`
 						id
 						image {
 							url
+							fluid(
+								maxWidth: 200
+								imgixParams: {
+									auto: "format"
+									fit: "crop"
+									crop: "faces"
+									w: "200"
+									h: "200"
+								}
+							) {
+								...GatsbyDatoCmsFluid
+							}
 						}
-						# image imported in afspMedia
 						heading
 						brief
 						channelLink {
@@ -355,6 +318,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -367,6 +342,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -379,6 +366,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -391,6 +390,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -398,274 +409,6 @@ export const query = graphql`
 				}
 			}
 			instagramClass
-		}
-		# gatsby-source-graphql
-		afspMedia: afspMedia {
-			home {
-				channelList {
-					id
-					image {
-						responsiveImage(
-							imgixParams: {
-								auto: format
-								crop: faces
-								fit: crop
-								h: "200"
-								w: "200"
-							}
-						) {
-							srcSet
-							webpSrcSet
-							sizes
-							src
-							width
-							height
-							aspectRatio
-							alt
-							title
-						}
-					}
-				}
-				ctaChapterResourceList {
-					... on AFSPMedia_ResourceListRecord {
-						id
-						resource {
-							... on AFSPMedia_ExternalResourceRecord {
-								id
-								coverImage {
-									responsiveImage(
-										imgixParams: {
-											auto: format
-											fill: blur
-											fit: fill
-											h: "370"
-											w: "600"
-										}
-									) {
-										alt
-										aspectRatio
-										height
-										sizes
-										src
-										srcSet
-										title
-										webpSrcSet
-										width
-									}
-								}
-							}
-							... on AFSPMedia_CustomShareableRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												auto: format
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_ImageListRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												auto: format
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_DetailTaggedRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												auto: format
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_QuiltRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												auto: format
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_SearchPageRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												auto: format
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_LandingRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												auto: format
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_DetailRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												auto: format
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_StoryRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												auto: format
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
 		}
 	}
 `

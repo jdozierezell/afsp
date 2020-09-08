@@ -58,48 +58,11 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 			chapters: allDatoCmsChapterHomePage {
 				...ChapterSearch
 			}
-			afspMedia: afspMedia {
-				allChapterHomePages(first: "80") {
-					id
-					heroPoster {
-						responsiveImage(
-							imgixParams: {
-								auto: format
-								w: "600"
-								h: "360"
-								crop: faces
-								fit: crop
-							}
-						) {
-							alt
-							aspectRatio
-							height
-							sizes
-							src
-							srcSet
-							title
-							webpSrcSet
-							width
-						}
-					}
-				}
-			}
 		}
 	`)
-	const { chapters, afspMedia } = data
+	const { chapters } = data
 
 	const [displayChapters, setDisplayChapters] = useState([])
-
-	chapters.edges.forEach(chapter => {
-		chapter.node.id = chapter.node.id
-			.replace('DatoCmsChapterHomePage-', '')
-			.replace('-en', '')
-		afspMedia.allChapterHomePages.forEach(media => {
-			if (chapter.node.id === media.id) {
-				chapter.node.heroPoster = media.heroPoster
-			}
-		})
-	})
 
 	const responsive = {
 		superLargeDesktop: {
@@ -153,13 +116,13 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 			{displayChapters.length >= 1 && (
 				<Carousel responsive={responsive}>
 					{displayChapters.map((chapter, index) => {
+						console.log(chapter)
 						return (
 							<CarouselChapter
 								key={index}
 								title={chapter[0].title}
 								titleHref={chapter[0].slug}
-								image={chapter[0].heroPoster.responsiveImage}
-								imageUrl={chapter[0].heroPoster.url}
+								image={chapter[0].heroPoster.fluid}
 							/>
 						)
 					})}
