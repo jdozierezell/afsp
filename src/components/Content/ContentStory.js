@@ -77,7 +77,6 @@ const socialButtonsCSS = css`
 `
 
 const ContentStory = ({ data }) => {
-	console.log(data)
 	return (
 		<section css={storyContentCSS}>
 			<aside css={socialButtonsCSS}>

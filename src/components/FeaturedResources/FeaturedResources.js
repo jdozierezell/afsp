@@ -29,7 +29,6 @@ const featuredCSS = css`
 const FeaturedResources = ({ data }) => {
 	let description, url
 	const image = data.seo ? data.seo.image : data.coverImage
-	console.log(image)
 	if (data.externalDescription) {
 		description = data.externalDescription
 	} else if (data.seo) {

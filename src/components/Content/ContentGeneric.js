@@ -36,7 +36,6 @@ const detailCarouselCSS = css`
 
 const ContentGeneric = ({ setEvents, data }) => {
 	const { details } = data
-	console.log(details)
 	return (
 		<section
 			css={css`

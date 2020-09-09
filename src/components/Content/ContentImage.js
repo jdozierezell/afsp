@@ -39,7 +39,6 @@ const ContentImage = ({ image, index }) => {
 			items: 1,
 		},
 	}
-	console.log(image)
 	return (
 		<div className="storyContent">
 			{image.length === 1 && (

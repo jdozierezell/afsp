@@ -191,7 +191,6 @@ const HeroStories = ({ data, prev, next }) => {
 							})}
 					</ul>
 				</h3>
-				{console.log(data.coverImage)}
 				<Img css={mobileImageCSS} fluid={data.coverImage.fluid} />
 			</div>
 			{prev && (

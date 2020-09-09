@@ -53,7 +53,6 @@ const SuicideStatistics = ({ data: { statistics, afspMedia } }) => {
 		url:
 			'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/ratesbymethod.csv',
 	}
-	console.log(statistics)
 
 	return (
 		<Layout
