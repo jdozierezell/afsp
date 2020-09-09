@@ -1,7 +1,7 @@
 import React from 'react'
 import Carousel from 'react-multi-carousel'
 import { css } from '@emotion/core'
-import { Image } from 'react-datocms'
+import Img from 'gatsby-image'
 
 import { styles } from '../../css/css'
 
@@ -39,33 +39,20 @@ const ContentImage = ({ image, index }) => {
 			items: 1,
 		},
 	}
+	console.log(image)
 	return (
 		<div className="storyContent">
-			{image.length === 1 && image[0].responsiveImage && (
-				<Image css={singleCSS} data={image[0].responsiveImage} />
-			)}
-			{image.length === 1 && !image[0].responsiveImage && (
-				<img css={singleCSS} src={image[0].url} />
+			{image.length === 1 && (
+				<Img css={singleCSS} fluid={image[0].fluid} />
 			)}
 			{image.length > 1 && (
 				<Carousel css={carouselCSS} responsive={responsive}>
 					{image.map((image, index) => (
-						<>
-							{image.responsiveImage && (
-								<Image
-									css={carouselImageCSS}
-									key={index}
-									data={image.responsiveImage}
-								/>
-							)}
-							{!image.responsiveImage && (
-								<img
-									css={carouselImageCSS}
-									key={index}
-									src={image.url}
-								/>
-							)}
-						</>
+						<Img
+							css={carouselImageCSS}
+							key={index}
+							fluid={image.fluid}
+						/>
 					))}
 				</Carousel>
 			)}

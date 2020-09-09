@@ -116,7 +116,6 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 			{displayChapters.length >= 1 && (
 				<Carousel responsive={responsive}>
 					{displayChapters.map((chapter, index) => {
-						console.log(chapter)
 						return (
 							<CarouselChapter
 								key={index}

@@ -71,7 +71,6 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 				{resources.map((resource, index) => {
 					let title, image, imageFallback, link, linkText, external
 					title = resource.title
-					console.log(resource)
 					if (resource.__typename === 'DatoCmsStory') {
 						image = resource.seo.image
 						link = `/story/${resource.slug}`

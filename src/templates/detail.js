@@ -50,6 +50,9 @@ export const query = graphql`
 			slug
 			programLogo {
 				url
+				fluid(maxWidth: 623, imgixParams: { w: "623" }) {
+					...GatsbyDatoCmsFluid
+				}
 			}
 			brief
 			parentPage {
@@ -111,6 +114,18 @@ export const query = graphql`
 					id
 					images {
 						url
+						fluid(
+							maxWidth: 623
+							imgixParams: {
+								auto: "format"
+								fill: "blur"
+								fit: "fill"
+								h: "384"
+								w: "623"
+							}
+						) {
+							...GatsbyDatoCmsFluid
+						}
 					}
 				}
 				... on DatoCmsVideo {
@@ -138,47 +153,6 @@ export const query = graphql`
 			overrideWidth
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
-			}
-		}
-		afspMedia: afspMedia {
-			detail(filter: { slug: { eq: $slug } }) {
-				details {
-					... on AFSPMedia_ImageRecord {
-						id
-						images {
-							responsiveImage(
-								imgixParams: {
-									auto: format
-									fit: fill
-									fill: blur
-									h: "384"
-									w: "623"
-								}
-							) {
-								alt
-								height
-								sizes
-								src
-								srcSet
-								title
-								webpSrcSet
-								width
-							}
-						}
-					}
-				}
-				programLogo {
-					responsiveImage(imgixParams: { w: "623" }) {
-						alt
-						height
-						sizes
-						src
-						srcSet
-						title
-						webpSrcSet
-						width
-					}
-				}
 			}
 		}
 	}

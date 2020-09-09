@@ -34,10 +34,9 @@ const detailCarouselCSS = css`
 	}
 `
 
-const ContentGeneric = ({ setEvents, data, dataMedia }) => {
+const ContentGeneric = ({ setEvents, data }) => {
 	const { details } = data
-	const detailsMedia = dataMedia ? dataMedia.details : null
-
+	console.log(details)
 	return (
 		<section
 			css={css`
@@ -86,16 +85,6 @@ const ContentGeneric = ({ setEvents, data, dataMedia }) => {
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsImage') {
-					if (detailsMedia) {
-						detailsMedia.forEach(media => {
-							detail.id = detail.id
-								.replace('DatoCmsImage-', '')
-								.replace('-en', '')
-							if (detail.id === media.id) {
-								detail.images = media.images
-							}
-						})
-					}
 					return <ContentImage key={index} image={detail.images} />
 				} else if (detail.__typename === 'DatoCmsVideo') {
 					return (

@@ -76,8 +76,8 @@ const socialButtonsCSS = css`
 	}
 `
 
-const ContentStory = ({ data, dataMedia }) => {
-	const articleMedia = dataMedia ? dataMedia.article : []
+const ContentStory = ({ data }) => {
+	console.log(data)
 	return (
 		<section css={storyContentCSS}>
 			<aside css={socialButtonsCSS}>
@@ -107,14 +107,6 @@ const ContentStory = ({ data, dataMedia }) => {
 							/>
 						)
 					} else if (article.__typename === 'DatoCmsImage') {
-						articleMedia.forEach(media => {
-							article.id = article.id
-								.replace('DatoCmsImage-', '')
-								.replace('-en', '')
-							if (article.id === media.id) {
-								article.images = media.images
-							}
-						})
 						return (
 							<ContentImage
 								key={index}
@@ -123,15 +115,6 @@ const ContentStory = ({ data, dataMedia }) => {
 							/>
 						)
 					} else if (article.__typename === 'DatoCmsVideo') {
-						articleMedia.forEach(media => {
-							article.id = article.id
-								.replace('DatoCmsVideo-', '')
-								.replace('-en', '')
-							if (article.id === media.id) {
-								article.video = media.video
-								article.poster = media.poster
-							}
-						})
 						return (
 							<ContentVideo
 								video={article.video.video.mp4Url}

@@ -21,7 +21,7 @@ const carouselCSS = css`
 	}
 `
 
-const Story = ({ data: { story, afspMedia }, pageContext: { prev, next } }) => {
+const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 	return (
 		<Layout
 			theme={styles.logo.mobileDarkDesktopLight}
@@ -29,13 +29,8 @@ const Story = ({ data: { story, afspMedia }, pageContext: { prev, next } }) => {
 			seo={story.seoMetaTags}
 			facebook={true}
 		>
-			<HeroStories
-				data={story}
-				dataMedia={afspMedia.story}
-				prev={prev}
-				next={next}
-			/>
-			<ContentStory data={story} dataMedia={afspMedia.story} />
+			<HeroStories data={story} prev={prev} next={next} />
+			<ContentStory data={story} />
 			<CarouselChapterContainer carouselCSS={carouselCSS} />
 		</Layout>
 	)
@@ -47,6 +42,21 @@ export const query = graphql`
 	query($slug: String) {
 		story: datoCmsStory(slug: { eq: $slug }) {
 			title
+			coverImage {
+				url
+				fluid(
+					maxWidth: 769
+					imgixParams: {
+						auto: "format"
+						fit: "fill"
+						fill: "blur"
+						h: "475"
+						w: "769"
+					}
+				) {
+					...GatsbyDatoCmsFluid
+				}
+			}
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}
@@ -73,6 +83,18 @@ export const query = graphql`
 					id
 					images {
 						url
+						fluid(
+							maxWidth: 623
+							imgixParams: {
+								auto: "format"
+								fit: "fill"
+								fill: "blur"
+								h: "384"
+								w: "623"
+							}
+						) {
+							...GatsbyDatoCmsFluid
+						}
 					}
 				}
 				... on DatoCmsVideo {
@@ -113,56 +135,6 @@ export const query = graphql`
 									id
 									contentHeading
 								}
-							}
-						}
-					}
-				}
-			}
-		}
-		afspMedia: afspMedia {
-			story(filter: { slug: { eq: $slug } }) {
-				coverImage {
-					url
-					responsiveImage(
-						imgixParams: {
-							auto: format
-							fit: fill
-							fill: blur
-							h: "475"
-							w: "769"
-						}
-					) {
-						alt
-						height
-						sizes
-						src
-						srcSet
-						title
-						webpSrcSet
-						width
-					}
-				}
-				article {
-					... on AFSPMedia_ImageRecord {
-						id
-						images {
-							responsiveImage(
-								imgixParams: {
-									auto: format
-									fit: fill
-									fill: blur
-									h: "384"
-									w: "623"
-								}
-							) {
-								alt
-								height
-								sizes
-								src
-								srcSet
-								title
-								webpSrcSet
-								width
 							}
 						}
 					}
