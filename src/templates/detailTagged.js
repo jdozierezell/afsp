@@ -9,7 +9,7 @@ import StoriesContainer from '../components/Stories/StoriesContainer'
 
 import { styles } from '../css/css'
 
-const Detail = ({ data: { tagged, stories, afspMedia }, pageContext }) => {
+const Detail = ({ data: { tagged, stories }, pageContext }) => {
 	const [taggedStories, setTaggedStories] = useState([])
 	useEffect(() => {
 		stories.edges.forEach(story => {
@@ -28,13 +28,12 @@ const Detail = ({ data: { tagged, stories, afspMedia }, pageContext }) => {
 		>
 			<HeroSolid data={tagged} />
 			<NavigationSide data={tagged} />
-			<ContentGeneric data={tagged} dataMedia={afspMedia.detailTagged} />
+			<ContentGeneric data={tagged} />
 			<StoriesContainer
 				header={`${pageContext.tag}s`}
 				intro={pageContext.intro}
 				more="releases"
 				stories={taggedStories}
-				storiesMedia={afspMedia.allStories}
 			/>
 		</Layout>
 	)
@@ -43,7 +42,7 @@ const Detail = ({ data: { tagged, stories, afspMedia }, pageContext }) => {
 export default Detail
 
 export const query = graphql`
-	query($slug: String, $tag: String, $id: [AFSPMedia_ItemId]) {
+	query($slug: String, $tag: String) {
 		tagged: datoCmsDetailTagged(slug: { eq: $slug }) {
 			title
 			slug
@@ -81,7 +80,18 @@ export const query = graphql`
 					__typename
 					images {
 						url
-						alt
+						fluid(
+							maxWidth: 623
+							imgixParams: {
+								auto: "format"
+								fill: "blur"
+								fit: "fill"
+								h: "384"
+								w: "623"
+							}
+						) {
+							...GatsbyDatoCmsFluid
+						}
 					}
 				}
 				... on DatoCmsVideo {
@@ -135,6 +145,18 @@ export const query = graphql`
 						description
 						image {
 							url
+							fluid(
+								maxWidth: 600
+								imgixParams: {
+									auto: "format"
+									fill: "blur"
+									fit: "fill"
+									h: "370"
+									w: "600"
+								}
+							) {
+								...GatsbyDatoCmsFluid
+							}
 						}
 					}
 					author {
@@ -143,65 +165,6 @@ export const query = graphql`
 					}
 					tags {
 						tag
-					}
-				}
-			}
-		}
-		afspMedia: afspMedia {
-			allStories(
-				first: 100
-				orderBy: publicationDate_DESC
-				filter: { tags: { anyIn: $id } }
-			) {
-				id
-				seo {
-					image {
-						responsiveImage(
-							imgixParams: {
-								auto: format
-								fill: blur
-								fit: fill
-								h: "370"
-								w: "600"
-							}
-						) {
-							alt
-							aspectRatio
-							height
-							sizes
-							src
-							srcSet
-							title
-							webpSrcSet
-							width
-						}
-					}
-				}
-			}
-			detailTagged(filter: { slug: { eq: $slug } }) {
-				details {
-					... on AFSPMedia_ImageRecord {
-						id
-						images {
-							responsiveImage(
-								imgixParams: {
-									auto: format
-									fit: fill
-									fill: blur
-									h: "384"
-									w: "623"
-								}
-							) {
-								alt
-								height
-								sizes
-								src
-								srcSet
-								title
-								webpSrcSet
-								width
-							}
-						}
 					}
 				}
 			}
