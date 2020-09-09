@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import { Image } from 'react-datocms'
+import Img from 'gatsby-image'
 
 import { styles } from '../../css/css'
 
@@ -25,19 +25,10 @@ const imageWrapperCSS = css`
 	}
 `
 
-const ImageListContainer = ({ images }) => {
+const ImageListContainer = ({ images, crop }) => {
 	return (
 		<div css={imageListCSS}>
 			{images.map((image, index) => {
-				let responsiveImage
-				if (
-					image.image.responsiveCrop ||
-					image.image.responsiveOriginal
-				) {
-					responsiveImage = image.cropImage
-						? image.image.responsiveCrop
-						: image.image.responsiveOriginal
-				}
 				return (
 					<div key={index} css={imageWrapperCSS}>
 						<a
@@ -47,13 +38,13 @@ const ImageListContainer = ({ images }) => {
 									: image.image.url
 							}
 						>
-							{responsiveImage && (
-								<Image data={responsiveImage} />
-							)}
-							{!image.image.responsiveCrop &&
-								!image.image.responsiveOriginal && (
-									<img src={image.image.url} />
-								)}
+							<Img
+								fluid={
+									crop
+										? image.croppedImage.fluid
+										: image.originalImage.fluid
+								}
+							/>
 						</a>
 					</div>
 				)

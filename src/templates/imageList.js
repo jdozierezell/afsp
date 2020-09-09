@@ -7,24 +7,17 @@ import ImageListContainer from '../components/ImageList/ImageListContainer'
 
 import { styles } from '../css/css'
 
-const ImageList = ({ data: { imageList, afspMedia } }) => {
-	imageList.images.forEach(image => {
-		image.id = image.id.replace('DatoCmsListImage-', '').replace('-en', '')
-		afspMedia.imageList.images.forEach(media => {
-			if (image.id === media.id) {
-				image.image.responsiveCrop = media.image.responsiveCrop
-				image.image.responsiveOriginal = media.image.responsiveOriginal
-			}
-		})
-	})
-
+const ImageList = ({ data: { imageList } }) => {
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={imageList.seoMetaTags}
 		>
 			<HeroSolid data={imageList} />
-			<ImageListContainer images={imageList.images}></ImageListContainer>
+			<ImageListContainer
+				images={imageList.images}
+				crop={imageList.cropImage}
+			/>
 		</Layout>
 	)
 }
@@ -41,51 +34,30 @@ export const query = graphql`
 			brief
 			images {
 				id
-				image {
+				croppedImage: image {
 					url
+					fluid(
+						maxWidth: 600
+						imgixParams: {
+							auto: "format"
+							fit: "crop"
+							crop: "faces"
+							w: "600"
+							h: "370"
+						}
+					) {
+						...GatsbyDatoCmsFluid
+					}
+				}
+				originalImage: image {
+					url
+					fluid(maxWidth: 600, imgixParams: { w: "600" }) {
+						...GatsbyDatoCmsFluid
+					}
 				}
 				linkToOther
 				otherUrl
 				cropImage
-			}
-		}
-		afspMedia: afspMedia {
-			imageList(filter: { slug: { eq: $slug } }) {
-				images {
-					id
-					image {
-						responsiveCrop: responsiveImage(
-							imgixParams: {
-								auto: format
-								crop: faces
-								fit: crop
-								h: "370"
-								w: "600"
-							}
-						) {
-							alt
-							height
-							sizes
-							src
-							srcSet
-							title
-							webpSrcSet
-							width
-						}
-						responsiveOriginal: responsiveImage(
-							imgixParams: { auto: format, w: "600" }
-						) {
-							alt
-							height
-							sizes
-							src
-							srcSet
-							title
-							webpSrcSet
-							width
-						}
-					}
-				}
 			}
 		}
 	}
