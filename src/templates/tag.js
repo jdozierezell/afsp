@@ -7,10 +7,7 @@ import StoriesContainer from '../components/Stories/StoriesContainer'
 
 import { styles } from '../css/css'
 
-const Tag = ({
-	data: { stories, afspMedia },
-	pageContext: { title, slug },
-}) => {
+const Tag = ({ data: { stories }, pageContext: { title, slug } }) => {
 	const heroData = {
 		title: `Tagged: ${title}`,
 	}
@@ -27,11 +24,7 @@ const Tag = ({
 			}}
 		>
 			<HeroSolid data={heroData} />
-			<StoriesContainer
-				stories={stories.edges}
-				storiesMedia={afspMedia.allStories}
-				more={true}
-			/>
+			<StoriesContainer stories={stories.edges} more={true} />
 		</Layout>
 	)
 }
@@ -39,9 +32,10 @@ const Tag = ({
 export default Tag
 
 export const query = graphql`
-	query($slug: String, $id: [AFSPMedia_ItemId]) {
+	query($slug: String) {
 		stories: allDatoCmsStory(
 			filter: { tags: { elemMatch: { slug: { eq: $slug } } } }
+			limit: 66
 			sort: { fields: publicationDate, order: DESC }
 		) {
 			edges {
@@ -62,40 +56,19 @@ export const query = graphql`
 						description
 						image {
 							url
-						}
-					}
-				}
-			}
-		}
-		afspMedia: afspMedia {
-			allStories(
-				first: 100
-				filter: { tags: { anyIn: $id }, seo: { exists: "true" } }
-				orderBy: publicationDate_DESC
-			) {
-				id
-				seo {
-					image {
-						responsiveImage(
-							imgixParams: {
-								auto: format
-								fill: blur
-								fit: fill
-								h: "370"
-								w: "600"
+							fluid(
+								maxWidth: 600
+								imgixParams: {
+									auto: "format"
+									fit: "crop"
+									crop: "faces"
+									w: "600"
+									h: "370"
+								}
+							) {
+								...GatsbyDatoCmsFluid
 							}
-						) {
-							alt
-							aspectRatio
-							height
-							sizes
-							src
-							srcSet
-							title
-							webpSrcSet
-							width
 						}
-						tags
 					}
 				}
 			}

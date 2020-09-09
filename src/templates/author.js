@@ -36,6 +36,7 @@ export const query = graphql`
 	query($slug: String) {
 		stories: allDatoCmsStory(
 			filter: { author: { elemMatch: { slug: { eq: $slug } } } }
+			limit: 66
 			sort: { fields: publicationDate, order: DESC }
 		) {
 			edges {
