@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image } from 'react-datocms'
+import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 
 import { styles } from '../../css/css'
@@ -52,12 +52,7 @@ const ShareableOverlays = ({
 							updateOverlayTextColor(overlay.useDarkText)
 						}}
 					>
-						{overlay.image.responsiveImage && (
-							<Image data={overlay.image.responsiveImage} />
-						)}
-						{!overlay.image.responsiveImage && (
-							<img src={overlay.image.url} />
-						)}
+						<Img fluid={overlay.image.fluid} />
 					</button>
 				)
 			})}
