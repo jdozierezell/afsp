@@ -119,7 +119,9 @@ const Chapter = ({
 								__typename: event.__typename,
 								title: event.title,
 								date: event.date,
-								url: event.url,
+								url: event.thirdPartyURL
+									? event.thirdPartyURL
+									: event.url,
 							}
 							details.push(eventObject)
 						})
