@@ -56,57 +56,8 @@ const channelCSS = css`
 	}
 `
 
-const Landing = ({ data: { landing, afspMedia } }) => {
+const Landing = ({ data: { landing } }) => {
 	let adjacent = 0
-
-	landing.channelList.forEach(channel => {
-		afspMedia.landing.channelList.forEach(media => {
-			channel.id = channel.id
-				.replace('DatoCmsChannel-', '')
-				.replace('-en', '')
-			if (channel.id === media.id) {
-				channel.image.responsiveImage = media.image.responsiveImage
-			}
-		})
-	})
-	landing.ctaChapterResourceDetailList.forEach(resource => {
-		if (resource.resource) {
-			resource.resource.forEach(childResource => {
-				childResource.id = childResource.id
-					.replace('DatoCmsExternalResource-', '')
-					.replace('DatoCmsStory-', '')
-					.replace('DatoCmsLanding-', '')
-					.replace('DatoCmsCampaignLanding-', '')
-					.replace('DatoCmsDetailTagged-', '')
-					.replace('DatoCmsDetail-', '')
-					.replace('DatoCmsCustomShareable-', '')
-					.replace('DatoCmsQuilt-', '')
-					.replace('DatoCmsSearchPage-', '')
-					.replace('DatoCmsImageList-', '')
-					.replace('-en', '')
-				afspMedia.landing.ctaChapterResourceDetailList.forEach(
-					media => {
-						if (media.resource) {
-							media.resource.forEach(childMedia => {
-								if (childResource.id === childMedia.id) {
-									if (
-										childResource.__typename ===
-										'DatoCmsExternalResource'
-									) {
-										childResource.coverImage.responsiveImage =
-											childMedia.coverImage.responsiveImage
-									} else {
-										childResource.seo.image.responsiveImage =
-											childMedia.seo.image.responsiveImage
-									}
-								}
-							})
-						}
-					}
-				)
-			})
-		}
-	})
 
 	return (
 		<Layout
@@ -226,6 +177,19 @@ export const query = graphql`
 				id
 				image {
 					url
+					alt
+					fluid(
+						maxWidth: 200
+						imgixParams: {
+							auto: "format"
+							fit: "crop"
+							crop: "faces"
+							w: "200"
+							h: "200"
+						}
+					) {
+						...GatsbyDatoCmsFluid
+					}
 				}
 				heading
 				channelLink {
@@ -249,6 +213,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -261,6 +237,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -273,6 +261,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -285,6 +285,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -297,6 +309,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -309,6 +333,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -321,6 +357,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -331,6 +379,19 @@ export const query = graphql`
 							externalDescription
 							coverImage {
 								url
+								alt
+								fluid(
+									maxWidth: 600
+									imgixParams: {
+										auto: "format"
+										fit: "crop"
+										crop: "faces"
+										w: "600"
+										h: "370"
+									}
+								) {
+									...GatsbyDatoCmsFluid
+								}
 							}
 							resourceLink {
 								... on DatoCmsExternalUrl {
@@ -356,6 +417,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "crop"
+											crop: "faces"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -398,300 +471,6 @@ export const query = graphql`
 				... on DatoCmsChapterConnection {
 					__typename
 					showChapterConnection
-				}
-			}
-		}
-		afspMedia: afspMedia {
-			landing(filter: { slug: { eq: $slug } }) {
-				channelList {
-					id
-					heading
-					image {
-						responsiveImage(
-							imgixParams: {
-								auto: format
-								w: "200"
-								h: "200"
-								crop: faces
-								fit: crop
-							}
-						) {
-							alt
-							srcSet
-							src
-							sizes
-							webpSrcSet
-							title
-							width
-							height
-							aspectRatio
-						}
-					}
-				}
-				ctaChapterResourceDetailList {
-					... on AFSPMedia_ResourceListRecord {
-						id
-						resource {
-							... on AFSPMedia_ExternalResourceRecord {
-								id
-								coverImage {
-									responsiveImage(
-										imgixParams: {
-											auto: format
-											fill: blur
-											fit: fill
-											h: "370"
-											w: "600"
-										}
-									) {
-										alt
-										aspectRatio
-										height
-										sizes
-										src
-										srcSet
-										title
-										webpSrcSet
-										width
-									}
-								}
-							}
-							... on AFSPMedia_CustomShareableRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												auto: format
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_ImageListRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												auto: format
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_DetailTaggedRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												auto: format
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_DetailRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												auto: format
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_QuiltRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												auto: format
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_SearchPageRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												auto: format
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_LandingRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												auto: format
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_CampaignLandingRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												auto: format
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_StoryRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												auto: format
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-						}
-					}
 				}
 			}
 		}
