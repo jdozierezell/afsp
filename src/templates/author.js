@@ -58,7 +58,7 @@ export const query = graphql`
 						image {
 							url
 							fluid(
-								maxWidth: 200
+								maxWidth: 600
 								imgixParams: {
 									auto: "format"
 									fill: "blur"
