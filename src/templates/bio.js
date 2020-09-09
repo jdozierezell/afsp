@@ -18,18 +18,13 @@ const biographyCSS = css`
 	}
 `
 
-const Bio = ({ data: { bio, afspMedia } }) => {
+const Bio = ({ data: { bio } }) => {
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={bio.seoMetaTags}
 		>
-			<HeroBio
-				name={bio.name}
-				title={bio.title}
-				responsiveImage={afspMedia.bio.photo.responsiveImage}
-				staticImage={bio.photo.url}
-			/>
+			<HeroBio name={bio.name} title={bio.title} image={bio.photo} />
 			<main
 				css={biographyCSS}
 				dangerouslySetInnerHTML={{ __html: bio.biography }}
@@ -48,34 +43,23 @@ export const query = graphql`
 			title
 			photo {
 				url
+				alt
+				fluid(
+					maxWidth: 768
+					imgixParams: {
+						auto: "format"
+						fit: "crop"
+						crop: "faces"
+						w: "768"
+						h: "768"
+					}
+				) {
+					...GatsbyDatoCmsFluid
+				}
 			}
 			biography
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
-			}
-		}
-		afspMedia: afspMedia {
-			bio(filter: { slug: { eq: $slug } }) {
-				photo {
-					responsiveImage(
-						imgixParams: {
-							auto: format
-							fit: crop
-							crop: faces
-							h: "768"
-							w: "768"
-						}
-					) {
-						alt
-						height
-						sizes
-						src
-						srcSet
-						title
-						webpSrcSet
-						width
-					}
-				}
 			}
 		}
 	}
