@@ -99,6 +99,7 @@ export const query = graphql`
 				partnerLogo {
 					originalId
 					url
+					alt
 					fluid(
 						maxWidth: 600
 						imgixParams: {

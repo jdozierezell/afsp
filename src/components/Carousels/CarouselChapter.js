@@ -38,10 +38,10 @@ const carouselTitleCSS = css`
 	}
 `
 
-const CarouselChapter = ({ title, titleHref, image }) => {
+const CarouselChapter = ({ title, titleHref, image, alt }) => {
 	return (
 		<Link css={carouselComponentCSS} to={buildUrl('/chapter', titleHref)}>
-			<Img fluid={image} css={carouselImageCSS} />
+			<Img alt={alt} fluid={image} css={carouselImageCSS} />
 			<p css={carouselTitleCSS}>{title}</p>
 		</Link>
 	)

@@ -276,6 +276,7 @@ export const query = graphql`
 						id
 						image {
 							url
+							alt
 							fluid(
 								maxWidth: 200
 								imgixParams: {

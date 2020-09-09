@@ -12,6 +12,7 @@ export const ChapterSearch = graphql`
 				}
 				heroPoster {
 					url
+					alt
 					fluid(
 						maxWidth: 200
 						imgixParams: {
