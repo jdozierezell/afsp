@@ -52,7 +52,6 @@ const RealStories = ({ data: { real, stories, afspMedia } }) => {
 				header="Stories"
 				first={true}
 				stories={currentStories}
-				storiesMedia={afspMedia.allStories}
 			/>
 			<CTAContainer
 				number={1}
@@ -62,7 +61,6 @@ const RealStories = ({ data: { real, stories, afspMedia } }) => {
 				offset={3}
 				more="stories"
 				stories={currentStories}
-				storiesMedia={afspMedia.allStories}
 			/>
 			<CTAContainer
 				number={2}
@@ -138,39 +136,23 @@ export const query = graphql`
 						description
 						image {
 							url
+							fluid(
+								maxWidth: 200
+								imgixParams: {
+									auto: "format"
+									fill: "blur"
+									fit: "fill"
+									h: "370"
+									w: "600"
+								}
+							) {
+								...GatsbyDatoCmsFluid
+							}
 						}
 					}
 					author {
 						authorName
 						slug
-					}
-				}
-			}
-		}
-		afspMedia: afspMedia {
-			allStories(first: "66", orderBy: publicationDate_DESC) {
-				id
-				seo {
-					image {
-						responsiveImage(
-							imgixParams: {
-								auto: format
-								fill: blur
-								fit: fill
-								h: "370"
-								w: "600"
-							}
-						) {
-							alt
-							aspectRatio
-							height
-							sizes
-							src
-							srcSet
-							title
-							webpSrcSet
-							width
-						}
 					}
 				}
 			}

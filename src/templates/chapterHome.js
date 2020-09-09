@@ -17,7 +17,7 @@ import { styles } from '../css/css'
 const eventCarouselCSS = css``
 
 const Chapter = ({
-	data: { chapter, realStories, chapterStoriesUpdates, afspMedia },
+	data: { chapter, realStories, chapterStoriesUpdates },
 	pageContext,
 }) => {
 	const {
@@ -55,24 +55,6 @@ const Chapter = ({
 	}
 
 	const heroPosterUrl = heroPoster ? heroPoster.url : ''
-
-	const storiesMedia = afspMedia.allChapterStoryUpdates.concat(
-		afspMedia.allStories
-	)
-
-	featuredPrograms.forEach(program => {
-		program.id = program.id
-			.replace('DatoCmsDetail-', '')
-			.replace('DatoCmsLanding-', '')
-			.replace('DatoCmsActionCenter-', '')
-			.replace('-en', '')
-		afspMedia.chapterHomePage.featuredPrograms.forEach(media => {
-			if (program.id === media.id) {
-				program.seo.image.responsiveImage =
-					media.seo.image.responsiveImage
-			}
-		})
-	})
 
 	useEffect(() => {
 		if (stories.length === 0 && stories[0] !== 'no stories') {
@@ -205,7 +187,6 @@ const Chapter = ({
 					header="Stories and updates"
 					first={true}
 					stories={stories}
-					storiesMedia={storiesMedia}
 					more={true}
 					id="news"
 				/>
@@ -220,7 +201,7 @@ const Chapter = ({
 export default Chapter
 
 export const query = graphql`
-	query($slug: String, $tag: String, $tagId: [AFSPMedia_ItemId]) {
+	query($slug: String, $tag: String) {
 		chapter: datoCmsChapterHomePage(slug: { eq: $slug }) {
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
@@ -256,6 +237,18 @@ export const query = graphql`
 						description
 						image {
 							url
+							fluid(
+								maxWidth: 200
+								imgixParams: {
+									auto: "format"
+									fill: "blur"
+									fit: "fill"
+									h: "370"
+									w: "600"
+								}
+							) {
+								...GatsbyDatoCmsFluid
+							}
 						}
 					}
 				}
@@ -267,6 +260,18 @@ export const query = graphql`
 						description
 						image {
 							url
+							fluid(
+								maxWidth: 200
+								imgixParams: {
+									auto: "format"
+									fill: "blur"
+									fit: "fill"
+									h: "370"
+									w: "600"
+								}
+							) {
+								...GatsbyDatoCmsFluid
+							}
 						}
 					}
 				}
@@ -278,6 +283,18 @@ export const query = graphql`
 						description
 						image {
 							url
+							fluid(
+								maxWidth: 200
+								imgixParams: {
+									auto: "format"
+									fill: "blur"
+									fit: "fill"
+									h: "370"
+									w: "600"
+								}
+							) {
+								...GatsbyDatoCmsFluid
+							}
 						}
 					}
 				}
@@ -308,6 +325,18 @@ export const query = graphql`
 						description
 						image {
 							url
+							fluid(
+								maxWidth: 200
+								imgixParams: {
+									auto: "format"
+									fill: "blur"
+									fit: "fill"
+									h: "370"
+									w: "600"
+								}
+							) {
+								...GatsbyDatoCmsFluid
+							}
 						}
 					}
 				}
@@ -327,167 +356,20 @@ export const query = graphql`
 						description
 						image {
 							url
-						}
-					}
-				}
-			}
-		}
-		afspMedia: afspMedia {
-			chapterHomePage(filter: { slug: { eq: $slug } }) {
-				featuredPrograms {
-					... on AFSPMedia_ActionCenterRecord {
-						__typename
-						id
-						seo {
-							image {
-								url
-								responsiveImage(
-									imgixParams: {
-										auto: format
-										fill: blur
-										fit: fill
-										h: "370"
-										w: "600"
-									}
-								) {
-									alt
-									aspectRatio
-									height
-									sizes
-									src
-									srcSet
-									title
-									webpSrcSet
-									width
+							fluid(
+								maxWidth: 200
+								imgixParams: {
+									auto: "format"
+									fill: "blur"
+									fit: "fill"
+									h: "370"
+									w: "600"
 								}
+							) {
+								...GatsbyDatoCmsFluid
 							}
-							description
 						}
 					}
-					... on AFSPMedia_LandingRecord {
-						__typename
-						id
-						seo {
-							image {
-								url
-								responsiveImage(
-									imgixParams: {
-										auto: format
-										fill: blur
-										fit: fill
-										h: "370"
-										w: "600"
-									}
-								) {
-									alt
-									aspectRatio
-									height
-									sizes
-									src
-									srcSet
-									title
-									webpSrcSet
-									width
-								}
-							}
-							description
-						}
-					}
-					... on AFSPMedia_DetailRecord {
-						__typename
-						id
-						seo {
-							image {
-								url
-								responsiveImage(
-									imgixParams: {
-										auto: format
-										fill: blur
-										fit: fill
-										h: "370"
-										w: "600"
-									}
-								) {
-									alt
-									aspectRatio
-									height
-									sizes
-									src
-									srcSet
-									title
-									webpSrcSet
-									width
-								}
-							}
-							description
-						}
-					}
-				}
-			}
-			allChapterStoryUpdates(
-				first: 100
-				filter: { tags: { anyIn: $tagId } }
-				orderBy: publicationDate_DESC
-			) {
-				id
-				seo {
-					image {
-						responsiveImage(
-							imgixParams: {
-								auto: format
-								fill: blur
-								fit: fill
-								h: "370"
-								w: "600"
-							}
-						) {
-							alt
-							aspectRatio
-							height
-							sizes
-							src
-							srcSet
-							title
-							webpSrcSet
-							width
-						}
-					}
-				}
-				tags {
-					id
-				}
-			}
-			allStories(
-				first: 100
-				filter: { tags: { anyIn: $tagId } }
-				orderBy: publicationDate_DESC
-			) {
-				id
-				seo {
-					image {
-						responsiveImage(
-							imgixParams: {
-								auto: format
-								fill: blur
-								fit: fill
-								h: "370"
-								w: "600"
-							}
-						) {
-							alt
-							aspectRatio
-							height
-							sizes
-							src
-							srcSet
-							title
-							webpSrcSet
-							width
-						}
-					}
-				}
-				tags {
-					id
 				}
 			}
 		}

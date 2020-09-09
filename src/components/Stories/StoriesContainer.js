@@ -54,7 +54,6 @@ const StoriesContainer = ({
 	more,
 	intro,
 	stories,
-	storiesMedia,
 	id,
 }) => {
 	const [displayNumber, setDisplayNumber] = useState(3)
@@ -64,17 +63,6 @@ const StoriesContainer = ({
 	} else if (header) {
 		sectionId = createAnchor(header)
 	}
-	stories.forEach(story => {
-		story.node.id = story.node.id
-			.replace('DatoCmsStory-', '')
-			.replace('DatoCmsChapterStoryUpdate-', '')
-			.replace('-en', '')
-		storiesMedia.forEach(media => {
-			if (story.node.id === media.id) {
-				story.node.seo.image = media.seo.image
-			}
-		})
-	})
 
 	return (
 		<section css={containerCSS} id={sectionId}>

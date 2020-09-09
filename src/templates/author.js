@@ -7,7 +7,7 @@ import StoriesContainer from '../components/Stories/StoriesContainer'
 
 import { styles } from '../css/css'
 
-const Tag = ({ data: { stories, afspMedia }, pageContext: { title } }) => {
+const Tag = ({ data: { stories }, pageContext: { title } }) => {
 	const heroData = {
 		title: `Stories written by ${title}`,
 	}
@@ -25,11 +25,7 @@ const Tag = ({ data: { stories, afspMedia }, pageContext: { title } }) => {
 			}}
 		>
 			<HeroSolid data={heroData} />
-			<StoriesContainer
-				stories={stories.edges}
-				storiesMedia={afspMedia.allStories}
-				more={`${title}s`}
-			/>
+			<StoriesContainer stories={stories.edges} more={`${title}s`} />
 		</Layout>
 	)
 }
@@ -37,7 +33,7 @@ const Tag = ({ data: { stories, afspMedia }, pageContext: { title } }) => {
 export default Tag
 
 export const query = graphql`
-	query($slug: String, $id: [AFSPMedia_ItemId]) {
+	query($slug: String) {
 		stories: allDatoCmsStory(
 			filter: { author: { elemMatch: { slug: { eq: $slug } } } }
 			sort: { fields: publicationDate, order: DESC }
@@ -61,38 +57,18 @@ export const query = graphql`
 						description
 						image {
 							url
-						}
-					}
-				}
-			}
-		}
-		afspMedia: afspMedia {
-			allStories(
-				first: 100
-				orderBy: publicationDate_DESC
-				filter: { author: { anyIn: $id } }
-			) {
-				id
-				seo {
-					image {
-						responsiveImage(
-							imgixParams: {
-								auto: format
-								fill: blur
-								fit: fill
-								h: "370"
-								w: "600"
+							fluid(
+								maxWidth: 200
+								imgixParams: {
+									auto: "format"
+									fill: "blur"
+									fit: "fill"
+									h: "370"
+									w: "600"
+								}
+							) {
+								...GatsbyDatoCmsFluid
 							}
-						) {
-							alt
-							aspectRatio
-							height
-							sizes
-							src
-							srcSet
-							title
-							webpSrcSet
-							width
 						}
 					}
 				}
