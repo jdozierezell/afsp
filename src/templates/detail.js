@@ -9,7 +9,7 @@ import CarouselChapterContainer from '../components/Carousels/CarouselChapterCon
 
 import { styles } from '../css/css'
 
-const Detail = ({ data: { detail, afspMedia } }) => {
+const Detail = ({ data: { detail } }) => {
 	const [hasEvents, setHasEvents] = useState(false)
 	const setEvents = events => {
 		if (events) {
@@ -21,21 +21,9 @@ const Detail = ({ data: { detail, afspMedia } }) => {
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={detail.seoMetaTags}
 		>
-			<HeroSolid
-				data={detail}
-				programLogo={
-					afspMedia.detail ? afspMedia.detail.programLogo : null
-				}
-				draftProgramLogo={
-					detail.programLogo ? detail.programLogo.url : ''
-				}
-			/>
+			<HeroSolid data={detail} programLogo={detail.programLogo} />
 			<NavigationSide hasEvents={hasEvents} data={detail} />
-			<ContentGeneric
-				setEvents={setEvents}
-				data={detail}
-				dataMedia={afspMedia.detail}
-			/>
+			<ContentGeneric setEvents={setEvents} data={detail} />
 			<CarouselChapterContainer />
 		</Layout>
 	)

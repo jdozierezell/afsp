@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import { Image } from 'react-datocms'
+import Img from 'gatsby-image'
 
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs'
 
@@ -51,7 +51,7 @@ const logoCSS = css`
 	margin: ${styles.scale.px40} 0;
 `
 
-const HeroSolid = ({ data, programLogo, draftProgramLogo, addCSS }) => {
+const HeroSolid = ({ data, programLogo, addCSS }) => {
 	const { title, brief, parentPage } = data
 	return (
 		<div
@@ -63,13 +63,8 @@ const HeroSolid = ({ data, programLogo, draftProgramLogo, addCSS }) => {
 			{parentPage && parentPage.parentPage && (
 				<Breadcrumbs parentPage={parentPage} child={title} />
 			)}
-			{programLogo && (
-				<Image css={logoCSS} data={programLogo.responsiveImage} />
-			)}
-			{!programLogo && draftProgramLogo && (
-				<img css={logoCSS} src={draftProgramLogo} />
-			)}
-			{!programLogo && !draftProgramLogo && (
+			{programLogo && <Img css={logoCSS} fluid={programLogo.fluid} />}
+			{!programLogo && (
 				<h1 dangerouslySetInnerHTML={{ __html: title }}></h1>
 			)}
 			<div

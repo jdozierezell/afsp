@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import { Image } from 'react-datocms'
+import Img from 'gatsby-image'
 
 import { styles } from '../../css/css'
 
@@ -65,7 +65,7 @@ const granteeInformationCSS = css`
 	}
 `
 
-const HeroGrant = ({ grant, afspMedia }) => {
+const HeroGrant = ({ grant }) => {
 	const { title, grantInformation } = grant
 	let amount, type, year, displayAmount, displayAreas
 	let areas = []
@@ -83,7 +83,7 @@ const HeroGrant = ({ grant, afspMedia }) => {
 			grantees.push({
 				name: grant.granteeName,
 				institution: grant.granteeInstitution,
-				responsiveImage: grant.granteeImage.responsiveImage,
+				image: grant.granteeImage,
 				staticImage: grant.granteeImage.url,
 			})
 		}
@@ -143,8 +143,8 @@ const HeroGrant = ({ grant, afspMedia }) => {
 					return (
 						<div key={index}>
 							{grantee.responsiveImage && (
-								<Image
-									data={grantee.responsiveImage}
+								<Img
+									fluid={grantee.image.fluid}
 									css={css`
 										margin: 0 0 ${styles.scale.px36};
 										@media (min-width: ${styles.screens

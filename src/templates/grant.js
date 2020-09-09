@@ -21,27 +21,13 @@ const grantCSS = css`
 	}
 `
 
-const Grant = ({ data: { grant, afspMedia } }) => {
-	grant.grantInformation.forEach(information => {
-		if (information.id) {
-			information.id = information.id
-				.replace('DatoCmsGrantee-', '')
-				.replace('-en', '')
-			afspMedia.grant.grantInformation.forEach(media => {
-				if (information.id === media.id) {
-					information.granteeImage.responsiveImage =
-						media.granteeImage.responsiveImage
-				}
-			})
-		}
-	})
-
+const Grant = ({ data: { grant } }) => {
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={grant.seoMetaTags}
 		>
-			<HeroGrant grant={grant} afspMedia={afspMedia} />
+			<HeroGrant grant={grant} />
 			<main css={grantCSS}>
 				{grant.grantDetails.map((detail, index) => {
 					if (detail.__typename === 'DatoCmsContent') {
@@ -98,6 +84,18 @@ export const query = graphql`
 					granteeInstitution
 					granteeImage {
 						url
+						fluid(
+							maxWidth: 768
+							imgixParams: {
+								auto: "format"
+								fit: "crop"
+								crop: "faces"
+								w: "768"
+								h: "768"
+							}
+						) {
+							...GatsbyDatoCmsFluid
+						}
 					}
 				}
 				... on DatoCmsYear {
@@ -135,35 +133,6 @@ export const query = graphql`
 					}
 					poster {
 						url
-					}
-				}
-			}
-		}
-		afspMedia: afspMedia {
-			grant(filter: { slug: { eq: $slug } }) {
-				grantInformation {
-					... on AFSPMedia_GranteeRecord {
-						id
-						granteeImage {
-							responsiveImage(
-								imgixParams: {
-									auto: format
-									fit: crop
-									h: "768"
-									crop: faces
-									w: "768"
-								}
-							) {
-								alt
-								height
-								sizes
-								src
-								srcSet
-								title
-								webpSrcSet
-								width
-							}
-						}
 					}
 				}
 			}

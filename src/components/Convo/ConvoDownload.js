@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import { Image } from 'react-datocms'
+import Img from 'gatsby-image'
 
 import { styles } from '../../css/css'
 
@@ -41,24 +41,13 @@ const convoImageCSS = css`
 const ConvoDownload = ({ convo }) => {
 	return (
 		<a css={convoCSS} href={convo.convoFile.url}>
-			{convo.convoImage && (
-				<Image
-					css={convoImageCSS}
-					style={{
-						display: 'block',
-					}}
-					data={convo.convoImage.responsiveImage}
-				/>
-			)}
-			{!convo.convoImage && (
-				<img
-					css={convoImageCSS}
-					style={{
-						display: 'block',
-					}}
-					src={convo.draftConvoImage.url}
-				/>
-			)}
+			<Img
+				css={convoImageCSS}
+				style={{
+					display: 'block',
+				}}
+				fluid={convo.convoImage.fluid}
+			/>
 			<span>{convo.convoTitle}</span>
 		</a>
 	)
