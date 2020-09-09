@@ -36,6 +36,7 @@ export const query = graphql`
 				id
 				croppedImage: image {
 					url
+					alt
 					fluid(
 						maxWidth: 600
 						imgixParams: {
@@ -51,6 +52,7 @@ export const query = graphql`
 				}
 				originalImage: image {
 					url
+					alt
 					fluid(maxWidth: 600, imgixParams: { w: "600" }) {
 						...GatsbyDatoCmsFluid
 					}

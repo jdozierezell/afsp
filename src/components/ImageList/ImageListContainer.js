@@ -31,13 +31,7 @@ const ImageListContainer = ({ images, crop }) => {
 			{images.map((image, index) => {
 				return (
 					<div key={index} css={imageWrapperCSS}>
-						<a
-							href={
-								image.linkToOther
-									? image.otherUrl
-									: image.image.url
-							}
-						>
+						<a href={image.originalImage.url}>
 							<Img
 								fluid={
 									crop
