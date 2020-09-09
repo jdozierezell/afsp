@@ -256,8 +256,8 @@ export const query = graphql`
 										maxWidth: 600
 										imgixParams: {
 											auto: "format"
-											fit: "crop"
-											crop: "faces"
+											fit: "fill"
+											fill: "blur"
 											w: "600"
 											h: "370"
 										}
@@ -280,8 +280,8 @@ export const query = graphql`
 										maxWidth: 600
 										imgixParams: {
 											auto: "format"
-											fit: "crop"
-											crop: "faces"
+											fit: "fill"
+											fill: "blur"
 											w: "600"
 											h: "370"
 										}
@@ -304,8 +304,8 @@ export const query = graphql`
 										maxWidth: 600
 										imgixParams: {
 											auto: "format"
-											fit: "crop"
-											crop: "faces"
+											fit: "fill"
+											fill: "blur"
 											w: "600"
 											h: "370"
 										}
@@ -328,8 +328,8 @@ export const query = graphql`
 										maxWidth: 600
 										imgixParams: {
 											auto: "format"
-											fit: "crop"
-											crop: "faces"
+											fit: "fill"
+											fill: "blur"
 											w: "600"
 											h: "370"
 										}
@@ -352,8 +352,8 @@ export const query = graphql`
 										maxWidth: 600
 										imgixParams: {
 											auto: "format"
-											fit: "crop"
-											crop: "faces"
+											fit: "fill"
+											fill: "blur"
 											w: "600"
 											h: "370"
 										}
@@ -392,8 +392,8 @@ export const query = graphql`
 										maxWidth: 600
 										imgixParams: {
 											auto: "format"
-											fit: "crop"
-											crop: "faces"
+											fit: "fill"
+											fill: "blur"
 											w: "600"
 											h: "370"
 										}
@@ -415,8 +415,8 @@ export const query = graphql`
 									maxWidth: 600
 									imgixParams: {
 										auto: "format"
-										fit: "crop"
-										crop: "faces"
+										fit: "fill"
+										fill: "blur"
 										w: "600"
 										h: "370"
 									}

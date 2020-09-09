@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import { Image } from 'react-datocms'
+import Img from 'gatsby-image'
 
 import { styles } from '../../css/css'
 
@@ -26,16 +26,11 @@ const resourceComponentCSS = css`
 	}
 `
 
-const CarouselResource = ({ title, image, imageFallback, link, linkText }) => {
+const CarouselResource = ({ title, image, link, linkText }) => {
 	return (
 		<div css={resourceComponentCSS} draggable>
 			<a href={link}>
-				{image && <Image data={image} />}
-				{!image && (
-					<img
-						src={`${imageFallback}?auto=format&fit=fill&fill=blur&w=600&h=370`}
-					/>
-				)}
+				<Img fluid={image.fluid} />
 				<h2>{title}</h2>
 				<p>{linkText}</p>
 			</a>
