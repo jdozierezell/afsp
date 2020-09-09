@@ -28,7 +28,8 @@ const featuredCSS = css`
 
 const FeaturedResources = ({ data }) => {
 	let description, url
-
+	const image = data.seo ? data.seo.image : data.coverImage
+	console.log(image)
 	if (data.externalDescription) {
 		description = data.externalDescription
 	} else if (data.seo) {
@@ -47,7 +48,7 @@ const FeaturedResources = ({ data }) => {
 	}
 	return (
 		<div css={featuredCSS}>
-			<Img fluid={data.seo.image.fluid} />
+			<Img fluid={image.fluid} />
 			<h2 dangerouslySetInnerHTML={{ __html: data.title }}></h2>
 			<p
 				dangerouslySetInnerHTML={{

@@ -37,53 +37,9 @@ const channelCSS = css`
 	}
 `
 
-const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
+const CampaignLanding = ({ data: { campaignLanding } }) => {
 	const [readMore, setReadMore] = useState(false)
 	let adjacent = 0
-	const campaignMedia = afspMedia.campaignLanding
-	campaignLanding.channelList.forEach(channel => {
-		channel.id = channel.id
-			.replace('DatoCmsChannel-', '')
-			.replace('-en', '')
-		campaignMedia.channelList.forEach(media => {
-			if (channel.id === media.id) {
-				channel.image = media.image
-			}
-		})
-	})
-	campaignLanding.ctaChapterResourceDetailList.forEach(resource => {
-		if (resource.resource) {
-			resource.resource.forEach(childResource => {
-				childResource.id = childResource.id
-					.replace('DatoCmsExternalResource-', '')
-					.replace('DatoCmsStory-', '')
-					.replace('DatoCmsLanding-', '')
-					.replace('DatoCmsCampaignLanding-', '')
-					.replace('DatoCmsDetailTagged-', '')
-					.replace('DatoCmsDetail-', '')
-					.replace('DatoCmsCustomShareable-', '')
-					.replace('-en', '')
-				campaignMedia.ctaChapterResourceDetailList.forEach(media => {
-					if (media.resource) {
-						media.resource.forEach(childMedia => {
-							if (childResource.id === childMedia.id) {
-								if (
-									childResource.__typename ===
-									'DatoCmsExternalResource'
-								) {
-									childResource.coverImage =
-										childMedia.coverImage
-								} else {
-									childResource.seo.image =
-										childMedia.seo.image
-								}
-							}
-						})
-					}
-				})
-			})
-		}
-	})
 
 	return (
 		<Layout
@@ -138,7 +94,6 @@ const CampaignLanding = ({ data: { campaignLanding, afspMedia } }) => {
 				<ChannelContainer
 					slug={campaignLanding.slug}
 					channelList={campaignLanding.channelList}
-					channelListMedia={afspMedia.campaignLanding.channelList}
 					addCSS={channelCSS}
 				/>
 			)}
