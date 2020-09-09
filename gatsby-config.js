@@ -52,17 +52,6 @@ module.exports = {
 				disableLiveReload: false,
 			},
 		},
-		{
-			resolve: 'gatsby-source-graphql',
-			options: {
-				typeName: 'AFSPMedia',
-				fieldName: 'afspMedia',
-				url: 'https://graphql.datocms.com/',
-				headers: {
-					Authorization: `Bearer ${process.env.DATOCMS_API}`,
-				},
-			},
-		},
 		`gatsby-plugin-client-side-redirect`, // keep it in last in list
 	],
 }

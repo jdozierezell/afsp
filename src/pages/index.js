@@ -122,7 +122,6 @@ const App = ({ data: { home } }) => {
 							<ChannelContainer
 								key={index}
 								channelList={item.channels}
-								// channelListMedia={afspMedia.home.channelList}
 							/>
 						)
 					} else if (item.__typename === 'DatoCmsCallToAction') {
@@ -163,7 +162,6 @@ const App = ({ data: { home } }) => {
 							<ChannelContainer
 								key={index}
 								channelList={item.channels}
-								// channelListMedia={afspMedia.home.channelList}
 							/>
 						)
 					} else if (item.__typename === 'DatoCmsCallToAction') {

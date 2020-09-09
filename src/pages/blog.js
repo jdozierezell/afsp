@@ -11,7 +11,7 @@ import CarouselChapterContainer from '../components/Carousels/CarouselChapterCon
 
 import { styles } from '../css/css'
 
-const RealStories = ({ data: { real, stories, afspMedia } }) => {
+const RealStories = ({ data: { real, stories } }) => {
 	stories.edges.forEach(story => {
 		story.node.type = 'story'
 	})

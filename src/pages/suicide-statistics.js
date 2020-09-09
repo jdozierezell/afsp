@@ -12,31 +12,7 @@ import FeaturedResourcesContainer from '../components/FeaturedResources/Featured
 
 import { styles } from '../css/css'
 
-const SuicideStatistics = ({ data: { statistics, afspMedia } }) => {
-	statistics.callsToAction.forEach(action => {
-		if (action.__typename === 'DatoCmsResourceList') {
-			action.resource.forEach(resource => {
-				resource.id = resource.id
-					.replace('DatoCmsDetail-', '')
-					.replace('-en', '')
-				afspMedia.statistics.callsToAction.forEach(media => {
-					if (media.__typename === 'AFSPMedia_ResourceListRecord') {
-						media.resource.forEach(mediaResource => {
-							if (resource.id === mediaResource.id) {
-								if (resource.seo) {
-									resource.seo.image.responsiveImage =
-										mediaResource.seo.image.responsiveImage
-								} else if (resource.coverImage) {
-									resource.coverImage.responsiveImage =
-										mediaResource.coverImage.responsiveImage
-								}
-							}
-						})
-					}
-				})
-			})
-		}
-	})
+const SuicideStatistics = ({ data: { statistics } }) => {
 	statistics.stateData = {
 		url:
 			'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/suicide-state-2018.csv',
@@ -161,6 +137,19 @@ export const query = graphql`
 							id
 							coverImage {
 								url
+								alt
+								fluid(
+									maxWidth: 600
+									imgixParams: {
+										auto: "format"
+										fill: "blur"
+										fit: "fill"
+										h: "370"
+										w: "600"
+									}
+								) {
+									...GatsbyDatoCmsFluid
+								}
 							}
 						}
 						... on DatoCmsExternalResource {
@@ -179,6 +168,19 @@ export const query = graphql`
 							}
 							coverImage {
 								url
+								alt
+								fluid(
+									maxWidth: 600
+									imgixParams: {
+										auto: "format"
+										fill: "blur"
+										fit: "fill"
+										h: "370"
+										w: "600"
+									}
+								) {
+									...GatsbyDatoCmsFluid
+								}
 							}
 						}
 						... on DatoCmsCustomShareable {
@@ -190,6 +192,18 @@ export const query = graphql`
 							seo {
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fill: "blur"
+											fit: "fill"
+											h: "370"
+											w: "600"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -202,6 +216,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fill: "blur"
+											fit: "fill"
+											h: "370"
+											w: "600"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -214,6 +240,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fill: "blur"
+											fit: "fill"
+											h: "370"
+											w: "600"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -226,6 +264,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fill: "blur"
+											fit: "fill"
+											h: "370"
+											w: "600"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -238,6 +288,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fill: "blur"
+											fit: "fill"
+											h: "370"
+											w: "600"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -250,6 +312,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fill: "blur"
+											fit: "fill"
+											h: "370"
+											w: "600"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -262,6 +336,18 @@ export const query = graphql`
 								description
 								image {
 									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fill: "blur"
+											fit: "fill"
+											h: "370"
+											w: "600"
+										}
+									) {
+										...GatsbyDatoCmsFluid
+									}
 								}
 							}
 						}
@@ -278,238 +364,6 @@ export const query = graphql`
 						slug
 						author {
 							authorName
-						}
-					}
-				}
-			}
-		}
-		afspMedia: afspMedia {
-			statistics: statistic {
-				callsToAction {
-					... on AFSPMedia_ResourceListRecord {
-						id
-						resource {
-							... on AFSPMedia_StoryRecord {
-								id
-								coverImage {
-									responsiveImage(
-										imgixParams: {
-											fill: blur
-											fit: fill
-											h: "370"
-											w: "600"
-										}
-									) {
-										alt
-										aspectRatio
-										height
-										sizes
-										src
-										srcSet
-										title
-										webpSrcSet
-										width
-									}
-								}
-							}
-							... on AFSPMedia_ExternalResourceRecord {
-								id
-								coverImage {
-									responsiveImage(
-										imgixParams: {
-											fill: blur
-											fit: fill
-											h: "370"
-											w: "600"
-										}
-									) {
-										alt
-										aspectRatio
-										height
-										sizes
-										src
-										srcSet
-										title
-										webpSrcSet
-										width
-									}
-								}
-							}
-							... on AFSPMedia_CustomShareableRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_ImageListRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_DetailTaggedRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_QuiltRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_SearchPageRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_LandingRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
-							... on AFSPMedia_DetailRecord {
-								id
-								seo {
-									image {
-										responsiveImage(
-											imgixParams: {
-												fill: blur
-												fit: fill
-												h: "370"
-												w: "600"
-											}
-										) {
-											alt
-											aspectRatio
-											height
-											sizes
-											src
-											srcSet
-											title
-											webpSrcSet
-											width
-										}
-									}
-								}
-							}
 						}
 					}
 				}
