@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import { Image } from 'react-datocms'
+import Img from 'gatsby-image'
 
 import { styles } from '../../css/css'
 
@@ -58,7 +58,7 @@ const HeroImage = ({ title, heroImage }) => {
 			`}
 		>
 			<h2 css={headerCSS}>{title}</h2>
-			<Image css={mobileImageCSS} data={heroImage.responsiveImage} />
+			<Img css={mobileImageCSS} fluid={heroImage.fluid} />
 		</section>
 	)
 }

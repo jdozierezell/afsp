@@ -19,7 +19,7 @@ const containerCSS = css`
 	}
 `
 
-const Quilt = ({ data: { quiltQuery, afspMedia } }) => {
+const Quilt = ({ data: { quiltQuery } }) => {
 	const urlParams =
 		typeof window !== `undefined`
 			? qs.parse(window.location.search.slice(1))
@@ -54,7 +54,7 @@ const Quilt = ({ data: { quiltQuery, afspMedia } }) => {
 		>
 			<HeroImage
 				title={quiltQuery.title}
-				heroImage={afspMedia.quiltQuery.heroImage}
+				heroImage={quiltQuery.heroImage}
 			/>
 			<main css={containerCSS}>
 				<h3 dangerouslySetInnerHTML={{ __html: quiltQuery.brief }}></h3>
@@ -77,7 +77,7 @@ export const query = graphql`
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}
-			mobileCover: heroImage {
+			heroImage {
 				url
 				fluid(
 					maxWidth: 769
@@ -92,36 +92,7 @@ export const query = graphql`
 					...GatsbyDatoCmsFluid
 				}
 			}
-			desktopCover: heroImage {
-				url
-			}
 			brief
-		}
-		afspMedia: afspMedia {
-			quiltQuery: quilt(filter: { slug: { eq: "quilt" } }) {
-				heroImage {
-					url
-					responsiveImage(
-						imgixParams: {
-							auto: format
-							fill: blur
-							fit: fill
-							h: "475"
-							w: "769"
-						}
-					) {
-						alt
-						aspectRatio
-						height
-						sizes
-						src
-						srcSet
-						title
-						webpSrcSet
-						width
-					}
-				}
-			}
 		}
 	}
 `
