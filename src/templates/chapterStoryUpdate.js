@@ -17,24 +17,14 @@ const carouselCSS = css`
 	}
 `
 
-const Story = ({ data, pageContext: { prev, next } }) => {
-	const { story, afspMedia } = data
-
+const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 	return (
 		<Layout
 			theme={styles.logo.mobileDarkDesktopLight}
 			seo={story.seoMetaTags}
 		>
-			<HeroStories
-				data={story}
-				dataMedia={afspMedia.chapterStoryUpdate}
-				prev={prev}
-				next={next}
-			/>
-			<ContentStory
-				data={story}
-				dataMedia={afspMedia.chapterStoryUpdate}
-			/>
+			<HeroStories data={story} prev={prev} next={next} />
+			<ContentStory data={story} />
 			<CarouselChapterContainer carouselCSS={carouselCSS} />
 		</Layout>
 	)
@@ -67,6 +57,18 @@ export const query = graphql`
 					id
 					images {
 						url
+						fluid(
+							maxWidth: 623
+							imgixParams: {
+								auto: "format"
+								fit: "fill"
+								fill: "blur"
+								h: "384"
+								w: "623"
+							}
+						) {
+							...GatsbyDatoCmsFluid
+						}
 					}
 				}
 				... on DatoCmsVideo {
@@ -96,68 +98,6 @@ export const query = graphql`
 									contentHeading
 								}
 							}
-						}
-					}
-				}
-			}
-		}
-		afspMedia: afspMedia {
-			chapterStoryUpdate(filter: { slug: { eq: $slug } }) {
-				coverImage {
-					url
-					responsiveImage(
-						imgixParams: {
-							auto: format
-							fit: fill
-							fill: blur
-							h: "475"
-							w: "769"
-						}
-					) {
-						alt
-						height
-						sizes
-						src
-						srcSet
-						title
-						webpSrcSet
-						width
-					}
-				}
-				article {
-					... on AFSPMedia_ImageRecord {
-						id
-						images {
-							responsiveImage(
-								imgixParams: {
-									auto: format
-									fit: fill
-									fill: blur
-									h: "384"
-									w: "623"
-								}
-							) {
-								alt
-								height
-								sizes
-								src
-								srcSet
-								title
-								webpSrcSet
-								width
-							}
-						}
-					}
-					... on AFSPMedia_VideoRecord {
-						id
-						video {
-							id
-							video {
-								mp4Url(res: medium)
-							}
-						}
-						poster {
-							url
 						}
 					}
 				}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import { Link } from 'gatsby'
-import { Image } from 'react-datocms'
+import Img from 'gatsby-image'
 
 import IconArrow from '../SVGs/IconArrow'
 import readTime from '../../utils/readTime'
@@ -124,32 +124,16 @@ const storyButtonCSS = css`
 	}
 `
 
-const HeroStories = ({ data, dataMedia, prev, next }) => {
+const HeroStories = ({ data, prev, next }) => {
 	const { title, publicationDate, author, tags } = data
-	const articleMedia = dataMedia ? dataMedia.article : []
 
 	let fullStory = ''
 	data.article.forEach(article => {
 		if (article.__typename === 'DatoCmsBody') {
 			fullStory += article.copy
 		}
-		if (article.__typename === 'DatoCmsImage') {
-			articleMedia.forEach(media => {
-				article.id = article.id
-					.replace('DatoCmsImage-', '')
-					.replace('-en', '')
-				if (article.id === media.id) {
-					article.images = media.images
-				}
-			})
-			article.images.forEach(image => {
-				fullStory += `<img src=${image.url} />`
-			})
-		}
 	})
-	const backgroundImage = dataMedia
-		? `${dataMedia.coverImage.url}?auto=format&crop=faces&fill=blur&fit=fill&h=540&w=1920&blend-mode=hardlight&blend64=MjYyNjI2&blend-alpha=50`
-		: `${data.coverImage.url}?auto=format&crop=faces&fill=blur&fit=fill&h=540&w=1920&blend-mode=hardlight&blend64=MjYyNjI2&blend-alpha=50`
+	const backgroundImage = `${data.coverImage.url}?auto=format&crop=faces&fill=blur&fit=fill&h=540&w=1920&blend-mode=hardlight&blend64=MjYyNjI2&blend-alpha=50`
 	const timeToRead = readTime(fullStory)
 	return (
 		<header
@@ -207,19 +191,8 @@ const HeroStories = ({ data, dataMedia, prev, next }) => {
 							})}
 					</ul>
 				</h3>
-				{dataMedia && dataMedia.coverImage.responsiveImage && (
-					<Image
-						css={mobileImageCSS}
-						data={dataMedia.coverImage.responsiveImage}
-					/>
-				)}
-				{dataMedia && (
-					<>
-						{!dataMedia.coverImage.responsiveImage && (
-							<img src={dataMedia.coverImage.url} />
-						)}
-					</>
-				)}
+				{console.log(data.coverImage)}
+				<Img css={mobileImageCSS} fluid={data.coverImage.fluid} />
 			</div>
 			{prev && (
 				<div css={previousStoryCSS}>

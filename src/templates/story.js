@@ -44,6 +44,18 @@ export const query = graphql`
 			title
 			coverImage {
 				url
+				fluid(
+					maxWidth: 623
+					imgixParams: {
+						auto: "format"
+						fit: "fill"
+						fill: "blur"
+						h: "384"
+						w: "623"
+					}
+				) {
+					...GatsbyDatoCmsFluid
+				}
 			}
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
