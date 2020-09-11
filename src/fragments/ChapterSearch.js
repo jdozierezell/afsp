@@ -9,6 +9,21 @@ export const ChapterSearch = graphql`
 				slug
 				chapterInformation {
 					zipCode
+					chapterMap {
+						url
+						fluid(
+							maxWidth: 1080
+							imgixParams: {
+								auto: "format"
+								fit: "fill"
+								fill: "blur"
+								w: "1080"
+								h: "1080"
+							}
+						) {
+							...GatsbyDatoCmsFluid
+						}
+					}
 				}
 				heroPoster {
 					url
