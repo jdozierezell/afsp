@@ -46,11 +46,12 @@ const RefinementList = ({
 	const [options, setOptions] = useState([])
 	const [updateDropdown, setUpdateDropdown] = useState(false)
 	useEffect(() => {
+		// console.log(items)
 		setOptions([])
 		items.forEach(item => {
 			setOptions(options => [
 				...options,
-				{ value: item.value[0], label: item.label },
+				{ value: item.value[item.value.length - 1], label: item.label },
 			])
 		})
 		setUpdateDropdown(false)
@@ -59,6 +60,7 @@ const RefinementList = ({
 		<>
 			<div css={refinementListCSS}>
 				<h3>{displayAttribute}</h3>
+				{console.log(options)}
 				<Select
 					css={selectCSS}
 					id="meetingCountry"
