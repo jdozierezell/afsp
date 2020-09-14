@@ -2,10 +2,14 @@ const searchURL = search => {
 	// https://gist.github.com/excalq/2961415#gistcomment-2221360
 
 	const addRefinements = (refinement, count) => {
-		search.refinementList[refinement].forEach(item => {
-			searchParams += `&refinementList[${refinement}][${count}]=${item}`
-			count++
-		})
+		if (search.refinementList[refinement] === null) {
+			delete search.refinementList[refinement]
+		} else if (search.refinementList[refinement] !== null) {
+			search.refinementList[refinement].forEach(item => {
+				searchParams += `&refinementList[${refinement}][${count}]=${item}`
+				count++
+			})
+		}
 	}
 
 	let searchParams = ''

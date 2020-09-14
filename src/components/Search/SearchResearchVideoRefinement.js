@@ -45,6 +45,10 @@ const RefinementList = ({
 }) => {
 	const [options, setOptions] = useState([])
 	const [updateDropdown, setUpdateDropdown] = useState(false)
+	const [values, setReactSelectValue] = useState({
+		selectedCountryOption: [],
+		selectedStateOption: [],
+	})
 	useEffect(() => {
 		// console.log(items)
 		setOptions([])
@@ -60,18 +64,20 @@ const RefinementList = ({
 		<>
 			<div css={refinementListCSS}>
 				<h3>{displayAttribute}</h3>
-				{console.log(options)}
 				<Select
 					css={selectCSS}
 					id="meetingCountry"
 					className="react-select"
 					classNamePrefix="react-select"
-					value={'test'}
+					defaultValue={options[0]}
+					isClearable={true}
 					options={options}
+					placeholder={`Select a ${displayAttribute}`}
 					onChange={e => {
+						console.log(e)
 						handleSearchChange({
 							target: {
-								value: [e.value],
+								value: e ? [e.value] : null,
 								attribute: attribute,
 							},
 						})
