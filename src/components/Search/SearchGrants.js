@@ -70,6 +70,20 @@ const refinementCSS = css`
 		border-bottom: none;
 	}
 `
+const customHitsCSS = css`
+	list-style: none;
+	margin-left: 0;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: ${styles.gridGap.desktop};
+	align-items: stretch;
+	@media (min-width: ${styles.screens.tablet}px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	li {
+		width: 100%;
+	}
+`
 
 const SearchGrants = ({
 	searchState,
@@ -105,7 +119,10 @@ const SearchGrants = ({
 						))}
 					</div>
 					<div>
-						<SearchHits indexName={indexName} />
+						<SearchHits
+							indexName={indexName}
+							customHitsCSS={customHitsCSS}
+						/>
 					</div>
 				</div>
 			</InstantSearch>

@@ -140,23 +140,20 @@ const HeroGrant = ({ grant }) => {
 				`}
 			>
 				{grantees.map((grantee, index) => {
+					console.log(grantee)
 					return (
 						<div key={index}>
-							{grantee.responsiveImage && (
-								<Img
-									fluid={grantee.image.fluid}
-									css={css`
-										margin: 0 0 ${styles.scale.px36};
-										@media (min-width: ${styles.screens
-												.navigation}px) {
-											margin: 0 ${styles.scale.px36}
-												${styles.scale.px36};
-										}
-									`}
-								/>
-							)}
-							{!grantee.responsiveImage && (
-								<img src={grantee.staticImage} />
+							<Img
+								fluid={grantee.image.fluid}
+								css={css`
+									margin: 0 0 ${styles.scale.px36};
+									@media (min-width: ${styles.screens
+											.navigation}px) {
+										margin: 0 ${styles.scale.px36}
+											${styles.scale.px36};
+									}
+								`}
+							/>
 							)}
 							<p>
 								<strong>{grantee.name}</strong>
