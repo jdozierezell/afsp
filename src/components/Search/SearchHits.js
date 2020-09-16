@@ -4,6 +4,21 @@ import { connectInfiniteHits, Configure } from 'react-instantsearch-dom'
 
 import { styles } from '../../css/css'
 
+const customHitsCSS = css`
+	list-style: none;
+	margin-left: 0;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: ${styles.gridGap.desktop};
+	align-items: stretch;
+	@media (min-width: ${styles.screens.tablet}px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	li {
+		width: 100%;
+	}
+`
+
 const hitCSS = css`
 	display: grid;
 	grid-template-columns: 0.6fr 1.4fr;
@@ -51,13 +66,12 @@ const videoWrapperCSS = css`
 `
 
 const CustomHits = data => {
-	console.log(data)
 	const [display, setDisplay] = useState(20)
 	return (
 		<>
 			<Configure hitsPerPage={display} />
 			{data.indexName !== 'afsporg-research-videos' && (
-				<ul css={data.customHitsCSS}>
+				<ul css={customHitsCSS}>
 					{data.hits.map(hit => (
 						<li key={hit.objectID} data-type={hit.type}>
 							<a href={hit.url} css={hitCSS}>
@@ -73,7 +87,7 @@ const CustomHits = data => {
 				</ul>
 			)}
 			{data.indexName === 'afsporg-research-videos' && (
-				<ul css={data.customHitsCSS}>
+				<ul css={customHitsCSS}>
 					{data.hits.map(hit => (
 						<li key={hit.objectID} data-type={hit.type}>
 							<div css={videoWrapperCSS}>

@@ -21,64 +21,53 @@ const searchDetailCSS = css`
 	}
 `
 
-// const searchBoxCSS = css`
-// 	position: relative;
-// 	input {
-// 		width: 100%;
-// 		padding-top: 4px;
-// 	}
-// 	button {
-// 		position: absolute;
-// 		right: ${styles.scale.px24};
-// 		top: ${styles.scale.px16};
-// 		background-color: transparent;
-// 		border: none;
-// 		padding: 0;
-// 		width: ${styles.scale.px24};
-// 		height: ${styles.scale.px36};
-// 		cursor: pointer;
-// 	}
-// 	svg {
-// 		width: 20px;
-// 		height: 20px;
-// 	}
-// 	.ais-SearchBox-reset {
-// 		display: none;
-// 	}
-// `
+const searchBoxCSS = css`
+	position: relative;
+	input {
+		width: 100%;
+		padding-top: 4px;
+	}
+	button {
+		position: absolute;
+		right: ${styles.scale.px24};
+		top: ${styles.scale.px16};
+		background-color: transparent;
+		border: none;
+		padding: 0;
+		width: ${styles.scale.px24};
+		height: ${styles.scale.px36};
+		cursor: pointer;
+	}
+	svg {
+		width: 20px;
+		height: 20px;
+	}
+	.ais-SearchBox-reset {
+		display: none;
+	}
+`
 
-// const indexWrapperCSS = css`
-// 	width: 100%;
-// 	@media (min-width: ${styles.screens.navigation}px) {
-// 		display: grid;
-// 		grid-template-columns: 400px 1fr;
-// 	}
-// 	h2 {
-// 		margin: ${styles.scale.px36} 0 ${styles.scale.px24};
-// 	}
-// `
+const indexWrapperCSS = css`
+	width: 100%;
+	@media (min-width: ${styles.screens.navigation}px) {
+		display: grid;
+		grid-template-columns: 400px 1fr;
+	}
+	h2 {
+		margin: ${styles.scale.px36} 0 ${styles.scale.px24};
+	}
+`
 
 const refinementCSS = css`
 	margin-bottom: ${styles.scale.px36};
 	border-bottom: 1px solid ${styles.colors.darkGray};
 	@media (min-width: ${styles.screens.tablet}px) {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		grid-gap: ${styles.gridGap.desktop};
+		grid-template-columns: repeat(2, 1fr);
 	}
-`
-const customHitsCSS = css`
-	list-style: none;
-	margin-left: 0;
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-gap: ${styles.gridGap.desktop};
-	align-items: stretch;
-	@media (min-width: ${styles.screens.tablet}px) {
-		grid-template-columns: repeat(3, 1fr);
-	}
-	li {
-		width: 100%;
+	@media (min-width: ${styles.screens.navigation}px) {
+		display: block;
+		border-bottom: none;
 	}
 `
 
@@ -103,7 +92,7 @@ const SearchGrants = ({
 						placeholder: placeholder,
 					}}
 				/> */}
-				<div>
+				<div css={indexWrapperCSS}>
 					<div css={refinementCSS}>
 						{refinements.map(refinement => (
 							<SearchResearchVideoRefinement
@@ -116,10 +105,7 @@ const SearchGrants = ({
 						))}
 					</div>
 					<div>
-						<SearchHits
-							indexName={indexName}
-							customHitsCSS={customHitsCSS}
-						/>
+						<SearchHits indexName={indexName} />
 					</div>
 				</div>
 			</InstantSearch>

@@ -30,14 +30,9 @@ const selectCSS = css`
 	.react-select__control {
 		border: 2px solid ${styles.colors.darkGray};
 		border-radius: 5px;
-		font-family: ${styles.fonts.avenirRegular};
 	}
 	.react-select__input {
 		max-height: ${styles.scale.px42};
-		font-family: ${styles.fonts.avenirRegular};
-	}
-	.react-select__menu {
-		font-family: ${styles.fonts.avenirRegular};
 	}
 `
 
