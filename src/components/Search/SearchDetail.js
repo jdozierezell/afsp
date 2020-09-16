@@ -60,6 +60,20 @@ const indexWrapperCSS = css`
 		margin: ${styles.scale.px36} 0 ${styles.scale.px24};
 	}
 `
+const customHitsCSS = css`
+	list-style: none;
+	margin-left: 0;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: ${styles.gridGap.desktop};
+	align-items: stretch;
+	@media (min-width: ${styles.screens.tablet}px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	li {
+		width: 100%;
+	}
+`
 
 const SearchDetail = ({
 	visibility,
@@ -90,7 +104,7 @@ const SearchDetail = ({
 						<Configure hitsPerPage={20} />
 						<Index indexName="AFSP">
 							<CustomStateResults indexResults={indexResults} />
-							<SearchHits />
+							<SearchHits customHitsCSS={customHitsCSS} />
 						</Index>
 					</div>
 				)}
