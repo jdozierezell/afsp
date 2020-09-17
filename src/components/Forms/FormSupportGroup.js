@@ -140,15 +140,36 @@ const SupportGroupForm = () => {
 		meetingSchedule: Yup.string().required(
 			"A description of your meeting schedule is required. Please enter the group's schedule and resubmit."
 		),
-		nameOfMeetingSite: Yup.string().required(
-			'The name of your meeting site is required. Please enter the site name and resubmit.'
+		meetingType: Yup.object().required(
+			'Selecting your meeting type is required. Please select the type and resubmit.'
 		),
-		meetingCountry: Yup.object().required(
-			"Your meeting site's country is required. Please select the country and resubmit."
-		),
-		meetingCity: Yup.string().required(
-			"Your meeting site's city is required. Please enter the city and resubmit."
-		),
+		nameOfMeetingSite: Yup.string().when('meetingType', {
+			is: val =>
+				document.querySelector('.react-select__single-value')
+					.innerText !== 'Online',
+			then: Yup.string().required(
+				'The name of your meeting site is required. Please enter the site name and resubmit.'
+			),
+			otherwise: Yup.string().notRequired(),
+		}),
+		meetingCountry: Yup.object().when('meetingType', {
+			is: val =>
+				document.querySelector('.react-select__single-value')
+					.innerText !== 'Online',
+			then: Yup.object().required(
+				"Your meeting site's country is required. Please select the country and resubmit."
+			),
+			otherwise: Yup.object().notRequired(),
+		}),
+		meetingCity: Yup.string().when('meetingType', {
+			is: val =>
+				document.querySelector('.react-select__single-value')
+					.innerText !== 'Online',
+			then: Yup.string().required(
+				"Your meeting site's city is required. Please enter the city and resubmit."
+			),
+			otherwise: Yup.string().notRequired(),
+		}),
 		meetingState: Yup.object().when('meetingCountry', {
 			is: val =>
 				document.querySelector('.react-select__single-value')
@@ -158,9 +179,15 @@ const SupportGroupForm = () => {
 			),
 			otherwise: Yup.object().notRequired(),
 		}),
-		meetingZipPostalCode: Yup.string().required(
-			"Your meeting site's zip or postal code is required. Please enter the code and resubmit."
-		),
+		meetingZipPostalCode: Yup.string().when('meetingType', {
+			is: val =>
+				document.querySelector('.react-select__single-value')
+					.innerText !== 'Online',
+			then: Yup.string().required(
+				"Your meeting site's zip or postal code is required. Please enter the code and resubmit."
+			),
+			otherwise: Yup.string().notRequired(),
+		}),
 		facilitator: Yup.object().required(
 			"Information about your meeting site's facilitator(s) is required. Please make a selection and resubmit."
 		),
@@ -169,12 +196,14 @@ const SupportGroupForm = () => {
 		validationSchema: schema,
 	})
 	const [values, setReactSelectValue] = useState({
+		selectedTypeOption: [],
 		selectedCountryOption: [],
 		selectedStateOption: [],
 	})
 	const [showSubmitter, setShowSubmitter] = useState(false)
 	const [showSecondContact, setShowSecondContact] = useState(false)
 	const [showState, setShowState] = useState(false)
+	const [showLocation, setShowLocation] = useState(false)
 	const [submitted, setSubmitted] = useState(false)
 	const [submitError, setSubmitError] = useState(false)
 	const [loading, setLoading] = useState(false)
@@ -189,6 +218,16 @@ const SupportGroupForm = () => {
 			setShowState(false)
 		}
 		setValue('meetingCountry', selectedOption)
+		setReactSelectValue({ selectedOption })
+	}
+
+	const handleTypeSelectChange = selectedOption => {
+		if (selectedOption.value !== 'Online') {
+			setShowLocation(true)
+		} else {
+			setShowLocation(false)
+		}
+		setValue('meetingType', selectedOption)
 		setReactSelectValue({ selectedOption })
 	}
 
@@ -215,6 +254,10 @@ const SupportGroupForm = () => {
 	const onSubmit = data => {
 		const form = document.querySelector('form')
 		let formData = new FormData(form)
+		formData.append(
+			'meetingType',
+			data.meetingType ? data.meetingType.value : ''
+		)
 		formData.append(
 			'meetingCountry',
 			data.meetingCountry ? data.meetingCountry.value : ''
@@ -274,6 +317,7 @@ const SupportGroupForm = () => {
 	}
 
 	useEffect(() => {
+		register({ name: 'meetingType' })
 		register({ name: 'meetingState' })
 		register({ name: 'meetingCountry' })
 		register({ name: 'facilitator' })
@@ -632,128 +676,178 @@ const SupportGroupForm = () => {
 							ref={register}
 						/>
 
-						<label
-							id="nameOfMeetingSiteLabel"
-							htmlFor="nameOfMeetingSite"
-						>
-							Name of Meeting Site <span>*</span>
+						<label id="meetingTypeLabel" htmlFor="meetingType">
+							Meeting Type <span>*</span>
 						</label>
-						<p>
-							Enter the name of your meeting site, e.g. "Anytown
-							Public Library." If your meeting site varies or if
-							you'd prefer not to list the site name, you may
-							leave this field blank.
-						</p>
-						{errors.nameOfMeetingSite && (
-							<span>{errors.nameOfMeetingSite.message}</span>
-						)}
-						<input
-							aria-describedby="nameOfMeetingSiteLabel"
-							name="nameOfMeetingSite"
-							id="nameOfMeetingSite"
-							title="nameOfMeetingSite"
-							ref={register}
-						/>
-
-						<label
-							id="meetingCountryLabel"
-							htmlFor="meetingCountry"
-						>
-							Meeting Country <span>*</span>
-						</label>
-						<p>Select your meeting location's country.</p>
-						{errors.meetingCountry && (
-							<span>{errors.meetingCountry.message}</span>
+						<p>Select your meeting type.</p>
+						{errors.meetingType && (
+							<span>{errors.meetingType.message}</span>
 						)}
 						<Select
 							css={selectCSS}
-							id="meetingCountry"
+							id="meetingType"
 							className="react-select"
 							classNamePrefix="react-select"
-							value={values.selectedCountryOption}
-							options={countryList}
-							onChange={handleCountrySelectChange}
+							value={values.selectedTypeOption}
+							options={[
+								{
+									value: 'In person',
+									label: 'In person',
+								},
+								{
+									value: 'Online',
+									label: 'Online',
+								},
+								{
+									value: 'In person and online',
+									label: 'In person and online',
+								},
+							]}
+							onChange={handleTypeSelectChange}
 						/>
 
-						<label
-							id="meetingAddressLabel"
-							htmlFor="meetingAddress"
-						>
-							Meeting Address
-						</label>
-						<p>
-							Enter your meeting location's street address (no
-							P.O. Boxes). If your meeting site varies or if you'd
-							prefer not to list the address, you may leave this
-							field blank.
-						</p>
-						{errors.meetingAddress && (
-							<span>{errors.meetingAddress.message}</span>
-						)}
-						<input
-							aria-describedby="meetingAddressLabel"
-							name="meetingAddress"
-							id="meetingAddress"
-							title="meetingAddress"
-							ref={register}
-						/>
-
-						<label id="meetingCityLabel" htmlFor="meetingCity">
-							Meeting City <span>*</span>
-						</label>
-						<p>Enter your meeting location's city.</p>
-						{errors.meetingCity && (
-							<span>{errors.meetingCity.message}</span>
-						)}
-						<input
-							aria-describedby="meetingCityLabel"
-							name="meetingCity"
-							id="meetingCity"
-							title="meetingCity"
-							ref={register}
-						/>
-
-						{showState && (
+						{showLocation && (
 							<>
 								<label
-									id="meetingStateLabel"
-									htmlFor="meetingState"
+									id="nameOfMeetingSiteLabel"
+									htmlFor="nameOfMeetingSite"
 								>
-									Meeting State <span>*</span>
+									Name of Meeting Site <span>*</span>
 								</label>
-								<p>Select your meeting location's state.</p>
-								{errors.meetingState && (
-									<span>{errors.meetingState.message}</span>
+								<p>
+									Enter the name of your meeting site, e.g.
+									"Anytown Public Library." If your meeting
+									site varies or if you'd prefer not to list
+									the site name, you may leave this field
+									blank.
+								</p>
+								{errors.nameOfMeetingSite && (
+									<span>
+										{errors.nameOfMeetingSite.message}
+									</span>
+								)}
+								<input
+									aria-describedby="nameOfMeetingSiteLabel"
+									name="nameOfMeetingSite"
+									id="nameOfMeetingSite"
+									title="nameOfMeetingSite"
+									ref={register}
+								/>
+
+								<label
+									id="meetingCountryLabel"
+									htmlFor="meetingCountry"
+								>
+									Meeting Country <span>*</span>
+								</label>
+								<p>Select your meeting location's country.</p>
+								{errors.meetingCountry && (
+									<span>{errors.meetingCountry.message}</span>
 								)}
 								<Select
 									css={selectCSS}
-									id="meetingState"
+									id="meetingCountry"
 									className="react-select"
 									classNamePrefix="react-select"
-									value={values.selectedStateOption}
-									options={stateList}
-									onChange={handleStateSelectChange}
+									value={values.selectedCountryOption}
+									options={countryList}
+									onChange={handleCountrySelectChange}
+								/>
+
+								<label
+									id="meetingAddressLabel"
+									htmlFor="meetingAddress"
+								>
+									Meeting Address
+								</label>
+								<p>
+									Enter your meeting location's street address
+									(no P.O. Boxes). If your meeting site varies
+									or if you'd prefer not to list the address,
+									you may leave this field blank.
+								</p>
+								{errors.meetingAddress && (
+									<span>{errors.meetingAddress.message}</span>
+								)}
+								<input
+									aria-describedby="meetingAddressLabel"
+									name="meetingAddress"
+									id="meetingAddress"
+									title="meetingAddress"
+									ref={register}
+								/>
+
+								<label
+									id="meetingCityLabel"
+									htmlFor="meetingCity"
+								>
+									Meeting City <span>*</span>
+								</label>
+								<p>Enter your meeting location's city.</p>
+								{errors.meetingCity && (
+									<span>{errors.meetingCity.message}</span>
+								)}
+								<input
+									aria-describedby="meetingCityLabel"
+									name="meetingCity"
+									id="meetingCity"
+									title="meetingCity"
+									ref={register}
+								/>
+
+								{showState && (
+									<>
+										<label
+											id="meetingStateLabel"
+											htmlFor="meetingState"
+										>
+											Meeting State <span>*</span>
+										</label>
+										<p>
+											Select your meeting location's
+											state.
+										</p>
+										{errors.meetingState && (
+											<span>
+												{errors.meetingState.message}
+											</span>
+										)}
+										<Select
+											css={selectCSS}
+											id="meetingState"
+											className="react-select"
+											classNamePrefix="react-select"
+											value={values.selectedStateOption}
+											options={stateList}
+											onChange={handleStateSelectChange}
+										/>
+									</>
+								)}
+
+								<label
+									id="meetingZipPostalCodeLabel"
+									htmlFor="meetingZipPostalCode"
+								>
+									Meeting Zip/Postal Code <span>*</span>
+								</label>
+								<p>
+									Enter your meeting location's zip or postal
+									code.
+								</p>
+								{errors.meetingZipPostalCode && (
+									<span>
+										{errors.meetingZipPostalCode.message}
+									</span>
+								)}
+								<input
+									aria-describedby="meetingZipPostalCodeLabel"
+									name="meetingZipPostalCode"
+									id="meetingZipPostalCode"
+									title="meetingZipPostalCode"
+									ref={register}
 								/>
 							</>
 						)}
-
-						<label
-							id="meetingZipPostalCodeLabel"
-							htmlFor="meetingZipPostalCode"
-						>
-							Meeting Zip/Postal Code <span>*</span>
-						</label>
-						<p>Enter your meeting location's zip or postal code.</p>
-						{errors.meetingZipPostalCode && (
-							<span>{errors.meetingZipPostalCode.message}</span>
-						)}
-						<input
-							aria-describedby="meetingZipPostalCodeLabel"
-							name="meetingZipPostalCode"
-							id="meetingZipPostalCode"
-							title="meetingZipPostalCode"
-							ref={register}
-						/>
 
 						<label id="facilitatorLabel" htmlFor="facilitator">
 							Facilitator <span>*</span>
