@@ -42,7 +42,7 @@ const SearchModelContainer = ({
 				chapters.map((chapter, index) => {
 					return <SearchChapters key={index} chapter={chapter} />
 				})}
-			{/* {supportGroups &&
+			{supportGroups &&
 				supportGroups.map((supportGroup, index) => {
 					return (
 						<SearchSupportGroups
@@ -50,7 +50,7 @@ const SearchModelContainer = ({
 							supportGroup={supportGroup[0]}
 						/>
 					)
-				})} */}
+				})}
 			{onlineGroups &&
 				onlineGroups.map((supportGroup, index) => {
 					return (
