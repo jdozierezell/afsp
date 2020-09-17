@@ -104,7 +104,7 @@ const dropDownCSS = css`
 const toggleLabelCSS = css`
 	color: ${styles.colors.white};
 	vertical-align: text-bottom;
-	margin-left: ${styles.scale.px16};
+	margin: 0 ${styles.scale.px16};
 `
 
 const HeroModelSearch = ({
@@ -113,12 +113,15 @@ const HeroModelSearch = ({
 	searchType,
 	handleSubmit,
 	nonus,
+	online,
+	onlineGroups,
 	radius,
 	zip,
 	country,
 	updateRadius,
 	updateZip,
 	updateNonus,
+	updateOnline,
 	updateCountry,
 	countryOptions,
 }) => {
@@ -134,6 +137,14 @@ const HeroModelSearch = ({
 					<Toggle defaultChecked={nonus} onChange={updateNonus} />
 					<label css={toggleLabelCSS} htmlFor="">
 						Search outside the U.S.
+					</label>
+				</>
+			)}
+			{searchType === 'supportGroup' && onlineGroups.length > 0 && (
+				<>
+					<Toggle defaultChecked={online} onChange={updateOnline} />
+					<label css={toggleLabelCSS} htmlFor="">
+						Only list online groups
 					</label>
 				</>
 			)}

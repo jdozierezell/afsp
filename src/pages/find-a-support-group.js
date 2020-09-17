@@ -22,12 +22,16 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 		typeof window !== `undefined`
 			? qs.parse(window.location.search.slice(1))
 			: {}
+	console.log(existingSearch)
 	const [radius, setRadius] = useState(
 		existingSearch.radius ? existingSearch.radius : 15
 	)
 	const [zip, setZip] = useState(existingSearch.zip ? existingSearch.zip : '')
 	const [nonus, setNonus] = useState(
-		existingSearch.nonus === 1 ? true : false
+		existingSearch.nonus === '1' ? true : false
+	)
+	const [online, setOnline] = useState(
+		existingSearch.online === '1' ? true : false
 	)
 	const [country, setCountry] = useState(
 		existingSearch.country ? existingSearch.country : ''
@@ -35,10 +39,12 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 	const [noResults, setNoResults] = useState(false)
 	const [searchResults, setSearchResults] = useState([])
 	const [countryOptions, setCountryOptions] = useState([])
+	const [onlineGroups, setOnlineGroups] = useState([])
 	const [query, setQuery] = useQueryParams({
 		zip: NumberParam,
 		radius: NumberParam,
 		nonus: BooleanParam,
+		online: BooleanParam,
 		country: StringParam,
 	})
 
@@ -46,7 +52,27 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 
 	const updateZip = newZip => setZip(newZip)
 
-	const updateNonus = () => setNonus(!nonus)
+	const updateNonus = () => {
+		setNonus(!nonus)
+		setQuery({
+			nonus: !nonus,
+			online: online,
+			zip: zip,
+			radius: radius,
+			country: country,
+		})
+	}
+
+	const updateOnline = () => {
+		setOnline(!online)
+		setQuery({
+			nonus: nonus,
+			online: !online,
+			zip: zip,
+			radius: radius,
+			country: country,
+		})
+	}
 
 	const updateCountry = newCountry => setCountry(newCountry)
 
@@ -95,6 +121,7 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 	const handleSearchClick = () => {
 		setQuery({
 			nonus: nonus,
+			online: online,
 			zip: zip,
 			radius: radius,
 			country: country,
@@ -108,13 +135,27 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 	}
 
 	useEffect(() => {
-		const countryArray = []
+		console.log(`nonus ${nonus}`)
+		console.log(existingSearch.nonus)
+		console.log(`online ${online}`)
+		let countryArray = []
+		let onlineArray = []
 		supportGroups.edges.forEach(group => {
 			if (group.node.meetingCountry !== 'United States of America') {
 				countryArray.push(group.node.meetingCountry)
 			}
+			if (
+				group.node.meetingType === 'In person and online' ||
+				group.node.meetingType === 'Online'
+			) {
+				onlineArray.push(group.node)
+			}
+		})
+		onlineArray = onlineArray.filter(function(el) {
+			return !countryArray.includes(el)
 		})
 		setCountryOptions(countryArray)
+		setOnlineGroups(onlineArray)
 		setSearchResults(
 			supportGroupSearchResults(supportGroups, {
 				primaryZip: zip,
@@ -133,18 +174,22 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 				searchType={'supportGroup'}
 				handleSubmit={handleSearchClick}
 				nonus={nonus}
+				online={online}
+				onlineGroups={onlineGroups}
 				radius={radius}
 				zip={zip}
 				country={country}
 				updateRadius={updateRadius}
 				updateZip={updateZip}
 				updateNonus={updateNonus}
+				updateOnline={updateOnline}
 				updateCountry={updateCountry}
 				countryOptions={countryOptions}
 			/>
-			{searchResults.length >= 1 && (
+			{(searchResults.length >= 1 || online) && (
 				<SearchModelContainer
 					supportGroups={searchResults}
+					onlineGroups={onlineGroups}
 					radius={radius}
 					zip={zip}
 					nonus={nonus}
@@ -199,6 +244,7 @@ export const query = graphql`
 					secondContactPhone
 					registrationProcess
 					meetingSchedule
+					meetingType
 					nameOfMeetingSite
 					meetingCountry
 					meetingAddress

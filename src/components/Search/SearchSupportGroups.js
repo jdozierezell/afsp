@@ -80,6 +80,7 @@ const SearchSupportGroups = ({ supportGroup }) => {
 		groupDemographic,
 		hostingSponsoringOrganization,
 		hostingSponsoringOrganizationWebsite,
+		meetingType,
 		meetingCountry,
 		meetingAddress,
 		meetingCity,
@@ -136,14 +137,18 @@ const SearchSupportGroups = ({ supportGroup }) => {
 			<div css={meetingSiteCSS}>
 				<address>
 					{nameOfMeetingSite && <h4>{nameOfMeetingSite}</h4>}
-					<p>
-						{meetingAddress ? meetingAddress : ''}
-						{meetingAddress && <br />}
-						{meetingCity}, {meetingState ? `${meetingState},` : ''}{' '}
-						{meetingZipPostalCode}
-						<br />
-						{meetingCountry}
-					</p>
+					{meetingType && <h4>{meetingType}</h4>}
+					{meetingType !== 'Online' && (
+						<p>
+							{meetingAddress ? meetingAddress : ''}
+							{meetingAddress && <br />}
+							{meetingCity},{' '}
+							{meetingState ? `${meetingState},` : ''}{' '}
+							{meetingZipPostalCode}
+							<br />
+							{meetingCountry}
+						</p>
+					)}
 				</address>
 				<p>
 					<span>
