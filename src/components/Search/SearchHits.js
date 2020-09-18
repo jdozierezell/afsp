@@ -51,7 +51,6 @@ const videoWrapperCSS = css`
 `
 
 const CustomHits = data => {
-	console.log(data)
 	const [display, setDisplay] = useState(20)
 	return (
 		<>

@@ -22,7 +22,6 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 		typeof window !== `undefined`
 			? qs.parse(window.location.search.slice(1))
 			: {}
-	console.log(existingSearch)
 	const [radius, setRadius] = useState(
 		existingSearch.radius ? existingSearch.radius : 15
 	)
@@ -135,9 +134,6 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 	}
 
 	useEffect(() => {
-		console.log(`nonus ${nonus}`)
-		console.log(existingSearch.nonus)
-		console.log(`online ${online}`)
 		let countryArray = []
 		let onlineArray = []
 		supportGroups.edges.forEach(group => {

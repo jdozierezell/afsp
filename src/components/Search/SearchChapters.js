@@ -75,7 +75,6 @@ const searchMapCSS = css`
 `
 
 const ChapterSearchResult = ({ chapter }) => {
-	console.log(chapter)
 	const heroBackgroundImg = chapter[0].heroPoster.url
 	const chapterBackgroundImg = chapter[0].chapterInformation.chapterMap.url
 

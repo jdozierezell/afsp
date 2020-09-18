@@ -140,7 +140,6 @@ const HeroGrant = ({ grant }) => {
 				`}
 			>
 				{grantees.map((grantee, index) => {
-					console.log(grantee)
 					return (
 						<div key={index}>
 							<Img
