@@ -146,7 +146,7 @@ const SupportGroupForm = () => {
 		nameOfMeetingSite: Yup.string().when('meetingType', {
 			is: val =>
 				document.querySelector('.react-select__single-value')
-					.innerText !== 'Online',
+					.innerText !== 'Online only',
 			then: Yup.string().required(
 				'The name of your meeting site is required. Please enter the site name and resubmit.'
 			),
@@ -155,7 +155,7 @@ const SupportGroupForm = () => {
 		meetingCountry: Yup.object().when('meetingType', {
 			is: val =>
 				document.querySelector('.react-select__single-value')
-					.innerText !== 'Online',
+					.innerText !== 'Online only',
 			then: Yup.object().required(
 				"Your meeting site's country is required. Please select the country and resubmit."
 			),
@@ -164,7 +164,7 @@ const SupportGroupForm = () => {
 		meetingCity: Yup.string().when('meetingType', {
 			is: val =>
 				document.querySelector('.react-select__single-value')
-					.innerText !== 'Online',
+					.innerText !== 'Online only',
 			then: Yup.string().required(
 				"Your meeting site's city is required. Please enter the city and resubmit."
 			),
@@ -182,7 +182,7 @@ const SupportGroupForm = () => {
 		meetingZipPostalCode: Yup.string().when('meetingType', {
 			is: val =>
 				document.querySelector('.react-select__single-value')
-					.innerText !== 'Online',
+					.innerText !== 'Online only',
 			then: Yup.string().required(
 				"Your meeting site's zip or postal code is required. Please enter the code and resubmit."
 			),
@@ -222,7 +222,7 @@ const SupportGroupForm = () => {
 	}
 
 	const handleTypeSelectChange = selectedOption => {
-		if (selectedOption.value !== 'Online') {
+		if (selectedOption.value !== 'Online only') {
 			setShowLocation(true)
 		} else {
 			setShowLocation(false)
@@ -695,8 +695,8 @@ const SupportGroupForm = () => {
 									label: 'In person',
 								},
 								{
-									value: 'Online',
-									label: 'Online',
+									value: 'Online only',
+									label: 'Online only',
 								},
 								{
 									value: 'In person and online',

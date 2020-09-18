@@ -16,6 +16,8 @@ const searchClient = algoliasearch(
 const searchDetailCSS = css`
 	/* max-width: 623px; */
 	margin: ${styles.scale.px50} ${styles.scale.px24};
+	position: relative;
+	z-index: 101;
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin: ${styles.scale.px80} ${styles.scale.px50};
 	}
@@ -89,6 +91,7 @@ const SearchGrants = ({
 	placeholder,
 	refinements,
 }) => {
+	console.log(searchState)
 	return (
 		<div css={searchDetailCSS}>
 			<InstantSearch
@@ -115,12 +118,14 @@ const SearchGrants = ({
 							/>
 						))}
 					</div>
-					<div>
-						<SearchHits
-							indexName={indexName}
-							customHitsCSS={customHitsCSS}
-						/>
-					</div>
+					{searchState.refinementList && (
+						<div>
+							<SearchHits
+								indexName={indexName}
+								customHitsCSS={customHitsCSS}
+							/>
+						</div>
+					)}
 				</div>
 			</InstantSearch>
 		</div>
