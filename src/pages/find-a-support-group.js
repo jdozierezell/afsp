@@ -140,10 +140,7 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 			if (group.node.meetingCountry !== 'United States of America') {
 				countryArray.push(group.node.meetingCountry)
 			}
-			if (
-				group.node.meetingType === 'In person and online' ||
-				group.node.meetingType === 'Online'
-			) {
+			if (group.node.meetingType === 'Online only') {
 				onlineArray.push(group.node)
 			}
 		})
@@ -182,7 +179,9 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 				updateCountry={updateCountry}
 				countryOptions={countryOptions}
 			/>
-			{(searchResults.length >= 1 || online) && (
+			{(searchResults.length >= 1 ||
+				(onlineGroups.length >= 1 && zip.length >= 5) ||
+				online) && (
 				<SearchModelContainer
 					supportGroups={searchResults}
 					onlineGroups={onlineGroups}
@@ -192,7 +191,7 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 					country={country}
 				/>
 			)}
-			{noResults && <SearchNoResults type="support group" />}
+			{/* {noResults && <SearchNoResults type="support group" />} */}
 			{search.callsToAction.map((item, index) => (
 				<CTAContainer
 					key={index}

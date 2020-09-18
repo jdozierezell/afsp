@@ -138,7 +138,7 @@ const SearchSupportGroups = ({ supportGroup }) => {
 				<address>
 					{nameOfMeetingSite && <h4>{nameOfMeetingSite}</h4>}
 					{meetingType && <h4>{meetingType}</h4>}
-					{meetingType !== 'Online' && (
+					{meetingType !== 'Online only' && (
 						<p>
 							{meetingAddress ? meetingAddress : ''}
 							{meetingAddress && <br />}
