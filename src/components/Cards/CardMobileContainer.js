@@ -5,7 +5,6 @@ import { css } from '@emotion/core'
 import Card from './Card'
 
 import { styles } from '../../css/css'
-import createAnchor from '../../utils/createAnchor'
 
 import 'react-multi-carousel/lib/styles.css'
 
@@ -45,9 +44,7 @@ const CardMobileContainer = ({ cards, heading }) => {
 
 	return (
 		<div css={carouselCSS}>
-			<h2 id={createAnchor(heading)} css={carouselHeaderTitleCSS}>
-				{heading}
-			</h2>
+			<h2 css={carouselHeaderTitleCSS}>{heading}</h2>
 			<Carousel responsive={responsive}>
 				{cards.map((card, index) => {
 					return <Card key={index} card={card} />
