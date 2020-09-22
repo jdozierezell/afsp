@@ -4,6 +4,7 @@ import { css } from '@emotion/core'
 import Card from './Card'
 
 import { styles } from '../../css/css'
+import createAnchor from '../../utils/createAnchor'
 
 const cardContainerCSS = css`
 	display: none;
@@ -28,7 +29,7 @@ const cardListCSS = css`
 const CardContainer = ({ cards, heading }) => {
 	return (
 		<section css={cardContainerCSS}>
-			<h2>{heading}</h2>
+			<h2 id={createAnchor(heading)}>{heading}</h2>
 			<ul css={cardListCSS}>
 				{cards.map((card, index) => {
 					return <Card key={index} card={card} />
