@@ -1,10 +1,11 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import algoliasearch from 'algoliasearch/lite'
+import { orderBy } from 'lodash'
 import { InstantSearch, SearchBox } from 'react-instantsearch-dom'
 
-import SearchHits from '../../components/Search/SearchHits'
-import SearchResearchVideoRefinement from '../../components/Search/SearchResearchVideoRefinement'
+import SearchHits from './SearchHits'
+import SearchResearchRefinement from './SearchResearchRefinement'
 
 import { styles } from '../../css/css'
 
@@ -109,11 +110,17 @@ const SearchGrants = ({
 				<div>
 					<div css={refinementCSS}>
 						{refinements.map(refinement => (
-							<SearchResearchVideoRefinement
+							<SearchResearchRefinement
 								attribute={refinement.attribute}
 								displayAttribute={refinement.displayAttribute}
 								searchState={searchState}
 								handleSearchChange={handleSearchChange}
+								limit={100}
+								transformItems={items =>
+									refinement.attribute === 'year'
+										? orderBy(items, 'label', 'desc')
+										: orderBy(items, 'label', 'asc')
+								}
 								searchable
 							/>
 						))}

@@ -49,13 +49,16 @@ const RefinementList = ({
 	handleSearchChange,
 }) => {
 	const [options, setOptions] = useState([])
+	const [placeholder, setPlaceholder] = useState(
+		`Select a ${displayAttribute}`
+	)
+	const [placeholderColor, setPlaceholderColor] = useState('#777777')
 	const [updateDropdown, setUpdateDropdown] = useState(false)
 	const [values, setReactSelectValue] = useState({
 		selectedCountryOption: [],
 		selectedStateOption: [],
 	})
 	useEffect(() => {
-		// console.log(items)
 		setOptions([])
 		items.forEach(item => {
 			setOptions(options => [
@@ -63,21 +66,38 @@ const RefinementList = ({
 				{ value: item.value[item.value.length - 1], label: item.label },
 			])
 		})
+		if (searchState.refinementList) {
+			const refinementKeys = Object.keys(searchState.refinementList)
+			refinementKeys.forEach(key => {
+				if (key === attribute) {
+					console.log(`searchState.refinementList.${attribute}`)
+					setPlaceholder(searchState.refinementList[attribute])
+					setPlaceholderColor(styles.colors.darkGray)
+				}
+			})
+		}
+		console.log(placeholder)
 		setUpdateDropdown(false)
-	}, [items, updateDropdown])
+	}, [items, updateDropdown, searchState])
+
 	return (
 		<>
 			<div css={refinementListCSS}>
 				<h3>{displayAttribute}</h3>
 				<Select
 					css={selectCSS}
-					id="meetingCountry"
+					styles={{
+						placeholder: (provided, state) => ({
+							...provided,
+							color: placeholderColor,
+						}),
+					}}
 					className="react-select"
 					classNamePrefix="react-select"
 					defaultValue={options[0]}
 					isClearable={true}
 					options={options}
-					placeholder={`Select a ${displayAttribute}`}
+					placeholder={placeholder}
 					onChange={e => {
 						console.log(e)
 						handleSearchChange({
@@ -89,34 +109,11 @@ const RefinementList = ({
 						setUpdateDropdown(true)
 					}}
 				/>
-				{/* <ul id={`grant-${attribute}`}>
-					{items.map(item => (
-						<li key={item.label}>
-							<button
-								style={{
-									border: item.isRefined
-										? `${styles.colors.blue} ${styles.scale.px2} solid`
-										: '',
-								}}
-								onClick={() =>
-									handleSearchChange({
-										target: {
-											value: item.value,
-											attribute: attribute,
-										},
-									})
-								}
-							>
-								{item.label} <span>{item.count}</span>
-							</button>
-						</li>
-					))}
-				</ul> */}
 			</div>
 		</>
 	)
 }
 
-const SearchResearchVideoRefinement = connectRefinementList(RefinementList)
+const SearchResearchRefinement = connectRefinementList(RefinementList)
 
-export default SearchResearchVideoRefinement
+export default SearchResearchRefinement

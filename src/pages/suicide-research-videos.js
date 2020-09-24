@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
-import SearchResearchVideos from '../components/Search/SearchResearchVideos'
+import SearchResearch from '../components/Search/SearchResearch'
 import CTAContainer from '../components/CTAs/CTAContainer'
 
 import searchURL from '../utils/searchURL'
@@ -52,7 +52,7 @@ const SuicideResearchVideos = ({ data: { search } }) => {
 			seo={search.seoMetaTags}
 		>
 			<HeroSolid data={search} />
-			<SearchResearchVideos
+			<SearchResearch
 				searchState={searchState}
 				handleSearchChange={handleSearchChange}
 				indexName="afsporg-research-videos"

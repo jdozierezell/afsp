@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
-import SearchGrants from '../components/Search/SearchGrants'
+import SearchResearch from '../components/Search/SearchResearch'
 
 import searchURL from '../utils/searchURL'
 
@@ -51,7 +51,7 @@ const ResearchGrants = ({ data: { grantsPage, grants } }) => {
 			seo={grantsPage.seoMetaTags}
 		>
 			<HeroSolid data={grantsPage} />
-			<SearchGrants
+			<SearchResearch
 				searchState={searchState}
 				handleSearchChange={handleSearchChange}
 				indexName="afsporg-grant"

@@ -4,7 +4,7 @@ import algoliasearch from 'algoliasearch/lite'
 import { InstantSearch, SearchBox } from 'react-instantsearch-dom'
 
 import SearchHits from '../../components/Search/SearchHits'
-import SearchGrantRefinement from '../../components/Search/SearchGrantRefinement'
+import SearchResearchRefinement from './SearchResearchRefinement'
 
 import { styles } from '../../css/css'
 
@@ -109,7 +109,7 @@ const SearchGrants = ({
 				<div css={indexWrapperCSS}>
 					<div css={refinementCSS}>
 						{refinements.map(refinement => (
-							<SearchGrantRefinement
+							<SearchResearchRefinement
 								attribute={refinement.attribute}
 								displayAttribute={refinement.displayAttribute}
 								searchState={searchState}
