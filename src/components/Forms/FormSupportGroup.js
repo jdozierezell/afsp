@@ -679,7 +679,12 @@ const SupportGroupForm = () => {
 						<label id="meetingTypeLabel" htmlFor="meetingType">
 							Meeting Type <span>*</span>
 						</label>
-						<p>Select your meeting type.</p>
+						<p>
+							Select your meeting type. Groups listed as "Online
+							only" will be included in all searches. Please do
+							not select this option if the support group is
+							limited to a local community.
+						</p>
 						{errors.meetingType && (
 							<span>{errors.meetingType.message}</span>
 						)}
