@@ -59,6 +59,7 @@ const ResearchGrants = ({ data: { grantsPage, grants } }) => {
 				refinements={[
 					{ attribute: 'area', displayAttribute: 'Research Area' },
 					{ attribute: 'grantType', displayAttribute: 'Grant Type' },
+					{ attribute: 'year', displayAttribute: 'Grant Year' },
 				]}
 			/>
 		</Layout>
