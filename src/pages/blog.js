@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import moment from 'moment'
+import dayjs from 'dayjs'
 
 import Layout from '../components/Layout'
 import HeroVideo from '../components/Hero/HeroVideo'
@@ -17,8 +17,8 @@ const RealStories = ({ data: { real, stories } }) => {
 	})
 	const currentStories = stories.edges.filter(story => {
 		if (story.node.publicationDate) {
-			const today = moment()
-			const pubDate = moment(story.node.publicationDate, 'YYYY-MM-DD')
+			const today = dayjs()
+			const pubDate = dayjs(story.node.publicationDate, 'YYYY-MM-DD')
 			return pubDate <= today
 		} else {
 			return false

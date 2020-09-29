@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import moment from 'moment'
+import dayjs from 'dayjs'
 import Script from 'react-load-script'
 
 import createAnchor from '../../utils/createAnchor'
@@ -116,41 +116,37 @@ const Calendar = ({ events }) => {
 					let dateAndTime = ''
 					if (event.startDateAndTime) {
 						if (event.startDateAndTime.includes('00:00:00')) {
-							dateAndTime = `All Day, ${moment(
+							dateAndTime = `All Day, ${dayjs(
 								event.startDateAndTime
 							)
 								.utcOffset(-4)
 								.format('MMMM D')}`
 						} else {
 							if (event.startDateAndTime.indexOf('00:00') > 0) {
-								dateAndTime = `${moment(event.startDateAndTime)
+								dateAndTime = `${dayjs(event.startDateAndTime)
 									.utcOffset(-4)
-									.format('MMMM D @ h a')} ET`
+									.format('MMMM D @ h a ET')}`
 							} else {
-								dateAndTime = `${moment(event.startDateAndTime)
+								dateAndTime = `${dayjs(event.startDateAndTime)
 									.utcOffset(-4)
-									.format('MMMM D @ h:mm a')}	ET`
+									.format('MMMM D @ h:mm a ET')}`
 							}
 						}
 					}
 					if (event.endDateAndTime) {
 						if (event.endDateAndTime.includes('00:00:00')) {
-							dateAndTime += ` - All Day, ${moment(
+							dateAndTime += ` - All Day, ${dayjs(
 								event.endDateAndTime
 							)
 								.utcOffset(-4)
 								.format('MMMM D')}`
 						} else {
 							if (event.endDateAndTime.indexOf('00:00') > 0) {
-								dateAndTime += ` - ${moment(
-									event.endDateAndTime
-								)
+								dateAndTime += ` - ${dayjs(event.endDateAndTime)
 									.utcOffset(-4)
 									.format('MMMM D @ h a')} ET`
 							} else {
-								dateAndTime += ` - ${moment(
-									event.endDateAndTime
-								)
+								dateAndTime += ` - ${dayjs(event.endDateAndTime)
 									.utcOffset(-4)
 									.format('MMMM D @ h:mm a')}	ET`
 							}
