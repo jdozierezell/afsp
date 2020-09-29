@@ -1,10 +1,11 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import Img from 'gatsby-image'
-
-import Breadcrumbs from '../Breadcrumbs/Breadcrumbs'
+import Loadable from '@loadable/component'
 
 import { styles } from '../../css/css'
+
+const Breadcrumbs = Loadable(() => import('../Breadcrumbs/Breadcrumbs'))
 
 const solidHeroCSS = css`
 	background-color: ${styles.colors.blue};
