@@ -1,9 +1,10 @@
 import React from 'react'
 import { css } from '@emotion/core'
-
-import ShareableOverlays from './ShareableOverlays'
+import Loadable from '@loadable/component'
 
 import { styles } from '../../css/css'
+
+const ShareableOverlays = Loadable(() => import('./ShareableOverlays'))
 
 const buttonGroupCSS = css`
 	width: 100%;

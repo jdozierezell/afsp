@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import fetch from 'isomorphic-fetch'
+import Loadable from '@loadable/component'
 
 import LayoutChapter from '../components/LayoutChapter'
 import HeroChapter from '../components/Hero/HeroChapter'
@@ -9,10 +10,15 @@ import ChapterAboutContact from '../components/Chapter/ChapterAboutContact'
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
 import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
 import CTAContainer from '../components/CTAs/CTAContainer'
-import ChapterSocials from '../components/Social/ChapterSocials'
-import StoriesContainer from '../components/Stories/StoriesContainer'
 
 import { styles } from '../css/css'
+
+const StoriesContainer = Loadable(() =>
+	import('../components/Stories/StoriesContainer')
+)
+const ChapterSocials = Loadable(() =>
+	import('../components/Social/ChapterSocials')
+)
 
 const eventCarouselCSS = css``
 
@@ -183,7 +189,9 @@ const Chapter = ({
 				}}
 				id="volunteer"
 			/>
-			<ChapterSocials socialAccounts={socialAccounts} />
+			{socialAccounts && (
+				<ChapterSocials socialAccounts={socialAccounts} />
+			)}
 			{stories[0] !== 'no stories' && (
 				<StoriesContainer
 					header="Stories and updates"

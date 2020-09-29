@@ -1,11 +1,15 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
+import Loadable from '@loadable/component'
 
 import Header from './Header/Header'
-import InstagramFeed from '../components/Social/InstagramFeed'
-import EmailSignup from './EmailSignup/EmailSignup'
 import Footer from './Footer/Footer'
+
+const InstagramFeed = Loadable(() =>
+	import('../components/Social/InstagramFeed')
+)
+const EmailSignup = Loadable(() => import('./EmailSignup/EmailSignup'))
 
 const LayoutChapter = ({
 	theme,
