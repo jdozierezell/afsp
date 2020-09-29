@@ -1,13 +1,14 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import Carousel from 'react-multi-carousel'
-
-import CarouselDetail from './CarouselDetail'
+import Loadable from '@loadable/component'
 
 import { styles } from '../../css/css'
 import createAnchor from '../../utils/createAnchor'
 
 import 'react-multi-carousel/lib/styles.css'
+
+const CarouselDetail = Loadable(() => import('./CarouselDetail'))
 
 const carouselCSS = css`
 	background-color: ${styles.colors.blue};

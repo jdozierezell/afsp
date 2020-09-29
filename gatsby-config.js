@@ -19,6 +19,7 @@ module.exports = {
 		`gatsby-plugin-playground`,
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-netlify`,
+		'gatsby-plugin-loadable-components-ssr',
 		// {
 		// 	resolve: `gatsby-source-filesystem`,
 		// 	options: {

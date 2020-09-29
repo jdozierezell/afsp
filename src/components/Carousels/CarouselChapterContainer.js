@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Carousel from 'react-multi-carousel'
 import { css } from '@emotion/core'
-
-import CarouselChapter from './CarouselChapter'
+import Loadable from '@loadable/component'
 
 import { fetchChapters } from '../../utils/chapterSearchResults'
 
 import { styles } from '../../css/css'
 
 import 'react-multi-carousel/lib/styles.css'
+
+const CarouselChapter = Loadable(() => import('./CarouselChapter'))
 
 const defaultCarouselCSS = css`
 	padding: ${styles.scale.px25} ${styles.scale.px24};
