@@ -42,6 +42,27 @@ const walkBar = css`
 `
 
 const App = ({ data: { home } }) => {
+	const structuredData = {
+		'@context': 'https://schema.org',
+		'@type': 'NGO',
+		address: {
+			'@type': 'PostalAddress',
+			addressLocality: 'New York',
+			addressRegion: 'NY',
+			postalCode: '10038',
+			streetAddress: '199 Water St., 11th Floor',
+		},
+		contactPoint: [
+			{
+				'@type': 'ContactPoint',
+				telephone: '(212) 363-3500',
+				email: 'info@afsp.org',
+				contactType: 'office manager',
+			},
+		],
+		image:
+			'https://www.datocms-assets.com/12810/1565360975-stackedlogocolor.jpg',
+	}
 	let events = {
 		title: 'AFSP national events',
 		details: [],
@@ -104,6 +125,7 @@ const App = ({ data: { home } }) => {
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={home.seoMetaTags}
+			structuredData={structuredData}
 		>
 			{home.breakingNews && <BreakingNews news={home.breakingNews} />}
 			<HeroVideo

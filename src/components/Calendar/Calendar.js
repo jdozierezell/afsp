@@ -1,11 +1,14 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
 import Script from 'react-load-script'
 
 import createAnchor from '../../utils/createAnchor'
 
 import { styles } from '../../css/css'
+
+dayjs.extend(utc)
 
 const calendarCSS = css`
 	padding: ${styles.scale.px50} ${styles.scale.px24};

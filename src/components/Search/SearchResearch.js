@@ -92,7 +92,6 @@ const SearchGrants = ({
 	placeholder,
 	refinements,
 }) => {
-	console.log(searchState)
 	return (
 		<div css={searchDetailCSS}>
 			<InstantSearch
@@ -109,8 +108,9 @@ const SearchGrants = ({
 				/> */}
 				<div>
 					<div css={refinementCSS}>
-						{refinements.map(refinement => (
+						{refinements.map((refinement, index) => (
 							<SearchResearchRefinement
+								key={index}
 								attribute={refinement.attribute}
 								displayAttribute={refinement.displayAttribute}
 								searchState={searchState}

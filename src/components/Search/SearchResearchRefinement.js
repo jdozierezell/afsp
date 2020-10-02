@@ -48,6 +48,7 @@ const RefinementList = ({
 	searchState,
 	handleSearchChange,
 }) => {
+	console.log(items)
 	const [options, setOptions] = useState([])
 	const [placeholder, setPlaceholder] = useState(
 		`Select a ${displayAttribute}`
@@ -70,13 +71,11 @@ const RefinementList = ({
 			const refinementKeys = Object.keys(searchState.refinementList)
 			refinementKeys.forEach(key => {
 				if (key === attribute) {
-					console.log(`searchState.refinementList.${attribute}`)
 					setPlaceholder(searchState.refinementList[attribute])
 					setPlaceholderColor(styles.colors.darkGray)
 				}
 			})
 		}
-		console.log(placeholder)
 		setUpdateDropdown(false)
 	}, [items, updateDropdown, searchState])
 
@@ -99,7 +98,6 @@ const RefinementList = ({
 					options={options}
 					placeholder={placeholder}
 					onChange={e => {
-						console.log(e)
 						handleSearchChange({
 							target: {
 								value: e ? [e.value] : null,

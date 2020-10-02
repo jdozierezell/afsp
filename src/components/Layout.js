@@ -7,7 +7,14 @@ import Header from './Header/Header'
 import EmailSignup from './EmailSignup/EmailSignup'
 import Footer from './Footer/Footer'
 
-const Layout = ({ theme, overrideLight, children, seo, facebook }) => {
+const Layout = ({
+	theme,
+	overrideLight,
+	children,
+	seo,
+	facebook,
+	structuredData,
+}) => {
 	const data = useStaticQuery(graphql`
 		query {
 			nav: allDatoCmsNavigation(sort: { fields: position, order: ASC }) {
@@ -37,6 +44,9 @@ const Layout = ({ theme, overrideLight, children, seo, facebook }) => {
 				{facebook && (
 					<meta property="fb:app_id" content="925475567867156" />
 				)}
+				<script type="application/ld+json">
+					{JSON.stringify(structuredData)}
+				</script>
 			</HelmetDatoCms>
 			<Header
 				nav={headerNav}
