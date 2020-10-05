@@ -112,7 +112,7 @@ const App = ({ data: { home } }) => {
 							? dayjs(e.endDateAndTime).format('MMMM D')
 							: dayjs
 									.tz(e.endDateAndTime, timeZone)
-									.format('MMMM D @ h:mm a z')
+									.format('MMMM D @ h:mm a ET')
 					}`
 					}
 					events.details.push(eventObject)
