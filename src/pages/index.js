@@ -190,6 +190,7 @@ const App = ({ data: { home } }) => {
 				<CarouselDetailContainer
 					content={events}
 					eventTitleSize="1.4em"
+					id="national-events"
 				/>
 			)}
 			{home.ctaChapterResourceList.map((item, index) => {
