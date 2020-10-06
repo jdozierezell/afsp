@@ -2,8 +2,6 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
-import timezone from 'dayjs/plugin/timezone'
 import Script from 'react-load-script'
 
 import Layout from '../components/Layout'
@@ -18,9 +16,6 @@ import InstagramFeed from '../components/Social/InstagramFeed'
 import Ticker from '../components/Ticker/Ticker'
 
 import { styles } from '../css/css'
-
-dayjs.extend(utc)
-dayjs.extend(timezone)
 
 const walkBar = css`
 	background-color: ${styles.colors.blue};
@@ -68,7 +63,6 @@ const App = ({ data: { home } }) => {
 		details: [],
 	}
 	if (home.eventsList.length > 0) {
-		const timeZone = dayjs.tz.setDefault('America/New_York')
 		home.eventsList.forEach(event => {
 			if (event.__typename === 'DatoCmsEventsList') {
 				event.events.forEach(e => {
@@ -76,14 +70,14 @@ const App = ({ data: { home } }) => {
 						__typename: 'Event',
 						title: e.title,
 						startDate: e.startDateAndTime
-							? dayjs
-									.tz(e.startDateAndTime, timeZone)
-									.format('MMMM D @ h:mm a ET')
+							? dayjs(e.startDateAndTime).format(
+									'MMMM D @ h:mm a ET'
+							  )
 							: null,
 						endDate: e.endDateAndTime
-							? dayjs
-									.tz(e.endDateAndTime, timeZone)
-									.format('MMMM D @ h:mm a ET')
+							? dayjs(e.endDateAndTime).format(
+									'MMMM D @ h:mm a ET'
+							  )
 							: null,
 						buttonText: e.buttonText,
 						url: e.url,
@@ -97,22 +91,22 @@ const App = ({ data: { home } }) => {
 							'MMMM D'
 						)
 					} else if (e.startDateAndTime.indexOf(':00:00') === -1) {
-						eventObject.date = dayjs
-							.tz(e.startDateAndTime, timeZone)
-							.format('MMMM D @ h:mm a ET')
+						eventObject.date = dayjs(e.startDateAndTime).format(
+							'MMMM D @ h:mm a ET'
+						)
 					} else {
-						eventObject.date = dayjs
-							.tz(e.startDateAndTime, timeZone)
-							.format('MMMM D @ h a ET')
+						eventObject.date = dayjs(e.startDateAndTime).format(
+							'MMMM D @ h a ET'
+						)
 					}
 					if (e.endDateAndTime) {
 						eventObject.date += ` — 
 					${
 						e.endDateAndTime.indexOf('00:00:00') !== -1
 							? dayjs(e.endDateAndTime).format('MMMM D')
-							: dayjs
-									.tz(e.endDateAndTime, timeZone)
-									.format('MMMM D @ h:mm a ET')
+							: dayjs(e.endDateAndTime).format(
+									'MMMM D @ h:mm a ET'
+							  )
 					}`
 					}
 					events.details.push(eventObject)
