@@ -53,6 +53,7 @@ const channelImageCSS = css`
 const Channel = ({ slug, channel }) => {
 	const { image, heading, brief } = channel
 	const channelLink = channel.channelLink[0]
+	console.log(channel.channelLink)
 	return (
 		<div css={channelCSS}>
 			{channelLink.__typename === 'DatoCmsInternalLink' && (
@@ -88,6 +89,25 @@ const Channel = ({ slug, channel }) => {
 						<span>{heading}</span>
 						<p>{brief}</p>
 					</Link>
+				</>
+			)}
+			{channelLink.__typename === 'DatoCmsExternalUrl' && (
+				<>
+					<a
+						href={channelLink.externalUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<Img
+							fluid={image.fluid}
+							css={channelImageCSS}
+							style={{
+								display: 'block',
+							}}
+						/>
+						<span>{heading}</span>
+						<p>{brief}</p>
+					</a>
 				</>
 			)}
 		</div>

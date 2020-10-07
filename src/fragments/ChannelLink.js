@@ -2,6 +2,10 @@ import { graphql } from 'gatsby'
 
 export const ChannelLink = graphql`
 	fragment ChannelLink on DatoCmsUnionForDatoCmsChannelChannelLink {
+		... on DatoCmsExternalUrl {
+			__typename
+			externalUrl
+		}
 		... on DatoCmsInternalLink {
 			__typename
 			link {

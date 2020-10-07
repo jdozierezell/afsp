@@ -22,12 +22,33 @@ const carouselCSS = css`
 `
 
 const Story = ({ data: { story }, pageContext: { prev, next } }) => {
+	let metaImage = ''
+	story.seoMetaTags.tags.forEach(tag => {
+		console.log(tag.attributes)
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@context': 'https://schema.org',
+		'@type': 'Blog',
+		image: metaImage,
+		headline: story.title,
+		datePublished: story.meta.firstPublishedAt,
+		dateModified: story.meta.publishedAt,
+	}
 	return (
 		<Layout
 			theme={styles.logo.mobileDarkDesktopLight}
 			overrideLight={true}
 			seo={story.seoMetaTags}
 			facebook={true}
+			structuredData={structuredData}
 		>
 			<HeroStories data={story} prev={prev} next={next} />
 			<ContentStory data={story} />
@@ -41,6 +62,10 @@ export default Story
 export const query = graphql`
 	query($slug: String) {
 		story: datoCmsStory(slug: { eq: $slug }) {
+			meta {
+				publishedAt
+				firstPublishedAt
+			}
 			title
 			coverImage {
 				url
