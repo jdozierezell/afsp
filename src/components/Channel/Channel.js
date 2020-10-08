@@ -53,7 +53,6 @@ const channelImageCSS = css`
 const Channel = ({ slug, channel }) => {
 	const { image, heading, brief } = channel
 	const channelLink = channel.channelLink[0]
-	console.log(channel.channelLink)
 	return (
 		<div css={channelCSS}>
 			{channelLink.__typename === 'DatoCmsInternalLink' && (

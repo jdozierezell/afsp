@@ -83,9 +83,6 @@ const App = ({ data: { home } }) => {
 						url: e.url,
 						eventCode: e.eventCode,
 					}
-					{
-						console.log(e.startDateAndTime)
-					}
 					if (e.startDateAndTime.indexOf('00:00:00') !== -1) {
 						eventObject.date = dayjs(e.startDateAndTime).format(
 							'MMMM D'
