@@ -101,7 +101,7 @@ const ReciteComponent = () => {
 			setInterval(() => {
 				const arrayItem = Math.floor(Math.random() * 10)
 				setA11yText(a11y[arrayItem].a11y)
-			}, 1500)
+			}, 2000)
 		}
 	}, [firstRun])
 	return (

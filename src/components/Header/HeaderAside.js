@@ -7,15 +7,36 @@ import { styles } from '../../css/css'
 
 const headerAsideCSS = css`
 	background-color: ${styles.colors.yellow};
-	padding: ${styles.scale.px5} ${styles.scale.px24};
-	@media (min-width: ${styles.screens.mobile}) {
-		padding: ${styles.scale.px14} ${styles.scale.px50};
-	}
-	p {
+	padding: ${styles.scale.px24} ${styles.scale.px24};
+	position: relative;
+	> div {
 		font-family: ${styles.fonts.avenirRegular};
-		text-align: center;
 		line-height: ${styles.scale.px24};
 		margin: 0;
+		text-align: center;
+		&:last-of-type {
+			padding-top: ${styles.scale.px12};
+		}
+	}
+	@media (min-width: ${styles.screens.mobile}px) {
+		padding: ${styles.scale.px14} ${styles.scale.px50};
+		min-height: ${styles.scale.px46};
+		> div {
+			font-family: ${styles.fonts.avenirRegular};
+			line-height: ${styles.scale.px24};
+			margin: 0;
+			position: absolute;
+			top: ${styles.scale.px12};
+			&:first-of-type {
+				text-align: left;
+				left: ${styles.scale.px24};
+			}
+			&:last-of-type {
+				text-align: right;
+				right: ${styles.scale.px24};
+				padding-top: 0;
+			}
+		}
 	}
 	a {
 		color: ${styles.colors.darkGray};
@@ -25,7 +46,7 @@ const headerAsideCSS = css`
 const HeaderAside = () => {
 	return (
 		<aside css={headerAsideCSS} aria-label="crisis resources">
-			<p>
+			<div>
 				<strong>Are you in a crisis?</strong> Call{' '}
 				<a
 					href="https://suicidepreventionlifeline.org"
@@ -44,9 +65,11 @@ const HeaderAside = () => {
 				>
 					TALK to 741741
 				</a>
-				.<br />
+				.
+			</div>
+			<div>
 				<Recite />
-			</p>
+			</div>
 		</aside>
 	)
 }
