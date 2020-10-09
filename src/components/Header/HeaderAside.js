@@ -1,6 +1,8 @@
 import React from 'react'
 import { css } from '@emotion/core'
 
+import Recite from '../Recite/Recite'
+
 import { styles } from '../../css/css'
 
 const headerAsideCSS = css`
@@ -42,7 +44,8 @@ const HeaderAside = () => {
 				>
 					TALK to 741741
 				</a>
-				.
+				.<br />
+				<Recite />
 			</p>
 		</aside>
 	)

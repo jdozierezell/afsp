@@ -19,7 +19,6 @@ const footerAsideCSS = css`
 `
 
 const FooterAside = ({ aria }) => {
-	console.log(aria)
 	return (
 		<aside css={footerAsideCSS} aria-label={aria}>
 			<p>
