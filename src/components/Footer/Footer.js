@@ -98,7 +98,7 @@ const Footer = ({ nav }) => {
 					})}
 				</div>
 				<div css={mobileFooterCSS}>
-					<FooterAside />
+					<FooterAside aria="footer crisis resources for mobile" />
 					{nav.map((item, index) => (
 						<MobileMenuSection key={index} item={item} />
 					))}

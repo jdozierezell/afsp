@@ -38,6 +38,11 @@ const ImageListContainer = ({ images, crop }) => {
 										? image.croppedImage.fluid
 										: image.originalImage.fluid
 								}
+								alt={
+									crop
+										? image.croppedImage.alt
+										: image.originalImage.alt
+								}
 							/>
 						</a>
 					</div>

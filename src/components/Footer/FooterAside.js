@@ -18,9 +18,10 @@ const footerAsideCSS = css`
 	}
 `
 
-const FooterAside = () => {
+const FooterAside = ({ aria }) => {
+	console.log(aria)
 	return (
-		<aside css={footerAsideCSS} aria-label="footer crisis resources">
+		<aside css={footerAsideCSS} aria-label={aria}>
 			<p>
 				<strong>Are you in a crisis?</strong>
 			</p>

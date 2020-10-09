@@ -21,7 +21,7 @@ export const ChapterSearch = graphql`
 								h: "1080"
 							}
 						) {
-							...GatsbyDatoCmsFluid
+							...GatsbyDatoCmsFluid_noBase64
 						}
 					}
 				}
@@ -38,7 +38,7 @@ export const ChapterSearch = graphql`
 							h: "360"
 						}
 					) {
-						...GatsbyDatoCmsFluid
+						...GatsbyDatoCmsFluid_noBase64
 					}
 				}
 				staffName

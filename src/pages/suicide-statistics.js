@@ -148,7 +148,7 @@ export const query = graphql`
 										w: "600"
 									}
 								) {
-									...GatsbyDatoCmsFluid
+									...GatsbyDatoCmsFluid_noBase64
 								}
 							}
 						}
@@ -179,7 +179,7 @@ export const query = graphql`
 										w: "600"
 									}
 								) {
-									...GatsbyDatoCmsFluid
+									...GatsbyDatoCmsFluid_noBase64
 								}
 							}
 						}
@@ -202,7 +202,7 @@ export const query = graphql`
 											w: "600"
 										}
 									) {
-										...GatsbyDatoCmsFluid
+										...GatsbyDatoCmsFluid_noBase64
 									}
 								}
 							}
@@ -226,7 +226,7 @@ export const query = graphql`
 											w: "600"
 										}
 									) {
-										...GatsbyDatoCmsFluid
+										...GatsbyDatoCmsFluid_noBase64
 									}
 								}
 							}
@@ -250,7 +250,7 @@ export const query = graphql`
 											w: "600"
 										}
 									) {
-										...GatsbyDatoCmsFluid
+										...GatsbyDatoCmsFluid_noBase64
 									}
 								}
 							}
@@ -274,7 +274,7 @@ export const query = graphql`
 											w: "600"
 										}
 									) {
-										...GatsbyDatoCmsFluid
+										...GatsbyDatoCmsFluid_noBase64
 									}
 								}
 							}
@@ -298,7 +298,7 @@ export const query = graphql`
 											w: "600"
 										}
 									) {
-										...GatsbyDatoCmsFluid
+										...GatsbyDatoCmsFluid_noBase64
 									}
 								}
 							}
@@ -322,7 +322,7 @@ export const query = graphql`
 											w: "600"
 										}
 									) {
-										...GatsbyDatoCmsFluid
+										...GatsbyDatoCmsFluid_noBase64
 									}
 								}
 							}
@@ -346,7 +346,7 @@ export const query = graphql`
 											w: "600"
 										}
 									) {
-										...GatsbyDatoCmsFluid
+										...GatsbyDatoCmsFluid_noBase64
 									}
 								}
 							}

@@ -47,7 +47,7 @@ const LayoutChapter = ({
 				theme={theme}
 				overrideLight={overrideLight}
 			/>
-			<main>{children}</main>
+			<main id="main">{children}</main>
 			{instagram && <InstagramFeed instaClass={instagram} />}
 			{email && (
 				<EmailSignup formId={email}>

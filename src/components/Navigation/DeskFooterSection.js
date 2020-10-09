@@ -54,7 +54,7 @@ const DeskFooterSection = ({ item, index, length }) => {
 			</ul>
 			{index + 1 >= length && (
 				<>
-					<FooterAside />
+					<FooterAside aria="footer crisis resources for desktop" />
 				</>
 			)}
 		</>

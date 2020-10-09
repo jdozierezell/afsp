@@ -9,9 +9,25 @@ const navCSS = css`
 	z-index: 1000;
 `
 
+const skipCSS = css`
+	background: #e77e23;
+	height: 30px;
+	left: 0;
+	padding: 8px;
+	position: absolute;
+	transform: translateY(-100%);
+	transition: transform 0.3s;
+	&:focus {
+		transform: translateY(0%);
+	}
+`
+
 const Header = ({ nav, theme, overrideLight }) => {
 	return (
 		<header>
+			<a css={skipCSS} href="#main" tabIndex="1">
+				Skip to content
+			</a>
 			<HeaderAside />
 			<div css={navCSS}>
 				<Navigation

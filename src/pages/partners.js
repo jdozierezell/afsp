@@ -111,7 +111,7 @@ export const query = graphql`
 							h: "200"
 						}
 					) {
-						...GatsbyDatoCmsFluid
+						...GatsbyDatoCmsFluid_noBase64
 					}
 				}
 				partnerDescription

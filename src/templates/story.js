@@ -79,7 +79,7 @@ export const query = graphql`
 						w: "623"
 					}
 				) {
-					...GatsbyDatoCmsFluid
+					...GatsbyDatoCmsFluid_noBase64
 				}
 			}
 			seoMetaTags {
@@ -118,7 +118,7 @@ export const query = graphql`
 								w: "623"
 							}
 						) {
-							...GatsbyDatoCmsFluid
+							...GatsbyDatoCmsFluid_noBase64
 						}
 					}
 				}

@@ -53,7 +53,7 @@ const Layout = ({
 				theme={theme}
 				overrideLight={overrideLight}
 			/>
-			<main>{children}</main>
+			<main id="main">{children}</main>
 			<EmailSignup formId="M2qiJq">
 				<div>
 					<h2 id="klaviyo-signup">Sign up for email alerts</h2>

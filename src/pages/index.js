@@ -317,7 +317,7 @@ export const query = graphql`
 									h: "200"
 								}
 							) {
-								...GatsbyDatoCmsFluid
+								...GatsbyDatoCmsFluid_noBase64
 							}
 						}
 						heading
@@ -358,7 +358,7 @@ export const query = graphql`
 											h: "370"
 										}
 									) {
-										...GatsbyDatoCmsFluid
+										...GatsbyDatoCmsFluid_noBase64
 									}
 								}
 							}
@@ -382,7 +382,7 @@ export const query = graphql`
 											h: "370"
 										}
 									) {
-										...GatsbyDatoCmsFluid
+										...GatsbyDatoCmsFluid_noBase64
 									}
 								}
 							}
@@ -406,7 +406,7 @@ export const query = graphql`
 											h: "370"
 										}
 									) {
-										...GatsbyDatoCmsFluid
+										...GatsbyDatoCmsFluid_noBase64
 									}
 								}
 							}
@@ -430,7 +430,7 @@ export const query = graphql`
 											h: "370"
 										}
 									) {
-										...GatsbyDatoCmsFluid
+										...GatsbyDatoCmsFluid_noBase64
 									}
 								}
 							}

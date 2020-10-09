@@ -39,7 +39,7 @@ export const query = graphql`
 			programLogo {
 				url
 				fluid(maxWidth: 623, imgixParams: { w: "623" }) {
-					...GatsbyDatoCmsFluid
+					...GatsbyDatoCmsFluid_noBase64
 				}
 			}
 			brief
@@ -112,7 +112,7 @@ export const query = graphql`
 								w: "623"
 							}
 						) {
-							...GatsbyDatoCmsFluid
+							...GatsbyDatoCmsFluid_noBase64
 						}
 					}
 				}

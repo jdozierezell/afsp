@@ -84,7 +84,7 @@ export const query = graphql`
 						maxWidth: 1080
 						imgixParams: { auto: "format", w: "1080" }
 					) {
-						...GatsbyDatoCmsFluid
+						...GatsbyDatoCmsFluid_noBase64
 					}
 				}
 				useDarkText
