@@ -35,6 +35,8 @@ const headerAsideCSS = css`
 				text-align: right;
 				right: ${styles.scale.px24};
 				padding-top: 0;
+				cursor: pointer;
+				text-decoration: underline;
 			}
 		}
 	}
