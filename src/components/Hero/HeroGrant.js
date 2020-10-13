@@ -134,7 +134,7 @@ const HeroGrant = ({ grant }) => {
 						grid-template-columns: repeat(${grantees.length}, 1fr);
 					}
 					@media (min-width: ${styles.screens.navigation}px) {
-						direction: rtl;
+						direction: ltr;
 						grid-template-columns: repeat(${grantees.length}, 1fr);
 					}
 				`}
@@ -153,7 +153,6 @@ const HeroGrant = ({ grant }) => {
 									}
 								`}
 							/>
-							)}
 							<p>
 								<strong>{grantee.name}</strong>
 								<br />

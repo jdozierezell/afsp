@@ -125,14 +125,12 @@ const SearchGrants = ({
 							/>
 						))}
 					</div>
-					{searchState.refinementList && (
-						<div>
-							<SearchHits
-								indexName={indexName}
-								customHitsCSS={customHitsCSS}
-							/>
-						</div>
-					)}
+					<div>
+						<SearchHits
+							indexName={indexName}
+							customHitsCSS={customHitsCSS}
+						/>
+					</div>
 				</div>
 			</InstantSearch>
 		</div>
