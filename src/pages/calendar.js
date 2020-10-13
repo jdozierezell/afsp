@@ -155,12 +155,17 @@ const AFSPCalendar = ({ data }) => {
 				<div css={deskCalendarCSS}>
 					<FullCalendar
 						plugins={[dayGridPlugin, listPlugin]}
-						initialView="dayGridMonth"
+						initialView="list"
+						duration={{ days: 30 }}
 						events={events}
-						buttonText={{ dayGridMonth: 'Month', listWeek: 'List' }}
+						buttonText={{
+							dayGridMonth: 'Month',
+							listWeek: 'List',
+							today: 'Today',
+						}}
 						headerToolbar={{
 							start: 'title', // will normally be on the left. if RTL, will be on the right
-							center: 'dayGridMonth,listWeek',
+							// center: 'dayGridMonth,listWeek',
 							end: 'today prev,next', // will normally be on the right. if RTL, will be on the left
 						}}
 					/>
