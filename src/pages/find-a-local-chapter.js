@@ -25,6 +25,7 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 	const [zip, setZip] = useState(existingSearch.zip ? existingSearch.zip : '')
 	const [noResults, setNoResults] = useState(false)
 	const [searchResults, setSearchResults] = useState([])
+	// eslint-disable-next-line no-unused-vars
 	const [query, setQuery] = useQueryParams({
 		zip: NumberParam,
 		radius: NumberParam,

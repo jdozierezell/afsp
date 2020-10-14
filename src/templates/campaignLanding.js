@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
 import ChannelContainer from '../components/Channel/ChannelContainer'
-import ConvoContainer from '../components/Convo/ConvoContainer'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
 import CarouselResourceContainer from '../components/Carousels/CarouselResourceContainer'
@@ -37,6 +36,18 @@ const channelCSS = css`
 	}
 `
 
+const readMoreCSS = css`
+	cursor: pointer;
+	text-align: left;
+	background-color: hsla(0, 0%, 100%, 1);
+	border: none;
+	display: inline-block;
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+	color: ${styles.colors.poppy};
+`
+
 const CampaignLanding = ({ data: { campaignLanding } }) => {
 	const [readMore, setReadMore] = useState(false)
 	let adjacent = 0
@@ -67,15 +78,15 @@ const CampaignLanding = ({ data: { campaignLanding } }) => {
 					{campaignLanding.readMore && (
 						<>
 							<p>
-								<a
+								<button
 									onClick={() => setReadMore(true)}
 									css={css`
-										cursor: pointer;
+										${readMoreCSS};
 										display: ${readMore ? 'none' : 'block'};
 									`}
 								>
 									Read more...
-								</a>
+								</button>
 							</p>
 
 							<div

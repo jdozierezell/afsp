@@ -135,8 +135,8 @@ const Chapter = ({
 		chapterStoriesUpdates,
 		chapterDonorDriveId,
 		realStories.edges,
-		stories.length,
-		events.length,
+		stories,
+		events,
 		storiesUpdates,
 	])
 	return (

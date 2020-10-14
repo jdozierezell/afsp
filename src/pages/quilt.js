@@ -30,9 +30,7 @@ const Quilt = ({ data: { quiltQuery } }) => {
 			: { query: '', quilt: '' }
 	)
 	const hasQuery = searchState.query ? searchState.query : '' // running a check here prevents undefined error
-	const [visibility, setVisibility] = useState(
-		hasQuery.length === 0 ? 'inherit' : 'hidden'
-	)
+	const visibility = hasQuery.length === 0 ? 'inherit' : 'hidden'
 
 	const handleSearchChange = event => {
 		setSearchState({

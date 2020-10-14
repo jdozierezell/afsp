@@ -12,7 +12,6 @@ import {
 import Layout from '../components/Layout'
 import HeroModelSearch from '../components/Hero/HeroModelSearch'
 import SearchModelContainer from '../components/Search/SearchModelContainer'
-import SearchNoResults from '../components/Search/SearchNoResults'
 import CTAContainer from '../components/CTAs/CTAContainer'
 
 import { styles } from '../css/css'
@@ -35,10 +34,10 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 	const [country, setCountry] = useState(
 		existingSearch.country ? existingSearch.country : ''
 	)
-	const [noResults, setNoResults] = useState(false)
 	const [searchResults, setSearchResults] = useState([])
 	const [countryOptions, setCountryOptions] = useState([])
 	const [onlineGroups, setOnlineGroups] = useState([])
+	// eslint-disable-next-line no-unused-vars
 	const [query, setQuery] = useQueryParams({
 		zip: NumberParam,
 		radius: NumberParam,
@@ -108,11 +107,6 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 					}
 				}
 			})
-			if (supportGroupArray.length === 0 && zip.length !== 0) {
-				setNoResults(true)
-			} else {
-				setNoResults(false)
-			}
 		}
 		return supportGroupArray
 	}
@@ -191,7 +185,6 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 					country={country}
 				/>
 			)}
-			{/* {noResults && <SearchNoResults type="support group" />} */}
 			{search.callsToAction.map((item, index) => (
 				<CTAContainer
 					key={index}

@@ -32,14 +32,14 @@ const ReciteComponent = () => {
 				a.readyState
 					? (a.onreadystatechange = function() {
 							if (
-								'loaded' == a.readyState ||
-								'complete' == a.readyState
+								'loaded' === a.readyState ||
+								'complete' === a.readyState
 							)
-								// eslint-disable-next-line no-unused-expressions
+								// eslint-disable-next-line no-unused-expressions, no-sequences
 								(a.onreadystatechange = null),
-									void 0 != b && b()
+									void 0 !== b && b()
 					  })
-					: void 0 != b &&
+					: void 0 !== b &&
 					  (a.onload = function() {
 							b()
 					  })
@@ -53,9 +53,9 @@ const ReciteComponent = () => {
 					a < b.length;
 					a++
 				) {
-					for (var d = b[a]; ' ' == d.charAt(0); )
+					for (var d = b[a]; ' ' === d.charAt(0); )
 						d = d.substring(1, d.length)
-					if (0 == d.indexOf(c))
+					if (0 === d.indexOf(c))
 						return d.substring(c.length, d.length)
 				}
 				return null
@@ -66,12 +66,12 @@ const ReciteComponent = () => {
 					a < loaded.length;
 					a++
 				)
-					if (loaded[a] == b) return
+					if (loaded[a] === b) return
 				loaded.push(b)
 				loadScript(serviceUrl + serviceKey, function() {
 					// eslint-disable-next-line no-undef
 					'function' === typeof _reciteLoaded && _reciteLoaded()
-					'function' == typeof c && c()
+					'function' === typeof c && c()
 					// eslint-disable-next-line no-undef
 					Recite.load(options)
 					// eslint-disable-next-line no-undef
@@ -81,8 +81,8 @@ const ReciteComponent = () => {
 					})
 				})
 			}
-			'true' == _rc('Recite.Persist') && loadService()
-			if ((autoLoad && 'false' != _rc('Recite.Persist')) || frag) {
+			'true' === _rc('Recite.Persist') && loadService()
+			if ((autoLoad && 'false' !== _rc('Recite.Persist')) || frag) {
 				document.addEventListener
 					? document.addEventListener('DOMContentLoaded', function(
 							c
@@ -103,7 +103,7 @@ const ReciteComponent = () => {
 				setA11yText(a11y[arrayItem].a11y)
 			}, 2000)
 		}
-	}, [firstRun])
+	}, [firstRun, a11y])
 	return (
 		<span id="reciteme" className="reciteme">
 			<strong>{a11yText}</strong>
