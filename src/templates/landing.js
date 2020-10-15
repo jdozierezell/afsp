@@ -25,6 +25,7 @@ const landingTitle = css`
 const landingBriefCSS = css`
 	padding: 0 24px;
 	margin: 0;
+	max-width: 920px;
 	dfn {
 		color: ${styles.colors.poppy};
 		text-decoration: underline;
