@@ -25,24 +25,10 @@ const landingTitle = css`
 const landingBriefCSS = css`
 	padding: 0 24px;
 	margin: 0;
-`
-
-const introCopyCSS = css`
-	background-color: ${styles.colors.lightGray};
-	margin: -${styles.scale.px36} 0 -${styles.scale.px24};
-	div {
-		padding: ${styles.scale.px24};
-		font-family: ${styles.fonts.avenirRegular};
-		@media (min-width: ${styles.screens.mobile}px) {
-			max-width: calc(623px * 2);
-			columns: 2;
-			padding: ${styles.scale.px50};
-		}
-		@media (min-width: ${styles.screens.navigation}px) {
-			max-width: calc(623px * 3);
-			columns: 3;
-			padding: ${styles.scale.px50};
-		}
+	dfn {
+		color: ${styles.colors.poppy};
+		text-decoration: underline;
+		cursor: pointer;
 	}
 `
 
@@ -65,34 +51,28 @@ const Landing = ({ data: { landing } }) => {
 			seo={landing.seoMetaTags}
 		>
 			<h1 css={landingTitle}>{landing.title}</h1>
-			{!landing.introCopy && (
-				<p
-					css={css`
-						${landingBriefCSS};
-						@media (min-width: ${styles.screens.tablet}px) {
-							padding: 0 ${styles.scale.px50}
-								${landing.channelList.length !== 0
-									? 0
-									: styles.scale.px50};
-						}
-					`}
-				>
-					{landing.seo.description}
-				</p>
-			)}
+			<p
+				css={css`
+					${landingBriefCSS};
+					@media (min-width: ${styles.screens.tablet}px) {
+						padding: 0 ${styles.scale.px50}
+							${landing.channelList.length !== 0
+								? 0
+								: styles.scale.px50};
+					}
+				`}
+				dangerouslySetInnerHTML={{
+					__html: landing.introCopy
+						? landing.introCopy
+						: landing.seo.description,
+				}}
+			></p>
 			{landing.channelList.length !== 0 && (
 				<ChannelContainer
 					slug={landing.slug}
 					channelList={landing.channelList}
 					addCSS={channelCSS}
 				/>
-			)}
-			{landing.introCopy && (
-				<div css={introCopyCSS}>
-					<div
-						dangerouslySetInnerHTML={{ __html: landing.introCopy }}
-					></div>
-				</div>
 			)}
 			{landing.ctaChapterResourceDetailList.map((item, index) => {
 				const prevIndex = index > 0 ? index - 1 : null
