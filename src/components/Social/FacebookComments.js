@@ -53,6 +53,7 @@ const FacebookComments = () => {
 	const location = typeof window !== `undefined` ? window.location : ''
 	return (
 		<>
+			{console.log(fbDefined)}
 			{// eslint-disable-next-line no-undef
 			fbDefined && (
 				<aside css={commentCSS}>

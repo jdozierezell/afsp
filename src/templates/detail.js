@@ -10,6 +10,32 @@ import CarouselChapterContainer from '../components/Carousels/CarouselChapterCon
 import { styles } from '../css/css'
 
 const Detail = ({ data: { detail } }) => {
+	let metaImage,
+		metaDescription = ''
+	detail.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'HealthTopicContent',
+		hasHealthAspect: 'PreventionHealthAspect',
+		about: 'suicide',
+		abstract: metaDescription,
+		publisher: 'American Foundation for Suicide Prevention',
+	}
 	const [hasEvents, setHasEvents] = useState(false)
 	const setEvents = events => {
 		if (events) {
@@ -34,6 +60,9 @@ export default Detail
 export const query = graphql`
 	query($slug: String) {
 		detail: datoCmsDetail(slug: { eq: $slug }) {
+			seoMetaTags {
+				...GatsbyDatoCmsSeoMetaTags
+			}
 			title
 			slug
 			programLogo {
@@ -139,9 +168,6 @@ export const query = graphql`
 				}
 			}
 			overrideWidth
-			seoMetaTags {
-				...GatsbyDatoCmsSeoMetaTags
-			}
 		}
 	}
 `

@@ -22,9 +22,9 @@ const carouselCSS = css`
 `
 
 const Story = ({ data: { story }, pageContext: { prev, next } }) => {
-	let metaImage = ''
+	let metaImage,
+		metaDescription = ''
 	story.seoMetaTags.tags.forEach(tag => {
-		console.log(tag.attributes)
 		if (tag.attributes) {
 			if (
 				tag.attributes.property &&
@@ -36,11 +36,13 @@ const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 	})
 	const structuredData = {
 		'@context': 'https://schema.org',
-		'@type': 'Blog',
+		'@type': 'Article',
 		image: metaImage,
 		headline: story.title,
 		datePublished: story.meta.firstPublishedAt,
 		dateModified: story.meta.publishedAt,
+		abstract: metaDescription,
+		publisher: 'American Foundation for Suicide Prevention',
 	}
 	return (
 		<Layout

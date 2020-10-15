@@ -5,19 +5,15 @@ const chapterSearchResults = (chapters, response) => {
 	const chapterArray = []
 	chapters.edges.forEach(chapter => {
 		if (chapter.node.chapterInformation.zipCode) {
-			if (
-				chapter.node.chapterInformation.zipCode.zips.includes(
-					response.primaryZip
-				)
-			) {
-				chapterArray.unshift([chapter.node, response.primaryZip])
-			} else if (
-				chapter.node.chapterInformation.zipCode.zips.some(zip =>
-					response.otherZips.includes(zip)
-				)
-			) {
-				chapter.node['location'] = response.primaryZip
-				chapterArray.push([chapter.node, response.primaryZip])
+			let zips = JSON.parse(chapter.node.chapterInformation.zipCode)
+			zips = zips.zips
+			if (zips) {
+				if (zips.includes(response.primaryZip)) {
+					chapterArray.unshift([chapter.node, response.primaryZip])
+				} else if (zips.some(zip => response.otherZips.includes(zip))) {
+					chapter.node['location'] = response.primaryZip
+					chapterArray.push([chapter.node, response.primaryZip])
+				}
 			}
 		}
 	})

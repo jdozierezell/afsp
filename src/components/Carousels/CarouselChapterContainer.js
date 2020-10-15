@@ -61,7 +61,6 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 		}
 	`)
 	const { chapters } = data
-
 	const [displayChapters, setDisplayChapters] = useState([])
 
 	const responsive = {

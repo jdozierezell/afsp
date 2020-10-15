@@ -12,6 +12,31 @@ import CarouselChapterContainer from '../components/Carousels/CarouselChapterCon
 import { styles } from '../css/css'
 
 const RealStories = ({ data: { real, stories } }) => {
+	let metaImage,
+		metaDescription = ''
+	real.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'Blog',
+		about: 'suicide',
+		abstract: metaDescription,
+		publisher: 'American Foundation for Suicide Prevention',
+	}
 	stories.edges.forEach(story => {
 		story.node.type = 'story'
 	})
@@ -29,6 +54,7 @@ const RealStories = ({ data: { real, stories } }) => {
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={real.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<HeroVideo
 				videoUrl={
