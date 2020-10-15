@@ -32,6 +32,8 @@ const MenuCTA = ({ width, margin }) => {
 				margin: ${margin};
 			`}
 			href="https://afsp.donordrive.com"
+			target="_blank"
+			rel="noreferrer"
 		>
 			Donate
 		</a>
