@@ -75,8 +75,8 @@ const Landing = ({ data: { landing } }) => {
 					}
 				`}
 				dangerouslySetInnerHTML={{
-					__html: landing.introCopy
-						? landing.introCopy
+					__html: landing.brief
+						? landing.brief
 						: landing.seo.description,
 				}}
 			></p>
@@ -213,7 +213,7 @@ export const query = graphql`
 					...ChannelLink
 				}
 			}
-			introCopy
+			brief
 			ctaChapterResourceDetailList {
 				... on DatoCmsResourceList {
 					__typename

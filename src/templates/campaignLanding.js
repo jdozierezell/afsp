@@ -14,9 +14,12 @@ import Calendar from '../components/Calendar/Calendar'
 import { styles } from '../css/css'
 
 const landingTitle = css`
-	margin: 150px 24px 35px;
+	margin: 150px 24px 0px;
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin: 180px 50px 40px;
+	}
+	+ div {
+		margin: ${styles.scale.px36} 0 -${styles.scale.px24};
 	}
 `
 
