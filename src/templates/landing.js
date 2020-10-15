@@ -64,7 +64,7 @@ const Landing = ({ data: { landing } }) => {
 			seo={landing.seoMetaTags}
 		>
 			<h1 css={landingTitle}>{landing.title}</h1>
-			<p
+			<div
 				css={css`
 					${landingBriefCSS};
 					@media (min-width: ${styles.screens.tablet}px) {
@@ -75,11 +75,9 @@ const Landing = ({ data: { landing } }) => {
 					}
 				`}
 				dangerouslySetInnerHTML={{
-					__html: landing.brief
-						? landing.brief
-						: landing.seo.description,
+					__html: landing.brief,
 				}}
-			></p>
+			></div>
 			{landing.readMore && (
 				<>
 					<p>
