@@ -38,7 +38,6 @@ const SuicideResearchVideos = ({ data: { search } }) => {
 			}
 			tempSearch.refinementList[attribute] = value
 		}
-		console.log(tempSearch)
 		setSearchState({
 			...searchState,
 			...tempSearch,
