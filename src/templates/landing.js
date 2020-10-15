@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 
@@ -42,7 +42,20 @@ const channelCSS = css`
 	}
 `
 
+const readMoreCSS = css`
+	cursor: pointer;
+	text-align: left;
+	background-color: hsla(0, 0%, 100%, 1);
+	border: none;
+	display: inline-block;
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+	color: ${styles.colors.poppy};
+`
+
 const Landing = ({ data: { landing } }) => {
+	const [readMore, setReadMore] = useState(false)
 	let adjacent = 0
 
 	return (
@@ -67,6 +80,30 @@ const Landing = ({ data: { landing } }) => {
 						: landing.seo.description,
 				}}
 			></p>
+			{landing.readMore && (
+				<>
+					<p>
+						<button
+							onClick={() => setReadMore(true)}
+							css={css`
+								${readMoreCSS};
+								display: ${readMore ? 'none' : 'block'};
+							`}
+						>
+							Read more...
+						</button>
+					</p>
+
+					<div
+						css={css`
+							display: ${readMore ? 'block' : 'none'};
+						`}
+						dangerouslySetInnerHTML={{
+							__html: landing.readMore,
+						}}
+					></div>
+				</>
+			)}
 			{landing.channelList.length !== 0 && (
 				<ChannelContainer
 					slug={landing.slug}
