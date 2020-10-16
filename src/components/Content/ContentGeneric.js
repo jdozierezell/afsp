@@ -3,32 +3,32 @@ import { css } from '@emotion/core'
 
 import { styles } from '../../css/css'
 
-import ContentEvent from './ContentEvent'
-import Content from './Content'
-import RecommendationsVideoStories from '../Recommendations/RecommendationsVideoStories'
-import CardContainer from '../Cards/CardContainer'
-import ContentImage from './ContentImage'
-import ContentVideo from './ContentVideo'
-import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
-import ContentAudio from './ContentAudio'
-import ContentHeading from './ContentHeading'
-import ContentEmbed from './ContentEmbed'
-// import Loadable from '@loadable/component'
+// import ContentEvent from './ContentEvent'
+// import Content from './Content'
+// import RecommendationsVideoStories from '../Recommendations/RecommendationsVideoStories'
+// import CardContainer from '../Cards/CardContainer'
+// import ContentImage from './ContentImage'
+// import ContentVideo from './ContentVideo'
+// import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
+// import ContentAudio from './ContentAudio'
+// import ContentHeading from './ContentHeading'
+// import ContentEmbed from './ContentEmbed'
+import Loadable from '@loadable/component'
 
-// const ContentEvent = Loadable(() => import('./ContentEvent'))
-// const Content = Loadable(() => import('./Content'))
-// const RecommendationsVideoStories = Loadable(() =>
-// 	import('../Recommendations/RecommendationsVideoStories')
-// )
-// const CardContainer = Loadable(() => import('../Cards/CardContainer'))
-// const ContentImage = Loadable(() => import('./ContentImage'))
-// const ContentVideo = Loadable(() => import('./ContentVideo'))
-// const CarouselDetailContainer = Loadable(() =>
-// 	import('../Carousels/CarouselDetailContainer')
-// )
-// const ContentAudio = Loadable(() => import('./ContentAudio'))
-// const ContentHeading = Loadable(() => import('./ContentHeading'))
-// const ContentEmbed = Loadable(() => import('./ContentEmbed'))
+const ContentEvent = Loadable(() => import('./ContentEvent'))
+const Content = Loadable(() => import('./Content'))
+const RecommendationsVideoStories = Loadable(() =>
+	import('../Recommendations/RecommendationsVideoStories')
+)
+const CardContainer = Loadable(() => import('../Cards/CardContainer'))
+const ContentImage = Loadable(() => import('./ContentImage'))
+const ContentVideo = Loadable(() => import('./ContentVideo'))
+const CarouselDetailContainer = Loadable(() =>
+	import('../Carousels/CarouselDetailContainer')
+)
+const ContentAudio = Loadable(() => import('./ContentAudio'))
+const ContentHeading = Loadable(() => import('./ContentHeading'))
+const ContentEmbed = Loadable(() => import('./ContentEmbed'))
 
 const storyContentCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24} 0;
