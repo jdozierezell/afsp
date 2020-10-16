@@ -6,30 +6,30 @@ import Layout from '../components/Layout'
 
 import { styles } from '../css/css'
 
-import ChannelContainer from '../components/Channel/ChannelContainer'
-import CTAContainer from '../components/CTAs/CTAContainer'
-import CarouselResourceContainer from '../components/Carousels/CarouselResourceContainer'
-import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
-import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
-import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
-// import Loadable from '@loadable/component'
+// import ChannelContainer from '../components/Channel/ChannelContainer'
+// import CTAContainer from '../components/CTAs/CTAContainer'
+// import CarouselResourceContainer from '../components/Carousels/CarouselResourceContainer'
+// import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
+// import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
+// import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
+import Loadable from '@loadable/component'
 
-// const ChannelContainer = Loadable(() =>
-// 	import('../components/Channel/ChannelContainer')
-// )
-// const CTAContainer = Loadable(() => import('../components/CTAs/CTAContainer'))
-// const CarouselResourceContainer = Loadable(() =>
-// 	import('../components/Carousels/CarouselResourceContainer')
-// )
-// const CarouselDetailContainer = Loadable(() =>
-// 	import('../components/Carousels/CarouselDetailContainer')
-// )
-// const CarouselChapterContainer = Loadable(() =>
-// 	import('../components/Carousels/CarouselChapterContainer')
-// )
-// const FeaturedResourcesContainer = Loadable(() =>
-// 	import('../components/FeaturedResources/FeaturedResourcesContainer')
-// )
+const ChannelContainer = Loadable(() =>
+	import('../components/Channel/ChannelContainer')
+)
+const CTAContainer = Loadable(() => import('../components/CTAs/CTAContainer'))
+const CarouselResourceContainer = Loadable(() =>
+	import('../components/Carousels/CarouselResourceContainer')
+)
+const CarouselDetailContainer = Loadable(() =>
+	import('../components/Carousels/CarouselDetailContainer')
+)
+const CarouselChapterContainer = Loadable(() =>
+	import('../components/Carousels/CarouselChapterContainer')
+)
+const FeaturedResourcesContainer = Loadable(() =>
+	import('../components/FeaturedResources/FeaturedResourcesContainer')
+)
 
 const landingTitle = css`
 	margin: 150px 24px 0;
