@@ -19,14 +19,14 @@ module.exports = {
 		`gatsby-plugin-playground`,
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-netlify`,
-		{
-			resolve: `gatsby-plugin-loadable-components-ssr`,
-			options: {
-				// Whether replaceHydrateFunction should call ReactDOM.hydrate or ReactDOM.render
-				// Defaults to ReactDOM.render on develop and ReactDOM.hydrate on build
-				useHydrate: true,
-			},
-		},
+		// {
+		// 	resolve: `gatsby-plugin-loadable-components-ssr`,
+		// 	options: {
+		// 		// Whether replaceHydrateFunction should call ReactDOM.hydrate or ReactDOM.render
+		// 		// Defaults to ReactDOM.render on develop and ReactDOM.hydrate on build
+		// 		useHydrate: true,
+		// 	},
+		// },
 		// {
 		// 	resolve: `gatsby-source-filesystem`,
 		// 	options: {
