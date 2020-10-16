@@ -48,7 +48,6 @@ const RefinementList = ({
 	searchState,
 	handleSearchChange,
 }) => {
-	console.log(items)
 	const [options, setOptions] = useState([])
 	const [placeholder, setPlaceholder] = useState(
 		`Select a ${displayAttribute}`
