@@ -4,6 +4,8 @@ import { css } from '@emotion/core'
 import HeaderAside from './HeaderAside'
 import Navigation from '../Navigation/Navigation'
 
+import { styles } from '../../css/css'
+
 const navCSS = css`
 	position: relative;
 	z-index: 1000;
@@ -17,6 +19,7 @@ const skipCSS = css`
 	position: absolute;
 	transform: translateY(-100%);
 	transition: transform 0.3s;
+	color: ${styles.colors.darkGray};
 	&:focus {
 		transform: translateY(0%);
 	}

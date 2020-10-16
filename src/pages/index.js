@@ -3,19 +3,28 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import dayjs from 'dayjs'
 import Script from 'react-load-script'
+import Loadable from '@loadable/component'
 
 import Layout from '../components/Layout'
-import BreakingNews from '../components/BreakingNews/BreakingNews'
 import HeroVideo from '../components/Hero/HeroVideo'
-import ChannelContainer from '../components/Channel/ChannelContainer'
-import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
-import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
-import CTAContainer from '../components/CTAs/CTAContainer'
-import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
 import InstagramFeed from '../components/Social/InstagramFeed'
-import Ticker from '../components/Ticker/Ticker'
 
 import { styles } from '../css/css'
+
+const ChannelContainer = Loadable(() =>
+	import('../components/Channel/ChannelContainer')
+)
+const CTAContainer = Loadable(() => import('../components/CTAs/CTAContainer'))
+const CarouselChapterContainer = Loadable(() =>
+	import('../components/Carousels/CarouselChapterContainer')
+)
+const FeaturedResourcesContainer = Loadable(() =>
+	import('../components/FeaturedResources/FeaturedResourcesContainer')
+)
+const CarouselDetailContainer = Loadable(() =>
+	import('../components/Carousels/CarouselDetailContainer')
+)
+const Ticker = Loadable(() => import('../components/Ticker/Ticker'))
 
 const walkBar = css`
 	background-color: ${styles.colors.blue};
@@ -118,7 +127,6 @@ const App = ({ data: { home } }) => {
 			seo={home.seoMetaTags}
 			structuredData={structuredData}
 		>
-			{home.breakingNews && <BreakingNews news={home.breakingNews} />}
 			<HeroVideo
 				videoUrl={
 					home.heroVideo.video

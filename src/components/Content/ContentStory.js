@@ -1,18 +1,22 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import Loadable from '@loadable/component'
 
 import FacebookShare from '../Social/FacebookShare'
 import TwitterShare from '../Social/TwitterShare'
 import EmailShare from '../Social/EmailShare'
 import FacebookComments from '../Social/FacebookComments'
-import ContentImage from './ContentImage'
-import ContentAudio from './ContentAudio'
-import ContentVideo from './ContentVideo'
-import ContentHeading from './ContentHeading'
-import ContentEmbed from './ContentEmbed'
-import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
 
 import { styles } from '../../css/css'
+
+const ContentImage = Loadable(() => import('./ContentImage'))
+const ContentAudio = Loadable(() => import('./ContentAudio'))
+const ContentVideo = Loadable(() => import('./ContentVideo'))
+const ContentHeading = Loadable(() => import('./ContentHeading'))
+const ContentEmbed = Loadable(() => import('./ContentEmbed'))
+const CarouselDetailContainer = Loadable(() =>
+	import('../Carousels/CarouselDetailContainer')
+)
 
 const storyContentCSS = css`
 	margin: ${styles.scale.px50} 0;

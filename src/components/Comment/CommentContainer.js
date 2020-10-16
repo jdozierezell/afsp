@@ -40,7 +40,6 @@ const CommentContainer = () => {
 			<h2>Comments</h2>
 			<div>
 				<Comment />
-				<Comment />
 			</div>
 			<a className="secondary-button" href="https://example.com">
 				Join the conversation on Facebook

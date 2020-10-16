@@ -1,22 +1,35 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
+import Loadable from '@loadable/component'
 
 import Layout from '../components/Layout'
-import ChannelContainer from '../components/Channel/ChannelContainer'
-import CTAContainer from '../components/CTAs/CTAContainer'
-import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
-import CarouselResourceContainer from '../components/Carousels/CarouselResourceContainer'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
-import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
-import Calendar from '../components/Calendar/Calendar'
 
 import { styles } from '../css/css'
 
+const ChannelContainer = Loadable(() =>
+	import('../components/Channel/ChannelContainer')
+)
+const Calendar = Loadable(() => import('../components/Calendar/Calendar'))
+const CTAContainer = Loadable(() => import('../components/CTAs/CTAContainer'))
+const CarouselResourceContainer = Loadable(() =>
+	import('../components/Carousels/CarouselResourceContainer')
+)
+const CarouselDetailContainer = Loadable(() =>
+	import('../components/Carousels/CarouselDetailContainer')
+)
+const FeaturedResourcesContainer = Loadable(() =>
+	import('../components/FeaturedResources/FeaturedResourcesContainer')
+)
+
 const landingTitle = css`
-	margin: 150px 24px 35px;
+	margin: 150px 24px 0px;
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin: 180px 50px 40px;
+	}
+	+ div {
+		margin: ${styles.scale.px36} 0 -${styles.scale.px24};
 	}
 `
 

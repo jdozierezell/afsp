@@ -1,16 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
+import Loadable from '@loadable/component'
 
 import Layout from '../components/Layout'
-import ChannelContainer from '../components/Channel/ChannelContainer'
-import CTAContainer from '../components/CTAs/CTAContainer'
-import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
-import CarouselResourceContainer from '../components/Carousels/CarouselResourceContainer'
-import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
-import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
 
 import { styles } from '../css/css'
+
+const ChannelContainer = Loadable(() =>
+	import('../components/Channel/ChannelContainer')
+)
+const CTAContainer = Loadable(() => import('../components/CTAs/CTAContainer'))
+const CarouselResourceContainer = Loadable(() =>
+	import('../components/Carousels/CarouselResourceContainer')
+)
+const CarouselDetailContainer = Loadable(() =>
+	import('../components/Carousels/CarouselDetailContainer')
+)
+const CarouselChapterContainer = Loadable(() =>
+	import('../components/Carousels/CarouselChapterContainer')
+)
+const FeaturedResourcesContainer = Loadable(() =>
+	import('../components/FeaturedResources/FeaturedResourcesContainer')
+)
 
 const landingTitle = css`
 	margin: 150px 24px 0;
@@ -25,6 +37,7 @@ const landingTitle = css`
 const landingBriefCSS = css`
 	padding: 0 24px;
 	margin: 0;
+	max-width: 920px;
 	dfn {
 		color: ${styles.colors.poppy};
 		text-decoration: underline;
@@ -42,7 +55,20 @@ const channelCSS = css`
 	}
 `
 
+const readMoreCSS = css`
+	cursor: pointer;
+	text-align: left;
+	background-color: hsla(0, 0%, 100%, 1);
+	border: none;
+	display: inline-block;
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+	color: ${styles.colors.poppy};
+`
+
 const Landing = ({ data: { landing } }) => {
+	const [readMore, setReadMore] = useState(false)
 	let adjacent = 0
 
 	return (
@@ -51,7 +77,7 @@ const Landing = ({ data: { landing } }) => {
 			seo={landing.seoMetaTags}
 		>
 			<h1 css={landingTitle}>{landing.title}</h1>
-			<p
+			<div
 				css={css`
 					${landingBriefCSS};
 					@media (min-width: ${styles.screens.tablet}px) {
@@ -62,11 +88,33 @@ const Landing = ({ data: { landing } }) => {
 					}
 				`}
 				dangerouslySetInnerHTML={{
-					__html: landing.introCopy
-						? landing.introCopy
-						: landing.seo.description,
+					__html: landing.brief,
 				}}
-			></p>
+			></div>
+			{landing.readMore && (
+				<>
+					<p>
+						<button
+							onClick={() => setReadMore(true)}
+							css={css`
+								${readMoreCSS};
+								display: ${readMore ? 'none' : 'block'};
+							`}
+						>
+							Read more...
+						</button>
+					</p>
+
+					<div
+						css={css`
+							display: ${readMore ? 'block' : 'none'};
+						`}
+						dangerouslySetInnerHTML={{
+							__html: landing.readMore,
+						}}
+					></div>
+				</>
+			)}
 			{landing.channelList.length !== 0 && (
 				<ChannelContainer
 					slug={landing.slug}
@@ -176,7 +224,7 @@ export const query = graphql`
 					...ChannelLink
 				}
 			}
-			introCopy
+			brief
 			ctaChapterResourceDetailList {
 				... on DatoCmsResourceList {
 					__typename

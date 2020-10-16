@@ -3,9 +3,9 @@ import { useStaticQuery, graphql } from 'gatsby'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import Header from './Header/Header'
+import Footer from './Footer/Footer'
 import InstagramFeed from '../components/Social/InstagramFeed'
 import EmailSignup from './EmailSignup/EmailSignup'
-import Footer from './Footer/Footer'
 
 const LayoutChapter = ({
 	theme,
