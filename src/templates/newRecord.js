@@ -1,20 +1,24 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
-import Loadable from '@loadable/component'
 
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
 
 import { styles } from '../css/css'
 
-const FormDisclaimer = Loadable(() =>
-	import('../components/Forms/FormDisclaimer')
-)
-const FormQuilt = Loadable(() => import('../components/Forms/FormQuilt'))
-const FormSupportGroup = Loadable(() =>
-	import('../components/Forms/FormSupportGroup')
-)
+import FormDisclaimer from '../components/Forms/FormDisclaimer'
+import FormQuilt from '../components/Forms/FormQuilt'
+import FormSupportGroup from '../components/Forms/FormSupportGroup'
+// import Loadable from '@loadable/component'
+
+// const FormDisclaimer = Loadable(() =>
+// 	import('../components/Forms/FormDisclaimer')
+// )
+// const FormQuilt = Loadable(() => import('../components/Forms/FormQuilt'))
+// const FormSupportGroup = Loadable(() =>
+// 	import('../components/Forms/FormSupportGroup')
+// )
 
 const mainCSS = css`
 	padding: ${styles.scale.px50} ${styles.scale.px24};

@@ -2,13 +2,15 @@ import React from 'react'
 import { css } from '@emotion/core'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
-import Loadable from '@loadable/component'
 
 import readTime from '../../utils/readTime'
 
 import { styles } from '../../css/css'
 
-const IconArrow = Loadable(() => import('../SVGs/IconArrow'))
+import IconArrow from '../SVGs/IconArrow'
+// import Loadable from '@loadable/component'
+
+// const IconArrow = Loadable(() => import('../SVGs/IconArrow'))
 
 const storyHeroCSS = css`
 	margin: ${styles.scale.px150} ${styles.scale.px24} ${styles.scale.px30};

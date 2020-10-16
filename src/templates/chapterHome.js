@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import fetch from 'isomorphic-fetch'
-import Loadable from '@loadable/component'
 
 import LayoutChapter from '../components/LayoutChapter'
 import HeroChapter from '../components/Hero/HeroChapter'
@@ -13,12 +12,16 @@ import CTAContainer from '../components/CTAs/CTAContainer'
 
 import { styles } from '../css/css'
 
-const StoriesContainer = Loadable(() =>
-	import('../components/Stories/StoriesContainer')
-)
-const ChapterSocials = Loadable(() =>
-	import('../components/Social/ChapterSocials')
-)
+import StoriesContainer from '../components/Stories/StoriesContainer'
+import ChapterSocials from '../components/Social/ChapterSocials'
+// import Loadable from '@loadable/component'
+
+// const StoriesContainer = Loadable(() =>
+// 	import('../components/Stories/StoriesContainer')
+// )
+// const ChapterSocials = Loadable(() =>
+// 	import('../components/Social/ChapterSocials')
+// )
 
 const eventCarouselCSS = css``
 

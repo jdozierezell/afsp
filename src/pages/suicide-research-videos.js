@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import qs from 'qs'
 import { graphql } from 'gatsby'
-import Loadable from '@loadable/component'
 
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
@@ -11,7 +10,10 @@ import searchURL from '../utils/searchURL'
 
 import { styles } from '../css/css'
 
-const CTAContainer = Loadable(() => import('../components/CTAs/CTAContainer'))
+import CTAContainer from '../components/CTAs/CTAContainer'
+// import Loadable from '@loadable/component'
+
+// const CTAContainer = Loadable(() => import('../components/CTAs/CTAContainer'))
 
 const SuicideResearchVideos = ({ data: { search } }) => {
 	let query =

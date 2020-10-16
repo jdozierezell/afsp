@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
-import Loadable from '@loadable/component'
 
 import Layout from '../components/Layout'
 import HeroStatistics from '../components/Hero/HeroStatistics'
@@ -10,13 +9,18 @@ import StatisticsContainer from '../components/Statistics/StatisticsContainer'
 
 import { styles } from '../css/css'
 
-const CTAContainer = Loadable(() => import('../components/CTAs/CTAContainer'))
-const RecommendationsContentStories = Loadable(() =>
-	import('../components/Recommendations/RecommendationsContentStories')
-)
-const FeaturedResourcesContainer = Loadable(() =>
-	import('../components/FeaturedResources/FeaturedResourcesContainer')
-)
+import CTAContainer from '../components/CTAs/CTAContainer'
+import RecommendationsContentStories from '../components/Recommendations/RecommendationsContentStories'
+import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
+// import Loadable from '@loadable/component'
+
+// const CTAContainer = Loadable(() => import('../components/CTAs/CTAContainer'))
+// const RecommendationsContentStories = Loadable(() =>
+// 	import('../components/Recommendations/RecommendationsContentStories')
+// )
+// const FeaturedResourcesContainer = Loadable(() =>
+// 	import('../components/FeaturedResources/FeaturedResourcesContainer')
+// )
 
 const SuicideStatistics = ({ data: { statistics } }) => {
 	statistics.stateData = {
