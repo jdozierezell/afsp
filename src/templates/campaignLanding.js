@@ -4,10 +4,6 @@ import { css } from '@emotion/core'
 import Loadable from '@loadable/component'
 
 import Layout from '../components/Layout'
-import ChannelContainer from '../components/Channel/ChannelContainer'
-import CTAContainer from '../components/CTAs/CTAContainer'
-import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
-import CarouselResourceContainer from '../components/Carousels/CarouselResourceContainer'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 
 import { styles } from '../css/css'

@@ -64,6 +64,12 @@ const CarouselDetailContainer = ({
 			items: 1,
 		},
 	}
+	details = details.filter(
+		section =>
+			(section.contentHeading && section.contentHeading !== '') ||
+			section.__typename === 'Event'
+	)
+	console.log(details)
 	return (
 		<div id={id} css={carouselCSS}>
 			<h2>{title}</h2>

@@ -1,14 +1,20 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
+import Loadable from '@loadable/component'
 
 import Layout from '../components/Layout'
 import HeroGrant from '../components/Hero/HeroGrant'
-import Content from '../components/Content/Content'
-import ContentHeading from '../components/Content/ContentHeading'
-import ContentVideo from '../components/Content/ContentVideo'
 
 import { styles } from '../css/css'
+
+const Content = Loadable(() => import('../components/Content/Content'))
+const ContentHeading = Loadable(() =>
+	import('../components/Content/ContentHeading')
+)
+const ContentVideo = Loadable(() =>
+	import('../components/Content/ContentVideo')
+)
 
 const grantCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24};
