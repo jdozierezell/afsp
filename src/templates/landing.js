@@ -262,6 +262,30 @@ export const query = graphql`
 					listHeading
 					displayAsCarousel
 					resource {
+						... on DatoCmsCustomShareable {
+							__typename
+							id
+							title
+							slug
+							seo {
+								description
+								image {
+									url
+									fluid(
+										maxWidth: 600
+										imgixParams: {
+											auto: "format"
+											fit: "fill"
+											fill: "blur"
+											w: "600"
+											h: "370"
+										}
+									) {
+										...GatsbyDatoCmsFluid_noBase64
+									}
+								}
+							}
+						}
 						... on DatoCmsDetail {
 							__typename
 							id
