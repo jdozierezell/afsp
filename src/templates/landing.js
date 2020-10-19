@@ -7,6 +7,7 @@ import Layout from '../components/Layout'
 import { styles } from '../css/css'
 
 import ChannelContainer from '../components/Channel/ChannelContainer'
+import Calendar from '../components/Calendar/Calendar'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import CarouselResourceContainer from '../components/Carousels/CarouselResourceContainer'
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
@@ -84,20 +85,22 @@ const Landing = ({ data: { landing } }) => {
 			seo={landing.seoMetaTags}
 		>
 			<h1 css={landingTitle}>{landing.title}</h1>
-			<div
-				css={css`
-					${landingBriefCSS};
-					@media (min-width: ${styles.screens.tablet}px) {
-						padding: 0 ${styles.scale.px50}
-							${landing.channelList.length !== 0
-								? 0
-								: styles.scale.px50};
-					}
-				`}
-				dangerouslySetInnerHTML={{
-					__html: landing.brief,
-				}}
-			></div>
+			{landing.brief && (
+				<div
+					css={css`
+						${landingBriefCSS};
+						@media (min-width: ${styles.screens.tablet}px) {
+							padding: 0 ${styles.scale.px50}
+								${landing.channelList.length !== 0
+									? 0
+									: styles.scale.px50};
+						}
+					`}
+					dangerouslySetInnerHTML={{
+						__html: landing.brief,
+					}}
+				></div>
+			)}
 			{landing.readMore && (
 				<>
 					<p>
@@ -128,6 +131,9 @@ const Landing = ({ data: { landing } }) => {
 					channelList={landing.channelList}
 					addCSS={channelCSS}
 				/>
+			)}
+			{landing.eventCalendar.length > 0 && (
+				<Calendar events={landing.eventCalendar} />
 			)}
 			{landing.ctaChapterResourceDetailList.map((item, index) => {
 				const prevIndex = index > 0 ? index - 1 : null
@@ -207,6 +213,23 @@ export const query = graphql`
 			slug
 			seo {
 				description
+			}
+			eventCalendar {
+				... on DatoCmsCampaignName {
+					campaignName
+				}
+				... on DatoCmsEventsList {
+					__typename
+					events {
+						title
+						startDateAndTime
+						endDateAndTime
+						brief
+						buttonText
+						url
+						eventCode
+					}
+				}
 			}
 			channelList {
 				id

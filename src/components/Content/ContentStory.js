@@ -89,7 +89,6 @@ const socialButtonsCSS = css`
 `
 
 const ContentStory = ({ data, pageUrl }) => {
-	console.log(pageUrl)
 	return (
 		<section css={storyContentCSS}>
 			<aside css={socialButtonsCSS}>
