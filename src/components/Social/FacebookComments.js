@@ -33,7 +33,7 @@ const commentCSS = css`
 		}
 	}
 `
-const FacebookComments = () => {
+const FacebookComments = ({ pageUrl }) => {
 	const [fbDefined, setFbDefined] = useState(false)
 	useEffect(() => {
 		if (typeof FB !== `undefined`) {
@@ -50,15 +50,13 @@ const FacebookComments = () => {
 			}
 		}
 	})
-	const location = typeof window !== `undefined` ? window.location : ''
 	return (
 		<>
-			{// eslint-disable-next-line no-undef
-			fbDefined && (
+			{fbDefined && (
 				<aside css={commentCSS}>
 					<h2>Comments</h2>
 					<FacebookProvider appId="925475567867156">
-						<Comments href={location} width="100%" />
+						<Comments href={pageUrl} width="100%" />
 					</FacebookProvider>
 				</aside>
 			)}

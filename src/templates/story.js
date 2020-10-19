@@ -34,6 +34,7 @@ const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 			}
 		}
 	})
+	const pageUrl = `https://afsp.org/story/${story.slug}`
 	const structuredData = {
 		'@context': 'https://schema.org',
 		'@type': 'Article',
@@ -53,7 +54,7 @@ const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 			structuredData={structuredData}
 		>
 			<HeroStories data={story} prev={prev} next={next} />
-			<ContentStory data={story} />
+			<ContentStory data={story} pageUrl={pageUrl} />
 			<CarouselChapterContainer carouselCSS={carouselCSS} />
 		</Layout>
 	)
@@ -69,6 +70,7 @@ export const query = graphql`
 				firstPublishedAt
 			}
 			title
+			slug
 			coverImage {
 				url
 				fluid(

@@ -1,19 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 import IconTwitter from '../SVGs/IconTwitter'
 
 import { styles } from '../../css/css'
 
-const TwitterShare = () => {
-	const [uri, setUri] = useState(null)
-
-	useEffect(() => {
-		setUri(encodeURIComponent(window.location))
-	}, [])
+const TwitterShare = ({ pageUrl }) => {
 	return (
 		<a
 			target="_blank"
-			href={`https://twitter.com/intent/tweet?url=${uri}`}
+			href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
+				pageUrl
+			)}`}
 			rel="noopener noreferrer"
 		>
 			<IconTwitter color={styles.colors.darkGray} />

@@ -88,15 +88,16 @@ const socialButtonsCSS = css`
 	}
 `
 
-const ContentStory = ({ data }) => {
+const ContentStory = ({ data, pageUrl }) => {
+	console.log(pageUrl)
 	return (
 		<section css={storyContentCSS}>
 			<aside css={socialButtonsCSS}>
 				<h3>Share this Story</h3>
 				<div>
-					<FacebookShare />
-					<TwitterShare />
-					<EmailShare />
+					<FacebookShare pageUrl={pageUrl} />
+					<TwitterShare pageUrl={pageUrl} />
+					<EmailShare pageUrl={pageUrl} />
 				</div>
 			</aside>
 			<div className="storyContent">
@@ -159,7 +160,7 @@ const ContentStory = ({ data }) => {
 					return ''
 				})}
 			</div>
-			<FacebookComments />
+			<FacebookComments pageUrl={pageUrl} />
 		</section>
 	)
 }
