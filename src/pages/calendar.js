@@ -86,7 +86,7 @@ const AFSPCalendar = ({ data }) => {
 
 	useEffect(() => {
 		if (events.length === 0 && events[0] !== 'no events') {
-			fetch(`//aws-fetch.s3.amazonaws.com/events/merged-events.json`)
+			fetch(`//aws-fetch.s3.amazonaws.com/events/merged-programs.json`)
 				.then(response => {
 					if (response.status >= 400) {
 						throw new Error('Bad response from server')
@@ -94,7 +94,7 @@ const AFSPCalendar = ({ data }) => {
 					return response.json()
 				})
 				.then(response => {
-					let filteredEvents = response.events
+					let filteredEvents = response.programEvents
 					if (chapterFilter) {
 						console.log(chapterFilter)
 						filteredEvents = filteredEvents.filter(
@@ -107,7 +107,9 @@ const AFSPCalendar = ({ data }) => {
 							event => event.programcode === programFilter
 						)
 					}
-					setEvents(filteredEvents ? filteredEvents : response.events)
+					setEvents(
+						filteredEvents ? filteredEvents : response.programEvents
+					)
 				})
 		} else {
 			let filteredEvents = events
