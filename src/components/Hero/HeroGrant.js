@@ -67,7 +67,7 @@ const granteeInformationCSS = css`
 
 const HeroGrant = ({ grant }) => {
 	const { title, grantInformation } = grant
-	let amount, type, year, displayAmount, displayAreas
+	let amount, type, year, displayAmount, displayAreas, mentor
 	let areas = []
 	let grantees = []
 	grantInformation.forEach(grant => {
@@ -86,6 +86,8 @@ const HeroGrant = ({ grant }) => {
 				image: grant.granteeImage,
 				staticImage: grant.granteeImage.url,
 			})
+		} else if (grant.__typename === 'DatoCmsMentor') {
+			mentor = grant.mentor
 		}
 	})
 	const currencyFormatter = Intl.NumberFormat('en-US', {
@@ -134,7 +136,7 @@ const HeroGrant = ({ grant }) => {
 						grid-template-columns: repeat(${grantees.length}, 1fr);
 					}
 					@media (min-width: ${styles.screens.navigation}px) {
-						direction: ltr;
+						direction: rtl;
 						grid-template-columns: repeat(${grantees.length}, 1fr);
 					}
 				`}
@@ -157,6 +159,13 @@ const HeroGrant = ({ grant }) => {
 								<strong>{grantee.name}</strong>
 								<br />
 								{grantee.institution}
+								{mentor && (
+									<>
+										<br />
+										<br />
+										Mentor: {mentor}
+									</>
+								)}
 							</p>
 						</div>
 					)
