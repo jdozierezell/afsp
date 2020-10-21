@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Carousel from 'react-multi-carousel'
 import { css } from '@emotion/core'
+import fetch from 'isomorphic-fetch'
+import zipcodes from 'zipcodes'
 
-import { fetchChapters } from '../../utils/chapterSearchResults'
+import { chapterSearchResults } from '../../utils/chapterSearchResults'
 
 import { styles } from '../../css/css'
 
@@ -92,7 +94,23 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 	useEffect(() => {
 		// ipapi.co and ipregistry.co are also nice options if pro.ip-api.com fails
 		if (displayChapters.length === 0) {
-			fetchChapters(chapters, setDisplayChapters)
+			const endpoint =
+				'https://pro.ip-api.com/json/?fields=zip&key=kk9BWBSYqm9ZTDj'
+			fetch(endpoint)
+				.then(res => res.json())
+				.then(
+					result => {
+						setDisplayChapters(
+							chapterSearchResults(chapters, {
+								primaryZip: result.zip,
+								otherZips: zipcodes.radius(result.zip, 100),
+							})
+						)
+					},
+					error => {
+						console.log(error)
+					}
+				)
 		}
 	}, [chapters, displayChapters])
 

@@ -60,6 +60,7 @@
 		"moment-timezone": "^0.5.31",
 		"papaparse": "^5.1.0",
 		"preact": "^10.5.5",
+		"preact-render-to-string": "^5.1.10",
 		"prop-types": "^15.7.2",
 		"qs": "^6.9.1",
 		"react": "^16.8.6",
