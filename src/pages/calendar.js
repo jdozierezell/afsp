@@ -11,6 +11,8 @@ import CalendarFilter from '../components/Calendar/CalendarFilter'
 
 import { styles } from '../css/css'
 
+import chapterList from '../utils/chapterList'
+
 const calendarCSS = css`
 	font-family: ${styles.fonts.avenirRegular};
 	padding: ${styles.scale.px150} ${styles.scale.px24} ${styles.scale.px50};
@@ -78,11 +80,14 @@ const deskCalendarCSS = css`
 
 const AFSPCalendar = ({ data }) => {
 	const [events, setEvents] = useState([])
+	const [programs, setPrograms] = useState([])
 	const [chapterFilter, setChapterFilter] = useState(null)
 	const [programFilter, setProgramFilter] = useState(null)
 
-	const handleChapterSelectChange = chapter => setChapterFilter(chapter.value)
-	const handleProgramSelectChange = program => setProgramFilter(program.value)
+	const handleChapterSelectChange = chapter =>
+		setChapterFilter(chapter ? chapter.value : null)
+	const handleProgramSelectChange = program =>
+		setProgramFilter(program ? program.value : null)
 
 	useEffect(() => {
 		if (events.length === 0 && events[0] !== 'no events') {
@@ -95,6 +100,28 @@ const AFSPCalendar = ({ data }) => {
 				})
 				.then(response => {
 					let filteredEvents = response.programEvents
+					let programList = [],
+						tempProgramList = []
+					filteredEvents.forEach(event => {
+						if (!tempProgramList.includes(event.programcode)) {
+							tempProgramList.push(event.programcode)
+						}
+					})
+					tempProgramList.sort((a, b) => {
+						const tempA = a.toUpperCase()
+						const tempB = b.toUpperCase()
+						if (tempA < tempB) {
+							return -1
+						}
+						if (tempA > tempB) {
+							return 1
+						}
+						return 0
+					})
+					tempProgramList.forEach(program => {
+						programList.push({ value: program, label: program })
+					})
+					setPrograms(programList)
 					if (chapterFilter) {
 						console.log(chapterFilter)
 						filteredEvents = filteredEvents.filter(
@@ -145,6 +172,8 @@ const AFSPCalendar = ({ data }) => {
 					zIndex="1"
 					handleChapterSelectChange={handleChapterSelectChange}
 					handleProgramSelectChange={handleProgramSelectChange}
+					programs={programs}
+					chapters={chapterList}
 				/>
 				<div css={mobileCalendarCSS}>
 					<FullCalendar
@@ -153,7 +182,6 @@ const AFSPCalendar = ({ data }) => {
 						events={events}
 					/>
 				</div>
-				{console.log(events)}
 				<div css={deskCalendarCSS}>
 					<FullCalendar
 						plugins={[dayGridPlugin, listPlugin]}
