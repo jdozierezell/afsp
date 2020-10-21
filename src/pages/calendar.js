@@ -79,6 +79,7 @@ const deskCalendarCSS = css`
 `
 
 const AFSPCalendar = ({ data }) => {
+	const [allEvents, setAllEvents] = useState([])
 	const [events, setEvents] = useState([])
 	const [programs, setPrograms] = useState([])
 	const [chapterFilter, setChapterFilter] = useState(null)
@@ -90,7 +91,7 @@ const AFSPCalendar = ({ data }) => {
 		setProgramFilter(program ? program.value : null)
 
 	useEffect(() => {
-		if (events.length === 0 && events[0] !== 'no events') {
+		if (allEvents.length === 0 && allEvents[0] !== 'no events') {
 			fetch(`//aws-fetch.s3.amazonaws.com/events/merged-programs.json`)
 				.then(response => {
 					if (response.status >= 400) {
@@ -123,23 +124,22 @@ const AFSPCalendar = ({ data }) => {
 					})
 					setPrograms(programList)
 					if (chapterFilter) {
-						console.log(chapterFilter)
 						filteredEvents = filteredEvents.filter(
 							event => event.chapterCode === chapterFilter
 						)
 					}
 					if (programFilter) {
-						console.log(programFilter)
 						filteredEvents = filteredEvents.filter(
 							event => event.programcode === programFilter
 						)
 					}
+					setAllEvents(response.programEvents)
 					setEvents(
 						filteredEvents ? filteredEvents : response.programEvents
 					)
 				})
 		} else {
-			let filteredEvents = events
+			let filteredEvents = allEvents
 			if (chapterFilter) {
 				console.log(chapterFilter)
 				filteredEvents = filteredEvents.filter(
@@ -147,7 +147,6 @@ const AFSPCalendar = ({ data }) => {
 				)
 			}
 			if (programFilter) {
-				console.log(programFilter)
 				filteredEvents = filteredEvents.filter(
 					event => event.programcode === programFilter
 				)
@@ -182,6 +181,7 @@ const AFSPCalendar = ({ data }) => {
 						events={events}
 					/>
 				</div>
+				{console.log(events)}
 				<div css={deskCalendarCSS}>
 					<FullCalendar
 						plugins={[dayGridPlugin, listPlugin]}
