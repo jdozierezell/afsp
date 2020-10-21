@@ -2,9 +2,6 @@ import React from 'react'
 import { css } from '@emotion/core'
 import Select from 'react-select'
 
-import chapterList from '../../utils/chapterList'
-import programList from '../../utils/programList'
-
 import { styles } from '../../css/css'
 
 const selectCSS = css`
@@ -29,6 +26,8 @@ const CalendarFilter = ({
 	zIndex,
 	handleChapterSelectChange,
 	handleProgramSelectChange,
+	programs,
+	chapters,
 }) => {
 	return (
 		<div
@@ -47,8 +46,9 @@ const CalendarFilter = ({
 					className="react-select"
 					classNamePrefix="react-select"
 					// value={values.selectedOption}
-					options={chapterList}
+					options={chapters}
 					onChange={handleChapterSelectChange}
+					isClearable={true}
 				/>
 			</div>
 			<div>
@@ -61,8 +61,9 @@ const CalendarFilter = ({
 					className="react-select"
 					classNamePrefix="react-select"
 					// value={values.selectedOption}
-					options={programList}
+					options={programs}
 					onChange={handleProgramSelectChange}
+					isClearable={true}
 				/>
 			</div>
 		</div>
