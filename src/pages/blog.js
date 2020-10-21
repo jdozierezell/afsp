@@ -34,8 +34,11 @@ const RealStories = ({ data: { real, stories } }) => {
 		'@content': 'https://schema.org',
 		'@type': 'Blog',
 		about: 'suicide',
-		abstract: metaDescription,
+		description: metaDescription,
+		image: metaImage,
+		name: real.title,
 		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${real.slug}`,
 	}
 	stories.edges.forEach(story => {
 		story.node.type = 'story'
@@ -102,6 +105,8 @@ export default RealStories
 export const query = graphql`
 	query {
 		real: datoCmsRealStory {
+			title
+			slug
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}

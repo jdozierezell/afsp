@@ -17,6 +17,35 @@ import CTAContainer from '../components/CTAs/CTAContainer'
 import { styles } from '../css/css'
 
 const FindASupportGroup = ({ data: { search, supportGroups } }) => {
+	let metaImage,
+		metaDescription = ''
+	search.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'SearchAction',
+		about: 'suicide',
+		description: metaDescription,
+		image: metaImage,
+		name: search.title,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${search.slug}`,
+	}
+
 	const existingSearch =
 		typeof window !== `undefined`
 			? qs.parse(window.location.search.slice(1))
@@ -203,10 +232,10 @@ export const query = graphql`
 		search: datoCmsSearchPage(slug: { eq: "find-a-support-group" }) {
 			title
 			slug
-			brief
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}
+			brief
 			callsToAction {
 				... on DatoCmsCallToAction {
 					__typename
