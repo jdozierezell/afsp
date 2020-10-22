@@ -19,7 +19,7 @@ module.exports = {
 		`gatsby-plugin-playground`,
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-netlify`,
-		// `gatsby-plugin-preact`,
+		`gatsby-plugin-preact`,
 		// {
 		// 	resolve: `gatsby-plugin-loadable-components-ssr`,
 		// 	options: {
