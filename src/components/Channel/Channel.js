@@ -77,7 +77,7 @@ const Channel = ({ slug, channel }) => {
 			)}
 			{channelLink.__typename === 'DatoCmsAnchor' && (
 				<>
-					<Link to={`${channelLink.anchor}`}>
+					<a href={`${channelLink.anchor}`}>
 						<Img
 							fluid={image.fluid}
 							css={channelImageCSS}
@@ -87,7 +87,7 @@ const Channel = ({ slug, channel }) => {
 						/>
 						<span>{heading}</span>
 						<p>{brief}</p>
-					</Link>
+					</a>
 				</>
 			)}
 			{channelLink.__typename === 'DatoCmsExternalUrl' && (

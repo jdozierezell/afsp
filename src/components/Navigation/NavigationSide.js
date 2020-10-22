@@ -140,21 +140,21 @@ const NavigationSide = ({
 					{headings.map((heading, index) => (
 						<li key={index}>
 							{navRoot ? (
-								<Link to={`${navRoot}#${heading.anchor}`}>
+								<a href={`${navRoot}#${heading.anchor}`}>
 									<span
 										dangerouslySetInnerHTML={{
 											__html: heading.heading,
 										}}
 									/>
-								</Link>
+								</a>
 							) : (
-								<Link to={`/${data.slug}#${heading.anchor}`}>
+								<a href={`/${data.slug}#${heading.anchor}`}>
 									<span
 										dangerouslySetInnerHTML={{
 											__html: heading.heading,
 										}}
 									/>
-								</Link>
+								</a>
 							)}
 						</li>
 					))}
