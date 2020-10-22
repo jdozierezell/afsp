@@ -41,6 +41,8 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 		about: 'suicide',
 		description: metaDescription,
 		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
 		name: search.title,
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${search.slug}`,
