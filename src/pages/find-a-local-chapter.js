@@ -36,7 +36,7 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 	const structuredData = {
 		'@content': 'https://schema.org',
 		'@type': 'SearchAction',
-		about: 'suicide',
+		about: 'find a local chapter of AFSP',
 		description: metaDescription,
 		image: metaImage,
 		accessibilityAPI: 'ARIA',

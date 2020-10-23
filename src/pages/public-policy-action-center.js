@@ -21,6 +21,38 @@ const actionCenterCSS = css`
 `
 
 const ActionCenter = ({ data: { actionCenter } }) => {
+	let metaImage,
+		metaDescription = ''
+	actionCenter.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'advocacy and public policy',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: actionCenter.title,
+		author: 'American Foundation for Suicide Prevention',
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${actionCenter.slug}`,
+	}
+
 	const scriptLoaded = () => {
 		const congressWeb = document.getElementById('congressWeb')
 		const congressScript = document.createElement('script')
@@ -34,6 +66,7 @@ const ActionCenter = ({ data: { actionCenter } }) => {
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={actionCenter.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<HeroSolid data={actionCenter} />
 			<div css={actionCenterCSS} id="iframe"></div>
@@ -55,10 +88,10 @@ export const query = graphql`
 		actionCenter: datoCmsActionCenter {
 			title
 			slug
-			brief
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}
+			brief
 		}
 	}
 `

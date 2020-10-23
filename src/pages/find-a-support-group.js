@@ -38,7 +38,7 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 	const structuredData = {
 		'@content': 'https://schema.org',
 		'@type': 'SearchAction',
-		about: 'suicide',
+		about: 'find a support group',
 		description: metaDescription,
 		image: metaImage,
 		accessibilityAPI: 'ARIA',

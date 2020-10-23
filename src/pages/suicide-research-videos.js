@@ -16,6 +16,37 @@ import CTAContainer from '../components/CTAs/CTAContainer'
 // const CTAContainer = Loadable(() => import('../components/CTAs/CTAContainer'))
 
 const SuicideResearchVideos = ({ data: { search } }) => {
+	let metaImage,
+		metaDescription = ''
+	search.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'SearchAction',
+		about: 'suicide research videos',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: search.title,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${search.slug}`,
+	}
+
 	let query =
 		typeof window !== `undefined`
 			? qs.parse(window.location.search.slice(1))
@@ -53,6 +84,7 @@ const SuicideResearchVideos = ({ data: { search } }) => {
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={search.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<HeroSolid data={search} />
 			<SearchResearch

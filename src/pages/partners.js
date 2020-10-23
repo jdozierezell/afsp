@@ -64,7 +64,7 @@ const Partners = ({ data: { partners } }) => {
 	})
 	const structuredData = {
 		'@content': 'https://schema.org',
-		'@type': 'Blog',
+		'@type': 'WebPage',
 		about: 'partnerships',
 		description: metaDescription,
 		image: metaImage,

@@ -10,7 +10,38 @@ import searchURL from '../utils/searchURL'
 
 import { styles } from '../css/css'
 
-const ResearchGrants = ({ data: { grantsPage, grants } }) => {
+const ResearchGrants = ({ data: { grantsPage } }) => {
+	let metaImage,
+		metaDescription = ''
+	grantsPage.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'SearchAction',
+		about: 'suicide research grants',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: grantsPage.title,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${grantsPage.slug}`,
+	}
+
 	let query =
 		typeof window !== `undefined`
 			? qs.parse(window.location.search.slice(1))
@@ -49,6 +80,7 @@ const ResearchGrants = ({ data: { grantsPage, grants } }) => {
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={grantsPage.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<HeroSolid data={grantsPage} />
 			<SearchResearch
