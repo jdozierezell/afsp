@@ -3,7 +3,6 @@ import fetch from 'isomorphic-fetch'
 
 const chapterSearchResults = (chapters, response) => {
 	const chapterArray = []
-	console.log(response)
 	chapters.edges.forEach(chapter => {
 		if (chapter.node.chapterInformation.zipCode) {
 			let zips = JSON.parse(chapter.node.chapterInformation.zipCode)

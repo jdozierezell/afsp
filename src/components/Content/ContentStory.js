@@ -1,6 +1,5 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import Loadable from '@loadable/component'
 
 import FacebookShare from '../Social/FacebookShare'
 import TwitterShare from '../Social/TwitterShare'
@@ -89,6 +88,7 @@ const socialButtonsCSS = css`
 `
 
 const ContentStory = ({ data, pageUrl }) => {
+	console.log(pageUrl)
 	return (
 		<section css={storyContentCSS}>
 			<aside css={socialButtonsCSS}>
