@@ -75,6 +75,8 @@ const ShareableContainer = ({
 
 	const squareImage = 1080
 
+	const customTextJSON = JSON.parse(customText.customValues)
+
 	const updateImage = e => {
 		// set url, imageWidth, and imageHight to null so that previous image dimensions don't affect next render
 		setUrl(null)
@@ -124,6 +126,7 @@ const ShareableContainer = ({
 	}
 
 	const updateMessage = message => {
+		console.log(message)
 		setMessage(message)
 	}
 
@@ -265,33 +268,24 @@ const ShareableContainer = ({
 						/>
 						<Text
 							text={message}
-							fontFamily={customText.customValues.fontFamily}
+							fontFamily={customTextJSON.fontFamily}
 							fontSize={
-								(customText.customValues.fontSize * width) /
-								squareImage
+								(customTextJSON.fontSize * width) / squareImage
 							}
 							lineHeight={1.15}
 							fill={
 								overlayText
 									? styles.colors.darkGray
-									: customText.customValues.defaultColor
+									: customTextJSON.defaultColor
 							}
-							align={customText.customValues.align}
-							x={
-								(customText.customValues.x * width) /
-								squareImage
-							}
-							y={
-								(customText.customValues.y * height) /
-								squareImage
-							}
+							align={customTextJSON.align}
+							x={(customTextJSON.x * width) / squareImage}
+							y={(customTextJSON.y * height) / squareImage}
 							width={
-								(customText.customValues.width * height) /
-								squareImage
+								(customTextJSON.width * height) / squareImage
 							}
 							height={
-								(customText.customValues.height * height) /
-								squareImage
+								(customTextJSON.height * height) / squareImage
 							}
 						/>
 						{isSelected && (
