@@ -185,6 +185,7 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={search.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<HeroModelSearch
 				title={search.title}

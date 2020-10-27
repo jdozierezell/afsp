@@ -42,7 +42,6 @@ const FacebookComments = ({ pageUrl }) => {
 			FB.XFBML.parse() // this is part of the SDK that needs to run upon each refresh, so it's pulled out here and dropped into useEffect
 		} else {
 			if (typeof window !== `undefined`) {
-				console.log('window defined')
 				window.onload = () => {
 					setFbDefined(true)
 					// eslint-disable-next-line no-undef
@@ -53,8 +52,6 @@ const FacebookComments = ({ pageUrl }) => {
 	}, [fbDefined])
 	return (
 		<>
-			{console.log(fbDefined)}
-			{console.log(typeof FB === `undefined`)}
 			{fbDefined && (
 				<aside css={commentCSS}>
 					<h2>Comments</h2>

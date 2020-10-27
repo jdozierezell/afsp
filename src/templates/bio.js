@@ -19,10 +19,41 @@ const biographyCSS = css`
 `
 
 const Bio = ({ data: { bio } }) => {
+	let metaImage,
+		metaDescription = ''
+	bio.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'Person',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: bio.name,
+		affiliation: 'American Foundation for Suicide Prevention',
+		jobTitle: bio.title,
+		url: `https://afsp.org/${bio.slug}`,
+	}
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={bio.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<HeroBio name={bio.name} title={bio.title} image={bio.photo} />
 			<main
@@ -40,6 +71,9 @@ export const query = graphql`
 		bio: datoCmsBio(slug: { eq: $slug }) {
 			name
 			slug
+			seoMetaTags {
+				...GatsbyDatoCmsSeoMetaTags
+			}
 			title
 			photo {
 				url
@@ -58,9 +92,6 @@ export const query = graphql`
 				}
 			}
 			biography
-			seoMetaTags {
-				...GatsbyDatoCmsSeoMetaTags
-			}
 		}
 	}
 `

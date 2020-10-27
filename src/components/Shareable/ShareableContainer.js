@@ -126,7 +126,6 @@ const ShareableContainer = ({
 	}
 
 	const updateMessage = message => {
-		console.log(message)
 		setMessage(message)
 	}
 
