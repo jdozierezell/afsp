@@ -20,6 +20,14 @@ module.exports = {
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-netlify`,
 		// `gatsby-plugin-preact`,
+		{
+			resolve: '@sentry/gatsby',
+			options: {
+				dsn:
+					'https://716ad2d069ab4105a9dcd2226a66f587@o468082.ingest.sentry.io/5496226',
+				sampleRate: 0.7,
+			},
+		},
 		// {
 		// 	resolve: `gatsby-plugin-loadable-components-ssr`,
 		// 	options: {
