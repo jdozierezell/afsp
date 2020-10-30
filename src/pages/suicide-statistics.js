@@ -23,6 +23,37 @@ import FeaturedResourcesContainer from '../components/FeaturedResources/Featured
 // )
 
 const SuicideStatistics = ({ data: { statistics } }) => {
+	let metaImage,
+		metaDescription = ''
+	statistics.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		specialty: 'suicide',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: statistics.title,
+		lastReviewed: statistics.meta.publishedAt,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${statistics.slug}`,
+	}
 	statistics.stateData = {
 		url:
 			'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/suicide-state-2018.csv',
@@ -44,6 +75,7 @@ const SuicideStatistics = ({ data: { statistics } }) => {
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={statistics.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<HeroStatistics data={statistics} />
 			<StatisticsSummary data={statistics} />
@@ -86,10 +118,14 @@ export default SuicideStatistics
 export const query = graphql`
 	query {
 		statistics: datoCmsStatistic {
+			title
+			slug
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}
-			title
+			meta {
+				publishedAt
+			}
 			brief
 			stateFactsYear
 			statisticsCallouts {

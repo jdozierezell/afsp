@@ -30,11 +30,16 @@ const Detail = ({ data: { detail } }) => {
 	})
 	const structuredData = {
 		'@content': 'https://schema.org',
-		'@type': 'HealthTopicContent',
-		hasHealthAspect: 'PreventionHealthAspect',
+		'@type': 'WebPage',
 		about: 'suicide',
-		abstract: metaDescription,
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: detail.title,
+		lastReviewed: detail.meta.publishedAt,
 		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${detail.slug}`,
 	}
 	const [hasEvents, setHasEvents] = useState(false)
 	const setEvents = events => {
@@ -46,6 +51,7 @@ const Detail = ({ data: { detail } }) => {
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={detail.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<HeroSolid data={detail} programLogo={detail.programLogo} />
 			<NavigationSide hasEvents={hasEvents} data={detail} />
@@ -60,11 +66,14 @@ export default Detail
 export const query = graphql`
 	query($slug: String) {
 		detail: datoCmsDetail(slug: { eq: $slug }) {
+			title
+			slug
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}
-			title
-			slug
+			meta {
+				publishedAt
+			}
 			programLogo {
 				url
 				fluid(maxWidth: 623, imgixParams: { w: "623" }) {
