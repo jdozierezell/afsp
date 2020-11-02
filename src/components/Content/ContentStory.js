@@ -1,10 +1,10 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import Script from 'react-load-script'
 
 import FacebookShare from '../Social/FacebookShare'
 import TwitterShare from '../Social/TwitterShare'
 import EmailShare from '../Social/EmailShare'
-import FacebookComments from '../Social/FacebookComments'
 
 import { styles } from '../../css/css'
 
@@ -87,6 +87,36 @@ const socialButtonsCSS = css`
 	}
 `
 
+const commentCSS = css`
+	grid-column: 1 / 4;
+	background: ${styles.colors.lightGray};
+	padding: ${styles.scale.px50} 0;
+	@media (min-width: ${styles.screens.tablet}px) {
+		padding: 0;
+	}
+	h2 {
+		margin: 0 ${styles.scale.px24} ${styles.scale.px35};
+		@media (min-width: ${styles.screens.tablet}px) {
+			max-width: 960px;
+			margin: ${styles.scale.px80} auto ${styles.scale.px60};
+		}
+	}
+	.fb-comments {
+		margin: ${styles.scale.px50} ${styles.scale.px24} 0;
+		width: calc(100% - 48px);
+		display: block;
+		@media (min-width: ${styles.screens.tablet}px) {
+			width: 100%;
+			max-width: 960px;
+			margin: ${styles.scale.px60} auto ${styles.scale.px80};
+		}
+		span,
+		iframe {
+			width: 100% !important;
+		}
+	}
+`
+
 const ContentStory = ({ data, pageUrl }) => {
 	return (
 		<section css={storyContentCSS}>
@@ -158,7 +188,11 @@ const ContentStory = ({ data, pageUrl }) => {
 					return ''
 				})}
 			</div>
-			<FacebookComments pageUrl={pageUrl} />
+			<Script url="https://apps.elfsight.com/p/platform.js" defer />
+			<aside css={commentCSS}>
+				<h2>Comments</h2>
+				<div className="elfsight-app-009de5eb-b07f-41f5-9d7e-26c5c9f96d27 fb-comments"></div>
+			</aside>
 		</section>
 	)
 }

@@ -160,7 +160,7 @@ const HeroStories = ({ data, prev, next }) => {
 						{author.map((a, index) => {
 							if (a.authorName !== 'AFSP') {
 								return (
-									<>
+									<span key={index}>
 										<Link
 											key={index}
 											to={`/author/${a.slug}`}
@@ -168,7 +168,7 @@ const HeroStories = ({ data, prev, next }) => {
 											{a.authorName}
 										</Link>
 										{index + 1 < author.length ? ', ' : ''}
-									</>
+									</span>
 								)
 							} else {
 								return `${a.authorName}${
