@@ -4,6 +4,7 @@ import Script from 'react-load-script'
 
 import FooterAside from './FooterAside'
 import FooterSocials from './FooterSocials'
+import FooterRatings from './FooterRatings'
 import MobileMenuSection from '../Navigation/MobileMenuSection'
 import DeskFooterSection from '../Navigation/DeskFooterSection'
 import LogoWhite from '../SVGs/LogoWhite'
@@ -29,30 +30,40 @@ const desktopFooterCSS = css`
 	display: none;
 	@media (min-width: ${styles.screens.footer}px) {
 		display: grid;
+		grid-gap: 0 ${styles.gridGap.desktop};
 		grid-template-columns: repeat(6, auto) 320px;
 	}
 `
 
 const logoLegalCSS = css`
 	z-index: 1;
+	/* justify-items: center; */
 	@media (min-width: ${styles.screens.footer}px) {
 		display: grid;
-		grid-template-columns: repeat(6, 1fr) 320px;
+		grid-gap: 0 48px;
+		grid-template-columns: auto auto 260px 320px;
 	}
 `
 
-const grid782 = css`
+const grid452 = css`
 	@media (min-width: ${styles.screens.footer}px) {
-		grid-area: 2 / 7 / 2 / 8;
+		grid-area: 2 / 4 / 2 / 5;
 		align-self: end;
 	}
 `
 
 const logoCSS = css`
 	width: ${styles.scale.px126};
-	margin-top: ${styles.scale.px30};
+	margin-top: ${styles.scale.px64};
 	@media (min-width: ${styles.screens.footer}px) {
 		grid-area: 2 / 1 / 2 / 2;
+		align-self: end;
+	}
+`
+
+const ratingsCSS = css`
+	@media (min-width: ${styles.screens.footer}px) {
+		grid-area: 2 / 3 / 2 / 4;
 		align-self: end;
 	}
 `
@@ -64,8 +75,8 @@ const copyrightCSS = css`
 	display: inline-block;
 
 	@media (min-width: ${styles.screens.footer}px) {
-		margin: 0 0 0 ${styles.scale.px30};
-		grid-area: 2 / 2 / 2 / 6;
+		margin: 0;
+		grid-area: 2 / 2 / 2 / 3;
 		align-self: end;
 	}
 `
@@ -104,8 +115,11 @@ const Footer = ({ nav }) => {
 					))}
 				</div>
 				<div css={logoLegalCSS}>
-					<div css={grid782}>
+					<div css={grid452}>
 						<FooterSocials />
+					</div>
+					<div css={ratingsCSS}>
+						<FooterRatings />
 					</div>
 					<div css={logoCSS}>
 						<LogoWhite />

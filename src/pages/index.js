@@ -53,6 +53,24 @@ const walkBar = css`
 `
 
 const App = ({ data: { home } }) => {
+	let metaImage,
+		metaDescription = ''
+	home.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
 	const structuredData = {
 		'@context': 'https://schema.org',
 		'@type': 'NGO',
@@ -71,8 +89,12 @@ const App = ({ data: { home } }) => {
 				contactType: 'office manager',
 			},
 		],
-		image:
-			'https://www.datocms-assets.com/12810/1565360975-stackedlogocolor.jpg',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		legalName: 'American Foundation for Suicide Prevention',
+		alternateName: 'AFSP',
 	}
 	let events = {
 		title: 'AFSP national events',

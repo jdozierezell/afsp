@@ -44,10 +44,43 @@ const partnerInfoCSS = css`
 `
 
 const Partners = ({ data: { partners } }) => {
+	let metaImage,
+		metaDescription = ''
+	partners.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'partnerships',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: partners.title,
+		author: 'American Foundation for Suicide Prevention',
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${partners.slug}`,
+	}
+
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={partners.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<HeroSolid data={partners} />
 			<section css={partnerContainerCSS}>
@@ -91,6 +124,7 @@ export const query = graphql`
 	query {
 		partners: datoCmsPartnerPage {
 			title
+			slug
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}

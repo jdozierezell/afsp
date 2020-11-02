@@ -16,6 +16,7 @@
 		"@nivo/line": "^0.59.3",
 		"@nivo/pie": "^0.60.0",
 		"@rocketseat/unform": "^1.6.1",
+		"@sentry/gatsby": "^5.27.1",
 		"algoliasearch": "^3.33.0",
 		"apollo-cache-inmemory": "^1.6.3",
 		"apollo-client": "^2.6.4",

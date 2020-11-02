@@ -38,9 +38,11 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 	const structuredData = {
 		'@content': 'https://schema.org',
 		'@type': 'SearchAction',
-		about: 'suicide',
+		about: 'find a support group',
 		description: metaDescription,
 		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
 		name: search.title,
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${search.slug}`,
@@ -183,6 +185,7 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={search.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<HeroModelSearch
 				title={search.title}

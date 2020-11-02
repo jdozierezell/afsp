@@ -41,6 +41,20 @@ const SearchResults = () => {
 		)
 	}
 
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'SearchAction',
+		about: 'site search',
+		description: 'Displays search results from afsp.org',
+		image:
+			'https://www.datocms-assets.com/12810/1565360975-stackedlogocolor.jpg?w=1000&fit=max&fm=jpg',
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: `Search results for ${searchState.query} | AFSP`,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: 'https://afsp.org/search-results',
+	}
+
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -52,6 +66,7 @@ const SearchResults = () => {
 					},
 				],
 			}}
+			structuredData={structuredData}
 		>
 			<HeroSearch
 				data={{

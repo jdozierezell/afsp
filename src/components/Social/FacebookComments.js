@@ -49,7 +49,7 @@ const FacebookComments = ({ pageUrl }) => {
 				}
 			}
 		}
-	})
+	}, [fbDefined])
 	return (
 		<>
 			{fbDefined && (

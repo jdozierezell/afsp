@@ -39,6 +39,8 @@ const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 		'@context': 'https://schema.org',
 		'@type': 'Article',
 		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
 		headline: story.title,
 		datePublished: story.meta.firstPublishedAt,
 		dateModified: story.meta.publishedAt,

@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { css } from '@emotion/core'
-import { Link } from 'gatsby'
 
 import createAnchor from '../../utils/createAnchor'
 

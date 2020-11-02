@@ -48,7 +48,7 @@ const CarouselVideo = ({ vimeoId, title }) => {
 							height: '100%',
 						}}
 						frameBorder="0"
-						allow="autoplay; fullscreen"
+						allow="fullscreen"
 						allowFullScreen
 					></iframe>
 				</div>

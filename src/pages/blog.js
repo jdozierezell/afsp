@@ -36,6 +36,8 @@ const RealStories = ({ data: { real, stories } }) => {
 		about: 'suicide',
 		description: metaDescription,
 		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
 		name: real.title,
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${real.slug}`,
