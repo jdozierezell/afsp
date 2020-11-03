@@ -153,7 +153,7 @@ const AFSPCalendar = ({ data }) => {
 			}
 			setEvents(filteredEvents)
 		}
-	}, [chapterFilter, programFilter])
+	}, [chapterFilter, programFilter, allEvents])
 
 	return (
 		<Layout
