@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
+import moment from 'moment'
 
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
-import listPlugin from '@fullcalendar/list'
+import { Calendar, momentLocalizer } from 'react-big-calendar'
 
 import Layout from '../components/Layout'
 import CalendarFilter from '../components/Calendar/CalendarFilter'
@@ -12,6 +11,40 @@ import CalendarFilter from '../components/Calendar/CalendarFilter'
 import { styles } from '../css/css'
 
 import chapterList from '../utils/chapterList'
+
+import 'react-big-calendar/lib/css/react-big-calendar.css'
+
+const eventMonthDisplay = ({ event }) => {
+	return (
+		<a
+			href={event.url}
+			target="_blank"
+			rel="noopener noreferrer"
+			css={css`
+				color: ${styles.colors.white};
+				text-decoration: none;
+			`}
+		>
+			{event.title}
+		</a>
+	)
+}
+
+const eventListDisplay = ({ event }) => {
+	return (
+		<a
+			href={event.url}
+			target="_blank"
+			rel="noopener noreferrer"
+			css={css`
+				color: ${styles.colors.blue};
+				font-family: ${styles.fonts.avenirDemi};
+			`}
+		>
+			{event.title}
+		</a>
+	)
+}
 
 const calendarCSS = css`
 	font-family: ${styles.fonts.avenirRegular};
@@ -22,42 +55,6 @@ const calendarCSS = css`
 	}
 	> p:first-of-type {
 		max-width: 623px;
-	}
-	.fc-col-header-cell-cushion {
-		padding: ${styles.scale.px12};
-		color: ${styles.colors.darkGray};
-	}
-	.fc-col-header {
-		margin-bottom: 0;
-	}
-	.fc-daygrid-day-frame {
-		padding: 1rem 0 1rem 1rem;
-	}
-	.fc-list-table tbody tr {
-		position: relative;
-	}
-	.fc-list-day {
-		background-color: ${styles.colors.lightGray};
-		z-index: 100;
-	}
-	.fc-daygrid-event {
-		display: grid;
-		grid-template-columns: 1fr 4fr 10fr;
-	}
-	.fc-daygrid-event-dot {
-		grid-column: 1 / 2;
-		margin-top: ${styles.scale.px7};
-	}
-	.fc-event-time {
-		grid-column: 2 / 3;
-	}
-	.fc-event-title {
-		padding: 0 1px;
-		white-space: normal;
-		grid-column: 3 / 4;
-	}
-	.fc-event-main {
-		grid-column: 1 / 4;
 	}
 `
 
@@ -76,6 +73,17 @@ const deskCalendarCSS = css`
 	@media (min-width: ${styles.screens.navigation}px) {
 		display: block;
 	}
+	.rbc-today {
+		background-color: ${styles.colors.lightGray};
+	}
+	.rbc-event {
+		background-color: ${styles.colors.blue};
+		margin: 3px 10px;
+		width: calc(100% - (10px * 2));
+	}
+	.rbc-show-more {
+		margin-left: 10px;
+	}
 `
 
 const AFSPCalendar = ({ data }) => {
@@ -84,6 +92,8 @@ const AFSPCalendar = ({ data }) => {
 	const [programs, setPrograms] = useState([])
 	const [chapterFilter, setChapterFilter] = useState(null)
 	const [programFilter, setProgramFilter] = useState(null)
+
+	const localizer = momentLocalizer(moment)
 
 	const handleChapterSelectChange = chapter =>
 		setChapterFilter(chapter ? chapter.value : null)
@@ -175,27 +185,37 @@ const AFSPCalendar = ({ data }) => {
 					chapters={chapterList}
 				/>
 				<div css={mobileCalendarCSS}>
-					<FullCalendar
-						plugins={[listPlugin, dayGridPlugin]}
-						initialView="list"
+					<Calendar
+						localizer={localizer}
 						events={events}
+						startAccessor="start"
+						endAccessor="end"
+						defaultView="agenda"
+						views={['agenda']}
 					/>
 				</div>
-				{console.log(events)}
 				<div css={deskCalendarCSS}>
-					<FullCalendar
-						plugins={[dayGridPlugin, listPlugin]}
-						initialView="dayGridMonth"
+					<Calendar
+						localizer={localizer}
 						events={events}
-						buttonText={{
-							dayGridMonth: 'Month',
-							listWeek: 'List',
-							today: 'Today',
+						startAccessor="start"
+						endAccessor="end"
+						defaultView="month"
+						views={['month', 'agenda']}
+						messages={{
+							month: 'Month',
+							agenda: 'List',
 						}}
-						headerToolbar={{
-							start: 'title', // will normally be on the left. if RTL, will be on the right
-							center: 'dayGridMonth,listWeek',
-							end: 'today prev,next', // will normally be on the right. if RTL, will be on the left
+						style={{ height: 1100 }}
+						onDrillDown={e => console.log(e)}
+						popup={true}
+						components={{
+							month: {
+								event: eventMonthDisplay,
+							},
+							agenda: {
+								event: eventListDisplay,
+							},
 						}}
 					/>
 				</div>
