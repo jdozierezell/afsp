@@ -88,6 +88,9 @@ const NavigationSide = ({
 		} else if (detail.__typename === 'search') {
 			const anchor = createAnchor(detail.searchHeading)
 			headings.push({ heading: detail.searchHeading, anchor })
+		} else if (detail.__typename === 'DatoCmsImageSectionHeader') {
+			const anchor = createAnchor(detail.header)
+			headings.push({ heading: detail.header, anchor })
 		}
 		return headings
 	})
