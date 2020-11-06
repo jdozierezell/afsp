@@ -7,6 +7,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar'
 
 import Layout from '../components/Layout'
 import CalendarFilter from '../components/Calendar/CalendarFilter'
+import CalendarProgramDescriptions from '../components/Calendar/CalendarProgramDescriptions'
 
 import { styles } from '../css/css'
 
@@ -184,6 +185,10 @@ const AFSPCalendar = ({ data }) => {
 					programs={programs}
 					chapters={chapterList}
 				/>
+				<CalendarProgramDescriptions
+					program={programFilter}
+					programDescriptions={data.calendar.programDescriptions}
+				/>
 				<div css={mobileCalendarCSS}>
 					<Calendar
 						localizer={localizer}
@@ -230,8 +235,14 @@ export const query = graphql`
 	query {
 		# gatsby-source-datocms
 		calendar: datoCmsCalendar {
+			title
+			slug
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
+			}
+			programDescriptions {
+				programName
+				programDescription
 			}
 		}
 	}
