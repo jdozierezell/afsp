@@ -40,7 +40,7 @@ const ImageListContainer = ({ images, crop, navigation }) => {
 			css={css`
 				${imageListCSS};
 				@media (min-width: ${styles.screens.navigation}px) {
-					max-width: ${navigation ? `calc(100% - 548px)` : `auto`};
+					max-width: ${navigation ? `calc(100% - 548px)` : `inherit`};
 				}
 			`}
 		>

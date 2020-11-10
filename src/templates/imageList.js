@@ -12,7 +12,7 @@ const ImageList = ({ data: { imageList } }) => {
 	imageList.details = imageList.images
 	let navigation = false
 	imageList.details.forEach(detail => {
-		if (detail.__typename === 'DatoCmsImageSectionHeader') {
+		if (detail.__typename === 'DatoCmsImageSectionHeader' && !navigation) {
 			navigation = true
 		}
 	})

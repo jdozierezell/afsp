@@ -51,7 +51,7 @@ const detailCarouselCSS = css`
 	}
 `
 
-const ContentGeneric = ({ setEvents, data }) => {
+const ContentGeneric = ({ setEvents, data, navigation }) => {
 	const { details } = data
 	return (
 		<section
@@ -147,7 +147,13 @@ const ContentGeneric = ({ setEvents, data }) => {
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsTweet') {
-					return <ContentTweet key={index} tweet={detail.tweet} />
+					return (
+						<ContentTweet
+							key={index}
+							tweet={detail.tweet}
+							navigation={navigation}
+						/>
+					)
 				} else if (detail.__typename === 'DatoCmsFeaturedStoryTag') {
 					return null
 				} else if (detail.__typename === 'DatoCmsActionButton') {

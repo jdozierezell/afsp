@@ -41,12 +41,31 @@ const Detail = ({ data: { detail } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${detail.slug}`,
 	}
+	let navigation = false
 	const [hasEvents, setHasEvents] = useState(false)
 	const setEvents = events => {
 		if (events) {
 			setHasEvents(true)
 		}
 	}
+	detail.details.map(detail => {
+		console.log(detail.__typename)
+		if (
+			!navigation &&
+			(detail.__typename === 'DatoCmsContent' ||
+				detail.__typename === 'DatoCmsTable' ||
+				detail.__typename === 'DatoCmsCardContainer' ||
+				(detail.__typename === 'DatoCmsHeading' &&
+					detail.headingLevel ===
+						'Level 2 (will be included in sidebar)') ||
+				detail.__typename === 'DatoCmsFeaturedStoryTag' ||
+				detail.__typename === 'DatoCmsEventList' ||
+				detail.__typename === 'search' ||
+				detail.__typename === 'DatoCmsImageSectionHeader')
+		) {
+			navigation = true
+		}
+	})
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -55,7 +74,11 @@ const Detail = ({ data: { detail } }) => {
 		>
 			<HeroSolid data={detail} programLogo={detail.programLogo} />
 			<NavigationSide hasEvents={hasEvents} data={detail} />
-			<ContentGeneric setEvents={setEvents} data={detail} />
+			<ContentGeneric
+				setEvents={setEvents}
+				data={detail}
+				navigation={navigation}
+			/>
 			<CarouselChapterContainer />
 		</Layout>
 	)
