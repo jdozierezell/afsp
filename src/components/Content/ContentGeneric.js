@@ -13,6 +13,7 @@ import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
 import ContentAudio from './ContentAudio'
 import ContentHeading from './ContentHeading'
 import ContentEmbed from './ContentEmbed'
+import ContentTweet from './ContentTweet'
 // import Loadable from '@loadable/component'
 
 // const ContentEvent = Loadable(() => import('./ContentEvent'))
@@ -145,6 +146,8 @@ const ContentGeneric = ({ setEvents, data }) => {
 							embedCode={detail.embedCode}
 						/>
 					)
+				} else if (detail.__typename === 'DatoCmsTweet') {
+					return <ContentTweet key={index} tweet={detail.tweet} />
 				} else if (detail.__typename === 'DatoCmsFeaturedStoryTag') {
 					return null
 				} else if (detail.__typename === 'DatoCmsActionButton') {

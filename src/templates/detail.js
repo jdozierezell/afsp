@@ -175,6 +175,10 @@ export const query = graphql`
 					__typename
 					embedCode
 				}
+				... on DatoCmsTweet {
+					__typename
+					tweet
+				}
 			}
 			overrideWidth
 		}
