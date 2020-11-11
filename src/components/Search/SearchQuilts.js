@@ -65,7 +65,6 @@ const SearchQuilts = ({ visibility, searchState, handleSearchChange }) => {
 			<SearchBox
 				css={css`
 					${searchBoxCSS};
-					visibility: ${visibility};
 				`}
 				onChange={handleSearchChange}
 				translations={{
