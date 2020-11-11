@@ -21,7 +21,38 @@ const addCSS = css`
 `
 
 const CustomShareable = ({ data: { customShareables } }) => {
+	let metaImage,
+		metaDescription = ''
 	let fontLink
+	customShareables.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'suicide',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: customShareables.title,
+		lastReviewed: customShareables.meta.publishedAt,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${customShareables.slug}`,
+	}
 	if (customShareables.textBoxValues) {
 		if (customShareables.textBoxValues.fontFamily) {
 			if (
@@ -43,6 +74,7 @@ const CustomShareable = ({ data: { customShareables } }) => {
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={customShareables.seoMetaTags}
+			structuredData={structuredData}
 		>
 			{fontLink && <link href={fontLink} rel="stylesheet" />}
 			<HeroSolid data={customShareables} addCSS={addCSS} />
@@ -67,6 +99,12 @@ export const query = graphql`
 		customShareables: datoCmsCustomShareable(slug: { eq: $slug }) {
 			title
 			slug
+			seoMetaTags {
+				...GatsbyDatoCmsSeoMetaTags
+			}
+			meta {
+				publishedAt
+			}
 			brief
 			instructions
 			customText
@@ -88,9 +126,6 @@ export const query = graphql`
 					}
 				}
 				useDarkText
-			}
-			seoMetaTags {
-				...GatsbyDatoCmsSeoMetaTags
 			}
 		}
 	}
