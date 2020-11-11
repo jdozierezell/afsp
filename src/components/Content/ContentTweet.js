@@ -43,7 +43,10 @@ const ContentTweet = ({ tweet, navigation }) => {
 				<Clipboard data-clipboard-text={tweet}>Copy</Clipboard>
 				<button
 					onClick={() =>
-						(window.location.href = `https://twitter.com/intent/tweet?text=${encodedTweet}`)
+						window.open(
+							`https://twitter.com/intent/tweet?text=${encodedTweet}`,
+							'blank'
+						)
 					}
 				>
 					Tweet
