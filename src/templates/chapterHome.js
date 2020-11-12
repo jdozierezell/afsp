@@ -46,6 +46,39 @@ const Chapter = ({
 		chapterInformation,
 		trackingCode,
 	} = chapter
+
+	let metaImage,
+		metaDescription = ''
+	chapter.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'suicide',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: chapter.title,
+		lastReviewed: chapter.meta.publishedAt,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/chapter/${chapter.slug}`,
+	}
+
 	const chapterDonorDriveId = chapterInformation.chapterDonorDriveId
 		.replace(' ', '')
 		.toLowerCase()
@@ -154,6 +187,7 @@ const Chapter = ({
 			instagram={chapterInformation.instagramClass}
 			email={chapterInformation.chapterEmailApiKey}
 			seo={chapter.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<HeroChapter
 				title={title}
@@ -216,11 +250,14 @@ export default Chapter
 export const query = graphql`
 	query($slug: String, $tag: String) {
 		chapter: datoCmsChapterHomePage(slug: { eq: $slug }) {
+			title
+			slug
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}
-			title
-			slug
+			meta {
+				publishedAt
+			}
 			heroVideo {
 				url
 				video {

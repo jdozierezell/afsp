@@ -18,13 +18,46 @@ const carouselCSS = css`
 `
 
 const Story = ({ data: { story }, pageContext: { prev, next } }) => {
+	let metaImage,
+		metaDescription = ''
+	story.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const pageUrl = `https://afsp.org/chapter/${story.slug}`
+	const structuredData = {
+		'@context': 'https://schema.org',
+		'@type': 'Article',
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		headline: story.title,
+		datePublished: story.meta.firstPublishedAt,
+		dateModified: story.meta.publishedAt,
+		abstract: metaDescription,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: pageUrl,
+	}
 	return (
 		<Layout
 			theme={styles.logo.mobileDarkDesktopLight}
 			seo={story.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<HeroStories data={story} prev={prev} next={next} />
-			<ContentStory data={story} />
+			<ContentStory data={story} pageUrl={pageUrl} />
 			<CarouselChapterContainer carouselCSS={carouselCSS} />
 		</Layout>
 	)
@@ -36,8 +69,13 @@ export const query = graphql`
 	query($slug: String) {
 		story: datoCmsChapterStoryUpdate(slug: { eq: $slug }) {
 			title
+			slug
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
+			}
+			meta {
+				publishedAt
+				firstPublishedAt
 			}
 			publicationDate(formatString: "D MMM YYYY")
 			tags {
@@ -46,6 +84,18 @@ export const query = graphql`
 			}
 			coverImage {
 				url
+				fluid(
+					maxWidth: 623
+					imgixParams: {
+						auto: "format"
+						fit: "fill"
+						fill: "blur"
+						h: "384"
+						w: "623"
+					}
+				) {
+					...GatsbyDatoCmsFluid_noBase64
+				}
 			}
 			article {
 				... on DatoCmsBody {

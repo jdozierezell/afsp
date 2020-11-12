@@ -32,6 +32,12 @@ const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 			) {
 				metaImage = tag.attributes.content
 			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
 		}
 	})
 	const pageUrl = `https://afsp.org/story/${story.slug}`
@@ -46,6 +52,7 @@ const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 		dateModified: story.meta.publishedAt,
 		abstract: metaDescription,
 		publisher: 'American Foundation for Suicide Prevention',
+		url: pageUrl,
 	}
 	return (
 		<Layout

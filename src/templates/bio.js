@@ -47,7 +47,7 @@ const Bio = ({ data: { bio } }) => {
 		name: bio.name,
 		affiliation: 'American Foundation for Suicide Prevention',
 		jobTitle: bio.title,
-		url: `https://afsp.org/${bio.slug}`,
+		url: `https://afsp.org/bio/${bio.slug}`,
 	}
 	return (
 		<Layout
