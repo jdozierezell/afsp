@@ -7828,6 +7828,11 @@ gatsby-plugin-robots-txt@^1.5.3:
     "@babel/runtime" "^7.11.2"
     generate-robotstxt "^8.0.3"
 
+gatsby-plugin-rollbar@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-rollbar/-/gatsby-plugin-rollbar-1.1.0.tgz#dd296adff4925a371e7708ea71b71f1fc9fa406c"
+  integrity sha512-ccLTUCfj7s5/yhmufvQXzQOMLyfDBbSsYNYKE9yZIHFlJpJvz1DEoYQI08zIFuPdsb5pFZgttF4HIlUAk4cmtA==
+
 gatsby-plugin-sharp@^2.4.12:
   version "2.6.43"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.6.43.tgz#dd7f4fcf848337e64a014f491318f61d530a38a8"
