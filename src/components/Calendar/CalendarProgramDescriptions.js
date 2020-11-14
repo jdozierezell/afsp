@@ -7,7 +7,6 @@ const CalendarProgramDescriptions = ({ program, programDescriptions }) => {
 	useEffect(() => {
 		let tempProgramDisplay = false
 		programDescriptions.forEach(desc => {
-			console.log(desc.programName === program)
 			if (desc.programName === program) {
 				tempProgramDisplay = {
 					name: desc.programName,
@@ -21,9 +20,6 @@ const CalendarProgramDescriptions = ({ program, programDescriptions }) => {
 		<div>
 			{programDisplay && (
 				<>
-					{console.log(
-						`${programDisplay.name}: ${programDisplay.description}`
-					)}
 					<h3>{programDisplay.name}</h3>
 					<p
 						css={css`

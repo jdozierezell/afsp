@@ -152,7 +152,6 @@ const AFSPCalendar = ({ data }) => {
 		} else {
 			let filteredEvents = allEvents
 			if (chapterFilter) {
-				console.log(chapterFilter)
 				filteredEvents = filteredEvents.filter(
 					event => event.chapterCode === chapterFilter
 				)
