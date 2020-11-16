@@ -66,6 +66,11 @@ const mobileCalendarCSS = css`
 	@media (min-width: ${styles.screens.navigation}px) {
 		display: none;
 	}
+	td {
+		width: 33vw;
+		border-left: 1px solid #ddd;
+		white-space: normal;
+	}
 `
 const deskCalendarCSS = css`
 	display: none;
@@ -73,6 +78,9 @@ const deskCalendarCSS = css`
 	z-index: 0;
 	@media (min-width: ${styles.screens.navigation}px) {
 		display: block;
+	}
+	td {
+		border-left: 1px solid #ddd;
 	}
 	.rbc-today {
 		background-color: ${styles.colors.lightGray};
@@ -196,6 +204,11 @@ const AFSPCalendar = ({ data }) => {
 						endAccessor="end"
 						defaultView="agenda"
 						views={['agenda']}
+						components={{
+							agenda: {
+								event: eventListDisplay,
+							},
+						}}
 					/>
 				</div>
 				<div css={deskCalendarCSS}>
