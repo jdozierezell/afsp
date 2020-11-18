@@ -156,6 +156,7 @@ const App = ({ data: { home } }) => {
 			seo={home.seoMetaTags}
 			structuredData={structuredData}
 		>
+			{console.log(home.seoMetaTags)}
 			<HeroVideo
 				videoUrl={
 					home.heroVideo.video
