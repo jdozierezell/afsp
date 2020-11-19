@@ -30,10 +30,10 @@ const CalendarFilter = ({
 	chapters,
 }) => {
 	if (chapters[0].label !== 'All Chapters') {
-		chapters.unshift({ value: null, label: 'All Chapters' })
+		chapters.unshift({ value: '', label: 'All Chapters' })
 	}
 	if (programs.length > 0 && programs[0].label !== 'All Programs') {
-		programs.unshift({ value: null, label: 'All Programs' })
+		programs.unshift({ value: '', label: 'All Programs' })
 	}
 
 	console.log(chapters)
