@@ -29,6 +29,14 @@ const CalendarFilter = ({
 	programs,
 	chapters,
 }) => {
+	if (chapters[0].label !== 'All Chapters') {
+		chapters.unshift({ value: null, label: 'All Chapters' })
+	}
+	if (programs.length > 0 && programs[0].label !== 'All Programs') {
+		programs.unshift({ value: null, label: 'All Programs' })
+	}
+
+	console.log(chapters)
 	return (
 		<div
 			css={css`
@@ -48,7 +56,7 @@ const CalendarFilter = ({
 					// value={values.selectedOption}
 					options={chapters}
 					onChange={handleChapterSelectChange}
-					isClearable={true}
+					// isClearable={true}
 				/>
 			</div>
 			<div>
@@ -63,7 +71,7 @@ const CalendarFilter = ({
 					// value={values.selectedOption}
 					options={programs}
 					onChange={handleProgramSelectChange}
-					isClearable={true}
+					// isClearable={true}
 				/>
 			</div>
 		</div>

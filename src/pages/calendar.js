@@ -104,8 +104,9 @@ const AFSPCalendar = ({ data }) => {
 
 	const localizer = momentLocalizer(moment)
 
-	const handleChapterSelectChange = chapter =>
+	const handleChapterSelectChange = chapter => {
 		setChapterFilter(chapter ? chapter.value : null)
+	}
 	const handleProgramSelectChange = program =>
 		setProgramFilter(program ? program.value : null)
 
@@ -172,7 +173,6 @@ const AFSPCalendar = ({ data }) => {
 			setEvents(filteredEvents)
 		}
 	}, [chapterFilter, programFilter, allEvents])
-
 	return (
 		<Layout
 			theme={styles.logo.mobileDarkDesktopDark}
