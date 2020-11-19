@@ -19,6 +19,10 @@ const heroStatisticsCSS = css`
 		max-width: 700px;
 		font-family: ${styles.fonts.avenirRegular};
 	}
+	p,
+	a {
+		color: ${styles.colors.white};
+	}
 	h1 {
 		font-family: ${styles.fonts.paul};
 		margin: ${styles.scale.px35} 0;
