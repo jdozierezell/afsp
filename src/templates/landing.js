@@ -85,46 +85,48 @@ const Landing = ({ data: { landing } }) => {
 			seo={landing.seoMetaTags}
 		>
 			<h1 css={landingTitle}>{landing.title}</h1>
-			{landing.brief && (
-				<div
-					css={css`
-						${landingBriefCSS};
-						@media (min-width: ${styles.screens.tablet}px) {
-							padding: 0 ${styles.scale.px50}
-								${landing.channelList.length !== 0
-									? 0
-									: styles.scale.px50};
-						}
-					`}
-					dangerouslySetInnerHTML={{
-						__html: landing.brief,
-					}}
-				></div>
-			)}
-			{landing.readMore && (
-				<>
-					<p>
-						<button
-							onClick={() => setReadMore(true)}
-							css={css`
-								${readMoreCSS};
-								display: ${readMore ? 'none' : 'block'};
-							`}
-						>
-							Read more...
-						</button>
-					</p>
-
+			<div
+				css={css`
+					${landingBriefCSS};
+					@media (min-width: ${styles.screens.tablet}px) {
+						padding: 0 ${styles.scale.px50}
+							${landing.channelList.length !== 0
+								? 0
+								: styles.scale.px50};
+					}
+				`}
+			>
+				{landing.brief && (
 					<div
-						css={css`
-							display: ${readMore ? 'block' : 'none'};
-						`}
 						dangerouslySetInnerHTML={{
-							__html: landing.readMore,
+							__html: landing.brief,
 						}}
 					></div>
-				</>
-			)}
+				)}
+				{landing.readMore && (
+					<>
+						<p>
+							<button
+								onClick={() => setReadMore(true)}
+								css={css`
+									${readMoreCSS};
+									display: ${readMore ? 'none' : 'block'};
+								`}
+							>
+								Read more...
+							</button>
+						</p>
+						<div
+							css={css`
+								display: ${readMore ? 'block' : 'none'};
+							`}
+							dangerouslySetInnerHTML={{
+								__html: landing.readMore,
+							}}
+						></div>
+					</>
+				)}
+			</div>
 			{landing.channelList.length !== 0 && (
 				<ChannelContainer
 					slug={landing.slug}
@@ -214,6 +216,7 @@ export const query = graphql`
 			seo {
 				description
 			}
+			readMore
 			eventCalendar {
 				... on DatoCmsCampaignName {
 					campaignName
