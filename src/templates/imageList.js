@@ -9,6 +9,37 @@ import ImageListContainer from '../components/ImageList/ImageListContainer'
 import { styles } from '../css/css'
 
 const ImageList = ({ data: { imageList } }) => {
+	let metaImage,
+		metaDescription = ''
+	imageList.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'suicide',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: imageList.title,
+		lastReviewed: imageList.meta.publishedAt,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${imageList.slug}`,
+	}
 	imageList.details = imageList.images
 	let navigation = false
 	imageList.details.forEach(detail => {
@@ -20,6 +51,7 @@ const ImageList = ({ data: { imageList } }) => {
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={imageList.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<HeroSolid data={imageList} />
 			{navigation && <NavigationSide data={imageList} />}
@@ -41,6 +73,9 @@ export const query = graphql`
 			slug
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
+			}
+			meta {
+				publishedAt
 			}
 			brief
 			images {

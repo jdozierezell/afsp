@@ -32,10 +32,43 @@ const grantCSS = css`
 `
 
 const Grant = ({ data: { grant } }) => {
+	let metaImage,
+		metaDescription = ''
+	grant.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'suicide',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: grant.title,
+		lastReviewed: grant.meta.publishedAt,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${grant.slug}`,
+	}
+
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={grant.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<HeroGrant grant={grant} />
 			<main css={grantCSS}>
@@ -85,6 +118,9 @@ export const query = graphql`
 			title
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
+			}
+			meta {
+				publishedAt
 			}
 			grantInformation {
 				__typename

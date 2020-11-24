@@ -7,7 +7,7 @@ import StoriesContainer from '../components/Stories/StoriesContainer'
 
 import { styles } from '../css/css'
 
-const Tag = ({ data: { stories }, pageContext: { title } }) => {
+const Tag = ({ data: { stories }, pageContext: { title, slug } }) => {
 	const heroData = {
 		title: `Stories written by ${title}`,
 	}
@@ -143,10 +143,42 @@ const Tag = ({ data: { stories }, pageContext: { title } }) => {
 			},
 		],
 	}
+	let metaImage,
+		metaDescription = ''
+	seoTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'Person',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: title,
+		affiliation: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/author/${slug}`,
+	}
 
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight} seo={seoTags}>
-			{console.log(seoTags)}
+		<Layout
+			theme={styles.logo.mobileLightDesktopLight}
+			seo={seoTags}
+			structuredData={structuredData}
+		>
 			<HeroSolid data={heroData} />
 			<StoriesContainer stories={stories.edges} more={`${title}s`} />
 		</Layout>

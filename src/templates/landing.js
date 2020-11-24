@@ -76,6 +76,37 @@ const readMoreCSS = css`
 `
 
 const Landing = ({ data: { landing } }) => {
+	let metaImage,
+		metaDescription = ''
+	landing.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'suicide',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: landing.title,
+		lastReviewed: landing.meta.publishedAt,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${landing.slug}`,
+	}
 	const [readMore, setReadMore] = useState(false)
 	let adjacent = 0
 
@@ -83,6 +114,7 @@ const Landing = ({ data: { landing } }) => {
 		<Layout
 			theme={styles.logo.mobileDarkDesktopDark}
 			seo={landing.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<h1 css={landingTitle}>{landing.title}</h1>
 			{landing.brief && (
@@ -213,6 +245,9 @@ export const query = graphql`
 			slug
 			seo {
 				description
+			}
+			meta {
+				publishedAt
 			}
 			eventCalendar {
 				... on DatoCmsCampaignName {
