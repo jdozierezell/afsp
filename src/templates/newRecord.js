@@ -30,10 +30,42 @@ const mainCSS = css`
 `
 
 const NewRecord = ({ data: { newRecord } }) => {
+	let metaImage,
+		metaDescription = ''
+	newRecord.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'suicide',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: newRecord.title,
+		lastReviewed: newRecord.meta.publishedAt,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${newRecord.slug}`,
+	}
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={newRecord.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<HeroSolid data={newRecord} />
 			<main css={mainCSS}>
@@ -57,6 +89,9 @@ export const query = graphql`
 			title
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
+			}
+			meta {
+				publishedAt
 			}
 			recordType
 			brief

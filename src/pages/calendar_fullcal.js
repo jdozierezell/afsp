@@ -1,51 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
-import moment from 'moment'
 
-import { Calendar, momentLocalizer } from 'react-big-calendar'
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import listPlugin from '@fullcalendar/list'
 
 import Layout from '../components/Layout'
 import CalendarFilter from '../components/Calendar/CalendarFilter'
-import CalendarProgramDescriptions from '../components/Calendar/CalendarProgramDescriptions'
 
 import { styles } from '../css/css'
 
 import chapterList from '../utils/chapterList'
-
-import 'react-big-calendar/lib/css/react-big-calendar.css'
-
-const eventMonthDisplay = ({ event }) => {
-	return (
-		<a
-			href={event.url}
-			target="_blank"
-			rel="noopener noreferrer"
-			css={css`
-				color: ${styles.colors.white};
-				text-decoration: none;
-			`}
-		>
-			{event.title}
-		</a>
-	)
-}
-
-const eventListDisplay = ({ event }) => {
-	return (
-		<a
-			href={event.url}
-			target="_blank"
-			rel="noopener noreferrer"
-			css={css`
-				color: ${styles.colors.blue};
-				font-family: ${styles.fonts.avenirDemi};
-			`}
-		>
-			{event.title}
-		</a>
-	)
-}
 
 const calendarCSS = css`
 	font-family: ${styles.fonts.avenirRegular};
@@ -57,6 +23,42 @@ const calendarCSS = css`
 	> p:first-of-type {
 		max-width: 623px;
 	}
+	.fc-col-header-cell-cushion {
+		padding: ${styles.scale.px12};
+		color: ${styles.colors.darkGray};
+	}
+	.fc-col-header {
+		margin-bottom: 0;
+	}
+	.fc-daygrid-day-frame {
+		padding: 1rem 0 1rem 1rem;
+	}
+	.fc-list-table tbody tr {
+		position: relative;
+	}
+	.fc-list-day {
+		background-color: ${styles.colors.lightGray};
+		z-index: 100;
+	}
+	.fc-daygrid-event {
+		display: grid;
+		grid-template-columns: 1fr 4fr 10fr;
+	}
+	.fc-daygrid-event-dot {
+		grid-column: 1 / 2;
+		margin-top: ${styles.scale.px7};
+	}
+	.fc-event-time {
+		grid-column: 2 / 3;
+	}
+	.fc-event-title {
+		padding: 0 1px;
+		white-space: normal;
+		grid-column: 3 / 4;
+	}
+	.fc-event-main {
+		grid-column: 1 / 4;
+	}
 `
 
 const mobileCalendarCSS = css`
@@ -66,11 +68,6 @@ const mobileCalendarCSS = css`
 	@media (min-width: ${styles.screens.navigation}px) {
 		display: none;
 	}
-	td {
-		width: 33vw;
-		border-left: 1px solid #ddd;
-		white-space: normal;
-	}
 `
 const deskCalendarCSS = css`
 	display: none;
@@ -78,20 +75,6 @@ const deskCalendarCSS = css`
 	z-index: 0;
 	@media (min-width: ${styles.screens.navigation}px) {
 		display: block;
-	}
-	td {
-		border-left: 1px solid #ddd;
-	}
-	.rbc-today {
-		background-color: ${styles.colors.lightGray};
-	}
-	.rbc-event {
-		background-color: ${styles.colors.blue};
-		margin: 3px 10px;
-		width: calc(100% - (10px * 2));
-	}
-	.rbc-show-more {
-		margin-left: 10px;
 	}
 `
 
@@ -102,11 +85,8 @@ const AFSPCalendar = ({ data }) => {
 	const [chapterFilter, setChapterFilter] = useState(null)
 	const [programFilter, setProgramFilter] = useState(null)
 
-	const localizer = momentLocalizer(moment)
-
-	const handleChapterSelectChange = chapter => {
+	const handleChapterSelectChange = chapter =>
 		setChapterFilter(chapter ? chapter.value : null)
-	}
 	const handleProgramSelectChange = program =>
 		setProgramFilter(program ? program.value : null)
 
@@ -161,6 +141,7 @@ const AFSPCalendar = ({ data }) => {
 		} else {
 			let filteredEvents = allEvents
 			if (chapterFilter) {
+				console.log(chapterFilter)
 				filteredEvents = filteredEvents.filter(
 					event => event.chapterCode === chapterFilter
 				)
@@ -173,6 +154,7 @@ const AFSPCalendar = ({ data }) => {
 			setEvents(filteredEvents)
 		}
 	}, [chapterFilter, programFilter, allEvents])
+
 	return (
 		<Layout
 			theme={styles.logo.mobileDarkDesktopDark}
@@ -192,47 +174,28 @@ const AFSPCalendar = ({ data }) => {
 					programs={programs}
 					chapters={chapterList}
 				/>
-				<CalendarProgramDescriptions
-					program={programFilter}
-					programDescriptions={data.calendar.programDescriptions}
-				/>
 				<div css={mobileCalendarCSS}>
-					<Calendar
-						localizer={localizer}
+					<FullCalendar
+						plugins={[listPlugin, dayGridPlugin]}
+						initialView="list"
 						events={events}
-						startAccessor="start"
-						endAccessor="end"
-						defaultView="agenda"
-						views={['agenda']}
-						components={{
-							agenda: {
-								event: eventListDisplay,
-							},
-						}}
 					/>
 				</div>
+				{console.log(events)}
 				<div css={deskCalendarCSS}>
-					<Calendar
-						localizer={localizer}
+					<FullCalendar
+						plugins={[dayGridPlugin, listPlugin]}
+						initialView="dayGridMonth"
 						events={events}
-						startAccessor="start"
-						endAccessor="end"
-						defaultView="month"
-						views={['month', 'agenda']}
-						messages={{
-							month: 'Month',
-							agenda: 'List',
+						buttonText={{
+							dayGridMonth: 'Month',
+							listWeek: 'List',
+							today: 'Today',
 						}}
-						style={{ height: 1100 }}
-						onDrillDown={e => console.log(e)}
-						popup={true}
-						components={{
-							month: {
-								event: eventMonthDisplay,
-							},
-							agenda: {
-								event: eventListDisplay,
-							},
+						headerToolbar={{
+							start: 'title', // will normally be on the left. if RTL, will be on the right
+							center: 'dayGridMonth,listWeek',
+							end: 'today prev,next', // will normally be on the right. if RTL, will be on the left
 						}}
 					/>
 				</div>
@@ -247,14 +210,8 @@ export const query = graphql`
 	query {
 		# gatsby-source-datocms
 		calendar: datoCmsCalendar {
-			title
-			slug
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
-			}
-			programDescriptions {
-				programName
-				programDescription
 			}
 		}
 	}

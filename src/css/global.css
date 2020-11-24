@@ -156,3 +156,19 @@ textarea {
 	white-space: nowrap;
 	width: 1px;
 }
+
+/* React Big Calendar Overrides */
+
+.rbc-overlay-header {
+	font-family: AvenirNextLTPro, Arial, sans-serif !important;
+	color: hsla(0, 0%, 14.9%, 1) !important;
+}
+
+.rbc-event {
+	background-color: hsla(224, 100%, 60%, 1) !important;
+}
+
+.rbc-event a {
+	color: white !important;
+	font-family: AvenirNextLTPro, Arial, sans-serif;
+}

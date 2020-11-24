@@ -10,6 +10,37 @@ import StoriesContainer from '../components/Stories/StoriesContainer'
 import { styles } from '../css/css'
 
 const Detail = ({ data: { tagged, stories }, pageContext }) => {
+	let metaImage,
+		metaDescription = ''
+	tagged.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'suicide',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: tagged.title,
+		lastReviewed: tagged.meta.publishedAt,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${tagged.slug}`,
+	}
 	const [taggedStories, setTaggedStories] = useState([])
 	useEffect(() => {
 		stories.edges.forEach(story => {
@@ -25,6 +56,7 @@ const Detail = ({ data: { tagged, stories }, pageContext }) => {
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={tagged.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<HeroSolid data={tagged} />
 			<NavigationSide data={tagged} />
@@ -46,6 +78,12 @@ export const query = graphql`
 		tagged: datoCmsDetailTagged(slug: { eq: $slug }) {
 			title
 			slug
+			seoMetaTags {
+				...GatsbyDatoCmsSeoMetaTags
+			}
+			meta {
+				publishedAt
+			}
 			brief
 			details {
 				... on DatoCmsContent {
@@ -125,9 +163,6 @@ export const query = graphql`
 						tag
 					}
 				}
-			}
-			seoMetaTags {
-				...GatsbyDatoCmsSeoMetaTags
 			}
 		}
 		stories: allDatoCmsStory(
