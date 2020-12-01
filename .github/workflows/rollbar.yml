@@ -2,6 +2,7 @@ name: rollbar
 on: push
 jobs:
     track-deploy:
+        runs-on: ubuntu-latest
         steps:
             - name: Rollbar deploy
               uses: rollbar/github-deploy-action@2.0.0
