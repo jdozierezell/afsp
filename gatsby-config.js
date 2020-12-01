@@ -27,7 +27,10 @@ module.exports = {
 				// For all configuration options, see https://docs.rollbar.com/docs/rollbarjs-configuration-reference
 				captureUncaught: true,
 				captureUnhandledRejections: true,
-				ignoredMessages: ['(unknown): Script error'],
+				ignoredMessages: [
+					'(unknown): Script error',
+					'(unknown): Script error.',
+				],
 				payload: {
 					environment: process.env.NODE_ENV,
 				},

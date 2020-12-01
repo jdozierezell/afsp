@@ -49,7 +49,6 @@ const Detail = ({ data: { detail } }) => {
 		}
 	}
 	detail.details.map(detail => {
-		console.log(detail.__typename)
 		if (
 			!navigation &&
 			(detail.__typename === 'DatoCmsContent' ||
