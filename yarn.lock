@@ -5604,6 +5604,11 @@ date-fns@^2.0.1, date-fns@^2.14.0, date-fns@^2.8.1:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.16.1.tgz#05775792c3f3331da812af253e1a935851d3834b"
   integrity sha512-sAJVKx/FqrLYHAQeN7VpJrPhagZc9R4ImZIWYRFZaaohR3KzmuK88touwsSwSVT8Qcbd4zoDsnGfX4GFB4imyQ==
 
+date-time-format-timezone@^1.0.22:
+  version "1.0.22"
+  resolved "https://registry.yarnpkg.com/date-time-format-timezone/-/date-time-format-timezone-1.0.22.tgz#6bb4713aac3bf36338738b59c374583cfcbe6246"
+  integrity sha512-4hEeKPpNlbFO05ldht9FwJEy2g1xL7kU3dTPY5hNSd1AyMjrrIeUS54kSWgt/KdttYshhjDMIonU+vCmL4NjVw==
+
 datocms-client@>=3.1.0, datocms-client@^3.0.14:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/datocms-client/-/datocms-client-3.1.3.tgz#9db5da5ccee9ea69f84e0c4eddd03c0d400b8054"

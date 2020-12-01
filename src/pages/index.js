@@ -6,6 +6,8 @@ import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 import Script from 'react-load-script'
 
+import 'date-time-format-timezone' // polyfill for IE11
+
 import Layout from '../components/Layout'
 import HeroVideo from '../components/Hero/HeroVideo'
 import InstagramFeed from '../components/Social/InstagramFeed'
