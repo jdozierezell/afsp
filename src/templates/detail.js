@@ -64,6 +64,7 @@ const Detail = ({ data: { detail } }) => {
 		) {
 			navigation = true
 		}
+		return true
 	})
 	return (
 		<Layout

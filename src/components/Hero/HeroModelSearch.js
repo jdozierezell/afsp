@@ -140,16 +140,24 @@ const HeroModelSearch = ({
 			></div>
 			{searchType === 'supportGroup' && countryOptions.length > 0 && (
 				<>
-					<Toggle defaultChecked={nonus} onChange={updateNonus} />
-					<label css={toggleLabelCSS} htmlFor="">
+					<Toggle
+						id="nonus-group"
+						defaultChecked={nonus}
+						onChange={updateNonus}
+					/>
+					<label css={toggleLabelCSS} htmlFor="nonus-group">
 						Search outside the U.S.
 					</label>
 				</>
 			)}
 			{searchType === 'supportGroup' && onlineGroups.length > 0 && (
 				<>
-					<Toggle defaultChecked={online} onChange={updateOnline} />
-					<label css={toggleLabelCSS} htmlFor="">
+					<Toggle
+						id="online-group"
+						defaultChecked={online}
+						onChange={updateOnline}
+					/>
+					<label css={toggleLabelCSS} htmlFor="online-group">
 						Only list online groups
 					</label>
 				</>

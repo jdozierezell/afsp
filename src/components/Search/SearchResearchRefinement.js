@@ -54,10 +54,6 @@ const RefinementList = ({
 	)
 	const [placeholderColor, setPlaceholderColor] = useState('#777777')
 	const [updateDropdown, setUpdateDropdown] = useState(false)
-	const [values, setReactSelectValue] = useState({
-		selectedCountryOption: [],
-		selectedStateOption: [],
-	})
 	useEffect(() => {
 		setOptions([])
 		items.forEach(item => {

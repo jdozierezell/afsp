@@ -187,9 +187,8 @@ const DeskMenuSection = ({ menuItem, id, overrideLight }) => {
 														</a>
 													</li>
 												)
-											} else {
-												return
 											}
+											return ''
 										}
 									)}
 								</a.ul>

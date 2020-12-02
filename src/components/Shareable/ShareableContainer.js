@@ -64,7 +64,6 @@ const ShareableContainer = ({
 	const [isSelected, setSelected] = useState(false)
 	const [konvaPosition, setKonvaPosition] = useState(null)
 	const [controlPosition, setControlPosition] = useState(null)
-	const [controlHeight, setControlHeight] = useState(null)
 	const [top, setTop] = useState('220px')
 	const [message, setMessage] = useState()
 	const [overlayText, setOverlayText] = useState(false)
@@ -209,7 +208,6 @@ const ShareableContainer = ({
 			trRef.current.setNode(imageRef.current)
 			trRef.current.getLayer().batchDraw()
 		}
-		setControlHeight(controlRef.current.offsetHeight + height + 50)
 		// set image coordinates to center based on width and height
 		window.addEventListener('resize', setStateDimensions)
 		setImageOffsetX(imageWidth / 2)

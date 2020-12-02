@@ -73,10 +73,11 @@ const CustomHits = data => {
 			)}
 			{data.indexName === 'afsporg-research-videos' && (
 				<ul css={data.customHitsCSS}>
-					{data.hits.map(hit => (
+					{data.hits.map((hit, index) => (
 						<li key={hit.objectID} data-type={hit.type}>
 							<div css={videoWrapperCSS}>
 								<iframe
+									title={`research-video-${index}`}
 									src={`https://player.vimeo.com/video/${hit.vimeoId}`}
 									style={{
 										position: 'absolute',

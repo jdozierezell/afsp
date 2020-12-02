@@ -47,7 +47,6 @@ const CarouselDetailContainer = ({
 	addCSS,
 	id,
 }) => {
-	const carouselId = createAnchor(title)
 	const responsive = {
 		superLargeDesktop: {
 			breakpoint: { max: 4000, min: 3000 },

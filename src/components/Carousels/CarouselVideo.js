@@ -39,6 +39,7 @@ const CarouselVideo = ({ vimeoId, title }) => {
 			<div>
 				<div css={videoWrapperCSS}>
 					<iframe
+						title={`video-${vimeoId}`}
 						src={`https://player.vimeo.com/video/${vimeoId}`}
 						style={{
 							position: 'absolute',
