@@ -66,6 +66,21 @@ const summaryVideoCSS = css`
 		}
 	}
 `
+const videoWrapperCSS = css`
+	background-size: cover;
+	background-position: center;
+	border-radius: ${styles.scale.px7} / ${styles.scale.px5};
+	padding: 56.25% 0 0 0;
+	position: relative;
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		border-radius: 5px;
+	}
+`
 
 const videoTitleCSS = css`
 	@media (mim-width: ${styles.screens.tablet}px) {
@@ -87,6 +102,7 @@ const StoriesReference = ({ data }) => {
 		additionalFacts,
 		videoHeader,
 		videoDescription,
+		videoId,
 		video,
 		videoPoster,
 		videoLinkText,
@@ -110,13 +126,23 @@ const StoriesReference = ({ data }) => {
 					<p>More resources</p>
 					<h3>{videoHeader}</h3>
 				</div>
-				<video
-					controls
-					src={video.video ? video.video.mp4Url : video.url}
-					poster={videoPoster.url}
-				>
-					<track default kind="captions" srcLang="en" src="#" />
-				</video>
+
+				<div css={videoWrapperCSS}>
+					<iframe
+						title={`video-${videoId}`}
+						src={`https://player.vimeo.com/video/${videoId}`}
+						style={{
+							position: 'absolute',
+							top: 0,
+							left: 0,
+							width: '100%',
+							height: '100%',
+						}}
+						frameBorder="0"
+						allow="fullscreen"
+						allowFullScreen
+					></iframe>
+				</div>
 				<p>{videoDescription}</p>
 				<Link
 					to={buildUrl(videoLink.__typename, videoLink.slug)}

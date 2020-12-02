@@ -141,15 +141,7 @@ export const query = graphql`
 			additionalFacts {
 				fact
 			}
-			video {
-				url
-				video {
-					mp4Url(res: medium)
-				}
-			}
-			videoPoster {
-				url
-			}
+			videoId
 			videoHeader
 			videoDescription
 			videoLinkText
