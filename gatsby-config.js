@@ -30,6 +30,8 @@ module.exports = {
 				ignoredMessages: [
 					'(unknown): Script error',
 					'(unknown): Script error.',
+					'Script error',
+					'Script error.',
 				],
 				payload: {
 					environment: process.env.NODE_ENV,
