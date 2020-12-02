@@ -10,6 +10,11 @@ import CarouselChapterContainer from '../components/Carousels/CarouselChapterCon
 import { styles } from '../css/css'
 
 const Detail = ({ data: { detail } }) => {
+	const setEvents = events => {
+		if (events) {
+			setHasEvents(true)
+		}
+	}
 	let metaImage,
 		metaDescription = ''
 	detail.seoMetaTags.tags.forEach(tag => {
@@ -43,11 +48,6 @@ const Detail = ({ data: { detail } }) => {
 	}
 	let navigation = false
 	const [hasEvents, setHasEvents] = useState(false)
-	const setEvents = events => {
-		if (events) {
-			setHasEvents(true)
-		}
-	}
 	detail.details.map(detail => {
 		if (
 			!navigation &&
