@@ -93,6 +93,7 @@ const Partners = ({ data: { partners } }) => {
 								style={{
 									display: 'block',
 								}}
+								alt={partner.partnerLogo.alt}
 							/>
 							<div css={partnerInfoCSS}>
 								<h3>{partner.partnerName}</h3>
