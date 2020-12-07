@@ -162,6 +162,7 @@ export const query = graphql`
 					__typename
 					id
 					images {
+						alt
 						url
 						fluid(
 							maxWidth: 623

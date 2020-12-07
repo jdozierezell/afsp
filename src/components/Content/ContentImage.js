@@ -42,7 +42,11 @@ const ContentImage = ({ image, index }) => {
 	return (
 		<div className="storyContent">
 			{image.length === 1 && (
-				<Img css={singleCSS} fluid={image[0].fluid} />
+				<Img
+					css={singleCSS}
+					fluid={image[0].fluid}
+					alt={image[0].alt}
+				/>
 			)}
 			{image.length > 1 && (
 				<Carousel css={carouselCSS} responsive={responsive}>
@@ -51,6 +55,7 @@ const ContentImage = ({ image, index }) => {
 							css={carouselImageCSS}
 							key={index}
 							fluid={image.fluid}
+							alt={image.alt}
 						/>
 					))}
 				</Carousel>
