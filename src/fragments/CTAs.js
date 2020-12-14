@@ -55,6 +55,10 @@ export const CTAs = graphql`
 							__typename
 							slug
 						}
+						... on DatoCmsDetailTagged {
+							__typename
+							slug
+						}
 						... on DatoCmsAuthor {
 							__typename
 							slug
@@ -113,6 +117,10 @@ export const CTAs = graphql`
 							__typename
 							slug
 						}
+						... on DatoCmsDetailTagged {
+							__typename
+							slug
+						}
 						... on DatoCmsAuthor {
 							__typename
 							slug
@@ -167,6 +175,10 @@ export const CTAs = graphql`
 							slug
 						}
 						... on DatoCmsDetail {
+							__typename
+							slug
+						}
+						... on DatoCmsDetailTagged {
 							__typename
 							slug
 						}
