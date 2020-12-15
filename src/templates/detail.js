@@ -177,6 +177,7 @@ export const query = graphql`
 							...GatsbyDatoCmsFluid_noBase64
 						}
 					}
+					imagesToShow
 				}
 				... on DatoCmsVideo {
 					__typename

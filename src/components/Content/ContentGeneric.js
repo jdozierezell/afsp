@@ -101,7 +101,14 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsImage') {
-					return <ContentImage key={index} image={detail.images} />
+					console.log(detail.images)
+					return (
+						<ContentImage
+							key={index}
+							image={detail.images}
+							imagesToShow={detail.imagesToShow}
+						/>
+					)
 				} else if (detail.__typename === 'DatoCmsVideo') {
 					return (
 						<ContentVideo
