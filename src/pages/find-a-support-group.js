@@ -162,7 +162,10 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 		let countryArray = []
 		let onlineArray = []
 		supportGroups.edges.forEach(group => {
-			if (group.node.meetingCountry !== 'United States of America') {
+			if (
+				group.node.meetingCountry !== 'United States of America' &&
+				group.node.meetingCountry !== 'Not Applicable'
+			) {
 				countryArray.push(group.node.meetingCountry)
 			}
 			if (group.node.meetingType === 'Online only') {
