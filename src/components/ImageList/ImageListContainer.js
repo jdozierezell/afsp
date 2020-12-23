@@ -10,7 +10,7 @@ const imageListCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px12};
 	display: flex;
 	flex-flow: row wrap;
-	justify-content: space-between;
+	justify-content: flex-start;
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin: ${styles.scale.px56} ${styles.scale.px24};
 	}
