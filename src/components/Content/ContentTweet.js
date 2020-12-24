@@ -24,7 +24,6 @@ const buttonGroupCSS = css`
 	margin: 0;
 `
 const ContentTweet = ({ tweet, navigation }) => {
-	console.log(navigation)
 	const encodedTweet = encodeURIComponent(tweet)
 	return (
 		<div

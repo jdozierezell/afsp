@@ -29,7 +29,6 @@ const carouselImageCSS = css`
 `
 
 const ContentImage = ({ image, imagesToShow }) => {
-	console.log(imagesToShow)
 	const responsive = {
 		tablet: {
 			breakpoint: { max: 4000, min: 464 },

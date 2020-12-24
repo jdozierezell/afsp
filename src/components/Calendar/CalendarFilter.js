@@ -36,7 +36,6 @@ const CalendarFilter = ({
 		programs.unshift({ value: '', label: 'All Programs' })
 	}
 
-	console.log(chapters)
 	return (
 		<div
 			css={css`

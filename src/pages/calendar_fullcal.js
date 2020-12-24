@@ -141,7 +141,6 @@ const AFSPCalendar = ({ data }) => {
 		} else {
 			let filteredEvents = allEvents
 			if (chapterFilter) {
-				console.log(chapterFilter)
 				filteredEvents = filteredEvents.filter(
 					event => event.chapterCode === chapterFilter
 				)
@@ -181,7 +180,6 @@ const AFSPCalendar = ({ data }) => {
 						events={events}
 					/>
 				</div>
-				{console.log(events)}
 				<div css={deskCalendarCSS}>
 					<FullCalendar
 						plugins={[dayGridPlugin, listPlugin]}
