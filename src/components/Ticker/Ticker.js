@@ -19,7 +19,7 @@ const tickerWrap = css`
 	width: 100%;
 	overflow: hidden;
 	height: ${styles.scale.px64};
-	background-color: ${styles.colors.poppy};
+	background-color: ${styles.colors.blue};
 	padding-left: 100%;
 	box-sizing: content-box;
 	z-index: 2000;
