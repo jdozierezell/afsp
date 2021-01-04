@@ -20,19 +20,19 @@ module.exports = {
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-netlify`,
 		// `gatsby-plugin-preact`,
-		{
-			resolve: 'gatsby-plugin-rollbar',
-			options: {
-				accessToken: '063b513a856c4c9ca00e3ce649c35938',
-				// For all configuration options, see https://docs.rollbar.com/docs/rollbarjs-configuration-reference
-				captureUncaught: true,
-				captureUnhandledRejections: true,
-				ignoredMessages: ['unknown'],
-				payload: {
-					environment: process.env.NODE_ENV,
-				},
-			},
-		},
+		// {
+		// 	resolve: 'gatsby-plugin-rollbar',
+		// 	options: {
+		// 		accessToken: '063b513a856c4c9ca00e3ce649c35938',
+		// 		// For all configuration options, see https://docs.rollbar.com/docs/rollbarjs-configuration-reference
+		// 		captureUncaught: true,
+		// 		captureUnhandledRejections: true,
+		// 		ignoredMessages: ['unknown'],
+		// 		payload: {
+		// 			environment: process.env.NODE_ENV,
+		// 		},
+		// 	},
+		// },
 		// {
 		// 	resolve: '@sentry/gatsby',
 		// 	options: {
