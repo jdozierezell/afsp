@@ -80,7 +80,8 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 						resource.__typename === 'DatoCmsDetail' ||
 						resource.__typename === 'DatoCmsDetailTagged' ||
 						resource.__typename === 'DatoCmsLanding' ||
-						resource.__typename === 'DatoCmsCustomShareable'
+						resource.__typename === 'DatoCmsCustomShareable' ||
+						resource.__typename === 'DatoCmsStatistic'
 					) {
 						image = resource.seo.image
 						link = `/${resource.slug}`
