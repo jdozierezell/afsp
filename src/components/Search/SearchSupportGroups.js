@@ -136,8 +136,16 @@ const SearchSupportGroups = ({ supportGroup }) => {
 			</h2>
 			<div css={meetingSiteCSS}>
 				<address>
-					{nameOfMeetingSite && <h4>{nameOfMeetingSite}</h4>}
+					{nameOfMeetingSite &&
+						nameOfMeetingSite !== 'Not Applicable' && (
+							<h4>{nameOfMeetingSite}</h4>
+						)}
 					{meetingType && <h4>{meetingType}</h4>}
+					{meetingType === 'Online only' && (
+						<p>
+							Online groups accept loss survivors from all locations.
+						</p>
+					)}
 					{meetingType !== 'Online only' && (
 						<p>
 							{meetingAddress ? meetingAddress : ''}
