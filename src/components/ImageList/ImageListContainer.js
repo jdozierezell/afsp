@@ -76,7 +76,13 @@ const ImageListContainer = ({ images, crop, navigation }) => {
 						)}
 						{image.__typename === 'DatoCmsListImage' && (
 							<div>
-								<a href={image.originalImage.url}>
+								<a
+									href={
+										image.linkToOther && image.otherUrl
+											? image.otherUrl
+											: image.originalImage.url
+									}
+								>
 									<Img
 										fluid={
 											crop
