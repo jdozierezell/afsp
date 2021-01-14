@@ -4,8 +4,9 @@ command = "npm run build"
 
 [context.branch-deploy]
 command = "npm run build"
-environment = {PREVIEW_MODE = "true"}
 
+[context.branch-deploy.environment]
+PREVIEW_MODE = "true"
 
 [[plugins]]
 package = "netlify-plugin-gatsby-cache"
