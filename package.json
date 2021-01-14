@@ -109,7 +109,7 @@
 		"format": "prettier --write src/**/*.{js,jsx}",
 		"secure": "set NODE_ENV=development&&gatsby develop -- --https",
 		"serve": "set NODE_ENV=production&&gatsby serve",
-		"stage": "set NODE_ENV=development&&gatsby build",
+		"stage": "set PREVIEW_MODE=true&&gatsby build",
 		"start": "npm run develop",
 		"test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
 	},
