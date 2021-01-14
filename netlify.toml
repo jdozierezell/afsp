@@ -2,6 +2,9 @@
 publish = "public"
 command = "npm run build"
 
+[context.staging.environment]
+PREVIEW_MODE = true
+
 [[plugins]]
 package = "netlify-plugin-gatsby-cache"
 [[plugins]]
