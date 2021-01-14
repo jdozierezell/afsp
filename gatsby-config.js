@@ -1,7 +1,6 @@
 require('dotenv').config({
 	path: `.env.${process.env.NODE_ENV}`,
 })
-console.log(process)
 module.exports = {
 	siteMetadata: {
 		title: `American Foundation for Suicide Prevention`,
@@ -85,8 +84,7 @@ module.exports = {
 			resolve: `gatsby-source-datocms`,
 			options: {
 				apiToken: process.env.DATOCMS_API,
-				previewMode:
-					process.env.NODE_ENV === 'development' ? true : false,
+				previewMode: process.env.PREVIEW_MODE,
 				disableLiveReload: false,
 			},
 		},
