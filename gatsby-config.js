@@ -1,6 +1,7 @@
 require('dotenv').config({
 	path: `.env.${process.env.NODE_ENV}`,
 })
+console.log(process)
 module.exports = {
 	siteMetadata: {
 		title: `American Foundation for Suicide Prevention`,
