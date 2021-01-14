@@ -2,8 +2,8 @@
 publish = "public"
 command = "npm run build"
 
-[context.branch-deploy.environment]
-PREVIEW_MODE = true
+[context.branch-deploy]
+command = "PREVIEW_MODE=true npm run build"
 
 [[plugins]]
 package = "netlify-plugin-gatsby-cache"
