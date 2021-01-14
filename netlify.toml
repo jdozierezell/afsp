@@ -2,7 +2,7 @@
 publish = "public"
 command = "npm run build"
 
-[context.staging.environment]
+[context.branch-deploy.environment]
 PREVIEW_MODE = true
 
 [[plugins]]
