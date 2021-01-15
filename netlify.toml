@@ -1,6 +1,7 @@
 [build]
 publish = "public"
 command = "npm run build"
+PREVIEW_MODE = "false"
 
 [context.branch-deploy.environment]
 PREVIEW_MODE = "true"
