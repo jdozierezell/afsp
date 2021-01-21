@@ -120,8 +120,8 @@ const commentCSS = css`
 const ContentStory = ({ data, pageUrl }) => {
 	return (
 		<section css={storyContentCSS}>
-			<aside css={socialButtonsCSS}>
-				<h3>Share this Story</h3>
+			<aside css={socialButtonsCSS} aria-labelledby="storyShare">
+				<h3 id="storyShare">Share this Story</h3>
 				<div>
 					<FacebookShare pageUrl={pageUrl} />
 					<TwitterShare pageUrl={pageUrl} />
@@ -189,8 +189,8 @@ const ContentStory = ({ data, pageUrl }) => {
 				})}
 			</div>
 			<Script url="https://apps.elfsight.com/p/platform.js" defer />
-			<aside css={commentCSS}>
-				<h2>Comments</h2>
+			<aside css={commentCSS} aria-labelledby="commentLabel">
+				<h2 id="commentLabel">Comments</h2>
 				<div className="elfsight-app-009de5eb-b07f-41f5-9d7e-26c5c9f96d27 fb-comments"></div>
 			</aside>
 		</section>

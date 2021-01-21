@@ -31,7 +31,7 @@ const CarouselResource = ({ title, image, link, linkText }) => {
 		<div css={resourceComponentCSS} draggable>
 			<a href={link}>
 				<Img fluid={image.fluid} />
-				<h2>{title}</h2>
+				<h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
 				<p>{linkText}</p>
 			</a>
 		</div>
