@@ -157,6 +157,7 @@ const ContentStory = ({ data, pageUrl }) => {
 					} else if (article.__typename === 'DatoCmsVideo') {
 						return (
 							<ContentVideo
+								key={index}
 								video={article.video.video.mp4Url}
 								poster={article.poster.url}
 							/>
@@ -176,10 +177,13 @@ const ContentStory = ({ data, pageUrl }) => {
 							</div>
 						)
 					} else if (article.__typename === 'DatoCmsAudio') {
-						return <ContentAudio audio={article.audio} />
+						return (
+							<ContentAudio key={index} audio={article.audio} />
+						)
 					} else if (article.__typename === 'DatoCmsHeading') {
 						return (
 							<ContentHeading
+								key={index}
 								heading={article.heading}
 								level={article.headingLevel}
 							/>

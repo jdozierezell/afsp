@@ -110,6 +110,7 @@ const SearchGrants = ({
 					<div css={refinementCSS}>
 						{refinements.map(refinement => (
 							<SearchResearchRefinement
+								key={index}
 								attribute={refinement.attribute}
 								displayAttribute={refinement.displayAttribute}
 								searchState={searchState}

@@ -223,7 +223,7 @@ const App = ({ data: { home } }) => {
 				}
 				return ''
 			})}
-			{events && (
+			{events.details.length > 0 && (
 				<CarouselDetailContainer
 					content={events}
 					eventTitleSize="1.4em"
