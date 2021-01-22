@@ -5,6 +5,7 @@ import Script from 'react-load-script'
 
 import Header from './Header/Header'
 import EmailSignup from './EmailSignup/EmailSignup'
+import EmailSignupBar from './EmailSignup/EmailSignupBar'
 import Footer from './Footer/Footer'
 
 const Layout = ({
@@ -64,6 +65,7 @@ const Layout = ({
 					</p>
 				</div>
 			</EmailSignup>
+			<EmailSignupBar></EmailSignupBar>
 			<Footer nav={footerNav} />
 			<Script
 				attributes={{

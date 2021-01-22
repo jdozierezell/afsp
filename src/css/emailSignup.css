@@ -1,0 +1,53 @@
+.emailModalOverlay {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	inset: 0px;
+	background-color: hsla(0, 0%, 14.9%, 0.7);
+}
+.emailModal {
+	width: calc(100vw - 100px);
+	height: calc(100vh - 100px);
+	max-width: 996px;
+	max-height: 553px;
+	padding: 50px;
+	background: hsla(0, 0%, 91.8%, 1);
+	overflow: auto;
+	border-radius: 5px;
+}
+.emailModal > div {
+	display: grid;
+	justify-items: center;
+}
+.emailModal h2 {
+	font-size: 44px;
+	text-align: center;
+	width: 100%;
+	margin-bottom: 0;
+}
+.emailModal input {
+	margin: 36px 0;
+	width: 100%;
+	max-width: 600px;
+	display: inline-block;
+	text-align: center;
+	font-size: 18px !important;
+	line-height: 50px !important;
+	background-color: white !important;
+	color: #262626 !important;
+	border-radius: 5px !important;
+	border: 2px solid #262626 !important;
+	padding: 0 16px !important;
+	height: initial !important;
+}
+.emailModal input::placeholder {
+	line-height: 54px !important;
+	color: #333;
+	font-size: 18px;
+}
+.emailModal p {
+	width: 100%;
+	max-width: 600px;
+	text-align: center;
+}

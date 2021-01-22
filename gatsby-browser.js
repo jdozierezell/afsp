@@ -8,4 +8,5 @@
 
 import './src/css/layout.css'
 import './src/css/global.css'
+import './src/css/emailSignup.css'
 import './static/fonts/gatsby-afsp.css'
