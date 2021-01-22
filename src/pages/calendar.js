@@ -54,7 +54,7 @@ const calendarCSS = css`
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px180} ${styles.scale.px50} ${styles.scale.px80};
 	}
-	> p:first-of-type {
+	> p {
 		max-width: 623px;
 	}
 `
@@ -179,11 +179,21 @@ const AFSPCalendar = ({ data }) => {
 			seo={data.calendar.seoMetaTags}
 		>
 			<section css={calendarCSS}>
-				<p
-					dangerouslySetInnerHTML={{
-						__html: data.calendar.brief,
-					}}
-				></p>
+				<p>
+					The program calendar provides information about programs
+					&amp; events offered by our{' '}
+					<a href="https://afsp.org/chapters">
+						national network of chapters
+					</a>
+					. Filter the calendar by selecting a program to find events
+					across the country, or choose your local chapter for events
+					in your area.
+				</p>
+				<p>
+					Due to COVID-19, most of our programs are offered virtually
+					only. In-person events will be scheduled as safety allows
+					and our communities return to normal operations.
+				</p>
 				<CalendarFilter
 					zIndex="1"
 					handleChapterSelectChange={handleChapterSelectChange}
@@ -248,7 +258,6 @@ export const query = graphql`
 		calendar: datoCmsCalendar {
 			title
 			slug
-			brief
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}
