@@ -179,12 +179,11 @@ const AFSPCalendar = ({ data }) => {
 			seo={data.calendar.seoMetaTags}
 		>
 			<section css={calendarCSS}>
-				<p>
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-					Sint velit nostrum voluptas esse unde laborum, sed iure in
-					perferendis, ex vero consectetur officia cum at, itaque
-					error omnis eligendi nesciunt.
-				</p>
+				<p
+					dangerouslySetInnerHTML={{
+						__html: data.calendar.brief,
+					}}
+				></p>
 				<CalendarFilter
 					zIndex="1"
 					handleChapterSelectChange={handleChapterSelectChange}
@@ -249,6 +248,7 @@ export const query = graphql`
 		calendar: datoCmsCalendar {
 			title
 			slug
+			brief
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}
