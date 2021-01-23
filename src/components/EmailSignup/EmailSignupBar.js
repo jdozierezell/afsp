@@ -3,6 +3,8 @@ import Modal from 'react-modal'
 import { css } from '@emotion/core'
 import Script from 'react-load-script'
 
+import IconX from '../SVGs/IconX'
+
 import { styles } from '../../css/css'
 
 const emailCSS = css`
@@ -51,18 +53,29 @@ const emailCSS = css`
 	}
 `
 
-const emailModal = css`
-	position: fixed;
+const xCSS = css`
+	position: absolute;
+	right: 25px;
+	top: 25px;
+	width: 25px;
+	cursor: pointer;
+	background: none;
+	margin: 0;
+	padding: 0;
+	outline: none;
+	border: none;
 `
 
 Modal.setAppElement(`#___gatsby`)
 
 const EmailSignupBar = ({ formId }) => {
 	const [modalIsOpen, setIsOpen] = React.useState(false)
-	function openModal() {
+	const openModal = () => {
 		setIsOpen(true)
 	}
-	console.log(modalIsOpen)
+	const closeModal = () => {
+		setIsOpen(false)
+	}
 	return (
 		<aside css={emailCSS} aria-label="email signup form">
 			<div>
@@ -78,8 +91,12 @@ const EmailSignupBar = ({ formId }) => {
 				isOpen={modalIsOpen}
 				className="emailModal"
 				overlayClassName="emailModalOverlay"
+				onRequestClose={closeModal}
 			>
 				<div>
+					<button onClick={closeModal} css={xCSS}>
+						<IconX></IconX>
+					</button>
 					<h2>
 						Sign up to learn more about AFSP’s programs, events, and
 						the actions you can take to help prevent suicide.
@@ -97,13 +114,15 @@ const EmailSignupBar = ({ formId }) => {
 						efforts in your local community.
 					</p>
 					<input
-						type="number"
+						type="text"
 						name="zip"
 						title="zip"
 						id="k_id_zip"
 						placeholder="Zip code"
 					/>
-					<button onClick={openModal}>Subscribe</button>
+					<button className="secondary-button" onClick={openModal}>
+						Subscribe
+					</button>
 				</div>
 			</Modal>
 		</aside>

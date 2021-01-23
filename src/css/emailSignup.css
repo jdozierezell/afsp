@@ -5,33 +5,33 @@
 	position: fixed;
 	inset: 0px;
 	background-color: hsla(0, 0%, 14.9%, 0.7);
+	z-index: 9999;
 }
 .emailModal {
-	width: calc(100vw - 100px);
-	height: calc(100vh - 100px);
-	max-width: 996px;
-	max-height: 553px;
-	padding: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	height: 100vh;
+	padding: 25px;
 	background: hsla(0, 0%, 91.8%, 1);
 	overflow: auto;
-	border-radius: 5px;
 }
 .emailModal > div {
 	display: grid;
 	justify-items: center;
 }
 .emailModal h2 {
-	font-size: 44px;
+	font-size: 24px;
 	text-align: center;
 	width: 100%;
 	margin-bottom: 0;
 }
 .emailModal input {
-	margin: 36px 0;
+	margin: 32px 0;
 	width: 100%;
 	max-width: 600px;
 	display: inline-block;
-	text-align: center;
 	font-size: 18px !important;
 	line-height: 50px !important;
 	background-color: white !important;
@@ -50,4 +50,26 @@
 	width: 100%;
 	max-width: 600px;
 	text-align: center;
+	margin: 0;
+}
+.emailModal .secondary-button {
+	margin-top: 0;
+}
+
+@media only screen and (min-width: 415px) {
+	.emailModal {
+		width: calc(100vw - 100px);
+		height: calc(100vh - 100px);
+		max-width: 996px;
+		max-height: 600px;
+		padding: 50px;
+		border-radius: 5px;
+		position: relative;
+	}
+	.emailModal h2 {
+		font-size: 44px;
+	}
+	#k_id_zip {
+		max-width: 300px;
+	}
 }
