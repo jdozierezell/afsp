@@ -56,7 +56,7 @@ const Layout = ({
 				overrideLight={overrideLight}
 			/>
 			<main id="main">{children}</main>
-			<EmailSignup formId="M2qiJq">
+			{/* <EmailSignup formId="M2qiJq">
 				<div>
 					<h2 id="klaviyo-signup">Sign up for email alerts</h2>
 					<p>
@@ -64,8 +64,8 @@ const Layout = ({
 						Prevention
 					</p>
 				</div>
-			</EmailSignup>
-			<EmailSignupBar></EmailSignupBar>
+			</EmailSignup> */}
+			<EmailSignupBar formId="M2qiJq"></EmailSignupBar>
 			<Footer nav={footerNav} />
 			<Script
 				attributes={{

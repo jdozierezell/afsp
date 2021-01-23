@@ -51,6 +51,9 @@ const emailCSS = css`
 			max-width: ${styles.scale.px180} !important;
 		}
 	}
+	.hidden {
+		display: none !important;
+	}
 `
 
 const xCSS = css`
@@ -70,6 +73,7 @@ Modal.setAppElement(`#___gatsby`)
 
 const EmailSignupBar = ({ formId }) => {
 	const [modalIsOpen, setIsOpen] = React.useState(false)
+	const [submitted, setSubmitted] = useState(false)
 	const openModal = () => {
 		setIsOpen(true)
 	}
@@ -101,30 +105,69 @@ const EmailSignupBar = ({ formId }) => {
 						Sign up to learn more about AFSP’s programs, events, and
 						the actions you can take to help prevent suicide.
 					</h2>
-					<input
-						type="email"
-						name="email"
-						title="email"
-						id="k_id_email"
-						placeholder="Email address"
-					/>
-					<p>
-						Providing your zip code is optional but lets us send you
-						additional information about activities and advocacy
-						efforts in your local community.
-					</p>
-					<input
-						type="text"
-						name="zip"
-						title="zip"
-						id="k_id_zip"
-						placeholder="Zip code"
-					/>
-					<button className="secondary-button" onClick={openModal}>
-						Subscribe
-					</button>
+					<form
+						id="email_signup"
+						action="//manage.kmail-lists.com/subscriptions/subscribe"
+						data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe"
+						method="GET"
+						target="_blank"
+						noValidate="novalidate"
+					>
+						<input type="hidden" name="g" value={`${formId}`} />
+						<input type="hidden" name="$fields" value="$consent" />
+						<input
+							type="hidden"
+							name="$list_fields"
+							value="$consent"
+						/>
+						<input
+							type="email"
+							name="email"
+							title="email"
+							id="k_id_email"
+							placeholder="Email address"
+						/>
+						<p>
+							Providing your zip code is optional but lets us send
+							you additional information about activities and
+							advocacy efforts in your local community.
+						</p>
+						{/* <input
+							type="text"
+							name="zip"
+							title="zip"
+							id="k_id_zip"
+							placeholder="Zip code"
+						/> */}
+						<button
+							type="submit"
+							className={
+								submitted ? 'hidden' : 'secondary-button'
+							}
+						>
+							Subscribe
+						</button>
+					</form>
 				</div>
 			</Modal>
+			<Script
+				url="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"
+				attributes={{ id: 'klaviyo' }}
+				onLoad={() => {
+					// eslint-disable-next-line no-undef
+					KlaviyoSubscribe.attachToForms('#email_signup', {
+						hide_form_on_success: true,
+						success_message:
+							'Thank you for subscribing. Please check your email to confirm your subscription.',
+						extra_properties: {
+							$source: '$embed',
+							$method_type: 'Klaviyo Form',
+							$method_id: 'embed',
+						},
+						success: () => setSubmitted(true),
+					})
+				}}
+			/>
 		</aside>
 	)
 }

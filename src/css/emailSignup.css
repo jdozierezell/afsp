@@ -9,8 +9,8 @@
 }
 .emailModal {
 	display: flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 	width: 100vw;
 	height: 100vh;
 	padding: 25px;
@@ -26,6 +26,11 @@
 	text-align: center;
 	width: 100%;
 	margin-bottom: 0;
+}
+.emailModal form {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
 }
 .emailModal input {
 	margin: 32px 0;
@@ -55,9 +60,13 @@
 .emailModal .secondary-button {
 	margin-top: 0;
 }
+.emailModal .secondary-button:hover {
+	text-decoration: none;
+}
 
 @media only screen and (min-width: 415px) {
 	.emailModal {
+		display: block;
 		width: calc(100vw - 100px);
 		height: calc(100vh - 100px);
 		max-width: 996px;
