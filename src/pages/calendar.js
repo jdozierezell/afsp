@@ -161,8 +161,10 @@ const AFSPCalendar = ({ data }) => {
 		} else {
 			let filteredEvents = allEvents
 			if (chapterFilter) {
-				filteredEvents = filteredEvents.filter(
-					event => event.chapterCode === chapterFilter
+				filteredEvents = filteredEvents.filter(event =>
+					event.chapterCode
+						? event.chapterCode.includes(chapterFilter)
+						: false
 				)
 			}
 			if (programFilter) {
