@@ -6,8 +6,6 @@ import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 import Script from 'react-load-script'
 
-import 'date-time-format-timezone' // polyfill for IE11
-
 import Layout from '../components/Layout'
 import HeroVideo from '../components/Hero/HeroVideo'
 import InstagramFeed from '../components/Social/InstagramFeed'
@@ -111,6 +109,7 @@ const App = ({ data: { home } }) => {
 		home.eventsList.forEach(event => {
 			if (event.__typename === 'DatoCmsEventsList') {
 				event.events.forEach(e => {
+					let start, end
 					let eventObject = {
 						__typename: 'Event',
 						title: e.title,
@@ -128,31 +127,39 @@ const App = ({ data: { home } }) => {
 						url: e.url,
 						eventCode: e.eventCode,
 					}
+					// format start date and time
 					if (e.startDateAndTime.indexOf('00:00:00') !== -1) {
-						eventObject.date = dayjs(e.startDateAndTime)
+						start = dayjs(e.startDateAndTime)
 							.tz('America/New_York')
 							.format('MMMM D')
 					} else if (e.startDateAndTime.indexOf(':00:00') === -1) {
-						eventObject.date = dayjs(e.startDateAndTime)
+						start = dayjs(e.startDateAndTime)
 							.tz('America/New_York')
 							.format('MMMM D @ h:mm a ET')
 					} else {
-						eventObject.date = dayjs(e.startDateAndTime)
+						start = dayjs(e.startDateAndTime)
 							.tz('America/New_York')
 							.format('MMMM D @ h a ET')
 					}
+					// format end date and time
 					if (e.endDateAndTime) {
-						eventObject.date += ` — 
-					${
-						e.endDateAndTime.indexOf('00:00:00') !== -1
-							? dayjs(e.endDateAndTime)
-									.tz('America/New_York')
-									.format('MMMM D')
-							: dayjs(e.endDateAndTime)
-									.tz('America/New_York')
-									.format('MMMM D @ h:mm a ET')
-					}`
+						if (e.endDateAndTime.indexOf('00:00:00') !== -1) {
+							end = dayjs(e.endDateAndTime)
+								.tz('America/New_York')
+								.format('MMMM D')
+						} else if (e.endDateAndTime.indexOf(':00:00') === -1) {
+							end = dayjs(e.endDateAndTime)
+								.tz('America/New_York')
+								.format('MMMM D @ h:mm a ET')
+						} else {
+							end = dayjs(e.endDateAndTime)
+								.tz('America/New_York')
+								.format('MMMM D @ h a ET')
+						}
 					}
+					eventObject.date = e.endDateAndTime
+						? `${start} – ${end}`
+						: start
 					events.details.push(eventObject)
 				})
 			}
