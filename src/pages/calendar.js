@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import qs from 'qs'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import moment from 'moment'
@@ -8,6 +9,8 @@ import { Calendar, momentLocalizer } from 'react-big-calendar'
 import Layout from '../components/Layout'
 import CalendarFilter from '../components/Calendar/CalendarFilter'
 import CalendarProgramDescriptions from '../components/Calendar/CalendarProgramDescriptions'
+
+import searchURL from '../utils/searchURL'
 
 import { styles } from '../css/css'
 
@@ -104,11 +107,64 @@ const AFSPCalendar = ({ data }) => {
 
 	const localizer = momentLocalizer(moment)
 
-	const handleChapterSelectChange = chapter => {
-		setChapterFilter(chapter ? chapter.value : null)
+	let query =
+		typeof window !== `undefined`
+			? qs.parse(window.location.search.slice(1))
+			: { query: '' }
+
+	if (query !== '') {
+		if (
+			query.chapter !== chapterFilter &&
+			typeof query.chapter === 'string'
+		) {
+			setChapterFilter(query.chapter)
+		}
+		if (
+			query.program !== programFilter &&
+			typeof query.program === 'string'
+		) {
+			setProgramFilter(query.program)
+		}
 	}
-	const handleProgramSelectChange = program =>
+
+	const [searchState, setSearchState] = useState(query)
+
+	const handleChapterSelectChange = chapter => {
+		let queryPath
+		chapter = chapter.value
+		setSearchState({ ...searchState, chapter })
+		setChapterFilter(chapter ? chapter.value : null)
+		if (chapter && programFilter) {
+			queryPath = `?chapter=${chapter}&program=${programFilter}`
+		} else if (chapter) {
+			queryPath = `?chapter=${chapter}`
+		} else if (programFilter) {
+			queryPath = `?program=${programFilter}`
+		}
+		window.history.replaceState(
+			{},
+			'',
+			`${window.location.pathname}${queryPath ? queryPath : ''}`
+		)
+	}
+	const handleProgramSelectChange = program => {
+		let queryPath
+		program = program.value
+		setSearchState({ ...searchState, program })
 		setProgramFilter(program ? program.value : null)
+		if (chapterFilter && program) {
+			queryPath = `?chapter=${chapterFilter}&program=${program}`
+		} else if (chapterFilter) {
+			queryPath = `?chapter=${chapterFilter}`
+		} else if (program) {
+			queryPath = `?program=${program}`
+		}
+		window.history.replaceState(
+			{},
+			'',
+			`${window.location.pathname}${queryPath ? queryPath : ''}`
+		)
+	}
 
 	useEffect(() => {
 		if (allEvents.length === 0 && allEvents[0] !== 'no events') {
@@ -196,12 +252,17 @@ const AFSPCalendar = ({ data }) => {
 					only. In-person events will be scheduled as safety allows
 					and our communities return to normal operations.
 				</p>
+				{console.log(searchState)}
+				{/* {console.log(chapterFilter)}
+				{console.log(programFilter)} */}
 				<CalendarFilter
 					zIndex="1"
+					chapterFilter={chapterFilter}
+					programFilter={programFilter}
 					handleChapterSelectChange={handleChapterSelectChange}
 					handleProgramSelectChange={handleProgramSelectChange}
-					programs={programs}
 					chapters={chapterList}
+					programs={programs}
 				/>
 				<CalendarProgramDescriptions
 					program={programFilter}

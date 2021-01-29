@@ -24,10 +24,12 @@ const calendarFilterCSS = css`
 
 const CalendarFilter = ({
 	zIndex,
+	chapterFilter,
+	programFilter,
 	handleChapterSelectChange,
 	handleProgramSelectChange,
-	programs,
 	chapters,
+	programs,
 }) => {
 	if (chapters[0].label !== 'All Chapters') {
 		chapters.unshift({ value: '', label: 'All Chapters' })
@@ -35,6 +37,17 @@ const CalendarFilter = ({
 	if (programs.length > 0 && programs[0].label !== 'All Programs') {
 		programs.unshift({ value: '', label: 'All Programs' })
 	}
+	let chapterSelectValue, programSelectValue
+	chapters.forEach(chapter => {
+		if (chapter.value === chapterFilter) {
+			chapterSelectValue = { value: chapter.value, label: chapter.label }
+		}
+	})
+	programs.forEach(program => {
+		if (program.value === programFilter) {
+			programSelectValue = { value: program.value, label: program.label }
+		}
+	})
 
 	return (
 		<div
@@ -52,14 +65,14 @@ const CalendarFilter = ({
 					css={selectCSS}
 					className="react-select"
 					classNamePrefix="react-select"
-					// value={values.selectedOption}
+					// value={chapterSelectValue}
 					options={chapters}
 					onChange={handleChapterSelectChange}
 					// isClearable={true}
 				/>
 			</div>
 			<div>
-				<label htmlFor="chapter">Select Program</label>
+				<label htmlFor="program">Select Program</label>
 				<Select
 					name="program"
 					id="program"
@@ -67,7 +80,7 @@ const CalendarFilter = ({
 					css={selectCSS}
 					className="react-select"
 					classNamePrefix="react-select"
-					// value={values.selectedOption}
+					// value={programSelectValue}
 					options={programs}
 					onChange={handleProgramSelectChange}
 					// isClearable={true}
