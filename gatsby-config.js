@@ -93,6 +93,12 @@ module.exports = {
 				disableLiveReload: false,
 			},
 		},
+		{
+			resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
+			options: {
+				devMode: true,
+			},
+		},
 		`gatsby-plugin-client-side-redirect`, // keep it in last in list
 	],
 }
