@@ -252,9 +252,6 @@ const AFSPCalendar = ({ data }) => {
 					only. In-person events will be scheduled as safety allows
 					and our communities return to normal operations.
 				</p>
-				{console.log(searchState)}
-				{/* {console.log(chapterFilter)}
-				{console.log(programFilter)} */}
 				<CalendarFilter
 					zIndex="1"
 					chapterFilter={chapterFilter}
