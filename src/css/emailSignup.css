@@ -57,6 +57,9 @@
 	text-align: center;
 	margin: 0;
 }
+.emailModal .secondary-button {
+	margin-top: 0;
+}
 .emailModal .secondary-button:hover {
 	text-decoration: none;
 }
@@ -75,7 +78,7 @@
 	.emailModal h2 {
 		font-size: 44px;
 	}
-	#k_id_zip {
+	#zip_code {
 		max-width: 300px;
 	}
 }

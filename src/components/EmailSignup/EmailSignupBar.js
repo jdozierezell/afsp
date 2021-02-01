@@ -101,7 +101,7 @@ const EmailSignupBar = ({ formId }) => {
 					<button onClick={closeModal} css={xCSS}>
 						<IconX></IconX>
 					</button>
-					<h2>
+					<h2 className={submitted ? 'hidden' : ''}>
 						Sign up to learn more about AFSP’s programs, events, and
 						the actions you can take to help prevent suicide.
 					</h2>
@@ -112,9 +112,14 @@ const EmailSignupBar = ({ formId }) => {
 						method="GET"
 						target="_blank"
 						noValidate="novalidate"
+						className={submitted ? 'hidden' : ''}
 					>
 						<input type="hidden" name="g" value={`${formId}`} />
-						<input type="hidden" name="$fields" value="$consent" />
+						<input
+							type="hidden"
+							name="$fields"
+							value="$consent,zip_code"
+						/>
 						<input
 							type="hidden"
 							name="$list_fields"
@@ -127,28 +132,27 @@ const EmailSignupBar = ({ formId }) => {
 							id="k_id_email"
 							placeholder="Email address"
 						/>
-						<p>
+						<label htmlFor="zip_code">
 							Providing your zip code is optional but lets us send
 							you additional information about activities and
 							advocacy efforts in your local community.
-						</p>
-						{/* <input
+						</label>
+						<input
 							type="text"
 							name="zip"
 							title="zip"
-							id="k_id_zip"
+							id="zip_code"
 							placeholder="Zip code"
-						/> */}
+						/>
 						<div className="klaviyo_messages">
 							<div
 								className="success_message"
 								style={{ display: 'none' }}
-							>
-								<p>
-									Thank you for subscribing. Please check your
-									email to confirm your subscription.
-								</p>
-							</div>
+							></div>
+							<div
+								className="error_message"
+								style={{ display: 'none' }}
+							></div>
 						</div>
 						<div className="klaviyo_form_actions">
 							<button
@@ -168,7 +172,8 @@ const EmailSignupBar = ({ formId }) => {
 							// eslint-disable-next-line no-undef
 							KlaviyoSubscribe.attachToForms('#email_signup', {
 								hide_form_on_success: true,
-								custom_success_message: true,
+								success_message:
+									'Thank you for subscribing. Please check your email to confirm your subscription.',
 								extra_properties: {
 									$source: '$embed',
 									$method_type: 'Klaviyo Form',
