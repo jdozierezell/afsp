@@ -139,14 +139,22 @@ const EmailSignupBar = ({ formId }) => {
 							id="k_id_zip"
 							placeholder="Zip code"
 						/> */}
-						<button
-							type="submit"
-							className={
-								submitted ? 'hidden' : 'secondary-button'
-							}
-						>
-							Subscribe
-						</button>
+						<div className="klaviyo_messages">
+							<div
+								className="success_message"
+								style={{ display: 'none' }}
+							></div>
+						</div>
+						<div className="klaviyo_form_actions">
+							<button
+								type="submit"
+								className={
+									submitted ? 'hidden' : 'secondary-button'
+								}
+							>
+								Subscribe
+							</button>
+						</div>
 					</form>
 				</div>
 			</Modal>
