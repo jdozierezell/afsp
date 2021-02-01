@@ -143,7 +143,12 @@ const EmailSignupBar = ({ formId }) => {
 							<div
 								className="success_message"
 								style={{ display: 'none' }}
-							></div>
+							>
+								<p>
+									Thank you for subscribing. Please check your
+									email to confirm your subscription.
+								</p>
+							</div>
 						</div>
 						<div className="klaviyo_form_actions">
 							<button
@@ -163,8 +168,7 @@ const EmailSignupBar = ({ formId }) => {
 							// eslint-disable-next-line no-undef
 							KlaviyoSubscribe.attachToForms('#email_signup', {
 								hide_form_on_success: true,
-								success_message:
-									'Thank you for subscribing. Please check your email to confirm your subscription.',
+								custom_success_message: true,
 								extra_properties: {
 									$source: '$embed',
 									$method_type: 'Klaviyo Form',
