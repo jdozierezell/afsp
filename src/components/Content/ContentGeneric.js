@@ -32,9 +32,9 @@ import ContentTweet from './ContentTweet'
 // const ContentEmbed = Loadable(() => import('./ContentEmbed'))
 
 const storyContentCSS = css`
-	margin: ${styles.scale.px50} ${styles.scale.px24} 0;
+	margin: ${styles.scale.px50} ${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px80} ${styles.scale.px50} 0;
+		margin: ${styles.scale.px80} ${styles.scale.px50};
 	}
 	.secondary-button {
 		margin-right: ${styles.scale.px24};
