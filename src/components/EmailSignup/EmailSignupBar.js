@@ -156,26 +156,26 @@ const EmailSignupBar = ({ formId }) => {
 							</button>
 						</div>
 					</form>
+					<Script
+						url="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"
+						attributes={{ id: 'klaviyo' }}
+						onLoad={() => {
+							// eslint-disable-next-line no-undef
+							KlaviyoSubscribe.attachToForms('#email_signup', {
+								hide_form_on_success: true,
+								success_message:
+									'Thank you for subscribing. Please check your email to confirm your subscription.',
+								extra_properties: {
+									$source: '$embed',
+									$method_type: 'Klaviyo Form',
+									$method_id: 'embed',
+								},
+								success: () => setSubmitted(true),
+							})
+						}}
+					/>
 				</div>
 			</Modal>
-			<Script
-				url="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"
-				attributes={{ id: 'klaviyo' }}
-				onLoad={() => {
-					// eslint-disable-next-line no-undef
-					KlaviyoSubscribe.attachToForms('#email_signup', {
-						hide_form_on_success: true,
-						success_message:
-							'Thank you for subscribing. Please check your email to confirm your subscription.',
-						extra_properties: {
-							$source: '$embed',
-							$method_type: 'Klaviyo Form',
-							$method_id: 'embed',
-						},
-						success: () => setSubmitted(true),
-					})
-				}}
-			/>
 		</aside>
 	)
 }
