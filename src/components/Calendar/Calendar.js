@@ -119,71 +119,54 @@ const Calendar = ({ events }) => {
 			<h2>{calendarTitle} events calendar</h2>
 			<ul>
 				{eventArray.map((event, index) => {
-					let dateAndTime = ''
-					if (event.startDateAndTime) {
-						if (event.startDateAndTime.includes('00:00:00')) {
-							dateAndTime = `All Day, ${dayjs(
-								event.startDateAndTime
-							)
-								.utcOffset(-4)
-								.format('MMMM D')}`
-						} else {
-							if (event.startDateAndTime.indexOf('00:00') > 0) {
-								dateAndTime = `${dayjs(event.startDateAndTime)
-									.utcOffset(-4)
-									.format('MMMM D @ h a ET')}`
-							} else {
-								dateAndTime = `${dayjs(event.startDateAndTime)
-									.utcOffset(-4)
-									.format('MMMM D @ h:mm a ET')}`
-							}
-						}
-					}
-					if (event.startDateAndTime) {
-						if (event.startDateAndTime.includes('00:00:00')) {
-							dateAndTime = parseISO(event.startDateAndTime)
+					let dateAndTime, start, end
 
-							dateAndTime = `All Day, ${format(
-								dateAndTime,
-								'MMMM d'
-							)}`
+					if (event.startDateAndTime) {
+						if (event.startDateAndTime.includes('00:00:00')) {
+							start = parseISO(event.startDateAndTime)
+
+							start = `All Day, ${format(start, 'MMMM d')}`
 						} else {
 							if (event.startDateAndTime.indexOf('00:00') > 0) {
-								dateAndTime = parseISO(event.startDateAndTime)
-								dateAndTime = format(
-									dateAndTime,
+								start = parseISO(event.startDateAndTime)
+								start = format(
+									start,
 									"MMMM d @ h aaaaa'm' zzz",
 									{ timeZone: timeZone }
 								)
 							} else {
-								dateAndTime = parseISO(event.startDateAndTime)
-								dateAndTime = format(
-									dateAndTime,
+								start = parseISO(event.startDateAndTime)
+								start = format(
+									start,
 									"MMMM d @ h:mm aaaaa'm' zzz",
 									{ timeZone: timeZone }
 								)
 							}
 						}
 					}
+
 					if (event.endDateAndTime) {
 						if (event.endDateAndTime.includes('00:00:00')) {
-							dateAndTime += ` - All Day, ${dayjs(
-								event.endDateAndTime
-							)
-								.utcOffset(-4)
-								.format('MMMM D')}`
+							end = parseISO(event.endDateAndTime)
+
+							end = `All Day, ${format(end, 'MMMM d')}`
 						} else {
 							if (event.endDateAndTime.indexOf('00:00') > 0) {
-								dateAndTime += ` - ${dayjs(event.endDateAndTime)
-									.utcOffset(-4)
-									.format('MMMM D @ h a')} ET`
+								end = parseISO(event.endDateAndTime)
+								end = format(end, "MMMM d @ h aaaaa'm' zzz", {
+									timeZone: timeZone,
+								})
 							} else {
-								dateAndTime += ` - ${dayjs(event.endDateAndTime)
-									.utcOffset(-4)
-									.format('MMMM D @ h:mm a')}	ET`
+								end = parseISO(event.endDateAndTime)
+								end = format(
+									end,
+									"MMMM d @ h:mm aaaaa'm' zzz",
+									{ timeZone: timeZone }
+								)
 							}
 						}
 					}
+					dateAndTime = end ? `${start} – ${end}` : start
 					return (
 						<li key={index}>
 							<h3>{event.title}</h3>
@@ -191,8 +174,8 @@ const Calendar = ({ events }) => {
 								<h4>
 									{dateAndTime
 										? dateAndTime
-												.replaceAll('ST', 'T') // removing 'standard' time abbreviation
-												.replaceAll('DT', 'T') // removing 'daylight savings' time abbreviation
+												.replaceAll('ST', 'T')
+												.replaceAll('DT', 'T')
 										: ''}
 								</h4>
 							)}
