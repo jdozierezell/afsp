@@ -3,6 +3,9 @@ import { css } from '@emotion/core'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import Script from 'react-load-script'
+import parseISO from 'date-fns/parseISO'
+// import format from 'date-fns/format'
+import { format, utcToZonedTime } from 'date-fns-tz'
 
 import createAnchor from '../../utils/createAnchor'
 
@@ -101,6 +104,7 @@ const calendarCSS = css`
 const Calendar = ({ events }) => {
 	let calendarTitle = ''
 	let eventArray = []
+	const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
 	events.forEach(event => {
 		if (event.__typename === 'DatoCmsCampaignName') {
 			calendarTitle = event.campaignName
@@ -133,6 +137,32 @@ const Calendar = ({ events }) => {
 								dateAndTime = `${dayjs(event.startDateAndTime)
 									.utcOffset(-4)
 									.format('MMMM D @ h:mm a ET')}`
+							}
+						}
+					}
+					if (event.startDateAndTime) {
+						if (event.startDateAndTime.includes('00:00:00')) {
+							dateAndTime = parseISO(event.startDateAndTime)
+
+							dateAndTime = `All Day, ${format(
+								dateAndTime,
+								'MMMM d'
+							)}`
+						} else {
+							if (event.startDateAndTime.indexOf('00:00') > 0) {
+								dateAndTime = parseISO(event.startDateAndTime)
+								dateAndTime = format(
+									dateAndTime,
+									"MMMM d @ h aaaaa'm' zzz",
+									{ timeZone: timeZone }
+								)
+							} else {
+								dateAndTime = parseISO(event.startDateAndTime)
+								dateAndTime = format(
+									dateAndTime,
+									"MMMM d @ h:mm aaaaa'm' zzz",
+									{ timeZone: timeZone }
+								)
 							}
 						}
 					}

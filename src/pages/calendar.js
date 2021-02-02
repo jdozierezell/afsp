@@ -2,21 +2,32 @@ import React, { useState, useEffect } from 'react'
 import qs from 'qs'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
-import moment from 'moment'
-
-import { Calendar, momentLocalizer } from 'react-big-calendar'
+import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
+import format from 'date-fns/format'
+import parse from 'date-fns/parse'
+import startOfWeek from 'date-fns/startOfWeek'
+import getDay from 'date-fns/getDay'
 
 import Layout from '../components/Layout'
 import CalendarFilter from '../components/Calendar/CalendarFilter'
 import CalendarProgramDescriptions from '../components/Calendar/CalendarProgramDescriptions'
-
-import searchURL from '../utils/searchURL'
 
 import { styles } from '../css/css'
 
 import chapterList from '../utils/chapterList'
 
 import 'react-big-calendar/lib/css/react-big-calendar.css'
+
+const locales = {
+	'en-US': require('date-fns/locale/en-US'),
+}
+const localizer = dateFnsLocalizer({
+	format,
+	parse,
+	startOfWeek,
+	getDay,
+	locales,
+})
 
 const eventMonthDisplay = ({ event }) => {
 	return (
@@ -105,7 +116,7 @@ const AFSPCalendar = ({ data }) => {
 	const [chapterFilter, setChapterFilter] = useState(null)
 	const [programFilter, setProgramFilter] = useState(null)
 
-	const localizer = momentLocalizer(moment)
+	// const localizer = momentLocalizer(moment)
 
 	let query =
 		typeof window !== `undefined`
