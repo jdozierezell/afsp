@@ -1,16 +1,12 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
 import Script from 'react-load-script'
 import parseISO from 'date-fns/parseISO'
-import { format } from 'date-fns-tz'
+import { format, utcToZonedTime } from 'date-fns-tz'
 
 import createAnchor from '../../utils/createAnchor'
 
 import { styles } from '../../css/css'
-
-dayjs.extend(utc)
 
 const calendarCSS = css`
 	padding: ${styles.scale.px50} ${styles.scale.px24};
@@ -120,7 +116,6 @@ const Calendar = ({ events }) => {
 			<ul>
 				{eventArray.map((event, index) => {
 					let dateAndTime, start, end
-
 					if (event.startDateAndTime) {
 						if (event.startDateAndTime.includes('00:00:00')) {
 							start = parseISO(event.startDateAndTime)
@@ -144,7 +139,6 @@ const Calendar = ({ events }) => {
 							}
 						}
 					}
-
 					if (event.endDateAndTime) {
 						if (event.endDateAndTime.includes('00:00:00')) {
 							end = parseISO(event.endDateAndTime)
@@ -167,18 +161,13 @@ const Calendar = ({ events }) => {
 						}
 					}
 					dateAndTime = end ? `${start} – ${end}` : start
+					dateAndTime = dateAndTime
+						.replace(/ST/g, 'T')
+						.replace(/DT/g, 'T')
 					return (
 						<li key={index}>
 							<h3>{event.title}</h3>
-							{event.startDateAndTime && (
-								<h4>
-									{dateAndTime
-										? dateAndTime
-												.replaceAll('ST', 'T')
-												.replaceAll('DT', 'T')
-										: ''}
-								</h4>
-							)}
+							{event.startDateAndTime && <h4>{dateAndTime}</h4>}
 							<div
 								dangerouslySetInnerHTML={{
 									__html: event.brief,
