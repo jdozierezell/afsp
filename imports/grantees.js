@@ -220,7 +220,7 @@ fs.createReadStream('grantees_12-25-19-3.csv')
 						.then(record => console.log(record))
 						.catch(error => console.log(error.message))
 				}, index * 1000)
-			} else if (contents[0] && !contents[1]) {
+			} else if (contents[0]) {
 				setTimeout(() => {
 					client
 						.uploadFile(row.ImageURL)

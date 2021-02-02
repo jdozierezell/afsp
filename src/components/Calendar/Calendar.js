@@ -4,8 +4,7 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import Script from 'react-load-script'
 import parseISO from 'date-fns/parseISO'
-// import format from 'date-fns/format'
-import { format, utcToZonedTime } from 'date-fns-tz'
+import { format } from 'date-fns-tz'
 
 import createAnchor from '../../utils/createAnchor'
 
@@ -191,9 +190,10 @@ const Calendar = ({ events }) => {
 							{event.startDateAndTime && (
 								<h4>
 									{dateAndTime
-										.replaceAll('ST', 'T') // removing 'standard' time abbreviation
-										.replaceAll('DT', 'T') // removing 'daylight savings' time abbreviation
-									}
+										? dateAndTime
+												.replaceAll('ST', 'T') // removing 'standard' time abbreviation
+												.replaceAll('DT', 'T') // removing 'daylight savings' time abbreviation
+										: ''}
 								</h4>
 							)}
 							<div

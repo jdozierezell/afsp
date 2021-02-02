@@ -17,10 +17,6 @@ const menuCSS = css`
 `
 
 const MenuItems = ({ items }) => {
-	items.forEach(item => {
-		if (item.__typename !== 0) {
-		}
-	})
 	return (
 		<nav css={menuCSS}>
 			{items.map(item => (

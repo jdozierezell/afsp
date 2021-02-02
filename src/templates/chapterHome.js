@@ -25,10 +25,7 @@ import ChapterSocials from '../components/Social/ChapterSocials'
 
 const eventCarouselCSS = css``
 
-const Chapter = ({
-	data: { chapter, realStories, chapterStoriesUpdates },
-	pageContext,
-}) => {
+const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	const {
 		title,
 		slug,
@@ -179,7 +176,6 @@ const Chapter = ({
 		realStories.edges,
 		stories,
 		events,
-		storiesUpdates,
 	])
 	return (
 		<LayoutChapter

@@ -69,13 +69,8 @@ const StatisticsNationalGraph = ({
 	title,
 	graphType,
 	width,
-	height,
 	tabWidth,
 }) => {
-	if (tabWidth > styles.screens.tablet) {
-		const fractionWidth = (width - 100) / 3
-		width = fractionWidth * 2 // add 50 to width to account for removed padding
-	}
 	return (
 		<div css={statisticsNationalGraphCSS}>
 			<div dangerouslySetInnerHTML={{ __html: brief }}></div>
