@@ -188,7 +188,14 @@ const Calendar = ({ events }) => {
 					return (
 						<li key={index}>
 							<h3>{event.title}</h3>
-							{event.startDateAndTime && <h4>{dateAndTime}</h4>}
+							{event.startDateAndTime && (
+								<h4>
+									{dateAndTime
+										.replaceAll('ST', 'T') // removing 'standard' time abbreviation
+										.replaceAll('DT', 'T') // removing 'daylight savings' time abbreviation
+									}
+								</h4>
+							)}
 							<div
 								dangerouslySetInnerHTML={{
 									__html: event.brief,
