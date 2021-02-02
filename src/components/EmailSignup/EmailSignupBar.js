@@ -74,11 +74,19 @@ Modal.setAppElement(`#___gatsby`)
 const EmailSignupBar = ({ formId }) => {
 	const [modalIsOpen, setIsOpen] = React.useState(false)
 	const [submitted, setSubmitted] = useState(false)
+	const [email, setEmail] = useState('')
+	const [zip, setZip] = useState('')
 	const openModal = () => {
 		setIsOpen(true)
 	}
 	const closeModal = () => {
 		setIsOpen(false)
+	}
+	const submitEmailSignup = e => {
+		e.preventDefault()
+		e.target.elements.g.value = formId
+		console.log(e.target.elements.g.value)
+		e.target.submit()
 	}
 	return (
 		<aside css={emailCSS} aria-label="email signup form">
@@ -108,6 +116,7 @@ const EmailSignupBar = ({ formId }) => {
 					<form
 						id="email_signup"
 						action="//manage.kmail-lists.com/subscriptions/subscribe"
+						onSubmit={submitEmailSignup}
 						data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe"
 						method="GET"
 						target="_blank"
@@ -131,8 +140,12 @@ const EmailSignupBar = ({ formId }) => {
 							title="email"
 							id="k_id_email"
 							placeholder="Email address"
+							className={submitted ? 'hidden' : ''}
 						/>
-						<label htmlFor="zip_code">
+						<label
+							htmlFor="zip_code"
+							className={submitted ? 'hidden' : ''}
+						>
 							Providing your zip code is optional but lets us send
 							you additional information about activities and
 							advocacy efforts in your local community.
@@ -143,6 +156,7 @@ const EmailSignupBar = ({ formId }) => {
 							title="zip"
 							id="zip_code"
 							placeholder="Zip code"
+							className={submitted ? 'hidden' : ''}
 						/>
 						<div className="klaviyo_messages">
 							<div

@@ -63,6 +63,14 @@
 .emailModal .secondary-button:hover {
 	text-decoration: none;
 }
+.emailModal label {
+	max-width: 600px;
+	text-align: center;
+}
+.success_message,
+.error_message {
+	font-family: 'AvenirNextLTPro-Regular, Arial, sans-serif';
+}
 
 @media only screen and (min-width: 415px) {
 	.emailModal {
