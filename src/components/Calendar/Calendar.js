@@ -2,7 +2,8 @@ import React from 'react'
 import { css } from '@emotion/core'
 import Script from 'react-load-script'
 import parseISO from 'date-fns/parseISO'
-import { format, utcToZonedTime } from 'date-fns-tz'
+import format from 'date-fns/format'
+import addHours from 'date-fns/addHours'
 
 import createAnchor from '../../utils/createAnchor'
 
@@ -119,7 +120,7 @@ const Calendar = ({ events }) => {
 					if (event.startDateAndTime) {
 						if (event.startDateAndTime.includes('00:00:00')) {
 							start = parseISO(event.startDateAndTime)
-
+							start = addHours(start, 5) // accommodate for timezones when dealing with all day events
 							start = `All Day, ${format(start, 'MMMM d')}`
 						} else {
 							if (event.startDateAndTime.indexOf('00:00') > 0) {
@@ -142,7 +143,9 @@ const Calendar = ({ events }) => {
 					if (event.endDateAndTime) {
 						if (event.endDateAndTime.includes('00:00:00')) {
 							end = parseISO(event.endDateAndTime)
-
+							console.log(end)
+							end = addHours(end, 5) // accommodate for timezones when dealing with all day events
+							console.log(end)
 							end = `All Day, ${format(end, 'MMMM d')}`
 						} else {
 							if (event.endDateAndTime.indexOf('00:00') > 0) {

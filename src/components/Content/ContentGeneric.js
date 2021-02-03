@@ -3,7 +3,6 @@ import { css } from '@emotion/core'
 
 import { styles } from '../../css/css'
 
-import ContentEvent from './ContentEvent'
 import Content from './Content'
 import RecommendationsVideoStories from '../Recommendations/RecommendationsVideoStories'
 import CardContainer from '../Cards/CardContainer'
@@ -61,15 +60,7 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 			`}
 		>
 			{details.map((detail, index) => {
-				if (detail.__typename === 'DatoCmsEventList') {
-					return (
-						<ContentEvent
-							key={index}
-							setEvents={setEvents}
-							programName={detail.programName}
-						></ContentEvent>
-					)
-				} else if (detail.__typename === 'DatoCmsContent') {
+				if (detail.__typename === 'DatoCmsContent') {
 					return (
 						<Content
 							key={index}
