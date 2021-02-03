@@ -143,9 +143,7 @@ const Calendar = ({ events }) => {
 					if (event.endDateAndTime) {
 						if (event.endDateAndTime.includes('00:00:00')) {
 							end = parseISO(event.endDateAndTime)
-							console.log(end)
 							end = addHours(end, 5) // accommodate for timezones when dealing with all day events
-							console.log(end)
 							end = `All Day, ${format(end, 'MMMM d')}`
 						} else {
 							if (event.endDateAndTime.indexOf('00:00') > 0) {
