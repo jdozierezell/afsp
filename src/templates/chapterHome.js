@@ -144,6 +144,13 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					}
 					storiesUpdates.push(node)
 				})
+				storiesUpdates = storiesUpdates.filter(
+					(story, index, self) =>
+						index ===
+						self.findIndex(s => {
+							return s.node.id === story.node.id
+						})
+				)
 				if (!customizeStoryOrder) {
 					storiesUpdates.sort((a, b) => {
 						if (a.node.date < b.node.date) {
@@ -155,13 +162,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 						}
 					})
 				}
-				storiesUpdates = storiesUpdates.filter(
-					(story, index, self) =>
-						index ===
-						self.findIndex(s => {
-							return s.node.id === story.node.id
-						})
-				)
 				setStories(storiesUpdates)
 			}
 		}
