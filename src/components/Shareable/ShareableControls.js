@@ -34,6 +34,7 @@ const ShareableControls = ({
 	updateOverlayTextColor,
 	updateMessage,
 }) => {
+	customValues = JSON.parse(customValues)
 	return (
 		<div
 			css={css`
