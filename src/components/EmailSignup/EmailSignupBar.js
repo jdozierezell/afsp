@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { css } from '@emotion/core'
 import Script from 'react-load-script'
+import axios from 'axios'
 
 import IconX from '../SVGs/IconX'
 
@@ -82,9 +83,21 @@ const EmailSignupBar = ({ formId }) => {
 	}
 	const submitEmailSignup = e => {
 		e.preventDefault()
-		e.target.elements.g.value = formId
-		console.log(e.target.elements.g.value)
-		e.target.submit()
+		const form = document.getElementById('email_signup')
+		let formData = new FormData(form)
+		console.log(formData.get('email'))
+		axios
+			.post(
+				'https://serene-dusk-44738.herokuapp.com/email-signup',
+				formData,
+				{
+					headers: {
+						'Content-Type': 'multipart/form-data',
+					},
+				}
+			)
+			.then(response => console.log(response))
+		// e.target.submit()
 	}
 	return (
 		<aside css={emailCSS} aria-label="email signup form">
@@ -113,12 +126,7 @@ const EmailSignupBar = ({ formId }) => {
 					</h2>
 					<form
 						id="email_signup"
-						action="//manage.kmail-lists.com/subscriptions/subscribe"
 						onSubmit={submitEmailSignup}
-						data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe"
-						method="GET"
-						target="_blank"
-						noValidate="novalidate"
 						className={submitted ? 'hidden' : ''}
 					>
 						<input type="hidden" name="g" value={`${formId}`} />
