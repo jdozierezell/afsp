@@ -56,19 +56,19 @@ const SuicideStatistics = ({ data: { statistics } }) => {
 	}
 	statistics.stateData = {
 		url:
-			'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/suicide-state-2018.csv',
+			'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2019-suicide-state.csv',
 	}
 	statistics.ageData = {
 		url:
-			'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/ratesbyage.csv',
+			'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2019-ratesbyage.csv',
 	}
 	statistics.raceData = {
 		url:
-			'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/ratesbyethnicity.csv',
+			'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2019-ratesbyethnicity.csv',
 	}
 	statistics.methodData = {
 		url:
-			'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/ratesbymethod.csv',
+			'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2019-ratesbymethod.csv',
 	}
 
 	return (
