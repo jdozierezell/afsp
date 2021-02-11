@@ -132,7 +132,7 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 			onMouseLeave={() => setHover(false)}
 		>
 			<div css={logoCSS}>
-				<Link to={`/`}>
+				<Link to={`/`} alt="AFSP Homepage">
 					<Logo
 						theme={theme}
 						overrideLight={overrideLight}
@@ -146,6 +146,7 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 				<button
 					css={searchCSS}
 					onClick={() => setSearchActive(!isSearchActive)}
+					aria-label="Search"
 				>
 					{/* set icon color to white on hover or on light theme */}
 					<IconSearch
@@ -158,6 +159,7 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 				<button
 					css={hamburgerCSS}
 					onClick={() => setMenuActive(!isMenuActive)}
+					aria-label="Menu"
 				>
 					{isMenuActive ? (
 						<IconX />

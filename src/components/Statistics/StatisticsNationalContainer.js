@@ -259,6 +259,7 @@ const StatisticsNationalContainer = ({
 					data={csv.ageData}
 					width={width}
 					tabWidth={tabWidth}
+					itemWidth={100}
 				/>
 			)}
 			{focusedArea === race && (
@@ -269,6 +270,7 @@ const StatisticsNationalContainer = ({
 					data={csv.raceData}
 					width={width}
 					tabWidth={tabWidth}
+					itemWidth={140}
 				/>
 			)}
 			{focusedArea === method && (

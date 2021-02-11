@@ -70,6 +70,7 @@ const StatisticsNationalGraph = ({
 	graphType,
 	width,
 	tabWidth,
+	itemWidth,
 }) => {
 	return (
 		<div css={statisticsNationalGraphCSS}>
@@ -83,7 +84,7 @@ const StatisticsNationalGraph = ({
 							margin={{
 								top: 10,
 								right: 20,
-								bottom: 50,
+								bottom: 75,
 								left: 50,
 							}}
 							xScale={{ type: 'point' }}
@@ -121,7 +122,33 @@ const StatisticsNationalGraph = ({
 							pointLabel="y"
 							pointLabelYOffset={-12}
 							enableSlices={'x'}
-							legends={[]}
+							legends={[
+								{
+									anchor: 'bottom',
+									direction: 'row',
+									justify: false,
+									translateX: 0,
+									translateY: 65,
+									itemsSpacing: 0,
+									itemDirection: 'left-to-right',
+									itemWidth: itemWidth,
+									itemHeight: 20,
+									itemOpacity: 0.75,
+									symbolSize: 12,
+									symbolShape: 'circle',
+									symbolBorderColor: 'rgba(0, 0, 0, .5)',
+									effects: [
+										{
+											on: 'hover',
+											style: {
+												itemBackground:
+													'rgba(0, 0, 0, .03)',
+												itemOpacity: 1,
+											},
+										},
+									],
+								},
+							]}
 							theme={{
 								tooltip: {
 									container: {

@@ -34,7 +34,10 @@ const FooterAside = ({ aria }) => {
 					National Suicide Prevention Lifeline
 				</a>{' '}
 				at{' '}
-				<a aria-label="lifeline phone number" href="tel:+18002738255">
+				<a
+					aria-label="lifeline website link and phone number: 800-273-8255"
+					href="tel:+18002738255"
+				>
 					800-273-8255
 				</a>
 				.
@@ -50,7 +53,7 @@ const FooterAside = ({ aria }) => {
 				</a>{' '}
 				by texting{' '}
 				<a
-					aria-label="crisis text line text number"
+					aria-label="crisis text line website link and text information: TALK to 741741"
 					href="sms:741741&body=TALK"
 				>
 					TALK to 741741
