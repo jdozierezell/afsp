@@ -266,6 +266,9 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 									htmlFor="state-input"
 									id="stateInputLabel"
 								>
+									Enter a state name below to see the data for
+									your state. <br />
+									<br />
 									Download our{' '}
 									<a href="https://www.datocms-assets.com/12810/1587128056-usfactsfiguresflyer-2.pdf">
 										Suicide Facts &amp; Figures
