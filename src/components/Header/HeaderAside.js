@@ -54,7 +54,7 @@ const HeaderAside = () => {
 					href="https://suicidepreventionlifeline.org"
 					target="_blank"
 					rel="noopener noreferrer"
-					aria-label="lifeline website link"
+					aria-label="lifeline website link and phone number: 800-273-8255"
 				>
 					800-273-8255
 				</a>{' '}
@@ -63,7 +63,7 @@ const HeaderAside = () => {
 					href="https://crisistextline.org"
 					target="_blank"
 					rel="noopener noreferrer"
-					aria-label="crisis text line website link"
+					aria-label="crisis text line website link and text information: TALK to 741741"
 				>
 					TALK to 741741
 				</a>

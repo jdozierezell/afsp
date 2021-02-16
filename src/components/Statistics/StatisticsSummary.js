@@ -103,8 +103,6 @@ const StoriesReference = ({ data }) => {
 		videoHeader,
 		videoDescription,
 		videoId,
-		video,
-		videoPoster,
 		videoLinkText,
 		videoLink,
 	} = data

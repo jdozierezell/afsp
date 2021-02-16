@@ -103,7 +103,7 @@ const ReciteComponent = () => {
 				setA11yText(a11y[arrayItem].a11y)
 			}, 2000)
 		}
-	}, [firstRun, a11y])
+	}, [firstRun])
 	return (
 		<span id="reciteme" className="reciteme">
 			<strong>{a11yText}</strong>

@@ -25,10 +25,7 @@ import ChapterSocials from '../components/Social/ChapterSocials'
 
 const eventCarouselCSS = css``
 
-const Chapter = ({
-	data: { chapter, realStories, chapterStoriesUpdates },
-	pageContext,
-}) => {
+const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	const {
 		title,
 		slug,
@@ -42,6 +39,9 @@ const Chapter = ({
 		staffPhone,
 		featuredPrograms,
 		volunteerSignupUrl,
+		chapterStoriesAndUpdates,
+		customizeStoryOrder,
+		hideNationalStories,
 		socialAccounts,
 		chapterInformation,
 		trackingCode,
@@ -88,7 +88,7 @@ const Chapter = ({
 	})
 	const [stories, setStories] = useState([])
 
-	const storiesUpdates = []
+	let storiesUpdates = []
 
 	let heroVideoUrl
 
@@ -102,18 +102,20 @@ const Chapter = ({
 		if (stories.length === 0 && stories[0] !== 'no stories') {
 			// setStories(['no stories'])
 			if (
-				realStories.edges.length === 0 &&
-				chapterStoriesUpdates.edges.length === 0
+				(realStories.edges.length === 0 || hideNationalStories) &&
+				chapterStoriesUpdates.edges.length === 0 &&
+				chapterStoriesAndUpdates.length === 0
 			) {
 				setStories(['no stories'])
 			} else {
-				realStories.edges.forEach(story => {
-					const __typename = story.node.__typename
-					const id = story.node.id
-					const title = story.node.title
-					const slug = story.node.slug
-					const seo = story.node.seo
-					const date = parseInt(story.node.publicationDate, 10)
+				console.log(chapterStoriesAndUpdates)
+				chapterStoriesAndUpdates.forEach(story => {
+					const __typename = 'DatoCmsChapterStoryUpdate'
+					const id = story.id
+					const title = story.title
+					const slug = story.slug
+					const seo = story.seo
+					const date = parseInt(story.publicationDate, 10)
 					const node = {
 						node: { __typename, id, title, slug, seo, date },
 					}
@@ -131,15 +133,38 @@ const Chapter = ({
 					}
 					storiesUpdates.push(node)
 				})
-				storiesUpdates.sort((a, b) => {
-					if (a.node.date < b.node.date) {
-						return 1
-					} else if (a.node.date > b.node.date) {
-						return -1
-					} else {
-						return 0
-					}
-				})
+				if (!hideNationalStories) {
+					realStories.edges.forEach(story => {
+						const __typename = story.node.__typename
+						const id = story.node.id
+						const title = story.node.title
+						const slug = story.node.slug
+						const seo = story.node.seo
+						const date = parseInt(story.node.publicationDate, 10)
+						const node = {
+							node: { __typename, id, title, slug, seo, date },
+						}
+						storiesUpdates.push(node)
+					})
+				}
+				storiesUpdates = storiesUpdates.filter(
+					(story, index, self) =>
+						index ===
+						self.findIndex(s => {
+							return s.node.id === story.node.id
+						})
+				)
+				if (!customizeStoryOrder) {
+					storiesUpdates.sort((a, b) => {
+						if (a.node.date < b.node.date) {
+							return 1
+						} else if (a.node.date > b.node.date) {
+							return -1
+						} else {
+							return 0
+						}
+					})
+				}
 				setStories(storiesUpdates)
 			}
 		}
@@ -179,7 +204,6 @@ const Chapter = ({
 		realStories.edges,
 		stories,
 		events,
-		storiesUpdates,
 	])
 	return (
 		<LayoutChapter
@@ -349,6 +373,31 @@ export const query = graphql`
 					}
 				}
 			}
+			chapterStoriesAndUpdates {
+				id
+				title
+				slug
+				seo {
+					description
+					image {
+						url
+						fluid(
+							maxWidth: 600
+							imgixParams: {
+								auto: "format"
+								fit: "fill"
+								fill: "blur"
+								w: "600"
+								h: "370"
+							}
+						) {
+							...GatsbyDatoCmsFluid_noBase64
+						}
+					}
+				}
+			}
+			customizeStoryOrder
+			hideNationalStories
 			volunteerSignupUrl
 			socialAccounts {
 				socialPlatform
