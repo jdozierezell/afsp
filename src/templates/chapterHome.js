@@ -41,6 +41,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 		volunteerSignupUrl,
 		chapterStoriesAndUpdates,
 		customizeStoryOrder,
+		hideNationalStories,
 		socialAccounts,
 		chapterInformation,
 		trackingCode,
@@ -101,7 +102,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 		if (stories.length === 0 && stories[0] !== 'no stories') {
 			// setStories(['no stories'])
 			if (
-				realStories.edges.length === 0 &&
+				(realStories.edges.length === 0 || hideNationalStories) &&
 				chapterStoriesUpdates.edges.length === 0 &&
 				chapterStoriesAndUpdates.length === 0
 			) {
@@ -132,18 +133,20 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					}
 					storiesUpdates.push(node)
 				})
-				realStories.edges.forEach(story => {
-					const __typename = story.node.__typename
-					const id = story.node.id
-					const title = story.node.title
-					const slug = story.node.slug
-					const seo = story.node.seo
-					const date = parseInt(story.node.publicationDate, 10)
-					const node = {
-						node: { __typename, id, title, slug, seo, date },
-					}
-					storiesUpdates.push(node)
-				})
+				if (!hideNationalStories) {
+					realStories.edges.forEach(story => {
+						const __typename = story.node.__typename
+						const id = story.node.id
+						const title = story.node.title
+						const slug = story.node.slug
+						const seo = story.node.seo
+						const date = parseInt(story.node.publicationDate, 10)
+						const node = {
+							node: { __typename, id, title, slug, seo, date },
+						}
+						storiesUpdates.push(node)
+					})
+				}
 				storiesUpdates = storiesUpdates.filter(
 					(story, index, self) =>
 						index ===
@@ -394,6 +397,7 @@ export const query = graphql`
 				}
 			}
 			customizeStoryOrder
+			hideNationalStories
 			volunteerSignupUrl
 			socialAccounts {
 				socialPlatform
