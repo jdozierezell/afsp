@@ -17,60 +17,6 @@
 	background: hsla(0, 0%, 91.8%, 1);
 	overflow: auto;
 }
-.emailModal > div {
-	display: grid;
-	justify-items: center;
-}
-.emailModal h2 {
-	font-size: 24px;
-	text-align: center;
-	width: 100%;
-	margin-bottom: 0;
-}
-.emailModal form {
-	display: flex;
-	flex-flow: column;
-	align-items: center;
-}
-.emailModal input {
-	margin: 32px 0;
-	width: 100%;
-	max-width: 600px;
-	display: inline-block;
-	font-size: 18px !important;
-	line-height: 50px !important;
-	background-color: white !important;
-	color: #262626 !important;
-	border-radius: 5px !important;
-	border: 2px solid #262626 !important;
-	padding: 0 16px !important;
-	height: initial !important;
-}
-.emailModal input::placeholder {
-	line-height: 54px !important;
-	color: #333;
-	font-size: 18px;
-}
-.emailModal p {
-	width: 100%;
-	max-width: 600px;
-	text-align: center;
-	margin: 0;
-}
-.emailModal .secondary-button {
-	margin-top: 0;
-}
-.emailModal .secondary-button:hover {
-	text-decoration: none;
-}
-.emailModal label {
-	max-width: 600px;
-	text-align: center;
-}
-.success_message,
-.error_message {
-	font-family: 'AvenirNextLTPro-Regular, Arial, sans-serif';
-}
 
 @media only screen and (min-width: 415px) {
 	.emailModal {
@@ -82,11 +28,5 @@
 		padding: 50px;
 		border-radius: 5px;
 		position: relative;
-	}
-	.emailModal h2 {
-		font-size: 44px;
-	}
-	#zip_code {
-		max-width: 300px;
 	}
 }

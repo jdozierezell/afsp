@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { css } from '@emotion/core'
 
+import EmailSignupSideBar from '../EmailSignup/EmailSignupSideBar'
+
 import createAnchor from '../../utils/createAnchor'
 
 import { styles } from '../../css/css'
@@ -161,6 +163,7 @@ const NavigationSide = ({
 						</li>
 					))}
 				</ul>
+				<EmailSignupSideBar></EmailSignupSideBar>
 			</aside>
 		)
 	} else {

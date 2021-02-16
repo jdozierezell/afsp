@@ -65,7 +65,7 @@ const Layout = ({
 					</p>
 				</div>
 			</EmailSignup> */}
-			<EmailSignupBar formId="M2qiJq"></EmailSignupBar>
+			<EmailSignupBar></EmailSignupBar>
 			<Footer nav={footerNav} />
 			<Script
 				attributes={{
