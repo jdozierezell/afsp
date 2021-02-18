@@ -4,7 +4,6 @@ import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Script from 'react-load-script'
 
 import Header from './Header/Header'
-// import EmailSignup from './EmailSignup/EmailSignup'
 import EmailSignupBar from './EmailSignup/EmailSignupBar'
 import Footer from './Footer/Footer'
 
@@ -56,15 +55,6 @@ const Layout = ({
 				overrideLight={overrideLight}
 			/>
 			<main id="main">{children}</main>
-			{/* <EmailSignup formId="M2qiJq">
-				<div>
-					<h2 id="klaviyo-signup">Sign up for email alerts</h2>
-					<p>
-						Receive updates from the American Foundation for Suicide
-						Prevention
-					</p>
-				</div>
-			</EmailSignup> */}
 			<EmailSignupBar></EmailSignupBar>
 			<Footer nav={footerNav} />
 			<Script
