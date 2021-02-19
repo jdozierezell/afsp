@@ -146,7 +146,7 @@ const SupportGroupForm = () => {
 		nameOfMeetingSite: Yup.string().when('meetingType', {
 			is: val =>
 				document.querySelector('.react-select__single-value')
-					.innerText !== 'Online only',
+					.innerText !== 'Nationwide Online Group',
 			then: Yup.string().required(
 				'The name of your meeting site is required. Please enter the site name and resubmit.'
 			),
@@ -155,7 +155,7 @@ const SupportGroupForm = () => {
 		meetingCountry: Yup.object().when('meetingType', {
 			is: val =>
 				document.querySelector('.react-select__single-value')
-					.innerText !== 'Online only',
+					.innerText !== 'Nationwide Online Group',
 			then: Yup.object().required(
 				"Your meeting site's country is required. Please select the country and resubmit."
 			),
@@ -164,7 +164,7 @@ const SupportGroupForm = () => {
 		meetingCity: Yup.string().when('meetingType', {
 			is: val =>
 				document.querySelector('.react-select__single-value')
-					.innerText !== 'Online only',
+					.innerText !== 'Nationwide Online Group',
 			then: Yup.string().required(
 				"Your meeting site's city is required. Please enter the city and resubmit."
 			),
@@ -182,7 +182,7 @@ const SupportGroupForm = () => {
 		meetingZipPostalCode: Yup.string().when('meetingType', {
 			is: val =>
 				document.querySelector('.react-select__single-value')
-					.innerText !== 'Online only',
+					.innerText !== 'Nationwide Online Group',
 			then: Yup.string().required(
 				"Your meeting site's zip or postal code is required. Please enter the code and resubmit."
 			),
@@ -222,7 +222,7 @@ const SupportGroupForm = () => {
 	}
 
 	const handleTypeSelectChange = selectedOption => {
-		if (selectedOption.value !== 'Online only') {
+		if (selectedOption.value !== 'Nationwide Online Group') {
 			setShowLocation(true)
 		} else {
 			setShowLocation(false)
@@ -696,16 +696,16 @@ const SupportGroupForm = () => {
 							value={values.selectedTypeOption}
 							options={[
 								{
-									value: 'In person',
-									label: 'In person',
+									value: 'In Person',
+									label: 'In Person',
 								},
 								{
-									value: 'Online only',
-									label: 'Online only',
+									value: 'Nationwide Online Group',
+									label: 'Nationwide Online Group',
 								},
 								{
-									value: 'In person and online',
-									label: 'In person and online',
+									value: 'Local Online Group',
+									label: 'Local Online Group',
 								},
 							]}
 							onChange={handleTypeSelectChange}

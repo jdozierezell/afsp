@@ -168,7 +168,7 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 			) {
 				countryArray.push(group.node.meetingCountry)
 			}
-			if (group.node.meetingType === 'Online only') {
+			if (group.node.meetingType === 'Nationwide Online Group') {
 				onlineArray.push(group.node)
 			}
 		})
