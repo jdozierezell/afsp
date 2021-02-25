@@ -177,6 +177,10 @@ export const query = graphql`
 						}
 					}
 				}
+				... on DatoCmsTweet {
+					__typename
+					tweet
+				}
 			}
 		}
 	}

@@ -23,8 +23,13 @@ const buttonGroupCSS = css`
 	min-width: 250px;
 	margin: 0;
 `
-const ContentTweet = ({ tweet, navigation }) => {
+const ContentTweet = ({ tweet, navigation, story }) => {
+	let width = `calc(100vw - (${styles.scale.px50} * 2))`
 	const encodedTweet = encodeURIComponent(tweet)
+	if (navigation) {
+		width = `calc(100vw - 550px)`
+	} else if (story) {
+	}
 	return (
 		<div
 			css={css`
@@ -34,6 +39,7 @@ const ContentTweet = ({ tweet, navigation }) => {
 					width: ${navigation
 						? `calc(100vw - 550px)`
 						: `calc(100vw - (${styles.scale.px50} * 2))`};
+					max-width: ${story ? '100%' : 'auto'};
 				}
 			`}
 		>

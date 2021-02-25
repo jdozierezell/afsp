@@ -95,7 +95,7 @@ export const styles = {
 		mobile: 415,
 		tablet: 769,
 		video: 1000,
-		navigation: 1200,
+		navigation: 1310,
 		footer: 1100,
 	},
 	gridGap: {

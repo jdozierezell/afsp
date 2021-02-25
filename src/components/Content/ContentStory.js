@@ -13,6 +13,7 @@ import ContentAudio from './ContentAudio'
 import ContentVideo from './ContentVideo'
 import ContentHeading from './ContentHeading'
 import ContentEmbed from './ContentEmbed'
+import ContentTweet from './ContentTweet'
 import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
 // import Loadable from '@loadable/component'
 
@@ -186,6 +187,14 @@ const ContentStory = ({ data, pageUrl }) => {
 								key={index}
 								heading={article.heading}
 								level={article.headingLevel}
+							/>
+						)
+					} else if (article.__typename === 'DatoCmsTweet') {
+						return (
+							<ContentTweet
+								key={index}
+								tweet={article.tweet}
+								story={true}
 							/>
 						)
 					}
