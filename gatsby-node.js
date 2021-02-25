@@ -257,13 +257,14 @@ exports.createPages = async ({ graphql, actions }) => {
 	})
 
 	details.forEach(({ node }) => {
-		createPage({
-			path: `${node.slug}`,
-			component: path.resolve('./src/templates/detail.js'),
-			context: {
-				slug: node.slug,
-			},
-		})
+		if (node.slug !== 'project2025')
+			createPage({
+				path: `${node.slug}`,
+				component: path.resolve('./src/templates/detail.js'),
+				context: {
+					slug: node.slug,
+				},
+			})
 	})
 
 	detailsTagged.forEach(({ node }) => {
