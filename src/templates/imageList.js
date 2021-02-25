@@ -57,7 +57,7 @@ const ImageList = ({ data: { imageList } }) => {
 			{navigation && <NavigationSide data={imageList} />}
 			<ImageListContainer
 				images={imageList.images}
-				crop={imageList.cropImage}
+				crop={imageList.croppedImage}
 				navigation={navigation}
 			/>
 		</Layout>
