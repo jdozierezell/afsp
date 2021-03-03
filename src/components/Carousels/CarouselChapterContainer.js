@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Carousel from 'react-multi-carousel'
 import { css } from '@emotion/core'
-import fetch from 'isomorphic-fetch'
 import zipcodes from 'zipcodes'
+import axios from 'axios'
 
 import { chapterSearchResults } from '../../utils/chapterSearchResults'
 
@@ -96,23 +96,40 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 		if (displayChapters.length === 0) {
 			const endpoint =
 				'https://pro.ip-api.com/json/?fields=zip&key=kk9BWBSYqm9ZTDj'
-			fetch(endpoint)
-				.then(res => res.json())
-				.then(
-					result => {
-						setDisplayChapters(
-							chapterSearchResults(chapters, {
-								primaryZip: result.zip,
-								otherZips: zipcodes.radius(result.zip, 100),
-							})
-						)
-					},
-					error => {
-						console.log(error)
-					}
-				)
+			axios.get(endpoint).then(res => {
+				console.log(res)
+				// setDisplayChapters(
+				// 	chapterSearchResults(chapters, {
+				// 		primaryZip: res.data.zip,
+				// 		otherZips: zipcodes.radius(res.data.zip, 100),
+				// 	})
+				// )
+			})
+			axios
+				.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
+					zip: '10034',
+				})
+				.then(res => console.log(res))
+			// .then(res => console.log(res))
+			// .catch(error => console.log(error.toJSON()))
+			// fetch(endpoint)
+			// 	.then(res => res.json())
+			// 	.then(
+			// 		result => {
+			// 			console.log(result)
+			// 			setDisplayChapters(
+			// 				chapterSearchResults(chapters, {
+			// 					primaryZip: result.zip,
+			// 					otherZips: zipcodes.radius(result.zip, 100),
+			// 				})
+			// 			)
+			// 		},
+			// 		error => {
+			// 			console.log(error)
+			// 		}
+			// 	)
 		}
-	}, [chapters, displayChapters])
+	}, [])
 
 	return (
 		<div
@@ -128,10 +145,7 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 				</a>
 			</div>
 			{displayChapters.length >= 1 && (
-				<p>
-					Local chapters near {displayChapters[0][1]}
-					<strong>{displayChapters.primaryZip}</strong>
-				</p>
+				<p>Local chapters near {displayChapters[0][1]}</p>
 			)}
 			{displayChapters.length >= 1 && (
 				<Carousel responsive={responsive}>
