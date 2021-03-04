@@ -10,7 +10,11 @@ const logoCSS = css`
 
 const LogoColor = css => {
 	return (
-		<svg viewBox="0 0 588 239" css={logoCSS} ariaLabelledBy="afspWhiteLogo">
+		<svg
+			viewBox="0 0 588 239"
+			css={logoCSS}
+			aria-labelledby="afspWhiteLogo"
+		>
 			<title id="afspWhiteLogo">AFSP White Logo</title>
 			<g>
 				<g>

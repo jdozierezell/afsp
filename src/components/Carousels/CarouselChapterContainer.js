@@ -96,20 +96,31 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 		if (displayChapters.length === 0) {
 			const endpoint =
 				'https://pro.ip-api.com/json/?fields=zip&key=kk9BWBSYqm9ZTDj'
-			axios.get(endpoint).then(res => {
-				console.log(res)
-				// setDisplayChapters(
-				// 	chapterSearchResults(chapters, {
-				// 		primaryZip: res.data.zip,
-				// 		otherZips: zipcodes.radius(res.data.zip, 100),
-				// 	})
-				// )
-			})
 			axios
-				.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
-					zip: '10034',
+				.get(endpoint)
+				.then(res => {
+					console.log(res)
+					// setDisplayChapters(
+					// 	chapterSearchResults(chapters, {
+					// 		primaryZip: res.data.zip,
+					// 		otherZips: zipcodes.radius(res.data.zip, 100),
+					// 	})
+					// )
+					return res
 				})
-				.then(res => console.log(res))
+				.then(res => {
+					axios
+						.post(
+							'https://serene-dusk-44738.herokuapp.com/zip-lookup',
+							{
+								zip: res.data.zip,
+							}
+						)
+						.then(res => {
+							console.log(res.data.chapterArray)
+							setDisplayChapters(res.data.chapterArray)
+						})
+				})
 			// .then(res => console.log(res))
 			// .catch(error => console.log(error.toJSON()))
 			// fetch(endpoint)
@@ -144,6 +155,7 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 					Find a chapter
 				</a>
 			</div>
+			{console.log(displayChapters)}
 			{displayChapters.length >= 1 && (
 				<p>Local chapters near {displayChapters[0][1]}</p>
 			)}
@@ -155,8 +167,8 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 								key={index}
 								title={chapter[0].title}
 								titleHref={chapter[0].slug}
-								image={chapter[0].heroPoster.fluid}
-								alt={chapter[0].heroPoster.alt}
+								image={chapter[0].image.url}
+								alt={chapter[0].image.alt}
 							/>
 						)
 					})}
