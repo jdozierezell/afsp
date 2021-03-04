@@ -55,7 +55,8 @@ strong em {
 p,
 li {
 	color: hsla(0, 0%, 14.9%, 1);
-	font-size: 17px;
+	font-size: 1.0625rem;
+	line-height: 1.5;
 }
 
 a {

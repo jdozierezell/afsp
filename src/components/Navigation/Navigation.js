@@ -132,7 +132,7 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 			onMouseLeave={() => setHover(false)}
 		>
 			<div css={logoCSS}>
-				<Link to={`/`} alt="AFSP Homepage">
+				<Link to={`/`} aria-label="AFSP Homepage">
 					<Logo
 						theme={theme}
 						overrideLight={overrideLight}

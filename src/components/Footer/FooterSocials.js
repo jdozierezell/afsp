@@ -29,7 +29,7 @@ const FooterSocials = () => {
 				href="https://www.facebook.com/AFSPnational/"
 				target="_blank"
 				rel="noopener noreferrer"
-				alt="AFSPNational Facebook"
+				aria-label="AFSPNational Facebook"
 			>
 				<IconFacebook color={styles.colors.white} />
 			</a>
@@ -37,7 +37,7 @@ const FooterSocials = () => {
 				href="https://www.instagram.com/afspnational/"
 				target="_blank"
 				rel="noopener noreferrer"
-				alt="AFSPNational Instagram"
+				aria-label="AFSPNational Instagram"
 			>
 				<IconInstagram color={styles.colors.white} />
 			</a>
@@ -45,7 +45,7 @@ const FooterSocials = () => {
 				href="https://twitter.com/afspnational"
 				target="_blank"
 				rel="noopener noreferrer"
-				alt="AFSPNational Twitter"
+				aria-label="AFSPNational Twitter"
 			>
 				<IconTwitter color={styles.colors.white} />
 			</a>
@@ -53,7 +53,7 @@ const FooterSocials = () => {
 				href="https://www.linkedin.com/company/afspnational"
 				target="_blank"
 				rel="noopener noreferrer"
-				alt="AFSPNational LinkedIn"
+				aria-label="AFSPNational LinkedIn"
 			>
 				<IconLinkedIn color={styles.colors.white} />
 			</a>
@@ -61,7 +61,7 @@ const FooterSocials = () => {
 				href="https://www.youtube.com/user/afspnational"
 				target="_blank"
 				rel="noopener noreferrer"
-				alt="AFSPNational Youtube"
+				aria-label="AFSPNational YouTube"
 			>
 				<IconYouTube color={styles.colors.white} />
 			</a>
@@ -69,7 +69,7 @@ const FooterSocials = () => {
 				href="https://themighty.com/partner/AmericanFoundationforSuicidePrevention/"
 				target="_blank"
 				rel="noopener noreferrer"
-				alt="AFSP partner page on themighty.com"
+				aria-label="AFSP partner page on themighty.com"
 			>
 				<IconTheMighty color={styles.colors.white} />
 			</a>

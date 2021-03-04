@@ -5,6 +5,7 @@ import { css } from '@emotion/core'
 const IconCharityNavigator = () => {
 	return (
 		<svg
+			aria-labelledby="charityWatchLogo"
 			viewBox="0 0 792 621.4"
 			css={css`
 				.charityWatch1 {
@@ -15,6 +16,7 @@ const IconCharityNavigator = () => {
 				}
 			`}
 		>
+			<title id="charityWatchLogo">Charity Watch Logo</title>
 			<path
 				d="M294.5 567.2c.5-11-2.4-24.8-5.7-36.7l-5.4-2.4c2.9 15.6 6.2 30.4 6.2 30.4l4.9 8.7z"
 				fill="none"
