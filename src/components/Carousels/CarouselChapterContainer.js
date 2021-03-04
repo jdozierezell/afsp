@@ -4,8 +4,6 @@ import Carousel from 'react-multi-carousel'
 import { css } from '@emotion/core'
 import axios from 'axios'
 
-import { chapterSearchResults } from '../../utils/chapterSearchResults'
-
 import { styles } from '../../css/css'
 
 import 'react-multi-carousel/lib/styles.css'
