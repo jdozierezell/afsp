@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Carousel from 'react-multi-carousel'
 import { css } from '@emotion/core'
-import zipcodes from 'zipcodes'
 import axios from 'axios'
 
 import { chapterSearchResults } from '../../utils/chapterSearchResults'
