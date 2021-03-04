@@ -70,6 +70,7 @@ const storyMetaCSS = css`
 
 const dateLineCSS = css`
 	margin: 0 0;
+	line-height: 1.5;
 	@media (min-width: ${styles.screens.tablet}px) {
 		color: ${styles.colors.white};
 		font-size: ${styles.scale.px18};

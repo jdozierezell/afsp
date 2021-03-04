@@ -1,4 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import { css } from '@emotion/core'
+
+import { styles } from '../../css/css'
+
+const reciteButtonCSS = css`
+	background-color: transparent;
+	border: none;
+	font-family: ${styles.fonts.avenirDemi};
+`
 
 const ReciteComponent = () => {
 	const a11y = [
@@ -105,9 +114,9 @@ const ReciteComponent = () => {
 		}
 	}, [firstRun])
 	return (
-		<span id="reciteme" className="reciteme">
-			<strong>{a11yText}</strong>
-		</span>
+		<button id="reciteme" className="reciteme" css={reciteButtonCSS}>
+			{a11yText}
+		</button>
 	)
 }
 

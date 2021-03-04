@@ -10,7 +10,8 @@ const lifesaverCSS = css`
 
 const LogoColor = css => {
 	return (
-		<svg viewBox="0 0 588 239">
+		<svg viewBox="0 0 588 239" ariaLabelledBy="afspFullColorLogo">
+			<title id="afspFullColorLogo">AFSP Full Color Logo</title>
 			<g>
 				<g>
 					<g>

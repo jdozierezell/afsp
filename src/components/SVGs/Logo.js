@@ -21,7 +21,8 @@ const Logo = ({ theme, overrideLight, isHover, isMenuActive }) => {
 			: styles.colors.blue
 
 	return (
-		<svg viewBox="0 0 588 239">
+		<svg viewBox="0 0 588 239" aria-labelledby="afspLogo">
+			<title id="afspLogo">AFSP Logo</title>
 			<g>
 				<g
 					css={css`

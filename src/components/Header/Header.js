@@ -28,7 +28,7 @@ const skipCSS = css`
 const Header = ({ nav, theme, overrideLight }) => {
 	return (
 		<header>
-			<a css={skipCSS} href="#main" tabIndex="1">
+			<a css={skipCSS} href="#main" tabIndex="0">
 				Skip to content
 			</a>
 			<HeaderAside />

@@ -5,12 +5,14 @@ import { css } from '@emotion/core'
 const IconYouTube = ({ color, iconCSS }) => {
 	return (
 		<svg
+			aria-labelledby="theMightyLogo"
 			viewBox="-135 311.7 339.3 171.3"
 			css={css`
 				${iconCSS};
 				fill: ${color};
 			`}
 		>
+			<title id="theMightyLogo">AFSP on The Mighty</title>
 			<g>
 				<g>
 					<path

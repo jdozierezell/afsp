@@ -19,6 +19,7 @@ const SearchIcon = ({
 		theme.desktop === 'light' ? styles.colors.white : styles.colors.darkGray
 	return (
 		<svg
+			aria-labelledby="searchMag"
 			viewBox="0 0 100 100"
 			css={css`
 				${iconCSS};
@@ -32,6 +33,7 @@ const SearchIcon = ({
 				}
 			`}
 		>
+			<title id="searchMag">Search magnifying glass</title>
 			<g>
 				<path
 					d="M92.3,99c-1.2,0-2.3-0.5-3.2-1.4L65.3,73.2c-1.7-1.8-1.7-4.6,0.1-6.3c1.8-1.7,4.6-1.7,6.3,0.1l23.8,24.5
