@@ -28,6 +28,7 @@ const headerCSS = css`
 	color: ${styles.colors.white};
 	margin: 0 ${styles.scale.px60} ${styles.scale.px24} ${styles.scale.px24};
 	color: ${styles.colors.darkGray};
+	overflow: auto;
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin: 0 ${styles.scale.px60};
 		color: ${styles.colors.white};
