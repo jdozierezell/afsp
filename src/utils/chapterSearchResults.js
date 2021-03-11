@@ -20,23 +20,23 @@ const chapterSearchResults = (chapters, response) => {
 	return chapterArray
 }
 
-const fetchChapters = (chapters, useStateFunction) => {
-	const endpoint =
-		'https://pro.ip-api.com/json/?fields=zip&key=kk9BWBSYqm9ZTDj'
-	fetch(endpoint)
-		.then(res => res.json())
-		.then(
-			result => {
-				useStateFunction(
-					chapterSearchResults(chapters, {
-						primaryZip: result.zip,
-						otherZips: zipcodes.radius(result.zip, 100),
-					})
-				)
-			},
-			error => {
-				console.log(error)
-			}
-		)
-}
-export { chapterSearchResults, fetchChapters }
+// const fetchChapters = (chapters, useStateFunction) => {
+// 	const endpoint =
+// 		'https://pro.ip-api.com/json/?fields=zip&key=kk9BWBSYqm9ZTDj'
+// 	fetch(endpoint)
+// 		.then(res => res.json())
+// 		.then(
+// 			result => {
+// 				useStateFunction(
+// 					chapterSearchResults(chapters, {
+// 						primaryZip: result.zip,
+// 						otherZips: zipcodes.radius(result.zip, 100),
+// 					})
+// 				)
+// 			},
+// 			error => {
+// 				console.log(error)
+// 			}
+// 		)
+// }
+export { chapterSearchResults }

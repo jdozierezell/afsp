@@ -93,49 +93,19 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 		if (displayChapters.length === 0) {
 			const endpoint =
 				'https://pro.ip-api.com/json/?fields=zip&key=kk9BWBSYqm9ZTDj'
-			axios
-				.get(endpoint)
-				.then(res => {
-					console.log(res)
-					// setDisplayChapters(
-					// 	chapterSearchResults(chapters, {
-					// 		primaryZip: res.data.zip,
-					// 		otherZips: zipcodes.radius(res.data.zip, 100),
-					// 	})
-					// )
-					return res
-				})
-				.then(res => {
-					axios
-						.post(
-							'https://serene-dusk-44738.herokuapp.com/zip-lookup',
-							{
-								zip: res.data.zip,
-							}
-						)
-						.then(res => {
-							console.log(res.data.chapterArray)
-							setDisplayChapters(res.data.chapterArray)
-						})
-				})
-			// .then(res => console.log(res))
-			// .catch(error => console.log(error.toJSON()))
-			// fetch(endpoint)
-			// 	.then(res => res.json())
-			// 	.then(
-			// 		result => {
-			// 			console.log(result)
-			// 			setDisplayChapters(
-			// 				chapterSearchResults(chapters, {
-			// 					primaryZip: result.zip,
-			// 					otherZips: zipcodes.radius(result.zip, 100),
-			// 				})
-			// 			)
-			// 		},
-			// 		error => {
-			// 			console.log(error)
-			// 		}
-			// 	)
+			axios.get(endpoint).then(res => {
+				axios
+					.post(
+						'https://serene-dusk-44738.herokuapp.com/zip-lookup',
+						{
+							zip: res.data.zip,
+						}
+					)
+					.then(res => {
+						console.log(res.data.chapterArray)
+						setDisplayChapters(res.data.chapterArray)
+					})
+			})
 		}
 	}, [])
 
