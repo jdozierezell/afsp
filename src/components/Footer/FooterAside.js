@@ -12,6 +12,7 @@ const footerAsideCSS = css`
 		line-height: ${styles.scale.px24};
 		margin: ${styles.scale.px30} 0;
 		color: ${styles.colors.white};
+		line-height: 1.5;
 	}
 	a {
 		color: ${styles.colors.white};
