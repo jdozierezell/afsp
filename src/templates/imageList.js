@@ -89,6 +89,7 @@ export const query = graphql`
 						alt
 						gatsbyImageData(
 							width: 600
+							placeholder: NONE
 							imgixParams: {
 								auto: "format"
 								fit: "crop"
@@ -101,7 +102,11 @@ export const query = graphql`
 					originalImage: image {
 						url
 						alt
-						gatsbyImageData(width: 600, imgixParams: { w: "600" })
+						gatsbyImageData(
+							width: 600
+							placeholder: NONE
+							imgixParams: { w: "600" }
+						)
 					}
 					linkToOther
 					otherUrl

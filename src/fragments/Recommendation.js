@@ -10,6 +10,7 @@ export const Recommendation = graphql`
 			url
 			gatsbyImageData(
 				width: 1280
+				placeholder: NONE
 				imgixParams: {
 					auto: "format"
 					fit: "crop"

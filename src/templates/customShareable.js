@@ -120,6 +120,7 @@ export const query = graphql`
 					alt
 					gatsbyImageData(
 						width: 1080
+						placeholder: NONE
 						imgixParams: { auto: "format", w: "1080" }
 					)
 				}

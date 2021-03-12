@@ -114,6 +114,7 @@ export const query = graphql`
 				url
 				gatsbyImageData(
 					width: 769
+					placeholder: NONE
 					imgixParams: {
 						auto: "format"
 						fit: "crop"

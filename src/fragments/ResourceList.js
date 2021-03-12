@@ -13,6 +13,7 @@ export const ResourceList = graphql`
 						url
 						gatsbyImageData(
 							width: 600
+							placeholder: NONE
 							imgixParams: {
 								auto: "format"
 								fit: "crop"
@@ -34,6 +35,7 @@ export const ResourceList = graphql`
 						url
 						gatsbyImageData(
 							width: 600
+							placeholder: NONE
 							imgixParams: {
 								auto: "format"
 								fit: "crop"
@@ -55,6 +57,7 @@ export const ResourceList = graphql`
 						url
 						gatsbyImageData(
 							width: 600
+							placeholder: NONE
 							imgixParams: {
 								auto: "format"
 								fit: "crop"
@@ -74,6 +77,7 @@ export const ResourceList = graphql`
 					url
 					gatsbyImageData(
 						width: 600
+						placeholder: NONE
 						imgixParams: {
 							auto: "format"
 							fit: "crop"
@@ -104,6 +108,7 @@ export const ResourceList = graphql`
 					url
 					gatsbyImageData(
 						width: 600
+						placeholder: NONE
 						imgixParams: {
 							auto: "format"
 							fit: "crop"
@@ -124,6 +129,7 @@ export const ResourceList = graphql`
 						url
 						gatsbyImageData(
 							width: 600
+							placeholder: NONE
 							imgixParams: {
 								auto: "format"
 								fit: "crop"

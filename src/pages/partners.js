@@ -137,6 +137,7 @@ export const query = graphql`
 					alt
 					gatsbyImageData(
 						width: 600
+						placeholder: NONE
 						imgixParams: {
 							auto: "format"
 							fit: "fill"

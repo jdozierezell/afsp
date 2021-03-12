@@ -99,7 +99,11 @@ export const query = graphql`
 			}
 			programLogo {
 				url
-				gatsbyImageData(width: 623, imgixParams: { w: "623" })
+				gatsbyImageData(
+					width: 623
+					placeholder: NONE
+					imgixParams: { w: "623" }
+				)
 			}
 			brief
 			parentPage {
@@ -164,6 +168,7 @@ export const query = graphql`
 						url
 						gatsbyImageData(
 							width: 623
+							placeholder: NONE
 							imgixParams: {
 								auto: "format"
 								fill: "blur"

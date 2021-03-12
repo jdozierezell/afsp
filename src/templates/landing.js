@@ -258,6 +258,7 @@ export const query = graphql`
 					alt
 					gatsbyImageData(
 						width: 200
+						placeholder: NONE
 						imgixParams: {
 							auto: "format"
 							fit: "crop"
@@ -291,6 +292,7 @@ export const query = graphql`
 									url
 									gatsbyImageData(
 										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fit: "fill"
@@ -313,6 +315,7 @@ export const query = graphql`
 									url
 									gatsbyImageData(
 										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fit: "fill"
@@ -335,6 +338,7 @@ export const query = graphql`
 									url
 									gatsbyImageData(
 										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -357,6 +361,7 @@ export const query = graphql`
 									url
 									gatsbyImageData(
 										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -379,6 +384,7 @@ export const query = graphql`
 									url
 									gatsbyImageData(
 										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -401,6 +407,7 @@ export const query = graphql`
 									url
 									gatsbyImageData(
 										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -423,6 +430,7 @@ export const query = graphql`
 									url
 									gatsbyImageData(
 										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -445,6 +453,7 @@ export const query = graphql`
 									url
 									gatsbyImageData(
 										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -467,6 +476,7 @@ export const query = graphql`
 									url
 									gatsbyImageData(
 										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -488,6 +498,7 @@ export const query = graphql`
 								alt
 								gatsbyImageData(
 									width: 600
+									placeholder: NONE
 									imgixParams: {
 										auto: "format"
 										fill: "blur"
@@ -523,6 +534,7 @@ export const query = graphql`
 									url
 									gatsbyImageData(
 										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fill: "blur"

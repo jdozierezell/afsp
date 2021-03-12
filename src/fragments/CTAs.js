@@ -17,6 +17,7 @@ export const CTAs = graphql`
 						url
 						gatsbyImageData(
 							width: 1920
+							placeholder: NONE
 							imgixParams: {
 								auto: "format"
 								fit: "crop"

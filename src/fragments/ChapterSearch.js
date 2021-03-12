@@ -13,6 +13,7 @@ export const ChapterSearch = graphql`
 						url
 						gatsbyImageData(
 							width: 1080
+							placeholder: NONE
 							imgixParams: {
 								auto: "format"
 								fit: "fill"
@@ -28,6 +29,7 @@ export const ChapterSearch = graphql`
 					alt
 					gatsbyImageData(
 						width: 600
+						placeholder: NONE
 						imgixParams: {
 							auto: "format"
 							fit: "crop"
