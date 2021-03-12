@@ -116,8 +116,6 @@ const AFSPCalendar = ({ data }) => {
 	const [chapterFilter, setChapterFilter] = useState(null)
 	const [programFilter, setProgramFilter] = useState(null)
 
-	// const localizer = momentLocalizer(moment)
-
 	let query =
 		typeof window !== `undefined`
 			? qs.parse(window.location.search.slice(1))

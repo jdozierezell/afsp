@@ -14,14 +14,6 @@ import { styles } from '../css/css'
 
 import StoriesContainer from '../components/Stories/StoriesContainer'
 import ChapterSocials from '../components/Social/ChapterSocials'
-// import Loadable from '@loadable/component'
-
-// const StoriesContainer = Loadable(() =>
-// 	import('../components/Stories/StoriesContainer')
-// )
-// const ChapterSocials = Loadable(() =>
-// 	import('../components/Social/ChapterSocials')
-// )
 
 const eventCarouselCSS = css``
 

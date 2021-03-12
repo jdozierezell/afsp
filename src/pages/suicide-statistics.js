@@ -12,15 +12,6 @@ import { styles } from '../css/css'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import RecommendationsContentStories from '../components/Recommendations/RecommendationsContentStories'
 import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
-// import Loadable from '@loadable/component'
-
-// const CTAContainer = Loadable(() => import('../components/CTAs/CTAContainer'))
-// const RecommendationsContentStories = Loadable(() =>
-// 	import('../components/Recommendations/RecommendationsContentStories')
-// )
-// const FeaturedResourcesContainer = Loadable(() =>
-// 	import('../components/FeaturedResources/FeaturedResourcesContainer')
-// )
 
 const SuicideStatistics = ({ data: { statistics } }) => {
 	let metaImage,

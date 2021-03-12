@@ -76,16 +76,6 @@ const DeskMenuSection = ({ menuItem, id, overrideLight }) => {
 		leave: { opacity: 0 },
 	})
 
-	// const handleNewPage = (e, id) => {
-	// 	// mouse pointer sometimes targets the li and sometimes the a element, so we check for firstChild before assigning
-	// 	const hoverPath = e.target.firstChild.href
-	// 		? new URL(e.target.firstChild.href).pathname
-	// 		: new URL(e.target.href).pathname
-	// 	if (currentPath !== hoverPath && hoverPath.length > 0) {
-	// 		setActiveMegaMenu(id)
-	// 	}
-	// }
-
 	return (
 		<>
 			<li

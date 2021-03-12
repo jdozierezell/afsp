@@ -158,10 +158,7 @@ const ShareableContainer = ({
 	}
 	const handleScroll = () => {
 		if (window.innerWidth >= 768) {
-			if (
-				// konvaRef.current.getBoundingClientRect().y <= 0 &&
-				window.scrollY >= 220
-			) {
+			if (window.scrollY >= 220) {
 				setKonvaPosition('fixed')
 				setTop(0)
 			} else {

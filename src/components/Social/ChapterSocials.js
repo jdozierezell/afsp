@@ -6,11 +6,6 @@ import { styles } from '../../css/css'
 import IconFacebook from '../SVGs/IconFacebook'
 import IconTwitter from '../SVGs/IconTwitter'
 import IconInstagram from '../SVGs/IconInstagram'
-// import Loadable from '@loadable/component'
-
-// const IconFacebook = Loadable(() => import('../SVGs/IconFacebook'))
-// const IconTwitter = Loadable(() => import('../SVGs/IconTwitter'))
-// const IconInstagram = Loadable(() => import('../SVGs/IconInstagram'))
 
 const chapterSocialsCSS = css`
 	background-color: ${styles.colors.darkBlue};

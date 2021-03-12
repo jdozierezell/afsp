@@ -13,24 +13,6 @@ import CarouselResourceContainer from '../components/Carousels/CarouselResourceC
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
-// import Loadable from '@loadable/component'
-
-// const ChannelContainer = Loadable(() =>
-// 	import('../components/Channel/ChannelContainer')
-// )
-// const CTAContainer = Loadable(() => import('../components/CTAs/CTAContainer'))
-// const CarouselResourceContainer = Loadable(() =>
-// 	import('../components/Carousels/CarouselResourceContainer')
-// )
-// const CarouselDetailContainer = Loadable(() =>
-// 	import('../components/Carousels/CarouselDetailContainer')
-// )
-// const CarouselChapterContainer = Loadable(() =>
-// 	import('../components/Carousels/CarouselChapterContainer')
-// )
-// const FeaturedResourcesContainer = Loadable(() =>
-// 	import('../components/FeaturedResources/FeaturedResourcesContainer')
-// )
 
 const landingTitle = css`
 	margin: 150px 24px 0;

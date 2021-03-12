@@ -8,9 +8,6 @@ import createAnchor from '../../utils/createAnchor'
 import 'react-multi-carousel/lib/styles.css'
 
 import CarouselDetail from './CarouselDetail'
-// import Loadable from '@loadable/component'
-
-// const CarouselDetail = Loadable(() => import('./CarouselDetail'))
 
 const carouselCSS = css`
 	background-color: ${styles.colors.blue};

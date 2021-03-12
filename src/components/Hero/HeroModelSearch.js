@@ -8,12 +8,6 @@ import { styles } from '../../css/css'
 
 import HeroModelSearchFormUs from './HeroModelSearchFormUs'
 import HeroModelSearchFormNonUs from './HeroModelSearchFormNonUs'
-// import Loadable from '@loadable/component'
-
-// const HeroModelSearchFormUs = Loadable(() => import('./HeroModelSearchFormUs'))
-// const HeroModelSearchFormNonUs = Loadable(() =>
-// 	import('./HeroModelSearchFormNonUs')
-// )
 
 const solidHeroCSS = css`
 	background-color: ${styles.colors.blue};

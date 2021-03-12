@@ -8,9 +8,6 @@ import readTime from '../../utils/readTime'
 import { styles } from '../../css/css'
 
 import IconArrow from '../SVGs/IconArrow'
-// import Loadable from '@loadable/component'
-
-// const IconArrow = Loadable(() => import('../SVGs/IconArrow'))
 
 const storyHeroCSS = css`
 	margin: ${styles.scale.px150} ${styles.scale.px24} ${styles.scale.px30};

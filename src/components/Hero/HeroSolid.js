@@ -5,9 +5,6 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { styles } from '../../css/css'
 
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs'
-// import Loadable from '@loadable/component'
-
-// const Breadcrumbs = Loadable(() => import('../Breadcrumbs/Breadcrumbs'))
 
 const solidHeroCSS = css`
 	background-color: ${styles.colors.blue};

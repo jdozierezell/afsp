@@ -148,27 +148,6 @@ const searchStateListCSS = css`
 	}
 `
 
-// const searchStateKeyCSS = css`
-// 	list-style: none;
-// 	margin: ${styles.scale.px20} 0 0;
-// 	display: flex;
-// 	flex-flow: row wrap;
-// 	li {
-// 		display: inline-block;
-// 		white-space: nowrap;
-// 		border-radius: ${styles.scale.px5};
-// 		margin-right: ${styles.scale.px20};
-// 	}
-// `
-
-// const stateBulletCSS = css`
-// 	display: inline-block;
-// 	width: ${styles.scale.px12};
-// 	height: ${styles.scale.px12};
-// 	margin-right: ${styles.scale.px7};
-// 	border-radius: 50%;
-// `
-
 const statisticsStatesFactsContainerCSS = css`
 	margin: 0 ${styles.gridGap.mobile} 0 0;
 	h2 {

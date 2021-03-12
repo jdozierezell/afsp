@@ -18,22 +18,6 @@ import CarouselChapterContainer from '../components/Carousels/CarouselChapterCon
 import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
 import Ticker from '../components/Ticker/Ticker'
-// import Loadable from '@loadable/component'
-
-// const ChannelContainer = Loadable(() =>
-// 	import('../components/Channel/ChannelContainer')
-// )
-// const CTAContainer = Loadable(() => import('../components/CTAs/CTAContainer'))
-// const CarouselChapterContainer = Loadable(() =>
-// 	import('../components/Carousels/CarouselChapterContainer')
-// )
-// const FeaturedResourcesContainer = Loadable(() =>
-// 	import('../components/FeaturedResources/FeaturedResourcesContainer')
-// )
-// const CarouselDetailContainer = Loadable(() =>
-// 	import('../components/Carousels/CarouselDetailContainer')
-// )
-// const Ticker = Loadable(() => import('../components/Ticker/Ticker'))
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
