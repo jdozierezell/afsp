@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import qs from 'qs'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'

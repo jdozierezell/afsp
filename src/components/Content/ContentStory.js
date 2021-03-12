@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import Script from 'react-load-script'
 
 import FacebookShare from '../Social/FacebookShare'

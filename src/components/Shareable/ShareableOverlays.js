@@ -1,6 +1,6 @@
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 import { styles } from '../../css/css'
 

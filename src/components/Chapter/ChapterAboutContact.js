@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 import ChapterAbout from './ChapterAbout'
 import ChapterContact from './ChapterContact'

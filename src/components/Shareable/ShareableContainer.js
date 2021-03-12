@@ -7,7 +7,7 @@ import {
 	Image as KonvaImage, // rename Image to KonvaImage so doesn't conflict with global Image()
 } from 'react-konva'
 import useImage from 'use-image'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 import ShareableControls from './ShareableControls'
 

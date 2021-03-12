@@ -1,6 +1,6 @@
 import React from 'react'
 import Carousel from 'react-multi-carousel'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 import CarouselResource from './CarouselResource'
 

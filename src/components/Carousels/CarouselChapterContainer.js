@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Carousel from 'react-multi-carousel'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import fetch from 'isomorphic-fetch'
 import zipcodes from 'zipcodes'
 

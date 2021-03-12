@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import BackgroundImage from 'gatsby-background-image'
 
 import { styles } from '../../css/css'

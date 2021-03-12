@@ -1,6 +1,6 @@
 import React from 'react'
 import Carousel from 'react-multi-carousel'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { styles } from '../../css/css'

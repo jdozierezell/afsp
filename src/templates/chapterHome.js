@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import fetch from 'isomorphic-fetch'
 
 import LayoutChapter from '../components/LayoutChapter'

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { useSpring, animated as a } from 'react-spring'
 
 import { styles } from '../../css/css'

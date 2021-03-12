@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import fetch from 'isomorphic-fetch'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 import createAnchor from '../../utils/createAnchor'
 import buildUrl from '../../utils/buildUrl'

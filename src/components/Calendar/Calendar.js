@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import Script from 'react-load-script'
 import parseISO from 'date-fns/parseISO'
 import format from 'date-fns/format'

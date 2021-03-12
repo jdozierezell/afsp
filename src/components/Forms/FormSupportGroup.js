@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import Select from 'react-select'
 import Toggle from 'react-toggle'
 import * as Yup from 'yup'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import axios from 'axios'
 import * as Scroll from 'react-scroll'
 

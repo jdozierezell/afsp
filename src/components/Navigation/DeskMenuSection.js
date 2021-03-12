@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { useTransition, animated as a } from 'react-spring'
 import { Link } from 'gatsby'
 
