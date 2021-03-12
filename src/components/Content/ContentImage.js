@@ -1,7 +1,7 @@
 import React from 'react'
 import Carousel from 'react-multi-carousel'
 import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { styles } from '../../css/css'
 
@@ -42,19 +42,19 @@ const ContentImage = ({ image, imagesToShow }) => {
 	return (
 		<div className="storyContent">
 			{image.length === 1 && (
-				<Img
+				<GatsbyImage
 					css={singleCSS}
-					fluid={image[0].fluid}
+					image={image[0].gatsbyImageData}
 					alt={image[0].alt}
 				/>
 			)}
 			{image.length > 1 && (
 				<Carousel css={carouselCSS} responsive={responsive}>
 					{image.map((image, index) => (
-						<Img
+						<GatsbyImage
 							css={carouselImageCSS}
 							key={index}
-							fluid={image.fluid}
+							image={image.gatsbyImageData}
 							alt={image.alt}
 						/>
 					))}

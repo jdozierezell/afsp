@@ -11,8 +11,8 @@ export const ChapterSearch = graphql`
 					zipCode
 					chapterMap {
 						url
-						fluid(
-							maxWidth: 1080
+						gatsbyImageData(
+							width: 1080
 							imgixParams: {
 								auto: "format"
 								fit: "fill"
@@ -20,16 +20,14 @@ export const ChapterSearch = graphql`
 								w: "1080"
 								h: "1080"
 							}
-						) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
+						)
 					}
 				}
 				heroPoster {
 					url
 					alt
-					fluid(
-						maxWidth: 200
+					gatsbyImageData(
+						width: 600
 						imgixParams: {
 							auto: "format"
 							fit: "crop"
@@ -37,9 +35,7 @@ export const ChapterSearch = graphql`
 							w: "600"
 							h: "360"
 						}
-					) {
-						...GatsbyDatoCmsFluid_noBase64
-					}
+					)
 				}
 				staffName
 				staffTitle

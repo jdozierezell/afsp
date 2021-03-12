@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
 
 import { styles } from '../../css/css'
@@ -62,8 +62,8 @@ const Channel = ({ slug, channel }) => {
 						channelLink.link.slug
 					)}
 				>
-					<Img
-						fluid={image.fluid}
+					<GatsbyImage
+						image={image.gatsbyImageData}
 						alt={image.alt}
 						css={channelImageCSS}
 						style={{
@@ -78,8 +78,8 @@ const Channel = ({ slug, channel }) => {
 			{channelLink.__typename === 'DatoCmsAnchor' && (
 				<>
 					<a href={`${channelLink.anchor}`}>
-						<Img
-							fluid={image.fluid}
+						<GatsbyImage
+							image={image.gatsbyImageData}
 							css={channelImageCSS}
 							style={{
 								display: 'block',
@@ -97,8 +97,8 @@ const Channel = ({ slug, channel }) => {
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						<Img
-							fluid={image.fluid}
+						<GatsbyImage
+							image={image.gatsbyImageData}
 							css={channelImageCSS}
 							style={{
 								display: 'block',

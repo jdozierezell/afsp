@@ -309,8 +309,8 @@ export const query = graphql`
 						description
 						image {
 							url
-							fluid(
-								maxWidth: 600
+							gatsbyImageData(
+								width: 600
 								imgixParams: {
 									auto: "format"
 									fill: "blur"
@@ -318,9 +318,7 @@ export const query = graphql`
 									h: "370"
 									w: "600"
 								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
+							)
 						}
 					}
 				}
@@ -332,8 +330,8 @@ export const query = graphql`
 						description
 						image {
 							url
-							fluid(
-								maxWidth: 600
+							gatsbyImageData(
+								width: 600
 								imgixParams: {
 									auto: "format"
 									fill: "blur"
@@ -341,9 +339,7 @@ export const query = graphql`
 									h: "370"
 									w: "600"
 								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
+							)
 						}
 					}
 				}
@@ -355,8 +351,8 @@ export const query = graphql`
 						description
 						image {
 							url
-							fluid(
-								maxWidth: 600
+							gatsbyImageData(
+								width: 600
 								imgixParams: {
 									auto: "format"
 									fill: "blur"
@@ -364,9 +360,7 @@ export const query = graphql`
 									h: "370"
 									w: "600"
 								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
+							)
 						}
 					}
 				}
@@ -379,8 +373,8 @@ export const query = graphql`
 					description
 					image {
 						url
-						fluid(
-							maxWidth: 600
+						gatsbyImageData(
+							width: 600
 							imgixParams: {
 								auto: "format"
 								fit: "fill"
@@ -388,9 +382,7 @@ export const query = graphql`
 								w: "600"
 								h: "370"
 							}
-						) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
+						)
 					}
 				}
 			}
@@ -422,8 +414,8 @@ export const query = graphql`
 						description
 						image {
 							url
-							fluid(
-								maxWidth: 600
+							gatsbyImageData(
+								width: 600
 								imgixParams: {
 									auto: "format"
 									fill: "blur"
@@ -431,9 +423,7 @@ export const query = graphql`
 									h: "370"
 									w: "600"
 								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
+							)
 						}
 					}
 				}
@@ -453,8 +443,8 @@ export const query = graphql`
 						description
 						image {
 							url
-							fluid(
-								maxWidth: 600
+							gatsbyImageData(
+								width: 600
 								imgixParams: {
 									auto: "format"
 									fill: "blur"
@@ -462,9 +452,7 @@ export const query = graphql`
 									h: "370"
 									w: "600"
 								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
+							)
 						}
 					}
 				}

@@ -112,8 +112,8 @@ export const query = graphql`
 			}
 			heroImage {
 				url
-				fluid(
-					maxWidth: 769
+				gatsbyImageData(
+					width: 769
 					imgixParams: {
 						auto: "format"
 						fit: "crop"
@@ -121,9 +121,7 @@ export const query = graphql`
 						w: "769"
 						h: "475"
 					}
-				) {
-					...GatsbyDatoCmsFluid_noBase64
-				}
+				)
 			}
 			brief
 		}

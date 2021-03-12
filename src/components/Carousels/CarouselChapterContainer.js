@@ -141,7 +141,7 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 								key={index}
 								title={chapter[0].title}
 								titleHref={chapter[0].slug}
-								image={chapter[0].heroPoster.fluid}
+								image={chapter[0].heroPoster.gatsbyImageData}
 								alt={chapter[0].heroPoster.alt}
 							/>
 						)

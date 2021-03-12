@@ -82,8 +82,8 @@ export const query = graphql`
 			slug
 			coverImage {
 				url
-				fluid(
-					maxWidth: 623
+				gatsbyImageData(
+					width: 623
 					imgixParams: {
 						auto: "format"
 						fit: "fill"
@@ -91,9 +91,7 @@ export const query = graphql`
 						h: "384"
 						w: "623"
 					}
-				) {
-					...GatsbyDatoCmsFluid_noBase64
-				}
+				)
 			}
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
@@ -121,8 +119,8 @@ export const query = graphql`
 					id
 					images {
 						url
-						fluid(
-							maxWidth: 623
+						gatsbyImageData(
+							width: 623
 							imgixParams: {
 								auto: "format"
 								fit: "fill"
@@ -130,9 +128,7 @@ export const query = graphql`
 								h: "384"
 								w: "623"
 							}
-						) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
+						)
 					}
 				}
 				... on DatoCmsVideo {

@@ -274,8 +274,8 @@ export const query = graphql`
 				image {
 					url
 					alt
-					fluid(
-						maxWidth: 200
+					gatsbyImageData(
+						width: 200
 						imgixParams: {
 							auto: "format"
 							fit: "crop"
@@ -283,9 +283,7 @@ export const query = graphql`
 							w: "200"
 							h: "200"
 						}
-					) {
-						...GatsbyDatoCmsFluid_noBase64
-					}
+					)
 				}
 				heading
 				channelLink {
@@ -309,8 +307,8 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
 										imgixParams: {
 											auto: "format"
 											fit: "fill"
@@ -318,9 +316,7 @@ export const query = graphql`
 											w: "600"
 											h: "370"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -333,8 +329,8 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
 										imgixParams: {
 											auto: "format"
 											fit: "fill"
@@ -342,9 +338,7 @@ export const query = graphql`
 											w: "600"
 											h: "370"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -357,8 +351,8 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -366,9 +360,7 @@ export const query = graphql`
 											w: "600"
 											h: "370"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -381,8 +373,8 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -390,9 +382,7 @@ export const query = graphql`
 											w: "600"
 											h: "370"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -405,8 +395,8 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -414,9 +404,7 @@ export const query = graphql`
 											w: "600"
 											h: "370"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -429,8 +417,8 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -438,9 +426,7 @@ export const query = graphql`
 											w: "600"
 											h: "370"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -453,8 +439,8 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -462,9 +448,7 @@ export const query = graphql`
 											w: "600"
 											h: "370"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -477,8 +461,8 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -486,9 +470,7 @@ export const query = graphql`
 											w: "600"
 											h: "370"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -501,8 +483,8 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -510,9 +492,7 @@ export const query = graphql`
 											w: "600"
 											h: "370"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -524,8 +504,8 @@ export const query = graphql`
 							coverImage {
 								url
 								alt
-								fluid(
-									maxWidth: 600
+								gatsbyImageData(
+									width: 600
 									imgixParams: {
 										auto: "format"
 										fill: "blur"
@@ -533,9 +513,7 @@ export const query = graphql`
 										w: "600"
 										h: "370"
 									}
-								) {
-									...GatsbyDatoCmsFluid_noBase64
-								}
+								)
 							}
 							resourceLink {
 								... on DatoCmsExternalUrl {
@@ -561,8 +539,8 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -570,9 +548,7 @@ export const query = graphql`
 											w: "600"
 											h: "370"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}

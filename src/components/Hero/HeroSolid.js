@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { styles } from '../../css/css'
 
@@ -66,7 +66,12 @@ const HeroSolid = ({ data, programLogo, addCSS }) => {
 			{parentPage && parentPage.parentPage && (
 				<Breadcrumbs parentPage={parentPage} child={title} />
 			)}
-			{programLogo && <Img css={logoCSS} fluid={programLogo.fluid} />}
+			{programLogo && (
+				<GatsbyImage
+					css={logoCSS}
+					image={programLogo.gatsbyImageData}
+				/>
+			)}
 			{!programLogo && (
 				<h1 dangerouslySetInnerHTML={{ __html: title }}></h1>
 			)}

@@ -77,7 +77,7 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 								url: detail.video.video
 									? detail.video.video.mp4Url
 									: detail.video.url,
-								poster: detail.poster.fluid.src,
+								poster: detail.poster.gatsbyImageData.src,
 							}}
 							heading={detail.recommendationHeading}
 							storyData={detail.storyRecommendation}

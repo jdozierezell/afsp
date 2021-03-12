@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { styles } from '../../css/css'
 
@@ -50,7 +50,7 @@ const HeroBio = ({ name, title, image }) => {
 				<div>{title}</div>
 			</div>
 			<div>
-				<Img fluid={image.fluid} />
+				<GatsbyImage image={image.gatsbyImageData} />
 			</div>
 		</div>
 	)

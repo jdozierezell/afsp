@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { css } from '@emotion/core'
 
 import { styles } from '../../css/css'
@@ -52,7 +52,7 @@ const ShareableOverlays = ({
 							updateOverlayTextColor(overlay.useDarkText)
 						}}
 					>
-						<Img fluid={overlay.image.fluid} />
+						<GatsbyImage image={overlay.image.gatsbyImageData} />
 					</button>
 				)
 			})}

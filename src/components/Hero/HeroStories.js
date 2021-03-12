@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import readTime from '../../utils/readTime'
 
@@ -195,7 +195,10 @@ const HeroStories = ({ data, prev, next }) => {
 							})}
 					</ul>
 				</h3>
-				<Img css={mobileImageCSS} fluid={data.coverImage.fluid} />
+				<GatsbyImage
+					css={mobileImageCSS}
+					image={data.coverImage.gatsbyImageData}
+				/>
 			</div>
 			{prev && (
 				<div css={previousStoryCSS}>

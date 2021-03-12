@@ -67,7 +67,7 @@ const Convo = ({ convo, addCSS }) => {
 			<h2>{convo.title}</h2>
 			<BackgroundImage
 				Tag="section"
-				fluid={convo.posterImage.fluid}
+				image={convo.posterImage.gatsbyImageData}
 				css={videoCTACSS}
 			>
 				<video

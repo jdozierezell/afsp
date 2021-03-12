@@ -78,8 +78,8 @@ export const query = graphql`
 			photo {
 				url
 				alt
-				fluid(
-					maxWidth: 768
+				gatsbyImageData(
+					width: 768
 					imgixParams: {
 						auto: "format"
 						fit: "crop"
@@ -87,9 +87,7 @@ export const query = graphql`
 						w: "768"
 						h: "768"
 					}
-				) {
-					...GatsbyDatoCmsFluid_noBase64
-				}
+				)
 			}
 			biography
 		}

@@ -118,12 +118,10 @@ export const query = graphql`
 				image {
 					url
 					alt
-					fluid(
-						maxWidth: 1080
+					gatsbyImageData(
+						width: 1080
 						imgixParams: { auto: "format", w: "1080" }
-					) {
-						...GatsbyDatoCmsFluid_noBase64
-					}
+					)
 				}
 				useDarkText
 			}
