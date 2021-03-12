@@ -88,8 +88,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	})
 	const [stories, setStories] = useState([])
 
-	let storiesUpdates = []
-
 	let heroVideoUrl
 
 	if (heroVideo) {
@@ -99,6 +97,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	const heroPosterUrl = heroPoster ? heroPoster.url : ''
 
 	useEffect(() => {
+		let storiesUpdates = []
 		if (stories.length === 0 && stories[0] !== 'no stories') {
 			// setStories(['no stories'])
 			if (
@@ -108,7 +107,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			) {
 				setStories(['no stories'])
 			} else {
-				console.log(chapterStoriesAndUpdates)
 				chapterStoriesAndUpdates.forEach(story => {
 					const __typename = 'DatoCmsChapterStoryUpdate'
 					const id = story.id
