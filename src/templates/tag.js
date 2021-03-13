@@ -209,8 +209,9 @@ export const query = graphql`
 						description
 						image {
 							url
-							fluid(
-								maxWidth: 600
+							gatsbyImageData(
+								width: 600
+								placeholder: NONE
 								imgixParams: {
 									auto: "format"
 									fit: "crop"
@@ -218,9 +219,7 @@ export const query = graphql`
 									w: "600"
 									h: "370"
 								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
+							)
 						}
 					}
 				}

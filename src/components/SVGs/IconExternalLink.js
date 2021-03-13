@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 const IconExternalLink = ({ color, iconCSS }) => {
 	return (

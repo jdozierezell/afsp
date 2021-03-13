@@ -7,7 +7,7 @@ import {
 	Image as KonvaImage, // rename Image to KonvaImage so doesn't conflict with global Image()
 } from 'react-konva'
 import useImage from 'use-image'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 import ShareableControls from './ShareableControls'
 
@@ -158,10 +158,7 @@ const ShareableContainer = ({
 	}
 	const handleScroll = () => {
 		if (window.innerWidth >= 768) {
-			if (
-				// konvaRef.current.getBoundingClientRect().y <= 0 &&
-				window.scrollY >= 220
-			) {
+			if (window.scrollY >= 220) {
 				setKonvaPosition('fixed')
 				setTop(0)
 			} else {

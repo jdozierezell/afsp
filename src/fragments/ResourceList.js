@@ -11,8 +11,9 @@ export const ResourceList = graphql`
 					description
 					image {
 						url
-						fluid(
-							maxWidth: 600
+						gatsbyImageData(
+							width: 600
+							placeholder: NONE
 							imgixParams: {
 								auto: "format"
 								fit: "crop"
@@ -20,9 +21,7 @@ export const ResourceList = graphql`
 								w: "600"
 								h: "370"
 							}
-						) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
+						)
 					}
 				}
 			}
@@ -34,8 +33,9 @@ export const ResourceList = graphql`
 					description
 					image {
 						url
-						fluid(
-							maxWidth: 600
+						gatsbyImageData(
+							width: 600
+							placeholder: NONE
 							imgixParams: {
 								auto: "format"
 								fit: "crop"
@@ -43,9 +43,7 @@ export const ResourceList = graphql`
 								w: "600"
 								h: "370"
 							}
-						) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
+						)
 					}
 				}
 			}
@@ -57,8 +55,9 @@ export const ResourceList = graphql`
 					description
 					image {
 						url
-						fluid(
-							maxWidth: 600
+						gatsbyImageData(
+							width: 600
+							placeholder: NONE
 							imgixParams: {
 								auto: "format"
 								fit: "crop"
@@ -66,9 +65,7 @@ export const ResourceList = graphql`
 								w: "600"
 								h: "370"
 							}
-						) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
+						)
 					}
 				}
 			}
@@ -78,8 +75,9 @@ export const ResourceList = graphql`
 				slug
 				coverImage {
 					url
-					fluid(
-						maxWidth: 600
+					gatsbyImageData(
+						width: 600
+						placeholder: NONE
 						imgixParams: {
 							auto: "format"
 							fit: "crop"
@@ -87,9 +85,7 @@ export const ResourceList = graphql`
 							w: "600"
 							h: "370"
 						}
-					) {
-						...GatsbyDatoCmsFluid_noBase64
-					}
+					)
 				}
 				seo {
 					description
@@ -110,8 +106,9 @@ export const ResourceList = graphql`
 				}
 				coverImage {
 					url
-					fluid(
-						maxWidth: 600
+					gatsbyImageData(
+						width: 600
+						placeholder: NONE
 						imgixParams: {
 							auto: "format"
 							fit: "crop"
@@ -119,9 +116,7 @@ export const ResourceList = graphql`
 							w: "600"
 							h: "370"
 						}
-					) {
-						...GatsbyDatoCmsFluid_noBase64
-					}
+					)
 				}
 			}
 			... on DatoCmsQuilt {
@@ -132,8 +127,9 @@ export const ResourceList = graphql`
 					description
 					image {
 						url
-						fluid(
-							maxWidth: 600
+						gatsbyImageData(
+							width: 600
+							placeholder: NONE
 							imgixParams: {
 								auto: "format"
 								fit: "crop"
@@ -141,9 +137,7 @@ export const ResourceList = graphql`
 								w: "600"
 								h: "370"
 							}
-						) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
+						)
 					}
 				}
 			}

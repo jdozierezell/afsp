@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import Script from 'react-load-script'
 
 import { styles } from '../../css/css'
-
-// if Klaviyo issue persists, legacy form available at https://help.klaviyo.com/hc/en-us/articles/115005249588-Add-and-Customize-a-Legacy-Embedded-Signup-Form
 
 const emailCSS = css`
 	background-color: ${styles.colors.lightGray};
@@ -101,27 +99,6 @@ const formCSS = css`
 		margin: 0;
 	}
 `
-
-// const subscribeCSS = css`
-// 	display: flex;
-// 	flex-flow: row wrap;
-// 	align-items: center;
-// 	justify-content: center;
-// 	@media (min-width: ${styles.screens.tablet}px) {
-// 		justify-content: space-between;
-// 	}
-// 	input {
-// 		flex-grow: 1;
-// 		flex-shrink: 1;
-// 		flex-basis: 100%;
-// 		margin: ${styles.scale.px40} 0;
-// 		@media (min-width: ${styles.screens.tablet}px) {
-// 			margin: ${styles.scale.px40} ${styles.scale.px24}
-// 				${styles.scale.px40} 0;
-// 			flex-basis: initial;
-// 		}
-// 	}
-// `
 
 const EmailSignup = ({ formId, children }) => {
 	const [submitted, setSubmitted] = useState(false)

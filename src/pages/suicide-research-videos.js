@@ -11,9 +11,6 @@ import searchURL from '../utils/searchURL'
 import { styles } from '../css/css'
 
 import CTAContainer from '../components/CTAs/CTAContainer'
-// import Loadable from '@loadable/component'
-
-// const CTAContainer = Loadable(() => import('../components/CTAs/CTAContainer'))
 
 const SuicideResearchVideos = ({ data: { search } }) => {
 	let metaImage,

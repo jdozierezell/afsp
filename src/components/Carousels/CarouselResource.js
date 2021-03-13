@@ -1,6 +1,6 @@
 import React from 'react'
-import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+import { css } from '@emotion/react'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { styles } from '../../css/css'
 
@@ -30,7 +30,7 @@ const CarouselResource = ({ title, image, link, linkText }) => {
 	return (
 		<div css={resourceComponentCSS} draggable>
 			<a href={link}>
-				<Img fluid={image.fluid} />
+				<GatsbyImage image={image.gatsbyImageData} />
 				<h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
 				<p>{linkText}</p>
 			</a>

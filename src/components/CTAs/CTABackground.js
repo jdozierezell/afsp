@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { Link } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 
@@ -110,7 +110,7 @@ const CTAVideo = ({ cta, number, id }) => {
 		<BackgroundImage
 			id={id}
 			Tag="section"
-			fluid={backgroundImage.fluid}
+			image={backgroundImage.gatsbyImageData}
 			css={videoCTACSS}
 		>
 			{video && (

@@ -1,16 +1,13 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import readTime from '../../utils/readTime'
 
 import { styles } from '../../css/css'
 
 import IconArrow from '../SVGs/IconArrow'
-// import Loadable from '@loadable/component'
-
-// const IconArrow = Loadable(() => import('../SVGs/IconArrow'))
 
 const storyHeroCSS = css`
 	margin: ${styles.scale.px150} ${styles.scale.px24} ${styles.scale.px30};
@@ -195,7 +192,10 @@ const HeroStories = ({ data, prev, next }) => {
 							})}
 					</ul>
 				</h3>
-				<Img css={mobileImageCSS} fluid={data.coverImage.fluid} />
+				<GatsbyImage
+					css={mobileImageCSS}
+					image={data.coverImage.gatsbyImageData}
+				/>
 			</div>
 			{prev && (
 				<div css={previousStoryCSS}>

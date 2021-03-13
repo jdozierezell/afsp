@@ -1,7 +1,7 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { styles } from '../../css/css'
 
@@ -51,8 +51,8 @@ const featuredCSS = css`
 const Stories = ({ story: { node } }) => {
 	return (
 		<div css={featuredCSS}>
-			<Img
-				fluid={node.seo.image.fluid}
+			<GatsbyImage
+				image={node.seo.image.gatsbyImageData}
 				style={{
 					display: 'block',
 				}}

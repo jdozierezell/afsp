@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
@@ -18,22 +18,6 @@ import CarouselChapterContainer from '../components/Carousels/CarouselChapterCon
 import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
 import Ticker from '../components/Ticker/Ticker'
-// import Loadable from '@loadable/component'
-
-// const ChannelContainer = Loadable(() =>
-// 	import('../components/Channel/ChannelContainer')
-// )
-// const CTAContainer = Loadable(() => import('../components/CTAs/CTAContainer'))
-// const CarouselChapterContainer = Loadable(() =>
-// 	import('../components/Carousels/CarouselChapterContainer')
-// )
-// const FeaturedResourcesContainer = Loadable(() =>
-// 	import('../components/FeaturedResources/FeaturedResourcesContainer')
-// )
-// const CarouselDetailContainer = Loadable(() =>
-// 	import('../components/Carousels/CarouselDetailContainer')
-// )
-// const Ticker = Loadable(() => import('../components/Ticker/Ticker'))
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -357,8 +341,9 @@ export const query = graphql`
 						image {
 							url
 							alt
-							fluid(
-								maxWidth: 200
+							gatsbyImageData(
+								width: 200
+								placeholder: NONE
 								imgixParams: {
 									auto: "format"
 									fit: "crop"
@@ -366,9 +351,7 @@ export const query = graphql`
 									w: "200"
 									h: "200"
 								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
+							)
 						}
 						heading
 						brief
@@ -398,8 +381,9 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fit: "crop"
@@ -407,9 +391,7 @@ export const query = graphql`
 											w: "600"
 											h: "370"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -422,8 +404,9 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fit: "crop"
@@ -431,9 +414,7 @@ export const query = graphql`
 											w: "600"
 											h: "370"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -446,8 +427,9 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fit: "crop"
@@ -455,9 +437,7 @@ export const query = graphql`
 											w: "600"
 											h: "370"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -470,8 +450,9 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fit: "crop"
@@ -479,9 +460,7 @@ export const query = graphql`
 											w: "600"
 											h: "370"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}

@@ -1,6 +1,6 @@
 import React from 'react'
-import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+import { css } from '@emotion/react'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { styles } from '../../css/css'
 
@@ -41,12 +41,12 @@ const convoImageCSS = css`
 const ConvoDownload = ({ convo }) => {
 	return (
 		<a css={convoCSS} href={convo.convoFile.url}>
-			<Img
+			<GatsbyImage
 				css={convoImageCSS}
 				style={{
 					display: 'block',
 				}}
-				fluid={convo.convoImage.fluid}
+				image={convo.convoImage.gatsbyImageData}
 			/>
 			<span>{convo.convoTitle}</span>
 		</a>

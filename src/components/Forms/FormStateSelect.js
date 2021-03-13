@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import Select from 'react-select'
 import { useField } from '@rocketseat/unform'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 import { styles } from '../../css/css'
 

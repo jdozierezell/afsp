@@ -87,8 +87,9 @@ export const query = graphql`
 					croppedImage: image {
 						url
 						alt
-						fluid(
-							maxWidth: 600
+						gatsbyImageData(
+							width: 600
+							placeholder: NONE
 							imgixParams: {
 								auto: "format"
 								fit: "crop"
@@ -96,16 +97,16 @@ export const query = graphql`
 								w: "600"
 								h: "370"
 							}
-						) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
+						)
 					}
 					originalImage: image {
 						url
 						alt
-						fluid(maxWidth: 600, imgixParams: { w: "600" }) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
+						gatsbyImageData(
+							width: 600
+							placeholder: NONE
+							imgixParams: { w: "600" }
+						)
 					}
 					linkToOther
 					otherUrl

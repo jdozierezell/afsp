@@ -1,13 +1,10 @@
 import React from 'react'
-import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+import { css } from '@emotion/react'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { styles } from '../../css/css'
 
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs'
-// import Loadable from '@loadable/component'
-
-// const Breadcrumbs = Loadable(() => import('../Breadcrumbs/Breadcrumbs'))
 
 const solidHeroCSS = css`
 	background-color: ${styles.colors.blue};
@@ -66,7 +63,12 @@ const HeroSolid = ({ data, programLogo, addCSS }) => {
 			{parentPage && parentPage.parentPage && (
 				<Breadcrumbs parentPage={parentPage} child={title} />
 			)}
-			{programLogo && <Img css={logoCSS} fluid={programLogo.fluid} />}
+			{programLogo && (
+				<GatsbyImage
+					css={logoCSS}
+					image={programLogo.gatsbyImageData}
+				/>
+			)}
 			{!programLogo && (
 				<h1 dangerouslySetInnerHTML={{ __html: title }}></h1>
 			)}

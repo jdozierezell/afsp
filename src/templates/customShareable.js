@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
@@ -118,12 +118,11 @@ export const query = graphql`
 				image {
 					url
 					alt
-					fluid(
-						maxWidth: 1080
+					gatsbyImageData(
+						width: 1080
+						placeholder: NONE
 						imgixParams: { auto: "format", w: "1080" }
-					) {
-						...GatsbyDatoCmsFluid_noBase64
-					}
+					)
 				}
 				useDarkText
 			}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 import Layout from '../components/Layout'
 import HeroStatistics from '../components/Hero/HeroStatistics'
@@ -12,15 +12,6 @@ import { styles } from '../css/css'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import RecommendationsContentStories from '../components/Recommendations/RecommendationsContentStories'
 import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
-// import Loadable from '@loadable/component'
-
-// const CTAContainer = Loadable(() => import('../components/CTAs/CTAContainer'))
-// const RecommendationsContentStories = Loadable(() =>
-// 	import('../components/Recommendations/RecommendationsContentStories')
-// )
-// const FeaturedResourcesContainer = Loadable(() =>
-// 	import('../components/FeaturedResources/FeaturedResourcesContainer')
-// )
 
 const SuicideStatistics = ({ data: { statistics } }) => {
 	let metaImage,
@@ -176,8 +167,9 @@ export const query = graphql`
 							coverImage {
 								url
 								alt
-								fluid(
-									maxWidth: 600
+								gatsbyImageData(
+									width: 600
+									placeholder: NONE
 									imgixParams: {
 										auto: "format"
 										fill: "blur"
@@ -185,9 +177,7 @@ export const query = graphql`
 										h: "370"
 										w: "600"
 									}
-								) {
-									...GatsbyDatoCmsFluid_noBase64
-								}
+								)
 							}
 						}
 						... on DatoCmsExternalResource {
@@ -207,8 +197,9 @@ export const query = graphql`
 							coverImage {
 								url
 								alt
-								fluid(
-									maxWidth: 600
+								gatsbyImageData(
+									width: 600
+									placeholder: NONE
 									imgixParams: {
 										auto: "format"
 										fill: "blur"
@@ -216,9 +207,7 @@ export const query = graphql`
 										h: "370"
 										w: "600"
 									}
-								) {
-									...GatsbyDatoCmsFluid_noBase64
-								}
+								)
 							}
 						}
 						... on DatoCmsCustomShareable {
@@ -230,8 +219,9 @@ export const query = graphql`
 							seo {
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -239,9 +229,7 @@ export const query = graphql`
 											h: "370"
 											w: "600"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -254,8 +242,9 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -263,9 +252,7 @@ export const query = graphql`
 											h: "370"
 											w: "600"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -278,8 +265,9 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -287,9 +275,7 @@ export const query = graphql`
 											h: "370"
 											w: "600"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -302,8 +288,9 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -311,9 +298,7 @@ export const query = graphql`
 											h: "370"
 											w: "600"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -326,8 +311,9 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -335,9 +321,7 @@ export const query = graphql`
 											h: "370"
 											w: "600"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -350,8 +334,9 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -359,9 +344,7 @@ export const query = graphql`
 											h: "370"
 											w: "600"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}
@@ -374,8 +357,9 @@ export const query = graphql`
 								description
 								image {
 									url
-									fluid(
-										maxWidth: 600
+									gatsbyImageData(
+										width: 600
+										placeholder: NONE
 										imgixParams: {
 											auto: "format"
 											fill: "blur"
@@ -383,9 +367,7 @@ export const query = graphql`
 											h: "370"
 											w: "600"
 										}
-									) {
-										...GatsbyDatoCmsFluid_noBase64
-									}
+									)
 								}
 							}
 						}

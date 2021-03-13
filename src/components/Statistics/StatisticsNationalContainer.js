@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { useSpring, animated } from 'react-spring'
 
 import StatisticsNationalGraph from './StatisticsNationalGraph'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import Toggle from 'react-toggle'
 
 import SolidArrow from '../SVGs/IconSolidArrow.svg'
@@ -8,12 +8,6 @@ import { styles } from '../../css/css'
 
 import HeroModelSearchFormUs from './HeroModelSearchFormUs'
 import HeroModelSearchFormNonUs from './HeroModelSearchFormNonUs'
-// import Loadable from '@loadable/component'
-
-// const HeroModelSearchFormUs = Loadable(() => import('./HeroModelSearchFormUs'))
-// const HeroModelSearchFormNonUs = Loadable(() =>
-// 	import('./HeroModelSearchFormNonUs')
-// )
 
 const solidHeroCSS = css`
 	background-color: ${styles.colors.blue};

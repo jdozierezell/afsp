@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 import Layout from '../components/Layout'
 import HeroGrant from '../components/Hero/HeroGrant'
@@ -10,15 +10,6 @@ import { styles } from '../css/css'
 import Content from '../components/Content/Content'
 import ContentHeading from '../components/Content/ContentHeading'
 import ContentVideo from '../components/Content/ContentVideo'
-// import Loadable from '@loadable/component'
-
-// const Content = Loadable(() => import('../components/Content/Content'))
-// const ContentHeading = Loadable(() =>
-// 	import('../components/Content/ContentHeading')
-// )
-// const ContentVideo = Loadable(() =>
-// 	import('../components/Content/ContentVideo')
-// )
 
 const grantCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24};
@@ -130,8 +121,8 @@ export const query = graphql`
 					granteeInstitution
 					granteeImage {
 						url
-						fluid(
-							maxWidth: 768
+						gatsbyImageData(
+							width: 768
 							imgixParams: {
 								auto: "format"
 								fit: "crop"
@@ -139,9 +130,7 @@ export const query = graphql`
 								w: "768"
 								h: "768"
 							}
-						) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
+						)
 					}
 				}
 				... on DatoCmsYear {

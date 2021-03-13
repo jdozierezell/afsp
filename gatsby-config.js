@@ -19,49 +19,12 @@ module.exports = {
 	plugins: [
 		`gatsby-plugin-emotion`,
 		`gatsby-plugin-react-helmet`,
-		// `gatsby-plugin-netlify-cache`,
 		`gatsby-plugin-sitemap`,
 		`gatsby-plugin-playground`,
+		`gatsby-plugin-image`,
+		`gatsby-plugin-sharp`,
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-netlify`,
-		// `gatsby-plugin-preact`,
-		// {
-		// 	resolve: 'gatsby-plugin-rollbar',
-		// 	options: {
-		// 		accessToken: '063b513a856c4c9ca00e3ce649c35938',
-		// 		// For all configuration options, see https://docs.rollbar.com/docs/rollbarjs-configuration-reference
-		// 		captureUncaught: true,
-		// 		captureUnhandledRejections: true,
-		// 		ignoredMessages: ['unknown'],
-		// 		payload: {
-		// 			environment: process.env.NODE_ENV,
-		// 		},
-		// 	},
-		// },
-		// {
-		// 	resolve: '@sentry/gatsby',
-		// 	options: {
-		// 		dsn:
-		// 			'https://716ad2d069ab4105a9dcd2226a66f587@o468082.ingest.sentry.io/5496226',
-		// 		sampleRate: 1,
-		// 		tracesSampleRate: 1,
-		// 	},
-		// },
-		// {
-		// 	resolve: `gatsby-plugin-loadable-components-ssr`,
-		// 	options: {
-		// 		// Whether replaceHydrateFunction should call ReactDOM.hydrate or ReactDOM.render
-		// 		// Defaults to ReactDOM.render on develop and ReactDOM.hydrate on build
-		// 		useHydrate: true,
-		// 	},
-		// },
-		// {
-		// 	resolve: `gatsby-source-filesystem`,
-		// 	options: {
-		// 		name: `images`,
-		// 		path: `${__dirname}/src/images`,
-		// 	},
-		// },
 		{
 			resolve: `gatsby-plugin-google-analytics`,
 			options: {
@@ -77,6 +40,34 @@ module.exports = {
 				pageTransitionDelay: 0,
 				// Defers execution of google analytics script after page load
 				defer: true,
+			},
+		},
+		{
+			resolve: 'gatsby-plugin-google-tagmanager',
+			options: {
+				id: 'GTM-WPNNQJK',
+
+				// Include GTM in development.
+				//
+				// Defaults to false meaning GTM will only be loaded in production.
+				includeInDevelopment: false,
+
+				// datalayer to be set before GTM is loaded
+				// should be an object or a function that is executed in the browser
+				//
+				// Defaults to null
+				defaultDataLayer: { platform: 'gatsby' },
+
+				// Specify optional GTM environment details.
+				// gtmAuth: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING',
+				// gtmPreview: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME',
+				// dataLayerName: 'YOUR_DATA_LAYER_NAME',
+
+				// Name of the event that is triggered
+				// on every Gatsby route change.
+				//
+				// Defaults to gatsby-route-change
+				// routeChangeEventName: 'YOUR_ROUTE_CHANGE_EVENT_NAME',
 			},
 		},
 		{

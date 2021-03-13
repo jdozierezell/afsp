@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Carousel from 'react-multi-carousel'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import axios from 'axios'
 
 import { styles } from '../../css/css'
@@ -9,9 +9,6 @@ import { styles } from '../../css/css'
 import 'react-multi-carousel/lib/styles.css'
 
 import CarouselChapter from './CarouselChapter'
-// import Loadable from '@loadable/component'
-
-// const CarouselChapter = Loadable(() => import('./CarouselChapter'))
 
 const defaultCarouselCSS = css`
 	padding: ${styles.scale.px25} ${styles.scale.px24};
@@ -134,7 +131,7 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 								key={index}
 								title={chapter[0].title}
 								titleHref={chapter[0].slug}
-								image={chapter[0].image.url}
+								image={chapter[0].image.gatsbyImageData}
 								alt={chapter[0].image.alt}
 							/>
 						)

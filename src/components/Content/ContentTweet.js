@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import Clipboard from 'react-clipboard.js'
 
 import { styles } from '../../css/css'

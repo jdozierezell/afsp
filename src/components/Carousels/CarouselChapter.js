@@ -1,7 +1,7 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import buildUrl from '../../utils/buildUrl'
 
@@ -42,7 +42,11 @@ const CarouselChapter = ({ title, titleHref, image, alt }) => {
 	console.log(image)
 	return (
 		<Link css={carouselComponentCSS} to={buildUrl('/chapter', titleHref)}>
+<<<<<<< HEAD
 			<img alt={alt} src={image} css={carouselImageCSS} />
+=======
+			<GatsbyImage alt={alt} image={image} css={carouselImageCSS} />
+>>>>>>> upgrade
 			<p css={carouselTitleCSS}>{title}</p>
 		</Link>
 	)

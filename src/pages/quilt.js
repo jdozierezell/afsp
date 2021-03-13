@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import qs from 'qs'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
+import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
 import HeroImage from '../components/Hero/HeroImage'
@@ -111,8 +112,9 @@ export const query = graphql`
 			}
 			heroImage {
 				url
-				fluid(
-					maxWidth: 769
+				gatsbyImageData(
+					width: 769
+					placeholder: NONE
 					imgixParams: {
 						auto: "format"
 						fit: "crop"
@@ -120,9 +122,7 @@ export const query = graphql`
 						w: "769"
 						h: "475"
 					}
-				) {
-					...GatsbyDatoCmsFluid_noBase64
-				}
+				)
 			}
 			brief
 		}

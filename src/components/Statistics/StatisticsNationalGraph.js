@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { ResponsiveLine } from '@nivo/line'
 import { ResponsivePie } from '@nivo/pie'
 
@@ -40,28 +40,6 @@ const statisticsNationalGraphContainerCSS = css`
 		fill: none;
 	}
 `
-
-// const keyCSS = css`
-// 	list-style: none;
-// 	margin: ${styles.scale.px20} 0 0;
-// 	display: flex;
-// 	flex-flow: row wrap;
-// 	justify-content: space-between;
-// 	li {
-// 		display: inline-block;
-// 		white-space: nowrap;
-// 		border-radius: ${styles.scale.px5};
-// 		margin-right: ${styles.scale.px20};
-// 	}
-// 	div {
-// 		display: inline-block;
-// 		width: ${styles.scale.px12};
-// 		height: ${styles.scale.px12};
-// 		margin-right: ${styles.scale.px7};
-// 		border-radius: 50%;
-// 		background-color: ${styles.colors.blue};
-// 	}
-// `
 
 const StatisticsNationalGraph = ({
 	data,

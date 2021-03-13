@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import Select from 'react-select'
 
 import { styles } from '../../css/css'
@@ -68,7 +68,6 @@ const CalendarFilter = ({
 					value={chapterSelectValue}
 					options={chapters}
 					onChange={handleChapterSelectChange}
-					// isClearable={true}
 				/>
 			</div>
 			<div>
@@ -83,7 +82,6 @@ const CalendarFilter = ({
 					value={programSelectValue}
 					options={programs}
 					onChange={handleProgramSelectChange}
-					// isClearable={true}
 				/>
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Modal from 'react-modal'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import axios from 'axios'
 
 import IconX from '../SVGs/IconX'

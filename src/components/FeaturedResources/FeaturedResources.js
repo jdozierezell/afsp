@@ -1,7 +1,7 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { styles } from '../../css/css'
 import buildUrl from '../../utils/buildUrl'
@@ -47,7 +47,7 @@ const FeaturedResources = ({ data }) => {
 	}
 	return (
 		<div css={featuredCSS}>
-			<Img fluid={image.fluid} />
+			<GatsbyImage image={image.gatsbyImageData} />
 			<h2 dangerouslySetInnerHTML={{ __html: data.title }}></h2>
 			<p
 				dangerouslySetInnerHTML={{
