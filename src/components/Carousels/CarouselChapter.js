@@ -42,11 +42,7 @@ const CarouselChapter = ({ title, titleHref, image, alt }) => {
 	console.log(image)
 	return (
 		<Link css={carouselComponentCSS} to={buildUrl('/chapter', titleHref)}>
-<<<<<<< HEAD
-			<img alt={alt} src={image} css={carouselImageCSS} />
-=======
 			<GatsbyImage alt={alt} image={image} css={carouselImageCSS} />
->>>>>>> upgrade
 			<p css={carouselTitleCSS}>{title}</p>
 		</Link>
 	)
