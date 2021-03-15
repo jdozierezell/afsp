@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import qs from 'qs'
 import { graphql } from 'gatsby'
-import zipcodes from 'zipcodes'
 import axios from 'axios'
 import {
 	useQueryParams,
@@ -151,24 +150,19 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 			radius: radius,
 			country: country,
 		})
-		// axios
-		// 	.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
-		// 		zip: zip,
-		// 		radius: radius,
-		// 		nonus: nonus,
-		// 		source: 'groupSearch',
-		// 		type: 'supportGroup',
-		// 	})
-		// 	.then(res => {
-		// 		console.log(res)
-		// 		setSupportGroups(res.data.chapterArray)
-		// 	})
-		setSupportGroups(
-			supportGroupSearchResults(datoSupportGroups, {
-				primaryZip: zip,
-				otherZips: zipcodes.radius(zip, radius),
+		axios
+			.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
+				zip: zip,
+				radius: radius,
+				nonus: nonus,
+				source: 'groupSearch',
+				type: 'supportGroup',
 			})
-		)
+			.then(res => {
+				setCountryGroups(res.data.arraysToSend.country)
+				setOnlineGroups(res.data.arraysToSend.online)
+				setSupportGroups(res.data.arraysToSend.group)
+			})
 	}
 
 	useEffect(() => {
@@ -181,35 +175,12 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 				type: 'supportGroup',
 			})
 			.then(res => {
-				console.log(res)
-				// setSupportGroups(res.data.chapterArray)
+				setCountryGroups(res.data.arraysToSend.country)
+				setOnlineGroups(res.data.arraysToSend.online)
+				setSupportGroups(res.data.arraysToSend.group)
 			})
-
-		let countryArray = []
-		let onlineArray = []
-		datoSupportGroups.edges.forEach(group => {
-			if (
-				group.node.meetingCountry !== 'United States of America' &&
-				group.node.meetingCountry !== 'Not Applicable'
-			) {
-				countryArray.push(group.node.meetingCountry)
-			}
-			if (group.node.meetingType === 'Nationwide Online Group') {
-				onlineArray.push(group.node)
-			}
-		})
-		onlineArray = onlineArray.filter(function(el) {
-			return !countryArray.includes(el)
-		})
-		setCountryGroups(countryArray)
-		setOnlineGroups(onlineArray)
-		setSupportGroups(
-			supportGroupSearchResults(datoSupportGroups, {
-				primaryZip: zip,
-				otherZips: zipcodes.radius(zip, radius),
-			})
-		)
 	}, [])
+
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}

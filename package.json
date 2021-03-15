@@ -23,7 +23,6 @@
 		"downshift": "^3.4.1",
 		"gatsby": "^3.0.0",
 		"gatsby-background-image": "^1.4.1",
-		"gatsby-image": "^3.0.0",
 		"gatsby-plugin-client-side-redirect": "^1.1.0",
 		"gatsby-plugin-emotion": "^6.0.0",
 		"gatsby-plugin-google-analytics": "^3.0.0",
@@ -62,11 +61,9 @@
 		"react-spinners": "^0.8.1",
 		"react-spring": "^8.0.27",
 		"react-toggle": "^4.1.1",
-		"simple-git": "^2.36.2",
 		"use-image": "^1.0.5",
 		"use-query-params": "^0.4.4",
-		"yup": "^0.27.0",
-		"zipcodes": "^8.0.0"
+		"yup": "^0.27.0"
 	},
 	"devDependencies": {
 		"prettier": "^1.18.2"
