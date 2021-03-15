@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import qs from 'qs'
 import { graphql } from 'gatsby'
-import zipcodes from 'zipcodes'
 import { useQueryParams, NumberParam } from 'use-query-params'
+import axios from 'axios'
 
 import Layout from '../components/Layout'
 import HeroModelSearch from '../components/Hero/HeroModelSearch'
 import SearchModelContainer from '../components/Search/SearchModelContainer'
 import SearchNoResults from '../components/Search/SearchNoResults'
 import CTAContainer from '../components/CTAs/CTAContainer'
-
-import { chapterSearchResults } from '../utils/chapterSearchResults'
 
 import { styles } from '../css/css'
 
@@ -73,25 +71,37 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 			zip: zip,
 			radius: radius,
 		})
-		const tempSearchResults = chapterSearchResults(chapters, {
-			primaryZip: zip,
-			otherZips: zipcodes.radius(zip, radius),
-		})
-		setSearchResults(tempSearchResults)
-		if (tempSearchResults.length === 0 && zip.length !== 0) {
-			setNoResults(true)
-		} else {
-			setNoResults(false)
-		}
+		axios
+			.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
+				zip: zip,
+				radius: radius,
+				source: 'chapterSearch',
+			})
+			.then(res => {
+				console.log(res.data.chapterArray)
+				setSearchResults(res.data.chapterArray)
+				if (res.data.chapterArray.length === 0 && zip.length !== 0) {
+					console.log(true)
+					setNoResults(true)
+				} else {
+					console.log(false)
+					setNoResults(false)
+				}
+			})
 	}
 
 	useEffect(() => {
-		setSearchResults(
-			chapterSearchResults(chapters, {
-				primaryZip: zip,
-				otherZips: zipcodes.radius(zip, radius),
+		axios
+			.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
+				zip: zip,
+				radius: radius,
+				source: 'chapterSearch',
+				type: 'chapter',
 			})
-		)
+			.then(res => {
+				console.log(res.data.chapterArray)
+				setSearchResults(res.data.chapterArray)
+			})
 	}, [])
 
 	return (
@@ -100,6 +110,7 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 			seo={search.seoMetaTags}
 			structuredData={structuredData}
 		>
+			{console.log(searchResults)}
 			<HeroModelSearch
 				title={search.title}
 				description={search.brief}

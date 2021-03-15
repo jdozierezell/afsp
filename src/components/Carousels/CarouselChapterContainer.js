@@ -96,10 +96,12 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 						'https://serene-dusk-44738.herokuapp.com/zip-lookup',
 						{
 							zip: res.data.zip,
+							radius: 100,
+							source: 'carouselSearch',
+							type: 'chapter',
 						}
 					)
 					.then(res => {
-						console.log(res.data.chapterArray)
 						setDisplayChapters(res.data.chapterArray)
 					})
 			})
@@ -131,7 +133,7 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 								key={index}
 								title={chapter[0].title}
 								titleHref={chapter[0].slug}
-								image={chapter[0].image.gatsbyImageData}
+								image={chapter[0].image.url}
 								alt={chapter[0].image.alt}
 							/>
 						)
