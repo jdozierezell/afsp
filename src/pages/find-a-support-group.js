@@ -235,8 +235,8 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 				countryGroups={countryGroups}
 			/>
 			{(supportGroups.length >= 1 ||
-				(onlineGroups.length >= 1 && zip.length >= 5) ||
-				online) && (
+				(onlineGroups.length >= 1 && online) ||
+				zip.length >= 5) && (
 				<SearchModelContainer
 					supportGroups={supportGroups}
 					online={online}

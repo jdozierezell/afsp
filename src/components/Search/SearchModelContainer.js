@@ -29,15 +29,19 @@ const SearchModelContainer = ({
 }) => {
 	return (
 		<section css={searchContainerCSS}>
-			{nonus ? (
-				<p>
-					Showing results in <strong>{country}</strong>
-				</p>
-			) : (
-				<p>
-					Showing results within {radius} miles of{' '}
-					<strong>{zip}</strong>
-				</p>
+			{!online && (
+				<>
+					{nonus ? (
+						<p>
+							Showing results in <strong>{country}</strong>
+						</p>
+					) : (
+						<p>
+							Showing results within {radius} miles of{' '}
+							<strong>{zip}</strong>
+						</p>
+					)}
+				</>
 			)}
 			{chapters &&
 				chapters.map((chapter, index) => {
