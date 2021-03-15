@@ -118,12 +118,12 @@ const HeroModelSearch = ({
 	radius,
 	zip,
 	country,
+	countryGroups,
 	updateRadius,
 	updateZip,
 	updateNonus,
 	updateOnline,
 	updateCountry,
-	countryOptions,
 }) => {
 	return (
 		<div css={solidHeroCSS}>
@@ -132,7 +132,7 @@ const HeroModelSearch = ({
 				css={subHeaderCSS}
 				dangerouslySetInnerHTML={{ __html: description }}
 			></div>
-			{searchType === 'supportGroup' && countryOptions.length > 0 && (
+			{searchType === 'supportGroup' && countryGroups.length > 0 && (
 				<>
 					<Toggle
 						id="nonus-group"
@@ -152,7 +152,7 @@ const HeroModelSearch = ({
 						onChange={updateOnline}
 					/>
 					<label css={toggleLabelCSS} htmlFor="online-group">
-						Only list online groups
+						Only list nationwide online groups
 					</label>
 				</>
 			)}
@@ -167,7 +167,7 @@ const HeroModelSearch = ({
 					inputCSS={inputCSS}
 				/>
 			)}
-			{searchType === 'supportGroup' && nonus === false && (
+			{!online && searchType === 'supportGroup' && nonus === false && (
 				<HeroModelSearchFormUs
 					handleSubmit={handleSubmit}
 					radius={radius}
@@ -178,12 +178,12 @@ const HeroModelSearch = ({
 					inputCSS={inputCSS}
 				/>
 			)}
-			{searchType === 'supportGroup' && nonus === true && (
+			{!online && searchType === 'supportGroup' && nonus === true && (
 				<HeroModelSearchFormNonUs
 					handleSubmit={handleSubmit}
 					country={country}
 					updateCountry={updateCountry}
-					countryOptions={countryOptions}
+					countryGroups={countryGroups}
 					dropDownCSS={dropDownCSS}
 				/>
 			)}

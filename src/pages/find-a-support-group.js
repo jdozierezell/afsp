@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import qs from 'qs'
 import { graphql } from 'gatsby'
+import zipcodes from 'zipcodes'
 import axios from 'axios'
 import {
 	useQueryParams,
@@ -16,7 +17,7 @@ import CTAContainer from '../components/CTAs/CTAContainer'
 
 import { styles } from '../css/css'
 
-const FindASupportGroup = ({ data: { search, supportGroups } }) => {
+const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 	let metaImage,
 		metaDescription = ''
 	search.seoMetaTags.tags.forEach(tag => {
@@ -65,8 +66,8 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 	const [country, setCountry] = useState(
 		existingSearch.country ? existingSearch.country : ''
 	)
-	const [searchResults, setSearchResults] = useState([])
-	const [countryOptions, setCountryOptions] = useState([])
+	const [supportGroups, setSupportGroups] = useState([])
+	const [countryGroups, setCountryGroups] = useState([])
 	const [onlineGroups, setOnlineGroups] = useState([])
 	// eslint-disable-next-line no-unused-vars
 	const [query, setQuery] = useQueryParams({
@@ -105,42 +106,42 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 
 	const updateCountry = newCountry => setCountry(newCountry)
 
-	// const supportGroupSearchResults = (supportGroups, response) => {
-	// 	const supportGroupArray = []
-	// 	if (nonus === true) {
-	// 		supportGroups.edges.forEach(supportGroup => {
-	// 			if (supportGroup.node.meetingCountry === country) {
-	// 				supportGroupArray.push([supportGroup.node])
-	// 			}
-	// 		})
-	// 	} else {
-	// 		supportGroups.edges.forEach(supportGroup => {
-	// 			if (supportGroup.node.meetingZipPostalCode) {
-	// 				supportGroup.node.meetingZipPostalCode = supportGroup.node.meetingZipPostalCode.trim()
-	// 				if (
-	// 					supportGroup.node.meetingZipPostalCode ===
-	// 					response.primaryZip
-	// 				) {
-	// 					supportGroupArray.unshift([
-	// 						supportGroup.node,
-	// 						response.primaryZip,
-	// 					])
-	// 				} else if (
-	// 					response.otherZips.includes(
-	// 						supportGroup.node.meetingZipPostalCode
-	// 					)
-	// 				) {
-	// 					supportGroup.node['location'] = response.primaryZip
-	// 					supportGroupArray.push([
-	// 						supportGroup.node,
-	// 						response.primaryZip,
-	// 					])
-	// 				}
-	// 			}
-	// 		})
-	// 	}
-	// 	return supportGroupArray
-	// }
+	const supportGroupSearchResults = (datoSupportGroups, response) => {
+		const supportGroupArray = []
+		if (nonus === true) {
+			datoSupportGroups.edges.forEach(supportGroup => {
+				if (supportGroup.node.meetingCountry === country) {
+					supportGroupArray.push([supportGroup.node])
+				}
+			})
+		} else {
+			datoSupportGroups.edges.forEach(supportGroup => {
+				if (supportGroup.node.meetingZipPostalCode) {
+					supportGroup.node.meetingZipPostalCode = supportGroup.node.meetingZipPostalCode.trim()
+					if (
+						supportGroup.node.meetingZipPostalCode ===
+						response.primaryZip
+					) {
+						supportGroupArray.unshift([
+							supportGroup.node,
+							response.primaryZip,
+						])
+					} else if (
+						response.otherZips.includes(
+							supportGroup.node.meetingZipPostalCode
+						)
+					) {
+						supportGroup.node['location'] = response.primaryZip
+						supportGroupArray.push([
+							supportGroup.node,
+							response.primaryZip,
+						])
+					}
+				}
+			})
+		}
+		return supportGroupArray
+	}
 
 	const handleSearchClick = () => {
 		setQuery({
@@ -150,6 +151,27 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 			radius: radius,
 			country: country,
 		})
+		// axios
+		// 	.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
+		// 		zip: zip,
+		// 		radius: radius,
+		// 		nonus: nonus,
+		// 		source: 'groupSearch',
+		// 		type: 'supportGroup',
+		// 	})
+		// 	.then(res => {
+		// 		console.log(res)
+		// 		setSupportGroups(res.data.chapterArray)
+		// 	})
+		setSupportGroups(
+			supportGroupSearchResults(datoSupportGroups, {
+				primaryZip: zip,
+				otherZips: zipcodes.radius(zip, radius),
+			})
+		)
+	}
+
+	useEffect(() => {
 		axios
 			.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
 				zip: zip,
@@ -160,58 +182,33 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 			})
 			.then(res => {
 				console.log(res)
-				setSearchResults(res.data.chapterArray)
+				// setSupportGroups(res.data.chapterArray)
 			})
-		// setSearchResults(
-		// 	supportGroupSearchResults(supportGroups, {
-		// 		primaryZip: zip,
-		// 		otherZips: zipcodes.radius(zip, radius),
-		// 	})
-		// )
-	}
 
-	useEffect(() => {
-		if (zip || nonus || online) {
-			axios
-				.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
-					zip: zip,
-					radius: radius,
-					nonus: nonus,
-					source: 'groupSearch',
-					type: 'supportGroup',
-				})
-				.then(res => {
-					console.log(res)
-					setSearchResults(res.data.chapterArray)
-				})
-		} else {
-			console.log(radius)
-		}
-
-		// let countryArray = []
-		// let onlineArray = []
-		// supportGroups.edges.forEach(group => {
-		// 	if (
-		// 		group.node.meetingCountry !== 'United States of America' &&
-		// 		group.node.meetingCountry !== 'Not Applicable'
-		// 	) {
-		// 		countryArray.push(group.node.meetingCountry)
-		// 	}
-		// 	if (group.node.meetingType === 'Nationwide Online Group') {
-		// 		onlineArray.push(group.node)
-		// 	}
-		// })
-		// onlineArray = onlineArray.filter(function(el) {
-		// 	return !countryArray.includes(el)
-		// })
-		// setCountryOptions(countryArray)
-		// setOnlineGroups(onlineArray)
-		// setSearchResults(
-		// 	supportGroupSearchResults(supportGroups, {
-		// 		primaryZip: zip,
-		// 		otherZips: zipcodes.radius(zip, radius),
-		// 	})
-		// )
+		let countryArray = []
+		let onlineArray = []
+		datoSupportGroups.edges.forEach(group => {
+			if (
+				group.node.meetingCountry !== 'United States of America' &&
+				group.node.meetingCountry !== 'Not Applicable'
+			) {
+				countryArray.push(group.node.meetingCountry)
+			}
+			if (group.node.meetingType === 'Nationwide Online Group') {
+				onlineArray.push(group.node)
+			}
+		})
+		onlineArray = onlineArray.filter(function(el) {
+			return !countryArray.includes(el)
+		})
+		setCountryGroups(countryArray)
+		setOnlineGroups(onlineArray)
+		setSupportGroups(
+			supportGroupSearchResults(datoSupportGroups, {
+				primaryZip: zip,
+				otherZips: zipcodes.radius(zip, radius),
+			})
+		)
 	}, [])
 	return (
 		<Layout
@@ -235,20 +232,21 @@ const FindASupportGroup = ({ data: { search, supportGroups } }) => {
 				updateNonus={updateNonus}
 				updateOnline={updateOnline}
 				updateCountry={updateCountry}
-				countryOptions={countryOptions}
+				countryGroups={countryGroups}
 			/>
-			{/* {(searchResults.length >= 1 ||
+			{(supportGroups.length >= 1 ||
 				(onlineGroups.length >= 1 && zip.length >= 5) ||
 				online) && (
 				<SearchModelContainer
-					supportGroups={searchResults}
+					supportGroups={supportGroups}
+					online={online}
 					onlineGroups={onlineGroups}
 					radius={radius}
 					zip={zip}
 					nonus={nonus}
 					country={country}
 				/>
-			)} */}
+			)}
 			{search.callsToAction.map((item, index) => (
 				<CTAContainer
 					key={index}
@@ -278,7 +276,7 @@ export const query = graphql`
 				}
 			}
 		}
-		supportGroups: allDatoCmsSupportGroup {
+		datoSupportGroups: allDatoCmsSupportGroup {
 			edges {
 				node {
 					supportGroupName
