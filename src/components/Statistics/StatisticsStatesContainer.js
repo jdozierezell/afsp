@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { Link } from 'gatsby'
 
 import IconX from '../SVGs/IconX'
@@ -148,27 +148,6 @@ const searchStateListCSS = css`
 	}
 `
 
-// const searchStateKeyCSS = css`
-// 	list-style: none;
-// 	margin: ${styles.scale.px20} 0 0;
-// 	display: flex;
-// 	flex-flow: row wrap;
-// 	li {
-// 		display: inline-block;
-// 		white-space: nowrap;
-// 		border-radius: ${styles.scale.px5};
-// 		margin-right: ${styles.scale.px20};
-// 	}
-// `
-
-// const stateBulletCSS = css`
-// 	display: inline-block;
-// 	width: ${styles.scale.px12};
-// 	height: ${styles.scale.px12};
-// 	margin-right: ${styles.scale.px7};
-// 	border-radius: 50%;
-// `
-
 const statisticsStatesFactsContainerCSS = css`
 	margin: 0 ${styles.gridGap.mobile} 0 0;
 	h2 {
@@ -270,7 +249,7 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 									your state. <br />
 									<br />
 									Download our{' '}
-									<a href="https://www.datocms-assets.com/12810/1615230382-14155afspnationalfactsheet2021m1.pdf">
+									<a href="https://www.datocms-assets.com/12810/1615917230-14155afspnationalfactsheet2021m1.pdf">
 										Suicide Facts &amp; Figures
 									</a>{' '}
 									national fact sheet <br />
