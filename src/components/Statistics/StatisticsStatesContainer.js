@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { css } from '@emotion/react'
+import { css } from '@emotion/core'
 import { Link } from 'gatsby'
 
 import IconX from '../SVGs/IconX'
