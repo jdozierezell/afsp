@@ -28,6 +28,21 @@ const contentBodyCSS = css`
 			width: calc(100vw - (${styles.scale.px50} * 2));
 		}
 	}
+	.table-plain {
+		th {
+			border: none;
+		}
+		td {
+			border: none;
+			:first-of-type {
+				background-color: ${styles.colors.white};
+				font-family: ${styles.fonts.avenirRegular};
+				@media (min-width: ${styles.screens.tablet}px) {
+					border: none;
+				}
+			}
+		}
+	}
 	table {
 		background: ${styles.colors.white};
 		padding: ${styles.scale.px24} 0;
