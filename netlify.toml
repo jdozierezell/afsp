@@ -7,6 +7,7 @@ PREVIEW_MODE = 'false'
 
 [context.staging.environment]
 PREVIEW_MODE = 'true'
+command = "npm run noIndex"
 
 [[plugins]]
 package = "netlify-plugin-gatsby-cache"
