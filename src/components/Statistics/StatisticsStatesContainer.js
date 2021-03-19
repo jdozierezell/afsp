@@ -25,7 +25,6 @@ const statisticsStatesContainerCSS = css`
 const searchStateCSS = css`
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: repeat() (4, 1fr);
 	margin-bottom: ${styles.scale.px24};
 	@media (min-width: ${styles.screens.tablet}px) {
 		grid-template-columns: repeat(4, minmax(0, 1fr)) 50px repeat(
@@ -36,71 +35,52 @@ const searchStateCSS = css`
 `
 
 const searchStateInputCSS = css`
-	grid-column: 1 / 2;
-	grid-row: 1 / 3;
-	display: grid;
-	grid-template-columns: subgrid;
-	grid-template-rows: subgrid;
-	position: relative;
 	@media (min-width: ${styles.screens.tablet}px) {
 		grid-column: 1 / 5;
 	}
-	div {
-		grid-column: 1 / 5;
-		grid-row: 1 / 3;
+	> div {
 		display: grid;
-		grid-template-columns: subgrid;
-		grid-template-rows: subgrid;
-		div {
-			grid-column: 1 / 5;
-			grid-row: 2 / 3;
-			position: relative;
+		grid-template-rows: 1fr ${styles.scale.px46};
+		label {
+		margin: ${styles.scale.px35} 0 ${styles.scale.px40};
+		font-family: ${styles.fonts.avenirRegular};
+		grid-row: 1 / 2;
+		}
+		.input-container {
+				width: 100%;
+				grid-row: 2 / 3;
+				position: relative;
+			input {
+				display: inline-block;
+				width: 100%;
+				border: none;
+				margin-right: ${styles.gridGap.mobile};
+				align-self: start;
+				position: relative;
+				z-index: 5;
+			}
 			ul {
 				position: absolute;
 				top: ${styles.scale.px50};
 				left: 0;
+				right: 0;
 				list-style: none;
 				margin: 0;
 				padding: 0;
 				z-index: 501;
 				li {
+					width: 100%;
 					margin: 0;
 					padding: ${styles.scale.px12};
 				}
 			}
 		}
 	}
-	label {
-		margin: ${styles.scale.px35} 0 ${styles.scale.px40};
-		font-family: ${styles.fonts.avenirRegular};
-		grid-column: 1 / 5;
-		grid-row: 1 / 2;
-	}
-	input {
-		border: none;
-		margin-right: ${styles.gridGap.mobile};
-		grid-column: 1 / 5;
-		grid-row: 2 / 3;
-		align-self: start;
-		position: relative;
-		z-index: 5;
-		@media (min-width: ${styles.screens.tablet}px) {
-			grid-column: 1 / 4;
-		}
-	}
-	button {
-		grid-column: 4 / 5;
-		grid-row: 2 / 3;
-		align-self: start;
-	}
 `
 
 const searchStateListCSS = css`
-	grid-column: 1 / 2;
-	grid-row: 3 / 5;
 	display: grid;
-	grid-template-columns: subgrid;
-	grid-template-rows: subgrid;
+	grid-template-rows: ${styles.scale.px80};
 	@media (min-width: ${styles.screens.tablet}px) {
 		grid-column: 6 / 10;
 		grid-row: 1 / 3;
@@ -117,10 +97,11 @@ const searchStateListCSS = css`
 		margin: 0;
 		overflow: auto hidden;
 		display: flex;
+		flex-wrap: wrap;
 		align-self: flex-start;
 	}
 	li {
-		display: inline-block;
+		display: inline;
 		white-space: nowrap;
 		padding: ${styles.scale.px14} ${styles.scale.px20};
 		border-radius: 5px;
@@ -261,6 +242,7 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 									</Link>
 									.
 								</label>
+								<div className="input-container">
 								<input
 									{...getInputProps()}
 									id="state-input"
@@ -281,7 +263,6 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 										}
 									}}
 								/>
-								<div>
 									<ul {...getMenuProps()}>
 										{isOpen
 											? states
