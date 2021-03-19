@@ -1,6 +1,6 @@
 import React from 'react'
-import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+import { css } from '@emotion/react'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { styles } from '../../css/css'
 
@@ -144,8 +144,8 @@ const HeroGrant = ({ grant }) => {
 				{grantees.map((grantee, index) => {
 					return (
 						<div key={index}>
-							<Img
-								fluid={grantee.image.fluid}
+							<GatsbyImage
+								image={grantee.image.gatsbyImageData}
 								css={css`
 									margin: 0 0 ${styles.scale.px36};
 									@media (min-width: ${styles.screens

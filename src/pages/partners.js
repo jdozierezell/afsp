@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+import { css } from '@emotion/react'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
@@ -87,8 +87,8 @@ const Partners = ({ data: { partners } }) => {
 				{partners.partnerList.map((partner, index) => {
 					return (
 						<div key={index} css={partnerCSS}>
-							<Img
-								fluid={partner.partnerLogo.fluid}
+							<GatsbyImage
+								image={partner.partnerLogo.gatsbyImageData}
 								css={partnerImageCSS}
 								style={{
 									display: 'block',
@@ -135,8 +135,9 @@ export const query = graphql`
 					originalId
 					url
 					alt
-					fluid(
-						maxWidth: 600
+					gatsbyImageData(
+						width: 600
+						placeholder: NONE
 						imgixParams: {
 							auto: "format"
 							fit: "fill"
@@ -145,9 +146,7 @@ export const query = graphql`
 							w: "600"
 							h: "200"
 						}
-					) {
-						...GatsbyDatoCmsFluid_noBase64
-					}
+					)
 				}
 				partnerDescription
 				partnerLink

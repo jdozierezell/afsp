@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Script from 'react-load-script'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'

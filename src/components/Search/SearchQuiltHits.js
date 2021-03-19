@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { connectInfiniteHits, Configure } from 'react-instantsearch-dom'
 
 import QuiltSquare from '../Quilt/QuiltSquare'

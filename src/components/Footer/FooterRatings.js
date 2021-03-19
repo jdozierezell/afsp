@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 import IconCharityNavigator from '../SVGs/IconCharityNavigator'
 import IconCharityWatch from '../SVGs/IconCharityWatch'

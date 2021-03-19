@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import BackgroundImage from 'gatsby-background-image'
 
 import { styles } from '../../css/css'
@@ -67,7 +67,7 @@ const Convo = ({ convo, addCSS }) => {
 			<h2>{convo.title}</h2>
 			<BackgroundImage
 				Tag="section"
-				fluid={convo.posterImage.fluid}
+				image={convo.posterImage.gatsbyImageData}
 				css={videoCTACSS}
 			>
 				<video

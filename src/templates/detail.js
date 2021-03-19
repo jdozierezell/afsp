@@ -99,9 +99,11 @@ export const query = graphql`
 			}
 			programLogo {
 				url
-				fluid(maxWidth: 623, imgixParams: { w: "623" }) {
-					...GatsbyDatoCmsFluid_noBase64
-				}
+				gatsbyImageData(
+					width: 623
+					placeholder: NONE
+					imgixParams: { w: "623" }
+				)
 			}
 			brief
 			parentPage {
@@ -164,8 +166,9 @@ export const query = graphql`
 					images {
 						alt
 						url
-						fluid(
-							maxWidth: 623
+						gatsbyImageData(
+							width: 623
+							placeholder: NONE
 							imgixParams: {
 								auto: "format"
 								fill: "blur"
@@ -173,9 +176,7 @@ export const query = graphql`
 								h: "384"
 								w: "623"
 							}
-						) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
+						)
 					}
 					imagesToShow
 				}

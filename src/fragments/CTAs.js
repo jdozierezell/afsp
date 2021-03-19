@@ -15,8 +15,9 @@ export const CTAs = graphql`
 					}
 					backgroundImage {
 						url
-						fluid(
-							maxWidth: 1920
+						gatsbyImageData(
+							width: 1920
+							placeholder: NONE
 							imgixParams: {
 								auto: "format"
 								fit: "crop"
@@ -25,9 +26,7 @@ export const CTAs = graphql`
 								h: "1080"
 								q: 30
 							}
-						) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
+						)
 					}
 					heading
 					brief

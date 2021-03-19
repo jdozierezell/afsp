@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 import Layout from '../components/Layout'
 import HeroStories from '../components/Hero/HeroStories'
@@ -84,8 +84,9 @@ export const query = graphql`
 			}
 			coverImage {
 				url
-				fluid(
-					maxWidth: 623
+				gatsbyImageData(
+					width: 623
+					placeholder: NONE
 					imgixParams: {
 						auto: "format"
 						fit: "fill"
@@ -93,9 +94,7 @@ export const query = graphql`
 						h: "384"
 						w: "623"
 					}
-				) {
-					...GatsbyDatoCmsFluid_noBase64
-				}
+				)
 			}
 			article {
 				... on DatoCmsBody {
@@ -107,8 +106,9 @@ export const query = graphql`
 					id
 					images {
 						url
-						fluid(
-							maxWidth: 623
+						gatsbyImageData(
+							width: 623
+							placeholder: NONE
 							imgixParams: {
 								auto: "format"
 								fit: "fill"
@@ -116,9 +116,7 @@ export const query = graphql`
 								h: "384"
 								w: "623"
 							}
-						) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
+						)
 					}
 				}
 				... on DatoCmsVideo {

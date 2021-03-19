@@ -8,8 +8,9 @@ export const Recommendation = graphql`
 		}
 		poster {
 			url
-			fluid(
-				maxWidth: 1280
+			gatsbyImageData(
+				width: 1280
+				placeholder: NONE
 				imgixParams: {
 					auto: "format"
 					fit: "crop"
@@ -17,9 +18,7 @@ export const Recommendation = graphql`
 					w: "1280"
 					h: "720"
 				}
-			) {
-				...GatsbyDatoCmsFluid_noBase64
-			}
+			)
 		}
 		recommendationHeading
 		storyRecommendation {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { ResponsiveLine } from '@nivo/line'
 
 import { styles } from '../../css/css'
@@ -78,34 +78,7 @@ const StatisticsStatesGraph = ({ width, height, data, selection }) => {
 				pointLabel="y"
 				pointLabelYOffset={-12}
 				enableSlices={'x'}
-				legends={
-					[
-						// {
-						// 	anchor: 'bottom',
-						// 	direction: 'row',
-						// 	justify: false,
-						// 	translateX: 0,
-						// 	translateY: 70,
-						// 	itemsSpacing: 0,
-						// 	itemDirection: 'top-to-bottom',
-						// 	itemWidth: 80,
-						// 	itemHeight: 20,
-						// 	itemOpacity: 0.75,
-						// 	symbolSize: 12,
-						// 	symbolShape: 'circle',
-						// 	symbolBorderColor: 'rgba(0, 0, 0, .5)',
-						// 	effects: [
-						// 		{
-						// 			on: 'hover',
-						// 			style: {
-						// 				itemBackground: 'rgba(0, 0, 0, .03)',
-						// 				itemOpacity: 1,
-						// 			},
-						// 		},
-						// 	],
-						// },
-					]
-				}
+				legends={[]}
 				theme={{
 					tooltip: {
 						container: {

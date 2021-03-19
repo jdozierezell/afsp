@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import fetch from 'isomorphic-fetch'
 
 import LayoutChapter from '../components/LayoutChapter'
@@ -14,14 +14,6 @@ import { styles } from '../css/css'
 
 import StoriesContainer from '../components/Stories/StoriesContainer'
 import ChapterSocials from '../components/Social/ChapterSocials'
-// import Loadable from '@loadable/component'
-
-// const StoriesContainer = Loadable(() =>
-// 	import('../components/Stories/StoriesContainer')
-// )
-// const ChapterSocials = Loadable(() =>
-// 	import('../components/Social/ChapterSocials')
-// )
 
 const eventCarouselCSS = css``
 
@@ -88,8 +80,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	})
 	const [stories, setStories] = useState([])
 
-	let storiesUpdates = []
-
 	let heroVideoUrl
 
 	if (heroVideo) {
@@ -99,6 +89,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	const heroPosterUrl = heroPoster ? heroPoster.url : ''
 
 	useEffect(() => {
+		let storiesUpdates = []
 		if (stories.length === 0 && stories[0] !== 'no stories') {
 			// setStories(['no stories'])
 			if (
@@ -108,7 +99,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			) {
 				setStories(['no stories'])
 			} else {
-				console.log(chapterStoriesAndUpdates)
 				chapterStoriesAndUpdates.forEach(story => {
 					const __typename = 'DatoCmsChapterStoryUpdate'
 					const id = story.id
@@ -311,8 +301,9 @@ export const query = graphql`
 						description
 						image {
 							url
-							fluid(
-								maxWidth: 600
+							gatsbyImageData(
+								width: 600
+								placeholder: NONE
 								imgixParams: {
 									auto: "format"
 									fill: "blur"
@@ -320,9 +311,7 @@ export const query = graphql`
 									h: "370"
 									w: "600"
 								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
+							)
 						}
 					}
 				}
@@ -334,8 +323,9 @@ export const query = graphql`
 						description
 						image {
 							url
-							fluid(
-								maxWidth: 600
+							gatsbyImageData(
+								width: 600
+								placeholder: NONE
 								imgixParams: {
 									auto: "format"
 									fill: "blur"
@@ -343,9 +333,7 @@ export const query = graphql`
 									h: "370"
 									w: "600"
 								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
+							)
 						}
 					}
 				}
@@ -357,8 +345,9 @@ export const query = graphql`
 						description
 						image {
 							url
-							fluid(
-								maxWidth: 600
+							gatsbyImageData(
+								width: 600
+								placeholder: NONE
 								imgixParams: {
 									auto: "format"
 									fill: "blur"
@@ -366,9 +355,7 @@ export const query = graphql`
 									h: "370"
 									w: "600"
 								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
+							)
 						}
 					}
 				}
@@ -381,8 +368,9 @@ export const query = graphql`
 					description
 					image {
 						url
-						fluid(
-							maxWidth: 600
+						gatsbyImageData(
+							width: 600
+							placeholder: NONE
 							imgixParams: {
 								auto: "format"
 								fit: "fill"
@@ -390,9 +378,7 @@ export const query = graphql`
 								w: "600"
 								h: "370"
 							}
-						) {
-							...GatsbyDatoCmsFluid_noBase64
-						}
+						)
 					}
 				}
 			}
@@ -424,8 +410,9 @@ export const query = graphql`
 						description
 						image {
 							url
-							fluid(
-								maxWidth: 600
+							gatsbyImageData(
+								width: 600
+								placeholder: NONE
 								imgixParams: {
 									auto: "format"
 									fill: "blur"
@@ -433,9 +420,7 @@ export const query = graphql`
 									h: "370"
 									w: "600"
 								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
+							)
 						}
 					}
 				}
@@ -455,8 +440,9 @@ export const query = graphql`
 						description
 						image {
 							url
-							fluid(
-								maxWidth: 600
+							gatsbyImageData(
+								width: 600
+								placeholder: NONE
 								imgixParams: {
 									auto: "format"
 									fill: "blur"
@@ -464,9 +450,7 @@ export const query = graphql`
 									h: "370"
 									w: "600"
 								}
-							) {
-								...GatsbyDatoCmsFluid_noBase64
-							}
+							)
 						}
 					}
 				}

@@ -1,6 +1,6 @@
 import React from 'react'
-import { css } from '@emotion/core'
-import Img from 'gatsby-image'
+import { css } from '@emotion/react'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import createAnchor from '../../utils/createAnchor'
 
@@ -83,11 +83,13 @@ const ImageListContainer = ({ images, crop, navigation }) => {
 											: image.originalImage.url
 									}
 								>
-									<Img
-										fluid={
+									<GatsbyImage
+										image={
 											crop
-												? image.croppedImage.fluid
-												: image.originalImage.fluid
+												? image.croppedImage
+														.gatsbyImageData
+												: image.originalImage
+														.gatsbyImageData
 										}
 										alt={
 											crop

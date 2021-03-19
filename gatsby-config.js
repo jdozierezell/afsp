@@ -19,49 +19,12 @@ module.exports = {
 	plugins: [
 		`gatsby-plugin-emotion`,
 		`gatsby-plugin-react-helmet`,
-		// `gatsby-plugin-netlify-cache`,
 		`gatsby-plugin-sitemap`,
 		`gatsby-plugin-playground`,
+		`gatsby-plugin-image`,
+		`gatsby-plugin-sharp`,
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-netlify`,
-		// `gatsby-plugin-preact`,
-		// {
-		// 	resolve: 'gatsby-plugin-rollbar',
-		// 	options: {
-		// 		accessToken: '063b513a856c4c9ca00e3ce649c35938',
-		// 		// For all configuration options, see https://docs.rollbar.com/docs/rollbarjs-configuration-reference
-		// 		captureUncaught: true,
-		// 		captureUnhandledRejections: true,
-		// 		ignoredMessages: ['unknown'],
-		// 		payload: {
-		// 			environment: process.env.NODE_ENV,
-		// 		},
-		// 	},
-		// },
-		// {
-		// 	resolve: '@sentry/gatsby',
-		// 	options: {
-		// 		dsn:
-		// 			'https://716ad2d069ab4105a9dcd2226a66f587@o468082.ingest.sentry.io/5496226',
-		// 		sampleRate: 1,
-		// 		tracesSampleRate: 1,
-		// 	},
-		// },
-		// {
-		// 	resolve: `gatsby-plugin-loadable-components-ssr`,
-		// 	options: {
-		// 		// Whether replaceHydrateFunction should call ReactDOM.hydrate or ReactDOM.render
-		// 		// Defaults to ReactDOM.render on develop and ReactDOM.hydrate on build
-		// 		useHydrate: true,
-		// 	},
-		// },
-		// {
-		// 	resolve: `gatsby-source-filesystem`,
-		// 	options: {
-		// 		name: `images`,
-		// 		path: `${__dirname}/src/images`,
-		// 	},
-		// },
 		{
 			resolve: `gatsby-plugin-google-analytics`,
 			options: {
@@ -124,7 +87,7 @@ module.exports = {
 		{
 			resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
 			options: {
-				devMode: true,
+				// devMode: true,
 			},
 		},
 		`gatsby-plugin-client-side-redirect`, // keep it in last in list

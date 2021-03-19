@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 import EmailSignupSideBar from '../EmailSignup/EmailSignupSideBar'
 

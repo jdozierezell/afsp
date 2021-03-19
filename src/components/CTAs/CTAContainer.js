@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 import { styles } from '../../css/css'
 
@@ -12,11 +12,6 @@ import background5 from '../SVGs/BackgroundOneGreenYellow.svg'
 import CTABackground from './CTABackground'
 import CTAWithDescription from './CTAWithDescription'
 import CTANoDescription from './CTANoDescription'
-// import Loadable from '@loadable/component'
-
-// const CTABackground = Loadable(() => import('./CTABackground'))
-// const CTAWithDescription = Loadable(() => import('./CTAWithDescription'))
-// const CTANoDescription = Loadable(() => import('./CTANoDescription'))
 
 const CTAContainer = ({ cta, number, id }) => {
 	let background
