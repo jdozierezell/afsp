@@ -243,26 +243,26 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 									.
 								</label>
 								<div className="input-container">
-								<input
-									{...getInputProps()}
-									id="state-input"
-									aria-describedby="stateInputLabel"
-									onKeyPress={e => {
-										if (e.key === 'Enter') {
-											const value = e.target.value.toLowerCase()
-											if (
-												!selection.some(
-													e => e.state === value
-												) &&
-												states.includes(value)
-											)
-												setSelection(selection => [
-													...selection,
-													{ state: value },
-												])
-										}
-									}}
-								/>
+									<input
+										{...getInputProps()}
+										id="state-input"
+										aria-describedby="stateInputLabel"
+										onKeyPress={e => {
+											if (e.key === 'Enter') {
+												const value = e.target.value.toLowerCase()
+												if (
+													!selection.some(
+														e => e.state === value
+													) &&
+													states.includes(value)
+												)
+													setSelection(selection => [
+														...selection,
+														{ state: value },
+													])
+											}
+										}}
+									/>
 									<ul {...getMenuProps()}>
 										{isOpen
 											? states
