@@ -80,9 +80,11 @@ export const query = graphql`
 			brief
 			images {
 				... on DatoCmsImageSectionHeader {
+					__typename
 					header
 				}
 				... on DatoCmsListImage {
+					__typename
 					id
 					croppedImage: image {
 						url
