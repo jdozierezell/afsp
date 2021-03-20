@@ -80,6 +80,7 @@ const Channel = ({ slug, channel }) => {
 					<a href={`${channelLink.anchor}`}>
 						<GatsbyImage
 							image={image.gatsbyImageData}
+							alt={image.alt}
 							css={channelImageCSS}
 							style={{
 								display: 'block',
@@ -99,6 +100,7 @@ const Channel = ({ slug, channel }) => {
 					>
 						<GatsbyImage
 							image={image.gatsbyImageData}
+							alt={image.alt}
 							css={channelImageCSS}
 							style={{
 								display: 'block',
