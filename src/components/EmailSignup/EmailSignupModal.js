@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Modal from 'react-modal'
-import { ClassNames } from '@emotion/react'
 import axios from 'axios'
+import { css, ClassNames } from '@emotion/react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -12,78 +12,28 @@ import { styles } from '../../css/css'
 
 Modal.setAppElement(`#___gatsby`)
 
-// const insideModalCSS = css`
-// 	display: grid;
-// 	justify-items: center;
-// 	h2 {
-// 		font-size: ${styles.scale.px24};
-// 		text-align: center;
-// 		width: 100%;
-// 		margin-bottom: 0;
-// 		@media (min-width: ${styles.screens.tablet}px) {
-// 			font-size: ${styles.scale.px44};
-// 		}
-// 	}
-// 	p {
-// 		width: 100%;
-// 		max-width: 600px;
-// 		text-align: center;
-// 	}
-// `
+const insideModalCSS = css``
 
-// const formCSS = css`
-// 	display: grid;
-// 	input {
-// 		margin: 32px 0;
-// 		width: 100%;
-// 		max-width: 600px;
-// 		display: inline-block;
-// 		font-size: 18px !important;
-// 		line-height: 50px !important;
-// 		background-color: white !important;
-// 		color: #262626 !important;
-// 		border-radius: 5px !important;
-// 		border: 2px solid #262626 !important;
-// 		padding: 0 16px !important;
-// 		height: initial !important;
-// 	}
-// 	input::placeholder {
-// 		line-height: 54px !important;
-// 		color: #333;
-// 		font-size: 18px;
-// 	}
-// 	button {
-// 		margin-top: 0;
-// 	}
-// 	button:hover {
-// 		text-decoration: none;
-// 	}
-// 	label {
-// 		max-width: 600px;
-// 		text-align: center;
-// 	}
-// 	@media (min-width: ${styles.screens.tablet}px) {
-// 		#zip_code {
-// 			max-width: 300px;
-// 		}
-// 	}
-// `
-// const messageCSS = css`
-// 	margin-top: ${styles.scale.px24};
-// `
+const formCSS = css`
+	label {
+		span {
+			color: ${styles.colors.poppy};
+		}
+	}
+`
 
-// const xCSS = css`
-// 	position: absolute;
-// 	right: 25px;
-// 	top: 25px;
-// 	width: 25px;
-// 	cursor: pointer;
-// 	background: none;
-// 	margin: 0;
-// 	padding: 0;
-// 	outline: none;
-// 	border: none;
-// `
+const xCSS = css`
+	position: absolute;
+	right: ${styles.scale.px25};
+	top: ${styles.scale.px25};
+	width: ${styles.scale.px25};
+	cursor: pointer;
+	background: none;
+	margin: 0;
+	padding: 0;
+	outline: none;
+	border: none;
+`
 
 let schema = yup.object().shape({
 	firstName: yup.string().required(),
@@ -127,43 +77,82 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 	}
 	return (
 		<ClassNames>
-			{({ css }) => (
+			{({ css, cx }) => (
 				<Modal
 					isOpen={modalIsOpen}
-					// className="emailModal"
-					// overlayClassName="emailModalOverlay"
 					onRequestClose={closeModal}
+					overlayClassName={css`
+						/* display: flex; */
+						/* align-items: center; */
+						/* justify-content: center; */
+						position: fixed;
+						inset: 0px;
+						background-color: hsla(0, 0%, 14.9%, 0.7);
+						z-index: 9999;
+						overflow: scroll;
+					`}
+					className={css`
+						/* display: flex; */
+						/* justify-content: center; */
+						/* align-items: center; */
+						/* width: 100vw; */
+						/* height: 100vh; */
+						padding: ${styles.scale.px64} ${styles.scale.px24};
+						background: hsla(0, 0%, 91.8%, 1);
+						/* overflow: scroll; */
+					`}
 				>
-					<div>
-						<button onClick={closeModal}>
-							<IconX></IconX>
+					<div css={insideModalCSS}>
+						<button
+							css={css`
+								background: transparent;
+								border: none;
+								outline: none;
+							`}
+							onClick={closeModal}
+						>
+							<IconX iconCSS={xCSS}></IconX>
 						</button>
 						<h2>
 							Sign up to learn more about AFSP’s programs, events,
 							and the actions you can take to help prevent
 							suicide.
 						</h2>
-						<form
-							onSubmit={handleSubmit(onSubmit)}
-							// css={css`
-							// 	${formCSS};
-							// 	${submitted ? 'display: none' : ''}
-							// `}
-						>
+						<form onSubmit={handleSubmit(onSubmit)} css={formCSS}>
+							<label htmlFor="firstName">
+								First Name<span>*</span>
+							</label>
+
 							<input
 								type="text"
 								name="firstName"
+								id="firstName"
 								ref={register}
 							/>
-							<span>*</span>
 							<p>{errors.firstName?.message}</p>
-							<input type="text" name="lastName" ref={register} />
-							<span>*</span>
+							<label htmlFor="lastName">
+								Last Name<span>*</span>
+							</label>
+
+							<input
+								type="text"
+								name="lastName"
+								id="lastName"
+								ref={register}
+							/>
 							<p>{errors.lastName?.message}</p>
-							<input type="email" name="email" ref={register} />
-							<span>*</span>
+							<label htmlFor="email">
+								Email<span>*</span>
+							</label>
+
+							<input
+								type="email"
+								name="email"
+								id="email"
+								ref={register}
+							/>
 							<p>{errors.email?.message}</p>
-							<label htmlFor="zip_code">
+							<label htmlFor="zipCode">
 								Providing your zip code is optional but lets us
 								send you additional information about activities
 								and advocacy efforts in your local community.
@@ -171,90 +160,12 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 							<input
 								type="text"
 								name="zip"
-								id="zip_code"
+								id="zipCode"
 								ref={register}
 							/>
-							<p>{errors.zip?.message}</p> */}
+							<p>{errors.zip?.message}</p>
 							<input type="submit" />
 						</form>
-						{/* <form
-					css={css`
-						${formCSS};
-						${submitted ? 'display: none' : ''}
-					`}
-					id="email_signup"
-					onSubmit={submitEmailSignup}
-					className={submitted ? 'hidden' : ''}
-				>
-					<input
-						type="email"
-						name="email"
-						title="email"
-						id="k_id_email"
-						placeholder="Email address"
-						className={submitted ? 'hidden' : ''}
-					/>
-					<label
-						htmlFor="zip_code"
-						className={submitted ? 'hidden' : ''}
-					>
-						Providing your zip code is optional but lets us send you
-						additional information about activities and advocacy
-						efforts in your local community.
-					</label>
-					<input
-						type="text"
-						name="zip"
-						title="zip"
-						id="zip_code"
-						placeholder="Zip code"
-						className={submitted ? 'hidden' : ''}
-					/>
-					<div className="klaviyo_messages">
-						<div
-							className="success_message"
-							style={{ display: 'none' }}
-						></div>
-						<div
-							className="error_message"
-							style={{ display: 'none' }}
-						></div>
-					</div>
-					<div className="klaviyo_form_actions">
-						<button
-							type="submit"
-							className={
-								submitted ? 'hidden' : 'secondary-button'
-							}
-						>
-							Subscribe
-						</button>
-					</div>
-				</form>
-						<p
-							css={css`
-								${messageCSS};
-								${submitted && submittedSuccess
-									? ''
-									: 'display: none'};
-							`}
-						>
-							Thank you for subscribing. Please check your email
-							to confirm your subscription and begin receiving our
-							communications.
-						</p>
-						<p
-							css={css`
-								${messageCSS};
-								${submitted && submittedFail
-									? ''
-									: 'display: none'};
-							`}
-						>
-							We're sorry, but there appears to have been an issue
-							with your submission. Please check your email
-							address and try again.
-						</p> */}
 					</div>
 				</Modal>
 			)}
