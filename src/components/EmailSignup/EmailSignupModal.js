@@ -61,6 +61,10 @@ const xCSS = css`
 	border: none;
 `
 
+const messageCSS = css`
+	margin-top: ${styles.scale.px24};
+`
+
 yup.addMethod(yup.string, 'formatZip', () => {})
 
 let schema = yup.object().shape({
@@ -83,29 +87,10 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 	})
 	const onSubmit = data => {
 		console.log(data)
-		axios.post(
-			'https://serene-dusk-44738.herokuapp.com/email-signup-tester',
-			data
-		)
-	}
-	const [submitted, setSubmitted] = useState(false)
-	const [submittedSuccess, setSubmittedSuccess] = useState(false)
-	const [submittedFail, setSubmittedFail] = useState(false)
-
-	const submitEmailSignup = e => {
-		e.preventDefault()
-		const form = document.getElementById('email_signup')
-		let formData = new FormData(form)
-		console.log(formData.get('email'))
 		axios
 			.post(
-				'https://serene-dusk-44738.herokuapp.com/email-signup',
-				formData,
-				{
-					headers: {
-						'Content-Type': 'multipart/form-data',
-					},
-				}
+				'https://serene-dusk-44738.herokuapp.com/email-signup-tester',
+				data
 			)
 			.then(response => {
 				setSubmitted(true)
@@ -116,6 +101,10 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 				}
 			})
 	}
+	const [submitted, setSubmitted] = useState(false)
+	const [submittedSuccess, setSubmittedSuccess] = useState(false)
+	const [submittedFail, setSubmittedFail] = useState(false)
+
 	return (
 		<ClassNames>
 			{({ css, cx }) => (
@@ -176,7 +165,13 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 							and the actions you can take to help prevent
 							suicide.
 						</h2>
-						<form onSubmit={handleSubmit(onSubmit)} css={formCSS}>
+						<form
+							onSubmit={handleSubmit(onSubmit)}
+							css={css`
+								${formCSS};
+								${submitted ? 'display: none' : ''}
+							`}
+						>
 							<label htmlFor="firstName">
 								First Name<span>*</span>
 							</label>
@@ -230,6 +225,32 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 								value="Subscribe"
 							/>
 						</form>
+						<div>
+							<p
+								css={css`
+									${messageCSS};
+									${submitted && submittedSuccess
+										? ''
+										: 'display: none'};
+								`}
+							>
+								Thank you for subscribing. Please check your
+								email to confirm your subscription and begin
+								receiving our communications.
+							</p>
+							<p
+								css={css`
+									${messageCSS};
+									${submitted && submittedFail
+										? ''
+										: 'display: none'};
+								`}
+							>
+								We're sorry, but there appears to have been an
+								issue with your submission. Please check your
+								email address and try again.
+							</p>
+						</div>
 					</div>
 				</Modal>
 			)}
