@@ -12,11 +12,37 @@ import { styles } from '../../css/css'
 
 Modal.setAppElement(`#___gatsby`)
 
-const insideModalCSS = css``
+const insideModalCSS = css`
+	h2 {
+		font-size: ${styles.scale.px24} !important;
+		text-align: center;
+	}
+`
 
 const formCSS = css`
+	display: grid;
+	justify-items: center;
+	input {
+		width: 100%;
+	}
+	input[type='submit'] {
+		width: auto;
+		line-height: inherit;
+		margin: 0 auto;
+	}
 	label {
+		width: 100%;
+		margin-bottom: ${styles.scale.px7};
 		span {
+			font-size: ${styles.scale.px18};
+			padding-left: ${styles.scale.px5};
+			color: ${styles.colors.poppy};
+		}
+	}
+	p {
+		width: 100%;
+		margin-top: ${styles.scale.px7};
+		&.error {
 			color: ${styles.colors.poppy};
 		}
 	}
@@ -35,11 +61,20 @@ const xCSS = css`
 	border: none;
 `
 
+yup.addMethod(yup.string, 'formatZip', () => {})
+
 let schema = yup.object().shape({
-	firstName: yup.string().required(),
-	lastName: yup.string().required(),
-	email: yup.string().email().required(),
-	zip: yup.string().matches(/^[0-9]{5}(-[0-9]{4})?$/g),
+	firstName: yup.string().required('Your first name is required'),
+	lastName: yup.string().required('Your last name is required'),
+	email: yup
+		.string()
+		.email()
+		.required('A properly formatted email address is required.'),
+	zip: yup.string().matches(/^[0-9]{5}-?([0-9]{4})?$/g, {
+		message:
+			'AFSP chapters and advocacy efforts are currently only available in the U.S. Please enter a five or nine digit U.S. zip code.',
+		excludeEmptyString: true,
+	}),
 })
 
 const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
@@ -81,25 +116,42 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 				<Modal
 					isOpen={modalIsOpen}
 					onRequestClose={closeModal}
+					onAfterOpen={() => {
+						document.body.style.top = `-${window.scrollY}px`
+						document.body.style.position = 'fixed'
+					}}
+					onAfterClose={() => {
+						const scrollY = document.body.style.top
+						document.body.style.position = ''
+						document.body.style.top = ''
+						window.scrollTo(0, parseInt(scrollY || '0') * -1)
+					}}
 					overlayClassName={css`
-						/* display: flex; */
-						/* align-items: center; */
-						/* justify-content: center; */
 						position: fixed;
 						inset: 0px;
 						background-color: hsla(0, 0%, 14.9%, 0.7);
 						z-index: 9999;
 						overflow: scroll;
+						@media (min-width: ${styles.screens.tablet}px) {
+							display: grid;
+							justify-items: center;
+							align-items: center;
+						}
 					`}
 					className={css`
-						/* display: flex; */
-						/* justify-content: center; */
-						/* align-items: center; */
-						/* width: 100vw; */
-						/* height: 100vh; */
-						padding: ${styles.scale.px64} ${styles.scale.px24};
+						position: relative;
+						padding: ${styles.scale.px44} ${styles.scale.px24};
 						background: hsla(0, 0%, 91.8%, 1);
-						/* overflow: scroll; */
+						overflow: scroll;
+						@media (min-width: ${styles.screens.tablet}px) {
+							width: 50vw;
+							min-width: 663px;
+							max-width: 768px;
+							height: 80vh;
+							min-width: 768px;
+							padding: ${styles.scale.px24} ${styles.scale.px64};
+							border-radius: ${styles.scale.px5};
+						}
 					`}
 				>
 					<div css={insideModalCSS}>
@@ -122,49 +174,55 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 							<label htmlFor="firstName">
 								First Name<span>*</span>
 							</label>
-
 							<input
 								type="text"
 								name="firstName"
 								id="firstName"
 								ref={register}
 							/>
-							<p>{errors.firstName?.message}</p>
+							<p className="error">{errors.firstName?.message}</p>
+
 							<label htmlFor="lastName">
 								Last Name<span>*</span>
 							</label>
-
 							<input
 								type="text"
 								name="lastName"
 								id="lastName"
 								ref={register}
 							/>
-							<p>{errors.lastName?.message}</p>
+							<p className="error">{errors.lastName?.message}</p>
+
 							<label htmlFor="email">
 								Email<span>*</span>
 							</label>
-
 							<input
 								type="email"
 								name="email"
 								id="email"
 								ref={register}
 							/>
-							<p>{errors.email?.message}</p>
-							<label htmlFor="zipCode">
-								Providing your zip code is optional but lets us
-								send you additional information about activities
-								and advocacy efforts in your local community.
-							</label>
+							<p className="error">{errors.email?.message}</p>
+
+							<p>
+								A zip code is optional but connects you to
+								activities and advocacy efforts in your local
+								community.
+							</p>
+							<label htmlFor="zipCode">Zip Code</label>
 							<input
 								type="text"
 								name="zip"
 								id="zipCode"
 								ref={register}
 							/>
-							<p>{errors.zip?.message}</p>
-							<input type="submit" />
+							<p className="error">{errors.zip?.message}</p>
+
+							<input
+								className="secondary-button"
+								type="submit"
+								value="Subscribe"
+							/>
 						</form>
 					</div>
 				</Modal>
