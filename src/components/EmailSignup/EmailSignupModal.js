@@ -81,7 +81,13 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 	const { register, handleSubmit, watch, errors } = useForm({
 		resolver: yupResolver(schema),
 	})
-	const onSubmit = data => console.log(data)
+	const onSubmit = data => {
+		console.log(data)
+		axios.post(
+			'https://serene-dusk-44738.herokuapp.com/email-signup-tester',
+			data
+		)
+	}
 	const [submitted, setSubmitted] = useState(false)
 	const [submittedSuccess, setSubmittedSuccess] = useState(false)
 	const [submittedFail, setSubmittedFail] = useState(false)
