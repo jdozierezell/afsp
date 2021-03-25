@@ -42,14 +42,14 @@ const searchStateInputCSS = css`
 		display: grid;
 		grid-template-rows: 1fr ${styles.scale.px46};
 		label {
-		margin: ${styles.scale.px35} 0 ${styles.scale.px40};
-		font-family: ${styles.fonts.avenirRegular};
-		grid-row: 1 / 2;
+			margin: ${styles.scale.px35} 0 ${styles.scale.px40};
+			font-family: ${styles.fonts.avenirRegular};
+			grid-row: 1 / 2;
 		}
 		.input-container {
-				width: 100%;
-				grid-row: 2 / 3;
-				position: relative;
+			width: 100%;
+			grid-row: 2 / 3;
+			position: relative;
 			input {
 				display: inline-block;
 				width: 100%;
@@ -230,7 +230,7 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 									your state. <br />
 									<br />
 									Download our{' '}
-									<a href="https://www.datocms-assets.com/12810/1615917230-14155afspnationalfactsheet2021m1.pdf">
+									<a href="https://www.datocms-assets.com/12810/1616589783-14155afspnationalfactsheet2021m1v2.pdf">
 										Suicide Facts &amp; Figures
 									</a>{' '}
 									national fact sheet <br />
