@@ -88,10 +88,7 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 	const onSubmit = data => {
 		console.log(data)
 		axios
-			.post(
-				'https://serene-dusk-44738.herokuapp.com/email-signup-tester',
-				data
-			)
+			.post('https://serene-dusk-44738.herokuapp.com/email-signup', data)
 			.then(response => {
 				setSubmitted(true)
 				if (response.status === 200) {
