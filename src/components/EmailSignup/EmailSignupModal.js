@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import Modal from 'react-modal'
-import { css } from '@emotion/react'
 import axios from 'axios'
+import { css, ClassNames } from '@emotion/react'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 
 import IconX from '../SVGs/IconX'
 
@@ -10,72 +13,46 @@ import { styles } from '../../css/css'
 Modal.setAppElement(`#___gatsby`)
 
 const insideModalCSS = css`
-	display: grid;
-	justify-items: center;
 	h2 {
-		font-size: ${styles.scale.px24};
-		text-align: center;
-		width: 100%;
-		margin-bottom: 0;
-		@media (min-width: ${styles.screens.tablet}px) {
-			font-size: ${styles.scale.px44};
-		}
-	}
-	p {
-		width: 100%;
-		max-width: 600px;
+		font-size: ${styles.scale.px24} !important;
 		text-align: center;
 	}
 `
 
 const formCSS = css`
-	display: flex;
-	flex-flow: column;
-	align-items: center;
+	display: grid;
+	justify-items: center;
 	input {
-		margin: 32px 0;
 		width: 100%;
-		max-width: 600px;
-		display: inline-block;
-		font-size: 18px !important;
-		line-height: 50px !important;
-		background-color: white !important;
-		color: #262626 !important;
-		border-radius: 5px !important;
-		border: 2px solid #262626 !important;
-		padding: 0 16px !important;
-		height: initial !important;
 	}
-	input::placeholder {
-		line-height: 54px !important;
-		color: #333;
-		font-size: 18px;
-	}
-	button {
-		margin-top: 0;
-	}
-	button:hover {
-		text-decoration: none;
+	input[type='submit'] {
+		width: auto;
+		line-height: inherit;
+		margin: 0 auto;
 	}
 	label {
-		max-width: 600px;
-		text-align: center;
-	}
-	@media (min-width: ${styles.screens.tablet}px) {
-		#zip_code {
-			max-width: 300px;
+		width: 100%;
+		margin-bottom: ${styles.scale.px7};
+		span {
+			font-size: ${styles.scale.px18};
+			padding-left: ${styles.scale.px5};
+			color: ${styles.colors.poppy};
 		}
 	}
-`
-const messageCSS = css`
-	margin-top: ${styles.scale.px24};
+	p {
+		width: 100%;
+		margin-top: ${styles.scale.px7};
+		&.error {
+			color: ${styles.colors.poppy};
+		}
+	}
 `
 
 const xCSS = css`
 	position: absolute;
-	right: 25px;
-	top: 25px;
-	width: 25px;
+	right: ${styles.scale.px25};
+	top: ${styles.scale.px25};
+	width: ${styles.scale.px25};
 	cursor: pointer;
 	background: none;
 	margin: 0;
@@ -84,26 +61,32 @@ const xCSS = css`
 	border: none;
 `
 
-const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
-	const [submitted, setSubmitted] = useState(false)
-	const [submittedSuccess, setSubmittedSuccess] = useState(false)
-	const [submittedFail, setSubmittedFail] = useState(false)
+const messageCSS = css`
+	margin-top: ${styles.scale.px24};
+`
 
-	const submitEmailSignup = e => {
-		e.preventDefault()
-		const form = document.getElementById('email_signup')
-		let formData = new FormData(form)
-		console.log(formData.get('email'))
+let schema = yup.object().shape({
+	firstName: yup.string().required('Your first name is required'),
+	lastName: yup.string().required('Your last name is required'),
+	email: yup
+		.string()
+		.email()
+		.required('A properly formatted email address is required.'),
+	zip: yup.string().matches(/^[0-9]{5}-?([0-9]{4})?$/g, {
+		message:
+			'AFSP chapters and advocacy efforts are currently only available in the U.S. Please enter a five or nine digit U.S. zip code.',
+		excludeEmptyString: true,
+	}),
+})
+
+const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
+	const { register, handleSubmit, errors } = useForm({
+		resolver: yupResolver(schema),
+	})
+	const onSubmit = data => {
+		console.log(data)
 		axios
-			.post(
-				'https://serene-dusk-44738.herokuapp.com/email-signup',
-				formData,
-				{
-					headers: {
-						'Content-Type': 'multipart/form-data',
-					},
-				}
-			)
+			.post('https://serene-dusk-44738.herokuapp.com/email-signup', data)
 			.then(response => {
 				setSubmitted(true)
 				if (response.status === 200) {
@@ -113,97 +96,160 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 				}
 			})
 	}
+	const [submitted, setSubmitted] = useState(false)
+	const [submittedSuccess, setSubmittedSuccess] = useState(false)
+	const [submittedFail, setSubmittedFail] = useState(false)
+
 	return (
-		<Modal
-			isOpen={modalIsOpen}
-			className="emailModal"
-			overlayClassName="emailModalOverlay"
-			onRequestClose={closeModal}
-		>
-			<div css={insideModalCSS}>
-				<button onClick={closeModal} css={xCSS}>
-					<IconX></IconX>
-				</button>
-				<h2 className={submitted ? 'hidden' : ''}>
-					Sign up to learn more about AFSP’s programs, events, and the
-					actions you can take to help prevent suicide.
-				</h2>
-				<form
-					css={css`
-						${formCSS};
-						${submitted ? 'display: none' : ''}
+		<ClassNames>
+			{({ css, cx }) => (
+				<Modal
+					isOpen={modalIsOpen}
+					onRequestClose={closeModal}
+					onAfterOpen={() => {
+						document.body.style.top = `-${window.scrollY}px`
+						document.body.style.position = 'fixed'
+					}}
+					onAfterClose={() => {
+						const scrollY = document.body.style.top
+						document.body.style.position = ''
+						document.body.style.top = ''
+						window.scrollTo(0, parseInt(scrollY || '0') * -1)
+					}}
+					overlayClassName={css`
+						position: fixed;
+						inset: 0px;
+						background-color: hsla(0, 0%, 14.9%, 0.7);
+						z-index: 9999;
+						overflow: scroll;
+						@media (min-width: ${styles.screens.tablet}px) {
+							display: grid;
+							justify-items: center;
+							align-items: center;
+						}
 					`}
-					id="email_signup"
-					onSubmit={submitEmailSignup}
-					className={submitted ? 'hidden' : ''}
+					className={css`
+						position: relative;
+						padding: ${styles.scale.px44} ${styles.scale.px24};
+						background: hsla(0, 0%, 91.8%, 1);
+						overflow: scroll;
+						@media (min-width: ${styles.screens.tablet}px) {
+							width: 50vw;
+							min-width: 663px;
+							max-width: 768px;
+							height: 90vh;
+							min-width: 768px;
+							padding: ${styles.scale.px24} ${styles.scale.px64};
+							border-radius: ${styles.scale.px5};
+						}
+					`}
 				>
-					<input
-						type="email"
-						name="email"
-						title="email"
-						id="k_id_email"
-						placeholder="Email address"
-						className={submitted ? 'hidden' : ''}
-					/>
-					<label
-						htmlFor="zip_code"
-						className={submitted ? 'hidden' : ''}
-					>
-						Providing your zip code is optional but lets us send you
-						additional information about activities and advocacy
-						efforts in your local community.
-					</label>
-					<input
-						type="text"
-						name="zip"
-						title="zip"
-						id="zip_code"
-						placeholder="Zip code"
-						className={submitted ? 'hidden' : ''}
-					/>
-					<div className="klaviyo_messages">
-						<div
-							className="success_message"
-							style={{ display: 'none' }}
-						></div>
-						<div
-							className="error_message"
-							style={{ display: 'none' }}
-						></div>
-					</div>
-					<div className="klaviyo_form_actions">
+					<div css={insideModalCSS}>
 						<button
-							type="submit"
-							className={
-								submitted ? 'hidden' : 'secondary-button'
-							}
+							css={css`
+								background: transparent;
+								border: none;
+								outline: none;
+							`}
+							onClick={closeModal}
 						>
-							Subscribe
+							<IconX iconCSS={xCSS}></IconX>
 						</button>
+						<h2>
+							Sign up to learn more about AFSP’s programs, events,
+							and the actions you can take to help prevent
+							suicide.
+						</h2>
+						<form
+							onSubmit={handleSubmit(onSubmit)}
+							css={css`
+								${formCSS};
+								${submitted ? 'display: none' : ''}
+							`}
+						>
+							<label htmlFor="firstName">
+								First Name<span>*</span>
+							</label>
+							<input
+								type="text"
+								name="firstName"
+								id="firstName"
+								ref={register}
+							/>
+							<p className="error">{errors.firstName?.message}</p>
+
+							<label htmlFor="lastName">
+								Last Name<span>*</span>
+							</label>
+							<input
+								type="text"
+								name="lastName"
+								id="lastName"
+								ref={register}
+							/>
+							<p className="error">{errors.lastName?.message}</p>
+
+							<label htmlFor="email">
+								Email<span>*</span>
+							</label>
+							<input
+								type="email"
+								name="email"
+								id="email"
+								ref={register}
+							/>
+							<p className="error">{errors.email?.message}</p>
+
+							<p>
+								A zip code is optional but connects you to
+								activities and advocacy efforts in your local
+								community.
+							</p>
+							<label htmlFor="zipCode">Zip Code</label>
+							<input
+								type="text"
+								name="zip"
+								id="zipCode"
+								ref={register}
+							/>
+							<p className="error">{errors.zip?.message}</p>
+
+							<input
+								className="secondary-button"
+								type="submit"
+								value="Subscribe"
+							/>
+						</form>
+						<div>
+							<p
+								css={css`
+									${messageCSS};
+									${submitted && submittedSuccess
+										? ''
+										: 'display: none'};
+								`}
+							>
+								Thank you for subscribing. Please check your
+								email to confirm your subscription and begin
+								receiving our communications.
+							</p>
+							<p
+								css={css`
+									${messageCSS};
+									${submitted && submittedFail
+										? ''
+										: 'display: none'};
+								`}
+							>
+								We're sorry, but there appears to have been an
+								issue with your submission. Please check your
+								email address and try again.
+							</p>
+						</div>
 					</div>
-				</form>
-				<p
-					css={css`
-						${messageCSS};
-						${submitted && submittedSuccess ? '' : 'display: none'};
-					`}
-				>
-					Thank you for subscribing. Please check your email to
-					confirm your subscription and begin receiving our
-					communications.
-				</p>
-				<p
-					css={css`
-						${messageCSS};
-						${submitted && submittedFail ? '' : 'display: none'};
-					`}
-				>
-					We're sorry, but there appears to have been an issue with
-					your submission. Please check your email address and try
-					again.
-				</p>
-			</div>
-		</Modal>
+				</Modal>
+			)}
+		</ClassNames>
 	)
 }
 
