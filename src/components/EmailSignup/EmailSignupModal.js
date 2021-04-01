@@ -65,8 +65,6 @@ const messageCSS = css`
 	margin-top: ${styles.scale.px24};
 `
 
-yup.addMethod(yup.string, 'formatZip', () => {})
-
 let schema = yup.object().shape({
 	firstName: yup.string().required('Your first name is required'),
 	lastName: yup.string().required('Your last name is required'),
@@ -82,7 +80,7 @@ let schema = yup.object().shape({
 })
 
 const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
-	const { register, handleSubmit, watch, errors } = useForm({
+	const { register, handleSubmit, errors } = useForm({
 		resolver: yupResolver(schema),
 	})
 	const onSubmit = data => {
@@ -139,7 +137,7 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 							width: 50vw;
 							min-width: 663px;
 							max-width: 768px;
-							height: 80vh;
+							height: 90vh;
 							min-width: 768px;
 							padding: ${styles.scale.px24} ${styles.scale.px64};
 							border-radius: ${styles.scale.px5};
