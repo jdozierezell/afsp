@@ -1,9 +1,9 @@
 {
-	"name": "gatsby-starter-default",
+	"name": "afsp",
 	"private": true,
-	"description": "A simple starter to get up and developing quickly with Gatsby",
-	"version": "0.1.0",
-	"author": "Kyle Mathews <mathews.kyle@gmail.com>",
+	"description": "Website for the American Foundation for Suicide Prevention",
+	"version": "1.0.0",
+	"author": "Jonathan Dozier-Ezell <jdozier-ezell@afsp.org>",
 	"dependencies": {
 		"@apollo/react-hooks": "^4.0.0",
 		"@emotion/react": "^11.1.5",
