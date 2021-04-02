@@ -76,6 +76,7 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 				zip: zip,
 				radius: radius,
 				source: 'chapterSearch',
+				type: 'chapter',
 			})
 			.then(res => {
 				console.log(res.data.chapterArray)

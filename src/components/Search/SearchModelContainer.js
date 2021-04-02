@@ -20,8 +20,8 @@ const searchContainerCSS = css`
 const SearchModelContainer = ({
 	chapters,
 	supportGroups,
-	online,
-	onlineGroups,
+	virtual,
+	virtualGroups,
 	radius,
 	zip,
 	nonus,
@@ -29,7 +29,7 @@ const SearchModelContainer = ({
 }) => {
 	return (
 		<section css={searchContainerCSS}>
-			{!online && (
+			{!virtual && (
 				<>
 					{nonus ? (
 						<p>
@@ -48,7 +48,7 @@ const SearchModelContainer = ({
 					return <SearchChapters key={index} chapter={chapter} />
 				})}
 			{supportGroups &&
-				!online &&
+				!virtual &&
 				supportGroups.map((supportGroup, index) => {
 					return (
 						<SearchSupportGroups
@@ -57,8 +57,8 @@ const SearchModelContainer = ({
 						/>
 					)
 				})}
-			{onlineGroups &&
-				onlineGroups.map((supportGroup, index) => {
+			{virtualGroups &&
+				virtualGroups.map((supportGroup, index) => {
 					return (
 						<SearchSupportGroups
 							key={index}

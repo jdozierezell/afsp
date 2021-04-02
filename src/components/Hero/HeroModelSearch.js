@@ -113,8 +113,8 @@ const HeroModelSearch = ({
 	searchType,
 	handleSubmit,
 	nonus,
-	online,
-	onlineGroups,
+	virtual,
+	virtualGroups,
 	radius,
 	zip,
 	country,
@@ -122,7 +122,7 @@ const HeroModelSearch = ({
 	updateRadius,
 	updateZip,
 	updateNonus,
-	updateOnline,
+	updateVirtual,
 	updateCountry,
 }) => {
 	return (
@@ -144,15 +144,15 @@ const HeroModelSearch = ({
 					</label>
 				</>
 			)}
-			{searchType === 'supportGroup' && onlineGroups.length > 0 && (
+			{searchType === 'supportGroup' && virtualGroups.length > 0 && (
 				<>
 					<Toggle
-						id="online-group"
-						defaultChecked={online}
-						onChange={updateOnline}
+						id="virtual-group"
+						defaultChecked={virtual}
+						onChange={updateVirtual}
 					/>
-					<label css={toggleLabelCSS} htmlFor="online-group">
-						Only list nationwide online groups
+					<label css={toggleLabelCSS} htmlFor="virtual-group">
+						Only list nationwide virtual groups
 					</label>
 				</>
 			)}
@@ -167,7 +167,7 @@ const HeroModelSearch = ({
 					inputCSS={inputCSS}
 				/>
 			)}
-			{!online && searchType === 'supportGroup' && nonus === false && (
+			{!virtual && searchType === 'supportGroup' && nonus === false && (
 				<HeroModelSearchFormUs
 					handleSubmit={handleSubmit}
 					radius={radius}
@@ -178,7 +178,7 @@ const HeroModelSearch = ({
 					inputCSS={inputCSS}
 				/>
 			)}
-			{!online && searchType === 'supportGroup' && nonus === true && (
+			{!virtual && searchType === 'supportGroup' && nonus === true && (
 				<HeroModelSearchFormNonUs
 					handleSubmit={handleSubmit}
 					country={country}

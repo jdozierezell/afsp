@@ -16,7 +16,7 @@ import CTAContainer from '../components/CTAs/CTAContainer'
 
 import { styles } from '../css/css'
 
-const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
+const FindASupportGroup = ({ data: { search } }) => {
 	let metaImage,
 		metaDescription = ''
 	search.seoMetaTags.tags.forEach(tag => {
@@ -59,21 +59,21 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 	const [nonus, setNonus] = useState(
 		existingSearch.nonus === '1' ? true : false
 	)
-	const [online, setOnline] = useState(
-		existingSearch.online === '1' ? true : false
+	const [virtual, setVirtual] = useState(
+		existingSearch.virtual === '1' ? true : false
 	)
 	const [country, setCountry] = useState(
 		existingSearch.country ? existingSearch.country : ''
 	)
 	const [supportGroups, setSupportGroups] = useState([])
 	const [countryGroups, setCountryGroups] = useState([])
-	const [onlineGroups, setOnlineGroups] = useState([])
+	const [virtualGroups, setVirtualGroups] = useState([])
 	// eslint-disable-next-line no-unused-vars
 	const [query, setQuery] = useQueryParams({
 		zip: NumberParam,
 		radius: NumberParam,
 		nonus: BooleanParam,
-		online: BooleanParam,
+		virtual: BooleanParam,
 		country: StringParam,
 	})
 
@@ -85,18 +85,18 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 		setNonus(!nonus)
 		setQuery({
 			nonus: !nonus,
-			online: online,
+			virtual: virtual,
 			zip: zip,
 			radius: radius,
 			country: country,
 		})
 	}
 
-	const updateOnline = () => {
-		setOnline(!online)
+	const updateVirtual = () => {
+		setVirtual(!virtual)
 		setQuery({
 			nonus: nonus,
-			online: !online,
+			virtual: !virtual,
 			zip: zip,
 			radius: radius,
 			country: country,
@@ -105,47 +105,10 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 
 	const updateCountry = newCountry => setCountry(newCountry)
 
-	const supportGroupSearchResults = (datoSupportGroups, response) => {
-		const supportGroupArray = []
-		if (nonus === true) {
-			datoSupportGroups.edges.forEach(supportGroup => {
-				if (supportGroup.node.meetingCountry === country) {
-					supportGroupArray.push([supportGroup.node])
-				}
-			})
-		} else {
-			datoSupportGroups.edges.forEach(supportGroup => {
-				if (supportGroup.node.meetingZipPostalCode) {
-					supportGroup.node.meetingZipPostalCode = supportGroup.node.meetingZipPostalCode.trim()
-					if (
-						supportGroup.node.meetingZipPostalCode ===
-						response.primaryZip
-					) {
-						supportGroupArray.unshift([
-							supportGroup.node,
-							response.primaryZip,
-						])
-					} else if (
-						response.otherZips.includes(
-							supportGroup.node.meetingZipPostalCode
-						)
-					) {
-						supportGroup.node['location'] = response.primaryZip
-						supportGroupArray.push([
-							supportGroup.node,
-							response.primaryZip,
-						])
-					}
-				}
-			})
-		}
-		return supportGroupArray
-	}
-
 	const handleSearchClick = () => {
 		setQuery({
 			nonus: nonus,
-			online: online,
+			virtual: virtual,
 			zip: zip,
 			radius: radius,
 			country: country,
@@ -160,7 +123,7 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 			})
 			.then(res => {
 				setCountryGroups(res.data.arraysToSend.country)
-				setOnlineGroups(res.data.arraysToSend.online)
+				setVirtualGroups(res.data.arraysToSend.virtual)
 				setSupportGroups(res.data.arraysToSend.group)
 			})
 	}
@@ -176,7 +139,7 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 			})
 			.then(res => {
 				setCountryGroups(res.data.arraysToSend.country)
-				setOnlineGroups(res.data.arraysToSend.online)
+				setVirtualGroups(res.data.arraysToSend.virtual)
 				setSupportGroups(res.data.arraysToSend.group)
 			})
 	}, [])
@@ -193,25 +156,25 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 				searchType={'supportGroup'}
 				handleSubmit={handleSearchClick}
 				nonus={nonus}
-				online={online}
-				onlineGroups={onlineGroups}
+				virtual={virtual}
+				virtualGroups={virtualGroups}
 				radius={radius}
 				zip={zip}
 				country={country}
 				updateRadius={updateRadius}
 				updateZip={updateZip}
 				updateNonus={updateNonus}
-				updateOnline={updateOnline}
+				updateVirtual={updateVirtual}
 				updateCountry={updateCountry}
 				countryGroups={countryGroups}
 			/>
 			{(supportGroups.length >= 1 ||
-				(onlineGroups.length >= 1 && online) ||
+				(virtualGroups.length >= 1 && virtual) ||
 				zip.length >= 5) && (
 				<SearchModelContainer
 					supportGroups={supportGroups}
-					online={online}
-					onlineGroups={onlineGroups}
+					virtual={virtual}
+					virtualGroups={virtualGroups}
 					radius={radius}
 					zip={zip}
 					nonus={nonus}
