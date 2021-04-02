@@ -48,63 +48,48 @@
 
 @font-face {
 	font-family: 'AvenirNextLTPro-Regular';
-	src: url('webfonts/3A4A6D_0_0.eot');
-	src: url('webfonts/3A4A6D_0_0.eot?#iefix') format('embedded-opentype'),
-		url('webfonts/3A4A6D_0_0.woff2') format('woff2'),
-		url('webfonts/3A4A6D_0_0.woff') format('woff'),
-		url('webfonts/3A4A6D_0_0.ttf') format('truetype');
+	src: url('webfonts/3A4A6D_0_0.woff2') format('woff2'),
+		url('webfonts/3A4A6D_0_0.woff') format('woff');
+	font-display: swap;
 }
 
 @font-face {
 	font-family: 'AvenirNextLTPro-BoldIt';
-	src: url('webfonts/3A4A6D_1_0.eot');
-	src: url('webfonts/3A4A6D_1_0.eot?#iefix') format('embedded-opentype'),
-		url('webfonts/3A4A6D_1_0.woff2') format('woff2'),
-		url('webfonts/3A4A6D_1_0.woff') format('woff'),
-		url('webfonts/3A4A6D_1_0.ttf') format('truetype');
+	src: url('webfonts/3A4A6D_1_0.woff2') format('woff2'),
+		url('webfonts/3A4A6D_1_0.woff') format('woff');
+	font-display: swap;
 }
 
 @font-face {
 	font-family: 'AvenirNextLTPro-Demi';
-	src: url('webfonts/3A4A6D_2_0.eot');
-	src: url('webfonts/3A4A6D_2_0.eot?#iefix') format('embedded-opentype'),
-		url('webfonts/3A4A6D_2_0.woff2') format('woff2'),
-		url('webfonts/3A4A6D_2_0.woff') format('woff'),
-		url('webfonts/3A4A6D_2_0.ttf') format('truetype');
+	src: url('webfonts/3A4A6D_2_0.woff2') format('woff2'),
+		url('webfonts/3A4A6D_2_0.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'AvenirNextLTPro-It';
-	src: url('webfonts/3A4A6D_3_0.eot');
-	src: url('webfonts/3A4A6D_3_0.eot?#iefix') format('embedded-opentype'),
-		url('webfonts/3A4A6D_3_0.woff2') format('woff2'),
-		url('webfonts/3A4A6D_3_0.woff') format('woff'),
-		url('webfonts/3A4A6D_3_0.ttf') format('truetype');
+	src: url('webfonts/3A4A6D_3_0.woff2') format('woff2'),
+		url('webfonts/3A4A6D_3_0.woff') format('woff');
+	font-display: swap;
 }
 
 @font-face {
 	font-family: 'AvenirNextLTPro-DemiIt';
-	src: url('webfonts/3A4A6D_4_0.eot');
-	src: url('webfonts/3A4A6D_4_0.eot?#iefix') format('embedded-opentype'),
-		url('webfonts/3A4A6D_4_0.woff2') format('woff2'),
-		url('webfonts/3A4A6D_4_0.woff') format('woff'),
-		url('webfonts/3A4A6D_4_0.ttf') format('truetype');
+	src: url('webfonts/3A4A6D_4_0.woff2') format('woff2'),
+		url('webfonts/3A4A6D_4_0.woff') format('woff');
+	font-display: swap;
 }
 
 @font-face {
 	font-family: 'AvenirNextLTPro-Bold';
-	src: url('webfonts/3A4A6D_5_0.eot');
-	src: url('webfonts/3A4A6D_5_0.eot?#iefix') format('embedded-opentype'),
-		url('webfonts/3A4A6D_5_0.woff2') format('woff2'),
-		url('webfonts/3A4A6D_5_0.woff') format('woff'),
-		url('webfonts/3A4A6D_5_0.ttf') format('truetype');
+	src: url('webfonts/3A4A6D_5_0.woff2') format('woff2'),
+		url('webfonts/3A4A6D_5_0.woff') format('woff');
+	font-display: swap;
 }
 
 @font-face {
 	font-family: 'PaulGroteskSoft-Bold';
-	src: url('webfonts/3A4A6D_6_0.eot');
-	src: url('webfonts/3A4A6D_6_0.eot?#iefix') format('embedded-opentype'),
-		url('webfonts/3A4A6D_6_0.woff2') format('woff2'),
-		url('webfonts/3A4A6D_6_0.woff') format('woff'),
-		url('webfonts/3A4A6D_6_0.ttf') format('truetype');
+	src: url('webfonts/3A4A6D_6_0.woff2') format('woff2'),
+		url('webfonts/3A4A6D_6_0.woff') format('woff');
+	font-display: swap;
 }
