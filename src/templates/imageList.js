@@ -93,7 +93,6 @@ export const query = graphql`
 							width: 600
 							placeholder: NONE
 							imgixParams: {
-								auto: "format"
 								fit: "crop"
 								crop: "faces"
 								w: "600"
@@ -107,7 +106,7 @@ export const query = graphql`
 						gatsbyImageData(
 							width: 600
 							placeholder: NONE
-							imgixParams: { w: "600" }
+							imgixParams: { w: "600", fm: "png" }
 						)
 					}
 					linkToOther
