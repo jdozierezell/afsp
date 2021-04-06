@@ -121,7 +121,6 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 					Find a chapter
 				</a>
 			</div>
-			{console.log(displayChapters)}
 			{displayChapters.length >= 1 && (
 				<p>Local chapters near {displayChapters[0][1]}</p>
 			)}

@@ -12,7 +12,7 @@ import CTAContainer from '../components/CTAs/CTAContainer'
 
 import { styles } from '../css/css'
 
-const FindALocalChapter = ({ data: { search, chapters } }) => {
+const FindALocalChapter = ({ data: { search } }) => {
 	let metaImage,
 		metaDescription = ''
 	search.seoMetaTags.tags.forEach(tag => {
@@ -100,7 +100,6 @@ const FindALocalChapter = ({ data: { search, chapters } }) => {
 				type: 'chapter',
 			})
 			.then(res => {
-				console.log(res.data.chapterArray)
 				setSearchResults(res.data.chapterArray)
 			})
 	}, [])
@@ -158,9 +157,6 @@ export const query = graphql`
 					...CTAs
 				}
 			}
-		}
-		chapters: allDatoCmsChapterHomePage {
-			...ChapterSearch
 		}
 	}
 `

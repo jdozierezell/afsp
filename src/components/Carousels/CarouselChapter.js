@@ -40,7 +40,12 @@ const carouselTitleCSS = css`
 const CarouselChapter = ({ title, titleHref, image, alt }) => {
 	return (
 		<Link css={carouselComponentCSS} to={buildUrl('/chapter', titleHref)}>
-			<img alt={alt} src={image} css={carouselImageCSS} />
+			{console.log(image)}
+			<img
+				alt={alt}
+				src={`${image}?auto=format&w=600&h=360&crop=faces&fit=crop`}
+				css={carouselImageCSS}
+			/>
 			<p css={carouselTitleCSS}>{title}</p>
 		</Link>
 	)
