@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
 import Carousel from 'react-multi-carousel'
 import { css } from '@emotion/react'
 import axios from 'axios'
