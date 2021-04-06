@@ -52,14 +52,6 @@ const carouselHeaderWrapperCSS = css`
 `
 
 const CarouselChapterContainer = ({ carouselCSS }) => {
-	const data = useStaticQuery(graphql`
-		query {
-			chapters: allDatoCmsChapterHomePage {
-				...ChapterSearch
-			}
-		}
-	`)
-	const { chapters } = data
 	const [displayChapters, setDisplayChapters] = useState([])
 
 	const responsive = {
