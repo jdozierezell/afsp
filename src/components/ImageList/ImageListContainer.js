@@ -55,17 +55,17 @@ const ImageListContainer = ({ images, crop, navigation }) => {
 							@media (min-width: ${styles.screens.tablet}px) {
 								${image.__typename !==
 									'DatoCmsImageSectionHeader' &&
-									navigation &&
-									`width: calc(100% / 2 - ${styles.scale.px18} * 2)`};
+								navigation &&
+								`width: calc(100% / 2 - ${styles.scale.px18} * 2)`};
 								${image.__typename !==
 									'DatoCmsImageSectionHeader' &&
-									!navigation &&
-									`width: calc(100% / 3 - ${styles.scale.px18} * 2)`};
+								!navigation &&
+								`width: calc(100% / 3 - ${styles.scale.px18} * 2)`};
 							}
 							@media (min-width: 1500px) {
 								${image.__typename !==
 									'DatoCmsImageSectionHeader' &&
-									`width: calc(100% / 3 - ${styles.scale.px18} * 2)`};
+								`width: calc(100% / 3 - ${styles.scale.px18} * 2)`};
 							}
 						`}
 					>
@@ -80,7 +80,10 @@ const ImageListContainer = ({ images, crop, navigation }) => {
 									href={
 										image.linkToOther && image.otherUrl
 											? image.otherUrl
-											: image.originalImage.url
+											: image.originalImage.url.replace(
+													'?auto=format',
+													''
+											  )
 									}
 								>
 									<GatsbyImage
