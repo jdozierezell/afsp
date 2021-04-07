@@ -72,6 +72,8 @@ const ShareableContainer = ({
 	const konvaRef = useRef(null)
 	const controlRef = useRef(null)
 
+	console.log(backgroundImage)
+
 	const squareImage = 1080
 
 	const customTextJSON = JSON.parse(customText.customValues)
@@ -108,9 +110,9 @@ const ShareableContainer = ({
 			overlay = overlay.src
 		}
 		var xhr = new XMLHttpRequest()
-		xhr.onload = function() {
+		xhr.onload = function () {
 			var reader = new FileReader()
-			reader.onloadend = function() {
+			reader.onloadend = function () {
 				setUrlOverlay(reader.result)
 			}
 			reader.readAsDataURL(xhr.response)
@@ -215,6 +217,8 @@ const ShareableContainer = ({
 	}, [isSelected, imageWidth, imageHeight])
 	return (
 		<div css={konvaContainerCSS}>
+			{console.log(width)}
+			{console.log(`${backgroundImage}?w=${width}`)}
 			<div
 				id="konva"
 				ref={konvaRef}
@@ -226,7 +230,7 @@ const ShareableContainer = ({
 			>
 				<Stage
 					css={css`
-						background-image: url('${backgroundImage}?w=${width}');
+						background-image: url('${backgroundImage}&w=${width}');
 					`}
 					width={width}
 					height={height}
@@ -304,8 +308,10 @@ const ShareableContainer = ({
 					position: ${controlPosition};
 					top: ${height + 50}px;
 					height: ${controlPosition === 'relative'
-						? `${controlRef.current.offsetHeight +
-								(height + 100) / 2}px`
+						? `${
+								controlRef.current.offsetHeight +
+								(height + 100) / 2
+						  }px`
 						: 'auto'};
 				`}
 			>
