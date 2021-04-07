@@ -18,7 +18,7 @@ const konvaContainerCSS = css`
 	grid-template-columns: 1fr;
 	grid-gap: ${styles.scale.px46};
 	margin: ${styles.scale.px24};
-	@media (min-width: ${styles.screens.tablet}px) {
+	@media (min-width: 768px) {
 		grid-template-columns: repeat(2, minmax(300px, 623px));
 		margin: ${styles.scale.px80} ${styles.scale.px50};
 	}
@@ -31,7 +31,7 @@ const konvaCSS = css`
 	margin: 0 auto;
 	right: calc(25vw + 6px);
 	@media (min-width: 768px) {
-		right: ${styles.scale.px50};
+		right: ${styles.scale.px44};
 		border: ${styles.scale.px24} solid ${styles.colors.white};
 		width: auto;
 		grid-column: 2 / 3;
@@ -161,7 +161,8 @@ const ShareableContainer = ({
 		}, 50) // timeout function gives setSelected enough time to re-render canvas so we lose the transformer handles
 	}
 	const handleScroll = () => {
-		if (window.innerWidth >= 768) {
+		console.log(window.scrollY)
+		if (window.innerWidth > 768) {
 			if (window.scrollY >= 220) {
 				setKonvaPosition('fixed')
 				setTop(0)
@@ -169,7 +170,7 @@ const ShareableContainer = ({
 				setKonvaPosition('absolute')
 				setTop('220px')
 			}
-		} else if (window.innerWidth < 768 && window.innerWidth > 414) {
+		} else if (window.innerWidth <= 768 && window.innerWidth > 414) {
 			if (window.scrollY >= 750) {
 				setKonvaPosition('fixed')
 				setControlPosition('relative')
@@ -180,6 +181,7 @@ const ShareableContainer = ({
 				setTop('220px')
 			}
 		} else {
+			console.log(window.scrollY)
 			if (window.scrollY >= 550) {
 				setKonvaPosition('fixed')
 				setControlPosition('relative')
