@@ -27,9 +27,13 @@ const konvaContainerCSS = css`
 const konvaCSS = css`
 	border: ${styles.scale.px12} solid ${styles.colors.white};
 	z-index: 10;
+	width: calc(50vw - 12px);
+	margin: 0 auto;
+	right: calc(25vw + 6px);
 	@media (min-width: 768px) {
 		right: ${styles.scale.px50};
 		border: ${styles.scale.px24} solid ${styles.colors.white};
+		width: auto;
 		grid-column: 2 / 3;
 		grid-row: 1 / 2;
 		min-width: calc(100vw / 3);
@@ -71,8 +75,6 @@ const ShareableContainer = ({
 	const imageRef = useRef(null)
 	const konvaRef = useRef(null)
 	const controlRef = useRef(null)
-
-	console.log(backgroundImage)
 
 	const squareImage = 1080
 
@@ -132,8 +134,8 @@ const ShareableContainer = ({
 
 	const setStateDimensions = () => {
 		if (window.innerWidth < 768) {
-			setWidth(window.innerWidth - 48 - 24)
-			setHeight(window.innerWidth - 48 - 24)
+			setWidth((window.innerWidth - 48 - 24) / 2)
+			setHeight((window.innerWidth - 48 - 24) / 2)
 		} else if (window.innerWidth < 1200) {
 			setWidth(window.innerWidth / 3)
 			setHeight(window.innerWidth / 3)
@@ -217,8 +219,6 @@ const ShareableContainer = ({
 	}, [isSelected, imageWidth, imageHeight])
 	return (
 		<div css={konvaContainerCSS}>
-			{console.log(width)}
-			{console.log(`${backgroundImage}?w=${width}`)}
 			<div
 				id="konva"
 				ref={konvaRef}

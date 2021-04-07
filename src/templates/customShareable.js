@@ -12,10 +12,7 @@ const addCSS = css`
 	h1,
 	div {
 		@media (min-width: ${styles.screens.tablet}px) {
-			width: calc(100vw / 2);
-		}
-		@media (min-width: 1200px) {
-			width: calc(100vw / 2.5);
+			width: calc(100vw / 2.25);
 		}
 	}
 `

@@ -14,8 +14,8 @@ const shareableOverlaysCSS = css`
 		padding: 0;
 		background-color: ${styles.colors.lightGray};
 		margin: ${styles.scale.px12} auto;
-		width: calc(100% - ${styles.scale.px24});
-		height: calc(100% - ${styles.scale.px24});
+		width: calc(100% / 2 - ${styles.scale.px24});
+		height: calc(100% / 2 - ${styles.scale.px24});
 		cursor: pointer;
 		@media (min-width: ${styles.screens.tablet}px) {
 			margin: ${styles.scale.px16};
