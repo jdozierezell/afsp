@@ -102,6 +102,7 @@ const Calendar = ({ events }) => {
 	let eventArray = []
 	const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
 	events.forEach(event => {
+		console.log(event)
 		if (event.__typename === 'DatoCmsCampaignName') {
 			calendarTitle = event.campaignName
 		} else if (event.__typename === 'DatoCmsEventsList') {
@@ -113,6 +114,7 @@ const Calendar = ({ events }) => {
 			css={calendarCSS}
 			id={`${createAnchor(calendarTitle.toLowerCase())}-events-calendar`}
 		>
+			{console.log(calendarTitle)}
 			<h2>{calendarTitle} events calendar</h2>
 			<ul>
 				{eventArray.map((event, index) => {

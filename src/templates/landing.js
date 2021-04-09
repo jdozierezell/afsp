@@ -236,6 +236,7 @@ export const query = graphql`
 			}
 			eventCalendar {
 				... on DatoCmsCampaignName {
+					__typename
 					campaignName
 				}
 				... on DatoCmsEventsList {
