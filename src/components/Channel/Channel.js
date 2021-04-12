@@ -70,7 +70,11 @@ const Channel = ({ slug, channel }) => {
 							display: 'block',
 						}}
 					/>
-					<span>{heading}</span>
+					<span
+						dangerouslySetInnerHTML={{
+							__html: heading,
+						}}
+					></span>
 					<p>{brief}</p>
 					<p>Learn more</p>
 				</Link>
@@ -86,7 +90,11 @@ const Channel = ({ slug, channel }) => {
 								display: 'block',
 							}}
 						/>
-						<span>{heading}</span>
+						<span
+							dangerouslySetInnerHTML={{
+								__html: heading,
+							}}
+						></span>
 						<p>{brief}</p>
 					</a>
 				</>
@@ -106,7 +114,11 @@ const Channel = ({ slug, channel }) => {
 								display: 'block',
 							}}
 						/>
-						<span>{heading}</span>
+						<span
+							dangerouslySetInnerHTML={{
+								__html: heading,
+							}}
+						></span>
 						<p>{brief}</p>
 					</a>
 				</>
