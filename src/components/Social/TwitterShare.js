@@ -13,7 +13,10 @@ const TwitterShare = ({ pageUrl }) => {
 			)}`}
 			rel="noopener noreferrer"
 		>
-			<IconTwitter color={styles.colors.darkGray} />
+			<IconTwitter
+				id="twitter-story-share"
+				color={styles.colors.darkGray}
+			/>
 		</a>
 	)
 }

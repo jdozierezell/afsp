@@ -14,7 +14,10 @@ const FacebookShare = ({ pageUrl }) => {
 			className="fb-xfbml-parse-ignore"
 			rel="noopener noreferrer"
 		>
-			<IconFacebook color={styles.colors.darkGray} />
+			<IconFacebook
+				id="facebook-story-share"
+				color={styles.colors.darkGray}
+			/>
 		</a>
 	)
 }

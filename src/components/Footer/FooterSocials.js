@@ -31,7 +31,10 @@ const FooterSocials = () => {
 				rel="noopener noreferrer"
 				aria-label="AFSPNational Facebook"
 			>
-				<IconFacebook color={styles.colors.white} />
+				<IconFacebook
+					id="facebook-footer-social"
+					color={styles.colors.white}
+				/>
 			</a>
 			<a
 				href="https://www.instagram.com/afspnational/"
@@ -39,7 +42,10 @@ const FooterSocials = () => {
 				rel="noopener noreferrer"
 				aria-label="AFSPNational Instagram"
 			>
-				<IconInstagram color={styles.colors.white} />
+				<IconInstagram
+					id="instagram-footer-social"
+					color={styles.colors.white}
+				/>
 			</a>
 			<a
 				href="https://twitter.com/afspnational"
@@ -47,7 +53,10 @@ const FooterSocials = () => {
 				rel="noopener noreferrer"
 				aria-label="AFSPNational Twitter"
 			>
-				<IconTwitter color={styles.colors.white} />
+				<IconTwitter
+					id="twitter-footer-social"
+					color={styles.colors.white}
+				/>
 			</a>
 			<a
 				href="https://www.linkedin.com/company/afspnational"
@@ -55,7 +64,10 @@ const FooterSocials = () => {
 				rel="noopener noreferrer"
 				aria-label="AFSPNational LinkedIn"
 			>
-				<IconLinkedIn color={styles.colors.white} />
+				<IconLinkedIn
+					id="linkedin-footer-social"
+					color={styles.colors.white}
+				/>
 			</a>
 			<a
 				href="https://www.youtube.com/user/afspnational"
@@ -63,7 +75,10 @@ const FooterSocials = () => {
 				rel="noopener noreferrer"
 				aria-label="AFSPNational YouTube"
 			>
-				<IconYouTube color={styles.colors.white} />
+				<IconYouTube
+					id="youtube-footer-social"
+					color={styles.colors.white}
+				/>
 			</a>
 			<a
 				href="https://themighty.com/partner/AmericanFoundationforSuicidePrevention/"
@@ -71,7 +86,10 @@ const FooterSocials = () => {
 				rel="noopener noreferrer"
 				aria-label="AFSP partner page on themighty.com"
 			>
-				<IconTheMighty color={styles.colors.white} />
+				<IconTheMighty
+					id="themighty-footer-social"
+					color={styles.colors.white}
+				/>
 			</a>
 		</div>
 	)

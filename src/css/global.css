@@ -74,36 +74,36 @@ td {
 
 input {
 	color: hsla(0, 0%, 14.9%, 1);
-	font-size: 18px;
-	line-height: 50px;
+	font-size: 1.125rem;
+	line-height: 3.125rem;
 	background-color: hsla(0, 0%, 100%, 1);
-	border-radius: 5px;
-	border: solid 2px hsla(0, 0%, 14.9%, 1);
-	padding: 0px 16px 0px 16px;
+	border-radius: 0.3125rem;
+	border: solid 0.125rem hsla(0, 0%, 14.9%, 1);
+	padding: 0rem 1rem 0rem 1rem;
 }
 
 textarea {
 	color: hsla(0, 0%, 14.9%, 1);
-	font-size: 18px;
+	font-size: 1.125rem;
 	background-color: hsla(0, 0%, 100%, 1);
-	border-radius: 5px;
-	border: solid 2px hsla(0, 0%, 14.9%, 1);
-	padding: 16px;
-	min-height: 128px;
+	border-radius: 0.3125rem;
+	border: solid 0.125rem hsla(0, 0%, 14.9%, 1);
+	padding: 1rem;
+	min-height: 8rem;
 }
 
 .secondary-button {
 	font-family: AvenirNextLTPro-Bold, Arial, sans-serif;
-	font-size: 18px;
+	font-size: 1.125rem;
 	color: hsla(355, 84.3%, 50%, 1);
 	text-align: center;
-	min-height: 50px;
+	min-height: 3.125rem;
 	background-color: hsla(0, 0%, 100%, 1);
-	border-radius: 30px;
-	border: solid 2px hsla(355, 84.3%, 50%, 1);
-	padding: 10px 32px;
-	margin-top: 24px;
-	margin-bottom: 24px;
+	border-radius: 1.875rem;
+	border: solid 0.125rem hsla(355, 84.3%, 50%, 1);
+	padding: 0.625rem 2rem;
+	margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
 	display: inline-block;
 	text-decoration: none;
 	cursor: pointer;
@@ -120,11 +120,11 @@ textarea {
 .secondary-button-group {
 	text-align: center;
 	background-color: hsla(0, 0%, 100%, 1);
-	border-radius: 30px;
-	border: solid 2px hsla(355, 84.3%, 50%, 1);
-	padding: 0px 32px;
-	margin-top: 24px;
-	margin-bottom: 24px;
+	border-radius: 1.875rem;
+	border: solid 0.125rem hsla(355, 84.3%, 50%, 1);
+	padding: 0rem 2rem;
+	margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
 	display: inline-block;
 	text-decoration: none;
 	cursor: pointer;
@@ -133,9 +133,9 @@ textarea {
 .secondary-button-group button,
 .secondary-button-group label {
 	font-family: AvenirNextLTPro-Bold, Arial, sans-serif;
-	font-size: 18px;
-	line-height: 50px;
-	min-height: 50px;
+	font-size: 1.875rem;
+	line-height: 3.125rem;
+	min-height: 3.125rem;
 	display: inline-block;
 	color: hsla(355, 84.3%, 50%, 1);
 	width: 50%;
@@ -145,17 +145,17 @@ textarea {
 }
 
 .secondary-button-group *:first-child {
-	border-right: solid 2px hsla(355, 84.3%, 50%, 1);
+	border-right: solid 0.125rem hsla(355, 84.3%, 50%, 1);
 }
 
 .sr-only:not(:focus):not(:active) {
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
-	height: 1px;
+	height: 0.0625rem;
 	overflow: hidden;
 	position: absolute;
 	white-space: nowrap;
-	width: 1px;
+	width: 0.0625rem;
 }
 
 /* React Big Calendar Overrides */

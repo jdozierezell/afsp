@@ -39,6 +39,7 @@ const ChapterSocials = ({ socialAccounts }) => {
 								rel="noopener noreferrer"
 							>
 								<IconFacebook
+									id="facebook-chapter-social"
 									color={styles.colors.white}
 									iconCSS={iconCSS}
 								/>
@@ -53,6 +54,7 @@ const ChapterSocials = ({ socialAccounts }) => {
 								rel="noopener noreferrer"
 							>
 								<IconTwitter
+									id="twitter-chapter-social"
 									color={styles.colors.white}
 									iconCSS={iconCSS}
 								/>
@@ -67,6 +69,7 @@ const ChapterSocials = ({ socialAccounts }) => {
 								rel="noopener noreferrer"
 							>
 								<IconInstagram
+									id="instagram-chapter-social"
 									color={styles.colors.white}
 									iconCSS={iconCSS}
 								/>

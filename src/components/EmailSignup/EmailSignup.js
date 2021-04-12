@@ -70,14 +70,14 @@ const formCSS = css`
 	button {
 		width: 100% !important;
 		font-family: ${styles.fonts.avenirBold} !important;
-		font-size: 18px !important;
+		font-size: ${styles.scale.px18} !important;
 		color: hsla(355, 84.3%, 50%, 1) !important;
 		text-align: center !important;
-		line-height: 50px !important;
+		line-height: ${styles.scale.px50} !important;
 		background-color: hsla(0, 0%, 100%, 1) !important;
-		border-radius: 30px !important;
-		border: solid 2px hsla(355, 84.3%, 50%, 1) !important;
-		padding: 0px 32px !important;
+		border-radius: ${styles.scale.px30} !important;
+		border: solid ${styles.scale.px2} hsla(355, 84.3%, 50%, 1) !important;
+		padding: 0px ${styles.scale.px32} !important;
 		display: inline-block !important;
 		text-decoration: none !important;
 		cursor: pointer !important;
@@ -172,12 +172,6 @@ const EmailSignup = ({ formId, children }) => {
 					})
 				}}
 			/>
-			{/* <div css={subscribeCSS}>
-				<input placeholder="Email address" type="text" />
-				<a className="secondary-button" href="https://example.com">
-					Subscribe
-				</a>
-			</div> */}
 		</aside>
 	)
 }

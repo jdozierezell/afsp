@@ -2,17 +2,17 @@ import React from 'react'
 
 import { css } from '@emotion/react'
 
-const IconYouTube = ({ color, iconCSS }) => {
+const IconYouTube = ({ id, color, iconCSS }) => {
 	return (
 		<svg
-			aria-labelledby="theMightyLogo"
+			aria-labelledby={id}
 			viewBox="-135 311.7 339.3 171.3"
 			css={css`
 				${iconCSS};
 				fill: ${color};
 			`}
 		>
-			<title id="theMightyLogo">AFSP on The Mighty</title>
+			<title id={id}>AFSP on The Mighty</title>
 			<g>
 				<g>
 					<path
