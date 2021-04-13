@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/react'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
 
 import Layout from '../components/Layout'
 
@@ -13,6 +16,9 @@ import CarouselResourceContainer from '../components/Carousels/CarouselResourceC
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 const landingTitle = css`
 	margin: 150px 24px 0;
@@ -91,7 +97,72 @@ const Landing = ({ data: { landing } }) => {
 	}
 	const [readMore, setReadMore] = useState(false)
 	let adjacent = 0
-
+	let events = {
+		title: '',
+		details: [],
+	}
+	if (landing.eventCalendar.length > 0) {
+		landing.eventCalendar.forEach(event => {
+			if (event.__typename === 'DatoCmsCampaignName') {
+				events.title = `${event.campaignName} event calendar`
+			} else if (event.__typename === 'DatoCmsEventsList') {
+				event.events.forEach(e => {
+					let start, end
+					let eventObject = {
+						__typename: 'Event',
+						title: e.title,
+						startDate: e.startDateAndTime
+							? dayjs(e.startDateAndTime)
+									.tz('America/New_York')
+									.format('MMMM D @ h:mm a ET')
+							: null,
+						endDate: e.endDateAndTime
+							? dayjs(e.endDateAndTime)
+									.tz('America/New_York')
+									.format('MMMM D @ h:mm a ET')
+							: null,
+						buttonText: e.buttonText,
+						url: e.url,
+						eventCode: e.eventCode,
+					}
+					// format start date and time
+					if (e.startDateAndTime.indexOf('00:00:00') !== -1) {
+						start = dayjs(e.startDateAndTime)
+							.tz('America/New_York')
+							.format('MMMM D')
+					} else if (e.startDateAndTime.indexOf(':00:00') === -1) {
+						start = dayjs(e.startDateAndTime)
+							.tz('America/New_York')
+							.format('MMMM D @ h:mm a ET')
+					} else {
+						start = dayjs(e.startDateAndTime)
+							.tz('America/New_York')
+							.format('MMMM D @ h a ET')
+					}
+					// format end date and time
+					if (e.endDateAndTime) {
+						if (e.endDateAndTime.indexOf('00:00:00') !== -1) {
+							end = dayjs(e.endDateAndTime)
+								.tz('America/New_York')
+								.format('MMMM D')
+						} else if (e.endDateAndTime.indexOf(':00:00') === -1) {
+							end = dayjs(e.endDateAndTime)
+								.tz('America/New_York')
+								.format('MMMM D @ h:mm a ET')
+						} else {
+							end = dayjs(e.endDateAndTime)
+								.tz('America/New_York')
+								.format('MMMM D @ h a ET')
+						}
+					}
+					eventObject.date = e.endDateAndTime
+						? `${start} – ${end}`
+						: start
+					events.details.push(eventObject)
+				})
+			}
+		})
+	}
 	return (
 		<Layout
 			theme={styles.logo.mobileDarkDesktopDark}
@@ -148,8 +219,12 @@ const Landing = ({ data: { landing } }) => {
 					addCSS={channelCSS}
 				/>
 			)}
-			{landing.eventCalendar.length > 0 && (
-				<Calendar events={landing.eventCalendar} />
+			{events.details.length > 0 && (
+				<CarouselDetailContainer
+					content={events}
+					eventTitleSize="1.4em"
+					id="national-events"
+				/>
 			)}
 			{landing.ctaChapterResourceDetailList.map((item, index) => {
 				const prevIndex = index > 0 ? index - 1 : null
@@ -182,6 +257,7 @@ const Landing = ({ data: { landing } }) => {
 								key={index}
 								listHeading={item.listHeading}
 								resources={item.resource}
+								randomize={item.randomize}
 								addCSS={css`
 									background-color: ${adjacent % 2 === 1
 										? styles.colors.lightGray
@@ -281,6 +357,7 @@ export const query = graphql`
 					id
 					listHeading
 					displayAsCarousel
+					randomize
 					resource {
 						... on DatoCmsStatistic {
 							__typename

@@ -34,7 +34,12 @@ const carouselCSS = css`
 	}
 `
 
-const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
+const CarouselResourceContainer = ({
+	listHeading,
+	resources,
+	randomize,
+	addCSS,
+}) => {
 	const id = createAnchor(listHeading)
 	const responsive = {
 		superLargeDesktop: {
@@ -57,6 +62,9 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 			breakpoint: { max: 464, min: 0 },
 			items: 1,
 		},
+	}
+	if (randomize) {
+		resources = resources.sort(() => Math.random() - 0.5)
 	}
 	return (
 		<section
