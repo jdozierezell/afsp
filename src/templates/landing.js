@@ -10,7 +10,6 @@ import Layout from '../components/Layout'
 import { styles } from '../css/css'
 
 import ChannelContainer from '../components/Channel/ChannelContainer'
-import Calendar from '../components/Calendar/Calendar'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import CarouselResourceContainer from '../components/Carousels/CarouselResourceContainer'
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
