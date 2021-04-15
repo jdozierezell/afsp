@@ -7,6 +7,8 @@ const poppy = 'hsla(355, 84.3%, 50%, 1)' // #eb1426
 const poppyHover = 'hsla(355, 84.3%, 45%, 1)'
 const green = 'hsla(156, 69%, 50.6%, 1)' // #2cd893
 const fuchsia = 'hsla(326, 75%, 49%, 1)'
+const brown = 'hsla(29, 68%, 30%, 1)'
+const orange = 'hsla(29, 100%, 60%, 1)'
 const white = 'hsla(0, 0%, 100%, 1)'
 const black = 'hsla(0, 0%, 0%, 1)'
 
@@ -35,13 +37,15 @@ export const styles = {
 		fuchsia,
 	],
 	ageRaceMethodGraphColors: [
+		darkGray,
 		blue,
 		yellow,
 		poppy,
-		green,
 		darkBlue,
+		green,
 		fuchsia,
-		darkGray,
+		brown,
+		orange,
 	],
 	fonts: {
 		avenirRegular: 'AvenirNextLTPro-Regular, Arial, sans-serif',

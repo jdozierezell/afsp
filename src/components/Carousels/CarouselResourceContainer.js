@@ -96,7 +96,10 @@ const CarouselResourceContainer = ({ listHeading, resources, addCSS }) => {
 							'DatoCmsDownload'
 						) {
 							image = resource.coverImage
-							link = resource.resourceLink[0].download.url
+							link = resource.resourceLink[0].download.url.replace(
+								'?auto=format',
+								''
+							)
 							linkText = 'Download and share'
 							external = false
 						} else if (
