@@ -370,7 +370,10 @@ export const query = graphql`
 				}
 				... on DatoCmsResourceList {
 					__typename
+					id
 					listHeading
+					displayAsCarousel
+					randomize
 					resource {
 						... on DatoCmsDetail {
 							__typename
