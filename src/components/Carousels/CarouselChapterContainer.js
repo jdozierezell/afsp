@@ -79,6 +79,7 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 	useEffect(() => {
 		// ipapi.co and ipregistry.co are also nice options if pro.ip-api.com fails
 		if (displayChapters.length === 0) {
+			console.log('fetch heroku')
 			const endpoint =
 				'https://pro.ip-api.com/json/?fields=zip&key=kk9BWBSYqm9ZTDj'
 			axios.get(endpoint).then(res => {

@@ -129,6 +129,7 @@ const FindASupportGroup = ({ data: { search } }) => {
 	}
 
 	useEffect(() => {
+		console.log('fetch heroku')
 		axios
 			.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
 				zip: zip,
@@ -150,6 +151,7 @@ const FindASupportGroup = ({ data: { search } }) => {
 			seo={search.seoMetaTags}
 			structuredData={structuredData}
 		>
+			{console.log(supportGroups)}
 			<HeroModelSearch
 				title={search.title}
 				description={search.brief}

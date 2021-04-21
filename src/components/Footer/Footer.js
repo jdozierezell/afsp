@@ -138,6 +138,13 @@ const Footer = ({ nav }) => {
 				}}
 				url="//siteimproveanalytics.com/js/siteanalyze_6019066.js"
 			/>
+			<Script
+				attributes={{
+					async: '',
+					type: 'text/javascript',
+				}}
+				url="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=JXzNvL"
+			/>
 		</>
 	)
 }

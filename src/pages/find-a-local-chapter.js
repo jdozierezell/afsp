@@ -92,6 +92,7 @@ const FindALocalChapter = ({ data: { search } }) => {
 	}
 
 	useEffect(() => {
+		console.log('fetch heroku')
 		axios
 			.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
 				zip: zip,
