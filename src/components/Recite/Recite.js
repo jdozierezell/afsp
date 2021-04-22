@@ -105,22 +105,19 @@ const ReciteComponent = () => {
 					  )
 					: loadService()
 			}
+			const serviceFunction = (i, e) => {
+				loadService()
+				return false
+			}
 			document
 				.getElementById('reciteme')
-				.addEventListener('click', function (i, e) {
-					loadService()
-					return false
-				})
+				.addEventListener('click', serviceFunction)
 			setFirstRun(false)
 			setInterval(() => {
 				const arrayItem = Math.floor(Math.random() * 10)
 				setA11yText(a11y[arrayItem].a11y)
 			}, 2000)
-			return () =>
-				window.removeEventListener('click', function (i, e) {
-					loadService()
-					return false
-				})
+			return () => window.removeEventListener('click', serviceFunction)
 		}
 	}, [a11y, firstRun])
 	return (
