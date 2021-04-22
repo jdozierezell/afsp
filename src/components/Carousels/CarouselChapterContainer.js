@@ -95,7 +95,18 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 					)
 					.then(res => {
 						setDisplayChapters(res.data.chapterArray)
+						// return res.data.chapterArray
 					})
+				// .then(chapters => {
+				// 	chapters.forEach(chapter => {
+				// 		delete chapter[0].zips
+				// 	})
+				// 	localStorage.setItem(
+				// 		'chapters',
+				// 		JSON.stringify(chapters)
+				// 	)
+				// 	console.log(localStorage)
+				// })
 			})
 		}
 	}, [])

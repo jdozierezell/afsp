@@ -20,7 +20,7 @@ const videoHeroCSS = css`
 
 const videoImageCoverCSS = css`
 	line-height: 0;
-	height: calc(100vw / 1.78);
+	/* height: calc(100vw / 1.78); */
 	min-height: 300px;
 	/* max-height: 700px; */
 	width: 100%;
@@ -29,7 +29,7 @@ const videoImageCoverCSS = css`
 	background-position: center;
 	background-size: cover;
 	@media (min-width: ${styles.screens.tablet}px) {
-		height: calc(100vw);
+		/* height: calc(100vw); */
 		grid-area: 1 / 1 / 5 / 3;
 	}
 	video {
