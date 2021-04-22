@@ -73,12 +73,18 @@ const RefinementList = ({
 		}
 		setUpdateDropdown(false)
 	}, [attribute, items, updateDropdown, searchState])
-
+	const displayID = displayAttribute
+		.replace(/[^A-Za-z0-9]/g, '-')
+		.toLowerCase()
 	return (
 		<>
 			<div css={refinementListCSS}>
-				<h3>{displayAttribute}</h3>
+				<h3 id={`${displayID}-label`} htmlFor={displayID}>
+					{displayAttribute}
+				</h3>
 				<Select
+					aria-describedby={`${displayID}-label`}
+					id={displayID}
 					css={selectCSS}
 					styles={{
 						placeholder: (provided, state) => ({

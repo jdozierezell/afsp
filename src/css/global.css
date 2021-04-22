@@ -64,7 +64,8 @@ a {
 }
 
 a:hover {
-	text-decoration: none;
+	color: hsla(355, 84.3%, 45%, 1);
+	font-family: 'AvenirNextLTPro-Demi', Arial, sans-serif;
 }
 
 th,
