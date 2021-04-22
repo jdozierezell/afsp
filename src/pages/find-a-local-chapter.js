@@ -60,6 +60,8 @@ const FindALocalChapter = ({ data: { search } }) => {
 		radius: NumberParam,
 	})
 
+	const [firstRun, setFirstRun] = useState(true)
+
 	const updateRadius = newRadius => setRadius(newRadius)
 
 	const updateZip = newZip => {
@@ -71,39 +73,49 @@ const FindALocalChapter = ({ data: { search } }) => {
 			zip: zip,
 			radius: radius,
 		})
-		axios
-			.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
-				zip: zip,
-				radius: radius,
-				source: 'chapterSearch',
-				type: 'chapter',
-			})
-			.then(res => {
-				console.log(res.data.chapterArray)
-				setSearchResults(res.data.chapterArray)
-				if (res.data.chapterArray.length === 0 && zip.length !== 0) {
-					console.log(true)
-					setNoResults(true)
-				} else {
-					console.log(false)
-					setNoResults(false)
-				}
-			})
+		if (/^[0-9]{5}-?([0-9]{4})?$/g.test(zip)) {
+			axios
+				.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
+					zip: zip,
+					radius: radius,
+					source: 'chapterSearch',
+					type: 'chapter',
+				})
+				.then(res => {
+					console.log(res.data.chapterArray)
+					setSearchResults(res.data.chapterArray)
+					if (
+						res.data.chapterArray.length === 0 &&
+						zip.length !== 0
+					) {
+						setNoResults(true)
+					} else {
+						setNoResults(false)
+					}
+				})
+		}
 	}
 
 	useEffect(() => {
-		console.log('fetch heroku')
-		axios
-			.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
-				zip: zip,
-				radius: radius,
-				source: 'chapterSearch',
-				type: 'chapter',
-			})
-			.then(res => {
-				setSearchResults(res.data.chapterArray)
-			})
-	}, [])
+		if (firstRun) {
+			if (/^[0-9]{5}-?([0-9]{4})?$/g.test(zip)) {
+				axios
+					.post(
+						'https://serene-dusk-44738.herokuapp.com/zip-lookup',
+						{
+							zip: zip,
+							radius: radius,
+							source: 'chapterSearch',
+							type: 'chapter',
+						}
+					)
+					.then(res => {
+						setSearchResults(res.data.chapterArray)
+					})
+			}
+			setFirstRun(false)
+		}
+	}, [firstRun, radius, zip])
 
 	return (
 		<Layout
@@ -111,7 +123,6 @@ const FindALocalChapter = ({ data: { search } }) => {
 			seo={search.seoMetaTags}
 			structuredData={structuredData}
 		>
-			{console.log(searchResults)}
 			<HeroModelSearch
 				title={search.title}
 				description={search.brief}

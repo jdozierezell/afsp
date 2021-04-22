@@ -109,7 +109,7 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 				// })
 			})
 		}
-	}, [])
+	}, [displayChapters.length])
 
 	return (
 		<div

@@ -91,7 +91,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	useEffect(() => {
 		let storiesUpdates = []
 		if (stories.length === 0 && stories[0] !== 'no stories') {
-			// setStories(['no stories'])
 			if (
 				(realStories.edges.length === 0 || hideNationalStories) &&
 				chapterStoriesUpdates.edges.length === 0 &&
@@ -189,8 +188,11 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				})
 		}
 	}, [
+		chapterStoriesAndUpdates,
 		chapterStoriesUpdates,
 		chapterDonorDriveId,
+		customizeStoryOrder,
+		hideNationalStories,
 		realStories.edges,
 		stories,
 		events,

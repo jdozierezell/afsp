@@ -77,6 +77,8 @@ const FindASupportGroup = ({ data: { search } }) => {
 		country: StringParam,
 	})
 
+	const [firstRun, setFirstRun] = useState(true)
+
 	const updateRadius = newRadius => setRadius(newRadius)
 
 	const updateZip = newZip => setZip(newZip)
@@ -113,37 +115,46 @@ const FindASupportGroup = ({ data: { search } }) => {
 			radius: radius,
 			country: country,
 		})
-		axios
-			.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
-				zip: zip,
-				radius: radius,
-				nonus: nonus,
-				source: 'groupSearch',
-				type: 'supportGroup',
-			})
-			.then(res => {
-				setCountryGroups(res.data.arraysToSend.country)
-				setVirtualGroups(res.data.arraysToSend.virtual)
-				setSupportGroups(res.data.arraysToSend.group)
-			})
+		if (/^[0-9]{5}-?([0-9]{4})?$/g.test(zip)) {
+			axios
+				.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
+					zip: zip,
+					radius: radius,
+					nonus: nonus,
+					source: 'groupSearch',
+					type: 'supportGroup',
+				})
+				.then(res => {
+					setCountryGroups(res.data.arraysToSend.country)
+					setVirtualGroups(res.data.arraysToSend.virtual)
+					setSupportGroups(res.data.arraysToSend.group)
+				})
+		}
 	}
 
 	useEffect(() => {
-		console.log('fetch heroku')
-		axios
-			.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
-				zip: zip,
-				radius: radius,
-				nonus: nonus,
-				source: 'groupSearch',
-				type: 'supportGroup',
-			})
-			.then(res => {
-				setCountryGroups(res.data.arraysToSend.country)
-				setVirtualGroups(res.data.arraysToSend.virtual)
-				setSupportGroups(res.data.arraysToSend.group)
-			})
-	}, [])
+		if (firstRun) {
+			if (/^[0-9]{5}-?([0-9]{4})?$/g.test(zip)) {
+				axios
+					.post(
+						'https://serene-dusk-44738.herokuapp.com/zip-lookup',
+						{
+							zip: zip,
+							radius: radius,
+							nonus: nonus,
+							source: 'groupSearch',
+							type: 'supportGroup',
+						}
+					)
+					.then(res => {
+						setCountryGroups(res.data.arraysToSend.country)
+						setVirtualGroups(res.data.arraysToSend.virtual)
+						setSupportGroups(res.data.arraysToSend.group)
+					})
+			}
+			setFirstRun(false)
+		}
+	}, [firstRun, nonus, radius, zip])
 
 	return (
 		<Layout
@@ -151,7 +162,6 @@ const FindASupportGroup = ({ data: { search } }) => {
 			seo={search.seoMetaTags}
 			structuredData={structuredData}
 		>
-			{console.log(supportGroups)}
 			<HeroModelSearch
 				title={search.title}
 				description={search.brief}
@@ -171,8 +181,7 @@ const FindASupportGroup = ({ data: { search } }) => {
 				countryGroups={countryGroups}
 			/>
 			{(supportGroups.length >= 1 ||
-				(virtualGroups.length >= 1 && virtual) ||
-				zip.length >= 5) && (
+				(virtualGroups.length >= 1 && virtual)) && (
 				<SearchModelContainer
 					supportGroups={supportGroups}
 					virtual={virtual}

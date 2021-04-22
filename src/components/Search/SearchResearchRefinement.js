@@ -72,7 +72,7 @@ const RefinementList = ({
 			})
 		}
 		setUpdateDropdown(false)
-	}, [items, updateDropdown, searchState])
+	}, [attribute, items, updateDropdown, searchState])
 
 	return (
 		<>

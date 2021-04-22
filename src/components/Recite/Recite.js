@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { css } from '@emotion/react'
 
 import { styles } from '../../css/css'
@@ -7,21 +7,25 @@ const reciteButtonCSS = css`
 	background-color: transparent;
 	border: none;
 	font-family: ${styles.fonts.avenirDemi};
+	cursor: pointer;
 `
 
 const ReciteComponent = () => {
-	const a11y = [
-		{ lang: 'English', a11y: 'Accessibility' },
-		{ lang: 'French', a11y: 'Accessibilité' },
-		{ lang: 'Filipino', a11y: 'Pag-access' },
-		{ lang: 'Hindi', a11y: 'सरल उपयोग' },
-		{ lang: 'Spanish', a11y: 'Accesibilidad' },
-		{ lang: 'German', a11y: 'Barrierefreiheit' },
-		{ lang: 'Portuguese', a11y: 'Acessibilidade' },
-		{ lang: 'Russian', a11y: 'Доступность' },
-		{ lang: 'Chinese (Simplified)', a11y: '辅助功能' },
-		{ lang: 'Korean', a11y: '접근성' },
-	]
+	const a11y = useMemo(
+		() => [
+			{ lang: 'English', a11y: 'Accessibility' },
+			{ lang: 'French', a11y: 'Accessibilité' },
+			{ lang: 'Filipino', a11y: 'Pag-access' },
+			{ lang: 'Hindi', a11y: 'सरल उपयोग' },
+			{ lang: 'Spanish', a11y: 'Accesibilidad' },
+			{ lang: 'German', a11y: 'Barrierefreiheit' },
+			{ lang: 'Portuguese', a11y: 'Acessibilidade' },
+			{ lang: 'Russian', a11y: 'Доступность' },
+			{ lang: 'Chinese (Simplified)', a11y: '辅助功能' },
+			{ lang: 'Korean', a11y: '접근성' },
+		],
+		[]
+	)
 	const [firstRun, setFirstRun] = useState(true)
 	const [a11yText, setA11yText] = useState(a11y[0].a11y)
 	useEffect(() => {
@@ -39,7 +43,7 @@ const ReciteComponent = () => {
 				var a = document.createElement('script')
 				a.type = 'text/javascript'
 				a.readyState
-					? (a.onreadystatechange = function() {
+					? (a.onreadystatechange = function () {
 							if (
 								'loaded' === a.readyState ||
 								'complete' === a.readyState
@@ -49,7 +53,7 @@ const ReciteComponent = () => {
 									void 0 !== b && b()
 					  })
 					: void 0 !== b &&
-					  (a.onload = function() {
+					  (a.onload = function () {
 							b()
 					  })
 				a.src = c
@@ -77,14 +81,14 @@ const ReciteComponent = () => {
 				)
 					if (loaded[a] === b) return
 				loaded.push(b)
-				loadScript(serviceUrl + serviceKey, function() {
+				loadScript(serviceUrl + serviceKey, function () {
 					// eslint-disable-next-line no-undef
 					'function' === typeof _reciteLoaded && _reciteLoaded()
 					'function' === typeof c && c()
 					// eslint-disable-next-line no-undef
 					Recite.load(options)
 					// eslint-disable-next-line no-undef
-					Recite.Event.subscribe('Recite:load', function() {
+					Recite.Event.subscribe('Recite:load', function () {
 						// eslint-disable-next-line no-undef
 						Recite.enable()
 					})
@@ -93,16 +97,17 @@ const ReciteComponent = () => {
 			'true' === _rc('Recite.Persist') && loadService()
 			if ((autoLoad && 'false' !== _rc('Recite.Persist')) || frag) {
 				document.addEventListener
-					? document.addEventListener('DOMContentLoaded', function(
-							c
-					  ) {
-							loadService()
-					  })
+					? document.addEventListener(
+							'DOMContentLoaded',
+							function (c) {
+								loadService()
+							}
+					  )
 					: loadService()
 			}
 			document
 				.getElementById('reciteme')
-				.addEventListener('click', function(i, e) {
+				.addEventListener('click', function (i, e) {
 					loadService()
 					return false
 				})
@@ -112,7 +117,7 @@ const ReciteComponent = () => {
 				setA11yText(a11y[arrayItem].a11y)
 			}, 2000)
 		}
-	}, [firstRun])
+	}, [a11y, firstRun])
 	return (
 		<button id="reciteme" className="reciteme" css={reciteButtonCSS}>
 			{a11yText}

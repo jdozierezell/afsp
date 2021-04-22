@@ -161,7 +161,6 @@ const ShareableContainer = ({
 		}, 50) // timeout function gives setSelected enough time to re-render canvas so we lose the transformer handles
 	}
 	const handleScroll = () => {
-		console.log(window.scrollY)
 		if (window.innerWidth > 768) {
 			if (window.scrollY >= 220) {
 				setKonvaPosition('fixed')
@@ -181,7 +180,6 @@ const ShareableContainer = ({
 				setTop('220px')
 			}
 		} else {
-			console.log(window.scrollY)
 			if (window.scrollY >= 550) {
 				setKonvaPosition('fixed')
 				setControlPosition('relative')
@@ -218,7 +216,7 @@ const ShareableContainer = ({
 		setStateDimensions()
 		window.addEventListener('scroll', handleScroll)
 		return () => window.removeEventListener('scroll', handleScroll)
-	}, [isSelected, imageWidth, imageHeight])
+	}, [backgroundImage, isSelected, imageWidth, imageHeight, overlays.length])
 	return (
 		<div css={konvaContainerCSS}>
 			<div

@@ -86,7 +86,7 @@ const dropDownCSS = css`
 	background-image: url(${SolidArrow});
 	background-repeat: no-repeat;
 	background-position: right ${styles.scale.px16} top ${styles.scale.px14};
-	background-size: ${styles.scale.px24};
+	background-size: ${styles.scale.px16};
 	color: ${styles.colors.darkGray};
 	font-size: 18px;
 	line-height: 50px;

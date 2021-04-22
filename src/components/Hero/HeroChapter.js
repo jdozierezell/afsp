@@ -85,7 +85,7 @@ const chapterDescriptionCSS = css`
 	:last-of-type {
 		margin-bottom: ${styles.scale.px40};
 		@media (min-width: ${styles.screens.tablet}px) {
-			margin-bottom: ${styles.scale.px60};
+			margin-bottom: ${styles.scale.px16};
 			color: ${styles.colors.white};
 		}
 	}
