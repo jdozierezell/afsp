@@ -116,6 +116,11 @@ const ReciteComponent = () => {
 				const arrayItem = Math.floor(Math.random() * 10)
 				setA11yText(a11y[arrayItem].a11y)
 			}, 2000)
+			return () =>
+				window.removeEventListener('click', function (i, e) {
+					loadService()
+					return false
+				})
 		}
 	}, [a11y, firstRun])
 	return (

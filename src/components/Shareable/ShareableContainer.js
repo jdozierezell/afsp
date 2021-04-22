@@ -215,7 +215,10 @@ const ShareableContainer = ({
 		setImageOffsetY(imageHeight / 2)
 		setStateDimensions()
 		window.addEventListener('scroll', handleScroll)
-		return () => window.removeEventListener('scroll', handleScroll)
+		return () => {
+			window.removeEventListener('resize', setStateDimensions)
+			window.removeEventListener('scroll', handleScroll)
+		}
 	}, [backgroundImage, isSelected, imageWidth, imageHeight, overlays.length])
 	return (
 		<div css={konvaContainerCSS}>
