@@ -15,6 +15,7 @@ import CarouselResourceContainer from '../components/Carousels/CarouselResourceC
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
+import EmailSignupBar from '../components/EmailSignup/EmailSignupBar'
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -100,6 +101,12 @@ const Landing = ({ data: { landing } }) => {
 		title: '',
 		details: [],
 	}
+	let hideEmailLayout
+	landing.ctaChapterResourceDetailList.forEach(item => {
+		if (item.__typename === 'DatoCmsEmailBar') {
+			hideEmailLayout = true
+		}
+	})
 	if (landing.eventCalendar.length > 0) {
 		landing.eventCalendar.forEach(event => {
 			if (event.__typename === 'DatoCmsCampaignName') {
@@ -167,6 +174,7 @@ const Landing = ({ data: { landing } }) => {
 			theme={styles.logo.mobileDarkDesktopDark}
 			seo={landing.seoMetaTags}
 			structuredData={structuredData}
+			hideEmailLayout={hideEmailLayout}
 		>
 			<h1 css={landingTitle}>{landing.title}</h1>
 			<div
@@ -226,12 +234,11 @@ const Landing = ({ data: { landing } }) => {
 				/>
 			)}
 			{landing.ctaChapterResourceDetailList.map((item, index) => {
+				const itemsToCheck = ['DatoCmsResourceList', 'DatoCmsEmailBar']
 				const prevIndex = index > 0 ? index - 1 : null
 				if (
 					prevIndex !== null &&
-					landing.ctaChapterResourceDetailList[index].__typename ===
-						landing.ctaChapterResourceDetailList[prevIndex]
-							.__typename
+					itemsToCheck.includes(item.__typename)
 				) {
 					adjacent++
 				} else {
@@ -248,6 +255,19 @@ const Landing = ({ data: { landing } }) => {
 				} else if (item.__typename === 'DatoCmsChapterConnection') {
 					if (item.showChapterConnection === true) {
 						return <CarouselChapterContainer key={index} />
+					}
+				} else if (item.__typename === 'DatoCmsEmailBar') {
+					if (item.showEmail === true) {
+						return (
+							<EmailSignupBar
+								addCSS={css`
+									background-color: ${adjacent % 2 === 1
+										? styles.colors.lightGray
+										: styles.colors.white};
+								`}
+								key={index}
+							></EmailSignupBar>
+						)
 					}
 				} else if (item.__typename === 'DatoCmsResourceList') {
 					if (item.displayAsCarousel) {
@@ -351,6 +371,11 @@ export const query = graphql`
 			}
 			brief
 			ctaChapterResourceDetailList {
+				... on DatoCmsEmailBar {
+					__typename
+					id
+					showEmail
+				}
 				... on DatoCmsResourceList {
 					__typename
 					id

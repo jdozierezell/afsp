@@ -13,6 +13,7 @@ const Layout = ({
 	seo,
 	facebook,
 	structuredData,
+	hideEmailLayout,
 }) => {
 	const data = useStaticQuery(graphql`
 		query {
@@ -54,7 +55,7 @@ const Layout = ({
 				overrideLight={overrideLight}
 			/>
 			<main id="main">{children}</main>
-			<EmailSignupBar></EmailSignupBar>
+			{!hideEmailLayout && <EmailSignupBar></EmailSignupBar>}
 			<Footer nav={footerNav} />
 		</>
 	)

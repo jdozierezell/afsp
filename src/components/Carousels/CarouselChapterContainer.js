@@ -10,13 +10,10 @@ import 'react-multi-carousel/lib/styles.css'
 import CarouselChapter from './CarouselChapter'
 
 const defaultCarouselCSS = css`
-	padding: ${styles.scale.px25} ${styles.scale.px24};
 	overflow: hidden;
 	position: relative;
-	@media (min-width: ${styles.screens.mobile}px) {
-		padding: ${styles.scale.px80} ${styles.scale.px50} ${styles.scale.px35};
-		background-color: ${styles.colors.lightGray};
-	}
+	padding: ${styles.scale.px80} ${styles.scale.px50} ${styles.scale.px35};
+	background-color: ${styles.colors.lightGray};
 	h2 {
 		font-size: ${styles.scale.px36};
 		line-height: ${styles.scale.px42};

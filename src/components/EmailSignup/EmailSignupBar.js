@@ -6,7 +6,7 @@ import EmailSignupModal from './EmailSignupModal'
 import { styles } from '../../css/css'
 
 const emailCSS = css`
-	background-color: ${styles.colors.lightGray};
+	background-color: ${styles.colors.white};
 	padding: ${styles.scale.px50} ${styles.scale.px24};
 	color: ${styles.colors.black};
 	text-align: center;
@@ -54,7 +54,7 @@ const emailCSS = css`
 	}
 `
 
-const EmailSignupBar = () => {
+const EmailSignupBar = ({ addCSS }) => {
 	const [modalIsOpen, setIsOpen] = useState(false)
 	const openModal = () => {
 		setIsOpen(true)
@@ -62,9 +62,14 @@ const EmailSignupBar = () => {
 	const closeModal = () => {
 		setIsOpen(false)
 	}
-
 	return (
-		<aside css={emailCSS} aria-label="email signup form">
+		<aside
+			css={css`
+				${emailCSS};
+				${addCSS};
+			`}
+			aria-label="email signup form"
+		>
 			<div>
 				<h2 id="klaviyo-signup">Sign up for email alerts</h2>
 				<p>

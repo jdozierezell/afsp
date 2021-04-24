@@ -20,11 +20,8 @@ const carouselComponentCSS = css`
 `
 
 const carouselImageCSS = css`
-	border-radius: 5px;
 	margin: 0;
-	@media (min-width: ${styles.screens.tablet}px) {
-		border-radius: 5px 5px 0 0;
-	}
+	border-radius: 5px 5px 0 0;
 `
 
 const carouselTitleCSS = css`
@@ -32,9 +29,7 @@ const carouselTitleCSS = css`
 	font-family: ${styles.fonts.avenirDemi};
 	padding: ${styles.scale.px7} 0 0;
 	color: ${styles.colors.poppy};
-	@media (min-width: ${styles.screens.mobile}px) {
-		padding: ${styles.scale.px17} ${styles.scale.px30};
-	}
+	padding: ${styles.scale.px17} ${styles.scale.px30};
 `
 
 const CarouselChapter = ({ title, titleHref, image, alt }) => {
