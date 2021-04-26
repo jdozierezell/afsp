@@ -76,35 +76,39 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 	useEffect(() => {
 		// ipapi.co and ipregistry.co are also nice options if pro.ip-api.com fails
 		if (displayChapters.length === 0) {
-			console.log('fetch heroku')
-			const endpoint =
-				'https://pro.ip-api.com/json/?fields=zip&key=kk9BWBSYqm9ZTDj'
-			axios.get(endpoint).then(res => {
-				axios
-					.post(
-						'https://serene-dusk-44738.herokuapp.com/zip-lookup',
-						{
-							zip: res.data.zip,
-							radius: 100,
-							source: 'carouselSearch',
-							type: 'chapter',
-						}
-					)
-					.then(res => {
-						setDisplayChapters(res.data.chapterArray)
-						// return res.data.chapterArray
-					})
-				// .then(chapters => {
-				// 	chapters.forEach(chapter => {
-				// 		delete chapter[0].zips
-				// 	})
-				// 	localStorage.setItem(
-				// 		'chapters',
-				// 		JSON.stringify(chapters)
-				// 	)
-				// 	console.log(localStorage)
-				// })
-			})
+			if (sessionStorage.chapters) {
+				const chapters = JSON.parse(sessionStorage.chapters)
+				setDisplayChapters(chapters)
+			} else {
+				console.log('fetch heroku')
+				const endpoint =
+					'https://pro.ip-api.com/json/?fields=zip&key=kk9BWBSYqm9ZTDj'
+				axios.get(endpoint).then(res => {
+					axios
+						.post(
+							'https://serene-dusk-44738.herokuapp.com/zip-lookup',
+							{
+								zip: res.data.zip,
+								radius: 100,
+								source: 'carouselSearch',
+								type: 'chapter',
+							}
+						)
+						.then(res => {
+							setDisplayChapters(res.data.chapterArray)
+							return res.data.chapterArray
+						})
+						.then(chapters => {
+							chapters.forEach(chapter => {
+								delete chapter[0].zips
+							})
+							sessionStorage.setItem(
+								'chapters',
+								JSON.stringify(chapters)
+							)
+						})
+				})
+			}
 		}
 	}, [displayChapters.length])
 
