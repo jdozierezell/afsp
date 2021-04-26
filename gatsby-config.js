@@ -24,7 +24,16 @@ module.exports = {
 		`gatsby-plugin-image`,
 		`gatsby-plugin-sharp`,
 		`gatsby-transformer-sharp`,
-		`gatsby-plugin-netlify`,
+		{
+			resolve: `gatsby-plugin-netlify`,
+			options: {
+				headers: {
+					'/*': [
+						'Content-Security-Policy: frame-ancestors "self" https://preview-afsp.gtsb.io https://*.virtual-tables.com',
+					],
+				},
+			},
+		},
 		{
 			resolve: `gatsby-plugin-google-analytics`,
 			options: {
@@ -84,12 +93,12 @@ module.exports = {
 				disableLiveReload: false,
 			},
 		},
-		{
-			resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
-			options: {
-				// devMode: true,
-			},
-		},
+		// {
+		// 	resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
+		// 	options: {
+		// 		// devMode: true,
+		// 	},
+		// },
 		`gatsby-plugin-client-side-redirect`, // keep it in last in list
 	],
 }
