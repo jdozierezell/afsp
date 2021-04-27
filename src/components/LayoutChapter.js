@@ -14,6 +14,7 @@ const LayoutChapter = ({
 	email,
 	children,
 	seo,
+	structuredData,
 }) => {
 	const data = useStaticQuery(graphql`
 		query {
@@ -41,6 +42,11 @@ const LayoutChapter = ({
 		<>
 			<HelmetDatoCms seo={seo} favicon={data.site.faviconMetaTags}>
 				<html lang="en" />
+				<meta property="og:url" content={structuredData.url} />
+				<meta property="fb:app_id" content="925475567867156" />
+				<script type="application/ld+json">
+					{JSON.stringify(structuredData)}
+				</script>
 			</HelmetDatoCms>
 			<Header
 				nav={headerNav}

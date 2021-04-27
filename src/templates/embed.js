@@ -58,6 +58,7 @@ export const query = graphql`
 	query($slug: String) {
 		embed: datoCmsEmbedPage(slug: { eq: $slug }) {
 			title
+			slug
 			embed
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
