@@ -116,6 +116,39 @@ const AFSPCalendar = ({ data }) => {
 	const [chapterFilter, setChapterFilter] = useState(null)
 	const [programFilter, setProgramFilter] = useState(null)
 
+	let metaImage,
+		metaDescription = ''
+	data.calendar.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'suicide events',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: data.calendar.title,
+		lastReviewed: data.calendar.meta.publishedAt,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${data.calendar.slug}`,
+	}
+
 	let query =
 		typeof window !== `undefined`
 			? qs.parse(window.location.search.slice(1))
@@ -244,6 +277,7 @@ const AFSPCalendar = ({ data }) => {
 		<Layout
 			theme={styles.logo.mobileDarkDesktopDark}
 			seo={data.calendar.seoMetaTags}
+			structuredData={structuredData}
 		>
 			<section css={calendarCSS}>
 				<p>
@@ -329,6 +363,9 @@ export const query = graphql`
 			slug
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
+			}
+			meta {
+				publishedAt
 			}
 			programDescriptions {
 				programName
