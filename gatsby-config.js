@@ -16,6 +16,9 @@ module.exports = {
 				? `http://localhost:8000`
 				: `https://afsp.org`,
 	},
+	flags: {
+		DEV_SSR: true,
+	},
 	plugins: [
 		`gatsby-plugin-emotion`,
 		`gatsby-plugin-react-helmet`,
