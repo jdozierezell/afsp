@@ -70,7 +70,7 @@ const DeskMenuSection = ({ menuItem, id, overrideLight }) => {
 			? window.location.pathname.replace('/', '')
 			: false
 	)
-	const transitions = useTransition(showMenu, null, {
+	const transitions = useTransition(showMenu, {
 		from: { opacity: 0 },
 		enter: { opacity: 1 },
 		leave: { opacity: 0 },
@@ -92,7 +92,9 @@ const DeskMenuSection = ({ menuItem, id, overrideLight }) => {
 					setShowMenu(false)
 				}}
 				css={css`
-					/* pointer-events: ${currentPath === anchor ? 'none' : 'auto'}; */
+					/* pointer-events: ${currentPath === anchor
+						? 'none'
+						: 'auto'}; */
 				`}
 			>
 				<Link
@@ -104,15 +106,14 @@ const DeskMenuSection = ({ menuItem, id, overrideLight }) => {
 					{menuItem.displayTitle}
 				</Link>
 				{menuItem.navigationItem.length >= 1 &&
-					transitions.map(
-						({ item, key, props }) =>
+					transitions(
+						(styles, item) =>
 							item && (
 								<a.ul
 									css={css`
 										${megaCSS};
 									`}
-									key={key}
-									style={props}
+									style={styles}
 								>
 									{menuItem.navigationItem.map(
 										(link, index) => {
