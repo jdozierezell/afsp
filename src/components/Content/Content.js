@@ -43,6 +43,9 @@ const contentBodyCSS = css`
 			}
 		}
 	}
+	.td-two {
+		width: 50%;
+	}
 	table {
 		background: ${styles.colors.white};
 		padding: ${styles.scale.px24} 0;
