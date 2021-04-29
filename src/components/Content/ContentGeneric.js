@@ -17,10 +17,13 @@ import ContentTweet from './ContentTweet'
 const storyContentCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px80} ${styles.scale.px50};
+		margin: ${styles.scale.px50} ${styles.scale.px50} ${styles.scale.px80};
 	}
 	.secondary-button {
 		margin-right: ${styles.scale.px24};
+		:not(:last-child) {
+			margin-bottom: 0;
+		}
 	}
 	> a:not(:last-of-type) {
 		margin-bottom: ${styles.scale.px36};

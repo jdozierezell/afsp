@@ -112,6 +112,7 @@ textarea {
 
 .secondary-button:hover {
 	text-decoration: underline;
+	font-family: AvenirNextLTPro-Bold, Arial, sans-serif;
 }
 
 .full-width {
