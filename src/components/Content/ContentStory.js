@@ -187,6 +187,16 @@ const ContentStory = ({ data, pageUrl }) => {
 								story={true}
 							/>
 						)
+					} else if (article.__typename === 'DatoCmsActionButton') {
+						return (
+							<a
+								key={index}
+								className="secondary-button"
+								href={article.buttonLink}
+							>
+								{article.buttonText}
+							</a>
+						)
 					}
 					return ''
 				})}
