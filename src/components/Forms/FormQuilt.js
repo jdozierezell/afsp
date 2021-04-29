@@ -68,6 +68,9 @@ const selectCSS = css`
 	.react-select__input {
 		max-height: ${styles.scale.px42};
 	}
+	.react-select__placeholder {
+		color: ${styles.colors.darkGray};
+	}
 `
 
 const QuiltForm = () => {
@@ -228,6 +231,7 @@ const QuiltForm = () => {
 							name="state"
 							id="state"
 							title="state"
+							aria-labelledby="stateLabel"
 							css={selectCSS}
 							className="react-select"
 							classNamePrefix="react-select"
@@ -269,7 +273,7 @@ const QuiltForm = () => {
 									styles.colors.lightGray
 								img.height = 200
 								img.id = 'loadedImage'
-								img.onload = function() {
+								img.onload = function () {
 									URL.revokeObjectURL(this.src)
 								}
 								div.appendChild(img)

@@ -13,6 +13,9 @@ const selectCSS = css`
 	.react-select__input {
 		max-height: ${styles.scale.px42};
 	}
+	.react-select__placeholder {
+		color: ${styles.colors.darkGray};
+	}
 `
 
 const calendarFilterCSS = css`
