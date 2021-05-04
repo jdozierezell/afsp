@@ -105,6 +105,14 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
+			emails: allDatoCmsEmail {
+				edges {
+					node {
+						slug
+						title
+					}
+				}
+			}
 			embeds: allDatoCmsEmbedPage {
 				edges {
 					node {
@@ -182,6 +190,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	const customShareables = data.customShareables.edges
 	const details = data.details.edges
 	const detailsTagged = data.detailsTagged.edges
+	const emails = data.emails.edges
 	const embeds = data.embeds.edges
 	const grants = data.grants.edges
 	const imageLists = data.imageLists.edges
@@ -286,6 +295,16 @@ exports.createPages = async ({ graphql, actions }) => {
 				tag: tag,
 				intro: intro,
 				id: id,
+			},
+		})
+	})
+
+	emails.forEach(({ node }) => {
+		createPage({
+			path: `${node.slug}`,
+			component: path.resolve('./src/templates/email.js'),
+			context: {
+				slug: node.slug,
 			},
 		})
 	})
