@@ -78,6 +78,7 @@ const chapterDescriptionCSS = css`
 	@media (min-width: ${styles.screens.tablet}px) {
 		grid-area: 3 / 1 / 4 / 2;
 		margin: 0 ${styles.scale.px50};
+		color: ${styles.colors.white};
 	}
 	:first-of-type {
 		margin-top: ${styles.scale.px40};
@@ -86,7 +87,6 @@ const chapterDescriptionCSS = css`
 		margin-bottom: ${styles.scale.px40};
 		@media (min-width: ${styles.screens.tablet}px) {
 			margin-bottom: ${styles.scale.px16};
-			color: ${styles.colors.white};
 		}
 	}
 `
