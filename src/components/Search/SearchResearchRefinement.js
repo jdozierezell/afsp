@@ -39,6 +39,9 @@ const selectCSS = css`
 	.react-select__menu {
 		font-family: ${styles.fonts.avenirRegular};
 	}
+	.react-select__placeholder {
+		color: ${styles.colors.darkGray};
+	}
 `
 
 const RefinementList = ({
@@ -84,6 +87,7 @@ const RefinementList = ({
 				</h3>
 				<Select
 					aria-describedby={`${displayID}-label`}
+					aria-labelledby={`${displayID}-label`}
 					id={displayID}
 					css={selectCSS}
 					styles={{

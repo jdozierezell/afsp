@@ -16,6 +16,10 @@ module.exports = {
 				? `http://localhost:8000`
 				: `https://afsp.org`,
 	},
+	flags: {
+		FAST_DEV: true,
+		DEV_SSR: true,
+	},
 	plugins: [
 		`gatsby-plugin-emotion`,
 		`gatsby-plugin-react-helmet`,
@@ -24,6 +28,7 @@ module.exports = {
 		`gatsby-plugin-image`,
 		`gatsby-plugin-sharp`,
 		`gatsby-transformer-sharp`,
+		`gatsby-plugin-use-query-params`,
 		{
 			resolve: `gatsby-plugin-netlify`,
 			options: {

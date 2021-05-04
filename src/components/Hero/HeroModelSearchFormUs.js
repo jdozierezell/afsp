@@ -33,10 +33,13 @@ const HeroModelSearchFormUs = ({
 					}}
 				/>
 			</div>
-			<span>within</span>
+			<label htmlFor="radius" id="radiusLabel">
+				within
+			</label>
 			<select
 				css={dropDownCSS}
 				name="radius"
+				aria-labelledby="radiusLabel"
 				value={radius}
 				onChange={e => {
 					updateRadius(e.target.value)

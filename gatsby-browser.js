@@ -10,10 +10,3 @@ import './src/css/layout.css'
 import './src/css/global.css'
 import './src/css/emailSignup.css'
 import './static/fonts/gatsby-afsp.css'
-
-import React from 'react'
-import { QueryParamProvider } from 'use-query-params'
-
-export const wrapPageElement = ({ element }) => {
-	return <QueryParamProvider>{element}</QueryParamProvider>
-}

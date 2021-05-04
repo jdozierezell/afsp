@@ -85,6 +85,9 @@ const selectCSS = css`
 	.react-select__input {
 		max-height: ${styles.scale.px42};
 	}
+	.react-select__placeholder {
+		color: ${styles.colors.darkGray};
+	}
 `
 
 const SupportGroupForm = () => {
@@ -447,10 +450,11 @@ const SupportGroupForm = () => {
 
 						<Toggle
 							id="newMembers"
+							aria-labelledby="newMembersLabel"
 							onChange={handleToggleChange}
 							defaultChecked={true}
 						/>
-						<label id="newMembers" htmlFor="newMembers">
+						<label id="newMembersLabel" htmlFor="newMembers">
 							New Members
 						</label>
 						<p className="toggleInstructions">
@@ -584,6 +588,7 @@ const SupportGroupForm = () => {
 
 						<Toggle
 							name="differentSubmitter"
+							aria-labelledby="differentSubmitter"
 							onChange={e => {
 								if (e.target.checked) {
 									setShowSubmitter(true)
@@ -872,6 +877,7 @@ const SupportGroupForm = () => {
 						)}
 						<Select
 							css={selectCSS}
+							aria-labelledby="facilitatorLabel"
 							id="facilitator"
 							className="react-select"
 							classNamePrefix="react-select"

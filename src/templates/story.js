@@ -113,6 +113,11 @@ export const query = graphql`
 					__typename
 					copy
 				}
+				... on DatoCmsActionButton {
+					__typename
+					buttonText
+					buttonLink
+				}
 				... on DatoCmsImage {
 					__typename
 					id

@@ -16,7 +16,7 @@ const solidHeroCSS = css`
 		padding: ${styles.scale.px160} ${styles.scale.px50};
 	}
 	h1,
-	span {
+	label {
 		color: ${styles.colors.white};
 	}
 	h1 {
@@ -28,7 +28,7 @@ const solidHeroCSS = css`
 			font-size: ${styles.scale.px44};
 		}
 	}
-	span {
+	label {
 		font-family: ${styles.fonts.avenirRegular};
 		font-size: ${styles.scale.px18};
 		display: inline-block;
