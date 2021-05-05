@@ -51,7 +51,7 @@ const CalendarFilter = ({
 			programSelectValue = { value: program.value, label: program.label }
 		}
 	})
-
+	console.log(programs)
 	return (
 		<div
 			css={css`

@@ -30,7 +30,7 @@ const CarouselResource = ({ title, image, link, linkText }) => {
 	return (
 		<div css={resourceComponentCSS} draggable>
 			<a href={link}>
-				<GatsbyImage image={image.gatsbyImageData} />
+				<GatsbyImage image={image.gatsbyImageData} alt="" />
 				<h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
 				<p>{linkText}</p>
 			</a>

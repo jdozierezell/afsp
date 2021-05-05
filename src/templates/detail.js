@@ -99,6 +99,7 @@ export const query = graphql`
 			}
 			programLogo {
 				url
+				alt
 				gatsbyImageData(
 					width: 623
 					placeholder: NONE

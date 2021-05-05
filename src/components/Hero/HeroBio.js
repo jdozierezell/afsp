@@ -50,7 +50,10 @@ const HeroBio = ({ name, title, image }) => {
 				<div>{title}</div>
 			</div>
 			<div>
-				<GatsbyImage image={image.gatsbyImageData} />
+				<GatsbyImage
+					image={image.gatsbyImageData}
+					alt={`${name}, ${title}`}
+				/>
 			</div>
 		</div>
 	)

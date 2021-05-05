@@ -80,6 +80,7 @@ export const query = graphql`
 			slug
 			coverImage {
 				url
+				alt
 				gatsbyImageData(
 					width: 623
 					placeholder: NONE
@@ -123,6 +124,7 @@ export const query = graphql`
 					id
 					images {
 						url
+						alt
 						gatsbyImageData(
 							width: 623
 							placeholder: NONE

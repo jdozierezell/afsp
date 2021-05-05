@@ -47,7 +47,7 @@ const FeaturedResources = ({ data }) => {
 	}
 	return (
 		<div css={featuredCSS}>
-			<GatsbyImage image={image.gatsbyImageData} />
+			<GatsbyImage image={image.gatsbyImageData} alt="" />
 			<h2 dangerouslySetInnerHTML={{ __html: data.title }}></h2>
 			<p
 				dangerouslySetInnerHTML={{

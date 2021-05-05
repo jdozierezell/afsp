@@ -146,6 +146,7 @@ const HeroGrant = ({ grant }) => {
 						<div key={index}>
 							<GatsbyImage
 								image={grantee.image.gatsbyImageData}
+								alt={grantee.name}
 								css={css`
 									margin: 0 0 ${styles.scale.px36};
 									@media (min-width: ${styles.screens

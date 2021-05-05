@@ -56,6 +56,7 @@ const Stories = ({ story: { node } }) => {
 				style={{
 					display: 'block',
 				}}
+				alt=""
 			/>
 			<h2>
 				<Link to={buildUrl(node.__typename, createAnchor(node.slug))}>

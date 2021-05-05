@@ -47,6 +47,7 @@ const ConvoDownload = ({ convo }) => {
 					display: 'block',
 				}}
 				image={convo.convoImage.gatsbyImageData}
+				alt=""
 			/>
 			<span>{convo.convoTitle}</span>
 		</a>

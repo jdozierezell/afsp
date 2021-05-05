@@ -147,7 +147,11 @@ const HeroStories = ({ data, prev, next }) => {
 			`}
 		>
 			<div css={storyMetaCSS}>
-				<h1>{title}</h1>
+				<h1
+					dangerouslySetInnerHTML={{
+						__html: title,
+					}}
+				></h1>
 				<p css={dateLineCSS}>
 					{publicationDate ? `${publicationDate} — ` : ''}
 					{timeToRead.humanizedDuration} min read
@@ -195,6 +199,7 @@ const HeroStories = ({ data, prev, next }) => {
 				<GatsbyImage
 					css={mobileImageCSS}
 					image={data.coverImage.gatsbyImageData}
+					alt={data.coverImage.alt}
 				/>
 			</div>
 			{prev && (

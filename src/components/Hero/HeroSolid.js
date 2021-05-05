@@ -67,6 +67,7 @@ const HeroSolid = ({ data, programLogo, addCSS }) => {
 				<GatsbyImage
 					css={logoCSS}
 					image={programLogo.gatsbyImageData}
+					alt={programLogo.alt}
 				/>
 			)}
 			{!programLogo && (

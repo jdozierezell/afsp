@@ -12,7 +12,6 @@ const storyHeroCSS = css`
 	min-height: 300px;
 	@media (min-width: ${styles.screens.tablet}px) {
 		overflow: hidden;
-		height: 600px;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 200px repeat(3, auto);
 		margin: 0;
@@ -44,6 +43,7 @@ const mobileImageCSS = css`
 
 const HeroImage = ({ title, heroImage }) => {
 	const desktopHeroImg = `${heroImage.url}?auto=format&w=1920&h=1080&fit=crop&crop=faces&q=30`
+	console.log(heroImage)
 	return (
 		<section
 			css={css`
@@ -62,6 +62,7 @@ const HeroImage = ({ title, heroImage }) => {
 			<GatsbyImage
 				css={mobileImageCSS}
 				image={heroImage.gatsbyImageData}
+				alt={heroImage.alt}
 			/>
 		</section>
 	)

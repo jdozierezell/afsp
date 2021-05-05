@@ -65,6 +65,7 @@ export const query = graphql`
 			}
 			heroImage {
 				url
+				alt
 				gatsbyImageData(
 					width: 769
 					placeholder: NONE

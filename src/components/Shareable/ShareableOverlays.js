@@ -52,7 +52,10 @@ const ShareableOverlays = ({
 							updateOverlayTextColor(overlay.useDarkText)
 						}}
 					>
-						<GatsbyImage image={overlay.image.gatsbyImageData} />
+						<GatsbyImage
+							image={overlay.image.gatsbyImageData}
+							alt={overlay.image.alt}
+						/>
 					</button>
 				)
 			})}
