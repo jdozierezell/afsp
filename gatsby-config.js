@@ -34,7 +34,7 @@ module.exports = {
 			options: {
 				headers: {
 					'/*': [
-						'Content-Security-Policy: frame-ancestors "self" https://preview-afsp.gtsb.io https://*.virtual-tables.com',
+						'Content-Security-Policy: frame-ancestors "self" https://preview-afsp.gtsb.io https://*.virtual-tables.com https://*.siteimprove.com',
 					],
 				},
 			},

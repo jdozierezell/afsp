@@ -209,7 +209,11 @@ const HeroStories = ({ data, prev, next }) => {
 							color={styles.colors.white}
 							direction="left"
 						/>
-						<p>{prev.title}</p>
+						<p
+							dangerouslySetInnerHTML={{
+								__html: prev.title,
+							}}
+						></p>
 					</Link>
 				</div>
 			)}
@@ -220,7 +224,11 @@ const HeroStories = ({ data, prev, next }) => {
 							color={styles.colors.white}
 							direction="right"
 						/>
-						<p>{next.title}</p>
+						<p
+							dangerouslySetInnerHTML={{
+								__html: next.title,
+							}}
+						></p>
 					</Link>
 				</div>
 			)}
