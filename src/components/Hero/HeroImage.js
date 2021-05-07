@@ -43,7 +43,6 @@ const mobileImageCSS = css`
 
 const HeroImage = ({ title, heroImage }) => {
 	const desktopHeroImg = `${heroImage.url}?auto=format&w=1920&h=1080&fit=crop&crop=faces&q=30`
-	console.log(heroImage)
 	return (
 		<section
 			css={css`

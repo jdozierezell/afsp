@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
 import HeroImage from '../components/Hero/HeroImage'
+import Embed from '../components/Embed/Embed'
 
 import { styles } from '../css/css'
 
@@ -45,7 +46,7 @@ const Email = ({ data: { email } }) => {
 			structuredData={structuredData}
 		>
 			<HeroImage title={email.title} heroImage={email.heroImage} />
-			foo
+			<Embed embed={email.formHtml}></Embed>
 		</Layout>
 	)
 }
@@ -94,6 +95,7 @@ export const query = graphql`
 					}
 				)
 			}
+			formHtml
 		}
 	}
 `
