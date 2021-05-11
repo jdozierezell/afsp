@@ -60,7 +60,9 @@ const Stories = ({ story: { node } }) => {
 			/>
 			<h2>
 				<Link to={buildUrl(node.__typename, createAnchor(node.slug))}>
-					{node.title}
+					<span
+						dangerouslySetInnerHTML={{ __html: node.title }}
+					></span>
 				</Link>
 			</h2>
 			<p>{node.seo.description}</p>
