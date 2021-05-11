@@ -4,14 +4,20 @@ import Script from 'react-load-script'
 
 import { styles } from '../../css/css'
 
-const embedCSS = css`
-	margin: ${styles.scale.px50} ${styles.scale.px24};
+const defaultEmbedCSS = css`
+	margin-top: ${styles.scale.px50};
+	margin-right: ${styles.scale.px24};
+	margin-bottom: ${styles.scale.px50};
+	margin-left: ${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px80} ${styles.scale.px50};
+		margin-top: ${styles.scale.px80};
+		margin-right: ${styles.scale.px50};
+		margin-bottom: ${styles.scale.px80};
+		margin-left: ${styles.scale.px50};
 	}
 `
 
-const Embed = ({ embed }) => {
+const Embed = ({ embed, embedCSS }) => {
 	const [scriptSrc, setScriptSrc] = useState(null)
 	useEffect(() => {
 		// super convoluted way to make script replacement tags work, but hey, it works
@@ -29,7 +35,10 @@ const Embed = ({ embed }) => {
 	return (
 		<div>
 			<div
-				css={embedCSS}
+				css={css`
+					${defaultEmbedCSS};
+					${embedCSS};
+				`}
 				dangerouslySetInnerHTML={{ __html: embed }}
 			></div>
 			{scriptSrc && <Script url={scriptSrc} />}

@@ -25,7 +25,8 @@ const headerCSS = css`
 	grid-area: 2 / 1 / 3 / 2;
 	font-size: ${styles.scale.px46};
 	color: ${styles.colors.white};
-	margin: 0 ${styles.scale.px60} ${styles.scale.px24} ${styles.scale.px24};
+	margin: ${styles.scale.px50} ${styles.scale.px60} ${styles.scale.px24}
+		${styles.scale.px24};
 	color: ${styles.colors.darkGray};
 	overflow: auto;
 	@media (min-width: ${styles.screens.tablet}px) {

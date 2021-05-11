@@ -1,11 +1,29 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { css } from '@emotion/react'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Layout from '../components/Layout'
 import HeroImage from '../components/Hero/HeroImage'
-import Embed from '../components/Embed/Embed'
+import EmailLanding from '../components/EmailSignup/EmailLanding'
 
 import { styles } from '../css/css'
+
+const ctaImageCSS = css`
+	display: none;
+	@media (min-width: ${styles.screens.tablet}px) {
+		display: flex;
+		align-content: top;
+	}
+	img {
+		width: 100%;
+		height: auto !important;
+	}
+`
+
+const embedCSS = css`
+	margin-left: 0 !important;
+`
 
 const Email = ({ data: { email } }) => {
 	let metaImage,
@@ -39,6 +57,22 @@ const Email = ({ data: { email } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${email.slug}`,
 	}
+
+	const emailBodyCSS = css`
+		display: grid;
+		grid-template-columns: 1fr;
+		margin: 0 ${styles.scale.px24};
+		@media (min-width: ${styles.screens.tablet}px) {
+			margin: ${styles.scale.px50} ${styles.scale.px50}
+				${styles.scale.px80};
+		}
+		@media (min-width: ${styles.screens.tablet}px) {
+			grid-template-columns: ${email.callToActionImage
+				? `1fr 1fr`
+				: `1fr`};
+		}
+	`
+
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -46,7 +80,10 @@ const Email = ({ data: { email } }) => {
 			structuredData={structuredData}
 		>
 			<HeroImage title={email.title} heroImage={email.heroImage} />
-			<Embed embed={email.formHtml}></Embed>
+			<EmailLanding
+				callToAction={email.callToAction}
+				callToActionImage={email.callToActionImage}
+			/>
 		</Layout>
 	)
 }
@@ -95,7 +132,7 @@ export const query = graphql`
 					}
 				)
 			}
-			formHtml
+			embedHtml
 		}
 	}
 `
