@@ -155,6 +155,10 @@ export const query = graphql`
 					headingLevel
 					heading
 				}
+				... on DatoCmsEmbed {
+					__typename
+					embedCode
+				}
 				... on DatoCmsFeaturedStoryTag {
 					__typename
 					introCopy
