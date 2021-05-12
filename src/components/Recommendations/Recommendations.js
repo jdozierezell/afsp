@@ -74,7 +74,6 @@ const storyCSS = css`
 	h4 {
 		font-size: ${styles.scale.px17};
 		font-family: ${styles.fonts.avenirRegular};
-		text-transform: uppercase;
 		margin: 0;
 		color: ${styles.colors.white};
 	}

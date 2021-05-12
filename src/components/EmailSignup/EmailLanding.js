@@ -22,7 +22,7 @@ const embedCSS = css`
 	margin-left: 0 !important;
 `
 
-const EmailLanding = ({ callToAction, callToActionImage, formHtml }) => {
+const EmailLanding = ({ callToAction, callToActionImage, embedHtml }) => {
 	const emailBodyCSS = css`
 		display: grid;
 		grid-template-columns: 1fr;
@@ -35,6 +35,7 @@ const EmailLanding = ({ callToAction, callToActionImage, formHtml }) => {
 			grid-template-columns: ${callToActionImage ? `1fr 1fr` : `1fr`};
 		}
 	`
+	console.log(embedHtml)
 	return (
 		<section css={emailBodyCSS}>
 			{callToActionImage && (
@@ -47,7 +48,7 @@ const EmailLanding = ({ callToAction, callToActionImage, formHtml }) => {
 			<div>
 				<h2 dangerouslySetInnerHTML={{ __html: callToAction }}></h2>
 				<Embed
-					embed={formHtml}
+					embed={embedHtml}
 					embedCSS={css`
 						${embedCSS};
 					`}

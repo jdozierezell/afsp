@@ -32,7 +32,6 @@ const featuredCSS = css`
 	h3 {
 		margin-bottom: 0;
 		font-size: ${styles.scale.px17};
-		text-transform: uppercase;
 		a {
 			font-size: ${styles.scale.px17};
 		}

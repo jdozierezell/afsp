@@ -75,7 +75,6 @@ const dateLineCSS = css`
 `
 
 const byLineCSS = css`
-	text-transform: uppercase;
 	margin: 0 0;
 	margin-bottom: ${styles.scale.px35};
 	@media (min-width: ${styles.screens.tablet}px) {
@@ -135,7 +134,7 @@ const HeroStories = ({ data, prev, next }) => {
 			fullStory += article.copy
 		}
 	})
-	const backgroundImage = `${data.coverImage.url}?auto=format&crop=faces&fill=blur&fit=fill&h=540&w=1920&blend-mode=hardlight&blend64=MjYyNjI2&blend-alpha=50`
+	const backgroundImage = `${data.coverImage.url}?auto=format&crop=faces&fill=blur&fit=fill&h=540&w=1920&blend-mode=hardlight&blend=262626&blend-alpha=50`
 	const timeToRead = readTime(fullStory)
 	return (
 		<header

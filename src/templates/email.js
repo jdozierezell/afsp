@@ -39,7 +39,7 @@ const Email = ({ data: { email } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${email.slug}`,
 	}
-
+	console.log(email)
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -50,6 +50,7 @@ const Email = ({ data: { email } }) => {
 			<EmailLanding
 				callToAction={email.callToAction}
 				callToActionImage={email.callToActionImage}
+				embedHtml={email.embedHtml}
 			/>
 		</Layout>
 	)
