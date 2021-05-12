@@ -157,7 +157,7 @@ const HeroStories = ({ data, prev, next }) => {
 				</p>
 				{author && (
 					<p css={byLineCSS}>
-						BY{' '}
+						By{' '}
 						{author.map((a, index) => {
 							if (a.authorName !== 'AFSP') {
 								return (

@@ -2,6 +2,7 @@ import { graphql } from 'gatsby'
 
 export const Recommendation = graphql`
 	fragment Recommendation on DatoCmsRecommendation {
+		__typename
 		video {
 			title
 			url

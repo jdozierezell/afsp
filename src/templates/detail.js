@@ -193,6 +193,13 @@ export const query = graphql`
 						url
 					}
 				}
+				... on DatoCmsAudio {
+					__typename
+					audio {
+						url
+						title
+					}
+				}
 				... on DatoCmsHeading {
 					__typename
 					headingLevel
@@ -205,6 +212,13 @@ export const query = graphql`
 				... on DatoCmsTweet {
 					__typename
 					tweet
+				}
+				... on DatoCmsFeaturedStoryTag {
+					__typename
+					introCopy
+					tag {
+						tag
+					}
 				}
 			}
 			overrideWidth
