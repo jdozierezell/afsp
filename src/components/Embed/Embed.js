@@ -5,15 +5,9 @@ import Script from 'react-load-script'
 import { styles } from '../../css/css'
 
 const defaultEmbedCSS = css`
-	margin-top: ${styles.scale.px50};
-	margin-right: ${styles.scale.px24};
-	margin-bottom: ${styles.scale.px50};
-	margin-left: ${styles.scale.px24};
+	margin: ${styles.scale.px50} ${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}px) {
-		margin-top: ${styles.scale.px80};
-		margin-right: ${styles.scale.px50};
-		margin-bottom: ${styles.scale.px80};
-		margin-left: ${styles.scale.px50};
+		margin: ${styles.scale.px80} ${styles.scale.px50};
 	}
 `
 

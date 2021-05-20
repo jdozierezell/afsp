@@ -39,7 +39,6 @@ const Email = ({ data: { email } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${email.slug}`,
 	}
-	console.log(email)
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -89,14 +88,13 @@ export const query = graphql`
 				alt
 				url
 				gatsbyImageData(
-					width: 623
+					width: 1080
 					placeholder: NONE
 					imgixParams: {
 						auto: "format"
 						fill: "blur"
 						fit: "fill"
-						h: "384"
-						w: "623"
+						w: "1080"
 					}
 				)
 			}

@@ -19,7 +19,7 @@ const ctaImageCSS = css`
 `
 
 const embedCSS = css`
-	margin-left: 0 !important;
+	margin: ${styles.scale.px24} 0 !important;
 `
 
 const EmailLanding = ({ callToAction, callToActionImage, embedHtml }) => {
@@ -29,13 +29,12 @@ const EmailLanding = ({ callToAction, callToActionImage, embedHtml }) => {
 		margin: 0 ${styles.scale.px24};
 		@media (min-width: ${styles.screens.tablet}px) {
 			margin: ${styles.scale.px50} ${styles.scale.px50}
-				${styles.scale.px80};
+				${styles.scale.px24};
 		}
 		@media (min-width: ${styles.screens.tablet}px) {
 			grid-template-columns: ${callToActionImage ? `1fr 1fr` : `1fr`};
 		}
 	`
-	console.log(embedHtml)
 	return (
 		<section css={emailBodyCSS}>
 			{callToActionImage && (
@@ -45,7 +44,7 @@ const EmailLanding = ({ callToAction, callToActionImage, embedHtml }) => {
 					css={ctaImageCSS}
 				/>
 			)}
-			<div>
+			<div css={formCSS}>
 				<h2 dangerouslySetInnerHTML={{ __html: callToAction }}></h2>
 				<Embed
 					embed={embedHtml}
