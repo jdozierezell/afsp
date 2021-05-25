@@ -168,6 +168,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					return response.json()
 				})
 				.then(response => {
+					console.log(response)
 					if (response.next) {
 						const details = []
 						response.next.forEach(event => {

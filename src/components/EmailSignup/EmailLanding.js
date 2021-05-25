@@ -18,6 +18,13 @@ const ctaImageCSS = css`
 	}
 `
 
+const formCSS = css`
+	margin: ${styles.scale.px36} 0;
+	@media (min-width: ${styles.screens.tablet}px) {
+		margin: 0 ${styles.scale.px36} 0 0;
+	}
+`
+
 const embedCSS = css`
 	margin: ${styles.scale.px24} 0 !important;
 `
@@ -37,13 +44,6 @@ const EmailLanding = ({ callToAction, callToActionImage, embedHtml }) => {
 	`
 	return (
 		<section css={emailBodyCSS}>
-			{callToActionImage && (
-				<GatsbyImage
-					image={callToActionImage.gatsbyImageData}
-					alt={callToActionImage.alt}
-					css={ctaImageCSS}
-				/>
-			)}
 			<div css={formCSS}>
 				<h2 dangerouslySetInnerHTML={{ __html: callToAction }}></h2>
 				<Embed
@@ -53,6 +53,13 @@ const EmailLanding = ({ callToAction, callToActionImage, embedHtml }) => {
 					`}
 				></Embed>
 			</div>
+			{callToActionImage && (
+				<GatsbyImage
+					image={callToActionImage.gatsbyImageData}
+					alt={callToActionImage.alt}
+					css={ctaImageCSS}
+				/>
+			)}
 		</section>
 	)
 }
