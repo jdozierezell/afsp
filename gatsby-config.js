@@ -1,11 +1,7 @@
 require('dotenv').config({
 	path: `.env.${process.env.NODE_ENV}`,
 })
-console.log(process.env.PREVIEW_MODE)
-console.log(typeof process.env.PREVIEW_MODE)
 const previewMode = process.env.PREVIEW_MODE === 'true'
-console.log(previewMode)
-console.log(typeof previewMode)
 module.exports = {
 	siteMetadata: {
 		title: `American Foundation for Suicide Prevention`,

@@ -82,7 +82,6 @@ const FindALocalChapter = ({ data: { search } }) => {
 					type: 'chapter',
 				})
 				.then(res => {
-					console.log(res.data.chapterArray)
 					setSearchResults(res.data.chapterArray)
 					if (
 						res.data.chapterArray.length === 0 &&

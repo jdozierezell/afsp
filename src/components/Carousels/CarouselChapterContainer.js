@@ -80,7 +80,6 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 				const chapters = JSON.parse(sessionStorage.chapters)
 				setDisplayChapters(chapters)
 			} else {
-				console.log('fetch heroku')
 				const endpoint =
 					'https://pro.ip-api.com/json/?fields=zip&key=kk9BWBSYqm9ZTDj'
 				axios.get(endpoint).then(res => {

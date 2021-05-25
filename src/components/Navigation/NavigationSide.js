@@ -8,19 +8,15 @@ import createAnchor from '../../utils/createAnchor'
 import { styles } from '../../css/css'
 
 const sideNavigationCSS = css`
-	padding: ${styles.scale.px50} ${styles.scale.px24};
-	background-color: ${styles.colors.lightGray};
-	max-height: 100vh;
-	overflow: auto;
-	@media (min-width: ${styles.screens.mobile}px) {
-		padding: ${styles.scale.px50} ${styles.scale.px50};
-		background-color: ${styles.colors.white};
-	}
-	@media (min-width: ${styles.screens.navigation}px) {
+	display: none;
+	@media (min-width: ${styles.screens.video}px) {
+		display: block;
 		padding: ${styles.scale.px40} ${styles.scale.px50};
+		background-color: ${styles.colors.white};
 		width: 500px;
 		right: 0;
-	}
+	max-height: 100vh;
+	overflow: auto;
 	h2 {
 		margin-bottom: ${styles.scale.px30};
 		font-family: ${styles.fonts.avenirBold};
@@ -132,7 +128,7 @@ const NavigationSide = ({
 			<aside
 				css={css`
 					${sideNavigationCSS};
-					@media (min-width: ${styles.screens.navigation}px) {
+					@media (min-width: ${styles.screens.video}px) {
 						position: ${position};
 						top: ${top};
 					}

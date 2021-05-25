@@ -172,7 +172,6 @@ const AFSPCalendar = ({ data }) => {
 	const [searchState, setSearchState] = useState(query)
 
 	const handleChapterSelectChange = chapter => {
-		console.log(chapter)
 		let queryPath
 		chapter = chapter.value
 		setSearchState({ ...searchState, chapter })

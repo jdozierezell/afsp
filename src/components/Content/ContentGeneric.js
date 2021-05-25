@@ -39,11 +39,15 @@ const detailCarouselCSS = css`
 
 const ContentGeneric = ({ setEvents, data, navigation }) => {
 	const { details } = data
+	const sectionWidth = !data.overrideWidth ? `calc(100vw - 555px)` : `auto`
 	return (
 		<section
 			css={css`
 				${storyContentCSS};
 				max-width: ${!data.overrideWidth ? `623px` : `auto`};
+				@media (min-width: ${styles.screens.video}px) {
+					width: ${sectionWidth};
+				}
 			`}
 		>
 			{details.map((detail, index) => {

@@ -84,7 +84,6 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 		resolver: yupResolver(schema),
 	})
 	const onSubmit = data => {
-		console.log(data)
 		axios
 			.post('https://serene-dusk-44738.herokuapp.com/email-signup', data)
 			.then(response => {

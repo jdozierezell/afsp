@@ -65,9 +65,6 @@ const externalLinkCSS = css`
 	}
 `
 const SearchSupportGroups = ({ supportGroup }) => {
-	// if (supportGroup.meetingType === '') {
-	// 	console.log(supportGroup)
-	// }
 	const {
 		additionalInformation,
 		attendedTraining,
