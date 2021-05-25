@@ -23,6 +23,9 @@ const cardContainerCSS = css`
 		z-index: 500;
 		margin-left: -${styles.scale.px50};
 	}
+	.secondary-button + & {
+		margin-top: ${styles.scale.px36};
+	}
 	> h2 {
 		font-size: ${styles.scale.px36};
 		margin-bottom: ${styles.scale.px45};
