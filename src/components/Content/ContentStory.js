@@ -43,9 +43,9 @@ const storyContentCSS = css`
 			margin-bottom: 0;
 		}
 		blockquote {
-			border-left: ${styles.scale.px7} solid ${styles.colors.lightGray};
+			border-left: ${styles.scale.px12} solid ${styles.colors.lightGray};
 			margin-left: 0;
-			padding-left: ${styles.scale.px24};
+			padding-left: ${styles.scale.px20};
 		}
 	}
 `

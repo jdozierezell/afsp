@@ -88,6 +88,11 @@ const contentBodyCSS = css`
 			}
 		}
 	}
+	blockquote {
+		border-left: ${styles.scale.px12} solid ${styles.colors.lightGray};
+		margin-left: 0;
+		padding-left: ${styles.scale.px20};
+	}
 `
 
 const Content = ({ contentHeading, contentBody }) => {

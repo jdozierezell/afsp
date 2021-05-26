@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/react'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { styles } from '../../css/css'
 
@@ -13,27 +14,11 @@ const defaultCardCSS = css`
 	}
 `
 
-const titleCSS = css`
-	font-size: ${styles.scale.px17};
-	font-family: ${styles.fonts.avenirDemi};
-	@media (min-width: ${styles.screens.mobile}px) {
-		margin-bottom: ${styles.scale.px60};
-	}
-`
-
 const cardCategoryCSS = css`
 	font-size: ${styles.scale.px20};
 	font-family: ${styles.fonts.avenirDemi};
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin-bottom: ${styles.scale.px30};
-	}
-`
-
-const cardBodyCSS = css`
-	p {
-		:last-of-type {
-			margin-bottom: 0;
-		}
 	}
 `
 
@@ -49,11 +34,25 @@ const Card = ({ card, cardCSS }) => {
 	const {
 		cardCategory,
 		cardHeading,
+		cardImage,
 		cardBodyNode,
 		cardButtonCta,
 		cardButtonUrl,
 	} = card
 	const cardBody = cardBodyNode.internal.content
+
+	const titleCSS = css`
+		font-size: ${styles.scale.px17};
+		font-family: ${styles.fonts.avenirDemi};
+		@media (min-width: ${styles.screens.mobile}px) {
+			margin-bottom: ${cardImage ? styles.scale.px16 : styles.scale.px60};
+		}
+	`
+
+	const imageCSS = css`
+		margin-bottom: ${styles.scale.px24};
+	`
+
 	return (
 		<div
 			css={css`
@@ -63,10 +62,14 @@ const Card = ({ card, cardCSS }) => {
 		>
 			{cardCategory && <p css={cardCategoryCSS}>{cardCategory}</p>}
 			<h2 css={titleCSS}>{cardHeading}</h2>
-			<div
-				css={cardBodyCSS}
-				dangerouslySetInnerHTML={{ __html: cardBody }}
-			></div>
+			{cardImage !== null && (
+				<GatsbyImage
+					image={cardImage.gatsbyImageData}
+					alt={cardImage.alt}
+					css={imageCSS}
+				/>
+			)}
+			<div dangerouslySetInnerHTML={{ __html: cardBody }}></div>
 			<a href={cardButtonUrl} className="secondary-button" css={ctaCSS}>
 				{cardButtonCta}
 			</a>

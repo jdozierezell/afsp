@@ -100,6 +100,21 @@ export const query = graphql`
 					cardContainerList {
 						cardCategory
 						cardHeading
+						cardImage {
+							alt
+							url
+							gatsbyImageData(
+								width: 623
+								placeholder: NONE
+								imgixParams: {
+									auto: "format"
+									fill: "blur"
+									fit: "fill"
+									h: "384"
+									w: "623"
+								}
+							)
+						}
 						cardBodyNode {
 							internal {
 								content
