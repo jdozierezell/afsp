@@ -23,6 +23,7 @@ const contentBodyCSS = css`
 		position: relative;
 		z-index: 500;
 		pointer-events: none;
+		background-color: ${styles.colors.white};
 		@media (min-width: ${styles.screens.tablet}px) {
 			width: calc(100vw - (${styles.scale.px50} * 2));
 		}
