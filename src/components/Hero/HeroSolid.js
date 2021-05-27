@@ -53,11 +53,19 @@ const logoCSS = css`
 
 const HeroSolid = ({ data, programLogo, addCSS }) => {
 	const { title, brief, parentPage } = data
+	const sectionWidth = !data.overrideWidth ? `calc(100vw - 555px)` : `auto`
 	return (
 		<div
 			css={css`
 				${solidHeroCSS};
 				${addCSS};
+				h1,
+				div {
+					max-width: ${!data.overrideWidth ? `623px` : `auto`};
+					@media (min-width: ${styles.screens.video}px) {
+						width: ${sectionWidth};
+					}
+				}
 			`}
 		>
 			{parentPage && parentPage.parentPage && (

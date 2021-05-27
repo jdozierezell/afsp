@@ -46,7 +46,7 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 				${storyContentCSS};
 				max-width: ${!data.overrideWidth ? `623px` : `auto`};
 				@media (min-width: ${styles.screens.video}px) {
-					width: ${sectionWidth};
+					width: ${!data.overrideWidth ? sectionWidth : `auto`};
 				}
 			`}
 		>
