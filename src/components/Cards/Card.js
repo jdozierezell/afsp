@@ -62,7 +62,7 @@ const Card = ({ card, cardCSS }) => {
 		>
 			{cardCategory && <p css={cardCategoryCSS}>{cardCategory}</p>}
 			<h2 css={titleCSS}>{cardHeading}</h2>
-			{cardImage !== null && (
+			{cardImage !== null && cardImage !== undefined && (
 				<GatsbyImage
 					image={cardImage.gatsbyImageData}
 					alt={cardImage.alt}
