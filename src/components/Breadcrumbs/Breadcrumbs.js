@@ -9,6 +9,9 @@ import { styles } from '../../css/css'
 const breadcrumbCSS = css`
 	list-style: none;
 	margin: 0;
+	@media (min-width: ${styles.screens.video}) {
+		width: 555px;
+	}
 	li {
 		display: inline;
 		:not(:last-of-type) {

@@ -54,6 +54,10 @@ export const Navigation = graphql`
 								__typename
 								slug
 							}
+							... on DatoCmsCalendar {
+								__typename
+								slug
+							}
 						}
 						childExternalLink
 					}
@@ -95,6 +99,14 @@ export const Navigation = graphql`
 								}
 							}
 							... on DatoCmsDetailTagged {
+								slug
+								seo {
+									image {
+										url
+									}
+								}
+							}
+							... on DatoCmsCalendar {
 								slug
 								seo {
 									image {
