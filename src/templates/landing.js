@@ -281,6 +281,10 @@ const Landing = ({ data: { landing } }) => {
 									background-color: ${adjacent % 2 === 1
 										? styles.colors.lightGray
 										: styles.colors.white};
+									&:nth-of-type(2) {
+										background-color: ${styles.colors
+											.lightGray};
+									}
 								`}
 							/>
 						)
@@ -315,7 +319,7 @@ const Landing = ({ data: { landing } }) => {
 export default Landing
 
 export const query = graphql`
-	query($slug: String) {
+	query ($slug: String) {
 		landing: datoCmsLanding(slug: { eq: $slug }) {
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
