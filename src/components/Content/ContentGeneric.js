@@ -98,6 +98,11 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 									? styles.colors.lightGray
 									: styles.colors.white};
 							`}
+							cardCSS={css`
+								background-color: ${adjacent % 2 === 1
+									? styles.colors.white
+									: styles.colors.lightGray};
+							`}
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsImage') {

@@ -57,13 +57,14 @@ const cardListCSS = css`
 	}
 `
 
-const CardContainer = ({ cards, heading, addCSS }) => {
+const CardContainer = ({ cards, heading, addCSS, cardCSS }) => {
 	const responsive = {
 		mobile: {
 			breakpoint: { max: 769, min: 0 },
 			items: 1,
 		},
 	}
+	console.log(cardCSS)
 	return (
 		<section
 			css={css`
@@ -74,12 +75,12 @@ const CardContainer = ({ cards, heading, addCSS }) => {
 			<h2 id={createAnchor(heading)}>{heading}</h2>
 			<Carousel responsive={responsive}>
 				{cards.map((card, index) => {
-					return <Card key={index} card={card} />
+					return <Card key={index} card={card} cardCSS={cardCSS} />
 				})}
 			</Carousel>
 			<ul css={cardListCSS}>
 				{cards.map((card, index) => {
-					return <Card key={index} card={card} />
+					return <Card key={index} card={card} cardCSS={cardCSS} />
 				})}
 			</ul>
 		</section>

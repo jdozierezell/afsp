@@ -48,7 +48,6 @@ const Card = ({ card, cardCSS }) => {
 			margin-bottom: ${cardImage ? styles.scale.px16 : styles.scale.px60};
 		}
 	`
-
 	const imageCSS = css`
 		margin-bottom: ${styles.scale.px24};
 	`
