@@ -17,7 +17,7 @@ import ContentTweet from './ContentTweet'
 const storyContentCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px50} ${styles.scale.px50} ${styles.scale.px80};
+		margin: ${styles.scale.px50} ${styles.scale.px50} 0;
 	}
 	.secondary-button {
 		margin-right: ${styles.scale.px24};
@@ -33,13 +33,14 @@ const storyContentCSS = css`
 const detailCarouselCSS = css`
 	margin: ${styles.scale.px50} 0 ${styles.scale.px50} -${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px80} 0 ${styles.scale.px80} -${styles.scale.px50};
+		margin: 0 0 0 -${styles.scale.px50};
 	}
 `
 
 const ContentGeneric = ({ setEvents, data, navigation }) => {
 	const { details } = data
 	const sectionWidth = !data.overrideWidth ? `calc(100vw - 555px)` : `auto`
+	let adjacent = 0
 	return (
 		<section
 			css={css`
@@ -51,6 +52,16 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 			`}
 		>
 			{details.map((detail, index) => {
+				const itemsToCheck = ['DatoCmsCardContainer']
+				const prevIndex = index > 0 ? index - 1 : null
+				if (
+					prevIndex !== null &&
+					itemsToCheck.includes(detail.__typename)
+				) {
+					adjacent++
+				} else {
+					adjacent = 0
+				}
 				if (detail.__typename === 'DatoCmsContent') {
 					return (
 						<Content
@@ -75,11 +86,18 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsCardContainer') {
+					console.log(detail.__typename)
+					console.log(adjacent)
 					return (
 						<CardContainer
 							key={index}
 							cards={detail.cardContainerList}
 							heading={detail.cardContainerHeading}
+							addCSS={css`
+								background-color: ${adjacent % 2 === 1
+									? styles.colors.lightGray
+									: styles.colors.white};
+							`}
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsImage') {
