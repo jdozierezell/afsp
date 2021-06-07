@@ -72,9 +72,6 @@ exports.createPages = async ({ graphql, actions }) => {
 							... on DatoCmsContent {
 								__typename
 							}
-							... on DatoCmsRecommendation {
-								__typename
-							}
 							... on DatoCmsCardContainer {
 								__typename
 							}
@@ -82,9 +79,6 @@ exports.createPages = async ({ graphql, actions }) => {
 								__typename
 							}
 							... on DatoCmsImage {
-								__typename
-							}
-							... on DatoCmsVideo {
 								__typename
 							}
 							... on DatoCmsAudio {

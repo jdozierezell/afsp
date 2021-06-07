@@ -74,7 +74,7 @@ const Detail = ({ data: { tagged, stories }, pageContext }) => {
 export default Detail
 
 export const query = graphql`
-	query($slug: String, $tag: String) {
+	query ($slug: String, $tag: String) {
 		tagged: datoCmsDetailTagged(slug: { eq: $slug }) {
 			title
 			slug
@@ -90,9 +90,6 @@ export const query = graphql`
 					__typename
 					contentHeading
 					contentBody
-				}
-				... on DatoCmsRecommendation {
-					...Recommendation
 				}
 				... on DatoCmsCardContainer {
 					__typename
@@ -144,18 +141,6 @@ export const query = graphql`
 								w: "623"
 							}
 						)
-					}
-				}
-				... on DatoCmsVideo {
-					__typename
-					video {
-						url
-						video {
-							mp4Url(res: medium)
-						}
-					}
-					poster {
-						url
 					}
 				}
 				... on DatoCmsAudio {

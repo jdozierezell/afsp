@@ -66,7 +66,7 @@ const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 export default Story
 
 export const query = graphql`
-	query($slug: String) {
+	query ($slug: String) {
 		story: datoCmsChapterStoryUpdate(slug: { eq: $slug }) {
 			title
 			slug
@@ -119,18 +119,6 @@ export const query = graphql`
 								w: "623"
 							}
 						)
-					}
-				}
-				... on DatoCmsVideo {
-					__typename
-					id
-					video {
-						video {
-							mp4Url(res: medium)
-						}
-					}
-					poster {
-						url
 					}
 				}
 				... on DatoCmsDetailSquare {

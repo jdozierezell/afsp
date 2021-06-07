@@ -70,21 +70,6 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 							contentBody={detail.contentBody}
 						/>
 					)
-				} else if (detail.__typename === 'DatoCmsRecommendation') {
-					return (
-						<RecommendationsVideoStories
-							key={index}
-							videoData={{
-								title: detail.video.title,
-								url: detail.video.video
-									? detail.video.video.mp4Url
-									: detail.video.url,
-								poster: detail.poster.gatsbyImageData.src,
-							}}
-							heading={detail.recommendationHeading}
-							storyData={detail.storyRecommendation}
-						/>
-					)
 				} else if (detail.__typename === 'DatoCmsCardContainer') {
 					console.log(detail.__typename)
 					console.log(adjacent)
@@ -111,18 +96,6 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 							key={index}
 							image={detail.images}
 							imagesToShow={detail.imagesToShow}
-						/>
-					)
-				} else if (detail.__typename === 'DatoCmsVideo') {
-					return (
-						<ContentVideo
-							key={index}
-							video={
-								detail.video.video
-									? detail.video.video.mp4Url
-									: detail.video.url
-							}
-							poster={detail.poster.url}
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsDetailSquare') {

@@ -80,18 +80,6 @@ const Grant = ({ data: { grant } }) => {
 								level={detail.headingLevel}
 							/>
 						)
-					} else if (detail.__typename === 'DatoCmsVideo') {
-						return (
-							<ContentVideo
-								key={index}
-								video={
-									detail.video.video
-										? detail.video.video.mp4Url
-										: detail.video.url
-								}
-								poster={detail.poster.url}
-							/>
-						)
 					} else {
 						return ''
 					}
@@ -104,7 +92,7 @@ const Grant = ({ data: { grant } }) => {
 export default Grant
 
 export const query = graphql`
-	query($slug: String) {
+	query ($slug: String) {
 		grant: datoCmsGrant(slug: { eq: $slug }) {
 			title
 			seoMetaTags {
@@ -158,17 +146,6 @@ export const query = graphql`
 				... on DatoCmsHeading {
 					headingLevel
 					heading
-				}
-				... on DatoCmsVideo {
-					video {
-						url
-						video {
-							mp4Url(res: medium)
-						}
-					}
-					poster {
-						url
-					}
 				}
 			}
 		}

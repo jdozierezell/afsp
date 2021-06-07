@@ -145,14 +145,6 @@ const ContentStory = ({ data, pageUrl }) => {
 								image={article.images}
 							/>
 						)
-					} else if (article.__typename === 'DatoCmsVideo') {
-						return (
-							<ContentVideo
-								key={index}
-								video={article.video.video.mp4Url}
-								poster={article.poster.url}
-							/>
-						)
 					} else if (article.__typename === 'DatoCmsDetailSquare') {
 						return (
 							<div
