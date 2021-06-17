@@ -9,11 +9,10 @@ import ChapterAboutContact from '../components/Chapter/ChapterAboutContact'
 import CarouselDetailContainer from '../components/Carousels/CarouselDetailContainer'
 import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
 import CTAContainer from '../components/CTAs/CTAContainer'
-
-import { styles } from '../css/css'
-
 import StoriesContainer from '../components/Stories/StoriesContainer'
 import ChapterSocials from '../components/Social/ChapterSocials'
+
+import { styles } from '../css/css'
 
 const eventCarouselCSS = css``
 
@@ -243,7 +242,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				id="volunteer"
 			/>
 			{socialAccounts && (
-				<ChapterSocials socialAccounts={socialAccounts} />
+				<ChapterSocials socialAccounts={socialAccounts} title={title} />
 			)}
 			{stories[0] !== 'no stories' && (
 				<StoriesContainer
@@ -264,7 +263,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 export default Chapter
 
 export const query = graphql`
-	query($slug: String, $tag: String) {
+	query ($slug: String, $tag: String) {
 		chapter: datoCmsChapterHomePage(slug: { eq: $slug }) {
 			title
 			slug

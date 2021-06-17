@@ -6,6 +6,7 @@ import { styles } from '../../css/css'
 import IconFacebook from '../SVGs/IconFacebook'
 import IconTwitter from '../SVGs/IconTwitter'
 import IconInstagram from '../SVGs/IconInstagram'
+import IconLinkedIn from '../SVGs/IconLinkedIn'
 
 const chapterSocialsCSS = css`
 	background-color: ${styles.colors.darkBlue};
@@ -25,7 +26,7 @@ const iconCSS = css`
 	width: ${styles.scale.px36};
 `
 
-const ChapterSocials = ({ socialAccounts }) => {
+const ChapterSocials = ({ socialAccounts, title }) => {
 	return (
 		<div css={chapterSocialsCSS}>
 			<div>
@@ -40,6 +41,7 @@ const ChapterSocials = ({ socialAccounts }) => {
 							>
 								<IconFacebook
 									id="facebook-chapter-social"
+									title={title}
 									color={styles.colors.white}
 									iconCSS={iconCSS}
 								/>
@@ -55,6 +57,7 @@ const ChapterSocials = ({ socialAccounts }) => {
 							>
 								<IconTwitter
 									id="twitter-chapter-social"
+									title={title}
 									color={styles.colors.white}
 									iconCSS={iconCSS}
 								/>
@@ -70,6 +73,23 @@ const ChapterSocials = ({ socialAccounts }) => {
 							>
 								<IconInstagram
 									id="instagram-chapter-social"
+									title={title}
+									color={styles.colors.white}
+									iconCSS={iconCSS}
+								/>
+							</a>
+						)
+					} else if (account.socialPlatform === 'LinkedIn') {
+						return (
+							<a
+								key={index}
+								href={`https://linkedin.com/company/${account.accountHandle}`}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<IconLinkedIn
+									id="linkedin-chapter-social"
+									title={title}
 									color={styles.colors.white}
 									iconCSS={iconCSS}
 								/>

@@ -33,6 +33,7 @@ const FooterSocials = () => {
 			>
 				<IconFacebook
 					id="facebook-footer-social"
+					title="AFSPNational"
 					color={styles.colors.white}
 				/>
 			</a>
@@ -44,6 +45,7 @@ const FooterSocials = () => {
 			>
 				<IconInstagram
 					id="instagram-footer-social"
+					title="AFSPNational"
 					color={styles.colors.white}
 				/>
 			</a>
@@ -55,6 +57,7 @@ const FooterSocials = () => {
 			>
 				<IconTwitter
 					id="twitter-footer-social"
+					title="AFSPNational"
 					color={styles.colors.white}
 				/>
 			</a>
@@ -66,6 +69,7 @@ const FooterSocials = () => {
 			>
 				<IconLinkedIn
 					id="linkedin-footer-social"
+					title="AFSPNational"
 					color={styles.colors.white}
 				/>
 			</a>
@@ -77,6 +81,7 @@ const FooterSocials = () => {
 			>
 				<IconYouTube
 					id="youtube-footer-social"
+					title="AFSPNational"
 					color={styles.colors.white}
 				/>
 			</a>
