@@ -18,12 +18,6 @@ const p = css`
 	max-width: 600px;
 	margin-left: auto;
 	margin-right: auto;
-	:last-of-type {
-		margin-bottom: ${styles.scale.px40};
-		@media (min-width: ${styles.screens.tablet}px) {
-			margin-bottom: ${styles.scale.px80};
-		}
-	}
 `
 
 const CTAWithDescription = ({ cta, describedby }) => {
