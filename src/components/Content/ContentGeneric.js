@@ -71,8 +71,6 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsCardContainer') {
-					console.log(detail.__typename)
-					console.log(adjacent)
 					return (
 						<CardContainer
 							key={index}

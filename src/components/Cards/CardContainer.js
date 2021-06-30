@@ -64,7 +64,6 @@ const CardContainer = ({ cards, heading, addCSS, cardCSS }) => {
 			items: 1,
 		},
 	}
-	console.log(cardCSS)
 	return (
 		<section
 			css={css`
