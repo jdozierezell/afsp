@@ -24,7 +24,7 @@ module.exports = {
 		`gatsby-plugin-image`,
 		`gatsby-plugin-sharp`,
 		`gatsby-transformer-sharp`,
-		// `gatsby-plugin-use-query-params`,
+		`gatsby-plugin-use-query-params`,
 		{
 			resolve: `gatsby-plugin-netlify`,
 			options: {
