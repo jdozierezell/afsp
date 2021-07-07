@@ -19,6 +19,7 @@ const ctaButtonCSS = css`
 	@media (hover: hover) {
 		:hover {
 			background-color: ${styles.colors.poppyHover};
+			color: ${styles.colors.white};
 		}
 	}
 `
