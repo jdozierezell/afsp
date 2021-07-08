@@ -10,6 +10,6 @@ PREVIEW_MODE = 'true'
 command = "npm run noIndex"
 
 [[plugins]]
-package = "netlify-plugin-gatsby-cache"
-[[plugins]]
 package = "@netlify/plugin-sitemap"
+[[plugins]]
+package = "@netlify/plugin-gatsby"
