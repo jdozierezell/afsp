@@ -11,6 +11,7 @@ const ctaImageCSS = css`
 	@media (min-width: ${styles.screens.tablet}px) {
 		display: flex;
 		align-content: top;
+		grid-column: 2 / 3;
 	}
 	img {
 		width: 100%;
@@ -22,6 +23,8 @@ const formCSS = css`
 	margin: ${styles.scale.px36} 0;
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin: 0 ${styles.scale.px36} 0 0;
+		grid-column: 1 / 2;
+		grid-row: 1 / 2;
 	}
 `
 
@@ -33,9 +36,9 @@ const EmailLanding = ({ callToAction, callToActionImage, embedHtml }) => {
 	const emailBodyCSS = css`
 		display: grid;
 		grid-template-columns: 1fr;
-		margin: 0 ${styles.scale.px24};
+		margin: ${styles.scale.px126} ${styles.scale.px24} 0;
 		@media (min-width: ${styles.screens.tablet}px) {
-			margin: ${styles.scale.px50} ${styles.scale.px50}
+			margin: ${styles.scale.px180} ${styles.scale.px50}
 				${styles.scale.px24};
 		}
 		@media (min-width: ${styles.screens.tablet}px) {
@@ -44,15 +47,6 @@ const EmailLanding = ({ callToAction, callToActionImage, embedHtml }) => {
 	`
 	return (
 		<section css={emailBodyCSS}>
-			<div css={formCSS}>
-				<h2 dangerouslySetInnerHTML={{ __html: callToAction }}></h2>
-				<Embed
-					embed={embedHtml}
-					embedCSS={css`
-						${embedCSS};
-					`}
-				></Embed>
-			</div>
 			{callToActionImage && (
 				<GatsbyImage
 					image={callToActionImage.gatsbyImageData}
@@ -60,6 +54,15 @@ const EmailLanding = ({ callToAction, callToActionImage, embedHtml }) => {
 					css={ctaImageCSS}
 				/>
 			)}
+			<div css={formCSS}>
+				<div dangerouslySetInnerHTML={{ __html: callToAction }}></div>
+				<Embed
+					embed={embedHtml}
+					embedCSS={css`
+						${embedCSS};
+					`}
+				></Embed>
+			</div>
 		</section>
 	)
 }

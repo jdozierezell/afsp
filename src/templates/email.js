@@ -41,11 +41,12 @@ const Email = ({ data: { email } }) => {
 	}
 	return (
 		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
+			theme={styles.logo.mobileDarkDesktopDark}
 			seo={email.seoMetaTags}
 			structuredData={structuredData}
+			hideEmailLayout={true}
 		>
-			<HeroImage title={email.title} heroImage={email.heroImage} />
+			{/* <HeroImage title={email.title} heroImage={email.heroImage} /> */}
 			<EmailLanding
 				callToAction={email.callToAction}
 				callToActionImage={email.callToActionImage}
@@ -58,7 +59,7 @@ const Email = ({ data: { email } }) => {
 export default Email
 
 export const query = graphql`
-	query($slug: String) {
+	query ($slug: String) {
 		email: datoCmsEmail(slug: { eq: $slug }) {
 			title
 			slug
@@ -90,12 +91,7 @@ export const query = graphql`
 				gatsbyImageData(
 					width: 1080
 					placeholder: NONE
-					imgixParams: {
-						auto: "format"
-						fill: "blur"
-						fit: "fill"
-						w: "1080"
-					}
+					imgixParams: { auto: "format", w: "1080" }
 				)
 			}
 			embedHtml
