@@ -46,7 +46,6 @@ const Email = ({ data: { email } }) => {
 			structuredData={structuredData}
 			hideEmailLayout={true}
 		>
-			{/* <HeroImage title={email.title} heroImage={email.heroImage} /> */}
 			<EmailLanding
 				callToAction={email.callToAction}
 				callToActionImage={email.callToActionImage}
@@ -68,21 +67,6 @@ export const query = graphql`
 			}
 			meta {
 				publishedAt
-			}
-			heroImage {
-				url
-				alt
-				gatsbyImageData(
-					width: 769
-					placeholder: NONE
-					imgixParams: {
-						auto: "format"
-						fit: "crop"
-						crop: "faces"
-						w: "769"
-						h: "475"
-					}
-				)
 			}
 			callToAction
 			callToActionImage {
