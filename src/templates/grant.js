@@ -9,7 +9,6 @@ import { styles } from '../css/css'
 
 import Content from '../components/Content/Content'
 import ContentHeading from '../components/Content/ContentHeading'
-import ContentVideo from '../components/Content/ContentVideo'
 
 const grantCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24};

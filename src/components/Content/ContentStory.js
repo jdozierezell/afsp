@@ -10,7 +10,6 @@ import { styles } from '../../css/css'
 
 import ContentImage from './ContentImage'
 import ContentAudio from './ContentAudio'
-import ContentVideo from './ContentVideo'
 import ContentHeading from './ContentHeading'
 import ContentEmbed from './ContentEmbed'
 import ContentTweet from './ContentTweet'

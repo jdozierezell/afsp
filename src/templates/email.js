@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
-import HeroImage from '../components/Hero/HeroImage'
 import EmailLanding from '../components/EmailSignup/EmailLanding'
 
 import { styles } from '../css/css'

@@ -50,8 +50,7 @@ const PastEvents = () => {
 		'@type': 'WebPage',
 		about: 'suicide events',
 		description: 'List of Past AFSP Events',
-		image:
-			'https://www.datocms-assets.com/12810/1565360975-stackedlogocolor.jpg',
+		image: 'https://www.datocms-assets.com/12810/1565360975-stackedlogocolor.jpg',
 		accessibilityAPI: 'ARIA',
 		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
 		name: 'Past Events',
@@ -96,7 +95,7 @@ const PastEvents = () => {
 		window.history.replaceState(
 			{},
 			'',
-			`${window.location.pathname}${queryPath ? queryPath : ''}`
+			`${window.location.pathname}${queryPath}`
 		)
 	}
 
@@ -176,9 +175,9 @@ const PastEvents = () => {
 				<div>
 					{events.map((event, index) => {
 						return (
-							<>
+							<div key={index}>
 								<hr />
-								<p key={index}>
+								<p>
 									<a
 										href={event.url}
 										target="_blank"
@@ -191,7 +190,7 @@ const PastEvents = () => {
 									</a>
 								</p>
 								{index === events.length - 1 && <hr />}
-							</>
+							</div>
 						)
 					})}
 				</div>
