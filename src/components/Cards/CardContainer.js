@@ -47,16 +47,6 @@ const cardContainerCSS = css`
 	}
 `
 
-const cardListCSS = css`
-	display: none;
-	grid-template-columns: repeat(3, 1fr);
-	grid-gap: ${styles.gridGap.desktop};
-	margin: 0;
-	@media (min-width: ${styles.screens.tablet}px) {
-		display: grid;
-	}
-`
-
 const CardContainer = ({ cards, heading, addCSS, cardCSS }) => {
 	const responsive = {
 		mobile: {
@@ -64,6 +54,15 @@ const CardContainer = ({ cards, heading, addCSS, cardCSS }) => {
 			items: 1,
 		},
 	}
+	const cardListCSS = css`
+		display: none;
+		grid-template-columns: repeat(${cards.length}, 1fr);
+		grid-gap: ${styles.gridGap.desktop};
+		margin: 0;
+		@media (min-width: ${styles.screens.tablet}px) {
+			display: grid;
+		}
+	`
 	return (
 		<section
 			css={css`
