@@ -93,18 +93,26 @@ const chapterDescriptionCSS = css`
 
 const buttonWrapperCSS = css`
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: ${styles.scale.px54} ${styles.scale.px54};
 	grid-gap: ${styles.gridGap.desktop};
 	margin: 0 ${styles.scale.px24};
 	z-index: 1;
 	@media (min-width: ${styles.screens.video}px) {
-		grid-area: 4 / 1 / 5 / 2;
+		grid-area: 4 / 1 / 5 / 3;
 		margin: 0 ${styles.scale.px50} ${styles.scale.px50};
+	}
+	span {
+		display: inline-block;
+		width: 100%;
+	}
+	a {
+		width: 100%;
 	}
 `
 
-const HeroChapter = ({ title, video, poster, brief, slug }) => {
+const HeroChapter = ({ title, video, poster, brief, customButtons, slug }) => {
+	console.log(customButtons)
 	return (
 		<section css={videoHeroCSS}>
 			<div
@@ -123,27 +131,64 @@ const HeroChapter = ({ title, video, poster, brief, slug }) => {
 			</h2>
 			<p css={chapterDescriptionCSS}>{brief}</p>
 			<div css={buttonWrapperCSS}>
-				<Link
-					className="secondary-button"
-					to={`/chapter/${slug}#volunteer`}
-				>
-					Volunteer
-				</Link>
-				<Link
-					className="secondary-button"
-					to={`/chapter/${slug}#events`}
-				>
-					Events
-				</Link>
-				<Link
-					className="secondary-button"
-					to={`/chapter/${slug}#programs`}
-				>
-					Programs
-				</Link>
-				<Link className="secondary-button" to={`/chapter/${slug}#news`}>
-					News
-				</Link>
+				<span>
+					<Link
+						className="secondary-button"
+						to={`/chapter/${slug}#volunteer`}
+					>
+						Volunteer
+					</Link>
+				</span>
+				<span>
+					<Link
+						className="secondary-button"
+						to={`/chapter/${slug}#events`}
+					>
+						Events
+					</Link>
+				</span>
+				{customButtons.length > 0 && (
+					<span>
+						<a
+							className="secondary-button"
+							href={customButtons[0].buttonUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={customButtons[0].buttonText}
+						>
+							{customButtons[0].buttonText}
+						</a>
+					</span>
+				)}
+				<span>
+					<Link
+						className="secondary-button"
+						to={`/chapter/${slug}#programs`}
+					>
+						Programs
+					</Link>
+				</span>
+				<span>
+					<Link
+						className="secondary-button"
+						to={`/chapter/${slug}#updates`}
+					>
+						Updates
+					</Link>
+				</span>
+				{customButtons.length > 1 && (
+					<span>
+						<a
+							className="secondary-button"
+							href={customButtons[1].buttonUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={customButtons[1].buttonText}
+						>
+							{customButtons[1].buttonText}
+						</a>
+					</span>
+				)}
 			</div>
 		</section>
 	)

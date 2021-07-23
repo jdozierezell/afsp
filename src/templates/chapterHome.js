@@ -24,6 +24,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 		heroPoster,
 		heroBrief,
 		aboutTheChapterNode,
+		customButtons,
 		staffName,
 		staffTitle,
 		staffEmail,
@@ -209,6 +210,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				video={heroVideoUrl}
 				poster={heroPosterUrl}
 				brief={heroBrief}
+				customButtons={customButtons}
 				slug={slug}
 			/>
 			<ChapterAboutContact
@@ -246,11 +248,11 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			)}
 			{stories[0] !== 'no stories' && (
 				<StoriesContainer
-					header="Stories and updates"
+					header="Chapter updates and stories"
 					first={true}
 					stories={stories}
 					more={true}
-					id="news"
+					id="updates"
 				/>
 			)}
 			{trackingCode && (
@@ -283,6 +285,10 @@ export const query = graphql`
 				url
 			}
 			heroBrief
+			customButtons {
+				buttonText
+				buttonUrl
+			}
 			staffName
 			staffTitle
 			staffEmail
