@@ -112,7 +112,6 @@ const buttonWrapperCSS = css`
 `
 
 const HeroChapter = ({ title, video, poster, brief, customButtons, slug }) => {
-	console.log(customButtons)
 	return (
 		<section css={videoHeroCSS}>
 			<div
