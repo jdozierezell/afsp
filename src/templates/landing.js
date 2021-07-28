@@ -110,7 +110,7 @@ const Landing = ({ data: { landing } }) => {
 	if (landing.eventCalendar.length > 0) {
 		landing.eventCalendar.forEach(event => {
 			if (event.__typename === 'DatoCmsCampaignName') {
-				events.title = `${event.campaignName} event calendar`
+				events.title = `${event.campaignName} Event Calendar`
 			} else if (event.__typename === 'DatoCmsEventsList') {
 				event.events.forEach(e => {
 					let start, end

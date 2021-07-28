@@ -56,7 +56,7 @@ const CardContainer = ({ cards, heading, addCSS, cardCSS }) => {
 	}
 	const cardListCSS = css`
 		display: none;
-		grid-template-columns: repeat(${cards.length}, 1fr);
+		grid-template-columns: repeat(4, 1fr);
 		grid-gap: ${styles.gridGap.desktop};
 		margin: 0;
 		@media (min-width: ${styles.screens.tablet}px) {
