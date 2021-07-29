@@ -146,8 +146,8 @@ const HeroChapter = ({ title, video, poster, brief, customButtons, slug }) => {
 						Events
 					</Link>
 				</span>
-				{customButtons.length > 0 && (
-					<span>
+				<span>
+					{customButtons.length > 0 && (
 						<a
 							className="secondary-button"
 							href={customButtons[0].buttonUrl}
@@ -157,8 +157,8 @@ const HeroChapter = ({ title, video, poster, brief, customButtons, slug }) => {
 						>
 							{customButtons[0].buttonText}
 						</a>
-					</span>
-				)}
+					)}
+				</span>
 				<span>
 					<Link
 						className="secondary-button"
@@ -175,8 +175,8 @@ const HeroChapter = ({ title, video, poster, brief, customButtons, slug }) => {
 						Updates
 					</Link>
 				</span>
-				{customButtons.length > 1 && (
-					<span>
+				<span>
+					{customButtons.length > 1 && (
 						<a
 							className="secondary-button"
 							href={customButtons[1].buttonUrl}
@@ -186,8 +186,8 @@ const HeroChapter = ({ title, video, poster, brief, customButtons, slug }) => {
 						>
 							{customButtons[1].buttonText}
 						</a>
-					</span>
-				)}
+					)}
+				</span>
 			</div>
 		</section>
 	)
