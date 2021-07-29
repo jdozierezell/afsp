@@ -102,17 +102,20 @@ const Landing = ({ data: { landing } }) => {
 		details: [],
 	}
 	let hideEmailLayout
+	let eventCalendarNumber = 0
 	landing.ctaChapterResourceDetailList.forEach(item => {
 		if (item.__typename === 'DatoCmsEmailBar') {
 			hideEmailLayout = true
 		}
 	})
-	if (landing.eventCalendar.length > 0) {
-		landing.eventCalendar.forEach(event => {
-			if (event.__typename === 'DatoCmsCampaignName') {
-				events.title = `${event.campaignName} Event Calendar`
-			} else if (event.__typename === 'DatoCmsEventsList') {
-				event.events.forEach(e => {
+	if (landing.ctaChapterResourceDetailList.length > 0) {
+		landing.ctaChapterResourceDetailList.forEach(resource => {
+			if (
+				resource.__typename === 'DatoCmsCampaignEventCalendar' &&
+				eventCalendarNumber === 0
+			) {
+				events.title = `${resource.campaignName} Event Calendar`
+				resource.eventList.forEach(e => {
 					let start, end
 					let eventObject = {
 						__typename: 'Event',
@@ -166,6 +169,7 @@ const Landing = ({ data: { landing } }) => {
 						: start
 					events.details.push(eventObject)
 				})
+				eventCalendarNumber++
 			}
 		})
 	}
@@ -226,13 +230,6 @@ const Landing = ({ data: { landing } }) => {
 					addCSS={channelCSS}
 				/>
 			)}
-			{events.details.length > 0 && (
-				<CarouselDetailContainer
-					content={events}
-					eventTitleSize="1.4em"
-					id="national-events"
-				/>
-			)}
 			{landing.ctaChapterResourceDetailList.map((item, index) => {
 				const itemsToCheck = ['DatoCmsResourceList', 'DatoCmsEmailBar']
 				const prevIndex = index > 0 ? index - 1 : null
@@ -269,6 +266,20 @@ const Landing = ({ data: { landing } }) => {
 							></EmailSignupBar>
 						)
 					}
+				} else if (item.__typename === 'DatoCmsCampaignEventCalendar') {
+					return (
+						<CarouselDetailContainer
+							content={events}
+							eventTitleSize="1.4em"
+							id="national-events"
+							addContainerCSS={css`
+								border-top: ${styles.scale.px7} solid
+									${styles.colors.white};
+								border-bottom: ${styles.scale.px7} solid
+									${styles.colors.white};
+							`}
+						/>
+					)
 				} else if (item.__typename === 'DatoCmsResourceList') {
 					if (item.displayAsCarousel) {
 						return (
@@ -333,24 +344,6 @@ export const query = graphql`
 			meta {
 				publishedAt
 			}
-			eventCalendar {
-				... on DatoCmsCampaignName {
-					__typename
-					campaignName
-				}
-				... on DatoCmsEventsList {
-					__typename
-					events {
-						title
-						startDateAndTime
-						endDateAndTime
-						brief
-						buttonText
-						url
-						eventCode
-					}
-				}
-			}
 			channelList {
 				id
 				image {
@@ -379,6 +372,21 @@ export const query = graphql`
 					__typename
 					id
 					showEmail
+				}
+				... on DatoCmsCampaignEventCalendar {
+					__typename
+					id
+					campaignName
+					eventList {
+						brief
+						buttonText
+						endDateAndTime
+						eventCode
+						id
+						startDateAndTime
+						title
+						url
+					}
 				}
 				... on DatoCmsResourceList {
 					__typename
@@ -480,29 +488,6 @@ export const query = graphql`
 							}
 						}
 						... on DatoCmsLanding {
-							__typename
-							id
-							title
-							slug
-							seo {
-								description
-								image {
-									url
-									gatsbyImageData(
-										width: 600
-										placeholder: NONE
-										imgixParams: {
-											auto: "format"
-											fill: "blur"
-											fit: "fill"
-											w: "600"
-											h: "370"
-										}
-									)
-								}
-							}
-						}
-						... on DatoCmsCampaignLanding {
 							__typename
 							id
 							title

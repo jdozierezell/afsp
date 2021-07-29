@@ -41,6 +41,7 @@ const carouselCSS = css`
 const CarouselDetailContainer = ({
 	content: { details, title, slug },
 	eventTitleSize,
+	addContainerCSS,
 	addCSS,
 	id,
 }) => {
@@ -68,7 +69,13 @@ const CarouselDetailContainer = ({
 			section.__typename === 'Event'
 	)
 	return (
-		<div id={id} css={carouselCSS}>
+		<div
+			id={id}
+			css={css`
+				${carouselCSS};
+				${addContainerCSS};
+			`}
+		>
 			<h2>{title}</h2>
 			<Carousel responsive={responsive}>
 				{details.map((section, index) => {

@@ -82,10 +82,6 @@ export const CTAs = graphql`
 							__typename
 							slug
 						}
-						... on DatoCmsCampaignLanding {
-							__typename
-							slug
-						}
 						... on DatoCmsCalendar {
 							__typename
 							slug
@@ -148,10 +144,6 @@ export const CTAs = graphql`
 							__typename
 							slug
 						}
-						... on DatoCmsCampaignLanding {
-							__typename
-							slug
-						}
 						... on DatoCmsCalendar {
 							__typename
 							slug
@@ -210,10 +202,6 @@ export const CTAs = graphql`
 							slug
 						}
 						... on DatoCmsGrantsPage {
-							__typename
-							slug
-						}
-						... on DatoCmsCampaignLanding {
 							__typename
 							slug
 						}
