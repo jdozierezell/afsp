@@ -22,6 +22,9 @@ const tweetCSS = css`
 const buttonGroupCSS = css`
 	min-width: 250px;
 	margin: 0;
+	button {
+		font-size: ${styles.scale.px16};
+	}
 `
 const ContentTweet = ({ tweet, navigation, story }) => {
 	const encodedTweet = encodeURIComponent(tweet)
