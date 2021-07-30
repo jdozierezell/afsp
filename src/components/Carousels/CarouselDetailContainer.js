@@ -66,6 +66,10 @@ const CarouselDetailContainer = ({
 	details = details.filter(
 		section =>
 			(section.contentHeading && section.contentHeading !== '') ||
+			(section.heading &&
+				section.headingLevel ===
+					'Level 2 (will be included in sidebar)' &&
+				section.heading !== '') ||
 			section.__typename === 'Event'
 	)
 	return (
@@ -82,17 +86,23 @@ const CarouselDetailContainer = ({
 					if (!section) {
 						return ''
 					} else {
-						if (
-							section.__typename === 'DatoCmsContent' &&
-							section.contentHeading
-						) {
-							const anchor = `/${slug}/#${createAnchor(
-								section.contentHeading
-							)}`
+						if (section.contentHeading || section.heading) {
+							let anchor, content
+							if (section.contentHeading) {
+								anchor = `/${slug}/#${createAnchor(
+									section.contentHeading
+								)}`
+								content = section.contentHeading
+							} else if (section.heading) {
+								anchor = `/${slug}/#${createAnchor(
+									section.heading
+								)}`
+								content = section.heading
+							}
 							return (
 								<CarouselDetail
 									key={index}
-									content={section.contentHeading}
+									content={content}
 									anchor={anchor}
 									addCSS={addCSS}
 								/>

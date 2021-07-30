@@ -164,6 +164,12 @@ export const query = graphql`
 									id
 									contentHeading
 								}
+								... on DatoCmsHeading {
+									__typename
+									id
+									headingLevel
+									heading
+								}
 							}
 						}
 					}
