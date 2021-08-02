@@ -25,6 +25,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 		heroBrief,
 		aboutTheChapterNode,
 		customButtons,
+		customEvents,
 		staffName,
 		staffTitle,
 		staffEmail,
@@ -169,7 +170,13 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				})
 				.then(response => {
 					if (response.next) {
-						const details = []
+						let details = []
+						const customEventList = []
+						// if (customEvents) {
+						// 	customEvents.forEach(event => {
+						// 		details.push(event.customEventUrl)
+						// 	})
+						// }
 						response.next.forEach(event => {
 							const eventObject = {
 								__typename: event.__typename,
@@ -181,6 +188,19 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 							}
 							details.push(eventObject)
 						})
+						customEvents.forEach((event, index) => {
+							let existingEvents = []
+							details.forEach((detail, index) => {
+								if (event.customEventUrl === detail.url) {
+									existingEvents.push(
+										details.splice(index, 1)
+									)
+								}
+							})
+							console.log(existingEvents)
+							details.splice(index, 0, event)
+						})
+						console.log(details)
 						setEvents({ ...events, details })
 					} else {
 						setEvents({ ...events, details: ['no events'] })
@@ -288,6 +308,9 @@ export const query = graphql`
 			customButtons {
 				buttonText
 				buttonUrl
+			}
+			customEvents {
+				customEventUrl
 			}
 			staffName
 			staffTitle
