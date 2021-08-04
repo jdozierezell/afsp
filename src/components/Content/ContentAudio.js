@@ -21,13 +21,6 @@ const ContentAudio = ({ audio, captions, language }) => {
 			<figcaption>{audio.title}</figcaption>
 			<video controls src={audio.url}>
 				<source src={audio.url} />
-				<track
-					default
-					kind="subtitles"
-					src={captions.url}
-					srcLang={language}
-					label={captions.alt}
-				/>
 				Your browser does not support the
 				<code>audio</code> element.
 			</video>
