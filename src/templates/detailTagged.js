@@ -146,9 +146,16 @@ export const query = graphql`
 				... on DatoCmsAudio {
 					__typename
 					audio {
-						url
+						alt
 						title
+						url
 					}
+					audioCaptions {
+						alt
+						title
+						url
+					}
+					audioLanguage
 				}
 				... on DatoCmsHeading {
 					__typename

@@ -6,21 +6,31 @@ import { styles } from '../../css/css'
 const audioCSS = css`
 	figcaption {
 		font-family: ${styles.fonts.avenirRegular};
+		padding-top: ${styles.scale.px36};
 	}
-	audio {
+	video {
 		width: 100%;
+		height: ${styles.scale.px64};
 	}
 `
 
-const ContentAudio = ({ audio }) => {
+const ContentAudio = ({ audio, captions, language }) => {
+	// changed audio element to video so that transcripts can be added
 	return (
 		<figure css={audioCSS}>
 			<figcaption>{audio.title}</figcaption>
-			<audio controls src={audio.url}>
-				<track default kind="captions" srcLang="en" src="#" />
+			<video controls src={audio.url}>
+				<source src={audio.url} />
+				<track
+					default
+					kind="subtitles"
+					src={captions.url}
+					srcLang={language}
+					label={captions.alt}
+				/>
 				Your browser does not support the
 				<code>audio</code> element.
-			</audio>
+			</video>
 		</figure>
 	)
 }
