@@ -82,14 +82,8 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	if (customEvents) {
 		customEvents.forEach(event => {
 			if (event.customEventUrl.indexOf('attendease') >= 0) {
-				if (event.customEventUrl.indexOf('/', 8) > 0) {
-					;(async () => {
-						const trimmed = await event.customEventUrl.substr(
-							0,
-							event.customEventUrl.indexOf('/', 8)
-						)
-						event.customEventUrl = trimmed
-					})()
+				if (event.customEventUrl.indexOf('/', 8) === -1) {
+					event.customEventUrl = event.customEventUrl.concat('/')
 				}
 			} else if (event.customEventUrl.indexOf('&_ga') >= 0) {
 				;(async () => {
@@ -99,11 +93,11 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					)
 					event.customEventUrl = trimmed
 				})()
-			} else if (event.customEventUrl.indexOf('/?_ga') >= 0) {
+			} else if (event.customEventUrl.indexOf('?_ga') >= 0) {
 				;(async () => {
 					const trimmed = await event.customEventUrl.substr(
 						0,
-						event.customEventUrl.indexOf('/?_ga')
+						event.customEventUrl.indexOf('?_ga')
 					)
 					event.customEventUrl = trimmed
 				})()
@@ -214,26 +208,35 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 							details.push(eventObject)
 						})
 						details.forEach((detail, index) => {
-							customEvents.forEach((event, index) => {
-								// console.log(event)
-								// console.log(detail)
-								// if (event.customEventUrl === detail.url) {
-								// console.log(
-								// 	`${event.customEventUrl} ${
-								// 		event.customEventUrl === detail.url
-								// 			? 'matches'
-								// 			: 'does not match'
-								// 	} ${detail.url}`
-								// )
-								// 	console.log(event)
-								// 	// customEventList.push(
-								// 	// 	details.splice(index, 1)
-								// 	// )
-								// }
+							if (detail.url.indexOf('donordrive') >= 0) {
+								const supportingUrl = detail.url.replace(
+									'afsp.donordrive.com',
+									'supporting.afsp.org'
+								)
+								detail.url = supportingUrl
+							}
+							customEvents.forEach(event => {
+								if (event.customEventUrl === detail.url) {
+									const customEvent = details.splice(1, index)
+									console.log(customEvent)
+									customEventList.push(detail)
+								}
+								if (event.customEventUrl === detail.url) {
+									// console.log(detail.url)
+									// console.log(
+									// 	`${event.customEventUrl} ${
+									// 		event.customEventUrl === detail.url
+									// 			? 'matches'
+									// 			: 'does not match'
+									// 	} ${detail.url}`
+									// )
+									// customEventList.push(
+									// 	details.splice(index, 1)
+									// )
+								}
 							})
 							// details.splice(index, 0, event)
 						})
-						// console.log(customEventList)
 						setEvents({ ...events, details })
 					} else {
 						setEvents({ ...events, details: ['no events'] })
