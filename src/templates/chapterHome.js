@@ -14,8 +14,6 @@ import ChapterSocials from '../components/Social/ChapterSocials'
 
 import { styles } from '../css/css'
 
-const eventCarouselCSS = css``
-
 const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	const {
 		title,
@@ -81,6 +79,31 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	})
 	const [stories, setStories] = useState([])
 
+	const trimUrl = async url => {
+		const trimmed = await url.substr(0, url.indexOf('/', 8))
+		console.log(trimmed)
+	}
+
+	if (customEvents) {
+		customEvents.forEach((event, index) => {
+			if (event.customEventUrl.indexOf('attendease') >= 0) {
+				if (event.customEventUrl.indexOf('/', 8) > 0) {
+					;(async () => {
+						const trimmed = await event.customEventUrl.substr(
+							0,
+							event.customEventUrl.indexOf('/', 8)
+						)
+						event.customEventUrl = trimmed
+						console.log(event)
+					})()
+				}
+
+				// console.log(trimmed)
+				// console.log(event)
+			}
+		})
+	}
+	console.log(customEvents)
 	let heroVideoUrl
 
 	if (heroVideo) {
@@ -170,13 +193,8 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				})
 				.then(response => {
 					if (response.next) {
-						let details = []
+						const details = []
 						const customEventList = []
-						// if (customEvents) {
-						// 	customEvents.forEach(event => {
-						// 		details.push(event.customEventUrl)
-						// 	})
-						// }
 						response.next.forEach(event => {
 							const eventObject = {
 								__typename: event.__typename,
@@ -188,19 +206,27 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 							}
 							details.push(eventObject)
 						})
-						customEvents.forEach((event, index) => {
-							let existingEvents = []
-							details.forEach((detail, index) => {
-								if (event.customEventUrl === detail.url) {
-									existingEvents.push(
-										details.splice(index, 1)
-									)
-								}
+						details.forEach((detail, index) => {
+							customEvents.forEach((event, index) => {
+								// console.log(event)
+								// console.log(detail)
+								// if (event.customEventUrl === detail.url) {
+								// console.log(
+								// 	`${event.customEventUrl} ${
+								// 		event.customEventUrl === detail.url
+								// 			? 'matches'
+								// 			: 'does not match'
+								// 	} ${detail.url}`
+								// )
+								// 	console.log(event)
+								// 	// customEventList.push(
+								// 	// 	details.splice(index, 1)
+								// 	// )
+								// }
 							})
-							console.log(existingEvents)
-							details.splice(index, 0, event)
+							// details.splice(index, 0, event)
 						})
-						console.log(details)
+						// console.log(customEventList)
 						setEvents({ ...events, details })
 					} else {
 						setEvents({ ...events, details: ['no events'] })
@@ -243,11 +269,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					phone: staffPhone,
 				}}
 			/>
-			<CarouselDetailContainer
-				content={events}
-				addCSS={eventCarouselCSS}
-				id="events"
-			/>
+			<CarouselDetailContainer content={events} id="events" />
 			<FeaturedResourcesContainer
 				heading="Featured Programs"
 				resources={featuredPrograms}
