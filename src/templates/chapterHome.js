@@ -79,13 +79,8 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	})
 	const [stories, setStories] = useState([])
 
-	const trimUrl = async url => {
-		const trimmed = await url.substr(0, url.indexOf('/', 8))
-		console.log(trimmed)
-	}
-
 	if (customEvents) {
-		customEvents.forEach((event, index) => {
+		customEvents.forEach(event => {
 			if (event.customEventUrl.indexOf('attendease') >= 0) {
 				if (event.customEventUrl.indexOf('/', 8) > 0) {
 					;(async () => {
@@ -94,16 +89,28 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 							event.customEventUrl.indexOf('/', 8)
 						)
 						event.customEventUrl = trimmed
-						console.log(event)
 					})()
 				}
-
-				// console.log(trimmed)
-				// console.log(event)
+			} else if (event.customEventUrl.indexOf('&_ga') >= 0) {
+				;(async () => {
+					const trimmed = await event.customEventUrl.substr(
+						0,
+						event.customEventUrl.indexOf('&_ga')
+					)
+					event.customEventUrl = trimmed
+				})()
+			} else if (event.customEventUrl.indexOf('/?_ga') >= 0) {
+				;(async () => {
+					const trimmed = await event.customEventUrl.substr(
+						0,
+						event.customEventUrl.indexOf('/?_ga')
+					)
+					event.customEventUrl = trimmed
+				})()
 			}
 		})
 	}
-	console.log(customEvents)
+
 	let heroVideoUrl
 
 	if (heroVideo) {
