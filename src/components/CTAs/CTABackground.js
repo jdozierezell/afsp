@@ -107,11 +107,13 @@ const CTAVideo = ({ cta, number, id }) => {
 			: backgroundVideo.url
 	}
 	return (
-		<BackgroundImage
-			id={id}
-			Tag="section"
-			image={backgroundImage.gatsbyImageData}
-			css={videoCTACSS}
+		<section
+			css={css`
+				${videoCTACSS};
+				@media (min-width: ${styles.screens.tablet}px) {
+					background-image: url(${`${backgroundImage.url}?auto=format&w=1920&h=1080&fit=crop&crop=faces&q=30`});
+				}
+			`}
 		>
 			{video && (
 				<>
@@ -162,7 +164,7 @@ const CTAVideo = ({ cta, number, id }) => {
 					)}
 				</div>
 			</div>
-		</BackgroundImage>
+		</section>
 	)
 }
 

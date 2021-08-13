@@ -66,6 +66,7 @@ const Detail = ({ data: { tagged, stories }, pageContext }) => {
 				intro={pageContext.intro}
 				more="releases"
 				stories={taggedStories}
+				initialDisplay="3"
 			/>
 		</Layout>
 	)

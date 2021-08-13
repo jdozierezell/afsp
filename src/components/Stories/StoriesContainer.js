@@ -55,8 +55,9 @@ const StoriesContainer = ({
 	intro,
 	stories,
 	id,
+	initialDisplay,
 }) => {
-	const [displayNumber, setDisplayNumber] = useState(3)
+	const [displayNumber, setDisplayNumber] = useState(initialDisplay)
 	let sectionId = ''
 	if (id) {
 		sectionId = id

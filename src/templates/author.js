@@ -180,7 +180,11 @@ const Tag = ({ data: { stories }, pageContext: { title, slug } }) => {
 			structuredData={structuredData}
 		>
 			<HeroSolid data={heroData} />
-			<StoriesContainer stories={stories.edges} more={`${title}s`} />
+			<StoriesContainer
+				stories={stories.edges}
+				more={`${title}s`}
+				initialDisplay="3"
+			/>
 		</Layout>
 	)
 }
@@ -188,7 +192,7 @@ const Tag = ({ data: { stories }, pageContext: { title, slug } }) => {
 export default Tag
 
 export const query = graphql`
-	query($slug: String) {
+	query ($slug: String) {
 		stories: allDatoCmsStory(
 			filter: { author: { elemMatch: { slug: { eq: $slug } } } }
 			limit: 66

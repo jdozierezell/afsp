@@ -253,6 +253,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					stories={stories}
 					more={true}
 					id="updates"
+					initialDisplay="6"
 				/>
 			)}
 			{trackingCode && (

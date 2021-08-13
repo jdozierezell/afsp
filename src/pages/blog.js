@@ -83,6 +83,7 @@ const RealStories = ({ data: { real, stories } }) => {
 				header="Stories"
 				first={true}
 				stories={currentStories}
+				initialDisplay="3"
 			/>
 			<CTAContainer
 				number={1}
@@ -92,6 +93,7 @@ const RealStories = ({ data: { real, stories } }) => {
 				offset={3}
 				more="stories"
 				stories={currentStories}
+				initialDisplay="3"
 			/>
 			<CTAContainer
 				number={2}
