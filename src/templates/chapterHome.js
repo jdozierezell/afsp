@@ -81,27 +81,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 
 	if (customEvents) {
 		customEvents.forEach(event => {
-			if (event.customEventUrl.indexOf('attendease') >= 0) {
-				if (event.customEventUrl.indexOf('/', 8) === -1) {
-					event.customEventUrl = event.customEventUrl.concat('/')
-				}
-			} else if (event.customEventUrl.indexOf('&_ga') >= 0) {
-				;(async () => {
-					const trimmed = await event.customEventUrl.substr(
-						0,
-						event.customEventUrl.indexOf('&_ga')
-					)
-					event.customEventUrl = trimmed
-				})()
-			} else if (event.customEventUrl.indexOf('?_ga') >= 0) {
-				;(async () => {
-					const trimmed = await event.customEventUrl.substr(
-						0,
-						event.customEventUrl.indexOf('?_ga')
-					)
-					event.customEventUrl = trimmed
-				})()
-			}
+			event.eventTitle = event.eventTitle.trim()
 		})
 	}
 
@@ -194,8 +174,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				})
 				.then(response => {
 					if (response.next) {
-						const details = []
-						const customEventList = []
+						let details = []
 						response.next.forEach(event => {
 							const eventObject = {
 								__typename: event.__typename,
@@ -207,36 +186,17 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 							}
 							details.push(eventObject)
 						})
-						details.forEach((detail, index) => {
-							if (detail.url.indexOf('donordrive') >= 0) {
-								const supportingUrl = detail.url.replace(
-									'afsp.donordrive.com',
-									'supporting.afsp.org'
-								)
-								detail.url = supportingUrl
-							}
+						details.forEach(detail => {
 							customEvents.forEach(event => {
-								if (event.customEventUrl === detail.url) {
-									const customEvent = details.splice(1, index)
-									console.log(customEvent)
-									customEventList.push(detail)
-								}
-								if (event.customEventUrl === detail.url) {
-									// console.log(detail.url)
-									// console.log(
-									// 	`${event.customEventUrl} ${
-									// 		event.customEventUrl === detail.url
-									// 			? 'matches'
-									// 			: 'does not match'
-									// 	} ${detail.url}`
-									// )
-									// customEventList.push(
-									// 	details.splice(index, 1)
-									// )
+								if (event.eventTitle === detail.title) {
+									console.log('matches')
+									details = details.filter(function (el) {
+										return el.title !== event.eventTitle
+									})
 								}
 							})
-							// details.splice(index, 0, event)
 						})
+						details.unshift(customEvents)
 						setEvents({ ...events, details })
 					} else {
 						setEvents({ ...events, details: ['no events'] })
@@ -261,6 +221,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			seo={chapter.seoMetaTags}
 			structuredData={structuredData}
 		>
+			{console.log(events)}
 			<HeroChapter
 				title={title}
 				video={heroVideoUrl}
@@ -305,6 +266,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					stories={stories}
 					more={true}
 					id="updates"
+					initialDisplay="6"
 				/>
 			)}
 			{trackingCode && (
@@ -342,7 +304,9 @@ export const query = graphql`
 				buttonUrl
 			}
 			customEvents {
-				customEventUrl
+				eventType
+				eventTitle
+				eventUrl
 			}
 			staffName
 			staffTitle
