@@ -14,8 +14,6 @@ import ChapterSocials from '../components/Social/ChapterSocials'
 
 import { styles } from '../css/css'
 
-const eventCarouselCSS = css``
-
 const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	const {
 		title,
@@ -25,6 +23,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 		heroBrief,
 		aboutTheChapterNode,
 		customButtons,
+		customEvents,
 		staffName,
 		staffTitle,
 		staffEmail,
@@ -79,6 +78,12 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 		details: [],
 	})
 	const [stories, setStories] = useState([])
+
+	if (customEvents) {
+		customEvents.forEach(event => {
+			event.eventTitle = event.eventTitle.trim()
+		})
+	}
 
 	let heroVideoUrl
 
@@ -169,7 +174,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				})
 				.then(response => {
 					if (response.next) {
-						const details = []
+						let details = []
 						response.next.forEach(event => {
 							const eventObject = {
 								__typename: event.__typename,
@@ -180,6 +185,17 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 									: event.url,
 							}
 							details.push(eventObject)
+						})
+						details.forEach(detail => {
+							customEvents.forEach((event, index) => {
+								if (event.eventTitle === detail.title) {
+									console.log('matches')
+									details = details.filter(function (el) {
+										return el.title !== event.eventTitle
+									})
+									details.splice(index, 0, detail)
+								}
+							})
 						})
 						setEvents({ ...events, details })
 					} else {
@@ -205,6 +221,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			seo={chapter.seoMetaTags}
 			structuredData={structuredData}
 		>
+			{console.log(events)}
 			<HeroChapter
 				title={title}
 				video={heroVideoUrl}
@@ -223,11 +240,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					phone: staffPhone,
 				}}
 			/>
-			<CarouselDetailContainer
-				content={events}
-				addCSS={eventCarouselCSS}
-				id="events"
-			/>
+			<CarouselDetailContainer content={events} id="events" />
 			<FeaturedResourcesContainer
 				heading="Featured Programs"
 				resources={featuredPrograms}
@@ -289,6 +302,11 @@ export const query = graphql`
 			customButtons {
 				buttonText
 				buttonUrl
+			}
+			customEvents {
+				eventType
+				eventTitle
+				eventUrl
 			}
 			staffName
 			staffTitle
