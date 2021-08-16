@@ -41,6 +41,7 @@ const carouselCSS = css`
 const CarouselDetailContainer = ({
 	content: { details, title, slug },
 	eventTitleSize,
+	eventInsert,
 	addContainerCSS,
 	addCSS,
 	id,
@@ -62,6 +63,15 @@ const CarouselDetailContainer = ({
 			breakpoint: { max: 464, min: 0 },
 			items: 1,
 		},
+	}
+	if (eventInsert && details.length > 0) {
+		details.push({
+			__typename: 'Event',
+			title: 'Looking for even more? See all AFSP virtual programs across the country',
+			date: '',
+			url: '/calendar',
+		})
+		console.log(details)
 	}
 	details = details.filter(
 		section =>

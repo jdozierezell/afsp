@@ -189,7 +189,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 						details.forEach(detail => {
 							customEvents.forEach((event, index) => {
 								if (event.eventTitle === detail.title) {
-									console.log('matches')
 									details = details.filter(function (el) {
 										return el.title !== event.eventTitle
 									})
@@ -221,7 +220,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			seo={chapter.seoMetaTags}
 			structuredData={structuredData}
 		>
-			{console.log(events)}
 			<HeroChapter
 				title={title}
 				video={heroVideoUrl}
@@ -240,7 +238,11 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					phone: staffPhone,
 				}}
 			/>
-			<CarouselDetailContainer content={events} id="events" />
+			<CarouselDetailContainer
+				content={events}
+				eventInsert={true}
+				id="events"
+			/>
 			<FeaturedResourcesContainer
 				heading="Featured Programs"
 				resources={featuredPrograms}
