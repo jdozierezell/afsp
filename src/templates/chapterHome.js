@@ -187,16 +187,16 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 							details.push(eventObject)
 						})
 						details.forEach(detail => {
-							customEvents.forEach(event => {
+							customEvents.forEach((event, index) => {
 								if (event.eventTitle === detail.title) {
 									console.log('matches')
 									details = details.filter(function (el) {
 										return el.title !== event.eventTitle
 									})
+									details.splice(index, 0, detail)
 								}
 							})
 						})
-						details.unshift(customEvents)
 						setEvents({ ...events, details })
 					} else {
 						setEvents({ ...events, details: ['no events'] })
