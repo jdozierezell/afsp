@@ -270,6 +270,7 @@ const Landing = ({ data: { landing } }) => {
 					return (
 						<CarouselDetailContainer
 							content={events}
+							key={index}
 							eventTitleSize="1.4em"
 							id="national-events"
 							addContainerCSS={css`

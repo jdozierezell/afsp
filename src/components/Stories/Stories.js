@@ -71,7 +71,7 @@ const Stories = ({ story: { node } }) => {
 					{node.author.map((author, index) => {
 						if (author.authorName !== 'AFSP') {
 							return (
-								<>
+								<span key={index}>
 									<Link
 										to={`/author/${author.slug}`}
 										key={index}
@@ -81,7 +81,7 @@ const Stories = ({ story: { node } }) => {
 									{node.author.length > index + 1 && (
 										<span>;&nbsp;</span>
 									)}
-								</>
+								</span>
 							)
 						} else {
 							return author.authorName
