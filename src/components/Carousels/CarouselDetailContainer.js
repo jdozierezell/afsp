@@ -122,6 +122,7 @@ const CarouselDetailContainer = ({
 								<CarouselDetail
 									key={index}
 									type={section.__typename}
+									featured={section.featured}
 									content={section.date}
 									title={section.title}
 									externalAnchor={true}

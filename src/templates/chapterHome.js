@@ -189,6 +189,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 						details.forEach(detail => {
 							customEvents.forEach((event, index) => {
 								if (event.eventTitle === detail.title) {
+									detail.featured = true
 									details = details.filter(function (el) {
 										return el.title !== event.eventTitle
 									})
