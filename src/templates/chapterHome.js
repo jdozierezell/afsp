@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
-import { css } from '@emotion/react'
 import fetch from 'isomorphic-fetch'
+import dayjs from 'dayjs'
 
 import LayoutChapter from '../components/LayoutChapter'
 import HeroChapter from '../components/Hero/HeroChapter'
@@ -78,12 +78,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 		details: [],
 	})
 	const [stories, setStories] = useState([])
-
-	if (customEvents) {
-		customEvents.forEach(event => {
-			event.eventTitle = event.eventTitle.trim()
-		})
-	}
 
 	let heroVideoUrl
 
@@ -175,6 +169,8 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				.then(response => {
 					if (response.next) {
 						let details = []
+						let formattedCustomEvents = []
+						const now = dayjs()
 						response.next.forEach(event => {
 							const eventObject = {
 								__typename: event.__typename,
@@ -193,11 +189,27 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 									details = details.filter(function (el) {
 										return el.title !== event.eventTitle
 									})
-									details.splice(index, 0, detail)
+									detail.featured = true
 								}
 							})
 						})
-						setEvents({ ...events, details })
+						customEvents.forEach(event => {
+							const date = dayjs(
+								event.eventDate,
+								'YYYY-MM-DD'
+							).format('MMMM D')
+							formattedCustomEvents.push({
+								__typename: 'Event',
+								title: event.eventTitle.trim(),
+								date: date,
+								url: event.eventUrl,
+								featured: true,
+							})
+						})
+						setEvents({
+							...events,
+							details: [...formattedCustomEvents, ...details],
+						})
 					} else {
 						setEvents({ ...events, details: ['no events'] })
 					}
@@ -309,6 +321,7 @@ export const query = graphql`
 			customEvents {
 				eventType
 				eventTitle
+				eventDate
 				eventUrl
 			}
 			staffName

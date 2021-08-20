@@ -71,7 +71,6 @@ const CarouselDetailContainer = ({
 			date: '',
 			url: '/calendar',
 		})
-		console.log(details)
 	}
 	details = details.filter(
 		section =>
@@ -129,6 +128,7 @@ const CarouselDetailContainer = ({
 									buttonText={section.buttonText}
 									anchor={section.url}
 									eventCode={section.eventCode}
+									featured={section.featured}
 									addCSS={addCSS}
 									eventTitleSize={eventTitleSize}
 								/>
