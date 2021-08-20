@@ -79,12 +79,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	})
 	const [stories, setStories] = useState([])
 
-	if (customEvents) {
-		customEvents.forEach(event => {
-			event.eventTitle = event.eventTitle.trim()
-		})
-	}
-
 	let heroVideoUrl
 
 	if (heroVideo) {
@@ -175,6 +169,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				.then(response => {
 					if (response.next) {
 						let details = []
+						let formattedCustomEvents = []
 						response.next.forEach(event => {
 							const eventObject = {
 								__typename: event.__typename,
@@ -192,8 +187,18 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 									details = details.filter(function (el) {
 										return el.title !== event.eventTitle
 									})
+									detail.featured = true
 									details.splice(index, 0, detail)
 								}
+							})
+						})
+						customEvents.forEach(event => {
+							formattedCustomEvents.push({
+								__typename: 'Event',
+								title: event.eventTitle.trim(),
+								date: event.eventDate,
+								url: event.eventUrl,
+								featured: true,
 							})
 						})
 						setEvents({ ...events, details })
@@ -308,6 +313,7 @@ export const query = graphql`
 			customEvents {
 				eventType
 				eventTitle
+				eventDate
 				eventUrl
 			}
 			staffName

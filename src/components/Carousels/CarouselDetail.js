@@ -45,6 +45,9 @@ const carouselMessageCSS = css`
 	@media (min-width: ${styles.screens.mobile}px) {
 		font-size: ${styles.scale.px18};
 	}
+	span {
+		color: ${styles.colors.poppy};
+	}
 `
 
 const carouselTitleCSS = css`
@@ -62,6 +65,7 @@ const CarouselDetail = ({
 	type,
 	anchor,
 	eventCode,
+	featured,
 	content,
 	title,
 	externalAnchor,
@@ -87,7 +91,15 @@ const CarouselDetail = ({
 				${addCSS};
 			`}
 		>
-			<p css={carouselMessageCSS}>{content}</p>
+			<p css={carouselMessageCSS}>
+				{featured && (
+					<>
+						<span>Featured Event</span>
+						<br />
+					</>
+				)}
+				{content}
+			</p>
 			{title && (
 				<h2
 					css={css`
