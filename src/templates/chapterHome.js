@@ -201,7 +201,10 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 								featured: true,
 							})
 						})
-						setEvents({ ...events, details })
+						setEvents({
+							...events,
+							details: [...formattedCustomEvents, ...details],
+						})
 					} else {
 						setEvents({ ...events, details: ['no events'] })
 					}
