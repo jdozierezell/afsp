@@ -76,7 +76,7 @@
 	"license": "MIT",
 	"scripts": {
 		"bs": "gatsby build && gatsby serve",
-		"build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
+		"build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build",
 		"develop": "set NODE_ENV=development&&gatsby develop",
 		"lighthouse": "npm run lighthousea && npm run lighthouses",
 		"lighthousea": "cd lighthouse && lighthouse https://afsp.org --view true --output html",
@@ -87,7 +87,7 @@
 		"profile": "gatsby build -- --profile",
 		"secure": "set NODE_ENV=development&&gatsby develop -- --https",
 		"serve": "set NODE_ENV=production&&gatsby serve",
-		"stage": "set NODE_ENV=development&&gatsby build --log-pages",
+		"stage": "set NODE_ENV=development&&gatsby build",
 		"start": "npm run develop",
 		"test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
 	},
