@@ -98,6 +98,7 @@ const CarouselDetail = ({
 						<br />
 					</>
 				)}
+				{!featured && <br />}
 				{content}
 			</p>
 			{title && (

@@ -189,7 +189,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 										return el.title !== event.eventTitle
 									})
 									detail.featured = true
-									details.splice(index, 0, detail)
 								}
 							})
 						})
