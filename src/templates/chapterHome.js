@@ -170,7 +170,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					if (response.next) {
 						let details = []
 						let formattedCustomEvents = []
-						const now = dayjs()
+						const now = dayjs().get('date')
 						response.next.forEach(event => {
 							const eventObject = {
 								__typename: event.__typename,
