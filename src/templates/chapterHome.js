@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
-import { css } from '@emotion/react'
 import fetch from 'isomorphic-fetch'
+import dayjs from 'dayjs'
 
 import LayoutChapter from '../components/LayoutChapter'
 import HeroChapter from '../components/Hero/HeroChapter'
@@ -170,6 +170,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 					if (response.next) {
 						let details = []
 						let formattedCustomEvents = []
+						const now = dayjs()
 						response.next.forEach(event => {
 							const eventObject = {
 								__typename: event.__typename,
@@ -193,10 +194,14 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 							})
 						})
 						customEvents.forEach(event => {
+							const date = dayjs(
+								event.eventDate,
+								'YYYY-MM-DD'
+							).format('MMMM D')
 							formattedCustomEvents.push({
 								__typename: 'Event',
 								title: event.eventTitle.trim(),
-								date: event.eventDate,
+								date: date,
 								url: event.eventUrl,
 								featured: true,
 							})
