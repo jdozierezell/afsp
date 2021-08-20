@@ -184,8 +184,9 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 						})
 						details.forEach(detail => {
 							customEvents.forEach((event, index) => {
+								detail.title = detail.title.trim()
+								event.eventTitle = event.eventTitle.trim()
 								if (event.eventTitle === detail.title) {
-									detail.featured = true
 									details = details.filter(function (el) {
 										return el.title !== event.eventTitle
 									})
@@ -194,17 +195,23 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 							})
 						})
 						customEvents.forEach(event => {
-							const date = dayjs(
+							const eventDate = dayjs(
 								event.eventDate,
 								'YYYY-MM-DD'
-							).format('MMMM D')
-							formattedCustomEvents.push({
-								__typename: 'Event',
-								title: event.eventTitle.trim(),
-								date: date,
-								url: event.eventUrl,
-								featured: true,
-							})
+							)
+							const removalDate = dayjs(
+								event.dateToRemove,
+								'YYYY-MM-DD'
+							)
+							if (removalDate >= now || eventDate >= now) {
+								formattedCustomEvents.push({
+									__typename: 'Event',
+									title: event.eventTitle.trim(),
+									date: eventDate.format('MMMM D'),
+									url: event.eventUrl,
+									featured: true,
+								})
+							}
 						})
 						setEvents({
 							...events,
@@ -323,6 +330,7 @@ export const query = graphql`
 				eventTitle
 				eventDate
 				eventUrl
+				dateToRemove
 			}
 			staffName
 			staffTitle
