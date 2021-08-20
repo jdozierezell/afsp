@@ -67,7 +67,6 @@ const CarouselDetail = ({
 	eventCode,
 	featured,
 	content,
-	featured,
 	title,
 	externalAnchor,
 	buttonText,
@@ -99,10 +98,7 @@ const CarouselDetail = ({
 						<br />
 					</>
 				)}
-<<<<<<< HEAD
-=======
 				{!featured && <br />}
->>>>>>> mergeCustomEvents
 				{content}
 			</p>
 			{title && (
