@@ -283,6 +283,11 @@ const Landing = ({ data: { landing } }) => {
 					)
 				} else if (item.__typename === 'DatoCmsResourceList') {
 					if (item.displayAsCarousel) {
+						const backgroundColor =
+							adjacent % 2 !== 1 || adjacent === 0
+								? styles.colors.lightGray
+								: styles.colors.white
+						console.log(`${item.listHeading} ${backgroundColor}`)
 						return (
 							<CarouselResourceContainer
 								key={index}
@@ -290,9 +295,7 @@ const Landing = ({ data: { landing } }) => {
 								resources={item.resource}
 								randomize={item.randomize}
 								addCSS={css`
-									background-color: ${adjacent % 2 === 1
-										? styles.colors.lightGray
-										: styles.colors.white};
+									background-color: ${backgroundColor};
 									&:nth-of-type(2) {
 										background-color: ${styles.colors
 											.lightGray};

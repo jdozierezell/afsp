@@ -99,25 +99,30 @@ const CarouselResourceContainer = ({
 					} else if (
 						resource.__typename === 'DatoCmsExternalResource'
 					) {
-						if (
-							resource.resourceLink[0].__typename ===
-							'DatoCmsDownload'
-						) {
+						if (resource.resourceLink.length > 0) {
+							if (
+								resource.resourceLink[0].__typename ===
+								'DatoCmsDownload'
+							) {
+								image = resource.coverImage
+								link =
+									resource.resourceLink[0].download.url.replace(
+										'?auto=format',
+										''
+									)
+								linkText = 'Download and share'
+								external = false
+							} else if (
+								resource.resourceLink[0].__typename ===
+								'DatoCmsExternalUrl'
+							) {
+								image = resource.coverImage
+								link = resource.resourceLink[0].externalUrl
+								linkText = 'Learn more'
+								external = true
+							}
+						} else {
 							image = resource.coverImage
-							link = resource.resourceLink[0].download.url.replace(
-								'?auto=format',
-								''
-							)
-							linkText = 'Download and share'
-							external = false
-						} else if (
-							resource.resourceLink[0].__typename ===
-							'DatoCmsExternalUrl'
-						) {
-							image = resource.coverImage
-							link = resource.resourceLink[0].externalUrl
-							linkText = 'Learn more'
-							external = true
 						}
 					}
 					return (
