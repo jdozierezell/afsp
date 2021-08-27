@@ -40,6 +40,7 @@ const CarouselResourceContainer = ({
 	randomize,
 	addCSS,
 }) => {
+	console.log(resources)
 	const id = createAnchor(listHeading)
 	const responsive = {
 		superLargeDesktop: {
@@ -90,7 +91,8 @@ const CarouselResourceContainer = ({
 						resource.__typename === 'DatoCmsLanding' ||
 						resource.__typename === 'DatoCmsCustomShareable' ||
 						resource.__typename === 'DatoCmsStatistic' ||
-						resource.__typename === 'DatoCmsImageList'
+						resource.__typename === 'DatoCmsImageList' ||
+						resource.__typename === 'DatoCmsQuilt'
 					) {
 						image = resource.seo.image
 						link = `/${resource.slug}`
