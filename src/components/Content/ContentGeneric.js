@@ -110,14 +110,7 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 						</div>
 					)
 				} else if (detail.__typename === 'DatoCmsAudio') {
-					return (
-						<ContentAudio
-							key={index}
-							audio={detail.audio}
-							captions={detail.audioCaptions}
-							language={detail.audioLanguage}
-						/>
-					)
+					return <ContentAudio key={index} audio={detail.audio} />
 				} else if (detail.__typename === 'DatoCmsHeading') {
 					return (
 						<ContentHeading

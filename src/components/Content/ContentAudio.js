@@ -14,7 +14,7 @@ const audioCSS = css`
 	}
 `
 
-const ContentAudio = ({ audio, captions, language }) => {
+const ContentAudio = ({ audio }) => {
 	// changed audio element to video so that transcripts can be added
 	return (
 		<figure css={audioCSS}>
