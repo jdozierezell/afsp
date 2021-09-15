@@ -287,7 +287,6 @@ const Landing = ({ data: { landing } }) => {
 							adjacent % 2 !== 1 || adjacent === 0
 								? styles.colors.lightGray
 								: styles.colors.white
-						console.log(`${item.listHeading} ${backgroundColor}`)
 						return (
 							<CarouselResourceContainer
 								key={index}
