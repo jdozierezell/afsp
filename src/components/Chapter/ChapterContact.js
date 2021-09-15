@@ -49,13 +49,25 @@ const ChapterSignup = ({ contact, addCSS }) => {
 		>
 			<h3>Chapter contact:</h3>
 			<address>
-				<strong>{name}</strong>
-				<br />
-				{title}
-				<br />
-				<a href={`mailto:${email}`}>{email}</a>
-				<br />
-				<a href={`tel:${phone}`}>{phone}</a>
+				{name && <strong>{name}</strong>}
+				{title && (
+					<>
+						<br />
+						{title}
+					</>
+				)}
+				{email && (
+					<>
+						<br />
+						<a href={`mailto:${email}`}>{email}</a>
+					</>
+				)}
+				{phone && (
+					<>
+						<br />
+						<a href={`tel:${phone}`}>{phone}</a>
+					</>
+				)}
 			</address>
 		</div>
 	)

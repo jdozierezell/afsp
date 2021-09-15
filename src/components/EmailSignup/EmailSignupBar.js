@@ -71,7 +71,7 @@ const EmailSignupBar = ({ addCSS }) => {
 			aria-label="email signup form"
 		>
 			<div>
-				<h2 id="klaviyo-signup">Sign up for email alerts</h2>
+				<h2>Sign up for email alerts</h2>
 				<p>
 					Receive updates from the American Foundation for Suicide
 					Prevention
