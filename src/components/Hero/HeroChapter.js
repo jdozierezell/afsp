@@ -75,8 +75,8 @@ const chapterDescriptionCSS = css`
 	margin: 0 ${styles.scale.px24};
 	max-width: 500px;
 	z-index: 1;
+	grid-area: 3 / 1 / 4 / 2;
 	@media (min-width: ${styles.screens.tablet}px) {
-		grid-area: 3 / 1 / 4 / 2;
 		margin: 0 ${styles.scale.px50};
 		color: ${styles.colors.white};
 	}
@@ -93,13 +93,14 @@ const chapterDescriptionCSS = css`
 
 const buttonWrapperCSS = css`
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: ${styles.scale.px54} ${styles.scale.px54};
+	grid-template-columns: 1fr 1fr;
+	/* grid-template-rows: ${styles.scale.px54} ${styles.scale.px54}; */
 	grid-gap: ${styles.gridGap.desktop};
 	margin: 0 ${styles.scale.px24};
 	z-index: 1;
-	@media (min-width: ${styles.screens.video}px) {
-		grid-area: 4 / 1 / 5 / 3;
+	grid-area: 4 / 1 / 5 / 3;
+	@media (min-width: ${styles.screens.tablet}px) {
+		grid-template-columns: 1fr 1fr 1fr;
 		margin: 0 ${styles.scale.px50} ${styles.scale.px50};
 	}
 	span {
@@ -108,10 +109,19 @@ const buttonWrapperCSS = css`
 	}
 	a {
 		width: 100%;
+		margin: 0;
 	}
 `
 
-const HeroChapter = ({ title, video, poster, brief, customButtons, slug }) => {
+const HeroChapter = ({
+	title,
+	video,
+	poster,
+	brief,
+	customButtons,
+	circleOfHopeUrl,
+	slug,
+}) => {
 	return (
 		<section css={videoHeroCSS}>
 			<div
@@ -146,19 +156,34 @@ const HeroChapter = ({ title, video, poster, brief, customButtons, slug }) => {
 						Events
 					</Link>
 				</span>
-				<span>
-					{customButtons.length > 0 && (
+				{circleOfHopeUrl && (
+					<span>
 						<a
 							className="secondary-button"
-							href={customButtons[0].buttonUrl}
+							href={circleOfHopeUrl}
 							target="_blank"
 							rel="noopener noreferrer"
-							aria-label={customButtons[0].buttonText}
+							aria-label="Circle of Hope"
 						>
-							{customButtons[0].buttonText}
+							Circle of Hope
 						</a>
-					)}
-				</span>
+					</span>
+				)}
+				{!circleOfHopeUrl && (
+					<span>
+						{customButtons.length > 0 && (
+							<a
+								className="secondary-button"
+								href={customButtons[0].buttonUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={customButtons[0].buttonText}
+							>
+								{customButtons[0].buttonText}
+							</a>
+						)}
+					</span>
+				)}
 				<span>
 					<Link
 						className="secondary-button"
@@ -175,19 +200,37 @@ const HeroChapter = ({ title, video, poster, brief, customButtons, slug }) => {
 						Updates
 					</Link>
 				</span>
-				<span>
-					{customButtons.length > 1 && (
-						<a
-							className="secondary-button"
-							href={customButtons[1].buttonUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							aria-label={customButtons[1].buttonText}
-						>
-							{customButtons[1].buttonText}
-						</a>
-					)}
-				</span>
+				{circleOfHopeUrl &&
+					customButtons.map(button => {
+						return (
+							<span>
+								<a
+									className="secondary-button"
+									href={button.buttonUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label={button.buttonText}
+								>
+									{button.buttonText}
+								</a>
+							</span>
+						)
+					})}
+				{!circleOfHopeUrl && (
+					<span>
+						{customButtons.length > 1 && (
+							<a
+								className="secondary-button"
+								href={customButtons[1].buttonUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={customButtons[1].buttonText}
+							>
+								{customButtons[1].buttonText}
+							</a>
+						)}
+					</span>
+				)}
 			</div>
 		</section>
 	)

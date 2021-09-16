@@ -240,12 +240,14 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			seo={chapter.seoMetaTags}
 			structuredData={structuredData}
 		>
+			{console.log(chapterInformation)}
 			<HeroChapter
 				title={title}
 				video={heroVideoUrl}
 				poster={heroPosterUrl}
 				brief={heroBrief}
 				customButtons={customButtons}
+				circleOfHopeUrl={chapterInformation.circleOfHopeUrl}
 				slug={slug}
 			/>
 			<ChapterAboutContact
@@ -444,6 +446,7 @@ export const query = graphql`
 				instagramClass
 				chapterDonorDriveId
 				chapterEmailApiKey
+				circleOfHopeUrl
 			}
 		}
 		realStories: allDatoCmsStory(
