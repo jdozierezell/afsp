@@ -151,12 +151,6 @@ export const query = graphql`
 						title
 						url
 					}
-					audioCaptions {
-						alt
-						title
-						url
-					}
-					audioLanguage
 				}
 				... on DatoCmsHeading {
 					__typename

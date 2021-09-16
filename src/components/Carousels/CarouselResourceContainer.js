@@ -40,7 +40,6 @@ const CarouselResourceContainer = ({
 	randomize,
 	addCSS,
 }) => {
-	console.log(resources)
 	const id = createAnchor(listHeading)
 	const responsive = {
 		superLargeDesktop: {
