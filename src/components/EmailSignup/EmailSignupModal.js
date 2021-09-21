@@ -108,6 +108,7 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 					onAfterOpen={() => {
 						document.body.style.top = `-${window.scrollY}px`
 						document.body.style.position = 'fixed'
+						document.body.style.width = '100vw'
 					}}
 					onAfterClose={() => {
 						const scrollY = document.body.style.top

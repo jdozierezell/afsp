@@ -3,6 +3,9 @@ import qs from 'qs'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/react'
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
+import dayjs from 'dayjs'
+
+import getDate from 'date-fns/getDate'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import startOfWeek from 'date-fns/startOfWeek'
@@ -11,6 +14,7 @@ import getDay from 'date-fns/getDay'
 import Layout from '../components/Layout'
 import CalendarFilter from '../components/Calendar/CalendarFilter'
 import CalendarProgramDescriptions from '../components/Calendar/CalendarProgramDescriptions'
+import CalendarEventModal from '../components/Calendar/CalendarEventModal'
 
 import { styles } from '../css/css'
 
@@ -107,6 +111,9 @@ const deskCalendarCSS = css`
 	.rbc-show-more {
 		margin-left: 10px;
 	}
+	.rbc-overlay {
+		display: none !important;
+	}
 `
 
 const AFSPCalendar = ({ data }) => {
@@ -115,6 +122,9 @@ const AFSPCalendar = ({ data }) => {
 	const [programs, setPrograms] = useState([])
 	const [chapterFilter, setChapterFilter] = useState(null)
 	const [programFilter, setProgramFilter] = useState(null)
+	const [modalIsOpen, setIsOpen] = useState(false)
+	const [focusedEvents, setFocusedEvents] = useState([])
+	const [selectedDate, setSelectedDate] = useState('')
 
 	let metaImage,
 		metaDescription = ''
@@ -148,7 +158,32 @@ const AFSPCalendar = ({ data }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${data.calendar.slug}`,
 	}
-
+	const openModal = () => {
+		setIsOpen(true)
+	}
+	const closeModal = () => {
+		setIsOpen(false)
+	}
+	const findFocusedEvents = async e => {
+		setSelectedDate(dayjs(e).format('dddd, MMMM D'))
+		let eventsToModal = []
+		eventsToModal = events.filter(
+			event =>
+				dayjs(event.start).format('MMMM D') ===
+				dayjs(e).format('MMMM D')
+		)
+		eventsToModal.sort((a, b) => {
+			if (a.title < b.title) {
+				return -1
+			}
+			if (a.title > b.title) {
+				return 1
+			}
+			return 0
+		})
+		setFocusedEvents(eventsToModal)
+		openModal()
+	}
 	let query =
 		typeof window !== `undefined`
 			? qs.parse(window.location.search.slice(1))
@@ -272,7 +307,7 @@ const AFSPCalendar = ({ data }) => {
 			}
 			setEvents(filteredEvents)
 		}
-	}, [chapterFilter, programFilter, allEvents])
+	}, [chapterFilter, programFilter, allEvents, focusedEvents])
 
 	return (
 		<Layout
@@ -337,8 +372,8 @@ const AFSPCalendar = ({ data }) => {
 							agenda: 'List',
 						}}
 						style={{ height: 1100 }}
-						onDrillDown={e => console.log(e)}
-						popup={true}
+						onDrillDown={e => findFocusedEvents(e)}
+						popup={false}
 						components={{
 							month: {
 								event: eventMonthDisplay,
@@ -350,6 +385,12 @@ const AFSPCalendar = ({ data }) => {
 					/>
 				</div>
 			</section>
+			<CalendarEventModal
+				modalIsOpen={modalIsOpen}
+				closeModal={closeModal}
+				focusedEvents={focusedEvents}
+				selectedDate={selectedDate}
+			></CalendarEventModal>
 		</Layout>
 	)
 }
