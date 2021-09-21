@@ -20,15 +20,14 @@ const modalEventCSS = css`
 	border-radius: ${styles.scale.px5};
 	padding: ${styles.scale.px5};
 	margin-bottom: ${styles.scale.px7};
-	cursor: pointer;
-	a {
+	color: ${styles.colors.white};
+	text-decoration: none;
+	display: block;
+	font-family: ${styles.fonts.avenirRegular};
+	:hover {
 		color: ${styles.colors.white};
-		text-decoration: none;
-		:hover {
-			color: ${styles.colors.white};
-			text-decoration: underline;
-			font-family: ${styles.fonts.avenirRegular};
-		}
+		text-decoration: underline;
+		font-family: ${styles.fonts.avenirRegular};
 	}
 `
 
@@ -51,8 +50,6 @@ const CalendarEventModal = ({
 	focusedEvents,
 	selectedDate,
 }) => {
-	console.log(selectedDate)
-	console.log(focusedEvents)
 	return (
 		<ClassNames>
 			{({ css, cx }) => (
@@ -108,11 +105,17 @@ const CalendarEventModal = ({
 							<IconX iconCSS={xCSS}></IconX>
 						</button>
 						<h2>Events for {selectedDate}</h2>
-						{focusedEvents.map(event => {
+						{focusedEvents.map((event, index) => {
 							return (
-								<p css={modalEventCSS}>
-									<a>{event.title}</a>
-								</p>
+								<a
+									css={modalEventCSS}
+									href={event.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									key={index}
+								>
+									{event.title}
+								</a>
 							)
 						})}
 					</div>
