@@ -2,9 +2,15 @@ import { graphql } from 'gatsby'
 
 export const ResourceList = graphql`
 	fragment ResourceList on DatoCmsResourceList {
+		__typename
+		id
+		listHeading
+		displayAsCarousel
+		randomize
 		resource {
-			... on DatoCmsDetail {
+			... on DatoCmsStatistic {
 				__typename
+				id
 				title
 				slug
 				seo {
@@ -16,8 +22,54 @@ export const ResourceList = graphql`
 							placeholder: NONE
 							imgixParams: {
 								auto: "format"
-								fit: "crop"
-								crop: "faces"
+								fit: "fill"
+								fill: "blur"
+								w: "600"
+								h: "370"
+							}
+						)
+					}
+				}
+			}
+			... on DatoCmsCustomShareable {
+				__typename
+				id
+				title
+				slug
+				seo {
+					description
+					image {
+						url
+						gatsbyImageData(
+							width: 600
+							placeholder: NONE
+							imgixParams: {
+								auto: "format"
+								fit: "fill"
+								fill: "blur"
+								w: "600"
+								h: "370"
+							}
+						)
+					}
+				}
+			}
+			... on DatoCmsDetail {
+				__typename
+				id
+				title
+				slug
+				seo {
+					description
+					image {
+						url
+						gatsbyImageData(
+							width: 600
+							placeholder: NONE
+							imgixParams: {
+								auto: "format"
+								fill: "blur"
+								fit: "fill"
 								w: "600"
 								h: "370"
 							}
@@ -27,6 +79,7 @@ export const ResourceList = graphql`
 			}
 			... on DatoCmsDetailTagged {
 				__typename
+				id
 				title
 				slug
 				seo {
@@ -38,8 +91,8 @@ export const ResourceList = graphql`
 							placeholder: NONE
 							imgixParams: {
 								auto: "format"
-								fit: "crop"
-								crop: "faces"
+								fill: "blur"
+								fit: "fill"
 								w: "600"
 								h: "370"
 							}
@@ -49,6 +102,7 @@ export const ResourceList = graphql`
 			}
 			... on DatoCmsLanding {
 				__typename
+				id
 				title
 				slug
 				seo {
@@ -60,8 +114,54 @@ export const ResourceList = graphql`
 							placeholder: NONE
 							imgixParams: {
 								auto: "format"
-								fit: "crop"
-								crop: "faces"
+								fill: "blur"
+								fit: "fill"
+								w: "600"
+								h: "370"
+							}
+						)
+					}
+				}
+			}
+			... on DatoCmsSearchPage {
+				__typename
+				id
+				title
+				slug
+				seo {
+					description
+					image {
+						url
+						gatsbyImageData(
+							width: 600
+							placeholder: NONE
+							imgixParams: {
+								auto: "format"
+								fill: "blur"
+								fit: "fill"
+								w: "600"
+								h: "370"
+							}
+						)
+					}
+				}
+			}
+			... on DatoCmsImageList {
+				__typename
+				id
+				title
+				slug
+				seo {
+					description
+					image {
+						url
+						gatsbyImageData(
+							width: 600
+							placeholder: NONE
+							imgixParams: {
+								auto: "format"
+								fill: "blur"
+								fit: "fill"
 								w: "600"
 								h: "370"
 							}
@@ -71,56 +171,7 @@ export const ResourceList = graphql`
 			}
 			... on DatoCmsStory {
 				__typename
-				title
-				slug
-				coverImage {
-					url
-					gatsbyImageData(
-						width: 600
-						placeholder: NONE
-						imgixParams: {
-							auto: "format"
-							fit: "crop"
-							crop: "faces"
-							w: "600"
-							h: "370"
-						}
-					)
-				}
-				seo {
-					description
-				}
-			}
-			... on DatoCmsExternalResource {
-				__typename
-				title
-				slug: resourceLink {
-					... on DatoCmsExternalUrl {
-						externalUrl
-					}
-					... on DatoCmsDownload {
-						download {
-							url
-						}
-					}
-				}
-				coverImage {
-					url
-					gatsbyImageData(
-						width: 600
-						placeholder: NONE
-						imgixParams: {
-							auto: "format"
-							fit: "crop"
-							crop: "faces"
-							w: "600"
-							h: "370"
-						}
-					)
-				}
-			}
-			... on DatoCmsQuilt {
-				__typename
+				id
 				title
 				slug
 				seo {
@@ -132,8 +183,66 @@ export const ResourceList = graphql`
 							placeholder: NONE
 							imgixParams: {
 								auto: "format"
-								fit: "crop"
-								crop: "faces"
+								fill: "blur"
+								fit: "fill"
+								w: "600"
+								h: "370"
+							}
+						)
+					}
+				}
+			}
+			... on DatoCmsExternalResource {
+				__typename
+				id
+				title
+				externalDescription
+				coverImage {
+					url
+					alt
+					gatsbyImageData(
+						width: 600
+						placeholder: NONE
+						imgixParams: {
+							auto: "format"
+							fill: "blur"
+							fit: "fill"
+							w: "600"
+							h: "370"
+						}
+					)
+				}
+				resourceLink {
+					... on DatoCmsExternalUrl {
+						__typename
+						id
+						externalUrl
+					}
+					... on DatoCmsDownload {
+						__typename
+						id
+						download {
+							url
+						}
+					}
+				}
+			}
+			... on DatoCmsQuilt {
+				__typename
+				id
+				title
+				slug
+				seo {
+					description
+					image {
+						url
+						gatsbyImageData(
+							width: 600
+							placeholder: NONE
+							imgixParams: {
+								auto: "format"
+								fill: "blur"
+								fit: "fill"
 								w: "600"
 								h: "370"
 							}

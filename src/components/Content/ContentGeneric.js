@@ -7,6 +7,8 @@ import Content from './Content'
 import CardContainer from '../Cards/CardContainer'
 import ContentImage from './ContentImage'
 import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
+import CarouselResourceContainer from '../Carousels/CarouselResourceContainer'
+import FeaturedResourcesContainer from '../FeaturedResources/FeaturedResourcesContainer'
 import ContentAudio from './ContentAudio'
 import ContentHeading from './ContentHeading'
 import ContentEmbed from './ContentEmbed'
@@ -32,6 +34,13 @@ const detailCarouselCSS = css`
 	margin: ${styles.scale.px50} 0 ${styles.scale.px50} -${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin: 0 0 0 -${styles.scale.px50};
+	}
+`
+
+const addCSS = css`
+	@media (min-width: ${styles.screens.tablet}px) {
+		width: calc(100vw - (${styles.scale.px50} * 2));
+		z-index: 500;
 	}
 `
 
@@ -109,6 +118,43 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 							/>
 						</div>
 					)
+				} else if (detail.__typename === 'DatoCmsResourceList') {
+					if (detail.displayAsCarousel) {
+						const backgroundColor =
+							adjacent % 2 !== 1 || adjacent === 0
+								? styles.colors.lightGray
+								: styles.colors.white
+						return (
+							<CarouselResourceContainer
+								key={index}
+								addCSS={addCSS}
+								listHeading={detail.listHeading}
+								resources={detail.resource}
+								randomize={detail.randomize}
+								addCSS={css`
+									background-color: ${backgroundColor};
+									&:nth-of-type(2) {
+										background-color: ${styles.colors
+											.lightGray};
+									}
+								`}
+							/>
+						)
+					} else {
+						return (
+							<FeaturedResourcesContainer
+								key={index}
+								addCSS={addCSS}
+								heading={detail.listHeading}
+								resources={detail.resource}
+								addCSS={css`
+									background-color: ${adjacent % 2 === 1
+										? styles.colors.lightGray
+										: styles.colors.white};
+								`}
+							/>
+						)
+					}
 				} else if (detail.__typename === 'DatoCmsAudio') {
 					return <ContentAudio key={index} audio={detail.audio} />
 				} else if (detail.__typename === 'DatoCmsHeading') {

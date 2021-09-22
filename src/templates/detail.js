@@ -66,6 +66,7 @@ const Detail = ({ data: { detail } }) => {
 		}
 		return true
 	})
+	console.log(detail)
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -111,6 +112,7 @@ export const query = graphql`
 				...ParentList
 			}
 			details {
+				...ResourceList
 				... on DatoCmsEventList {
 					__typename
 					programName
