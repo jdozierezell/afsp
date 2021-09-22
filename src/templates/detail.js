@@ -66,7 +66,6 @@ const Detail = ({ data: { detail } }) => {
 		}
 		return true
 	})
-	console.log(detail)
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}

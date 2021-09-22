@@ -39,6 +39,7 @@ const detailCarouselCSS = css`
 
 const addCSS = css`
 	@media (min-width: ${styles.screens.tablet}px) {
+		margin-top: ${styles.scale.px40};
 		width: calc(100vw - (${styles.scale.px50} * 2));
 		z-index: 500;
 	}
@@ -127,11 +128,11 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 						return (
 							<CarouselResourceContainer
 								key={index}
-								addCSS={addCSS}
 								listHeading={detail.listHeading}
 								resources={detail.resource}
 								randomize={detail.randomize}
 								addCSS={css`
+									${addCSS};
 									background-color: ${backgroundColor};
 									&:nth-of-type(2) {
 										background-color: ${styles.colors
