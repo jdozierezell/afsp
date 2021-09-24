@@ -11,17 +11,22 @@ import HeroModelSearchFormNonUs from './HeroModelSearchFormNonUs'
 
 const solidHeroCSS = css`
 	background-color: ${styles.colors.blue};
-	padding: ${styles.scale.px150} ${styles.scale.px24} ${styles.scale.px50};
+	padding: ${styles.scale.px126} ${styles.scale.px24} ${styles.scale.px50};
 	@media (min-width: ${styles.screens.mobile}px) {
-		padding: ${styles.scale.px160} ${styles.scale.px50};
+		padding: ${styles.scale.px126} ${styles.scale.px50} ${styles.scale.px50};
 	}
+	li,
 	h1,
-	label {
+	div {
 		color: ${styles.colors.white};
+		max-width: 623px;
+		font-family: ${styles.fonts.avenirRegular};
 	}
 	h1 {
 		margin: 0;
+		color: ${styles.colors.white};
 		font-size: ${styles.scale.px36};
+		font-family: ${styles.fonts.paul};
 		max-width: 700px;
 		@media (min-width: ${styles.screens.mobile}px) {
 			margin: ${styles.scale.px40} 0;
@@ -33,6 +38,7 @@ const solidHeroCSS = css`
 		font-size: ${styles.scale.px18};
 		display: inline-block;
 		margin: ${styles.scale.px20} 0;
+		color: ${styles.colors.white};
 		@media (min-width: ${styles.screens.tablet}px) {
 			padding: 0 ${styles.gridGap.desktop};
 		}
