@@ -7,6 +7,7 @@ import HeroGrant from '../components/Hero/HeroGrant'
 
 import { styles } from '../css/css'
 
+import NavigationSide from '../components/Navigation/NavigationSide'
 import Content from '../components/Content/Content'
 import ContentHeading from '../components/Content/ContentHeading'
 
@@ -14,9 +15,6 @@ const grantCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin: ${styles.scale.px80} ${styles.scale.px50};
-	}
-	@media (min-width: ${styles.screens.tablet}px) {
-		margin: ${styles.scale.px80} auto;
 		max-width: 623px;
 	}
 `
@@ -53,7 +51,7 @@ const Grant = ({ data: { grant } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${grant.slug}`,
 	}
-
+	grant.details = grant.grantDetails
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -61,7 +59,8 @@ const Grant = ({ data: { grant } }) => {
 			structuredData={structuredData}
 		>
 			<HeroGrant grant={grant} />
-			<main css={grantCSS}>
+			{/* <NavigationSide data={grant}></NavigationSide> */}
+			<div css={grantCSS}>
 				{grant.grantDetails.map((detail, index) => {
 					if (detail.__typename === 'DatoCmsContent') {
 						return (
@@ -83,7 +82,7 @@ const Grant = ({ data: { grant } }) => {
 						return ''
 					}
 				})}
-			</main>
+			</div>
 		</Layout>
 	)
 }

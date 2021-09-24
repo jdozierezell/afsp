@@ -15,8 +15,9 @@ const sideNavigationCSS = css`
 		background-color: ${styles.colors.white};
 		width: 500px;
 		right: 0;
-	max-height: 100vh;
-	overflow: auto;
+		max-height: 100vh;
+		overflow: auto;
+	}
 	h2 {
 		margin-bottom: ${styles.scale.px30};
 		font-family: ${styles.fonts.avenirBold};
@@ -38,13 +39,7 @@ const sideNavigationCSS = css`
 	}
 `
 
-const NavigationSide = ({
-	data,
-	beforeAnchors,
-	afterAnchors,
-	navRoot,
-	hasEvents,
-}) => {
+const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
 	let headings = []
 	if (beforeAnchors) {
 		beforeAnchors.map(anchor => {
@@ -77,18 +72,15 @@ const NavigationSide = ({
 				heading: `${detail.tag.tag}s`,
 				anchor: `${anchor}s`,
 			})
-		} else if (detail.__typename === 'DatoCmsEventList' && hasEvents) {
-			const anchor = createAnchor(detail.programName)
-			headings.push({
-				heading: `Upcoming ${detail.programName} events`,
-				anchor: `${anchor}-events`,
-			})
 		} else if (detail.__typename === 'search') {
 			const anchor = createAnchor(detail.searchHeading)
 			headings.push({ heading: detail.searchHeading, anchor })
 		} else if (detail.__typename === 'DatoCmsImageSectionHeader') {
 			const anchor = createAnchor(detail.header)
 			headings.push({ heading: detail.header, anchor })
+		} else if (detail.__typename === 'DatoCmsGrantAbstract') {
+			const anchor = createAnchor('Grantee Abstract')
+			headings.push({ heading: 'Grantee Abstract', anchor })
 		}
 		return headings
 	})

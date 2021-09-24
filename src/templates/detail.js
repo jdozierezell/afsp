@@ -10,11 +10,6 @@ import CarouselChapterContainer from '../components/Carousels/CarouselChapterCon
 import { styles } from '../css/css'
 
 const Detail = ({ data: { detail } }) => {
-	const setEvents = events => {
-		if (events) {
-			setHasEvents(true)
-		}
-	}
 	let metaImage,
 		metaDescription = ''
 	detail.seoMetaTags.tags.forEach(tag => {
@@ -47,7 +42,6 @@ const Detail = ({ data: { detail } }) => {
 		url: `https://afsp.org/${detail.slug}`,
 	}
 	let navigation = false
-	const [hasEvents, setHasEvents] = useState(false)
 	detail.details.map(detail => {
 		if (
 			!navigation &&
@@ -73,12 +67,8 @@ const Detail = ({ data: { detail } }) => {
 			structuredData={structuredData}
 		>
 			<HeroSolid data={detail} programLogo={detail.programLogo} />
-			<NavigationSide hasEvents={hasEvents} data={detail} />
-			<ContentGeneric
-				setEvents={setEvents}
-				data={detail}
-				navigation={navigation}
-			/>
+			<NavigationSide data={detail} />
+			<ContentGeneric data={detail} navigation={navigation} />
 			<CarouselChapterContainer />
 		</Layout>
 	)
@@ -112,10 +102,6 @@ export const query = graphql`
 			}
 			details {
 				...ResourceList
-				... on DatoCmsEventList {
-					__typename
-					programName
-				}
 				... on DatoCmsContent {
 					__typename
 					contentHeading
