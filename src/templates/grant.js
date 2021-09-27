@@ -59,7 +59,7 @@ const Grant = ({ data: { grant } }) => {
 			structuredData={structuredData}
 		>
 			<HeroGrant grant={grant} />
-			{/* <NavigationSide data={grant}></NavigationSide> */}
+			<NavigationSide data={grant}></NavigationSide>
 			<div css={grantCSS}>
 				{grant.grantDetails.map((detail, index) => {
 					if (detail.__typename === 'DatoCmsContent') {
