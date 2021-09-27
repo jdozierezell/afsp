@@ -32,7 +32,7 @@ const MenuCTA = ({ width, margin }) => {
 				width: ${width};
 				margin: ${margin};
 			`}
-			href="https://afsp.donordrive.com"
+			href="https://supporting.afsp.org"
 			target="_blank"
 			rel="noreferrer"
 		>
