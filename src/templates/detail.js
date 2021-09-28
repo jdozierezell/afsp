@@ -52,7 +52,6 @@ const Detail = ({ data: { detail } }) => {
 					detail.headingLevel ===
 						'Level 2 (will be included in sidebar)') ||
 				detail.__typename === 'DatoCmsFeaturedStoryTag' ||
-				detail.__typename === 'DatoCmsEventList' ||
 				detail.__typename === 'search' ||
 				detail.__typename === 'DatoCmsImageSectionHeader')
 		) {
