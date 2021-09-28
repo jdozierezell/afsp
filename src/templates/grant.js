@@ -122,8 +122,8 @@ const Grant = ({ data: { grant } }) => {
 						) {
 							return (
 								<>
-									{console.log(detail)}
 									<button
+										key={index}
 										className="secondary-button"
 										onClick={openModal}
 									>
