@@ -102,18 +102,19 @@ const NavigationSide = ({
 
 	const asideRef = useRef(null)
 	const [position, setPosition] = useState('absolute')
-	const [top, setTop] = useState(topStart ? topStart : '220px')
+	const [top, setTop] = useState(topStart ? `${topStart}px` : '220px')
 	const handleScroll = () => {
 		if (headings.length > 1) {
+			const heightToFix = topStart ? topStart : 150
 			if (
 				asideRef.current.getBoundingClientRect().y <= 0 &&
-				window.scrollY >= 150
+				window.scrollY >= heightToFix
 			) {
 				setPosition('fixed')
 				setTop(0)
 			} else {
 				setPosition('absolute')
-				setTop(topStart ? topStart : '220px')
+				setTop(topStart ? `${topStart}px` : '220px')
 			}
 		}
 	}
@@ -121,6 +122,7 @@ const NavigationSide = ({
 		window.addEventListener('scroll', handleScroll)
 		return () => window.removeEventListener('scroll', handleScroll)
 	})
+	console.log(topStart)
 	if (headings.length > 1) {
 		return (
 			<aside

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/react'
 
@@ -35,6 +35,7 @@ const grantDetailsCSS = css`
 `
 
 const Grant = ({ data: { grant } }) => {
+	const [grantTop, setGrantTop] = useState(null)
 	let metaImage,
 		metaDescription = ''
 	grant.seoMetaTags.tags.forEach(tag => {
@@ -67,6 +68,20 @@ const Grant = ({ data: { grant } }) => {
 		url: `https://afsp.org/${grant.slug}`,
 	}
 	grant.details = grant.grantDetails
+	// if (
+	// 	typeof window !== `undefined` &&
+	// 	document.getElementById('grantContainer') !== null
+	// ) {
+	// }
+	useEffect(() => {
+		setGrantTop(
+			document.getElementById('grantContainer').getBoundingClientRect()
+				.height +
+				document
+					.getElementById('crisisResources')
+					.getBoundingClientRect().height
+		)
+	}, [grantTop])
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -74,33 +89,40 @@ const Grant = ({ data: { grant } }) => {
 			structuredData={structuredData}
 		>
 			<section css={grantCSS}>
-				<HeroGrant grant={grant} addCSS={heroCSS} />
-				<div css={grantWrapperCSS}>
-					<NavigationSide data={grant} topStart="0"></NavigationSide>
-					<div css={grantDetailsCSS}>
-						{grant.grantDetails.map((detail, index) => {
-							if (detail.__typename === 'DatoCmsContent') {
-								return (
-									<Content
-										key={index}
-										contentHeading={detail.contentHeading}
-										contentBody={detail.contentBody}
-									/>
-								)
-							} else if (detail.__typename === 'DatoCmsHeading') {
-								return (
-									<ContentHeading
-										key={index}
-										heading={detail.heading}
-										level={detail.headingLevel}
-									/>
-								)
-							} else {
-								return ''
-							}
-						})}
-					</div>
+				<div id="grantContainer" css={heroCSS}>
+					<HeroGrant grant={grant} />
 				</div>
+				{/* <div css={grantWrapperCSS}> */}
+				{grantTop !== null && (
+					<NavigationSide
+						data={grant}
+						topStart={grantTop}
+					></NavigationSide>
+				)}
+				<div css={grantDetailsCSS}>
+					{grant.grantDetails.map((detail, index) => {
+						if (detail.__typename === 'DatoCmsContent') {
+							return (
+								<Content
+									key={index}
+									contentHeading={detail.contentHeading}
+									contentBody={detail.contentBody}
+								/>
+							)
+						} else if (detail.__typename === 'DatoCmsHeading') {
+							return (
+								<ContentHeading
+									key={index}
+									heading={detail.heading}
+									level={detail.headingLevel}
+								/>
+							)
+						} else {
+							return ''
+						}
+					})}
+				</div>
+				{/* </div> */}
 			</section>
 		</Layout>
 	)
