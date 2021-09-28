@@ -39,7 +39,13 @@ const sideNavigationCSS = css`
 	}
 `
 
-const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
+const NavigationSide = ({
+	data,
+	beforeAnchors,
+	afterAnchors,
+	navRoot,
+	topStart,
+}) => {
 	let headings = []
 	if (beforeAnchors) {
 		beforeAnchors.map(anchor => {
@@ -96,7 +102,7 @@ const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
 
 	const asideRef = useRef(null)
 	const [position, setPosition] = useState('absolute')
-	const [top, setTop] = useState('220px')
+	const [top, setTop] = useState(topStart ? topStart : '220px')
 	const handleScroll = () => {
 		if (headings.length > 1) {
 			if (
@@ -107,7 +113,7 @@ const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
 				setTop(0)
 			} else {
 				setPosition('absolute')
-				setTop('220px')
+				setTop(topStart ? topStart : '220px')
 			}
 		}
 	}

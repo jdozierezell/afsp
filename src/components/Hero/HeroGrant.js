@@ -65,7 +65,7 @@ const granteeInformationCSS = css`
 	}
 `
 
-const HeroGrant = ({ grant }) => {
+const HeroGrant = ({ grant, addCSS }) => {
 	const { title, grantInformation } = grant
 	let amount, type, year, displayAmount, displayAreas, mentor
 	let areas = []
@@ -114,7 +114,12 @@ const HeroGrant = ({ grant }) => {
 		}
 	})
 	return (
-		<div css={solidGrantCSS}>
+		<div
+			css={css`
+				${solidGrantCSS};
+				${addCSS};
+			`}
+		>
 			<div css={grantInformationCSS}>
 				<h1>{title}</h1>
 				<h4>

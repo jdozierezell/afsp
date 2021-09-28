@@ -12,10 +12,25 @@ import Content from '../components/Content/Content'
 import ContentHeading from '../components/Content/ContentHeading'
 
 const grantCSS = css`
+	display: grid;
+	grid-template-columns: 1fr 500px;
+`
+
+const heroCSS = css`
+	grid-column: 1/3;
+`
+
+const grantWrapperCSS = css`
+	position: relative;
+	grid-column: 1/3;
+`
+
+const grantDetailsCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin: ${styles.scale.px80} ${styles.scale.px50};
 		max-width: 623px;
+		grid-column: 1/2;
 	}
 `
 
@@ -58,31 +73,35 @@ const Grant = ({ data: { grant } }) => {
 			seo={grant.seoMetaTags}
 			structuredData={structuredData}
 		>
-			<HeroGrant grant={grant} />
-			<NavigationSide data={grant}></NavigationSide>
-			<div css={grantCSS}>
-				{grant.grantDetails.map((detail, index) => {
-					if (detail.__typename === 'DatoCmsContent') {
-						return (
-							<Content
-								key={index}
-								contentHeading={detail.contentHeading}
-								contentBody={detail.contentBody}
-							/>
-						)
-					} else if (detail.__typename === 'DatoCmsHeading') {
-						return (
-							<ContentHeading
-								key={index}
-								heading={detail.heading}
-								level={detail.headingLevel}
-							/>
-						)
-					} else {
-						return ''
-					}
-				})}
-			</div>
+			<section css={grantCSS}>
+				<HeroGrant grant={grant} addCSS={heroCSS} />
+				<div css={grantWrapperCSS}>
+					<NavigationSide data={grant} topStart="0"></NavigationSide>
+					<div css={grantDetailsCSS}>
+						{grant.grantDetails.map((detail, index) => {
+							if (detail.__typename === 'DatoCmsContent') {
+								return (
+									<Content
+										key={index}
+										contentHeading={detail.contentHeading}
+										contentBody={detail.contentBody}
+									/>
+								)
+							} else if (detail.__typename === 'DatoCmsHeading') {
+								return (
+									<ContentHeading
+										key={index}
+										heading={detail.heading}
+										level={detail.headingLevel}
+									/>
+								)
+							} else {
+								return ''
+							}
+						})}
+					</div>
+				</div>
+			</section>
 		</Layout>
 	)
 }
