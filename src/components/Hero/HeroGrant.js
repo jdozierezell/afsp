@@ -11,7 +11,7 @@ const solidGrantCSS = css`
 	flex-flow: row wrap;
 	justify-content: space-between;
 	align-items: flex-start;
-	@media (min-width: ${styles.screens.mobile}px) {
+	@media (min-width: ${styles.screens.tablet}px) {
 		padding: ${styles.scale.px180} ${styles.scale.px50} ${styles.scale.px80};
 	}
 `
@@ -22,7 +22,7 @@ const grantInformationCSS = css`
 		font-family: ${styles.fonts.paul};
 		margin: ${styles.scale.px35} 0;
 		font-size: ${styles.scale.px36};
-		@media (min-width: ${styles.screens.mobile}px) {
+		@media (min-width: ${styles.screens.tablet}px) {
 			margin: ${styles.scale.px40} 0;
 			font-size: ${styles.scale.px44};
 		}

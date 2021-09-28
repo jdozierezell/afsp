@@ -25,7 +25,8 @@ const heroCSS = css`
 
 const grantDetailsCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24};
-	@media (min-width: ${styles.screens.mobile}px) {
+	grid-column: 1/3;
+	@media (min-width: ${styles.screens.video}px) {
 		margin: ${styles.scale.px80} ${styles.scale.px50};
 		max-width: 623px;
 		grid-column: 1/2;
