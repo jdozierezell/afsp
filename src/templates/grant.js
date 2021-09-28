@@ -121,9 +121,8 @@ const Grant = ({ data: { grant } }) => {
 							detail.__typename === 'DatoCmsGrantAbstract'
 						) {
 							return (
-								<>
+								<span key={index}>
 									<button
-										key={index}
 										className="secondary-button"
 										onClick={openModal}
 									>
@@ -135,7 +134,7 @@ const Grant = ({ data: { grant } }) => {
 										heading="Full Scientific Abstract"
 										content={detail.grantAbstract}
 									></ContentModal>
-								</>
+								</span>
 							)
 						} else {
 							return ''
