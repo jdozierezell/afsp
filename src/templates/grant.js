@@ -10,18 +10,16 @@ import { styles } from '../css/css'
 import NavigationSide from '../components/Navigation/NavigationSide'
 import Content from '../components/Content/Content'
 import ContentHeading from '../components/Content/ContentHeading'
+import ContentModal from '../components/Content/ContentModal'
 
 const grantCSS = css`
-	display: grid;
-	grid-template-columns: 1fr 500px;
+	@media (min-width: ${styles.screens.mobile}px) {
+		display: grid;
+		grid-template-columns: 1fr 500px;
+	}
 `
 
 const heroCSS = css`
-	grid-column: 1/3;
-`
-
-const grantWrapperCSS = css`
-	position: relative;
 	grid-column: 1/3;
 `
 
@@ -36,6 +34,13 @@ const grantDetailsCSS = css`
 
 const Grant = ({ data: { grant } }) => {
 	const [grantTop, setGrantTop] = useState(null)
+	const [modalIsOpen, setIsOpen] = useState(false)
+	const openModal = () => {
+		setIsOpen(true)
+	}
+	const closeModal = () => {
+		setIsOpen(false)
+	}
 	let metaImage,
 		metaDescription = ''
 	grant.seoMetaTags.tags.forEach(tag => {
@@ -68,11 +73,6 @@ const Grant = ({ data: { grant } }) => {
 		url: `https://afsp.org/${grant.slug}`,
 	}
 	grant.details = grant.grantDetails
-	// if (
-	// 	typeof window !== `undefined` &&
-	// 	document.getElementById('grantContainer') !== null
-	// ) {
-	// }
 	useEffect(() => {
 		setGrantTop(
 			document.getElementById('grantContainer').getBoundingClientRect()
@@ -92,7 +92,6 @@ const Grant = ({ data: { grant } }) => {
 				<div id="grantContainer" css={heroCSS}>
 					<HeroGrant grant={grant} />
 				</div>
-				{/* <div css={grantWrapperCSS}> */}
 				{grantTop !== null && (
 					<NavigationSide
 						data={grant}
@@ -117,12 +116,31 @@ const Grant = ({ data: { grant } }) => {
 									level={detail.headingLevel}
 								/>
 							)
+						} else if (
+							detail.__typename === 'DatoCmsGrantAbstract'
+						) {
+							return (
+								<>
+									{console.log(detail)}
+									<button
+										className="secondary-button"
+										onClick={openModal}
+									>
+										Full Scientific Abstract
+									</button>
+									<ContentModal
+										modalIsOpen={modalIsOpen}
+										closeModal={closeModal}
+										heading="Full Scientific Abstract"
+										content={detail.grantAbstract}
+									></ContentModal>
+								</>
+							)
 						} else {
 							return ''
 						}
 					})}
 				</div>
-				{/* </div> */}
 			</section>
 		</Layout>
 	)
@@ -185,6 +203,9 @@ export const query = graphql`
 				... on DatoCmsHeading {
 					headingLevel
 					heading
+				}
+				... on DatoCmsGrantAbstract {
+					grantAbstract
 				}
 			}
 		}
