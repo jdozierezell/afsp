@@ -47,7 +47,11 @@ const headerAsideCSS = css`
 
 const HeaderAside = () => {
 	return (
-		<aside css={headerAsideCSS} aria-label="crisis resources">
+		<aside
+			id="crisisResources"
+			css={headerAsideCSS}
+			aria-label="crisis resources"
+		>
 			<div>
 				<strong>Are you in a crisis?</strong> Call{' '}
 				<a

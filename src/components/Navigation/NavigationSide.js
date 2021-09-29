@@ -39,7 +39,13 @@ const sideNavigationCSS = css`
 	}
 `
 
-const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
+const NavigationSide = ({
+	data,
+	beforeAnchors,
+	afterAnchors,
+	navRoot,
+	topStart,
+}) => {
 	let headings = []
 	if (beforeAnchors) {
 		beforeAnchors.map(anchor => {
@@ -96,18 +102,19 @@ const NavigationSide = ({ data, beforeAnchors, afterAnchors, navRoot }) => {
 
 	const asideRef = useRef(null)
 	const [position, setPosition] = useState('absolute')
-	const [top, setTop] = useState('220px')
+	const [top, setTop] = useState(topStart ? `${topStart}px` : '220px')
 	const handleScroll = () => {
 		if (headings.length > 1) {
+			const heightToFix = topStart ? topStart : 150
 			if (
 				asideRef.current.getBoundingClientRect().y <= 0 &&
-				window.scrollY >= 150
+				window.scrollY >= heightToFix
 			) {
 				setPosition('fixed')
 				setTop(0)
 			} else {
 				setPosition('absolute')
-				setTop('220px')
+				setTop(topStart ? `${topStart}px` : '220px')
 			}
 		}
 	}

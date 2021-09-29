@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/react'
 
@@ -10,16 +10,38 @@ import { styles } from '../css/css'
 import NavigationSide from '../components/Navigation/NavigationSide'
 import Content from '../components/Content/Content'
 import ContentHeading from '../components/Content/ContentHeading'
+import ContentModal from '../components/Content/ContentModal'
 
 const grantCSS = css`
-	margin: ${styles.scale.px50} ${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}px) {
+		display: grid;
+		grid-template-columns: 1fr 500px;
+	}
+`
+
+const heroCSS = css`
+	grid-column: 1/3;
+`
+
+const grantDetailsCSS = css`
+	margin: ${styles.scale.px50} ${styles.scale.px24};
+	grid-column: 1/3;
+	@media (min-width: ${styles.screens.video}px) {
 		margin: ${styles.scale.px80} ${styles.scale.px50};
 		max-width: 623px;
+		grid-column: 1/2;
 	}
 `
 
 const Grant = ({ data: { grant } }) => {
+	const [grantTop, setGrantTop] = useState(null)
+	const [modalIsOpen, setIsOpen] = useState(false)
+	const openModal = () => {
+		setIsOpen(true)
+	}
+	const closeModal = () => {
+		setIsOpen(false)
+	}
 	let metaImage,
 		metaDescription = ''
 	grant.seoMetaTags.tags.forEach(tag => {
@@ -52,37 +74,74 @@ const Grant = ({ data: { grant } }) => {
 		url: `https://afsp.org/${grant.slug}`,
 	}
 	grant.details = grant.grantDetails
+	useEffect(() => {
+		setGrantTop(
+			document.getElementById('grantContainer').getBoundingClientRect()
+				.height +
+				document
+					.getElementById('crisisResources')
+					.getBoundingClientRect().height
+		)
+	}, [grantTop])
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={grant.seoMetaTags}
 			structuredData={structuredData}
 		>
-			<HeroGrant grant={grant} />
-			{/* <NavigationSide data={grant}></NavigationSide> */}
-			<div css={grantCSS}>
-				{grant.grantDetails.map((detail, index) => {
-					if (detail.__typename === 'DatoCmsContent') {
-						return (
-							<Content
-								key={index}
-								contentHeading={detail.contentHeading}
-								contentBody={detail.contentBody}
-							/>
-						)
-					} else if (detail.__typename === 'DatoCmsHeading') {
-						return (
-							<ContentHeading
-								key={index}
-								heading={detail.heading}
-								level={detail.headingLevel}
-							/>
-						)
-					} else {
-						return ''
-					}
-				})}
-			</div>
+			<section css={grantCSS}>
+				<div id="grantContainer" css={heroCSS}>
+					<HeroGrant grant={grant} />
+				</div>
+				{grantTop !== null && (
+					<NavigationSide
+						data={grant}
+						topStart={grantTop}
+					></NavigationSide>
+				)}
+				<div css={grantDetailsCSS}>
+					{grant.grantDetails.map((detail, index) => {
+						if (detail.__typename === 'DatoCmsContent') {
+							return (
+								<Content
+									key={index}
+									contentHeading={detail.contentHeading}
+									contentBody={detail.contentBody}
+								/>
+							)
+						} else if (detail.__typename === 'DatoCmsHeading') {
+							return (
+								<ContentHeading
+									key={index}
+									heading={detail.heading}
+									level={detail.headingLevel}
+								/>
+							)
+						} else if (
+							detail.__typename === 'DatoCmsGrantAbstract'
+						) {
+							return (
+								<span key={index}>
+									<button
+										className="secondary-button"
+										onClick={openModal}
+									>
+										Full Scientific Abstract
+									</button>
+									<ContentModal
+										modalIsOpen={modalIsOpen}
+										closeModal={closeModal}
+										heading="Full Scientific Abstract"
+										content={detail.grantAbstract}
+									></ContentModal>
+								</span>
+							)
+						} else {
+							return ''
+						}
+					})}
+				</div>
+			</section>
 		</Layout>
 	)
 }
@@ -144,6 +203,9 @@ export const query = graphql`
 				... on DatoCmsHeading {
 					headingLevel
 					heading
+				}
+				... on DatoCmsGrantAbstract {
+					grantAbstract
 				}
 			}
 		}
