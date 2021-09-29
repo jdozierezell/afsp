@@ -89,66 +89,6 @@ const App = ({ data: { home } }) => {
 		title: 'AFSP national events',
 		details: [],
 	}
-	if (home.eventsList.length > 0) {
-		home.eventsList.forEach(event => {
-			if (event.__typename === 'DatoCmsEventsList') {
-				event.events.forEach(e => {
-					let start, end
-					let eventObject = {
-						__typename: 'Event',
-						title: e.title,
-						startDate: e.startDateAndTime
-							? dayjs(e.startDateAndTime)
-									.tz('America/New_York')
-									.format('MMMM D @ h:mm a ET')
-							: null,
-						endDate: e.endDateAndTime
-							? dayjs(e.endDateAndTime)
-									.tz('America/New_York')
-									.format('MMMM D @ h:mm a ET')
-							: null,
-						buttonText: e.buttonText,
-						url: e.url,
-						eventCode: e.eventCode,
-					}
-					// format start date and time
-					if (e.startDateAndTime.indexOf('00:00:00') !== -1) {
-						start = dayjs(e.startDateAndTime)
-							.tz('America/New_York')
-							.format('MMMM D')
-					} else if (e.startDateAndTime.indexOf(':00:00') === -1) {
-						start = dayjs(e.startDateAndTime)
-							.tz('America/New_York')
-							.format('MMMM D @ h:mm a ET')
-					} else {
-						start = dayjs(e.startDateAndTime)
-							.tz('America/New_York')
-							.format('MMMM D @ h a ET')
-					}
-					// format end date and time
-					if (e.endDateAndTime) {
-						if (e.endDateAndTime.indexOf('00:00:00') !== -1) {
-							end = dayjs(e.endDateAndTime)
-								.tz('America/New_York')
-								.format('MMMM D')
-						} else if (e.endDateAndTime.indexOf(':00:00') === -1) {
-							end = dayjs(e.endDateAndTime)
-								.tz('America/New_York')
-								.format('MMMM D @ h:mm a ET')
-						} else {
-							end = dayjs(e.endDateAndTime)
-								.tz('America/New_York')
-								.format('MMMM D @ h a ET')
-						}
-					}
-					eventObject.date = e.endDateAndTime
-						? `${start} – ${end}`
-						: start
-					events.details.push(eventObject)
-				})
-			}
-		})
-	}
 
 	return (
 		<Layout
@@ -181,77 +121,101 @@ const App = ({ data: { home } }) => {
 				</a>
 			</div>
 			{home.ctaChapterResourceList.map((item, index) => {
-				if (index <= 4) {
-					if (item.__typename === 'DatoCmsChannelList') {
-						return (
-							<ChannelContainer
-								key={index}
-								channelList={item.channels}
-							/>
-						)
-					} else if (item.__typename === 'DatoCmsCallToAction') {
-						return (
-							<CTAContainer
-								key={index}
-								number={index}
-								cta={item.cta.callToAction[0]}
-							/>
-						)
-					} else if (item.__typename === 'DatoCmsChapterConnection') {
-						if (item.showChapterConnection === true) {
-							return <CarouselChapterContainer key={index} />
-						}
-					} else if (item.__typename === 'DatoCmsResourceList') {
-						return (
-							<FeaturedResourcesContainer
-								key={index}
-								heading={item.listHeading}
-								resources={item.resource}
-							/>
-						)
+				if (item.__typename === 'DatoCmsChannelList') {
+					return (
+						<ChannelContainer
+							key={index}
+							channelList={item.channels}
+						/>
+					)
+				} else if (item.__typename === 'DatoCmsCallToAction') {
+					return (
+						<CTAContainer
+							key={index}
+							number={index}
+							cta={item.cta.callToAction[0]}
+						/>
+					)
+				} else if (item.__typename === 'DatoCmsChapterConnection') {
+					if (item.showChapterConnection === true) {
+						return <CarouselChapterContainer key={index} />
 					}
-					return ''
-				}
-				return ''
-			})}
-			{events.details.length > 0 && (
-				<CarouselDetailContainer
-					content={events}
-					eventTitleSize="1.4em"
-					id="national-events"
-				/>
-			)}
-			{home.ctaChapterResourceList.map((item, index) => {
-				if (index > 4) {
-					if (item.__typename === 'DatoCmsChannelList') {
-						return (
-							<ChannelContainer
-								key={index}
-								channelList={item.channels}
-							/>
-						)
-					} else if (item.__typename === 'DatoCmsCallToAction') {
-						return (
-							<CTAContainer
-								key={index}
-								number={index}
-								cta={item.cta.callToAction[0]}
-							/>
-						)
-					} else if (item.__typename === 'DatoCmsChapterConnection') {
-						if (item.showChapterConnection === true) {
-							return <CarouselChapterContainer key={index} />
+				} else if (item.__typename === 'DatoCmsResourceList') {
+					return (
+						<FeaturedResourcesContainer
+							key={index}
+							heading={item.listHeading}
+							resources={item.resource}
+						/>
+					)
+				} else if (item.__typename === 'DatoCmsEventsList') {
+					console.log(home)
+					item.events.forEach(e => {
+						let start, end
+						let eventObject = {
+							__typename: 'Event',
+							title: e.title,
+							startDate: e.startDateAndTime
+								? dayjs(e.startDateAndTime)
+										.tz('America/New_York')
+										.format('MMMM D @ h:mm a ET')
+								: null,
+							endDate: e.endDateAndTime
+								? dayjs(e.endDateAndTime)
+										.tz('America/New_York')
+										.format('MMMM D @ h:mm a ET')
+								: null,
+							buttonText: e.buttonText,
+							url: e.url,
+							eventCode: e.eventCode,
 						}
-					} else if (item.__typename === 'DatoCmsResourceList') {
-						return (
-							<FeaturedResourcesContainer
-								key={index}
-								heading={item.listHeading}
-								resources={item.resource}
-							/>
-						)
-					}
-					return ''
+						// format start date and time
+						if (e.startDateAndTime.indexOf('00:00:00') !== -1) {
+							start = dayjs(e.startDateAndTime)
+								.tz('America/New_York')
+								.format('MMMM D')
+						} else if (
+							e.startDateAndTime.indexOf(':00:00') === -1
+						) {
+							start = dayjs(e.startDateAndTime)
+								.tz('America/New_York')
+								.format('MMMM D @ h:mm a ET')
+						} else {
+							start = dayjs(e.startDateAndTime)
+								.tz('America/New_York')
+								.format('MMMM D @ h a ET')
+						}
+						// format end date and time
+						if (e.endDateAndTime) {
+							if (e.endDateAndTime.indexOf('00:00:00') !== -1) {
+								end = dayjs(e.endDateAndTime)
+									.tz('America/New_York')
+									.format('MMMM D')
+							} else if (
+								e.endDateAndTime.indexOf(':00:00') === -1
+							) {
+								end = dayjs(e.endDateAndTime)
+									.tz('America/New_York')
+									.format('MMMM D @ h:mm a ET')
+							} else {
+								end = dayjs(e.endDateAndTime)
+									.tz('America/New_York')
+									.format('MMMM D @ h a ET')
+							}
+						}
+						eventObject.date = e.endDateAndTime
+							? `${start} – ${end}`
+							: start
+						events.details.push(eventObject)
+					})
+					return (
+						<CarouselDetailContainer
+							key={index}
+							content={events}
+							eventTitleSize="1.4em"
+							id="national-events"
+						/>
+					)
 				}
 				return ''
 			})}
@@ -310,7 +274,7 @@ export const query = graphql`
 			ticker {
 				tickerItem
 			}
-			eventsList {
+			ctaChapterResourceList {
 				... on DatoCmsEventsList {
 					__typename
 					events {
@@ -323,17 +287,6 @@ export const query = graphql`
 						eventCode
 					}
 				}
-				... on DatoCmsEvent {
-					eventTitle
-					eventStartDateAndTime
-					eventEndDateAndTime
-					buttonText
-					url
-					eventCode
-					brief
-				}
-			}
-			ctaChapterResourceList {
 				... on DatoCmsChannelList {
 					__typename
 					channels {
