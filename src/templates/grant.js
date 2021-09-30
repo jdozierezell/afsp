@@ -71,7 +71,7 @@ const Grant = ({ data: { grant } }) => {
 		name: grant.title,
 		lastReviewed: grant.meta.publishedAt,
 		publisher: 'American Foundation for Suicide Prevention',
-		url: `https://afsp.org/${grant.slug}`,
+		url: `https://afsp.org/grant/${grant.slug}`,
 	}
 	grant.details = grant.grantDetails
 	useEffect(() => {
