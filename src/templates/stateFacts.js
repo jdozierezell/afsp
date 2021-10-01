@@ -5,6 +5,7 @@ import { css } from '@emotion/react'
 import Layout from '../components/Layout'
 import HeroFacts from '../components/Hero/HeroFacts'
 import NavigationSideStateFacts from '../components/Navigation/NavigationSideStateFacts'
+import ContentFacts from '../components/Content/ContentFacts'
 
 import { styles } from '../css/css'
 
@@ -52,31 +53,53 @@ const StateFacts = ({ data: { stateFacts } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/facts/${stateFacts.slug}`,
 	}
-	stateFacts.factSections = [
+	stateFacts.facts = [
 		{
 			display: 'Mental Health Parity',
 			anchor: 'mental-health-parity',
+			facts: [
+				{
+					display: 'Federal parity law codified in state statute',
+					value: stateFacts.enforceParityLaws,
+				},
+				{
+					display: 'State regulators must enforce parity law(s)',
+					value: stateFacts.parityLawCodified,
+				},
+				{
+					display:
+						'Public health plans (e.g., Medicaid) regularly submit parity compliance analyses to state regulators',
+					value: stateFacts.privateHealthPlans,
+				},
+				{
+					display:
+						'Private health plans (individual and group) regularly submit parity compliance analyses to state regulators',
+					value: stateFacts.publicHealthPlans,
+				},
+			],
 		},
 		{
 			display: 'K – 12 School Suicide Prevention',
 			anchor: 'k-12-school-suicide-prevention',
-			public: { display: 'Public Schools' },
-			private: { display: 'Private Schools' },
+			public: { display: 'Public Schools', facts: ['foo'] },
+			private: { display: 'Private Schools', facts: ['foo'] },
 		},
 		{
 			display:
 				'Health Professional training in suicide assessment, treatment and management',
 			anchor: 'health-professional-training',
+			facts: ['foo'],
 		},
 		{
 			display: 'Conversion therapy bans',
 			anchor: 'conversion-therapy-bans',
+			facts: ['foo'],
 		},
 		{
 			display: 'University and college campus suicide prevention',
 			anchor: 'university-and-college',
-			public: { display: 'Public Schools' },
-			private: { display: 'Private Schools' },
+			public: { display: 'Public Schools', facts: ['foo'] },
+			private: { display: 'Private Schools', facts: ['foo'] },
 		},
 	]
 	useEffect(() => {
@@ -88,7 +111,6 @@ const StateFacts = ({ data: { stateFacts } }) => {
 					.getBoundingClientRect().height
 		)
 	}, [factsTop])
-	console.log(stateFacts)
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -100,7 +122,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			</div>
 			{factsTop !== null && (
 				<NavigationSideStateFacts
-					factSections={stateFacts.factSections}
+					facts={stateFacts.facts}
 					slug={stateFacts.slug}
 					topStart={factsTop}
 				></NavigationSideStateFacts>
@@ -111,6 +133,10 @@ const StateFacts = ({ data: { stateFacts } }) => {
 						__html: stateFacts.initiativesAndPlans,
 					}}
 				></div>
+				<ContentFacts
+					state={stateFacts.stateName}
+					facts={stateFacts.facts}
+				></ContentFacts>
 			</section>
 		</Layout>
 	)
@@ -136,7 +162,10 @@ export const query = graphql`
 			}
 			stateFactSheetUrl
 			initiativesAndPlans
+			enforceParityLaws
 			parityLawCodified
+			privateHealthPlans
+			publicHealthPlans
 		}
 	}
 `

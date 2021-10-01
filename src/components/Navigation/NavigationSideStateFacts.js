@@ -37,7 +37,7 @@ const sideNavigationCSS = css`
 	}
 `
 
-const NavigationSide = ({ factSections, topStart, slug }) => {
+const NavigationSide = ({ facts, topStart, slug }) => {
 	const asideRef = useRef(null)
 	const [position, setPosition] = useState('absolute')
 	const [top, setTop] = useState(topStart ? `${topStart}px` : '220px')
@@ -58,9 +58,8 @@ const NavigationSide = ({ factSections, topStart, slug }) => {
 		window.addEventListener('scroll', handleScroll)
 		return () => window.removeEventListener('scroll', handleScroll)
 	})
-	factSections.map(section => {
+	facts.map(section => {
 		if (section.main) {
-			console.log('foo')
 			section = {
 				display: section.main.display,
 				anchor: section.main.anchor,
@@ -80,7 +79,7 @@ const NavigationSide = ({ factSections, topStart, slug }) => {
 		>
 			<h2>On this page</h2>
 			<ul>
-				{factSections.map((section, index) => (
+				{facts.map((section, index) => (
 					<li key={index}>
 						<a href={`/facts/${slug}#${section.anchor}`}>
 							<span
