@@ -166,6 +166,7 @@ export const query = graphql`
 					granteeInstitution
 					granteeImage {
 						url
+						alt
 						gatsbyImageData(
 							width: 768
 							imgixParams: {

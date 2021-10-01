@@ -6,13 +6,13 @@ import { styles } from '../../css/css'
 
 const solidGrantCSS = css`
 	background-color: ${styles.colors.blue};
-	padding: ${styles.scale.px150} ${styles.scale.px24} ${styles.scale.px50};
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
 	align-items: flex-start;
-	@media (min-width: ${styles.screens.tablet}px) {
-		padding: ${styles.scale.px180} ${styles.scale.px50} ${styles.scale.px80};
+	padding: ${styles.scale.px150} ${styles.scale.px24} ${styles.scale.px50};
+	@media (min-width: ${styles.screens.mobile}px) {
+		padding: ${styles.scale.px150} ${styles.scale.px50} ${styles.scale.px50};
 	}
 `
 const grantInformationCSS = css`

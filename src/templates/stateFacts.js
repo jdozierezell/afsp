@@ -4,10 +4,20 @@ import { css } from '@emotion/react'
 
 import Layout from '../components/Layout'
 import HeroFacts from '../components/Hero/HeroFacts'
-import NavigationSide from '../components/Navigation/NavigationSide'
-import Content from '../components/Content/Content'
+import NavigationSideStateFacts from '../components/Navigation/NavigationSideStateFacts'
 
 import { styles } from '../css/css'
+
+const initiativesAndPlansCSS = css`
+	margin: ${styles.scale.px50} ${styles.scale.px24};
+	max-width: 623px;
+	@media (min-width: ${styles.screens.mobile}px) {
+		margin: ${styles.scale.px50} ${styles.scale.px50} 0;
+	}
+	@media (min-width: ${styles.screens.video}px) {
+		width: calc(100vw - 555px);
+	}
+`
 
 const StateFacts = ({ data: { stateFacts } }) => {
 	let metaImage,
@@ -41,6 +51,34 @@ const StateFacts = ({ data: { stateFacts } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/facts/${stateFacts.slug}`,
 	}
+	stateFacts.factSections = [
+		{
+			display: 'Mental Health Parity',
+			anchor: 'mental-health-parity',
+		},
+		{
+			display: 'K – 12 School Suicide Prevention',
+			anchor: 'k-12-school-suicide-prevention',
+			public: { display: 'Public Schools' },
+			private: { display: 'Private Schools' },
+		},
+		{
+			display:
+				'Health Professional training in suicide assessment, treatment and management',
+			anchor: 'health-professional-training',
+		},
+		{
+			display: 'Conversion therapy bans',
+			anchor: 'conversion-therapy-bans',
+		},
+		{
+			display: 'University and college campus suicide prevention',
+			anchor: 'university-and-college',
+			public: { display: 'Public Schools' },
+			private: { display: 'Private Schools' },
+		},
+	]
+	console.log(stateFacts)
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -48,6 +86,17 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			structuredData={structuredData}
 		>
 			<HeroFacts stateFacts={stateFacts}></HeroFacts>
+			<NavigationSideStateFacts
+				factSections={stateFacts.factSections}
+				slug={stateFacts.slug}
+			></NavigationSideStateFacts>
+			<section css={initiativesAndPlansCSS}>
+				<div
+					dangerouslySetInnerHTML={{
+						__html: stateFacts.initiativesAndPlans,
+					}}
+				></div>
+			</section>
 		</Layout>
 	)
 }
@@ -58,12 +107,21 @@ export const query = graphql`
 	query ($slug: String) {
 		stateFacts: datoCmsStateFact(slug: { eq: $slug }) {
 			stateName
+			slug
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}
 			meta {
 				publishedAt
 			}
+			stateFactSheetImage {
+				url
+				alt
+				gatsbyImageData(width: 768)
+			}
+			stateFactSheetUrl
+			initiativesAndPlans
+			parityLawCodified
 		}
 	}
 `

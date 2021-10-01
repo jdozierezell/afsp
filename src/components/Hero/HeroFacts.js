@@ -6,63 +6,62 @@ import { styles } from '../../css/css'
 
 const solidFactsCSS = css`
 	background-color: ${styles.colors.blue};
-	padding: ${styles.scale.px150} ${styles.scale.px24} ${styles.scale.px50};
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr minmax(auto, 384px);
 	flex-flow: row wrap;
 	justify-content: space-between;
-	align-items: flex-start;
-	@media (min-width: ${styles.screens.tablet}px) {
-		padding: ${styles.scale.px180} ${styles.scale.px50} ${styles.scale.px80};
+	align-items: center;
+	padding: ${styles.scale.px150} ${styles.scale.px24} ${styles.scale.px20};
+	@media (min-width: ${styles.screens.mobile}px) {
+		padding: ${styles.scale.px150} ${styles.scale.px50} ${styles.scale.px20};
 	}
 `
-const stateNameCSS = css`
+const stateCSS = css`
 	max-width: 600px;
-	color: ${styles.colors.white};
-	font-family: ${styles.fonts.paul};
-	margin: ${styles.scale.px35} 0;
-	font-size: ${styles.scale.px36};
-	@media (min-width: ${styles.screens.tablet}px) {
-		margin: ${styles.scale.px40} 0;
-		font-size: ${styles.scale.px44};
+	h1 {
+		color: ${styles.colors.white};
+		font-family: ${styles.fonts.paul};
+		margin: ${styles.scale.px35} 0;
+		font-size: ${styles.scale.px36};
+		@media (min-width: ${styles.screens.tablet}px) {
+			margin: ${styles.scale.px40} 0;
+			font-size: ${styles.scale.px44};
+		}
+	}
+	h4 {
+		color: ${styles.colors.white};
+		font-family: ${styles.fonts.avenirRegular};
+		line-height: ${styles.scale.px24};
 	}
 `
-const granteeInformationCSS = css`
-	display: grid;
+const stateFactsDownloadCSS = css`
 	width: 100%;
-	grid-gap: ${styles.scale.px24};
-	margin-top: ${styles.scale.px24};
-	@media (min-width: ${styles.screens.navigation}px) {
-		width: calc(100vw - 600px - 150px);
-		margin-top: 0;
-	}
-	div {
-		min-width: 100px;
-		max-width: 200px;
-		@media (min-width: ${styles.screens.navigation}px) {
-			max-width: 360px;
-		}
-	}
-	img {
-		@media (min-width: ${styles.screens.navigation}px) {
-			border-radius: 50%;
-		}
-	}
-	p {
-		text-align: left;
-		color: ${styles.colors.white};
-		direction: ltr;
-		margin-bottom: 0;
-		@media (min-width: ${styles.screens.navigation}px) {
-			text-align: center;
-		}
-	}
 `
 
 const HeroFacts = ({ stateFacts }) => {
+	console.log(stateFacts)
 	return (
 		<div css={solidFactsCSS}>
-			<h1 css={stateNameCSS}>{`${stateFacts.stateName} State Facts`}</h1>
-			<div></div>
+			<div css={stateCSS}>
+				<h1>{`${stateFacts.stateName} State Facts`}</h1>
+				<h4>{`Learn more about suicide and the most up-to-date, local legislative efforts to prevent it in ${stateFacts.stateName}.`}</h4>
+			</div>
+			<div>
+				<GatsbyImage
+					image={stateFacts.stateFactSheetImage.gatsbyImageData}
+					alt={stateFacts.stateFactSheetImage.alt}
+					css={css`
+						border: ${styles.scale.px5} solid ${styles.colors.white};
+					`}
+				></GatsbyImage>
+				<a
+					className="secondary-button"
+					href={stateFacts.stateFactSheetUrl}
+					css={stateFactsDownloadCSS}
+				>
+					Download Fact Sheet
+				</a>
+			</div>
 		</div>
 	)
 }
