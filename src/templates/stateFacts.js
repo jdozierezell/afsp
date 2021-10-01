@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/react'
 
@@ -20,6 +20,7 @@ const initiativesAndPlansCSS = css`
 `
 
 const StateFacts = ({ data: { stateFacts } }) => {
+	const [factsTop, setFactsTop] = useState(null)
 	let metaImage,
 		metaDescription = ''
 	stateFacts.seoMetaTags.tags.forEach(tag => {
@@ -78,6 +79,15 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			private: { display: 'Private Schools' },
 		},
 	]
+	useEffect(() => {
+		setFactsTop(
+			document.getElementById('factsContainer').getBoundingClientRect()
+				.height +
+				document
+					.getElementById('crisisResources')
+					.getBoundingClientRect().height
+		)
+	}, [factsTop])
 	console.log(stateFacts)
 	return (
 		<Layout
@@ -85,11 +95,16 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			seo={stateFacts.seoMetaTags}
 			structuredData={structuredData}
 		>
-			<HeroFacts stateFacts={stateFacts}></HeroFacts>
-			<NavigationSideStateFacts
-				factSections={stateFacts.factSections}
-				slug={stateFacts.slug}
-			></NavigationSideStateFacts>
+			<div id="factsContainer">
+				<HeroFacts stateFacts={stateFacts}></HeroFacts>
+			</div>
+			{factsTop !== null && (
+				<NavigationSideStateFacts
+					factSections={stateFacts.factSections}
+					slug={stateFacts.slug}
+					topStart={factsTop}
+				></NavigationSideStateFacts>
+			)}
 			<section css={initiativesAndPlansCSS}>
 				<div
 					dangerouslySetInnerHTML={{
