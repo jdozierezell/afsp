@@ -5,6 +5,8 @@ import IconCircleCheck from '../SVGs/IconCircleCheck'
 import IconCircleCircle from '../SVGs/IconCircleCircle'
 import IconCircleX from '../SVGs/IconCircleX'
 
+import Fact from '../StateFacts/Fact.js'
+
 import { styles } from '../../css/css'
 
 const sectionHeadingCSS = css`
@@ -12,6 +14,20 @@ const sectionHeadingCSS = css`
 	margin: ${styles.scale.px50} 0 ${styles.scale.px35};
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin: ${styles.scale.px80} 0 ${styles.scale.px40};
+	}
+`
+const subSectionCSS = css`
+	font-size: ${styles.scale.px24};
+	margin: ${styles.scale.px36} 0 ${styles.scale.px24};
+	@media (min-width: ${styles.screens.mobile}px) {
+		margin: ${styles.scale.px64} 0 ${styles.scale.px36};
+	}
+`
+const subSubCSS = css`
+	font-size: ${styles.scale.px20};
+	margin: ${styles.scale.px24} 0 ${styles.scale.px24};
+	@media (min-width: ${styles.screens.mobile}px) {
+		margin: ${styles.scale.px36} 0 ${styles.scale.px36};
 	}
 `
 const keyCSS = css`
@@ -87,15 +103,21 @@ const ContentFacts = ({ state, facts }) => {
 				if (fact.public || fact.private) {
 					return (
 						<div key={index}>
-							<h3 id={fact.anchor}>{fact.display}</h3>
+							<h3 id={fact.anchor} css={subSectionCSS}>
+								{fact.display}
+							</h3>
 							{fact.public && (
 								<>
-									<h4>{fact.public.display}</h4>
+									<h4 css={subSubCSS}>
+										{fact.public.display}
+									</h4>
 								</>
 							)}
-							{fact.private && (
+							{fact.nonPublic && (
 								<>
-									<h4>{fact.private.display}</h4>
+									<h4 css={subSubCSS}>
+										{fact.nonPublic.display}
+									</h4>
 								</>
 							)}
 						</div>
@@ -103,72 +125,12 @@ const ContentFacts = ({ state, facts }) => {
 				} else {
 					return (
 						<div key={index}>
-							<h3 id={fact.anchor}>{fact.display}</h3>
+							<h3 id={fact.anchor} css={subSectionCSS}>
+								{fact.display}
+							</h3>
 							<ul css={factListCSS}>
 								{fact.facts.map((fact, index) => {
-									return (
-										<li key={index}>
-											<span>
-												{fact.value === false && (
-													<IconCircleX
-														color={
-															styles.colors.poppy
-														}
-														iconCSS={css`
-															width: ${styles
-																.scale.px24};
-														`}
-													></IconCircleX>
-												)}
-												{fact.value === 'None' && (
-													<IconCircleX
-														color={
-															styles.colors.poppy
-														}
-														iconCSS={css`
-															width: ${styles
-																.scale.px24};
-														`}
-													></IconCircleX>
-												)}
-												{fact.value === true && (
-													<IconCircleCheck
-														color={
-															styles.colors.green
-														}
-														iconCSS={css`
-															width: ${styles
-																.scale.px24};
-														`}
-													></IconCircleCheck>
-												)}
-												{fact.value ===
-													'Encouraged' && (
-													<IconCircleCircle
-														color={
-															styles.colors.yellow
-														}
-														iconCSS={css`
-															width: ${styles
-																.scale.px24};
-														`}
-													></IconCircleCircle>
-												)}
-												{fact.value === 'Required' && (
-													<IconCircleCircle
-														color={
-															styles.colors.green
-														}
-														iconCSS={css`
-															width: ${styles
-																.scale.px24};
-														`}
-													></IconCircleCircle>
-												)}
-											</span>
-											<span>{fact.display}</span>
-										</li>
-									)
+									return <Fact fact={fact} key={index}></Fact>
 								})}
 							</ul>
 						</div>

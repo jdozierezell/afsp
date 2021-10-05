@@ -5,7 +5,7 @@ const IconCircleX = ({ color, iconCSS }) => {
 	return (
 		<svg
 			viewBox="0 0 847 847"
-			fill-rule="evenodd"
+			fillRule="evenodd"
 			css={css`
 				${iconCSS};
 				fill: ${color};
