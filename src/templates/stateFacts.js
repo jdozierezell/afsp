@@ -5,7 +5,7 @@ import { css } from '@emotion/react'
 import Layout from '../components/Layout'
 import HeroFacts from '../components/Hero/HeroFacts'
 import NavigationSideStateFacts from '../components/Navigation/NavigationSideStateFacts'
-import ContentFacts from '../components/Content/ContentFacts'
+import Facts from '../components/StateFacts/Facts'
 
 import { styles } from '../css/css'
 
@@ -53,6 +53,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/facts/${stateFacts.slug}`,
 	}
+	console.log(stateFacts)
 	stateFacts.facts = [
 		{
 			display: 'Mental Health Parity',
@@ -294,10 +295,10 @@ const StateFacts = ({ data: { stateFacts } }) => {
 						__html: stateFacts.initiativesAndPlans,
 					}}
 				></div>
-				<ContentFacts
+				<Facts
 					state={stateFacts.stateName}
 					facts={stateFacts.facts}
-				></ContentFacts>
+				></Facts>
 			</section>
 		</Layout>
 	)

@@ -5,7 +5,7 @@ import IconCircleCheck from '../SVGs/IconCircleCheck'
 import IconCircleCircle from '../SVGs/IconCircleCircle'
 import IconCircleX from '../SVGs/IconCircleX'
 
-import Fact from '../StateFacts/Fact.js'
+import Fact from './Fact.js'
 
 import { styles } from '../../css/css'
 
@@ -100,7 +100,8 @@ const ContentFacts = ({ state, facts }) => {
 				</ul>
 			</div>
 			{facts.map((fact, index) => {
-				if (fact.public || fact.private) {
+				if (fact.public || fact.nonPublic) {
+					console.log(fact)
 					return (
 						<div key={index}>
 							<h3 id={fact.anchor} css={subSectionCSS}>
@@ -111,6 +112,18 @@ const ContentFacts = ({ state, facts }) => {
 									<h4 css={subSubCSS}>
 										{fact.public.display}
 									</h4>
+									<ul css={factListCSS}>
+										{fact.public.facts.map(
+											(fact, index) => {
+												return (
+													<Fact
+														fact={fact}
+														key={index}
+													></Fact>
+												)
+											}
+										)}
+									</ul>
 								</>
 							)}
 							{fact.nonPublic && (
@@ -118,6 +131,18 @@ const ContentFacts = ({ state, facts }) => {
 									<h4 css={subSubCSS}>
 										{fact.nonPublic.display}
 									</h4>
+									<ul css={factListCSS}>
+										{fact.nonPublic.facts.map(
+											(fact, index) => {
+												return (
+													<Fact
+														fact={fact}
+														key={index}
+													></Fact>
+												)
+											}
+										)}
+									</ul>
 								</>
 							)}
 						</div>

@@ -39,7 +39,6 @@ const stateFactsDownloadCSS = css`
 `
 
 const HeroFacts = ({ stateFacts }) => {
-	console.log(stateFacts)
 	return (
 		<div css={solidFactsCSS}>
 			<div css={stateCSS}>
