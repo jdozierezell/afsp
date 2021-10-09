@@ -10,6 +10,13 @@ import Facts from '../components/StateFacts/Facts'
 import { styles } from '../css/css'
 
 const initiativesAndPlansCSS = css`
+	h2 {
+		font-size: ${styles.scale.px36};
+		margin: ${styles.scale.px40} 0 ${styles.scale.px30};
+		@media (min-width: ${styles.screens.mobile}px) {
+			margin: ${styles.scale.px46} 0 ${styles.scale.px36};
+		}
+	}
 	margin: ${styles.scale.px50} ${styles.scale.px24};
 	max-width: 623px;
 	@media (min-width: ${styles.screens.mobile}px) {
@@ -53,7 +60,6 @@ const StateFacts = ({ data: { stateFacts } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/facts/${stateFacts.slug}`,
 	}
-	console.log(stateFacts)
 	stateFacts.facts = [
 		{
 			display: 'Mental Health Parity',
@@ -290,11 +296,16 @@ const StateFacts = ({ data: { stateFacts } }) => {
 				></NavigationSideStateFacts>
 			)}
 			<section css={initiativesAndPlansCSS}>
-				<div
-					dangerouslySetInnerHTML={{
-						__html: stateFacts.initiativesAndPlans,
-					}}
-				></div>
+				{stateFacts.initiativesAndPlans && (
+					<div>
+						<h2>Plans and Initiatives</h2>
+						<div
+							dangerouslySetInnerHTML={{
+								__html: stateFacts.initiativesAndPlans,
+							}}
+						></div>
+					</div>
+				)}
 				<Facts
 					state={stateFacts.stateName}
 					facts={stateFacts.facts}
@@ -322,6 +333,7 @@ export const query = graphql`
 				alt
 				gatsbyImageData(width: 768)
 			}
+			initiativesAndPlans
 			enforceParityLaws
 			medicalSurgicalProfessionalsOneTime
 			medicalSurgicalProfessionalsRegular

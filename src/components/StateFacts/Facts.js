@@ -11,16 +11,16 @@ import { styles } from '../../css/css'
 
 const sectionHeadingCSS = css`
 	font-size: ${styles.scale.px36};
-	margin: ${styles.scale.px50} 0 ${styles.scale.px35};
+	margin: ${styles.scale.px40} 0 ${styles.scale.px35};
 	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px80} 0 ${styles.scale.px40};
+		margin: ${styles.scale.px46} 0 ${styles.scale.px40};
 	}
 `
 const subSectionCSS = css`
 	font-size: ${styles.scale.px24};
 	margin: ${styles.scale.px36} 0 ${styles.scale.px24};
 	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px64} 0 ${styles.scale.px36};
+		margin: ${styles.scale.px46} 0 ${styles.scale.px36};
 	}
 `
 const subSubCSS = css`
