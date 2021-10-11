@@ -95,6 +95,7 @@ const App = ({ data: { home } }) => {
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={home.seoMetaTags}
 			structuredData={structuredData}
+			customPadding={`${styles.scale.px50} ${styles.scale.px50} ${styles.scale.px90}`}
 		>
 			<HeroVideo
 				videoUrl={

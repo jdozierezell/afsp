@@ -13,7 +13,6 @@ import { styles } from '../../css/css'
 
 const footerCSS = css`
 	background-color: ${styles.colors.darkGray};
-	padding: ${styles.scale.px50} ${styles.screens.px24};
 	color: ${styles.colors.white};
 	font-family: ${styles.fonts.avenirRegular};
 	position: relative;
@@ -80,10 +79,20 @@ const copyrightCSS = css`
 		align-self: end;
 	}
 `
-const Footer = ({ nav }) => {
+const Footer = ({ nav, customPadding }) => {
+	const footerPadding =
+		customPadding !== undefined
+			? customPadding
+			: `${styles.scale.px50} ${styles.scale.px24}`
+	console.log(footerPadding)
 	return (
 		<>
-			<footer css={footerCSS}>
+			<footer
+				css={css`
+					${footerCSS};
+					padding: ${footerPadding};
+				`}
+			>
 				<div css={desktopFooterCSS}>
 					{nav.map((item, index) => {
 						const leftEdge = index * 2 + 1
