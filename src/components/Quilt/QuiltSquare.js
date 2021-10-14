@@ -56,7 +56,7 @@ const descriptionCSS = css`
 `
 
 const QuiltSquare = ({ quilt, selected, handleClick, index }) => {
-	const isSelected = quilt.objectID === selected
+	const isSelected = quilt.id === selected
 
 	const [location, setLocation] = useState({ horizontal: 0, vertical: 0 })
 	const [scale, setScale] = useState(1)
@@ -71,8 +71,8 @@ const QuiltSquare = ({ quilt, selected, handleClick, index }) => {
 
 	const resizeSelected = () => {
 		// find square size at current scale
-		const defaultSquareSize = squareRef.current.getBoundingClientRect()
-			.width
+		const defaultSquareSize =
+			squareRef.current.getBoundingClientRect().width
 		const width = window.innerWidth
 		const height = window.innerHeight
 		// find desired final square size based on window size with square at 80% window
@@ -109,27 +109,27 @@ const QuiltSquare = ({ quilt, selected, handleClick, index }) => {
 					? [squareCSS, selectedSquareCSS]
 					: [squareCSS, unSelectedSquareCSS]
 			}
-			key={quilt.objectID}
-			id={quilt.objectID}
+			key={quilt.id}
+			id={quilt.id}
 			className={`quilt-col-${(index + 6) % 6}`}
 			onClick={() => {
 				// update the window history to provide a deep link to quilt square
 				window.history.pushState(
-					{ id: quilt.objectID }, // give history state an id
+					{ id: quilt.id }, // give history state an id
 					`Memory Quilt | ${quilt.title}`, // give page a title
-					`?quilt=${quilt.objectID}` // create the new url with variables to base on render
+					`?quilt=${quilt.id}` // create the new url with variables to base on render
 				)
 				if (isSelected) {
 					handleClick(null)
 				} else {
-					handleClick(quilt.objectID)
+					handleClick(quilt.id)
 				}
 				resizeSelected()
 			}}
 		>
 			<img
 				css={imageCSS}
-				src={`${quilt.quiltImage}?w=700&h=700&fit=crop&crop=faces`}
+				src={`${quilt.image.url}?w=700&h=700&fit=crop&crop=faces`}
 				alt=""
 			/>
 			<p
