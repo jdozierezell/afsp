@@ -84,7 +84,6 @@ const Footer = ({ nav, customPadding }) => {
 		customPadding !== undefined
 			? customPadding
 			: `${styles.scale.px50} ${styles.scale.px24}`
-	console.log(footerPadding)
 	return (
 		<>
 			<footer
