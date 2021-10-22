@@ -150,7 +150,6 @@ const App = ({ data: { home } }) => {
 						/>
 					)
 				} else if (item.__typename === 'DatoCmsEventsList') {
-					console.log(home)
 					item.events.forEach(e => {
 						let start, end
 						let eventObject = {

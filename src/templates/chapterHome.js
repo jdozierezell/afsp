@@ -240,7 +240,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			seo={chapter.seoMetaTags}
 			structuredData={structuredData}
 		>
-			{console.log(chapterInformation)}
 			<HeroChapter
 				title={title}
 				video={heroVideoUrl}
