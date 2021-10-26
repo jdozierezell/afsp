@@ -27,9 +27,10 @@ const channelCSS = css`
 		@media (min-width: ${styles.screens.tablet}px) {
 			text-align: left;
 		}
-		span {
-			display: inline-block;
-			margin: ${styles.scale.px30} 0 0;
+		span,
+		p {
+			margin: ${styles.scale.px16} 0 0;
+			display: block;
 		}
 		:hover span,
 		:hover p:last-of-type {
@@ -96,6 +97,7 @@ const Channel = ({ slug, channel }) => {
 							}}
 						></span>
 						<p>{brief}</p>
+						<p>Learn more</p>
 					</a>
 				</>
 			)}
@@ -120,6 +122,7 @@ const Channel = ({ slug, channel }) => {
 							}}
 						></span>
 						<p>{brief}</p>
+						<p>Learn more</p>
 					</a>
 				</>
 			)}

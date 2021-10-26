@@ -36,7 +36,6 @@ const konvaCSS = css`
 		width: auto;
 		grid-column: 2 / 3;
 		grid-row: 1 / 2;
-		min-width: calc(100vw / 3);
 	}
 `
 
