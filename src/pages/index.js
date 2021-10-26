@@ -95,6 +95,7 @@ const App = ({ data: { home } }) => {
 			theme={styles.logo.mobileLightDesktopLight}
 			seo={home.seoMetaTags}
 			structuredData={structuredData}
+			customPadding={`${styles.scale.px50} ${styles.scale.px50} ${styles.scale.px90}`}
 		>
 			<HeroVideo
 				videoUrl={
@@ -149,7 +150,6 @@ const App = ({ data: { home } }) => {
 						/>
 					)
 				} else if (item.__typename === 'DatoCmsEventsList') {
-					console.log(home)
 					item.events.forEach(e => {
 						let start, end
 						let eventObject = {

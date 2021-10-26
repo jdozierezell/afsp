@@ -70,7 +70,7 @@ const CustomHits = data => {
 				<Configure hitsPerPage={display} />
 				{data.hits.map((hit, index) => (
 					<QuiltSquare
-						key={hit.objectID}
+						key={hit.id}
 						quilt={hit}
 						selected={data.selected}
 						handleClick={data.handleClick}

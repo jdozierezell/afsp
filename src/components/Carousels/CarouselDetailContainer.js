@@ -15,6 +15,8 @@ const carouselCSS = css`
 	overflow: hidden;
 	width: 100vw;
 	position: relative;
+	border-top: ${styles.scale.px5} solid ${styles.colors.white};
+	border-bottom: ${styles.scale.px5} solid ${styles.colors.white};
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px80} ${styles.scale.px50} ${styles.scale.px35};
 	}

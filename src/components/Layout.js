@@ -14,6 +14,7 @@ const Layout = ({
 	facebook,
 	structuredData,
 	hideEmailLayout,
+	customPadding,
 }) => {
 	const data = useStaticQuery(graphql`
 		query {
@@ -55,7 +56,7 @@ const Layout = ({
 			/>
 			<main id="main">{children}</main>
 			{!hideEmailLayout && <EmailSignupBar></EmailSignupBar>}
-			<Footer nav={footerNav} />
+			<Footer nav={footerNav} customPadding={customPadding} />
 		</>
 	)
 }

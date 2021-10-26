@@ -365,6 +365,7 @@ export const query = graphql`
 					)
 				}
 				heading
+				brief
 				channelLink {
 					...ChannelLink
 				}

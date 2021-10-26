@@ -80,7 +80,11 @@ let schema = yup.object().shape({
 })
 
 const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
-	const { register, handleSubmit, errors } = useForm({
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm({
 		resolver: yupResolver(schema),
 	})
 	const onSubmit = data => {
@@ -174,8 +178,9 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 								type="text"
 								name="firstName"
 								id="firstName"
-								ref={register}
+								{...register('firstName')}
 							/>
+
 							<p className="error">{errors.firstName?.message}</p>
 
 							<label htmlFor="lastName">
@@ -185,8 +190,9 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 								type="text"
 								name="lastName"
 								id="lastName"
-								ref={register}
+								{...register('lastName')}
 							/>
+
 							<p className="error">{errors.lastName?.message}</p>
 
 							<label htmlFor="email">
@@ -196,8 +202,9 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 								type="email"
 								name="email"
 								id="email"
-								ref={register}
+								{...register('email')}
 							/>
+
 							<p className="error">{errors.email?.message}</p>
 
 							<p>
@@ -210,7 +217,7 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 								type="text"
 								name="zip"
 								id="zipCode"
-								ref={register}
+								{...register('zipCode')}
 							/>
 							<p className="error">{errors.zip?.message}</p>
 
