@@ -22,7 +22,7 @@
 		"dayjs": "^1.10.5",
 		"dotenv": "^10.0.0",
 		"downshift": "^6.1.3",
-		"gatsby": "^3.6.2",
+		"gatsby": "^4.0.1",
 		"gatsby-background-image": "^1.5.3",
 		"gatsby-plugin-client-side-redirect": "^1.1.0",
 		"gatsby-plugin-emotion": "^7.0.0",
