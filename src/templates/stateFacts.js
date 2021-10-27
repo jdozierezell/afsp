@@ -84,6 +84,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 					value: stateFacts.publicHealthPlans,
 				},
 			],
+			promo: [stateFacts.mentalHealthParityPromo],
 		},
 		{
 			display: 'K – 12 School Suicide Prevention',
@@ -174,6 +175,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 					},
 				],
 			},
+			promo: [stateFacts.k12SchoolSuicidePreventionPromo],
 		},
 		{
 			display:
@@ -198,6 +200,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 					value: stateFacts.medicalSurgicalProfessionalsOneTime,
 				},
 			],
+			promo: [stateFacts.healthProfessionalTrainingSuicidePromo],
 		},
 		{
 			display: 'Conversion therapy bans',
@@ -224,7 +227,9 @@ const StateFacts = ({ data: { stateFacts } }) => {
 					value: stateFacts.prohibitsStateFundsConversionTherapy,
 				},
 			],
+			promo: [stateFacts.conversionTherapyBansPromo],
 		},
+
 		{
 			display: 'University and college campus suicide prevention',
 			anchor: 'university-and-college',
@@ -268,6 +273,9 @@ const StateFacts = ({ data: { stateFacts } }) => {
 					},
 				],
 			},
+			promo: [
+				stateFacts.universityAndCollegeCampusSuicidePreventionPromo,
+			],
 		},
 	]
 	useEffect(() => {
@@ -279,6 +287,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 					.getBoundingClientRect().height
 		)
 	}, [factsTop])
+
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -368,6 +377,66 @@ export const query = graphql`
 			pubUnicolNationalSuicidePreventionLifeline
 			pubUnicolStudentsReceiveInformation
 			publicHealthPlans
+			mentalHealthParityPromo {
+				... on DatoCmsCallsToAction {
+					... on DatoCmsCallsToAction {
+						__typename
+						...CsTAs
+					}
+				}
+				... on DatoCmsDetail {
+					__typename
+					...Detail
+				}
+			}
+			k12SchoolSuicidePreventionPromo {
+				... on DatoCmsCallsToAction {
+					... on DatoCmsCallsToAction {
+						__typename
+						...CsTAs
+					}
+				}
+				... on DatoCmsDetail {
+					__typename
+					...Detail
+				}
+			}
+			healthProfessionalTrainingSuicidePromo {
+				... on DatoCmsCallsToAction {
+					... on DatoCmsCallsToAction {
+						__typename
+						...CsTAs
+					}
+				}
+				... on DatoCmsDetail {
+					__typename
+					...Detail
+				}
+			}
+			conversionTherapyBansPromo {
+				... on DatoCmsCallsToAction {
+					... on DatoCmsCallsToAction {
+						__typename
+						...CsTAs
+					}
+				}
+				... on DatoCmsDetail {
+					__typename
+					...Detail
+				}
+			}
+			universityAndCollegeCampusSuicidePreventionPromo {
+				... on DatoCmsCallsToAction {
+					... on DatoCmsCallsToAction {
+						__typename
+						...CsTAs
+					}
+				}
+				... on DatoCmsDetail {
+					__typename
+					...Detail
+				}
+			}
 		}
 	}
 `

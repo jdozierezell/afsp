@@ -1,6 +1,9 @@
 import React from 'react'
 import { css } from '@emotion/react'
 
+import CTAContainer from '../CTAs/CTAContainer'
+import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
+
 import IconCircleCheck from '../SVGs/IconCircleCheck'
 import IconCircleCircle from '../SVGs/IconCircleCircle'
 import IconCircleX from '../SVGs/IconCircleX'
@@ -54,6 +57,20 @@ const factListCSS = css`
 	}
 `
 
+const factWrapperCSS = css`
+	position: relative;
+`
+
+const ctaContainerCSS = css`
+	margin-left: -${styles.scale.px50};
+	width: 100vw;
+`
+
+const detailContainerCSS = css`
+	margin-left: -${styles.scale.px50};
+	/* width: 100vw; */
+`
+
 const ContentFacts = ({ state, facts }) => {
 	return (
 		<div>
@@ -101,9 +118,8 @@ const ContentFacts = ({ state, facts }) => {
 			</div>
 			{facts.map((fact, index) => {
 				if (fact.public || fact.nonPublic) {
-					console.log(fact)
 					return (
-						<div key={index}>
+						<div key={index} css={factWrapperCSS}>
 							<h3 id={fact.anchor} css={subSectionCSS}>
 								{fact.display}
 							</h3>
@@ -145,11 +161,30 @@ const ContentFacts = ({ state, facts }) => {
 									</ul>
 								</>
 							)}
+							{fact.promo &&
+								fact.promo[0].__typename ===
+									'DatoCmsCallsToAction' && (
+									<CTAContainer
+										key={index}
+										number={index}
+										cta={fact.promo[0].callToAction[0]}
+										addCSS={ctaContainerCSS}
+									/>
+								)}
+							{fact.promo &&
+								fact.promo[0].__typename ===
+									'DatoCmsDetail' && (
+									<CarouselDetailContainer
+										key={index}
+										content={fact.promo[0]}
+										addContainerCSS={detailContainerCSS}
+									/>
+								)}
 						</div>
 					)
 				} else {
 					return (
-						<div key={index}>
+						<div key={index} css={factWrapperCSS}>
 							<h3 id={fact.anchor} css={subSectionCSS}>
 								{fact.display}
 							</h3>
@@ -158,6 +193,25 @@ const ContentFacts = ({ state, facts }) => {
 									return <Fact fact={fact} key={index}></Fact>
 								})}
 							</ul>
+							{fact.promo &&
+								fact.promo[0].__typename ===
+									'DatoCmsCallsToAction' && (
+									<CTAContainer
+										key={index}
+										number={index}
+										cta={fact.promo[0].callToAction[0]}
+										addCSS={ctaContainerCSS}
+									/>
+								)}
+							{fact.promo &&
+								fact.promo[0].__typename ===
+									'DatoCmsDetail' && (
+									<CarouselDetailContainer
+										key={index}
+										content={fact.promo[0]}
+										addContainerCSS={detailContainerCSS}
+									/>
+								)}
 						</div>
 					)
 				}
