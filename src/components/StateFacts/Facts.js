@@ -1,6 +1,9 @@
 import React from 'react'
 import { css } from '@emotion/react'
 
+import CTAContainer from '../CTAs/CTAContainer'
+import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
+
 import IconCircleCheck from '../SVGs/IconCircleCheck'
 import IconCircleCircle from '../SVGs/IconCircleCircle'
 import IconCircleX from '../SVGs/IconCircleX'
@@ -101,7 +104,6 @@ const ContentFacts = ({ state, facts }) => {
 			</div>
 			{facts.map((fact, index) => {
 				if (fact.public || fact.nonPublic) {
-					console.log(fact)
 					return (
 						<div key={index}>
 							<h3 id={fact.anchor} css={subSectionCSS}>
@@ -145,6 +147,24 @@ const ContentFacts = ({ state, facts }) => {
 									</ul>
 								</>
 							)}
+							{/* {fact.promo &&
+								fact.promo[0].__typename ===
+									'DatoCmsCallsToAction' && (
+									<CTAContainer
+										key={index}
+										number={index}
+										cta={item.cta.callToAction[0]}
+									/>
+								)} */}
+							{console.log(fact.promo[0].__typename)}
+							{fact.promo &&
+								fact.promo[0].__typename ===
+									'DatoCmsDetail' && (
+									<CarouselDetailContainer
+										key={index}
+										content={fact.promo[0]}
+									/>
+								)}
 						</div>
 					)
 				} else {
@@ -158,6 +178,14 @@ const ContentFacts = ({ state, facts }) => {
 									return <Fact fact={fact} key={index}></Fact>
 								})}
 							</ul>
+							{fact.promo &&
+								fact.promo[0].__typename ===
+									'DatoCmsDetail' && (
+									<CarouselDetailContainer
+										key={index}
+										content={fact.promo[0]}
+									/>
+								)}
 						</div>
 					)
 				}

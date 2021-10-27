@@ -48,6 +48,7 @@ const CarouselDetailContainer = ({
 	addCSS,
 	id,
 }) => {
+	console.log(details)
 	const responsive = {
 		superLargeDesktop: {
 			breakpoint: { max: 4000, min: 3000 },
