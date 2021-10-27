@@ -14,6 +14,7 @@ import CTAWithDescription from './CTAWithDescription'
 import CTANoDescription from './CTANoDescription'
 
 const CTAContainer = ({ cta, number, id }) => {
+	console.log(cta)
 	let background
 	let color
 	const ctaId = `CTA-${number}`

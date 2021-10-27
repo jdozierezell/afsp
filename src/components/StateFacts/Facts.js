@@ -147,16 +147,15 @@ const ContentFacts = ({ state, facts }) => {
 									</ul>
 								</>
 							)}
-							{/* {fact.promo &&
+							{fact.promo &&
 								fact.promo[0].__typename ===
 									'DatoCmsCallsToAction' && (
 									<CTAContainer
 										key={index}
 										number={index}
-										cta={item.cta.callToAction[0]}
+										cta={fact.promo[0].callToAction[0]}
 									/>
-								)} */}
-							{console.log(fact.promo[0].__typename)}
+								)}
 							{fact.promo &&
 								fact.promo[0].__typename ===
 									'DatoCmsDetail' && (
@@ -178,6 +177,15 @@ const ContentFacts = ({ state, facts }) => {
 									return <Fact fact={fact} key={index}></Fact>
 								})}
 							</ul>
+							{fact.promo &&
+								fact.promo[0].__typename ===
+									'DatoCmsCallsToAction' && (
+									<CTAContainer
+										key={index}
+										number={index}
+										cta={fact.promo[0].callToAction[0]}
+									/>
+								)}
 							{fact.promo &&
 								fact.promo[0].__typename ===
 									'DatoCmsDetail' && (
