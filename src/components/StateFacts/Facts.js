@@ -57,6 +57,20 @@ const factListCSS = css`
 	}
 `
 
+const factWrapperCSS = css`
+	position: relative;
+`
+
+const ctaContainerCSS = css`
+	margin-left: -${styles.scale.px50};
+	width: 100vw;
+`
+
+const detailContainerCSS = css`
+	margin-left: -${styles.scale.px50};
+	/* width: 100vw; */
+`
+
 const ContentFacts = ({ state, facts }) => {
 	return (
 		<div>
@@ -105,7 +119,7 @@ const ContentFacts = ({ state, facts }) => {
 			{facts.map((fact, index) => {
 				if (fact.public || fact.nonPublic) {
 					return (
-						<div key={index}>
+						<div key={index} css={factWrapperCSS}>
 							<h3 id={fact.anchor} css={subSectionCSS}>
 								{fact.display}
 							</h3>
@@ -154,10 +168,7 @@ const ContentFacts = ({ state, facts }) => {
 										key={index}
 										number={index}
 										cta={fact.promo[0].callToAction[0]}
-										addCSS={css`
-											margin-left: -${styles.scale.px50};
-											width: 100vw;
-										`}
+										addCSS={ctaContainerCSS}
 									/>
 								)}
 							{fact.promo &&
@@ -166,13 +177,14 @@ const ContentFacts = ({ state, facts }) => {
 									<CarouselDetailContainer
 										key={index}
 										content={fact.promo[0]}
+										addContainerCSS={detailContainerCSS}
 									/>
 								)}
 						</div>
 					)
 				} else {
 					return (
-						<div key={index}>
+						<div key={index} css={factWrapperCSS}>
 							<h3 id={fact.anchor} css={subSectionCSS}>
 								{fact.display}
 							</h3>
@@ -188,10 +200,7 @@ const ContentFacts = ({ state, facts }) => {
 										key={index}
 										number={index}
 										cta={fact.promo[0].callToAction[0]}
-										addCSS={css`
-											margin-left: -${styles.scale.px50};
-											width: 100vw;
-										`}
+										addCSS={ctaContainerCSS}
 									/>
 								)}
 							{fact.promo &&
@@ -200,6 +209,7 @@ const ContentFacts = ({ state, facts }) => {
 									<CarouselDetailContainer
 										key={index}
 										content={fact.promo[0]}
+										addContainerCSS={detailContainerCSS}
 									/>
 								)}
 						</div>

@@ -23,6 +23,7 @@ const carouselCSS = css`
 	> h2 {
 		font-size: ${styles.scale.px36};
 		line-height: ${styles.scale.px42};
+		margin-top: 0;
 		margin-bottom: ${styles.scale.px35};
 		color: ${styles.colors.white};
 		@media (min-width: ${styles.screens.mobile}px) {

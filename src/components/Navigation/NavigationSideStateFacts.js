@@ -40,7 +40,7 @@ const sideNavigationCSS = css`
 const NavigationSide = ({ facts, topStart, slug }) => {
 	const asideRef = useRef(null)
 	const [position, setPosition] = useState('absolute')
-	const [top, setTop] = useState(topStart ? `${topStart}px` : '220px')
+	const [top, setTop] = useState('652px')
 	const handleScroll = () => {
 		const heightToFix = topStart ? topStart : 150
 		if (
@@ -51,7 +51,7 @@ const NavigationSide = ({ facts, topStart, slug }) => {
 			setTop(0)
 		} else {
 			setPosition('absolute')
-			setTop(topStart ? `${topStart}px` : '220px')
+			setTop('652px')
 		}
 	}
 	useEffect(() => {
