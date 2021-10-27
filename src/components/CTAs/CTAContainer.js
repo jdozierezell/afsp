@@ -13,7 +13,7 @@ import CTABackground from './CTABackground'
 import CTAWithDescription from './CTAWithDescription'
 import CTANoDescription from './CTANoDescription'
 
-const CTAContainer = ({ cta, number, id }) => {
+const CTAContainer = ({ cta, number, id, addCSS }) => {
 	console.log(cta)
 	let background
 	let color
@@ -80,6 +80,7 @@ const CTAContainer = ({ cta, number, id }) => {
 						@media (min-width: ${styles.screens.tablet}px) {
 							padding: ${styles.scale.px80} ${styles.scale.px50};
 						}
+						${addCSS};
 					`}
 				>
 					<CTAWithDescription cta={cta} describedby={ctaId} />
@@ -94,6 +95,7 @@ const CTAContainer = ({ cta, number, id }) => {
 						flex-flow: row wrap;
 						justify-content: space-around;
 						align-items: center;
+						${addCSS};
 					`}
 				>
 					<CTANoDescription cta={cta} describedby={ctaId} />

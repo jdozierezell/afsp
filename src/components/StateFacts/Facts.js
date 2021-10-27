@@ -154,6 +154,10 @@ const ContentFacts = ({ state, facts }) => {
 										key={index}
 										number={index}
 										cta={fact.promo[0].callToAction[0]}
+										addCSS={css`
+											margin-left: -${styles.scale.px50};
+											width: 100vw;
+										`}
 									/>
 								)}
 							{fact.promo &&
@@ -184,6 +188,10 @@ const ContentFacts = ({ state, facts }) => {
 										key={index}
 										number={index}
 										cta={fact.promo[0].callToAction[0]}
+										addCSS={css`
+											margin-left: -${styles.scale.px50};
+											width: 100vw;
+										`}
 									/>
 								)}
 							{fact.promo &&
