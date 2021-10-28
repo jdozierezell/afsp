@@ -134,7 +134,7 @@ const NavigationSide = ({
 				`}
 				ref={asideRef}
 			>
-				<h2>In this section</h2>
+				<h2>On this page</h2>
 				<ul>
 					{headings.map((heading, index) => (
 						<li key={index}>

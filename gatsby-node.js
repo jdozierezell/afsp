@@ -28,7 +28,6 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
-
 			chapterHomes: allDatoCmsChapterHomePage {
 				edges {
 					node {
@@ -147,6 +146,14 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
+			stateFacts: allDatoCmsStateFact {
+				edges {
+					node {
+						slug
+						stateName
+					}
+				}
+			}
 			stories: allDatoCmsStory(
 				sort: { fields: publicationDate, order: DESC }
 			) {
@@ -190,6 +197,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	const imageLists = data.imageLists.edges
 	const landings = data.landings.edges
 	const newRecords = data.newRecords.edges
+	const stateFacts = data.stateFacts.edges
 	const stories = data.stories.edges
 	const tags = data.tags.edges
 	const redirects = data.redirects.edges
@@ -347,6 +355,16 @@ exports.createPages = async ({ graphql, actions }) => {
 		createPage({
 			path: `${node.slug}`,
 			component: path.resolve('./src/templates/newRecord.js'),
+			context: {
+				slug: node.slug,
+			},
+		})
+	})
+
+	stateFacts.forEach(({ node }) => {
+		createPage({
+			path: `facts/${node.slug}`,
+			component: path.resolve('./src/templates/stateFacts.js'),
 			context: {
 				slug: node.slug,
 			},
