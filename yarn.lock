@@ -1128,7 +1128,11 @@
     core-js-pure "^3.16.0"
     regenerator-runtime "^0.13.4"
 
+<<<<<<< HEAD
 "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.1.5", "@babel/runtime@^7.10.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.1", "@babel/runtime@^7.13.10", "@babel/runtime@^7.13.17", "@babel/runtime@^7.14.0", "@babel/runtime@^7.14.8", "@babel/runtime@^7.15.3", "@babel/runtime@^7.15.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
+=======
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.1.5", "@babel/runtime@^7.10.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.1", "@babel/runtime@^7.13.10", "@babel/runtime@^7.13.17", "@babel/runtime@^7.14.8", "@babel/runtime@^7.15.3", "@babel/runtime@^7.15.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
+>>>>>>> errors
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
   integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
@@ -3225,9 +3229,9 @@ async@1.5.2:
   integrity sha1-7GphrlZIDAw8skHJVhjiCJL5Zyo=
 
 async@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/async/-/async-3.2.1.tgz#d3274ec66d107a47476a4c49136aacdb00665fc8"
-  integrity sha512-XdD5lRO/87udXCMC9meWdYiR+Nq6ZjUfXidViUZGu2F1MO4T3XwZ1et0hb2++BgLfhyJwy44BGB/yx80ABx8hg==
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/async/-/async-3.2.2.tgz#2eb7671034bb2194d45d30e31e24ec7e7f9670cd"
+  integrity sha512-H0E+qZaDEfx/FY4t7iLRv1W2fFI6+pyCeTw1uN20AQPiwqwM6ojPxHxdLv4z8hi2DtnW9BOckSspLucW7pIE5g==
 
 asynckit@^0.4.0:
   version "0.4.0"
@@ -3245,15 +3249,15 @@ atob@^2.1.2:
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
 autoprefixer@^10.3.7:
-  version "10.3.7"
-  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.3.7.tgz#cef2562058406bd378c94aacda36bb46a97b3186"
-  integrity sha512-EmGpu0nnQVmMhX8ROoJ7Mx8mKYPlcUHuxkwrRYEYMz85lu7H09v8w6R1P0JPdn/hKU32GjpLBFEOuIlDWCRWvg==
+  version "10.4.0"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.4.0.tgz#c3577eb32a1079a440ec253e404eaf1eb21388c8"
+  integrity sha512-7FdJ1ONtwzV1G43GDD0kpVMn/qbiNqyOPMFTX5nRffI+7vgWoFEc6DcXOxHJxrWNDXrZh18eDsZjvZGUljSRGA==
   dependencies:
-    browserslist "^4.17.3"
-    caniuse-lite "^1.0.30001264"
+    browserslist "^4.17.5"
+    caniuse-lite "^1.0.30001272"
     fraction.js "^4.1.1"
     normalize-range "^0.1.2"
-    picocolors "^0.2.1"
+    picocolors "^1.0.0"
     postcss-value-parser "^4.1.0"
 
 aws-sign2@~0.7.0:
@@ -3842,10 +3846,17 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
+<<<<<<< HEAD
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001125, caniuse-lite@^1.0.30001264, caniuse-lite@^1.0.30001271:
   version "1.0.30001271"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001271.tgz#0dda0c9bcae2cf5407cd34cac304186616cc83e8"
   integrity sha512-BBruZFWmt3HFdVPS8kceTBIguKxu4f99n5JNp06OlPD/luoAMIaIK5ieV5YjnBLH3Nysai9sxj9rpJj4ZisXOA==
+=======
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001125, caniuse-lite@^1.0.30001271, caniuse-lite@^1.0.30001272:
+  version "1.0.30001272"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001272.tgz#8e9790ff995e9eb6e1f4c45cd07ddaa87cddbb14"
+  integrity sha512-DV1j9Oot5dydyH1v28g25KoVm7l8MTxazwuiH3utWiAS6iL/9Nh//TGwqFEeqqN8nnWYQ8HHhUq+o4QPt9kvYw==
+>>>>>>> errors
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -5384,9 +5395,15 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.564, electron-to-chromium@^1.3.878:
+<<<<<<< HEAD
   version "1.3.881"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.881.tgz#1282881dffa57b6111fb94cb196e558be249fbfb"
   integrity sha512-XoAaO4CXk7FXtF2JH0PJ7KgHL1PyZ76G+NhuL337pMiOGlEWwTTSzMQyYZvxN97d9KhdLMOW8XVVk/6sN2Xflw==
+=======
+  version "1.3.883"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.883.tgz#cc409921469b3aa6ab6efd65cc2a4375128bb703"
+  integrity sha512-goyjNx4wB9j911PBteb+AXNbErug7rJVkmDXWdw5SCVn2JlARBwsqucPkvp1h5mXWxHUbBRK3bwXTrqSxSiAIQ==
+>>>>>>> errors
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -6745,11 +6762,11 @@ gatsby-plugin-react-helmet@^5.0.0:
     "@babel/runtime" "^7.15.4"
 
 gatsby-plugin-robots-txt@^1.6.13:
-  version "1.6.13"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-robots-txt/-/gatsby-plugin-robots-txt-1.6.13.tgz#01e1ce68e3f4e07f957ac9a20cd2a9e12fdd3f79"
-  integrity sha512-MUPJsvkALwSmfRb1L3IVNmzIqwV35fol1RVot425ZYXvtD+s0OtZli5VnhLNxsX0beodyavzFl0SRJCCQZz0/g==
+  version "1.6.14"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-robots-txt/-/gatsby-plugin-robots-txt-1.6.14.tgz#e7ce50b137fecc81c1ac384ddc544a4bafd8da89"
+  integrity sha512-5NLdgKPw7xHjvowNDU5aWzl/g3M3WU0Equn73aXGGdEue9Nuq7zh/Lh3oX+OM+MZolRCiM9GNHxdIvYPDWNXgA==
   dependencies:
-    "@babel/runtime" "^7.14.0"
+    "@babel/runtime" "^7.15.4"
     generate-robotstxt "^8.0.3"
 
 gatsby-plugin-sharp@^4.0.0:
@@ -9528,6 +9545,7 @@ micromark-util-character@^1.0.0:
   dependencies:
     micromark-util-symbol "^1.0.0"
     micromark-util-types "^1.0.0"
+<<<<<<< HEAD
 
 micromark-util-chunked@^1.0.0:
   version "1.0.0"
@@ -9612,6 +9630,92 @@ micromark-util-sanitize-uri@^1.0.0:
   integrity sha512-cCxvBKlmac4rxCGx6ejlIviRaMKZc0fWm5HdCHEeDWRSkn44l6NdYVRyU+0nT1XC72EQJMZV8IPHF+jTr56lAg==
   dependencies:
     micromark-util-character "^1.0.0"
+=======
+
+micromark-util-chunked@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/micromark-util-chunked/-/micromark-util-chunked-1.0.0.tgz#5b40d83f3d53b84c4c6bce30ed4257e9a4c79d06"
+  integrity sha512-5e8xTis5tEZKgesfbQMKRCyzvffRRUX+lK/y+DvsMFdabAicPkkZV6gO+FEWi9RfuKKoxxPwNL+dFF0SMImc1g==
+  dependencies:
+    micromark-util-symbol "^1.0.0"
+
+micromark-util-classify-character@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/micromark-util-classify-character/-/micromark-util-classify-character-1.0.0.tgz#cbd7b447cb79ee6997dd274a46fc4eb806460a20"
+  integrity sha512-F8oW2KKrQRb3vS5ud5HIqBVkCqQi224Nm55o5wYLzY/9PwHGXC01tr3d7+TqHHz6zrKQ72Okwtvm/xQm6OVNZA==
+  dependencies:
+    micromark-util-character "^1.0.0"
+    micromark-util-symbol "^1.0.0"
+    micromark-util-types "^1.0.0"
+
+micromark-util-combine-extensions@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/micromark-util-combine-extensions/-/micromark-util-combine-extensions-1.0.0.tgz#91418e1e74fb893e3628b8d496085639124ff3d5"
+  integrity sha512-J8H058vFBdo/6+AsjHp2NF7AJ02SZtWaVUjsayNFeAiydTxUwViQPxN0Hf8dp4FmCQi0UUFovFsEyRSUmFH3MA==
+  dependencies:
+    micromark-util-chunked "^1.0.0"
+    micromark-util-types "^1.0.0"
+
+micromark-util-decode-numeric-character-reference@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/micromark-util-decode-numeric-character-reference/-/micromark-util-decode-numeric-character-reference-1.0.0.tgz#dcc85f13b5bd93ff8d2868c3dba28039d490b946"
+  integrity sha512-OzO9AI5VUtrTD7KSdagf4MWgHMtET17Ua1fIpXTpuhclCqD8egFWo85GxSGvxgkGS74bEahvtM0WP0HjvV0e4w==
+  dependencies:
+    micromark-util-symbol "^1.0.0"
+
+micromark-util-decode-string@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/micromark-util-decode-string/-/micromark-util-decode-string-1.0.1.tgz#fa779dcef7f2dc2c9e4b759abd85e553674eea4f"
+  integrity sha512-Wf3H6jLaO3iIlHEvblESXaKAr72nK7JtBbLLICPwuZc3eJkMcp4j8rJ5Xv1VbQWMCWWDvKUbVUbE2MfQNznwTA==
+  dependencies:
+    micromark-util-character "^1.0.0"
+    micromark-util-decode-numeric-character-reference "^1.0.0"
+    micromark-util-symbol "^1.0.0"
+    parse-entities "^3.0.0"
+
+micromark-util-encode@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/micromark-util-encode/-/micromark-util-encode-1.0.0.tgz#c409ecf751a28aa9564b599db35640fccec4c068"
+  integrity sha512-cJpFVM768h6zkd8qJ1LNRrITfY4gwFt+tziPcIf71Ui8yFzY9wG3snZQqiWVq93PG4Sw6YOtcNiKJfVIs9qfGg==
+
+micromark-util-events-to-acorn@^1.0.0:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/micromark-util-events-to-acorn/-/micromark-util-events-to-acorn-1.0.4.tgz#07d26cd675dbca8c38b8d9aff2d4cdc91c9997aa"
+  integrity sha512-dpo8ecREK5s/KMph7jJ46RLM6g7N21CMc9LAJQbDLdbQnTpijigkSJPTIfLXZ+h5wdXlcsQ+b6ufAE9v76AdgA==
+  dependencies:
+    "@types/acorn" "^4.0.0"
+    "@types/estree" "^0.0.50"
+    estree-util-visit "^1.0.0"
+    micromark-util-types "^1.0.0"
+    uvu "^0.5.0"
+    vfile-message "^3.0.0"
+
+micromark-util-html-tag-name@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/micromark-util-html-tag-name/-/micromark-util-html-tag-name-1.0.0.tgz#75737e92fef50af0c6212bd309bc5cb8dbd489ed"
+  integrity sha512-NenEKIshW2ZI/ERv9HtFNsrn3llSPZtY337LID/24WeLqMzeZhBEE6BQ0vS2ZBjshm5n40chKtJ3qjAbVV8S0g==
+
+micromark-util-normalize-identifier@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/micromark-util-normalize-identifier/-/micromark-util-normalize-identifier-1.0.0.tgz#4a3539cb8db954bbec5203952bfe8cedadae7828"
+  integrity sha512-yg+zrL14bBTFrQ7n35CmByWUTFsgst5JhA4gJYoty4Dqzj4Z4Fr/DHekSS5aLfH9bdlfnSvKAWsAgJhIbogyBg==
+  dependencies:
+    micromark-util-symbol "^1.0.0"
+
+micromark-util-resolve-all@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/micromark-util-resolve-all/-/micromark-util-resolve-all-1.0.0.tgz#a7c363f49a0162e931960c44f3127ab58f031d88"
+  integrity sha512-CB/AGk98u50k42kvgaMM94wzBqozSzDDaonKU7P7jwQIuH2RU0TeBqGYJz2WY1UdihhjweivStrJ2JdkdEmcfw==
+  dependencies:
+    micromark-util-types "^1.0.0"
+
+micromark-util-sanitize-uri@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/micromark-util-sanitize-uri/-/micromark-util-sanitize-uri-1.0.0.tgz#27dc875397cd15102274c6c6da5585d34d4f12b2"
+  integrity sha512-cCxvBKlmac4rxCGx6ejlIviRaMKZc0fWm5HdCHEeDWRSkn44l6NdYVRyU+0nT1XC72EQJMZV8IPHF+jTr56lAg==
+  dependencies:
+    micromark-util-character "^1.0.0"
+>>>>>>> errors
     micromark-util-encode "^1.0.0"
     micromark-util-symbol "^1.0.0"
 
@@ -10732,11 +10836,6 @@ physical-cpu-count@^2.0.0:
   resolved "https://registry.yarnpkg.com/physical-cpu-count/-/physical-cpu-count-2.0.0.tgz#18de2f97e4bf7a9551ad7511942b5496f7aba660"
   integrity sha1-GN4vl+S/epVRrXURlCtUlverpmA=
 
-picocolors@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-0.2.1.tgz#570670f793646851d1ba135996962abad587859f"
-  integrity sha512-cMlDqaLEqfSaW8Z7N5Jw+lyIW869EzT73/F5lhtY9cLGoVxSXznfgfXMO0Z5K0o0Q2TkTXq+0KFsdnSe3jDViA==
-
 picocolors@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
@@ -11525,10 +11624,17 @@ react-helmet@^6.1.0:
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
 
+<<<<<<< HEAD
 react-hook-form@^7.17.5:
   version "7.18.0"
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.18.0.tgz#2ba847096be0209e1f6e4d82e7168a037a2fe103"
   integrity sha512-aTFs1jXGvpBBv4vYuhheVd9KbAZw/l3DOZhLIadNDyFddaDQmn+yJa63IZ14GDFz4NFgIi+ROkubfGJG2x6q2Q==
+=======
+react-hook-form@^6.15.5:
+  version "6.15.8"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.15.8.tgz#725c139d308c431c4611e4b9d85a49f01cfc0e7a"
+  integrity sha512-prq82ofMbnRyj5wqDe8hsTRcdR25jQ+B8KtCS7BLCzjFHAwNuCjRwzPuP4eYLsEBjEIeYd6try+pdLdw0kPkpg==
+>>>>>>> errors
 
 react-instantsearch-core@^6.15.0:
   version "6.15.0"
@@ -14480,7 +14586,7 @@ yoga-layout-prebuilt@^1.10.0, yoga-layout-prebuilt@^1.9.6:
   dependencies:
     "@types/yoga-layout" "1.9.2"
 
-yup@^0.32.11:
+yup@^0.32.9:
   version "0.32.11"
   resolved "https://registry.yarnpkg.com/yup/-/yup-0.32.11.tgz#d67fb83eefa4698607982e63f7ca4c5ed3cf18c5"
   integrity sha512-Z2Fe1bn+eLstG8DRR6FTavGD+MeAwyfmouhHsIUgaADz8jvFKbO/fXc2trJKZg+5EBjh4gGm3iU/t3onKlXHIg==
