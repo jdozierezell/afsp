@@ -61,14 +61,12 @@ const factWrapperCSS = css`
 	position: relative;
 `
 
-const ctaContainerCSS = css`
-	margin-left: -${styles.scale.px50};
+const promoContainerCSS = css`
 	width: 100vw;
-`
-
-const detailContainerCSS = css`
-	margin-left: -${styles.scale.px50};
-	/* width: 100vw; */
+	margin-left: -${styles.scale.px24};
+	@media (min-width: ${styles.screens.mobile}px) {
+		margin-left: -${styles.scale.px50};
+	}
 `
 
 const ContentFacts = ({ state, facts }) => {
@@ -168,7 +166,7 @@ const ContentFacts = ({ state, facts }) => {
 										key={index}
 										number={index}
 										cta={fact.promo[0].callToAction[0]}
-										addCSS={ctaContainerCSS}
+										addCSS={promoContainerCSS}
 									/>
 								)}
 							{fact.promo &&
@@ -177,7 +175,7 @@ const ContentFacts = ({ state, facts }) => {
 									<CarouselDetailContainer
 										key={index}
 										content={fact.promo[0]}
-										addContainerCSS={detailContainerCSS}
+										addContainerCSS={promoContainerCSS}
 									/>
 								)}
 						</div>
@@ -200,7 +198,7 @@ const ContentFacts = ({ state, facts }) => {
 										key={index}
 										number={index}
 										cta={fact.promo[0].callToAction[0]}
-										addCSS={ctaContainerCSS}
+										addCSS={promoContainerCSS}
 									/>
 								)}
 							{fact.promo &&
@@ -209,7 +207,7 @@ const ContentFacts = ({ state, facts }) => {
 									<CarouselDetailContainer
 										key={index}
 										content={fact.promo[0]}
-										addContainerCSS={detailContainerCSS}
+										addContainerCSS={promoContainerCSS}
 									/>
 								)}
 						</div>

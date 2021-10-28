@@ -6,8 +6,6 @@ import { styles } from '../../css/css'
 
 const solidFactsCSS = css`
 	background-color: ${styles.colors.blue};
-	display: grid;
-	grid-template-columns: 1fr minmax(auto, 384px);
 	flex-flow: row wrap;
 	justify-content: space-between;
 	align-items: center;
@@ -15,9 +13,14 @@ const solidFactsCSS = css`
 	@media (min-width: ${styles.screens.mobile}px) {
 		padding: ${styles.scale.px150} ${styles.scale.px50} ${styles.scale.px20};
 	}
+	@media (min-width: ${styles.screens.tablet}px) {
+		display: grid;
+		grid-template-columns: 1fr minmax(auto, 384px);
+	}
 `
 const stateCSS = css`
 	max-width: 600px;
+	margin-right: ${styles.scale.px16};
 	h1 {
 		color: ${styles.colors.white};
 		font-family: ${styles.fonts.paul};
