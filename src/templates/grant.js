@@ -118,7 +118,8 @@ const Grant = ({ data: { grant } }) => {
 								/>
 							)
 						} else if (
-							detail.__typename === 'DatoCmsGrantAbstract'
+							detail.__typename === 'DatoCmsGrantAbstract' &&
+							detail.grantAbstract.length > 0
 						) {
 							return (
 								<span key={index}>
