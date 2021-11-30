@@ -129,6 +129,8 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 					setVirtualGroups(res.data.arraysToSend.virtual)
 					setSupportGroups(res.data.arraysToSend.group)
 				})
+		} else if (country.length > 0) {
+			console.log(country)
 		}
 	}
 
@@ -154,13 +156,22 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 					})
 			} else {
 				const virtualGroupArray = []
-				console.log(datoSupportGroups.edges)
+				const countryGroupArray = []
 				datoSupportGroups.edges.forEach(group => {
-					console.log(group.node.meetingType)
 					if (group.node.meetingType === 'Nationwide Online Group') {
 						virtualGroupArray.push(group.node)
 					}
 					setVirtualGroups(virtualGroupArray)
+				})
+				datoSupportGroups.edges.forEach(group => {
+					if (
+						group.node.meetingCountry !==
+							'United States of America' &&
+						group.node.meetingCountry !== 'Not Applicable'
+					) {
+						countryGroupArray.push(group.node)
+					}
+					setCountryGroups(countryGroupArray)
 				})
 			}
 			setFirstRun(false)
