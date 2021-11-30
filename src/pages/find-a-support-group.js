@@ -16,7 +16,7 @@ import CTAContainer from '../components/CTAs/CTAContainer'
 
 import { styles } from '../css/css'
 
-const FindASupportGroup = ({ data: { search } }) => {
+const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 	let metaImage,
 		metaDescription = ''
 	search.seoMetaTags.tags.forEach(tag => {
@@ -147,14 +147,25 @@ const FindASupportGroup = ({ data: { search } }) => {
 						}
 					)
 					.then(res => {
+						console.log(res)
 						setCountryGroups(res.data.arraysToSend.country)
 						setVirtualGroups(res.data.arraysToSend.virtual)
 						setSupportGroups(res.data.arraysToSend.group)
 					})
+			} else {
+				const virtualGroupArray = []
+				console.log(datoSupportGroups.edges)
+				datoSupportGroups.edges.forEach(group => {
+					console.log(group.node.meetingType)
+					if (group.node.meetingType === 'Nationwide Online Group') {
+						virtualGroupArray.push(group.node)
+					}
+					setVirtualGroups(virtualGroupArray)
+				})
 			}
 			setFirstRun(false)
 		}
-	}, [firstRun, nonus, radius, zip])
+	}, [firstRun, nonus, radius, zip, datoSupportGroups])
 
 	return (
 		<Layout

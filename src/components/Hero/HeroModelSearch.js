@@ -110,7 +110,14 @@ const dropDownCSS = css`
 const toggleLabelCSS = css`
 	color: ${styles.colors.white};
 	vertical-align: text-bottom;
-	margin: 0 ${styles.scale.px16};
+	padding: 0 !important;
+`
+
+const toggleCSS = css`
+	display: inline-block;
+	position: relative;
+	bottom: ${styles.scale.px20};
+	padding-right: ${styles.scale.px16};
 `
 
 const HeroModelSearch = ({
@@ -139,7 +146,7 @@ const HeroModelSearch = ({
 				dangerouslySetInnerHTML={{ __html: description }}
 			></div>
 			{searchType === 'supportGroup' && countryGroups.length > 0 && (
-				<>
+				<span css={toggleCSS}>
 					<Toggle
 						id="nonus-group"
 						defaultChecked={nonus}
@@ -148,15 +155,17 @@ const HeroModelSearch = ({
 					<label css={toggleLabelCSS} htmlFor="nonus-group">
 						Search outside the U.S.
 					</label>
-				</>
+				</span>
 			)}
 			{searchType === 'supportGroup' && virtualGroups.length > 0 && (
 				<>
-					<Toggle
-						id="virtual-group"
-						defaultChecked={virtual}
-						onChange={updateVirtual}
-					/>
+					<span css={toggleCSS}>
+						<Toggle
+							id="virtual-group"
+							defaultChecked={virtual}
+							onChange={updateVirtual}
+						/>
+					</span>
 					<label css={toggleLabelCSS} htmlFor="virtual-group">
 						Only list nationwide virtual groups
 					</label>
