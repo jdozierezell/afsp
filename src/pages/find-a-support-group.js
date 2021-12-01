@@ -93,10 +93,10 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 
 	const updateZip = newZip => setZip(newZip)
 
-	const updateNonus = () => {
-		setNonus(!nonus)
+	const updateNonus = e => {
+		setNonus(e.target.checked)
 		setQuery({
-			nonus: !nonus,
+			nonus: e.target.checked,
 			virtual: virtual,
 			zip: zip,
 			radius: radius,
@@ -104,11 +104,11 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 		})
 	}
 
-	const updateVirtual = () => {
-		setVirtual(!virtual)
+	const updateVirtual = e => {
+		setVirtual(e.target.checked)
 		setQuery({
 			nonus: nonus,
-			virtual: !virtual,
+			virtual: e.target.checked,
 			zip: zip,
 			radius: radius,
 			country: country,
