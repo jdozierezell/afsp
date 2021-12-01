@@ -5,7 +5,6 @@ import { css } from '@emotion/react'
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
 import dayjs from 'dayjs'
 
-import getDate from 'date-fns/getDate'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import startOfWeek from 'date-fns/startOfWeek'

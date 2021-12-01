@@ -58,7 +58,7 @@ const NavigationSide = ({ facts, topStart, slug }) => {
 		window.addEventListener('scroll', handleScroll)
 		return () => window.removeEventListener('scroll', handleScroll)
 	})
-	facts.map(section => {
+	facts.foreach(section => {
 		if (section.main) {
 			section = {
 				display: section.main.display,
@@ -79,17 +79,19 @@ const NavigationSide = ({ facts, topStart, slug }) => {
 		>
 			<h2>On this page</h2>
 			<ul>
-				{facts.map((section, index) => (
-					<li key={index}>
-						<a href={`/facts/${slug}#${section.anchor}`}>
-							<span
-								dangerouslySetInnerHTML={{
-									__html: section.display,
-								}}
-							/>
-						</a>
-					</li>
-				))}
+				{facts.map((section, index) => {
+					return (
+						<li key={index}>
+							<a href={`/facts/${slug}#${section.anchor}`}>
+								<span
+									dangerouslySetInnerHTML={{
+										__html: section.display,
+									}}
+								/>
+							</a>
+						</li>
+					)
+				})}
 			</ul>
 			<EmailSignupSideBar></EmailSignupSideBar>
 		</aside>

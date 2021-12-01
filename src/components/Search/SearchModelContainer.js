@@ -28,7 +28,6 @@ const SearchModelContainer = ({
 	zip,
 	nonus,
 }) => {
-	console.log(countryGroups)
 	return (
 		<section css={searchContainerCSS}>
 			{!virtual && (

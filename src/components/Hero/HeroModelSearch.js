@@ -124,6 +124,8 @@ const HeroModelSearch = ({
 	description,
 	searchType,
 	handleSubmit,
+	handleUSSearchClick,
+	handleNonUSSearchClick,
 	nonus,
 	virtual,
 	virtualGroups,
@@ -144,31 +146,33 @@ const HeroModelSearch = ({
 				css={subHeaderCSS}
 				dangerouslySetInnerHTML={{ __html: description }}
 			></div>
-			{searchType === 'supportGroup' && countryList.length > 0 && (
-				<>
-					<span css={toggleCSS}>
-						<Toggle
-							id="nonus-group"
-							defaultChecked={nonus}
-							onChange={updateNonus}
-						/>
-					</span>
-					<label css={toggleLabelCSS} htmlFor="nonus-group">
-						Search outside the U.S.
-					</label>
-				</>
-			)}
+			{searchType === 'supportGroup' &&
+				countryList.length > 0 &&
+				!virtual && (
+					<>
+						<span css={toggleCSS}>
+							<Toggle
+								id="nonus-group"
+								defaultChecked={nonus}
+								onChange={e => updateNonus(e)}
+							/>
+						</span>
+						<label css={toggleLabelCSS} htmlFor="nonus-group">
+							Search outside the U.S.
+						</label>
+					</>
+				)}
 			{searchType === 'supportGroup' && virtualGroups.length > 0 && (
 				<>
 					<span css={toggleCSS}>
 						<Toggle
 							id="virtual-group"
 							defaultChecked={virtual}
-							onChange={updateVirtual}
+							onChange={e => updateVirtual(e)}
 						/>
 					</span>
 					<label css={toggleLabelCSS} htmlFor="virtual-group">
-						Only list nationwide virtual groups
+						List only nationwide virtual groups in the U.S.
 					</label>
 				</>
 			)}
@@ -185,7 +189,7 @@ const HeroModelSearch = ({
 			)}
 			{!virtual && searchType === 'supportGroup' && nonus === false && (
 				<HeroModelSearchFormUs
-					handleSubmit={handleSubmit}
+					handleSubmit={handleUSSearchClick}
 					radius={radius}
 					zip={zip}
 					updateRadius={updateRadius}
@@ -196,11 +200,12 @@ const HeroModelSearch = ({
 			)}
 			{!virtual && searchType === 'supportGroup' && nonus === true && (
 				<HeroModelSearchFormNonUs
-					handleSubmit={handleSubmit}
+					handleSubmit={handleNonUSSearchClick}
 					country={country}
 					updateCountry={updateCountry}
 					countryList={countryList}
 					dropDownCSS={dropDownCSS}
+					countryList={countryList}
 				/>
 			)}
 		</div>

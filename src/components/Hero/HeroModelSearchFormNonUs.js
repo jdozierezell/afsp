@@ -4,8 +4,8 @@ const HeroModelSearchFormNonUs = ({
 	handleSubmit,
 	country,
 	updateCountry,
-	countryList,
 	dropDownCSS,
+	countryList,
 }) => {
 	return (
 		<form
@@ -19,7 +19,7 @@ const HeroModelSearchFormNonUs = ({
 				name="country"
 				value={country}
 				onChange={e => {
-					updateCountry(e.target.value)
+					updateCountry(e)
 				}}
 			>
 				<option>Search by country</option>

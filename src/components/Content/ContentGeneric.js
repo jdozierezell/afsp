@@ -145,10 +145,10 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 						return (
 							<FeaturedResourcesContainer
 								key={index}
-								addCSS={addCSS}
 								heading={detail.listHeading}
 								resources={detail.resource}
 								addCSS={css`
+									${addCSS};
 									background-color: ${adjacent % 2 === 1
 										? styles.colors.lightGray
 										: styles.colors.white};

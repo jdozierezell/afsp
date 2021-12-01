@@ -65,7 +65,6 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 	const [country, setCountry] = useState(
 		existingSearch.country ? existingSearch.country : ''
 	)
-	const [countryList, setCountryList] = useState([])
 	const [supportGroups, setSupportGroups] = useState([])
 	const [countryGroups, setCountryGroups] = useState([])
 	const [virtualGroups, setVirtualGroups] = useState([])
@@ -80,14 +79,24 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 
 	const [firstRun, setFirstRun] = useState(true)
 
+	const countryList = []
+	datoSupportGroups.edges.forEach(group => {
+		if (
+			group.node.meetingCountry !== 'United States of America' &&
+			group.node.meetingCountry !== 'Not Applicable'
+		) {
+			countryList.push(group.node.meetingCountry)
+		}
+	})
+
 	const updateRadius = newRadius => setRadius(newRadius)
 
 	const updateZip = newZip => setZip(newZip)
 
-	const updateNonus = () => {
-		setNonus(!nonus)
+	const updateNonus = e => {
+		setNonus(e.target.checked)
 		setQuery({
-			nonus: nonus,
+			nonus: e.target.checked,
 			virtual: virtual,
 			zip: !nonus ? zip : '',
 			radius: !nonus ? radius : '',
@@ -95,28 +104,29 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 		})
 	}
 
-	const updateVirtual = () => {
-		setVirtual(!virtual)
-		setNonus(false)
+	const updateVirtual = e => {
+		setVirtual(e.target.checked)
 		setQuery({
 			nonus: nonus,
-			virtual: virtual,
-			zip: !nonus ? zip : '',
-			radius: !nonus ? radius : '',
-			country: nonus ? country : '',
+			virtual: e.target.checked,
+			zip: zip,
+			radius: radius,
+			country: country,
 		})
 	}
 
-	const updateCountry = newCountry => setCountry(newCountry)
-
-	const handleSearchClick = () => {
+	const updateCountry = e => {
+		setCountry(e.target.value)
 		setQuery({
 			nonus: nonus,
 			virtual: virtual,
-			zip: !nonus ? zip : '',
-			radius: !nonus ? radius : '',
-			country: nonus ? country : '',
+			zip: zip,
+			radius: radius,
+			country: e.target.value,
 		})
+	}
+
+	const handleUSSearchClick = () => {
 		if (/^[0-9]{5}-?([0-9]{4})?$/g.test(zip)) {
 			// a U.S. site
 			axios
@@ -126,23 +136,24 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 					type: 'supportGroup',
 				})
 				.then(res => {
-					console.log(res)
-					setCountryGroups(res.data.arraysToSend.country)
-					setVirtualGroups(res.data.arraysToSend.virtual)
-					setSupportGroups(res.data.arraysToSend.group)
-				})
-		} else if (country.length > 0) {
-			axios
-				.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
-					country: country,
-					type: 'supportGroup',
-				})
-				.then(res => {
 					setCountryGroups(res.data.arraysToSend.country)
 					setVirtualGroups(res.data.arraysToSend.virtual)
 					setSupportGroups(res.data.arraysToSend.group)
 				})
 		}
+	}
+
+	const handleNonUSSearchClick = () => {
+		axios
+			.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
+				country: country,
+				type: 'supportGroup',
+			})
+			.then(res => {
+				setCountryGroups(res.data.arraysToSend.country)
+				setVirtualGroups(res.data.arraysToSend.virtual)
+				setSupportGroups(res.data.arraysToSend.group)
+			})
 	}
 
 	useEffect(() => {
@@ -160,7 +171,6 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 						}
 					)
 					.then(res => {
-						console.log(res)
 						setCountryGroups(res.data.arraysToSend.country)
 						setVirtualGroups(res.data.arraysToSend.virtual)
 						setSupportGroups(res.data.arraysToSend.group)
@@ -181,22 +191,11 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 					})
 			} else {
 				const virtualGroupArray = []
-				const countryListArray = []
 				datoSupportGroups.edges.forEach(group => {
 					if (group.node.meetingType === 'Nationwide Online Group') {
 						virtualGroupArray.push(group.node)
 					}
 					setVirtualGroups(virtualGroupArray)
-				})
-				datoSupportGroups.edges.forEach(group => {
-					if (
-						group.node.meetingCountry !==
-							'United States of America' &&
-						group.node.meetingCountry !== 'Not Applicable'
-					) {
-						countryListArray.push(group.node.meetingCountry)
-					}
-					setCountryList(countryListArray)
 				})
 			}
 			setFirstRun(false)
@@ -213,7 +212,8 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 				title={search.title}
 				description={search.brief}
 				searchType={'supportGroup'}
-				handleSubmit={handleSearchClick}
+				handleUSSearchClick={handleUSSearchClick}
+				handleNonUSSearchClick={handleNonUSSearchClick}
 				nonus={nonus}
 				virtual={virtual}
 				virtualGroups={virtualGroups}
@@ -225,16 +225,16 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 				updateNonus={updateNonus}
 				updateVirtual={updateVirtual}
 				updateCountry={updateCountry}
+				countryGroups={countryGroups}
 				countryList={countryList}
 			/>
 			{(supportGroups.length >= 1 ||
-				(virtualGroups.length >= 1 && virtual) ||
-				countryGroups.length >= 1) && (
+				countryGroups.length >= 1 ||
+				(virtualGroups.length >= 1 && virtual)) && (
 				<SearchModelContainer
 					supportGroups={supportGroups}
 					virtual={virtual}
 					virtualGroups={virtualGroups}
-					country={country}
 					countryGroups={countryGroups}
 					radius={radius}
 					zip={zip}

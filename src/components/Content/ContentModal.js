@@ -15,22 +15,6 @@ const insideModalCSS = css`
 	}
 `
 
-const modalContentCSS = css`
-	background-color: ${styles.colors.blue};
-	border-radius: ${styles.scale.px5};
-	padding: ${styles.scale.px5};
-	margin-bottom: ${styles.scale.px7};
-	color: ${styles.colors.white};
-	text-decoration: none;
-	display: block;
-	font-family: ${styles.fonts.avenirRegular};
-	:hover {
-		color: ${styles.colors.white};
-		text-decoration: underline;
-		font-family: ${styles.fonts.avenirRegular};
-	}
-`
-
 const xCSS = css`
 	position: absolute;
 	right: ${styles.scale.px25};
