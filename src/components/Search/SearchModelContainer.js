@@ -22,10 +22,11 @@ const SearchModelContainer = ({
 	supportGroups,
 	virtual,
 	virtualGroups,
+	country,
+	countryGroups,
 	radius,
 	zip,
 	nonus,
-	country,
 }) => {
 	return (
 		<section css={searchContainerCSS}>

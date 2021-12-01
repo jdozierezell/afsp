@@ -110,14 +110,13 @@ const dropDownCSS = css`
 const toggleLabelCSS = css`
 	color: ${styles.colors.white};
 	vertical-align: text-bottom;
-	padding: 0 !important;
+	padding: 0 ${styles.scale.px16} !important;
 `
 
 const toggleCSS = css`
 	display: inline-block;
 	position: relative;
 	bottom: ${styles.scale.px20};
-	padding-right: ${styles.scale.px16};
 `
 
 const HeroModelSearch = ({

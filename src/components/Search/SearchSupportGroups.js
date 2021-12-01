@@ -139,7 +139,13 @@ const SearchSupportGroups = ({ supportGroup }) => {
 						nameOfMeetingSite !== 'Not Applicable' && (
 							<h4>{nameOfMeetingSite}</h4>
 						)}
-					{meetingType && <h4>{meetingType}</h4>}
+					{meetingType && (
+						<h4>{`${meetingType} ${
+							meetingType === 'Nationwide Online Group'
+								? 'U.S.'
+								: ''
+						}`}</h4>
+					)}
 					{meetingType === 'Nationwide Online Group' && (
 						<p>
 							Online groups accept loss survivors from all

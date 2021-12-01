@@ -65,6 +65,7 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 	const [country, setCountry] = useState(
 		existingSearch.country ? existingSearch.country : ''
 	)
+	const [countryList, setCountryList] = useState([])
 	const [supportGroups, setSupportGroups] = useState([])
 	const [countryGroups, setCountryGroups] = useState([])
 	const [virtualGroups, setVirtualGroups] = useState([])
@@ -147,16 +148,14 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 						}
 					)
 					.then(res => {
-						console.log(res)
 						setCountryGroups(res.data.arraysToSend.country)
 						setVirtualGroups(res.data.arraysToSend.virtual)
 						setSupportGroups(res.data.arraysToSend.group)
 					})
 			} else {
 				const virtualGroupArray = []
-				console.log(datoSupportGroups.edges)
+				const countryListArray = []
 				datoSupportGroups.edges.forEach(group => {
-					console.log(group.node.meetingType)
 					if (group.node.meetingType === 'Nationwide Online Group') {
 						virtualGroupArray.push(group.node)
 					}
