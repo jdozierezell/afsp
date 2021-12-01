@@ -146,15 +146,6 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 					setSupportGroups(res.data.arraysToSend.group)
 				})
 		}
-		const scrollY = window.scrollY
-		setQuery({
-			nonus: nonus,
-			virtual: virtual,
-			zip: zip,
-			radius: radius,
-			country: country,
-			yPos: scrollY,
-		})
 	}
 
 	const handleNonUSSearchClick = () => {
@@ -168,15 +159,6 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 				setVirtualGroups(res.data.arraysToSend.virtual)
 				setSupportGroups(res.data.arraysToSend.group)
 			})
-		const scrollY = window.scrollY
-		setQuery({
-			nonus: nonus,
-			virtual: virtual,
-			zip: zip,
-			radius: radius,
-			country: country,
-			yPos: scrollY,
-		})
 	}
 
 	useEffect(() => {
