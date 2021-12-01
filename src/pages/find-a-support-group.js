@@ -115,14 +115,14 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 		})
 	}
 
-	const updateCountry = newCountry => {
-		setCountry(newCountry)
+	const updateCountry = e => {
+		setCountry(e.target.value)
 		setQuery({
 			nonus: nonus,
 			virtual: virtual,
 			zip: zip,
 			radius: radius,
-			country: newCountry,
+			country: e.target.value,
 		})
 	}
 

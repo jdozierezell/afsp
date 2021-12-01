@@ -20,7 +20,7 @@ const HeroModelSearchFormNonUs = ({
 				name="country"
 				value={country}
 				onChange={e => {
-					updateCountry(e.target.value)
+					updateCountry(e)
 				}}
 			>
 				<option>Search by country</option>
