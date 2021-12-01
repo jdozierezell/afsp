@@ -214,11 +214,13 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 				countryList={countryList}
 			/>
 			{(supportGroups.length >= 1 ||
+				countryGroups.length >= 1 ||
 				(virtualGroups.length >= 1 && virtual)) && (
 				<SearchModelContainer
 					supportGroups={supportGroups}
 					virtual={virtual}
 					virtualGroups={virtualGroups}
+					countryGroups={countryGroups}
 					radius={radius}
 					zip={zip}
 					nonus={nonus}

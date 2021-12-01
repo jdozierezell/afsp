@@ -147,20 +147,22 @@ const HeroModelSearch = ({
 				css={subHeaderCSS}
 				dangerouslySetInnerHTML={{ __html: description }}
 			></div>
-			{searchType === 'supportGroup' && countryList.length > 0 && (
-				<>
-					<span css={toggleCSS}>
-						<Toggle
-							id="nonus-group"
-							defaultChecked={nonus}
-							onChange={e => updateNonus(e)}
-						/>
-					</span>
-					<label css={toggleLabelCSS} htmlFor="nonus-group">
-						Search outside the U.S.
-					</label>
-				</>
-			)}
+			{searchType === 'supportGroup' &&
+				countryList.length > 0 &&
+				!virtual && (
+					<>
+						<span css={toggleCSS}>
+							<Toggle
+								id="nonus-group"
+								defaultChecked={nonus}
+								onChange={e => updateNonus(e)}
+							/>
+						</span>
+						<label css={toggleLabelCSS} htmlFor="nonus-group">
+							Search outside the U.S.
+						</label>
+					</>
+				)}
 			{searchType === 'supportGroup' && virtualGroups.length > 0 && (
 				<>
 					<span css={toggleCSS}>
@@ -171,7 +173,7 @@ const HeroModelSearch = ({
 						/>
 					</span>
 					<label css={toggleLabelCSS} htmlFor="virtual-group">
-						Only list nationwide virtual groups
+						List only nationwide virtual groups in the U.S.
 					</label>
 				</>
 			)}
