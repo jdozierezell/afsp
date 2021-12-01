@@ -75,6 +75,7 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 		nonus: BooleanParam,
 		virtual: BooleanParam,
 		country: StringParam,
+		yPos: NumberParam,
 	})
 
 	const [firstRun, setFirstRun] = useState(true)
@@ -95,35 +96,39 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 
 	const updateNonus = e => {
 		setNonus(e.target.checked)
-		setQuery({
-			nonus: e.target.checked,
-			virtual: virtual,
-			zip: !nonus ? zip : '',
-			radius: !nonus ? radius : '',
-			country: nonus ? country : '',
-		})
+		setCountryGroups([])
+		setSupportGroups([])
+		// setQuery({
+		// 	nonus: e.target.checked,
+		// 	virtual: virtual,
+		// 	zip: !nonus ? zip : '',
+		// 	radius: !nonus ? radius : '',
+		// 	country: nonus ? country : '',
+		// })
 	}
 
 	const updateVirtual = e => {
 		setVirtual(e.target.checked)
-		setQuery({
-			nonus: nonus,
-			virtual: e.target.checked,
-			zip: zip,
-			radius: radius,
-			country: country,
-		})
+		setCountryGroups([])
+		setSupportGroups([])
+		// setQuery({
+		// 	nonus: nonus,
+		// 	virtual: e.target.checked,
+		// 	zip: zip,
+		// 	radius: radius,
+		// 	country: country,
+		// })
 	}
 
 	const updateCountry = e => {
 		setCountry(e.target.value)
-		setQuery({
-			nonus: nonus,
-			virtual: virtual,
-			zip: zip,
-			radius: radius,
-			country: e.target.value,
-		})
+		// setQuery({
+		// 	nonus: nonus,
+		// 	virtual: virtual,
+		// 	zip: zip,
+		// 	radius: radius,
+		// 	country: e.target.value,
+		// })
 	}
 
 	const handleUSSearchClick = () => {
@@ -141,6 +146,15 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 					setSupportGroups(res.data.arraysToSend.group)
 				})
 		}
+		const scrollY = window.scrollY
+		setQuery({
+			nonus: nonus,
+			virtual: virtual,
+			zip: zip,
+			radius: radius,
+			country: country,
+			yPos: scrollY,
+		})
 	}
 
 	const handleNonUSSearchClick = () => {
@@ -154,6 +168,15 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 				setVirtualGroups(res.data.arraysToSend.virtual)
 				setSupportGroups(res.data.arraysToSend.group)
 			})
+		const scrollY = window.scrollY
+		setQuery({
+			nonus: nonus,
+			virtual: virtual,
+			zip: zip,
+			radius: radius,
+			country: country,
+			yPos: scrollY,
+		})
 	}
 
 	useEffect(() => {
@@ -197,6 +220,9 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 					}
 					setVirtualGroups(virtualGroupArray)
 				})
+			}
+			if (typeof window !== `undefined`) {
+				window.scroll(0, existingSearch.yPos)
 			}
 			setFirstRun(false)
 		}
