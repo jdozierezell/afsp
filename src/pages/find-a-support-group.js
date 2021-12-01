@@ -126,14 +126,12 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 		})
 	}
 
-	const handleSearchClick = () => {
+	const handleUSSearchClick = () => {
 		if (/^[0-9]{5}-?([0-9]{4})?$/g.test(zip)) {
 			axios
 				.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
 					zip: zip,
 					radius: radius,
-					nonus: nonus,
-					source: 'groupSearch',
 					type: 'supportGroup',
 				})
 				.then(res => {
@@ -142,6 +140,19 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 					setSupportGroups(res.data.arraysToSend.group)
 				})
 		}
+	}
+
+	const handleNonUSSearchClick = () => {
+		axios
+			.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
+				country: country,
+				type: 'supportGroup',
+			})
+			.then(res => {
+				setCountryGroups(res.data.arraysToSend.country)
+				setVirtualGroups(res.data.arraysToSend.virtual)
+				setSupportGroups(res.data.arraysToSend.group)
+			})
 	}
 
 	useEffect(() => {
@@ -186,7 +197,8 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 				title={search.title}
 				description={search.brief}
 				searchType={'supportGroup'}
-				handleSubmit={handleSearchClick}
+				handleUSSearchClick={handleUSSearchClick}
+				handleNonUSSearchClick={handleNonUSSearchClick}
 				nonus={nonus}
 				virtual={virtual}
 				virtualGroups={virtualGroups}

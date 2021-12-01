@@ -124,6 +124,8 @@ const HeroModelSearch = ({
 	description,
 	searchType,
 	handleSubmit,
+	handleUSSearchClick,
+	handleNonUSSearchClick,
 	nonus,
 	virtual,
 	virtualGroups,
@@ -186,7 +188,7 @@ const HeroModelSearch = ({
 			)}
 			{!virtual && searchType === 'supportGroup' && nonus === false && (
 				<HeroModelSearchFormUs
-					handleSubmit={handleSubmit}
+					handleSubmit={handleUSSearchClick}
 					radius={radius}
 					zip={zip}
 					updateRadius={updateRadius}
@@ -197,7 +199,7 @@ const HeroModelSearch = ({
 			)}
 			{!virtual && searchType === 'supportGroup' && nonus === true && (
 				<HeroModelSearchFormNonUs
-					handleSubmit={handleSubmit}
+					handleSubmit={handleNonUSSearchClick}
 					country={country}
 					updateCountry={updateCountry}
 					countryGroups={countryGroups}

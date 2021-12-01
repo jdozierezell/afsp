@@ -4,7 +4,6 @@ const HeroModelSearchFormNonUs = ({
 	handleSubmit,
 	country,
 	updateCountry,
-	countryGroups,
 	dropDownCSS,
 	countryList,
 }) => {
