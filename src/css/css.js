@@ -61,6 +61,7 @@ export const styles = {
 		px2: '0.125rem',
 		px5: '0.3125rem',
 		px7: '0.4375rem',
+		px10: '0.625rem',
 		px12: '0.75rem',
 		px14: '0.875rem',
 		px16: '1rem',
