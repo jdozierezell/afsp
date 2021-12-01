@@ -4,7 +4,7 @@ const HeroModelSearchFormNonUs = ({
 	handleSubmit,
 	country,
 	updateCountry,
-	countryGroups,
+	countryList,
 	dropDownCSS,
 }) => {
 	return (
@@ -23,10 +23,10 @@ const HeroModelSearchFormNonUs = ({
 				}}
 			>
 				<option>Search by country</option>
-				{countryGroups.map((group, index) => {
+				{countryList.map((country, index) => {
 					return (
-						<option key={index} value={group.meetingCountry}>
-							{group.meetingCountry}
+						<option key={index} value={country}>
+							{country}
 						</option>
 					)
 				})}

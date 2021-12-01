@@ -22,11 +22,13 @@ const SearchModelContainer = ({
 	supportGroups,
 	virtual,
 	virtualGroups,
+	country,
+	countryGroups,
 	radius,
 	zip,
 	nonus,
-	country,
 }) => {
+	console.log(countryGroups)
 	return (
 		<section css={searchContainerCSS}>
 			{!virtual && (
@@ -54,6 +56,16 @@ const SearchModelContainer = ({
 						<SearchSupportGroups
 							key={index}
 							supportGroup={supportGroup[0]}
+						/>
+					)
+				})}
+			{countryGroups &&
+				!virtual &&
+				countryGroups.map((supportGroup, index) => {
+					return (
+						<SearchSupportGroups
+							key={index}
+							supportGroup={supportGroup}
 						/>
 					)
 				})}

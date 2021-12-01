@@ -65,6 +65,7 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 	const [country, setCountry] = useState(
 		existingSearch.country ? existingSearch.country : ''
 	)
+	const [countryList, setCountryList] = useState([])
 	const [supportGroups, setSupportGroups] = useState([])
 	const [countryGroups, setCountryGroups] = useState([])
 	const [virtualGroups, setVirtualGroups] = useState([])
@@ -86,22 +87,23 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 	const updateNonus = () => {
 		setNonus(!nonus)
 		setQuery({
-			nonus: !nonus,
+			nonus: nonus,
 			virtual: virtual,
-			zip: zip,
-			radius: radius,
-			country: country,
+			zip: !nonus ? zip : '',
+			radius: !nonus ? radius : '',
+			country: nonus ? country : '',
 		})
 	}
 
 	const updateVirtual = () => {
 		setVirtual(!virtual)
+		setNonus(false)
 		setQuery({
 			nonus: nonus,
-			virtual: !virtual,
-			zip: zip,
-			radius: radius,
-			country: country,
+			virtual: virtual,
+			zip: !nonus ? zip : '',
+			radius: !nonus ? radius : '',
+			country: nonus ? country : '',
 		})
 	}
 
@@ -111,17 +113,28 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 		setQuery({
 			nonus: nonus,
 			virtual: virtual,
-			zip: zip,
-			radius: radius,
-			country: country,
+			zip: !nonus ? zip : '',
+			radius: !nonus ? radius : '',
+			country: nonus ? country : '',
 		})
 		if (/^[0-9]{5}-?([0-9]{4})?$/g.test(zip)) {
+			// a U.S. site
 			axios
 				.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
 					zip: zip,
 					radius: radius,
-					nonus: nonus,
-					source: 'groupSearch',
+					type: 'supportGroup',
+				})
+				.then(res => {
+					console.log(res)
+					setCountryGroups(res.data.arraysToSend.country)
+					setVirtualGroups(res.data.arraysToSend.virtual)
+					setSupportGroups(res.data.arraysToSend.group)
+				})
+		} else if (country.length > 0) {
+			axios
+				.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
+					country: country,
 					type: 'supportGroup',
 				})
 				.then(res => {
@@ -129,8 +142,6 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 					setVirtualGroups(res.data.arraysToSend.virtual)
 					setSupportGroups(res.data.arraysToSend.group)
 				})
-		} else if (country.length > 0) {
-			console.log(country)
 		}
 	}
 
@@ -154,9 +165,23 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 						setVirtualGroups(res.data.arraysToSend.virtual)
 						setSupportGroups(res.data.arraysToSend.group)
 					})
+			} else if (country.length > 0) {
+				axios
+					.post(
+						'https://serene-dusk-44738.herokuapp.com/zip-lookup',
+						{
+							country: country,
+							type: 'supportGroup',
+						}
+					)
+					.then(res => {
+						setCountryGroups(res.data.arraysToSend.country)
+						setVirtualGroups(res.data.arraysToSend.virtual)
+						setSupportGroups(res.data.arraysToSend.group)
+					})
 			} else {
 				const virtualGroupArray = []
-				const countryGroupArray = []
+				const countryListArray = []
 				datoSupportGroups.edges.forEach(group => {
 					if (group.node.meetingType === 'Nationwide Online Group') {
 						virtualGroupArray.push(group.node)
@@ -169,9 +194,9 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 							'United States of America' &&
 						group.node.meetingCountry !== 'Not Applicable'
 					) {
-						countryGroupArray.push(group.node)
+						countryListArray.push(group.node.meetingCountry)
 					}
-					setCountryGroups(countryGroupArray)
+					setCountryList(countryListArray)
 				})
 			}
 			setFirstRun(false)
@@ -200,18 +225,20 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 				updateNonus={updateNonus}
 				updateVirtual={updateVirtual}
 				updateCountry={updateCountry}
-				countryGroups={countryGroups}
+				countryList={countryList}
 			/>
 			{(supportGroups.length >= 1 ||
-				(virtualGroups.length >= 1 && virtual)) && (
+				(virtualGroups.length >= 1 && virtual) ||
+				countryGroups.length >= 1) && (
 				<SearchModelContainer
 					supportGroups={supportGroups}
 					virtual={virtual}
 					virtualGroups={virtualGroups}
+					country={country}
+					countryGroups={countryGroups}
 					radius={radius}
 					zip={zip}
 					nonus={nonus}
-					country={country}
 				/>
 			)}
 			{search.callsToAction.map((item, index) => (

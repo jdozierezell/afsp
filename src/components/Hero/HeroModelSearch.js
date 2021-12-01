@@ -130,7 +130,7 @@ const HeroModelSearch = ({
 	radius,
 	zip,
 	country,
-	countryGroups,
+	countryList,
 	updateRadius,
 	updateZip,
 	updateNonus,
@@ -144,7 +144,7 @@ const HeroModelSearch = ({
 				css={subHeaderCSS}
 				dangerouslySetInnerHTML={{ __html: description }}
 			></div>
-			{searchType === 'supportGroup' && countryGroups.length > 0 && (
+			{searchType === 'supportGroup' && countryList.length > 0 && (
 				<>
 					<span css={toggleCSS}>
 						<Toggle
@@ -199,7 +199,7 @@ const HeroModelSearch = ({
 					handleSubmit={handleSubmit}
 					country={country}
 					updateCountry={updateCountry}
-					countryGroups={countryGroups}
+					countryList={countryList}
 					dropDownCSS={dropDownCSS}
 				/>
 			)}
