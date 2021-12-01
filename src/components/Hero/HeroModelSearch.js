@@ -136,6 +136,7 @@ const HeroModelSearch = ({
 	updateNonus,
 	updateVirtual,
 	updateCountry,
+	countryList,
 }) => {
 	return (
 		<div css={solidHeroCSS}>
@@ -199,6 +200,7 @@ const HeroModelSearch = ({
 					updateCountry={updateCountry}
 					countryGroups={countryGroups}
 					dropDownCSS={dropDownCSS}
+					countryList={countryList}
 				/>
 			)}
 		</div>

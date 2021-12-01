@@ -65,7 +65,6 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 	const [country, setCountry] = useState(
 		existingSearch.country ? existingSearch.country : ''
 	)
-	const [countryList, setCountryList] = useState([])
 	const [supportGroups, setSupportGroups] = useState([])
 	const [countryGroups, setCountryGroups] = useState([])
 	const [virtualGroups, setVirtualGroups] = useState([])
@@ -79,6 +78,16 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 	})
 
 	const [firstRun, setFirstRun] = useState(true)
+
+	const countryList = []
+	datoSupportGroups.edges.forEach(group => {
+		if (
+			group.node.meetingCountry !== 'United States of America' &&
+			group.node.meetingCountry !== 'Not Applicable'
+		) {
+			countryList.push(group.node.meetingCountry)
+		}
+	})
 
 	const updateRadius = newRadius => setRadius(newRadius)
 
@@ -106,16 +115,18 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 		})
 	}
 
-	const updateCountry = newCountry => setCountry(newCountry)
-
-	const handleSearchClick = () => {
+	const updateCountry = newCountry => {
+		setCountry(newCountry)
 		setQuery({
 			nonus: nonus,
 			virtual: virtual,
 			zip: zip,
 			radius: radius,
-			country: country,
+			country: newCountry,
 		})
+	}
+
+	const handleSearchClick = () => {
 		if (/^[0-9]{5}-?([0-9]{4})?$/g.test(zip)) {
 			axios
 				.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
@@ -154,7 +165,6 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 					})
 			} else {
 				const virtualGroupArray = []
-				const countryListArray = []
 				datoSupportGroups.edges.forEach(group => {
 					if (group.node.meetingType === 'Nationwide Online Group') {
 						virtualGroupArray.push(group.node)
@@ -189,6 +199,7 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 				updateVirtual={updateVirtual}
 				updateCountry={updateCountry}
 				countryGroups={countryGroups}
+				countryList={countryList}
 			/>
 			{(supportGroups.length >= 1 ||
 				(virtualGroups.length >= 1 && virtual)) && (
