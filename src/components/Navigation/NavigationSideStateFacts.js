@@ -58,7 +58,7 @@ const NavigationSide = ({ facts, topStart, slug }) => {
 		window.addEventListener('scroll', handleScroll)
 		return () => window.removeEventListener('scroll', handleScroll)
 	})
-	facts.foreach(section => {
+	facts.forEach(section => {
 		if (section.main) {
 			section = {
 				display: section.main.display,

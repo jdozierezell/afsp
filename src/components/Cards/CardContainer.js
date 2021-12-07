@@ -70,7 +70,7 @@ const CardContainer = ({ cards, heading, addCSS, cardCSS }) => {
 				${addCSS};
 			`}
 		>
-			<h2 id={createAnchor(heading)}>{heading}</h2>
+			{heading && <h2 id={createAnchor(heading)}>{heading}</h2>}
 			<Carousel responsive={responsive}>
 				{cards.map((card, index) => {
 					return <Card key={index} card={card} cardCSS={cardCSS} />
