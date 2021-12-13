@@ -53,7 +53,7 @@ const CTAContainer = ({ cta, number, id, addCSS }) => {
 		background-size: cover;
 		background-position: center;
 		background-attachment: fixed;
-		padding: ${styles.scale.px50} ${styles.scale.px24};
+		padding: ${styles.scale.px36} ${styles.scale.px24} ${styles.scale.px24};
 		h2,
 		p {
 			color: ${color};
@@ -76,9 +76,6 @@ const CTAContainer = ({ cta, number, id, addCSS }) => {
 					css={css`
 						${CTACSS};
 						text-align: center;
-						@media (min-width: ${styles.screens.tablet}px) {
-							padding: ${styles.scale.px80} ${styles.scale.px50};
-						}
 						${addCSS};
 					`}
 				>

@@ -5,27 +5,10 @@ import { css } from '@emotion/react'
 import Layout from '../components/Layout'
 import HeroFacts from '../components/Hero/HeroFacts'
 import NavigationSideStateFacts from '../components/Navigation/NavigationSideStateFacts'
-import Facts from '../components/StateFacts/Facts'
+import FactsWrapper from '../components/StateFacts/FactsWrapper'
+import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 
 import { styles } from '../css/css'
-
-const initiativesAndPlansCSS = css`
-	h2 {
-		font-size: ${styles.scale.px36};
-		margin: ${styles.scale.px40} 0 ${styles.scale.px30};
-		@media (min-width: ${styles.screens.mobile}px) {
-			margin: ${styles.scale.px46} 0 ${styles.scale.px36};
-		}
-	}
-	margin: ${styles.scale.px50} ${styles.scale.px24};
-	max-width: 623px;
-	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px50} ${styles.scale.px50} 0;
-	}
-	@media (min-width: ${styles.screens.video}px) {
-		width: calc(100vw - 555px);
-	}
-`
 
 const StateFacts = ({ data: { stateFacts } }) => {
 	const [factsTop, setFactsTop] = useState(null)
@@ -300,29 +283,13 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			<div id="factsContainer">
 				<HeroFacts stateFacts={stateFacts}></HeroFacts>
 			</div>
-			{factsTop !== null && (
-				<NavigationSideStateFacts
-					facts={stateFacts.facts}
-					slug={stateFacts.slug}
-					topStart={factsTop}
-				></NavigationSideStateFacts>
-			)}
-			<section css={initiativesAndPlansCSS}>
-				{stateFacts.initiativesAndPlans && (
-					<div>
-						<h2>Plans and Initiatives</h2>
-						<div
-							dangerouslySetInnerHTML={{
-								__html: stateFacts.initiativesAndPlans,
-							}}
-						></div>
-					</div>
-				)}
-				<Facts
-					state={stateFacts.stateName}
-					facts={stateFacts.facts}
-				></Facts>
-			</section>
+			<NavigationSideStateFacts
+				facts={stateFacts.facts}
+				slug={stateFacts.slug}
+				topStart={factsTop}
+			></NavigationSideStateFacts>
+			<FactsWrapper stateFacts={stateFacts}></FactsWrapper>
+			<CarouselChapterContainer></CarouselChapterContainer>
 		</Layout>
 	)
 }

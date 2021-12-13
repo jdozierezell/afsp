@@ -61,14 +61,6 @@ const factWrapperCSS = css`
 	position: relative;
 `
 
-const promoContainerCSS = css`
-	width: 100vw;
-	margin-left: -${styles.scale.px24};
-	@media (min-width: ${styles.screens.mobile}px) {
-		margin-left: -${styles.scale.px50};
-	}
-`
-
 const ContentFacts = ({ state, facts }) => {
 	return (
 		<div>
@@ -159,25 +151,6 @@ const ContentFacts = ({ state, facts }) => {
 									</ul>
 								</>
 							)}
-							{fact.promo &&
-								fact.promo[0].__typename ===
-									'DatoCmsCallsToAction' && (
-									<CTAContainer
-										key={index}
-										number={index}
-										cta={fact.promo[0].callToAction[0]}
-										addCSS={promoContainerCSS}
-									/>
-								)}
-							{fact.promo &&
-								fact.promo[0].__typename ===
-									'DatoCmsDetail' && (
-									<CarouselDetailContainer
-										key={index}
-										content={fact.promo[0]}
-										addContainerCSS={promoContainerCSS}
-									/>
-								)}
 						</div>
 					)
 				} else {
@@ -191,25 +164,6 @@ const ContentFacts = ({ state, facts }) => {
 									return <Fact fact={fact} key={index}></Fact>
 								})}
 							</ul>
-							{fact.promo &&
-								fact.promo[0].__typename ===
-									'DatoCmsCallsToAction' && (
-									<CTAContainer
-										key={index}
-										number={index}
-										cta={fact.promo[0].callToAction[0]}
-										addCSS={promoContainerCSS}
-									/>
-								)}
-							{fact.promo &&
-								fact.promo[0].__typename ===
-									'DatoCmsDetail' && (
-									<CarouselDetailContainer
-										key={index}
-										content={fact.promo[0]}
-										addContainerCSS={promoContainerCSS}
-									/>
-								)}
 						</div>
 					)
 				}

@@ -9,7 +9,6 @@ const sideNavigationCSS = css`
 	display: none;
 	@media (min-width: ${styles.screens.video}px) {
 		display: block;
-		position: absolute;
 		padding: ${styles.scale.px40} ${styles.scale.px50};
 		background-color: ${styles.colors.white};
 		width: 500px;
@@ -38,7 +37,27 @@ const sideNavigationCSS = css`
 	}
 `
 
-const NavigationSide = ({ facts, slug }) => {
+const NavigationSide = ({ facts, topStart, slug }) => {
+	const asideRef = useRef(null)
+	const [position, setPosition] = useState('absolute')
+	const [top, setTop] = useState('652px')
+	const handleScroll = () => {
+		const heightToFix = topStart ? topStart : 150
+		if (
+			asideRef.current.getBoundingClientRect().y <= 0 &&
+			window.scrollY >= heightToFix
+		) {
+			setPosition('fixed')
+			setTop(0)
+		} else {
+			setPosition('absolute')
+			setTop('652px')
+		}
+	}
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll)
+		return () => window.removeEventListener('scroll', handleScroll)
+	})
 	facts.forEach(section => {
 		if (section.main) {
 			section = {
@@ -48,7 +67,16 @@ const NavigationSide = ({ facts, slug }) => {
 		}
 	})
 	return (
-		<aside css={sideNavigationCSS}>
+		<aside
+			css={css`
+				${sideNavigationCSS};
+				@media (min-width: ${styles.screens.video}px) {
+					position: ${position};
+					top: ${top};
+				}
+			`}
+			ref={asideRef}
+		>
 			<h2>On this page</h2>
 			<ul>
 				{facts.map((section, index) => {
