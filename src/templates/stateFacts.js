@@ -62,7 +62,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 	}
 	stateFacts.facts = [
 		{
-			display: 'Mental Health Parity',
+			display: 'Mental health parity',
 			anchor: 'mental-health-parity',
 			facts: [
 				{
@@ -87,10 +87,10 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			promo: [stateFacts.mentalHealthParityPromo],
 		},
 		{
-			display: 'K – 12 School Suicide Prevention',
+			display: 'K – 12 school suicide prevention',
 			anchor: 'k-12-school-suicide-prevention',
 			public: {
-				display: 'Public Schools',
+				display: 'Public schools',
 				facts: [
 					{
 						display:
@@ -109,12 +109,12 @@ const StateFacts = ({ data: { stateFacts } }) => {
 					},
 					{
 						display:
-							'Training for certain school personnel, annual',
+							'Suicide prevention and/or mental health training for certain school personnel, annual',
 						value: stateFacts.pubTrainingForPersonnelAnnual,
 					},
 					{
 						display:
-							'Training for certain school personnel, not annual',
+							'Suicide prevention and/or mental health training for certain school personnel, not annual',
 						value: stateFacts.pubTrainingForPersonnelNotAnnual,
 					},
 					{
@@ -133,7 +133,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 				],
 			},
 			nonPublic: {
-				display: 'Non Public Schools',
+				display: 'Non-public schools',
 				facts: [
 					{
 						display:
@@ -179,24 +179,27 @@ const StateFacts = ({ data: { stateFacts } }) => {
 		},
 		{
 			display:
-				'Health Professional training in suicide assessment, treatment and management',
+				'Health professional training in suicide assessment, treatment and management',
 			anchor: 'health-professional-training',
 			facts: [
 				{
-					display: 'Mental health professionals, regular training',
+					display:
+						'Mental health professionals receive regular training',
 					value: stateFacts.mentalHealthProfessionalsRegular,
 				},
 				{
-					display: 'Mental health professionals, one time training',
+					display:
+						'Mental health professionals receive one time training',
 					value: stateFacts.mentalHealthProfessionalsOneTime,
 				},
 				{
-					display: 'Medical/surgical professionals, regular training',
+					display:
+						'Medical/surgical professionals receive regular training',
 					value: stateFacts.medicalSurgicalProfessionalsRegular,
 				},
 				{
 					display:
-						'Medical/surgical professionals, one time training',
+						'Medical/surgical professionals receive one time training',
 					value: stateFacts.medicalSurgicalProfessionalsOneTime,
 				},
 			],
@@ -234,7 +237,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			display: 'University and college campus suicide prevention',
 			anchor: 'university-and-college',
 			public: {
-				display: 'Public Schools',
+				display: 'Public schools',
 				facts: [
 					{
 						display:
@@ -254,7 +257,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 				],
 			},
 			nonPublic: {
-				display: 'Non Public Schools',
+				display: 'Non-public schools',
 				facts: [
 					{
 						display:
