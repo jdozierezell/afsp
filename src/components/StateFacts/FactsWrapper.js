@@ -64,7 +64,7 @@ const factsWrapperCSS = css`
 		margin: ${styles.scale.px50} ${styles.scale.px50} 0;
 	}
 	@media (min-width: ${styles.screens.video}px) {
-		width: calc(100vw - 557px);
+		width: calc(100vw - 575px);
 	}
 `
 
