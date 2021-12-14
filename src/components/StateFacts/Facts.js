@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { css } from '@emotion/react'
 
 import CTAContainer from '../CTAs/CTAContainer'
@@ -62,9 +62,38 @@ const factWrapperCSS = css`
 `
 
 const ContentFacts = ({ state, facts }) => {
+	const keyElement = useRef(null)
+	const factsElement = useRef(null)
+	const [position, setPosition] = useState('relative')
+
+	const handleScroll = () => {
+		console.log(factsElement.current.getBoundingClientRect())
+		if (
+			keyElement.current.getBoundingClientRect().y <= 0 &&
+			factsElement.current.getBoundingClientRect().y <= 290
+		) {
+			setPosition('fixed')
+		} else {
+			setPosition('relative')
+		}
+	}
+
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll)
+		return () => window.removeEventListener('scroll', handleScroll)
+	})
+
 	return (
 		<div>
-			<div>
+			<div
+				ref={keyElement}
+				css={css`
+					position: ${position};
+					top: 0;
+					background-color: ${styles.colors.white};
+					z-index: 1;
+				`}
+			>
 				<h2 css={sectionHeadingCSS}>Legislation in {state}</h2>
 				<h4>Key:</h4>
 				<ul css={keyCSS}>
@@ -106,68 +135,75 @@ const ContentFacts = ({ state, facts }) => {
 					</li>
 				</ul>
 			</div>
-			{facts.map((fact, index) => {
-				if (fact.public || fact.nonPublic) {
-					return (
-						<div key={index} css={factWrapperCSS}>
-							<h3 id={fact.anchor} css={subSectionCSS}>
-								{fact.display}
-							</h3>
-							{fact.public && (
-								<>
-									<h4 css={subSubCSS}>
-										{fact.public.display}
-									</h4>
-									<ul css={factListCSS}>
-										{fact.public.facts.map(
-											(fact, index) => {
-												return (
-													<Fact
-														fact={fact}
-														key={index}
-													></Fact>
-												)
-											}
-										)}
-									</ul>
-								</>
-							)}
-							{fact.nonPublic && (
-								<>
-									<h4 css={subSubCSS}>
-										{fact.nonPublic.display}
-									</h4>
-									<ul css={factListCSS}>
-										{fact.nonPublic.facts.map(
-											(fact, index) => {
-												return (
-													<Fact
-														fact={fact}
-														key={index}
-													></Fact>
-												)
-											}
-										)}
-									</ul>
-								</>
-							)}
-						</div>
-					)
-				} else {
-					return (
-						<div key={index} css={factWrapperCSS}>
-							<h3 id={fact.anchor} css={subSectionCSS}>
-								{fact.display}
-							</h3>
-							<ul css={factListCSS}>
-								{fact.facts.map((fact, index) => {
-									return <Fact fact={fact} key={index}></Fact>
-								})}
-							</ul>
-						</div>
-					)
-				}
-			})}
+			<div ref={factsElement}>
+				{facts.map((fact, index) => {
+					if (fact.public || fact.nonPublic) {
+						return (
+							<div key={index} css={factWrapperCSS}>
+								<h3 id={fact.anchor} css={subSectionCSS}>
+									{fact.display}
+								</h3>
+								{fact.public && (
+									<>
+										<h4 css={subSubCSS}>
+											{fact.public.display}
+										</h4>
+										<ul css={factListCSS}>
+											{fact.public.facts.map(
+												(fact, index) => {
+													return (
+														<Fact
+															fact={fact}
+															key={index}
+														></Fact>
+													)
+												}
+											)}
+										</ul>
+									</>
+								)}
+								{fact.nonPublic && (
+									<>
+										<h4 css={subSubCSS}>
+											{fact.nonPublic.display}
+										</h4>
+										<ul css={factListCSS}>
+											{fact.nonPublic.facts.map(
+												(fact, index) => {
+													return (
+														<Fact
+															fact={fact}
+															key={index}
+														></Fact>
+													)
+												}
+											)}
+										</ul>
+									</>
+								)}
+							</div>
+						)
+					} else {
+						return (
+							<div key={index} css={factWrapperCSS}>
+								<h3 id={fact.anchor} css={subSectionCSS}>
+									{fact.display}
+								</h3>
+								<ul css={factListCSS}>
+									{fact.facts.map((fact, index) => {
+										return (
+											<Fact
+												fact={fact}
+												key={index}
+											></Fact>
+										)
+									})}
+								</ul>
+							</div>
+						)
+					}
+				})}
+			</div>
 		</div>
 	)
 }
