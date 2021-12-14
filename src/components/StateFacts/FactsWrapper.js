@@ -7,50 +7,6 @@ import Facts from './Facts'
 
 import { styles } from '../../css/css'
 
-const sectionHeadingCSS = css`
-	font-size: ${styles.scale.px36};
-	margin: ${styles.scale.px40} 0 ${styles.scale.px35};
-	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px46} 0 ${styles.scale.px40};
-	}
-`
-const subSectionCSS = css`
-	font-size: ${styles.scale.px24};
-	margin: ${styles.scale.px36} 0 ${styles.scale.px24};
-	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px46} 0 ${styles.scale.px36};
-	}
-`
-const subSubCSS = css`
-	font-size: ${styles.scale.px20};
-	margin: ${styles.scale.px24} 0 ${styles.scale.px24};
-	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px36} 0 ${styles.scale.px36};
-	}
-`
-const keyCSS = css`
-	list-style: none;
-	margin: 0;
-	@media (min-width: ${styles.screens.mobile}px) {
-		display: grid;
-		grid-column-gap: ${styles.gridGap.desktop};
-		grid-template-columns: 1fr 1fr;
-	}
-	li {
-		display: grid;
-		grid-gap: ${styles.gridGap.desktop};
-		grid-template-columns: ${styles.scale.px36} 1fr;
-	}
-`
-const factListCSS = css`
-	list-style: none;
-	margin: 0;
-	li {
-		display: grid;
-		grid-gap: ${styles.gridGap.desktop};
-		grid-template-columns: ${styles.scale.px36} 1fr;
-	}
-`
 const initiativesAndPlansCSS = css`
 	h2 {
 		font-size: ${styles.scale.px36};

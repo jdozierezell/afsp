@@ -10,6 +10,10 @@ import CarouselChapterContainer from '../components/Carousels/CarouselChapterCon
 
 import { styles } from '../css/css'
 
+const carouselCSS = css`
+	z-index: 2;
+`
+
 const StateFacts = ({ data: { stateFacts } }) => {
 	const [factsTop, setFactsTop] = useState(null)
 	let metaImage,
@@ -289,7 +293,9 @@ const StateFacts = ({ data: { stateFacts } }) => {
 				topStart={factsTop}
 			></NavigationSideStateFacts>
 			<FactsWrapper stateFacts={stateFacts}></FactsWrapper>
-			<CarouselChapterContainer></CarouselChapterContainer>
+			<CarouselChapterContainer
+				carouselCSS={carouselCSS}
+			></CarouselChapterContainer>
 		</Layout>
 	)
 }

@@ -1,9 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { css } from '@emotion/react'
 
-import CTAContainer from '../CTAs/CTAContainer'
-import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
-
 import IconCircleCheck from '../SVGs/IconCircleCheck'
 import IconCircleCircle from '../SVGs/IconCircleCircle'
 import IconCircleX from '../SVGs/IconCircleX'
@@ -57,24 +54,25 @@ const factListCSS = css`
 	}
 `
 
-const factWrapperCSS = css`
-	position: relative;
-`
-
 const ContentFacts = ({ state, facts }) => {
 	const keyElement = useRef(null)
-	const factsElement = useRef(null)
+	const factElement = useRef(null)
 	const [position, setPosition] = useState('relative')
+	const [top, setTop] = useState(0)
+	const [width, setWidth] = useState('100%')
 
 	const handleScroll = () => {
-		console.log(factsElement.current.getBoundingClientRect())
 		if (
-			keyElement.current.getBoundingClientRect().y <= 0 &&
-			factsElement.current.getBoundingClientRect().y <= 290
+			keyElement.current.getBoundingClientRect().y <= 50 &&
+			factElement.current.getBoundingClientRect().y <= 340
 		) {
 			setPosition('fixed')
+			setTop(`${keyElement.current.getBoundingClientRect().height}px`)
+			setWidth(`${factElement.current.getBoundingClientRect().width}px`)
 		} else {
 			setPosition('relative')
+			setTop(0)
+			setWidth('100%')
 		}
 	}
 
@@ -92,6 +90,7 @@ const ContentFacts = ({ state, facts }) => {
 					top: 0;
 					background-color: ${styles.colors.white};
 					z-index: 1;
+					width: ${width};
 				`}
 			>
 				<h2 css={sectionHeadingCSS}>Legislation in {state}</h2>
@@ -135,11 +134,18 @@ const ContentFacts = ({ state, facts }) => {
 					</li>
 				</ul>
 			</div>
-			<div ref={factsElement}>
+			<div>
 				{facts.map((fact, index) => {
 					if (fact.public || fact.nonPublic) {
 						return (
-							<div key={index} css={factWrapperCSS}>
+							<div
+								key={index}
+								css={css`
+									position: relative;
+									top: ${top};
+								`}
+								ref={index === 0 ? factElement : null}
+							>
 								<h3 id={fact.anchor} css={subSectionCSS}>
 									{fact.display}
 								</h3>
@@ -185,7 +191,14 @@ const ContentFacts = ({ state, facts }) => {
 						)
 					} else {
 						return (
-							<div key={index} css={factWrapperCSS}>
+							<div
+								key={index}
+								css={css`
+									position: relative;
+									top: ${top};
+								`}
+								ref={index === 0 ? factElement : null}
+							>
 								<h3 id={fact.anchor} css={subSectionCSS}>
 									{fact.display}
 								</h3>
