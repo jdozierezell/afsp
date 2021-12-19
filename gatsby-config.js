@@ -12,10 +12,6 @@ module.exports = {
 				? `http://localhost:8000`
 				: `https://afsp.org`,
 	},
-	flags: {
-		FAST_DEV: true,
-		DEV_SSR: true,
-	},
 	plugins: [
 		`gatsby-plugin-emotion`,
 		`gatsby-plugin-react-helmet`,
@@ -25,16 +21,6 @@ module.exports = {
 		`gatsby-plugin-sharp`,
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-use-query-params`,
-		{
-			resolve: `gatsby-plugin-netlify`,
-			options: {
-				headers: {
-					'/*': [
-						'Content-Security-Policy: frame-ancestors "self" https://preview-afsp.gtsb.io https://*.virtual-tables.com https://*.siteimprove.com',
-					],
-				},
-			},
-		},
 		{
 			resolve: `gatsby-plugin-google-analytics`,
 			options: {
