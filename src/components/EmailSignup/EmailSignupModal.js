@@ -83,7 +83,7 @@ const EmailSignupModal = ({ modalIsOpen, closeModal }) => {
 					className={css`
 						position: relative;
 						padding: ${styles.scale.px44} ${styles.scale.px24};
-						background: hsla(0, 0%, 0%, 1);
+						background-color: ${styles.colors.lightGray};
 						overflow: scroll;
 						@media (min-width: ${styles.screens.tablet}px) {
 							width: 50vw;
