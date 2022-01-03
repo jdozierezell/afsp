@@ -36,12 +36,12 @@ const keyCSS = css`
 	@media (min-width: ${styles.screens.mobile}px) {
 		display: grid;
 		grid-column-gap: ${styles.gridGap.desktop};
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr 1fr 1fr;
 	}
 	li {
 		display: grid;
 		grid-gap: ${styles.gridGap.desktop};
-		grid-template-columns: ${styles.scale.px36} 1fr;
+		grid-template-columns: ${styles.scale.px24} 1fr;
 	}
 `
 const factListCSS = css`
@@ -103,7 +103,16 @@ const ContentFacts = ({ state, facts }) => {
 								width: ${styles.scale.px24};
 							`}
 						></IconCircleX>
-						<span>Legislation not in place</span>
+						<span>No law in place</span>
+					</li>
+					<li>
+						<IconCircleCheck
+							color={styles.colors.yellow}
+							iconCSS={css`
+								width: ${styles.scale.px24};
+							`}
+						></IconCircleCheck>
+						<span>Encouraged by Law</span>
 					</li>
 					<li>
 						<IconCircleCheck
@@ -112,25 +121,7 @@ const ContentFacts = ({ state, facts }) => {
 								width: ${styles.scale.px24};
 							`}
 						></IconCircleCheck>
-						<span>Legislation in place</span>
-					</li>
-					<li>
-						<IconCircleCircle
-							color={styles.colors.yellow}
-							iconCSS={css`
-								width: ${styles.scale.px24};
-							`}
-						></IconCircleCircle>
-						<span>Encouraged by legislation</span>
-					</li>
-					<li>
-						<IconCircleCircle
-							color={styles.colors.green}
-							iconCSS={css`
-								width: ${styles.scale.px24};
-							`}
-						></IconCircleCircle>
-						<span>Required by legislation</span>
+						<span>Required by Law</span>
 					</li>
 				</ul>
 			</div>
@@ -216,6 +207,12 @@ const ContentFacts = ({ state, facts }) => {
 						)
 					}
 				})}
+				<span
+					css={css`
+						display: inline-block;
+						margin-bottom: ${top};
+					`}
+				></span>
 			</div>
 		</div>
 	)

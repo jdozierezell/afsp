@@ -198,18 +198,22 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			facts: [
 				{
 					display:
+						'Prohibits licensed/board certified mental health providers from engaging in conversion therapy with all patients',
+					value: stateFacts.prohibitsProvidersConversionTherapyWithAllPatients,
+				},
+				{
+					display:
 						'Prohibits licensed/board certified mental health providers from engaging in conversion therapy with minors under 18 years of age',
-					value: stateFacts.prohibitsProvidersConversionTherapyWithMinors,
+					value: stateFacts.prohibitsProvidersConversionTherapyWithAllPatients
+						? true
+						: stateFacts.prohibitsProvidersConversionTherapyWithMinors,
 				},
 				{
 					display:
 						'Prohibits licensed/board certified mental health providers from engaging in conversion therapy with vulnerable adults',
-					value: stateFacts.prohibitsProvidersConversionTherapyWithVulnerableAdults,
-				},
-				{
-					display:
-						'Prohibits licensed/board certified mental health providers from engaging in conversion therapy with all patients',
-					value: stateFacts.prohibitsProvidersConversionTherapyWithAllPatients,
+					value: stateFacts.prohibitsProvidersConversionTherapyWithAllPatients
+						? true
+						: stateFacts.prohibitsProvidersConversionTherapyWithVulnerableAdults,
 				},
 				{
 					display:
@@ -268,6 +272,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			],
 		},
 	]
+	console.log(stateFacts)
 	useEffect(() => {
 		setFactsTop(
 			document.getElementById('factsContainer').getBoundingClientRect()

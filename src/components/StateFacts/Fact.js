@@ -27,6 +27,14 @@ const Fact = ({ fact }) => {
 						`}
 					></IconCircleX>
 				)}
+				{fact.value === 'Encouraged' && (
+					<IconCircleCheck
+						color={styles.colors.yellow}
+						iconCSS={css`
+							width: ${styles.scale.px24};
+						`}
+					></IconCircleCheck>
+				)}
 				{fact.value === true && (
 					<IconCircleCheck
 						color={styles.colors.green}
@@ -35,21 +43,13 @@ const Fact = ({ fact }) => {
 						`}
 					></IconCircleCheck>
 				)}
-				{fact.value === 'Encouraged' && (
-					<IconCircleCircle
-						color={styles.colors.yellow}
-						iconCSS={css`
-							width: ${styles.scale.px24};
-						`}
-					></IconCircleCircle>
-				)}
 				{fact.value === 'Required' && (
-					<IconCircleCircle
+					<IconCircleCheck
 						color={styles.colors.green}
 						iconCSS={css`
 							width: ${styles.scale.px24};
 						`}
-					></IconCircleCircle>
+					></IconCircleCheck>
 				)}
 			</span>
 			<span>{fact.display}</span>
