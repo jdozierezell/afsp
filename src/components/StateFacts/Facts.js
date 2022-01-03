@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from 'react'
 import { css } from '@emotion/react'
 
 import IconCircleCheck from '../SVGs/IconCircleCheck'
-import IconCircleCircle from '../SVGs/IconCircleCircle'
 import IconCircleX from '../SVGs/IconCircleX'
 
 import Fact from './Fact.js'
