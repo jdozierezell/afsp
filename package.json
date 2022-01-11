@@ -1,6 +1,7 @@
 {
 	"name": "afsp",
 	"private": true,
+	"license": "MIT",
 	"description": "Website for the American Foundation for Suicide Prevention",
 	"version": "1.0.0",
 	"author": "Jonathan Dozier-Ezell <jdozier-ezell@afsp.org>",
@@ -76,7 +77,6 @@
 	"keywords": [
 		"gatsby"
 	],
-	"license": "MIT",
 	"scripts": {
 		"bs": "gatsby build && gatsby serve",
 		"build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build",
