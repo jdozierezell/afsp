@@ -19,10 +19,16 @@ const imageListCSS = css`
 const imageWrapperCSS = css`
 	width: calc(100% - ${styles.scale.px18} * 2);
 	margin: ${styles.scale.px12};
+	box-sizing: border-box;
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin: ${styles.scale.px18};
 		padding: ${styles.scale.px24};
 		border: 1px solid ${styles.colors.blue};
+		width: calc(100% / 3 - ${styles.scale.px18} * 2);
+		:hover {
+			background-color: ${styles.colors.lightGray};
+			border: 1px solid ${styles.colors.darkBlue};
+		}
 	}
 `
 
