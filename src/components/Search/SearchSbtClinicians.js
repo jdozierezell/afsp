@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { css } from '@emotion/react'
 import algoliasearch from 'algoliasearch/lite'
 import { orderBy } from 'lodash'
@@ -52,6 +52,10 @@ const SearchSbtClinicians = ({
 	indexName,
 	refinements,
 }) => {
+	useEffect(() => {
+		// console.log(refinements)
+	}, [])
+
 	return (
 		<div css={searchDetailCSS}>
 			<InstantSearch

@@ -123,12 +123,11 @@ const RefinementList = ({
 						id={displayID}
 						css={selectCSS}
 						labelId={`${displayID}-label`}
-						value="NY"
+						value={searchState}
 						label="State"
-						// onChange={handleChange}
+						onChange={handleSearchChange}
 					>
 						{options.map((option, index) => {
-							console.log(option)
 							return (
 								<MenuItem key={index} value={option.value}>
 									{option.label}

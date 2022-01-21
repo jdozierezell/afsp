@@ -56,20 +56,17 @@ const SuicideBereavementTrainedClinicians = ({ data: { search } }) => {
 			query.grantType = query.grantType.split(',')
 		}
 	}
-
 	const [searchState, setSearchState] = useState(query)
 	const handleSearchChange = event => {
-		let tempSearch = searchState
-		let attribute = event.target.attribute
-		let value = event.target.value
-		if (event.target.className === 'ais-SearchBox-input') {
-			tempSearch.query = value
-		} else if (attribute) {
-			if (!tempSearch.refinementList) {
-				tempSearch.refinementList = {}
-			}
-			tempSearch.refinementList[attribute] = value
+		let tempSearch = {
+			refinementList: {
+				state: '',
+			},
 		}
+		let value = event.target.value
+
+		tempSearch.refinementList.state = [value]
+
 		setSearchState({
 			...searchState,
 			...tempSearch,
