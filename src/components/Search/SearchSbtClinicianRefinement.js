@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connectRefinementList } from 'react-instantsearch-dom'
-// import Select from 'react-select'
-import InputLabel from '@mui/material/InputLabel'
-import MenuItem from '@mui/material/MenuItem'
-import FormControl from '@mui/material/FormControl'
-import Select from '@mui/material/Select'
+import Select from 'react-select'
 import { css } from '@emotion/react'
 
 import { styles } from '../../css/css'
@@ -86,7 +82,10 @@ const RefinementList = ({
 	return (
 		<>
 			<div css={refinementListCSS}>
-				{/* <Select
+				<h3 id={`${displayID}-label`} htmlFor={displayID}>
+					{displayAttribute}
+				</h3>
+				<Select
 					aria-describedby={`${displayID}-label`}
 					aria-labelledby={`${displayID}-label`}
 					id={displayID}
@@ -112,30 +111,7 @@ const RefinementList = ({
 						})
 						setUpdateDropdown(true)
 					}}
-				/> */}
-				<FormControl fullWidth>
-					<InputLabel id={`${displayID}-label`} htmlFor={displayID}>
-						State
-					</InputLabel>
-					<Select
-						aria-describedby={`${displayID}-label`}
-						aria-labelledby={`${displayID}-label`}
-						id={displayID}
-						css={selectCSS}
-						labelId={`${displayID}-label`}
-						value={searchState}
-						label="State"
-						onChange={handleSearchChange}
-					>
-						{options.map((option, index) => {
-							return (
-								<MenuItem key={index} value={option.value}>
-									{option.label}
-								</MenuItem>
-							)
-						})}
-					</Select>
-				</FormControl>
+				/>
 			</div>
 		</>
 	)

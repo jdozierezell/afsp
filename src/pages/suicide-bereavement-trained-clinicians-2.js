@@ -73,6 +73,10 @@ const SuicideBereavementTrainedClinicians = ({ data: { search } }) => {
 		})
 		searchURL(tempSearch)
 	}
+	const [age, setAge] = useState('')
+	const handleChange = event => {
+		setAge(event.target.value)
+	}
 
 	return (
 		<Layout
@@ -83,7 +87,9 @@ const SuicideBereavementTrainedClinicians = ({ data: { search } }) => {
 			<HeroSolid data={search} />
 			<SearchSbtClinicians
 				searchState={searchState}
+				age={age}
 				handleSearchChange={handleSearchChange}
+				handleChange={handleChange}
 				indexName="suicide-bereavement-trained-clinicians"
 				placeholder="Find trained clinicians in your state"
 				refinements={[

@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { css } from '@emotion/react'
 import algoliasearch from 'algoliasearch/lite'
 import { orderBy } from 'lodash'
 import { InstantSearch } from 'react-instantsearch-dom'
 
 import SearchHits from './SearchHits'
-import SearchSbtClinicianRefinement from './SearchSbtClinicianRefinement'
+import SearchResearchRefinement from './SearchResearchRefinement'
 
 import { styles } from '../../css/css'
 
@@ -25,6 +25,7 @@ const searchDetailCSS = css`
 
 const refinementCSS = css`
 	margin-bottom: ${styles.scale.px36};
+	border-bottom: 1px solid ${styles.colors.darkGray};
 	@media (min-width: ${styles.screens.tablet}px) {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
@@ -46,16 +47,12 @@ const customHitsCSS = css`
 	}
 `
 
-const SearchSbtClinicians = ({
+const SearchGrants = ({
 	searchState,
 	handleSearchChange,
 	indexName,
 	refinements,
 }) => {
-	useEffect(() => {
-		// console.log(refinements)
-	}, [])
-
 	return (
 		<div css={searchDetailCSS}>
 			<InstantSearch
@@ -66,7 +63,7 @@ const SearchSbtClinicians = ({
 				<div>
 					<div css={refinementCSS}>
 						{refinements.map((refinement, index) => (
-							<SearchSbtClinicianRefinement
+							<SearchResearchRefinement
 								key={index}
 								attribute={refinement.attribute}
 								displayAttribute={refinement.displayAttribute}
@@ -94,4 +91,4 @@ const SearchSbtClinicians = ({
 	)
 }
 
-export default SearchSbtClinicians
+export default SearchGrants
