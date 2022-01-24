@@ -7,7 +7,7 @@ const fs = require('fs')
 const client = new SiteClient('c59da171a82e4feb314339a6e4cc24')
 
 const data = []
-fs.createReadStream('sbtClinicians.csv')
+fs.createReadStream('imports/sbtClinicians220118_withState_noHeadings.csv')
 	.pipe(csv())
 	.on('data', row => {
 		data.push(row)
@@ -31,7 +31,8 @@ fs.createReadStream('sbtClinicians.csv')
 			const zip = fullAddress.substring(lastSpace).replace(',', '')
 			const addNoZip = fullAddress.slice(0, lastSpace).trim()
 			const lastSpace1 = addNoZip.lastIndexOf(' ') + 1
-			const state = addNoZip.substring(lastSpace1).replace(',', '')
+			const userState = addNoZip.substring(lastSpace1).replace(',', '')
+			const state = row.state
 			const addNoZipState = addNoZip.slice(0, lastSpace1).trim()
 			const lastSpace2 = addNoZipState.lastIndexOf(' ') + 1
 			const city = addNoZipState.substring(lastSpace2).replace(',', '')
@@ -40,15 +41,15 @@ fs.createReadStream('sbtClinicians.csv')
 				.trim()
 				.replace(',', '')
 			// console.log(row)
-			console.log(name)
-			console.log(street)
-			console.log(city)
-			console.log(state)
-			console.log(zip)
-			console.log(email)
-			console.log(phone)
-			console.log(specialties)
-			console.log(telehealth)
+			// console.log(name)
+			// console.log(street)
+			// console.log(city)
+			// console.log(state)
+			// console.log(zip)
+			// console.log(email)
+			// console.log(phone)
+			// console.log(specialties)
+			// console.log(telehealth)
 			setTimeout(() => {
 				client.items
 					.create({
@@ -63,7 +64,7 @@ fs.createReadStream('sbtClinicians.csv')
 						specialties: specialties,
 						telehealth: telehealth,
 					})
-					.then(record => console.log(record))
+					// .then(record => console.log(record))
 					.catch(error => console.log(error.message))
 			}, index * 1000)
 		})
