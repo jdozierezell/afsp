@@ -49,13 +49,34 @@ const StateFacts = ({ data: { stateFacts } }) => {
 	}
 	stateFacts.facts = [
 		{
+			display: 'Crisis lines and 988 implementation',
+			anchor: 'crisis-lines-and-988-implementation',
+			facts: [
+				{
+					display:
+						'Addresses 988 infrastructure and provides for telecom user fee',
+					value: stateFacts.addresses988InfrastructureAndProvidesForTelecom,
+				},
+				{
+					display:
+						'Addresses 988 infrastructure but does not include telecom user fee',
+					value: stateFacts.addresses988InfrastructureButNotProvideForTelecom,
+				},
+				{
+					display:
+						'988 law limited to creating an exploratory commission, advisory committee, or task force',
+					value: stateFacts.lawLimitedToCreatingCommissionCommitteeTaskForce,
+				},
+			],
+		},
+		{
 			display: 'Mental health parity',
 			anchor: 'mental-health-parity',
 			facts: [
-				{
-					display: 'Federal parity law codified in state statute',
-					value: stateFacts.parityLawCodified,
-				},
+				// {
+				// 	display: 'Federal parity law codified in state statute',
+				// 	value: stateFacts.parityLawCodified,
+				// },
 				{
 					display: 'State regulators must enforce parity law(s)',
 					value: stateFacts.enforceParityLaws,
@@ -71,98 +92,50 @@ const StateFacts = ({ data: { stateFacts } }) => {
 					value: stateFacts.publicHealthPlans,
 				},
 			],
-			promo: [stateFacts.mentalHealthParityPromo],
 		},
 		{
 			display: 'K – 12 school suicide prevention',
 			anchor: 'k-12-school-suicide-prevention',
-			public: {
-				display: 'Public schools',
-				facts: [
-					{
-						display:
-							'Inclusion of the National Suicide Prevention Lifeline and/or other crisis line(s) on student ID cards',
-						value: stateFacts.pubNationalSuicidePreventionLifeline,
-					},
-					{
-						display:
-							'Student allowances for excused mental health absences',
-						value: stateFacts.pubExcusedMentalHealthAbsences,
-					},
-					{
-						display:
-							'School personnel must report student suicide risk to a parent and/or guardian',
-						value: stateFacts.pubMustReportStudentSuicideRisk,
-					},
-					{
-						display:
-							'Suicide prevention and/or mental health training for certain school personnel, annual',
-						value: stateFacts.pubTrainingForPersonnelAnnual,
-					},
-					{
-						display:
-							'Suicide prevention and/or mental health training for certain school personnel, not annual',
-						value: stateFacts.pubTrainingForPersonnelNotAnnual,
-					},
-					{
-						display:
-							'Suicide prevention, intervention, and postvention policies/programming',
-						value: stateFacts.pubPreventionInterventionPostvention,
-					},
-					{
-						display: 'Student education on suicide prevention',
-						value: stateFacts.pubStudentEducationSuicidePrevention,
-					},
-					{
-						display: 'Student education on mental health',
-						value: stateFacts.pubStudentEducationMentalHealth,
-					},
-				],
-			},
-			nonPublic: {
-				display: 'Non-public schools',
-				facts: [
-					{
-						display:
-							'Inclusion of the National Suicide Prevention Lifeline and/or other crisis line(s) on student ID cards',
-						value: stateFacts.npubNationalSuicidePreventionLifeline,
-					},
-					{
-						display:
-							'Student allowances for excused mental health absences',
-						value: stateFacts.npubExcusedMentalHealthAbsences,
-					},
-					{
-						display:
-							'School personnel must report student suicide risk to a parent and/or guardian',
-						value: stateFacts.npubMustReportStudentSuicideRisk,
-					},
-					{
-						display:
-							'Training for certain school personnel, annual',
-						value: stateFacts.npubTrainingForPersonnelAnnual,
-					},
-					{
-						display:
-							'Training for certain school personnel, not annual',
-						value: stateFacts.npubTrainingForPersonnelNotAnnual,
-					},
-					{
-						display:
-							'Suicide prevention, intervention, and postvention policies/programming',
-						value: stateFacts.npubPreventionInterventionPostvention,
-					},
-					{
-						display: 'Student education on suicide prevention',
-						value: stateFacts.npubStudentEducationSuicidePrevention,
-					},
-					{
-						display: 'Student education on mental health',
-						value: stateFacts.npubStudentEducationMentalHealth,
-					},
-				],
-			},
-			promo: [stateFacts.k12SchoolSuicidePreventionPromo],
+			facts: [
+				{
+					display:
+						'Inclusion of the National Suicide Prevention Lifeline and/or other crisis line(s) on student ID cards',
+					value: stateFacts.nationalSuicidePreventionLifeline,
+				},
+				{
+					display:
+						'Student allowances for excused mental health absences',
+					value: stateFacts.excusedMentalHealthAbsences,
+				},
+				{
+					display:
+						'School personnel must report student suicide risk to a parent and/or guardian',
+					value: stateFacts.mustReportStudentSuicideRisk,
+				},
+				{
+					display:
+						'Suicide prevention and/or mental health training for certain school personnel, annual',
+					value: stateFacts.trainingForPersonnelAnnual,
+				},
+				{
+					display:
+						'Suicide prevention and/or mental health training for certain school personnel, not annual',
+					value: stateFacts.trainingForPersonnelNotAnnual,
+				},
+				{
+					display:
+						'Suicide prevention, intervention, and postvention policies/programming',
+					value: stateFacts.preventionInterventionPostvention,
+				},
+				{
+					display: 'Student education on suicide prevention',
+					value: stateFacts.studentEducationSuicidePrevention,
+				},
+				{
+					display: 'Student education on mental health',
+					value: stateFacts.studentEducationMentalHealth,
+				},
+			],
 		},
 		{
 			display:
@@ -190,30 +163,25 @@ const StateFacts = ({ data: { stateFacts } }) => {
 					value: stateFacts.medicalSurgicalProfessionalsOneTime,
 				},
 			],
-			promo: [stateFacts.healthProfessionalTrainingSuicidePromo],
 		},
 		{
 			display: 'Conversion therapy bans',
 			anchor: 'conversion-therapy-bans',
 			facts: [
-				{
-					display:
-						'Prohibits licensed/board certified mental health providers from engaging in conversion therapy with all patients',
-					value: stateFacts.prohibitsProvidersConversionTherapyWithAllPatients,
-				},
+				// {
+				// 	display:
+				// 		'Prohibits licensed/board certified mental health providers from engaging in conversion therapy with all patients',
+				// 	value: stateFacts.prohibitsProvidersConversionTherapyWithAllPatients,
+				// },
 				{
 					display:
 						'Prohibits licensed/board certified mental health providers from engaging in conversion therapy with minors under 18 years of age',
-					value: stateFacts.prohibitsProvidersConversionTherapyWithAllPatients
-						? true
-						: stateFacts.prohibitsProvidersConversionTherapyWithMinors,
+					value: stateFacts.prohibitsProvidersConversionTherapyWithMinors,
 				},
 				{
 					display:
 						'Prohibits licensed/board certified mental health providers from engaging in conversion therapy with vulnerable adults',
-					value: stateFacts.prohibitsProvidersConversionTherapyWithAllPatients
-						? true
-						: stateFacts.prohibitsProvidersConversionTherapyWithVulnerableAdults,
+					value: stateFacts.prohibitsProvidersConversionTherapyWithVulnerableAdults,
 				},
 				{
 					display:
@@ -221,54 +189,27 @@ const StateFacts = ({ data: { stateFacts } }) => {
 					value: stateFacts.prohibitsStateFundsConversionTherapy,
 				},
 			],
-			promo: [stateFacts.conversionTherapyBansPromo],
 		},
 
 		{
 			display: 'University and college campus suicide prevention',
 			anchor: 'university-and-college',
-			public: {
-				display: 'Public schools',
-				facts: [
-					{
-						display:
-							'Inclusion of the National Suicide Prevention Lifeline and/or other crisis line(s) on student ID cards',
-						value: stateFacts.pubUnicolNationalSuicidePreventionLifeline,
-					},
-					{
-						display:
-							'Students receive information on available mental health and/or suicide prevention services and/or resources',
-						value: stateFacts.pubUnicolStudentsReceiveInformation,
-					},
-					{
-						display:
-							'Adoption of suicide prevention/awareness policy',
-						value: stateFacts.pubUnicolAdoptionPolicy,
-					},
-				],
-			},
-			nonPublic: {
-				display: 'Non-public schools',
-				facts: [
-					{
-						display:
-							'Inclusion of the National Suicide Prevention Lifeline and/or other crisis line(s) on student ID cards',
-						value: stateFacts.npubUnicolNationalSuicidePreventionLifeline,
-					},
-					{
-						display:
-							'Students receive information on available mental health and/or suicide prevention services and/or resources',
-						value: stateFacts.npubUnicolStudentsReceiveInformation,
-					},
-					{
-						display:
-							'Adoption of suicide prevention/awareness policy',
-						value: stateFacts.npubUnicolAdoptionPolicy,
-					},
-				],
-			},
-			promo: [
-				stateFacts.universityAndCollegeCampusSuicidePreventionPromo,
+			facts: [
+				{
+					display:
+						'Inclusion of the National Suicide Prevention Lifeline and/or other crisis line(s) on student ID cards',
+					value: stateFacts.unicolNationalSuicidePreventionLifeline,
+				},
+				{
+					display:
+						'Students receive information on available mental health and/or suicide prevention services and/or resources',
+					value: stateFacts.unicolStudentsReceiveInformation,
+				},
+				{
+					display:
+						'Adoption of suicide prevention/awareness policy or program',
+					value: stateFacts.unicolAdoptionPolicy,
+				},
 			],
 		},
 	]
@@ -323,101 +264,31 @@ export const query = graphql`
 				alt
 				gatsbyImageData(width: 768)
 			}
-			initiativesAndPlans
+			addresses988InfrastructureAndProvidesForTelecom
+			addresses988InfrastructureButNotProvideForTelecom
 			enforceParityLaws
+			excusedMentalHealthAbsences
+			initiativesAndPlans
+			lawLimitedToCreatingCommissionCommitteeTaskForce
 			medicalSurgicalProfessionalsOneTime
 			medicalSurgicalProfessionalsRegular
 			mentalHealthProfessionalsOneTime
 			mentalHealthProfessionalsRegular
-			npubExcusedMentalHealthAbsences
-			npubMustReportStudentSuicideRisk
-			npubNationalSuicidePreventionLifeline
-			npubPreventionInterventionPostvention
-			npubStudentEducationMentalHealth
-			npubStudentEducationSuicidePrevention
-			npubTrainingForPersonnelAnnual
-			npubTrainingForPersonnelNotAnnual
-			npubUnicolAdoptionPolicy
-			npubUnicolNationalSuicidePreventionLifeline
-			npubUnicolStudentsReceiveInformation
-			parityLawCodified
+			mustReportStudentSuicideRisk
+			nationalSuicidePreventionLifeline
+			preventionInterventionPostvention
 			privateHealthPlans
-			prohibitsProvidersConversionTherapyWithAllPatients
 			prohibitsProvidersConversionTherapyWithMinors
 			prohibitsProvidersConversionTherapyWithVulnerableAdults
 			prohibitsStateFundsConversionTherapy
-			pubExcusedMentalHealthAbsences
-			pubMustReportStudentSuicideRisk
-			pubNationalSuicidePreventionLifeline
-			pubPreventionInterventionPostvention
-			pubStudentEducationMentalHealth
-			pubStudentEducationSuicidePrevention
-			pubTrainingForPersonnelAnnual
-			pubTrainingForPersonnelNotAnnual
-			pubUnicolAdoptionPolicy
-			pubUnicolNationalSuicidePreventionLifeline
-			pubUnicolStudentsReceiveInformation
 			publicHealthPlans
-			mentalHealthParityPromo {
-				... on DatoCmsCallsToAction {
-					... on DatoCmsCallsToAction {
-						__typename
-						...CsTAs
-					}
-				}
-				... on DatoCmsDetail {
-					__typename
-					...Detail
-				}
-			}
-			k12SchoolSuicidePreventionPromo {
-				... on DatoCmsCallsToAction {
-					... on DatoCmsCallsToAction {
-						__typename
-						...CsTAs
-					}
-				}
-				... on DatoCmsDetail {
-					__typename
-					...Detail
-				}
-			}
-			healthProfessionalTrainingSuicidePromo {
-				... on DatoCmsCallsToAction {
-					... on DatoCmsCallsToAction {
-						__typename
-						...CsTAs
-					}
-				}
-				... on DatoCmsDetail {
-					__typename
-					...Detail
-				}
-			}
-			conversionTherapyBansPromo {
-				... on DatoCmsCallsToAction {
-					... on DatoCmsCallsToAction {
-						__typename
-						...CsTAs
-					}
-				}
-				... on DatoCmsDetail {
-					__typename
-					...Detail
-				}
-			}
-			universityAndCollegeCampusSuicidePreventionPromo {
-				... on DatoCmsCallsToAction {
-					... on DatoCmsCallsToAction {
-						__typename
-						...CsTAs
-					}
-				}
-				... on DatoCmsDetail {
-					__typename
-					...Detail
-				}
-			}
+			studentEducationMentalHealth
+			studentEducationSuicidePrevention
+			trainingForPersonnelAnnual
+			trainingForPersonnelNotAnnual
+			unicolAdoptionPolicy
+			unicolNationalSuicidePreventionLifeline
+			unicolStudentsReceiveInformation
 		}
 	}
 `
