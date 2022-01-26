@@ -140,7 +140,20 @@ const ContentFacts = ({ state, facts }) => {
 							</h3>
 							<ul css={factListCSS}>
 								{fact.facts.map((fact, index) => {
-									return <Fact fact={fact} key={index}></Fact>
+									if (
+										fact.display ===
+											'Student education on mental health' &&
+										fact.value === 'None'
+									) {
+										return
+									} else {
+										return (
+											<Fact
+												fact={fact}
+												key={index}
+											></Fact>
+										)
+									}
 								})}
 							</ul>
 						</div>
