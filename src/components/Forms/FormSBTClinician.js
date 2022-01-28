@@ -1,6 +1,6 @@
 import React from 'react'
+import axios from 'axios'
 import * as yup from 'yup'
-import { css } from '@emotion/react'
 import { useFormik } from 'formik'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
@@ -12,10 +12,6 @@ import stateListAbbreviations from '../../utils/stateListAbbreviations'
 
 const customTextFieldCSS = {
 	...textFieldCSS,
-	marginBottom: styles.scale.px54,
-}
-
-const customSelectFieldCSS = {
 	marginBottom: styles.scale.px54,
 }
 
@@ -45,10 +41,22 @@ const FormSBTClinician = () => {
 		validationSchema: validationSchema,
 		onSubmit: values => {
 			console.log(values)
-			// formSubmit(values)
+			axios
+				.post(
+					'https://serene-dusk-44738.herokuapp.com/sbt-clinician',
+					values
+				)
+				.then(response => {
+					console.log(response.status)
+					// setSubmitted(true)
+					// if (response.status === 200) {
+					// 	setSubmittedSuccess(true)
+					// } else {
+					// 	setSubmittedFail(true)
+					// }
+				})
 		},
 	})
-	console.log(formik.touched.name)
 	return (
 		<form onSubmit={formik.handleSubmit}>
 			<TextField
@@ -107,9 +115,11 @@ const FormSBTClinician = () => {
 					'Select your state. This field is required.'
 				}
 			>
-				{stateListAbbreviations.map(state => {
+				{stateListAbbreviations.map((state, index) => {
 					return (
-						<MenuItem value={state.value}>{state.label}</MenuItem>
+						<MenuItem key={index} value={state.value}>
+							{state.label}
+						</MenuItem>
 					)
 				})}
 			</TextField>
