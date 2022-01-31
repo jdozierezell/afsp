@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
-import SearchResearch from '../components/Search/SearchResearch'
+import SearchSbtClinicians from '../components/Search/SearchSbtClinicians'
 
 import searchURL from '../utils/searchURL'
 
@@ -12,7 +12,7 @@ import { styles } from '../css/css'
 
 import CTAContainer from '../components/CTAs/CTAContainer'
 
-const SuicideResearchVideos = ({ data: { search } }) => {
+const SuicideBereavementTrainedClinicians = ({ data: { search } }) => {
 	let metaImage,
 		metaDescription = ''
 	search.seoMetaTags.tags.forEach(tag => {
@@ -34,7 +34,7 @@ const SuicideResearchVideos = ({ data: { search } }) => {
 	const structuredData = {
 		'@content': 'https://schema.org',
 		'@type': 'SearchAction',
-		about: 'suicide research videos',
+		about: 'suicide bereavement trained clinicians',
 		description: metaDescription,
 		image: metaImage,
 		accessibilityAPI: 'ARIA',
@@ -56,26 +56,26 @@ const SuicideResearchVideos = ({ data: { search } }) => {
 			query.grantType = query.grantType.split(',')
 		}
 	}
-
 	const [searchState, setSearchState] = useState(query)
 	const handleSearchChange = event => {
-		console.log(event.target)
-		let tempSearch = searchState
-		let attribute = event.target.attribute
-		let value = event.target.value
-		if (event.target.className === 'ais-SearchBox-input') {
-			tempSearch.query = value
-		} else if (attribute) {
-			if (!tempSearch.refinementList) {
-				tempSearch.refinementList = {}
-			}
-			tempSearch.refinementList[attribute] = value
+		let tempSearch = {
+			refinementList: {
+				state: '',
+			},
 		}
+		let value = event.target.value
+
+		tempSearch.refinementList.state = [value]
+
 		setSearchState({
 			...searchState,
 			...tempSearch,
 		})
 		searchURL(tempSearch)
+	}
+	const [age, setAge] = useState('')
+	const handleChange = event => {
+		setAge(event.target.value)
 	}
 
 	return (
@@ -85,36 +85,28 @@ const SuicideResearchVideos = ({ data: { search } }) => {
 			structuredData={structuredData}
 		>
 			<HeroSolid data={search} />
-			<SearchResearch
+			<SearchSbtClinicians
 				searchState={searchState}
+				age={age}
 				handleSearchChange={handleSearchChange}
-				indexName="afsporg-research-videos"
-				placeholder="Start your search"
+				handleChange={handleChange}
+				indexName="suicide-bereavement-trained-clinicians"
+				placeholder="Find trained clinicians in your state"
 				refinements={[
-					{ attribute: 'topics', displayAttribute: 'Video Topic' },
-					{ attribute: 'location', displayAttribute: 'Location' },
-					{
-						attribute: 'interviewee',
-						displayAttribute: 'Interviewee',
-					},
+					{ attribute: 'state', displayAttribute: 'State' },
 				]}
 			/>
-			{search.callsToAction.map((item, index) => (
-				<CTAContainer
-					key={index}
-					number={index}
-					cta={item.cta.callToAction[0]}
-				/>
-			))}
 		</Layout>
 	)
 }
 
-export default SuicideResearchVideos
+export default SuicideBereavementTrainedClinicians
 
 export const query = graphql`
 	query {
-		search: datoCmsSearchPage(slug: { eq: "suicide-research-videos" }) {
+		search: datoCmsSearchPage(
+			slug: { eq: "suicide-bereavement-trained-clinicians-2" }
+		) {
 			title
 			slug
 			brief

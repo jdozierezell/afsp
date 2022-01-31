@@ -170,6 +170,7 @@ const SearchSupportGroups = ({ supportGroup }) => {
 					</span>
 					{attendedTraining && (
 						<span>
+							{' '}
 							who has attended AFSP's Facilitating a Suicide
 							Bereavement Support Group training
 						</span>

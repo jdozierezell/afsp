@@ -323,101 +323,31 @@ export const query = graphql`
 				alt
 				gatsbyImageData(width: 768)
 			}
-			initiativesAndPlans
+			addresses988InfrastructureAndProvidesForTelecom
+			addresses988InfrastructureButNotProvideForTelecom
 			enforceParityLaws
+			excusedMentalHealthAbsences
+			initiativesAndPlans
+			lawLimitedToCreatingCommissionCommitteeTaskForce
 			medicalSurgicalProfessionalsOneTime
 			medicalSurgicalProfessionalsRegular
 			mentalHealthProfessionalsOneTime
 			mentalHealthProfessionalsRegular
-			npubExcusedMentalHealthAbsences
-			npubMustReportStudentSuicideRisk
-			npubNationalSuicidePreventionLifeline
-			npubPreventionInterventionPostvention
-			npubStudentEducationMentalHealth
-			npubStudentEducationSuicidePrevention
-			npubTrainingForPersonnelAnnual
-			npubTrainingForPersonnelNotAnnual
-			npubUnicolAdoptionPolicy
-			npubUnicolNationalSuicidePreventionLifeline
-			npubUnicolStudentsReceiveInformation
-			parityLawCodified
+			mustReportStudentSuicideRisk
+			nationalSuicidePreventionLifeline
+			preventionInterventionPostvention
 			privateHealthPlans
-			prohibitsProvidersConversionTherapyWithAllPatients
 			prohibitsProvidersConversionTherapyWithMinors
 			prohibitsProvidersConversionTherapyWithVulnerableAdults
 			prohibitsStateFundsConversionTherapy
-			pubExcusedMentalHealthAbsences
-			pubMustReportStudentSuicideRisk
-			pubNationalSuicidePreventionLifeline
-			pubPreventionInterventionPostvention
-			pubStudentEducationMentalHealth
-			pubStudentEducationSuicidePrevention
-			pubTrainingForPersonnelAnnual
-			pubTrainingForPersonnelNotAnnual
-			pubUnicolAdoptionPolicy
-			pubUnicolNationalSuicidePreventionLifeline
-			pubUnicolStudentsReceiveInformation
 			publicHealthPlans
-			mentalHealthParityPromo {
-				... on DatoCmsCallsToAction {
-					... on DatoCmsCallsToAction {
-						__typename
-						...CsTAs
-					}
-				}
-				... on DatoCmsDetail {
-					__typename
-					...Detail
-				}
-			}
-			k12SchoolSuicidePreventionPromo {
-				... on DatoCmsCallsToAction {
-					... on DatoCmsCallsToAction {
-						__typename
-						...CsTAs
-					}
-				}
-				... on DatoCmsDetail {
-					__typename
-					...Detail
-				}
-			}
-			healthProfessionalTrainingSuicidePromo {
-				... on DatoCmsCallsToAction {
-					... on DatoCmsCallsToAction {
-						__typename
-						...CsTAs
-					}
-				}
-				... on DatoCmsDetail {
-					__typename
-					...Detail
-				}
-			}
-			conversionTherapyBansPromo {
-				... on DatoCmsCallsToAction {
-					... on DatoCmsCallsToAction {
-						__typename
-						...CsTAs
-					}
-				}
-				... on DatoCmsDetail {
-					__typename
-					...Detail
-				}
-			}
-			universityAndCollegeCampusSuicidePreventionPromo {
-				... on DatoCmsCallsToAction {
-					... on DatoCmsCallsToAction {
-						__typename
-						...CsTAs
-					}
-				}
-				... on DatoCmsDetail {
-					__typename
-					...Detail
-				}
-			}
+			studentEducationMentalHealth
+			studentEducationSuicidePrevention
+			trainingForPersonnelAnnual
+			trainingForPersonnelNotAnnual
+			unicolAdoptionPolicy
+			unicolNationalSuicidePreventionLifeline
+			unicolStudentsReceiveInformation
 		}
 	}
 `
