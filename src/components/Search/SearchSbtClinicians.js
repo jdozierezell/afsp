@@ -4,7 +4,7 @@ import algoliasearch from 'algoliasearch/lite'
 import { orderBy } from 'lodash'
 import { InstantSearch } from 'react-instantsearch-dom'
 
-import SearchHits from './SearchHits'
+import SearchHits from './SearchHitsSBTC'
 import SearchResearchRefinement from './SearchResearchRefinement'
 
 import { styles } from '../../css/css'
