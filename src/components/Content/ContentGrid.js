@@ -62,7 +62,7 @@ const ContentGrid = ({ hideHeader, table }) => {
 	if (!hideHeader) {
 		table.columns.forEach(column => {
 			columnContents.push({
-				isColumn: true,
+				isHeader: true,
 				value: column,
 				display: 'desktop',
 			})
@@ -75,7 +75,7 @@ const ContentGrid = ({ hideHeader, table }) => {
 			table.columns.forEach((column, index) => {
 				if (data.hasOwnProperty(column)) {
 					rowContents.push({
-						isColumn: false,
+						isHeader: false,
 						value: data[column],
 						hasLastValue: data[column] !== '' ? true : false,
 					})
@@ -88,13 +88,13 @@ const ContentGrid = ({ hideHeader, table }) => {
 			table.columns.forEach((column, index) => {
 				if (data.hasOwnProperty(column)) {
 					rowContents.push({
-						isColumn: true,
+						isHeader: true,
 						value: column,
 						display: 'mobile',
 						hasLastValue: data[column] !== '' ? true : false,
 					})
 					rowContents.push({
-						isColumn: false,
+						isHeader: false,
 						value: data[column],
 						hasLastValue: data[column] !== '' ? true : false,
 					})
@@ -105,7 +105,6 @@ const ContentGrid = ({ hideHeader, table }) => {
 				}
 			})
 		}
-		console.log(rowContents)
 		dataContents.push(rowContents)
 	})
 	gridItems.push(...dataContents)
@@ -223,7 +222,7 @@ const ContentGrid = ({ hideHeader, table }) => {
 							return (
 								<div
 									css={
-										item.isColumn === true
+										item.isHeader === true
 											? columnCss
 											: rowCss
 									}
@@ -235,7 +234,7 @@ const ContentGrid = ({ hideHeader, table }) => {
 											? 'hide-header'
 											: 'show-header'
 									} ${
-										item.isColumn ? 'column' : 'row'
+										item.isHeader ? 'column' : 'row'
 									} ${rowIndex}-${columnIndex} ${
 										hideHeader
 											? 'hide-header'
@@ -257,7 +256,7 @@ const ContentGrid = ({ hideHeader, table }) => {
 						return (
 							<div
 								css={
-									item.isColumn === true ? columnCss : rowCss
+									item.isHeader === true ? columnCss : rowCss
 								}
 								dangerouslySetInnerHTML={{
 									__html: item.value,
@@ -265,7 +264,7 @@ const ContentGrid = ({ hideHeader, table }) => {
 								data-grid={`${
 									hideHeader ? 'hide-header' : 'show-header'
 								} ${
-									item.isColumn ? 'column' : 'row'
+									item.isHeader ? 'column' : 'row'
 								} ${rowIndex}-${columnIndex} ${
 									hideHeader ? 'hide-header' : 'show-header'
 								} ${item.display ? item.display : ''} ${
