@@ -56,12 +56,11 @@ const ContentGrid = ({ hideHeader, table }) => {
 		}
 	`
 
-	const tableJSON = JSON.parse(table)
 	let columnContents = []
 	let dataContents = []
 	let gridItems = []
 	if (!hideHeader) {
-		tableJSON.columns.forEach(column => {
+		table.columns.forEach(column => {
 			columnContents.push({
 				isColumn: true,
 				value: column,
@@ -70,10 +69,10 @@ const ContentGrid = ({ hideHeader, table }) => {
 		})
 		gridItems.push(columnContents)
 	}
-	tableJSON.data.forEach(data => {
+	table.data.forEach(data => {
 		let rowContents = []
 		if (hideHeader) {
-			tableJSON.columns.forEach((column, index) => {
+			table.columns.forEach((column, index) => {
 				if (data.hasOwnProperty(column)) {
 					rowContents.push({
 						isColumn: false,
@@ -86,7 +85,7 @@ const ContentGrid = ({ hideHeader, table }) => {
 				}
 			})
 		} else if (!hideHeader) {
-			tableJSON.columns.forEach((column, index) => {
+			table.columns.forEach((column, index) => {
 				if (data.hasOwnProperty(column)) {
 					rowContents.push({
 						isColumn: true,
@@ -126,7 +125,7 @@ const ContentGrid = ({ hideHeader, table }) => {
 		@media (min-width: ${styles.screens.tablet}px) {
 			background-color: ${styles.colors.white};
 			display: grid;
-			grid-template-columns: repeat(${tableJSON.columns.length}, 1fr);
+			grid-template-columns: repeat(${table.columns.length}, 1fr);
 			padding: ${styles.scale.px24} 0;
 			position: relative;
 			width: calc(100vw - (${styles.scale.px50} * 2));

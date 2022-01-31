@@ -187,10 +187,11 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 						)
 					}
 				} else if (detail.__typename === 'DatoCmsTable') {
+					const table = JSON.parse(detail.table)
 					return (
 						<ContentGrid
 							key={index}
-							table={detail.table}
+							table={table}
 							hideHeader={detail.hideHeader}
 						/>
 					)
