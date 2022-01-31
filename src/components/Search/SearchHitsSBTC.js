@@ -53,60 +53,53 @@ const videoWrapperCSS = css`
 
 const CustomHitsSBTC = data => {
 	const [display, setDisplay] = useState(20)
+	let clinicianDataArray = []
 	console.log(data.hits)
 	const clinicianHeaderArray = [
-		{
-			isColumn: true,
-		},
+		'Name',
+		'Address',
+		'Email',
+		'Phone',
+		'Telehealth',
+		'Specialties',
 	]
+	data.hits.forEach(hit => {
+		clinicianDataArray.push({
+			Name: hit.name,
+			Address: `${hit.address1 ? `${hit.address1}<br />` : ''}${
+				hit.address2 ? `${hit.address2}<br />` : ''
+			}${hit.city ? `${hit.city}, ` : ''}${
+				hit.state ? `${hit.state} ` : ''
+			}${hit.zipCode ? `${hit.zipCode}` : ''}`,
+			Email: hit.email
+				? `<a href="mailto:${hit.email}" target="_blank" rel="noopener noreferrer">${hit.email}</a>`
+				: '',
+			Phone: hit.phone,
+			Telehealth: hit.telehealth,
+			Specialties: hit.specialties,
+		})
+	})
+	// data.hits.forEach(hit => {
+	// 	clinicianDataArray.push({
+	// 		Name: 'foo',
+	// 		Address: 'foo',
+	// 		Email: 'foo',
+	// 		Phone: 'foo',
+	// 		Telehealth: 'foo',
+	// 		Specialties: 'foo',
+	// 	})
+	// })
+	console.log(clinicianHeaderArray)
+	console.log(clinicianDataArray)
 	return (
 		<>
 			<Configure hitsPerPage={display} />
-			{/* <ContentGrid /> */}
-			<ul css={data.customHitsCSS}>
-				{data.hits.map(hit => (
-					<li key={hit.objectID} data-type={hit.type}>
-						<h4
-							dangerouslySetInnerHTML={{
-								__html: hit.name,
-							}}
-						></h4>
-						{hit.address1 && (
-							<address>
-								{hit.address1 ? (
-									<>
-										{hit.address1}
-										<br />
-									</>
-								) : (
-									''
-								)}
-								{hit.address2 ? (
-									<>
-										{hit.address2}
-										<br />
-									</>
-								) : (
-									''
-								)}
-								{hit.city ? `${hit.city}, ` : ''}
-								{hit.state ? `${hit.state} ` : ''}
-								{hit.zipCode ? hit.zipCode : ''}
-								<br />
-								<a
-									href={`mailto:${hit.email}`}
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									{hit.email}
-								</a>
-								<br />
-								{hit.phone}
-							</address>
-						)}
-					</li>
-				))}
-			</ul>
+			<ContentGrid
+				table={{
+					columns: clinicianHeaderArray,
+					data: clinicianDataArray,
+				}}
+			/>
 			{data.hasMore && (
 				<button
 					className="secondary-button"

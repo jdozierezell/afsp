@@ -96,13 +96,6 @@ const SuicideBereavementTrainedClinicians = ({ data: { search } }) => {
 					{ attribute: 'state', displayAttribute: 'State' },
 				]}
 			/>
-			{search.callsToAction.map((item, index) => (
-				<CTAContainer
-					key={index}
-					number={index}
-					cta={item.cta.callToAction[0]}
-				/>
-			))}
 		</Layout>
 	)
 }
