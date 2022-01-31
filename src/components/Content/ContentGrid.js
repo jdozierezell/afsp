@@ -73,7 +73,7 @@ const ContentGrid = ({ hideHeader, table }) => {
 		let rowContents = []
 		if (hideHeader) {
 			table.columns.forEach((column, index) => {
-				if (data.hasOwnProperty(column)) {
+				if (data.hasOwnProperty(column) && data[column] !== '') {
 					rowContents.push({
 						isHeader: false,
 						value: data[column],
