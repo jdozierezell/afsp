@@ -3,9 +3,7 @@ import { css } from '@emotion/react'
 import { connectInfiniteHits, Configure } from 'react-instantsearch-dom'
 import ContentGrid from '../Content/ContentGrid'
 
-import { styles } from '../../css/css'
-
-const buttonCSS = css`
+const buttonCss = css`
 	margin: 0;
 `
 
@@ -51,7 +49,7 @@ const CustomHitsSBTC = data => {
 			{data.hasMore && (
 				<button
 					className="secondary-button"
-					css={buttonCSS}
+					css={buttonCss}
 					onClick={() => {
 						setDisplay(display + 10)
 					}}
