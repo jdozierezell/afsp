@@ -10,7 +10,6 @@ const buttonCss = css`
 const CustomHitsSBTC = data => {
 	const [display, setDisplay] = useState(20)
 	let clinicianDataArray = []
-	console.log(data.hits)
 	const clinicianHeaderArray = [
 		'Name',
 		'Address',

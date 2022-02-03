@@ -9,52 +9,46 @@ import SearchSbtClinicianRefinement from './SearchSbtClinicianRefinement'
 
 import { styles } from '../../css/css'
 
-const searchClient = algoliasearch(
-	'BONWJFMMRS',
-	'dc6a5a451c85739a43419955d7a505c1'
-)
-
-const searchDetailCSS = css`
-	margin: ${styles.scale.px50} ${styles.scale.px24};
-	position: relative;
-	z-index: 101;
-	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px80} ${styles.scale.px50};
-	}
-`
-
-const refinementCSS = css`
-	margin-bottom: ${styles.scale.px36};
-	border-bottom: 1px solid ${styles.colors.darkGray};
-	position: relative;
-	z-index: 501;
-	@media (min-width: ${styles.screens.tablet}px) {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		grid-gap: ${styles.gridGap.desktop};
-	}
-`
-const customHitsCSS = css`
-	list-style: none;
-	margin-left: 0;
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-gap: ${styles.gridGap.desktop};
-	align-items: stretch;
-	@media (min-width: ${styles.screens.tablet}px) {
-		grid-template-columns: repeat(3, 1fr);
-	}
-	li {
-		width: 100%;
-	}
-`
-
 const SearchGrants = ({
 	searchState,
 	handleSearchChange,
 	indexName,
 	refinements,
 }) => {
+	const searchClient = algoliasearch(
+		'BONWJFMMRS',
+		'dc6a5a451c85739a43419955d7a505c1'
+	)
+
+	const searchDetailCSS = css`
+		margin: ${styles.scale.px50} ${styles.scale.px24};
+		position: relative;
+		z-index: 101;
+		@media (min-width: ${styles.screens.mobile}px) {
+			margin: ${styles.scale.px80} ${styles.scale.px50};
+		}
+	`
+
+	const refinementCSS = css`
+		margin-bottom: ${styles.scale.px36};
+		border-bottom: 1px solid ${styles.colors.darkGray};
+		position: relative;
+		z-index: 501;
+	`
+	const customHitsCSS = css`
+		list-style: none;
+		margin-left: 0;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-gap: ${styles.gridGap.desktop};
+		align-items: stretch;
+		@media (min-width: ${styles.screens.tablet}px) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+		li {
+			width: 100%;
+		}
+	`
 	return (
 		<div css={searchDetailCSS}>
 			<InstantSearch
