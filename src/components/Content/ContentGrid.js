@@ -50,7 +50,7 @@ const ContentGrid = ({ hideHeader, table }) => {
 						hasLastValue: data[column] !== '' ? true : false,
 					})
 				}
-				if (rowContents.length > 2 && data[column] !== '') {
+				if (rowContents.length > 2) {
 					rowContents[rowContents.length - 3].hasLastValue = false
 					rowContents[rowContents.length - 4].hasLastValue = false
 				}
@@ -156,61 +156,31 @@ const ContentGrid = ({ hideHeader, table }) => {
 	`
 
 	return (
-		<>
-			{/* <div css={gridCssMobile}>
-				{gridItems.map((items, rowIndex) => {
-					return items.map((item, columnIndex) => {
-						return (
-							<div
-								css={
-									item.isHeader === true ? columnCss : rowCss
-								}
-								dangerouslySetInnerHTML={{
-									__html: item.value,
-								}}
-								data-grid={`${
-									hideHeader ? 'hide-header' : 'show-header'
-								} ${
-									item.isHeader ? 'column' : 'row'
-								} ${rowIndex}-${columnIndex} ${
-									hideHeader ? 'hide-header' : 'show-header'
-								} ${item.display ? item.display : ''} ${
-									item.hasLastValue === true ? 'last' : ''
-								}`}
-								key={rowIndex + columnIndex}
-							></div>
-						)
-					})
-				})}
-			</div> */}
-			<div css={gridCssDesktop}>
-				{gridItems.map((items, rowIndex) => {
-					console.log(items.length)
-					return items.map((item, columnIndex) => {
-						return (
-							<div
-								css={
-									item.isHeader === true ? columnCss : rowCss
-								}
-								dangerouslySetInnerHTML={{
-									__html: item.value,
-								}}
-								data-grid={`${
-									hideHeader ? 'hide-header' : 'show-header'
-								} ${
-									item.isHeader ? 'column' : 'row'
-								} ${rowIndex}-${columnIndex} ${
-									hideHeader ? 'hide-header' : 'show-header'
-								} ${item.display ? item.display : ''} ${
-									item.hasLastValue === true ? 'last' : ''
-								} ${item.empty ? 'empty' : ''}`}
-								key={rowIndex + columnIndex}
-							></div>
-						)
-					})
-				})}
-			</div>
-		</>
+		<div css={gridCssDesktop}>
+			{gridItems.map((items, rowIndex) => {
+				console.log(items.length)
+				return items.map((item, columnIndex) => {
+					return (
+						<div
+							css={item.isHeader === true ? columnCss : rowCss}
+							dangerouslySetInnerHTML={{
+								__html: item.value,
+							}}
+							data-grid={`${
+								hideHeader ? 'hide-header' : 'show-header'
+							} ${
+								item.isHeader ? 'column' : 'row'
+							} ${rowIndex}-${columnIndex} ${
+								hideHeader ? 'hide-header' : 'show-header'
+							} ${item.display ? item.display : ''} ${
+								item.hasLastValue === true ? 'last' : ''
+							} ${item.empty ? 'empty' : ''}`}
+							key={rowIndex + columnIndex}
+						></div>
+					)
+				})
+			})}
+		</div>
 	)
 }
 

@@ -26,6 +26,7 @@ const searchDetailCSS = css`
 const refinementCSS = css`
 	margin-bottom: ${styles.scale.px36};
 	border-bottom: 1px solid ${styles.colors.darkGray};
+	z-index: 501;
 	@media (min-width: ${styles.screens.tablet}px) {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
