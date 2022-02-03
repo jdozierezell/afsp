@@ -5,23 +5,20 @@ import { css } from '@emotion/react'
 
 import { styles } from '../../css/css'
 
+import stateListAbbreviations from '../../utils/stateListAbbreviations'
+
 const refinementListCSS = css`
-	ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-	button {
-		background: none;
-		border: none;
-		cursor: pointer;
-		border-radius: ${styles.scale.px5};
-		padding: ${styles.scale.px7};
-	}
-	span {
-		background-color: ${styles.colors.lightGray};
-		padding: ${styles.scale.px5} ${styles.scale.px5} ${styles.scale.px2};
-		border-radius: ${styles.scale.px5};
+	@media (min-width: ${styles.screens.tablet}px) {
+		display: flex;
+		align-items: baseline;
+		> h3 {
+			padding-right: 1rem;
+			position: relative;
+			top: ${styles.scale.px5};
+		}
+		> div {
+			min-width: 50vw;
+		}
 	}
 `
 
@@ -51,69 +48,60 @@ const RefinementList = ({
 	searchState,
 	handleSearchChange,
 }) => {
-	const [options, setOptions] = useState([])
-	const [placeholder, setPlaceholder] = useState(
-		`Select a ${displayAttribute}`
-	)
-	const [placeholderColor, setPlaceholderColor] = useState('#777777')
-	const [updateDropdown, setUpdateDropdown] = useState(false)
-	useEffect(() => {
-		setOptions([])
-		items.forEach(item => {
-			setOptions(options => [
-				...options,
-				{ value: item.value[item.value.length - 1], label: item.label },
-			])
-		})
-		if (searchState.refinementList) {
-			const refinementKeys = Object.keys(searchState.refinementList)
-			refinementKeys.forEach(key => {
-				if (key === attribute) {
-					setPlaceholder(searchState.refinementList[attribute])
-					setPlaceholderColor(styles.colors.darkGray)
-				}
-			})
+	let options = []
+	const placeholder = `Select a ${displayAttribute}`
+	items.forEach(item => {
+		let label = stateListAbbreviations.find(
+			({ value }) => value === item.value[item.value.length - 1]
+		)
+
+		if (label) {
+			label = label.label ? label.label : label
+		} else {
+			label = placeholder
 		}
-		setUpdateDropdown(false)
-	}, [attribute, items, updateDropdown, searchState])
+
+		options.push({
+			value: item.value[item.value.length - 1],
+			label: label,
+		})
+	})
+	useEffect(() => {}, [attribute, items, searchState])
 	const displayID = displayAttribute
 		.replace(/[^A-Za-z0-9]/g, '-')
 		.toLowerCase()
 	return (
-		<>
-			<div css={refinementListCSS}>
-				<h3 id={`${displayID}-label`} htmlFor={displayID}>
-					{displayAttribute}
-				</h3>
-				<Select
-					aria-describedby={`${displayID}-label`}
-					aria-labelledby={`${displayID}-label`}
-					id={displayID}
-					css={selectCSS}
-					styles={{
-						placeholder: (provided, state) => ({
-							...provided,
-							color: placeholderColor,
-						}),
-					}}
-					className="react-select"
-					classNamePrefix="react-select"
-					defaultValue={options[0]}
-					isClearable={true}
-					options={options}
-					placeholder={placeholder}
-					onChange={e => {
-						handleSearchChange({
-							target: {
-								value: e ? [e.value] : null,
-								attribute: attribute,
-							},
-						})
-						setUpdateDropdown(true)
-					}}
-				/>
-			</div>
-		</>
+		<div css={refinementListCSS}>
+			<h3 id={`${displayID}-label`} htmlFor={displayID}>
+				{displayAttribute}
+			</h3>
+			<Select
+				aria-describedby={`${displayID}-label`}
+				aria-labelledby={`${displayID}-label`}
+				id={displayID}
+				css={selectCSS}
+				styles={{
+					placeholder: (provided, state) => ({
+						...provided,
+						color: styles.colors.darkGray,
+					}),
+				}}
+				className="react-select"
+				classNamePrefix="react-select"
+				defaultValue={options[0]}
+				isClearable={true}
+				options={options}
+				placeholder={placeholder}
+				onChange={e => {
+					handleSearchChange({
+						target: {
+							value: e ? [e.value] : null,
+							attribute: attribute,
+						},
+					})
+				}}
+			/>
+		</div>
 	)
 }
 

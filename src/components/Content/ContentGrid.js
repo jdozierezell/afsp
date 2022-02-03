@@ -17,7 +17,6 @@ const ContentGrid = ({ hideHeader, table }) => {
 		})
 		gridItems.push(columnContents)
 	}
-	console.log(table)
 	table.data.forEach(data => {
 		let rowContents = []
 		if (hideHeader) {
@@ -56,7 +55,6 @@ const ContentGrid = ({ hideHeader, table }) => {
 				}
 			})
 		}
-		console.log(rowContents)
 		dataContents.push(rowContents)
 	})
 	gridItems.push(...dataContents)
@@ -158,7 +156,6 @@ const ContentGrid = ({ hideHeader, table }) => {
 	return (
 		<div css={gridCssDesktop}>
 			{gridItems.map((items, rowIndex) => {
-				console.log(items.length)
 				return items.map((item, columnIndex) => {
 					return (
 						<div
