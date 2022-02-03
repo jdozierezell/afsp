@@ -5,8 +5,6 @@ import { css } from '@emotion/react'
 
 import { styles } from '../../css/css'
 
-import stateListAbbreviations from '../../utils/stateListAbbreviations'
-
 const refinementListCSS = css`
 	ul {
 		list-style: none;
@@ -62,19 +60,9 @@ const RefinementList = ({
 	useEffect(() => {
 		setOptions([])
 		items.forEach(item => {
-			let label = stateListAbbreviations.find(
-				({ value }) => value === item.value[item.value.length - 1]
-			)
-
-			label = label.label ? label.label : label
-
-			console.log(label)
-
-			// stateListAbbreviations
-
 			setOptions(options => [
 				...options,
-				{ value: item.value[item.value.length - 1], label: label },
+				{ value: item.value[item.value.length - 1], label: item.label },
 			])
 		})
 		if (searchState.refinementList) {

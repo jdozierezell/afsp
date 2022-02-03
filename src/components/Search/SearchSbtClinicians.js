@@ -5,7 +5,7 @@ import { orderBy } from 'lodash'
 import { InstantSearch } from 'react-instantsearch-dom'
 
 import SearchHits from './SearchHitsSBTC'
-import SearchResearchRefinement from './SearchResearchRefinement'
+import SearchSbtClinicianRefinement from './SearchSbtClinicianRefinement'
 
 import { styles } from '../../css/css'
 
@@ -65,7 +65,7 @@ const SearchGrants = ({
 				<div>
 					<div css={refinementCSS}>
 						{refinements.map((refinement, index) => (
-							<SearchResearchRefinement
+							<SearchSbtClinicianRefinement
 								key={index}
 								attribute={refinement.attribute}
 								displayAttribute={refinement.displayAttribute}
