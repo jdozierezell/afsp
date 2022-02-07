@@ -53,22 +53,29 @@ const ContentGrid = ({ hideHeader, table }) => {
 				rowContents.push(row)
 			})
 		} else if (!hideHeader) {
-			table.columns.forEach((column, index) => {
+			table.columns.forEach((column, columnIndex) => {
+				let mobile, desktop
 				if (data.hasOwnProperty(column)) {
-					rowContents.push({
+					mobile = {
 						isHeader: true,
 						value: column,
 						display: 'mobile',
 						empty: data[column] !== '' ? false : true,
 						hasLastValue: data[column] !== '' ? true : false,
-					})
-					rowContents.push({
+					}
+					desktop = {
 						isHeader: false,
 						value: data[column],
 						empty: data[column] !== '' ? false : true,
 						hasLastValue: data[column] !== '' ? true : false,
-					})
+					}
+					rowContents.push(mobile, desktop)
 				}
+
+				// if (rowIndex + 1 === table.data.length) {
+				// 	console.log(data)
+				// }
+
 				if (rowContents.length > 2) {
 					rowContents[rowContents.length - 3].hasLastValue = false
 					rowContents[rowContents.length - 4].hasLastValue = false
