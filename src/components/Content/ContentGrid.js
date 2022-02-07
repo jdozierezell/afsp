@@ -17,38 +17,65 @@ const ContentGrid = ({ hideHeader, table }) => {
 		})
 		gridItems.push(columnContents)
 	}
-	table.data.forEach(data => {
+	table.data.forEach((data, rowIndex) => {
 		let rowContents = []
 		if (hideHeader) {
-			table.columns.forEach((column, index) => {
+			table.columns.forEach((column, columnIndex) => {
+				let row
 				if (data.hasOwnProperty(column)) {
-					rowContents.push({
+					row = {
 						isHeader: false,
 						value: data[column],
-						hasLastValue: data[column] !== '' ? true : false,
-					})
+						empty: data[column] !== '' ? false : true,
+					}
 				}
-				if (rowContents.length > 1 && data[column] !== '') {
-					rowContents[index - 1].hasLastValue = false
+
+				if (rowIndex + 1 === table.data.length) {
+					if (
+						!row.empty &&
+						columnIndex + 1 === table.columns.length
+					) {
+						row.hasLastValue = true
+					} else if (!row.empty) {
+						for (
+							let i = columnIndex;
+							i + 1 < table.columns.length;
+							i++
+						) {
+							if (data[table.columns[i + 1]] !== '') {
+								break
+							} else {
+								row.hasLastValue = true
+							}
+						}
+					}
 				}
+				rowContents.push(row)
 			})
 		} else if (!hideHeader) {
-			table.columns.forEach((column, index) => {
+			table.columns.forEach((column, columnIndex) => {
+				let mobile, desktop
 				if (data.hasOwnProperty(column)) {
-					rowContents.push({
+					mobile = {
 						isHeader: true,
 						value: column,
 						display: 'mobile',
 						empty: data[column] !== '' ? false : true,
 						hasLastValue: data[column] !== '' ? true : false,
-					})
-					rowContents.push({
+					}
+					desktop = {
 						isHeader: false,
 						value: data[column],
 						empty: data[column] !== '' ? false : true,
 						hasLastValue: data[column] !== '' ? true : false,
-					})
+					}
+					rowContents.push(mobile, desktop)
 				}
+
+				// if (rowIndex + 1 === table.data.length) {
+				// 	console.log(data)
+				// }
+
 				if (rowContents.length > 2) {
 					rowContents[rowContents.length - 3].hasLastValue = false
 					rowContents[rowContents.length - 4].hasLastValue = false
