@@ -78,6 +78,7 @@ export const query = graphql`
 				firstPublishedAt
 			}
 			publicationDate(formatString: "D MMM YYYY")
+			hidePublicationDate
 			tags {
 				tag
 				slug

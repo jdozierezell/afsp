@@ -126,7 +126,7 @@ const storyButtonCSS = css`
 `
 
 const HeroStories = ({ data, prev, next }) => {
-	const { title, publicationDate, author, tags } = data
+	const { title, publicationDate, hidePublicationDate, author, tags } = data
 
 	let fullStory = ''
 	data.article.forEach(article => {
@@ -152,7 +152,9 @@ const HeroStories = ({ data, prev, next }) => {
 					}}
 				></h1>
 				<p css={dateLineCSS}>
-					{publicationDate ? `${publicationDate} — ` : ''}
+					{publicationDate && !hidePublicationDate
+						? `${publicationDate} — `
+						: ''}
 					{timeToRead.humanizedDuration} min read
 				</p>
 				{author && (
