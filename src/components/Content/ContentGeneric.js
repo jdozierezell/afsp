@@ -193,6 +193,7 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 							key={index}
 							table={table}
 							hideHeader={detail.hideHeader}
+							tableHeader={detail.tableHeader}
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsTweet') {

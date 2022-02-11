@@ -2,8 +2,9 @@ import React from 'react'
 import { css } from '@emotion/react'
 
 import { styles } from '../../css/css'
+import createAnchor from '../../utils/createAnchor'
 
-const ContentGrid = ({ hideHeader, table }) => {
+const ContentGrid = ({ hideHeader, table, tableHeader }) => {
 	let columnContents = []
 	let dataContents = []
 	let gridItems = []
@@ -86,7 +87,7 @@ const ContentGrid = ({ hideHeader, table }) => {
 	})
 	gridItems.push(...dataContents)
 
-	const gridCssDesktop = css`
+	const gridCSSDesktop = css`
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		padding: ${styles.scale.px24} 0;
@@ -109,7 +110,7 @@ const ContentGrid = ({ hideHeader, table }) => {
 		}
 	`
 
-	const columnCss = css`
+	const columnCSS = css`
 		font-family: ${styles.fonts.avenirDemi};
 		font-size: ${styles.scale.px16};
 		margin: 0;
@@ -134,7 +135,7 @@ const ContentGrid = ({ hideHeader, table }) => {
 		}
 	`
 
-	const rowCss = css`
+	const rowCSS = css`
 		border-bottom: 1px solid ${styles.colors.darkGray};
 		font-family: ${styles.fonts.avenirRegular};
 		margin: 0;
@@ -179,32 +180,52 @@ const ContentGrid = ({ hideHeader, table }) => {
 			}
 		}
 	`
+	const contentHeadingCSS = css`
+		font-size: ${styles.scale.px36};
+		margin: ${styles.scale.px50} 0 ${styles.scale.px35};
+		@media (min-width: ${styles.screens.mobile}px) {
+			margin: ${styles.scale.px80} 0 ${styles.scale.px40};
+		}
+		a {
+			font-family: ${styles.fonts.paul};
+			font-size: ${styles.scale.px36};
+		}
+	`
 
 	return (
-		<div css={gridCssDesktop}>
-			{gridItems.map((items, rowIndex) => {
-				return items.map((item, columnIndex) => {
-					return (
-						<div
-							css={item.isHeader === true ? columnCss : rowCss}
-							dangerouslySetInnerHTML={{
-								__html: item.value,
-							}}
-							data-grid={`${
-								hideHeader ? 'hide-header' : 'show-header'
-							} ${
-								item.isHeader ? 'column' : 'row'
-							} ${rowIndex}-${columnIndex} ${
-								hideHeader ? 'hide-header' : 'show-header'
-							} ${item.display ? item.display : ''} ${
-								item.hasLastValue === true ? 'last' : ''
-							} ${item.empty ? 'empty' : ''}`}
-							key={rowIndex + columnIndex}
-						></div>
-					)
-				})
-			})}
-		</div>
+		<>
+			{tableHeader && (
+				<h2 css={contentHeadingCSS} id={createAnchor(tableHeader)}>
+					{tableHeader}
+				</h2>
+			)}
+			<div css={gridCSSDesktop}>
+				{gridItems.map((items, rowIndex) => {
+					return items.map((item, columnIndex) => {
+						return (
+							<div
+								css={
+									item.isHeader === true ? columnCSS : rowCSS
+								}
+								dangerouslySetInnerHTML={{
+									__html: item.value,
+								}}
+								data-grid={`${
+									hideHeader ? 'hide-header' : 'show-header'
+								} ${
+									item.isHeader ? 'column' : 'row'
+								} ${rowIndex}-${columnIndex} ${
+									hideHeader ? 'hide-header' : 'show-header'
+								} ${item.display ? item.display : ''} ${
+									item.hasLastValue === true ? 'last' : ''
+								} ${item.empty ? 'empty' : ''}`}
+								key={rowIndex + columnIndex}
+							></div>
+						)
+					})
+				})}
+			</div>
+		</>
 	)
 }
 
