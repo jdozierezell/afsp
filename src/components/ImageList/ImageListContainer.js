@@ -25,25 +25,18 @@ const imageHeaderCSS = css`
 `
 
 const imageWrapperCSS = css`
-	width: calc(100% - ${styles.scale.px18} * 2);
 	margin: ${styles.scale.px12};
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin: ${styles.scale.px18};
 		padding: ${styles.scale.px24};
 		border: 1px solid ${styles.colors.blue};
+		width: calc(100% - ${styles.scale.px18} * 2);
 	}
 `
 
 const ImageListContainer = ({ images, crop, navigation }) => {
 	return (
-		<div
-			css={css`
-				${imageListCSS};
-				@media (min-width: ${styles.screens.navigation}px) {
-					max-width: ${navigation ? `calc(100% - 548px)` : `inherit`};
-				}
-			`}
-		>
+		<div css={imageListCSS}>
 			{images.map((image, index) => {
 				return (
 					<div

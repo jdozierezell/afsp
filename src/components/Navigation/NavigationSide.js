@@ -60,9 +60,6 @@ const NavigationSide = ({
 				const anchor = createAnchor(detail.contentHeading)
 				headings.push({ heading: detail.contentHeading, anchor })
 			}
-		} else if (detail.__typename === 'DatoCmsTable') {
-			const anchor = createAnchor(detail.tableHeading)
-			headings.push({ heading: detail.tableHeading, anchor })
 		} else if (detail.__typename === 'DatoCmsCardContainer') {
 			const anchor = createAnchor(detail.cardContainerHeading)
 			headings.push({ heading: detail.cardContainerHeading, anchor })

@@ -1,11 +1,7 @@
-import React from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { css } from '@emotion/react'
 
-import CTAContainer from '../CTAs/CTAContainer'
-import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
-
 import IconCircleCheck from '../SVGs/IconCircleCheck'
-import IconCircleCircle from '../SVGs/IconCircleCircle'
 import IconCircleX from '../SVGs/IconCircleX'
 
 import Fact from './Fact.js'
@@ -39,12 +35,12 @@ const keyCSS = css`
 	@media (min-width: ${styles.screens.mobile}px) {
 		display: grid;
 		grid-column-gap: ${styles.gridGap.desktop};
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr 1fr 1fr;
 	}
 	li {
 		display: grid;
 		grid-gap: ${styles.gridGap.desktop};
-		grid-template-columns: ${styles.scale.px36} 1fr;
+		grid-template-columns: ${styles.scale.px24} 1fr;
 	}
 `
 const factListCSS = css`
@@ -57,22 +53,45 @@ const factListCSS = css`
 	}
 `
 
-const factWrapperCSS = css`
-	position: relative;
-`
-
-const promoContainerCSS = css`
-	width: 100vw;
-	margin-left: -${styles.scale.px24};
-	@media (min-width: ${styles.screens.mobile}px) {
-		margin-left: -${styles.scale.px50};
-	}
-`
-
 const ContentFacts = ({ state, facts }) => {
+	const keyElement = useRef(null)
+	const factElement = useRef(null)
+	const [position, setPosition] = useState('relative')
+	const [top, setTop] = useState(0)
+	const [width, setWidth] = useState('100%')
+
+	const handleScroll = () => {
+		if (
+			keyElement.current.getBoundingClientRect().y <= 50 &&
+			factElement.current.getBoundingClientRect().y <= 340
+		) {
+			setPosition('fixed')
+			setTop(`${keyElement.current.getBoundingClientRect().height}px`)
+			setWidth(`${factElement.current.getBoundingClientRect().width}px`)
+		} else {
+			setPosition('relative')
+			setTop(0)
+			setWidth('100%')
+		}
+	}
+
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll)
+		return () => window.removeEventListener('scroll', handleScroll)
+	})
+
 	return (
 		<div>
-			<div>
+			<div
+				ref={keyElement}
+				css={css`
+					position: ${position};
+					top: 0;
+					background-color: ${styles.colors.white};
+					z-index: 1;
+					width: ${width};
+				`}
+			>
 				<h2 css={sectionHeadingCSS}>Legislation in {state}</h2>
 				<h4>Key:</h4>
 				<ul css={keyCSS}>
@@ -83,7 +102,16 @@ const ContentFacts = ({ state, facts }) => {
 								width: ${styles.scale.px24};
 							`}
 						></IconCircleX>
-						<span>Legislation not in place</span>
+						<span>No law in place</span>
+					</li>
+					<li>
+						<IconCircleCheck
+							color={styles.colors.yellow}
+							iconCSS={css`
+								width: ${styles.scale.px24};
+							`}
+						></IconCircleCheck>
+						<span>Encouraged by Law</span>
 					</li>
 					<li>
 						<IconCircleCheck
@@ -92,128 +120,99 @@ const ContentFacts = ({ state, facts }) => {
 								width: ${styles.scale.px24};
 							`}
 						></IconCircleCheck>
-						<span>Legislation in place</span>
-					</li>
-					<li>
-						<IconCircleCircle
-							color={styles.colors.yellow}
-							iconCSS={css`
-								width: ${styles.scale.px24};
-							`}
-						></IconCircleCircle>
-						<span>Encouraged by legislation</span>
-					</li>
-					<li>
-						<IconCircleCircle
-							color={styles.colors.green}
-							iconCSS={css`
-								width: ${styles.scale.px24};
-							`}
-						></IconCircleCircle>
-						<span>Required by legislation</span>
+						<span>Required by Law</span>
 					</li>
 				</ul>
 			</div>
-			{facts.map((fact, index) => {
-				if (fact.public || fact.nonPublic) {
-					return (
-						<div key={index} css={factWrapperCSS}>
-							<h3 id={fact.anchor} css={subSectionCSS}>
-								{fact.display}
-							</h3>
-							{fact.public && (
-								<>
-									<h4 css={subSubCSS}>
-										{fact.public.display}
-									</h4>
-									<ul css={factListCSS}>
-										{fact.public.facts.map(
-											(fact, index) => {
-												return (
-													<Fact
-														fact={fact}
-														key={index}
-													></Fact>
-												)
-											}
-										)}
-									</ul>
-								</>
-							)}
-							{fact.nonPublic && (
-								<>
-									<h4 css={subSubCSS}>
-										{fact.nonPublic.display}
-									</h4>
-									<ul css={factListCSS}>
-										{fact.nonPublic.facts.map(
-											(fact, index) => {
-												return (
-													<Fact
-														fact={fact}
-														key={index}
-													></Fact>
-												)
-											}
-										)}
-									</ul>
-								</>
-							)}
-							{fact.promo &&
-								fact.promo[0].__typename ===
-									'DatoCmsCallsToAction' && (
-									<CTAContainer
-										key={index}
-										number={index}
-										cta={fact.promo[0].callToAction[0]}
-										addCSS={promoContainerCSS}
-									/>
+			<div>
+				{facts.map((fact, index) => {
+					if (fact.public || fact.nonPublic) {
+						return (
+							<div
+								key={index}
+								css={css`
+									position: relative;
+									top: ${top};
+								`}
+								ref={index === 0 ? factElement : null}
+							>
+								<h3 id={fact.anchor} css={subSectionCSS}>
+									{fact.display}
+								</h3>
+								{fact.public && (
+									<>
+										<h4 css={subSubCSS}>
+											{fact.public.display}
+										</h4>
+										<ul css={factListCSS}>
+											{fact.public.facts.map(
+												(fact, index) => {
+													return (
+														<Fact
+															fact={fact}
+															key={index}
+														></Fact>
+													)
+												}
+											)}
+										</ul>
+									</>
 								)}
-							{fact.promo &&
-								fact.promo[0].__typename ===
-									'DatoCmsDetail' && (
-									<CarouselDetailContainer
-										key={index}
-										content={fact.promo[0]}
-										addContainerCSS={promoContainerCSS}
-									/>
+								{fact.nonPublic && (
+									<>
+										<h4 css={subSubCSS}>
+											{fact.nonPublic.display}
+										</h4>
+										<ul css={factListCSS}>
+											{fact.nonPublic.facts.map(
+												(fact, index) => {
+													return (
+														<Fact
+															fact={fact}
+															key={index}
+														></Fact>
+													)
+												}
+											)}
+										</ul>
+									</>
 								)}
-						</div>
-					)
-				} else {
-					return (
-						<div key={index} css={factWrapperCSS}>
-							<h3 id={fact.anchor} css={subSectionCSS}>
-								{fact.display}
-							</h3>
-							<ul css={factListCSS}>
-								{fact.facts.map((fact, index) => {
-									return <Fact fact={fact} key={index}></Fact>
-								})}
-							</ul>
-							{fact.promo &&
-								fact.promo[0].__typename ===
-									'DatoCmsCallsToAction' && (
-									<CTAContainer
-										key={index}
-										number={index}
-										cta={fact.promo[0].callToAction[0]}
-										addCSS={promoContainerCSS}
-									/>
-								)}
-							{fact.promo &&
-								fact.promo[0].__typename ===
-									'DatoCmsDetail' && (
-									<CarouselDetailContainer
-										key={index}
-										content={fact.promo[0]}
-										addContainerCSS={promoContainerCSS}
-									/>
-								)}
-						</div>
-					)
-				}
-			})}
+							</div>
+						)
+					} else {
+						return (
+							<div
+								key={index}
+								css={css`
+									position: relative;
+									top: ${top};
+								`}
+								ref={index === 0 ? factElement : null}
+							>
+								<h3 id={fact.anchor} css={subSectionCSS}>
+									{fact.display}
+								</h3>
+								<ul css={factListCSS}>
+									{fact.facts.map((fact, index) => {
+										return (
+											<Fact
+												fact={fact}
+												key={index}
+											></Fact>
+										)
+									})}
+								</ul>
+							</div>
+						)
+					}
+				})}
+				<span
+					css={css`
+						display: inline-block;
+						margin-bottom: ${top};
+					`}
+				></span>
+			</div>
 		</div>
 	)
 }

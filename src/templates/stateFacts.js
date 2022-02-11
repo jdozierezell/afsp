@@ -5,26 +5,13 @@ import { css } from '@emotion/react'
 import Layout from '../components/Layout'
 import HeroFacts from '../components/Hero/HeroFacts'
 import NavigationSideStateFacts from '../components/Navigation/NavigationSideStateFacts'
-import Facts from '../components/StateFacts/Facts'
+import FactsWrapper from '../components/StateFacts/FactsWrapper'
+import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 
 import { styles } from '../css/css'
 
-const initiativesAndPlansCSS = css`
-	h2 {
-		font-size: ${styles.scale.px36};
-		margin: ${styles.scale.px40} 0 ${styles.scale.px30};
-		@media (min-width: ${styles.screens.mobile}px) {
-			margin: ${styles.scale.px46} 0 ${styles.scale.px36};
-		}
-	}
-	margin: ${styles.scale.px50} ${styles.scale.px24};
-	max-width: 623px;
-	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px50} ${styles.scale.px50} 0;
-	}
-	@media (min-width: ${styles.screens.video}px) {
-		width: calc(100vw - 555px);
-	}
+const carouselCSS = css`
+	z-index: 2;
 `
 
 const StateFacts = ({ data: { stateFacts } }) => {
@@ -62,7 +49,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 	}
 	stateFacts.facts = [
 		{
-			display: 'Mental Health Parity',
+			display: 'Mental health parity',
 			anchor: 'mental-health-parity',
 			facts: [
 				{
@@ -87,10 +74,10 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			promo: [stateFacts.mentalHealthParityPromo],
 		},
 		{
-			display: 'K – 12 School Suicide Prevention',
+			display: 'K – 12 school suicide prevention',
 			anchor: 'k-12-school-suicide-prevention',
 			public: {
-				display: 'Public Schools',
+				display: 'Public schools',
 				facts: [
 					{
 						display:
@@ -109,12 +96,12 @@ const StateFacts = ({ data: { stateFacts } }) => {
 					},
 					{
 						display:
-							'Training for certain school personnel, annual',
+							'Suicide prevention and/or mental health training for certain school personnel, annual',
 						value: stateFacts.pubTrainingForPersonnelAnnual,
 					},
 					{
 						display:
-							'Training for certain school personnel, not annual',
+							'Suicide prevention and/or mental health training for certain school personnel, not annual',
 						value: stateFacts.pubTrainingForPersonnelNotAnnual,
 					},
 					{
@@ -133,7 +120,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 				],
 			},
 			nonPublic: {
-				display: 'Non Public Schools',
+				display: 'Non-public schools',
 				facts: [
 					{
 						display:
@@ -179,24 +166,27 @@ const StateFacts = ({ data: { stateFacts } }) => {
 		},
 		{
 			display:
-				'Health Professional training in suicide assessment, treatment and management',
+				'Health professional training in suicide assessment, treatment and management',
 			anchor: 'health-professional-training',
 			facts: [
 				{
-					display: 'Mental health professionals, regular training',
+					display:
+						'Mental health professionals receive regular training',
 					value: stateFacts.mentalHealthProfessionalsRegular,
 				},
 				{
-					display: 'Mental health professionals, one time training',
+					display:
+						'Mental health professionals receive one time training',
 					value: stateFacts.mentalHealthProfessionalsOneTime,
 				},
 				{
-					display: 'Medical/surgical professionals, regular training',
+					display:
+						'Medical/surgical professionals receive regular training',
 					value: stateFacts.medicalSurgicalProfessionalsRegular,
 				},
 				{
 					display:
-						'Medical/surgical professionals, one time training',
+						'Medical/surgical professionals receive one time training',
 					value: stateFacts.medicalSurgicalProfessionalsOneTime,
 				},
 			],
@@ -208,18 +198,22 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			facts: [
 				{
 					display:
+						'Prohibits licensed/board certified mental health providers from engaging in conversion therapy with all patients',
+					value: stateFacts.prohibitsProvidersConversionTherapyWithAllPatients,
+				},
+				{
+					display:
 						'Prohibits licensed/board certified mental health providers from engaging in conversion therapy with minors under 18 years of age',
-					value: stateFacts.prohibitsProvidersConversionTherapyWithMinors,
+					value: stateFacts.prohibitsProvidersConversionTherapyWithAllPatients
+						? true
+						: stateFacts.prohibitsProvidersConversionTherapyWithMinors,
 				},
 				{
 					display:
 						'Prohibits licensed/board certified mental health providers from engaging in conversion therapy with vulnerable adults',
-					value: stateFacts.prohibitsProvidersConversionTherapyWithVulnerableAdults,
-				},
-				{
-					display:
-						'Prohibits licensed/board certified mental health providers from engaging in conversion therapy with all patients',
-					value: stateFacts.prohibitsProvidersConversionTherapyWithAllPatients,
+					value: stateFacts.prohibitsProvidersConversionTherapyWithAllPatients
+						? true
+						: stateFacts.prohibitsProvidersConversionTherapyWithVulnerableAdults,
 				},
 				{
 					display:
@@ -234,7 +228,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			display: 'University and college campus suicide prevention',
 			anchor: 'university-and-college',
 			public: {
-				display: 'Public Schools',
+				display: 'Public schools',
 				facts: [
 					{
 						display:
@@ -254,7 +248,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 				],
 			},
 			nonPublic: {
-				display: 'Non Public Schools',
+				display: 'Non-public schools',
 				facts: [
 					{
 						display:
@@ -278,6 +272,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			],
 		},
 	]
+	console.log(stateFacts)
 	useEffect(() => {
 		setFactsTop(
 			document.getElementById('factsContainer').getBoundingClientRect()
@@ -297,29 +292,15 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			<div id="factsContainer">
 				<HeroFacts stateFacts={stateFacts}></HeroFacts>
 			</div>
-			{factsTop !== null && (
-				<NavigationSideStateFacts
-					facts={stateFacts.facts}
-					slug={stateFacts.slug}
-					topStart={factsTop}
-				></NavigationSideStateFacts>
-			)}
-			<section css={initiativesAndPlansCSS}>
-				{stateFacts.initiativesAndPlans && (
-					<div>
-						<h2>Plans and Initiatives</h2>
-						<div
-							dangerouslySetInnerHTML={{
-								__html: stateFacts.initiativesAndPlans,
-							}}
-						></div>
-					</div>
-				)}
-				<Facts
-					state={stateFacts.stateName}
-					facts={stateFacts.facts}
-				></Facts>
-			</section>
+			<NavigationSideStateFacts
+				facts={stateFacts.facts}
+				slug={stateFacts.slug}
+				topStart={factsTop}
+			></NavigationSideStateFacts>
+			<FactsWrapper stateFacts={stateFacts}></FactsWrapper>
+			<CarouselChapterContainer
+				carouselCSS={carouselCSS}
+			></CarouselChapterContainer>
 		</Layout>
 	)
 }
