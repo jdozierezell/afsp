@@ -77,10 +77,10 @@ const StateFacts = ({ data: { stateFacts } }) => {
 				// 	display: 'Federal parity law codified in state statute',
 				// 	value: stateFacts.parityLawCodified,
 				// },
-				{
-					display: 'State regulators must enforce parity law(s)',
-					value: stateFacts.enforceParityLaws,
-				},
+				// {
+				// 	display: 'State regulators must enforce parity law(s)',
+				// 	value: stateFacts.enforceParityLaws,
+				// },
 				{
 					display:
 						'Public health plans (e.g., Medicaid) regularly submit parity compliance analyses to state regulators',
