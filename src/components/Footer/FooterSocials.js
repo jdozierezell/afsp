@@ -3,10 +3,11 @@ import { css } from '@emotion/react'
 
 import IconFacebook from '../SVGs/IconFacebook'
 import IconInstagram from '../SVGs/IconInstagram'
-import IconTwitter from '../SVGs/IconTwitter'
 import IconLinkedIn from '../SVGs/IconLinkedIn'
-import IconYouTube from '../SVGs/IconYouTube'
 import IconTheMighty from '../SVGs/IconTheMighty'
+import IconTikTok from '../SVGs/IconTikTok'
+import IconTwitter from '../SVGs/IconTwitter'
+import IconYouTube from '../SVGs/IconYouTube'
 
 import { styles } from '../../css/css'
 
@@ -57,6 +58,18 @@ const FooterSocials = () => {
 			>
 				<IconTwitter
 					id="twitter-footer-social"
+					title="AFSPNational"
+					color={styles.colors.white}
+				/>
+			</a>
+			<a
+				href="https://www.tiktok.com/@afspnational"
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="AFSPNational TikTok"
+			>
+				<IconTikTok
+					id="tiktok-footer-social"
 					title="AFSPNational"
 					color={styles.colors.white}
 				/>
