@@ -6,7 +6,7 @@ export const textFieldCSS = {
 	borderRadius: styles.scale.px5,
 	bgcolor: styles.colors.white,
 	marginBottom: styles.scale.px25,
-	fontSize: '1em',
+	fontSize: 16,
 	'& .MuiInputLabel-root, & .MuiFormHelperText-root, & .MuiOutlinedInput-root':
 		{
 			fontFamily: styles.fonts.avenirRegular,
@@ -24,7 +24,7 @@ export const textFieldCSS = {
 
 export const buttonCSS = {
 	fontFamily: styles.fonts.avenirBold,
-	fontSize: styles.scale.px18,
+	fontSize: 18,
 	color: styles.colors.poppy,
 	textAlign: 'center',
 	minHeight: styles.scale.px50,
@@ -74,7 +74,7 @@ export const afspMuiTheme = createTheme({
 		divider: 'rgba(38,38,38,0.2)',
 	},
 	typography: {
-		fontSize: '1em',
+		fontSize: 16,
 		fontFamily: styles.fonts.avenirRegular,
 	},
 })

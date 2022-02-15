@@ -60,6 +60,9 @@ const ContentFacts = ({ state, facts }) => {
 	const [top, setTop] = useState(0)
 	const [width, setWidth] = useState('100%')
 
+	let exceptions = 0
+	let exceptionArray = []
+
 	const handleScroll = () => {
 		if (
 			keyElement.current.getBoundingClientRect().y <= 50 &&
@@ -72,6 +75,13 @@ const ContentFacts = ({ state, facts }) => {
 			setPosition('relative')
 			setTop(0)
 			setWidth('100%')
+		}
+	}
+
+	const onExceptionClick = exception => {
+		const element = document.getElementById(`exception${exception}`)
+		if (element) {
+			element.scrollIntoView(false)
 		}
 	}
 
@@ -147,10 +157,23 @@ const ContentFacts = ({ state, facts }) => {
 									) {
 										return
 									} else {
+										if (fact.exception) {
+											exceptions++
+											exceptionArray.push(fact.exception)
+										}
+
 										return (
 											<Fact
 												fact={fact}
 												key={index}
+												exception={
+													fact.exception
+														? exceptions
+														: null
+												}
+												onExceptionClick={
+													onExceptionClick
+												}
 											></Fact>
 										)
 									}
@@ -165,6 +188,16 @@ const ContentFacts = ({ state, facts }) => {
 						margin-bottom: ${top};
 					`}
 				></span>
+				<div>
+					{exceptionArray.map((exception, index) => {
+						index = index + 1
+						return (
+							<p id={`exception${index}`} key={index}>
+								{index}. {exception}
+							</p>
+						)
+					})}
+				</div>
 			</div>
 		</div>
 	)

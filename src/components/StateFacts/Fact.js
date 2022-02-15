@@ -7,7 +7,7 @@ import IconCircleX from '../SVGs/IconCircleX'
 
 import { styles } from '../../css/css'
 
-const Fact = ({ fact }) => {
+const Fact = ({ fact, exception, onExceptionClick }) => {
 	return (
 		<li>
 			<span>
@@ -52,7 +52,17 @@ const Fact = ({ fact }) => {
 					></IconCircleCheck>
 				)}
 			</span>
-			<span>{fact.display}</span>
+			<span>
+				{fact.display}
+				{exception && (
+					<sup>
+						{' '}
+						<a href="#" onClick={onExceptionClick(exception)}>
+							{exception}
+						</a>
+					</sup>
+				)}
+			</span>
 		</li>
 	)
 }
