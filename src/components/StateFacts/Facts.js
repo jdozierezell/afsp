@@ -79,9 +79,11 @@ const ContentFacts = ({ state, facts }) => {
 	}
 
 	const onExceptionClick = exception => {
-		const element = document.getElementById(`exception${exception}`)
-		if (element) {
-			element.scrollIntoView(false)
+		if (typeof window !== `undefined`) {
+			const element = document.getElementById(`exception${exception}`)
+			if (element) {
+				element.scrollIntoView(false)
+			}
 		}
 	}
 
