@@ -325,7 +325,6 @@ export const query = graphql`
 			}
 			addresses988InfrastructureAndProvidesForTelecom
 			addresses988InfrastructureButNotProvideForTelecom
-			enforceParityLaws
 			excusedMentalHealthAbsences
 			initiativesAndPlans
 			lawLimitedToCreatingCommissionCommitteeTaskForce
