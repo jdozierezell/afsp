@@ -105,7 +105,7 @@ export default SuicideBereavementTrainedClinicians
 export const query = graphql`
 	query {
 		search: datoCmsSearchPage(
-			slug: { eq: "suicide-bereavement-trained-clinicians-2" }
+			slug: { eq: "suicide-bereavement-trained-clinicians" }
 		) {
 			title
 			slug
