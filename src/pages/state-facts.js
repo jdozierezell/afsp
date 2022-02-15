@@ -3,7 +3,6 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
-import NavigationSide from '../components/Navigation/NavigationSide'
 import FactsListContainer from '../components/StateFacts/FactsListContainer'
 
 import { styles } from '../css/css'

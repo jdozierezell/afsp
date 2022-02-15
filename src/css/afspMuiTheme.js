@@ -6,7 +6,7 @@ export const textFieldCSS = {
 	borderRadius: styles.scale.px5,
 	bgcolor: styles.colors.white,
 	marginBottom: styles.scale.px25,
-	fontSize: '1em',
+	fontSize: 16,
 	'& .MuiInputLabel-root, & .MuiFormHelperText-root, & .MuiOutlinedInput-root':
 		{
 			fontFamily: styles.fonts.avenirRegular,
