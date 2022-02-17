@@ -1,13 +1,39 @@
 import React from 'react'
-import { css } from '@emotion/react'
+import { css, ThemeProvider } from '@emotion/react'
+import Button from '@mui/material/Button'
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip'
+import { styled } from '@mui/material/styles'
 
 import IconCircleCheck from '../SVGs/IconCircleCheck'
-import IconCircleCircle from '../SVGs/IconCircleCircle'
 import IconCircleX from '../SVGs/IconCircleX'
 
 import { styles } from '../../css/css'
 
-const Fact = ({ fact, exception, onExceptionClick }) => {
+const ExceptionTooltip = styled(({ className, ...props }) => (
+	<Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+	[`& .${tooltipClasses.tooltip}`]: {
+		backgroundColor: styles.colors.darkGray,
+		color: styles.colors.white,
+		fontSize: 14,
+		fontFamily: styles.fonts.avenirRegularIt,
+	},
+	[`& .${tooltipClasses.popper}`]: {
+		backgroundColor: styles.colors.darkGray,
+		color: styles.colors.white,
+		fontSize: 14,
+		fontFamily: styles.fonts.avenirRegularIt,
+	},
+}))
+
+const tooltipCSS = css`
+	button {
+		display: inline-block;
+		min-width: auto;
+	}
+`
+
+const Fact = ({ fact, exception }) => {
 	return (
 		<li>
 			<span>
@@ -55,11 +81,14 @@ const Fact = ({ fact, exception, onExceptionClick }) => {
 			<span>
 				{fact.display}
 				{exception && (
-					<sup>
-						{' '}
-						<a href="#" onClick={onExceptionClick(exception)}>
-							{exception}
-						</a>
+					<sup css={tooltipCSS}>
+						<ExceptionTooltip
+							title={fact.exception}
+							placement="top"
+							arrow
+						>
+							<Button>{exception}</Button>
+						</ExceptionTooltip>
 					</sup>
 				)}
 			</span>

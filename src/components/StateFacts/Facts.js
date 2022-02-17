@@ -78,13 +78,6 @@ const ContentFacts = ({ state, facts }) => {
 		}
 	}
 
-	const onExceptionClick = exception => {
-		const element = document.getElementById(`exception${exception}`)
-		if (element) {
-			element.scrollIntoView(false)
-		}
-	}
-
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll)
 		return () => window.removeEventListener('scroll', handleScroll)
@@ -171,9 +164,6 @@ const ContentFacts = ({ state, facts }) => {
 														? exceptions
 														: null
 												}
-												onExceptionClick={
-													onExceptionClick
-												}
 											></Fact>
 										)
 									}
@@ -188,16 +178,6 @@ const ContentFacts = ({ state, facts }) => {
 						margin-bottom: ${top};
 					`}
 				></span>
-				<div>
-					{exceptionArray.map((exception, index) => {
-						index = index + 1
-						return (
-							<p id={`exception${index}`} key={index}>
-								{index}. {exception}
-							</p>
-						)
-					})}
-				</div>
 			</div>
 		</div>
 	)
