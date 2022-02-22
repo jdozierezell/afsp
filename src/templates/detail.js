@@ -101,10 +101,17 @@ export const query = graphql`
 			}
 			details {
 				...ResourceList
-				... on DatoCmsContent {
+				... on DatoCmsActionButton {
 					__typename
-					contentHeading
-					contentBody
+					buttonText
+					buttonLink
+				}
+				... on DatoCmsAudio {
+					__typename
+					audio {
+						url
+						title
+					}
 				}
 				... on DatoCmsCardContainer {
 					__typename
@@ -136,6 +143,11 @@ export const query = graphql`
 						cardButtonUrl
 					}
 				}
+				... on DatoCmsContent {
+					__typename
+					contentHeading
+					contentBody
+				}
 				... on DatoCmsDetailSquare {
 					__typename
 					detail {
@@ -160,10 +172,16 @@ export const query = graphql`
 						}
 					}
 				}
-				... on DatoCmsActionButton {
+				... on DatoCmsEmbed {
 					__typename
-					buttonText
-					buttonLink
+					embedCode
+				}
+				... on DatoCmsFeaturedStoryTag {
+					__typename
+					introCopy
+					tag {
+						tag
+					}
 				}
 				... on DatoCmsImage {
 					__typename
@@ -185,32 +203,21 @@ export const query = graphql`
 					}
 					imagesToShow
 				}
-				... on DatoCmsAudio {
-					__typename
-					audio {
-						url
-						title
-					}
-				}
 				... on DatoCmsHeading {
 					__typename
 					headingLevel
 					heading
 				}
-				... on DatoCmsEmbed {
+				... on DatoCmsTable {
 					__typename
-					embedCode
+					id
+					hideHeader
+					table
+					tableHeader
 				}
 				... on DatoCmsTweet {
 					__typename
 					tweet
-				}
-				... on DatoCmsFeaturedStoryTag {
-					__typename
-					introCopy
-					tag {
-						tag
-					}
 				}
 			}
 			overrideWidth
