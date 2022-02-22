@@ -55,35 +55,40 @@ const NavigationSide = ({
 		})
 	}
 	data.details.map(detail => {
-		if (detail.__typename === 'DatoCmsContent') {
+		if (detail.__typename === 'DatoCmsCardContainer') {
+			const anchor = createAnchor(detail.cardContainerHeading)
+			headings.push({ heading: detail.cardContainerHeading, anchor })
+		} else if (detail.__typename === 'DatoCmsContent') {
 			if (detail.contentHeading) {
 				const anchor = createAnchor(detail.contentHeading)
 				headings.push({ heading: detail.contentHeading, anchor })
 			}
-		} else if (detail.__typename === 'DatoCmsCardContainer') {
-			const anchor = createAnchor(detail.cardContainerHeading)
-			headings.push({ heading: detail.cardContainerHeading, anchor })
-		} else if (
-			detail.__typename === 'DatoCmsHeading' &&
-			detail.headingLevel === 'Level 2 (will be included in sidebar)'
-		) {
-			const anchor = createAnchor(detail.heading)
-			headings.push({ heading: detail.heading, anchor })
 		} else if (detail.__typename === 'DatoCmsFeaturedStoryTag') {
 			const anchor = createAnchor(detail.tag.tag)
 			headings.push({
 				heading: `${detail.tag.tag}s`,
 				anchor: `${anchor}s`,
 			})
-		} else if (detail.__typename === 'search') {
-			const anchor = createAnchor(detail.searchHeading)
-			headings.push({ heading: detail.searchHeading, anchor })
+		} else if (
+			detail.__typename === 'DatoCmsHeading' &&
+			detail.headingLevel === 'Level 2 (will be included in sidebar)'
+		) {
+			const anchor = createAnchor(detail.heading)
+			headings.push({ heading: detail.heading, anchor })
 		} else if (detail.__typename === 'DatoCmsImageSectionHeader') {
 			const anchor = createAnchor(detail.header)
 			headings.push({ heading: detail.header, anchor })
+		} else if (detail.__typename === 'DatoCmsTable') {
+			const anchor = createAnchor(detail.tableHeading)
+			headings.push({ heading: detail.tableHeading, anchor })
 		} else if (detail.__typename === 'DatoCmsGrantAbstract') {
 			const anchor = createAnchor('Grantee Abstract')
 			headings.push({ heading: 'Grantee Abstract', anchor })
+		} else if (detail.__typename === 'search') {
+			const anchor = createAnchor(detail.searchHeading)
+			headings.push({ heading: detail.searchHeading, anchor })
+		} else if (detail.__typename === 'stateFactCategory') {
+			headings.push({ heading: detail.display, anchor: detail.anchor })
 		}
 		return headings
 	})

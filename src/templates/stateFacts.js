@@ -4,7 +4,7 @@ import { css } from '@emotion/react'
 
 import Layout from '../components/Layout'
 import HeroFacts from '../components/Hero/HeroFacts'
-import NavigationSideStateFacts from '../components/Navigation/NavigationSideStateFacts'
+import NavigationSide from '../components/Navigation/NavigationSide'
 import FactsWrapper from '../components/StateFacts/FactsWrapper'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 
@@ -49,6 +49,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 	}
 	stateFacts.facts = [
 		{
+			__typename: 'stateFactCategory',
 			display: 'Crisis lines and 988 implementation',
 			anchor: 'crisis-lines-and-988-implementation',
 			facts: [
@@ -76,6 +77,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			],
 		},
 		{
+			__typename: 'stateFactCategory',
 			display: 'Mental health parity',
 			anchor: 'mental-health-parity',
 			facts: [
@@ -94,6 +96,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			],
 		},
 		{
+			__typename: 'stateFactCategory',
 			display: 'K – 12 school suicide prevention',
 			anchor: 'k-12-school-suicide-prevention',
 			facts: [
@@ -150,6 +153,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			],
 		},
 		{
+			__typename: 'stateFactCategory',
 			display:
 				'Health professional training in suicide assessment, treatment and management',
 			anchor: 'health-professional-training',
@@ -185,6 +189,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			],
 		},
 		{
+			__typename: 'stateFactCategory',
 			display: 'Conversion therapy bans',
 			anchor: 'conversion-therapy-bans',
 			facts: [
@@ -213,6 +218,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 		},
 
 		{
+			__typename: 'stateFactCategory',
 			display: 'University and college campus suicide prevention',
 			anchor: 'university-and-college',
 			facts: [
@@ -239,6 +245,12 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			],
 		},
 	]
+
+	const stateFactHeadingsForNav = {
+		slug: `facts/${stateFacts.slug}`,
+		details: stateFacts.facts,
+	}
+
 	useEffect(() => {
 		setFactsTop(
 			document.getElementById('factsContainer').getBoundingClientRect()
@@ -258,11 +270,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			<div id="factsContainer">
 				<HeroFacts stateFacts={stateFacts}></HeroFacts>
 			</div>
-			<NavigationSideStateFacts
-				facts={stateFacts.facts}
-				slug={stateFacts.slug}
-				topStart={factsTop}
-			></NavigationSideStateFacts>
+			<NavigationSide data={stateFactHeadingsForNav}></NavigationSide>
 			<FactsWrapper stateFacts={stateFacts}></FactsWrapper>
 			<CarouselChapterContainer
 				carouselCSS={carouselCSS}
@@ -276,6 +284,7 @@ export default StateFacts
 export const query = graphql`
 	query ($slug: String) {
 		stateFacts: datoCmsStateFact(slug: { eq: $slug }) {
+			__typename
 			stateName
 			slug
 			seoMetaTags {
@@ -283,6 +292,7 @@ export const query = graphql`
 			}
 			meta {
 				publishedAt
+				updatedAt(formatString: "MMMM DD, YYYY")
 			}
 			stateFactSheetImage {
 				url

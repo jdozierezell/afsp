@@ -8,7 +8,6 @@ import FactsListContainer from '../components/StateFacts/FactsListContainer'
 import { styles } from '../css/css'
 
 const StateFacts = ({ data: { stateFactsPage, stateFacts } }) => {
-	console.log(stateFactsPage)
 	let metaImage,
 		metaDescription = ''
 	stateFactsPage.seoMetaTags.tags.forEach(tag => {

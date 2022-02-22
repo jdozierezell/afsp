@@ -95,7 +95,7 @@ const ContentFacts = ({ state, facts }) => {
 					width: ${width};
 				`}
 			>
-				<h2 css={sectionHeadingCSS}>Legislation in {state}</h2>
+				<h2 css={sectionHeadingCSS}>{state} laws</h2>
 				<h4>Key:</h4>
 				<ul css={keyCSS}>
 					<li>
