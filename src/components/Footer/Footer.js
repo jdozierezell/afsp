@@ -39,8 +39,8 @@ const logoLegalCSS = css`
 	/* justify-items: center; */
 	@media (min-width: ${styles.screens.footer}px) {
 		display: grid;
-		grid-gap: 0 48px;
-		grid-template-columns: auto auto 260px 320px;
+		grid-gap: 0 64px;
+		grid-template-columns: auto auto 260px 380px;
 	}
 `
 

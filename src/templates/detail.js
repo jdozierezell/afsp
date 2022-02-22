@@ -213,10 +213,7 @@ export const query = graphql`
 					id
 					hideHeader
 					table
-<<<<<<< HEAD
-=======
 					tableHeader
->>>>>>> stateFacts
 				}
 				... on DatoCmsTweet {
 					__typename

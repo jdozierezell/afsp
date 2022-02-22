@@ -79,8 +79,8 @@ const NavigationSide = ({
 			const anchor = createAnchor(detail.header)
 			headings.push({ heading: detail.header, anchor })
 		} else if (detail.__typename === 'DatoCmsTable') {
-			const anchor = createAnchor(detail.tableHeading)
-			headings.push({ heading: detail.tableHeading, anchor })
+			const anchor = createAnchor(detail.tableHeader)
+			headings.push({ heading: detail.tableHeader, anchor })
 		} else if (detail.__typename === 'DatoCmsGrantAbstract') {
 			const anchor = createAnchor('Grantee Abstract')
 			headings.push({ heading: 'Grantee Abstract', anchor })

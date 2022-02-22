@@ -97,6 +97,7 @@ export const query = graphql`
 				...GatsbyDatoCmsSeoMetaTags
 			}
 			publicationDate(formatString: "D MMM YYYY")
+			hidePublicationDate
 			author {
 				authorName
 				slug
