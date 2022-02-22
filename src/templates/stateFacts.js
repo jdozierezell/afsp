@@ -292,6 +292,7 @@ export const query = graphql`
 			}
 			meta {
 				publishedAt
+				updatedAt(formatString: "MMMM DD, YYYY")
 			}
 			stateFactSheetImage {
 				url

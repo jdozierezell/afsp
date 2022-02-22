@@ -24,9 +24,6 @@ const factsWrapperCSS = css`
 		width: calc(100vw - 575px);
 	}
 `
-const stateFactsDownloadCSS = css`
-	width: 100%;
-`
 
 const cta = {
 	__typename: 'DatoCmsCtaWithDescription',
@@ -48,19 +45,22 @@ const ContentFacts = ({ stateFacts }) => {
 					alt={stateFacts.stateFactSheetImage.alt}
 					css={css`
 						border: ${styles.scale.px5} solid ${styles.colors.white};
+						max-width: 623px;
 					`}
 				></GatsbyImage>
 				<a
 					className="secondary-button"
 					href={stateFacts.stateFactSheetUrl}
-					css={stateFactsDownloadCSS}
 				>
-					Download Fact Sheet
+					Download fact sheet
 				</a>
 			</div>
 			{stateFacts.initiativesAndPlans && (
 				<div css={initiativesAndPlansCSS}>
-					<h2>Plans and Initiatives</h2>
+					<h2>
+						{stateFacts.stateName} suicide prevention plans and
+						initiatives
+					</h2>
 					<div
 						dangerouslySetInnerHTML={{
 							__html: stateFacts.initiativesAndPlans,

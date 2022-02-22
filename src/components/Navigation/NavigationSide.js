@@ -55,7 +55,6 @@ const NavigationSide = ({
 		})
 	}
 	data.details.map(detail => {
-		console.log(detail)
 		if (detail.__typename === 'DatoCmsCardContainer') {
 			const anchor = createAnchor(detail.cardContainerHeading)
 			headings.push({ heading: detail.cardContainerHeading, anchor })

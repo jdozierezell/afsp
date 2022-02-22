@@ -43,7 +43,7 @@ const HeroFacts = ({ stateFacts }) => {
 		<div css={solidFactsCSS}>
 			<div css={stateCSS}>
 				<h1>{`${stateFacts.stateName} State Facts`}</h1>
-				<h4>{`Learn more about suicide and the most up-to-date, local legislative efforts to prevent it in ${stateFacts.stateName}.`}</h4>
+				<h4>{`Learn more about suicide and prevention efforts in ${stateFacts.stateName}, including a list of laws enacted in AFSP's top priority areas (updated as of ${stateFacts.meta.updatedAt}).`}</h4>
 			</div>
 		</div>
 	)

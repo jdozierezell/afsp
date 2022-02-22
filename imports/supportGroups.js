@@ -6,14 +6,6 @@ const fs = require('fs')
 
 const client = new SiteClient('c59da171a82e4feb314339a6e4cc24')
 
-// client.itemTypes
-// 	.all()
-// 	.then(models =>
-// 		models.forEach(model => console.log(`${model.name} - ${model.id}`))
-// 	)
-
-// client.fields.all('203375').then(fields => console.log(fields)) // redirect model
-
 const data = []
 fs.createReadStream('support-group-renewal-form_entries_4-4-20-missing.csv')
 	.pipe(csv())
@@ -21,7 +13,6 @@ fs.createReadStream('support-group-renewal-form_entries_4-4-20-missing.csv')
 		data.push(row)
 	})
 	.on('end', () => {
-		console.log('CSV file successfully processed')
 		data.forEach((row, index) => {
 			const supportGroupName = row['Support Group Name']
 			const random = Math.floor(Math.random() * 989 + 10)
