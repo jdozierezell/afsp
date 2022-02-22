@@ -37,9 +37,6 @@ const stateCSS = css`
 		line-height: ${styles.scale.px24};
 	}
 `
-const stateFactsDownloadCSS = css`
-	width: 100%;
-`
 
 const HeroFacts = ({ stateFacts }) => {
 	return (
@@ -47,22 +44,6 @@ const HeroFacts = ({ stateFacts }) => {
 			<div css={stateCSS}>
 				<h1>{`${stateFacts.stateName} State Facts`}</h1>
 				<h4>{`Learn more about suicide and the most up-to-date, local legislative efforts to prevent it in ${stateFacts.stateName}.`}</h4>
-			</div>
-			<div>
-				<GatsbyImage
-					image={stateFacts.stateFactSheetImage.gatsbyImageData}
-					alt={stateFacts.stateFactSheetImage.alt}
-					css={css`
-						border: ${styles.scale.px5} solid ${styles.colors.white};
-					`}
-				></GatsbyImage>
-				<a
-					className="secondary-button"
-					href={stateFacts.stateFactSheetUrl}
-					css={stateFactsDownloadCSS}
-				>
-					Download Fact Sheet
-				</a>
 			</div>
 		</div>
 	)

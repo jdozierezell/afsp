@@ -1,5 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/react'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import CTAContainer from '../CTAs/CTAContainer'
 
@@ -23,6 +24,9 @@ const factsWrapperCSS = css`
 		width: calc(100vw - 575px);
 	}
 `
+const stateFactsDownloadCSS = css`
+	width: 100%;
+`
 
 const cta = {
 	__typename: 'DatoCmsCtaWithDescription',
@@ -38,6 +42,22 @@ const cta = {
 const ContentFacts = ({ stateFacts }) => {
 	return (
 		<section css={factsWrapperCSS}>
+			<div>
+				<GatsbyImage
+					image={stateFacts.stateFactSheetImage.gatsbyImageData}
+					alt={stateFacts.stateFactSheetImage.alt}
+					css={css`
+						border: ${styles.scale.px5} solid ${styles.colors.white};
+					`}
+				></GatsbyImage>
+				<a
+					className="secondary-button"
+					href={stateFacts.stateFactSheetUrl}
+					css={stateFactsDownloadCSS}
+				>
+					Download Fact Sheet
+				</a>
+			</div>
 			{stateFacts.initiativesAndPlans && (
 				<div css={initiativesAndPlansCSS}>
 					<h2>Plans and Initiatives</h2>
@@ -48,11 +68,11 @@ const ContentFacts = ({ stateFacts }) => {
 					></div>
 				</div>
 			)}
-			<CTAContainer cta={cta} />
 			<Facts
 				state={stateFacts.stateName}
 				facts={stateFacts.facts}
 			></Facts>
+			<CTAContainer cta={cta} />
 		</section>
 	)
 }
