@@ -3,16 +3,17 @@ import { css } from '@emotion/react'
 
 import { styles } from '../../css/css'
 
-import Content from './Content'
 import CardContainer from '../Cards/CardContainer'
-import ContentImage from './ContentImage'
 import CarouselDetailContainer from '../Carousels/CarouselDetailContainer'
-import CarouselResourceContainer from '../Carousels/CarouselResourceContainer'
-import FeaturedResourcesContainer from '../FeaturedResources/FeaturedResourcesContainer'
 import ContentAudio from './ContentAudio'
-import ContentHeading from './ContentHeading'
+import Content from './Content'
 import ContentEmbed from './ContentEmbed'
+import ContentImage from './ContentImage'
+import CarouselResourceContainer from '../Carousels/CarouselResourceContainer'
+import ContentHeading from './ContentHeading'
+import ContentGrid from './ContentGrid'
 import ContentTweet from './ContentTweet'
+import FeaturedResourcesContainer from '../FeaturedResources/FeaturedResourcesContainer'
 
 const storyContentCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24};
@@ -70,14 +71,18 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 				} else {
 					adjacent = 0
 				}
-				if (detail.__typename === 'DatoCmsContent') {
+				if (detail.__typename === 'DatoCmsActionButton') {
 					return (
-						<Content
+						<a
 							key={index}
-							contentHeading={detail.contentHeading}
-							contentBody={detail.contentBody}
-						/>
+							className="secondary-button"
+							href={detail.buttonLink}
+						>
+							{detail.buttonText}
+						</a>
 					)
+				} else if (detail.__typename === 'DatoCmsAudio') {
+					return <ContentAudio key={index} audio={detail.audio} />
 				} else if (detail.__typename === 'DatoCmsCardContainer') {
 					return (
 						<CardContainer
@@ -96,12 +101,12 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 							`}
 						/>
 					)
-				} else if (detail.__typename === 'DatoCmsImage') {
+				} else if (detail.__typename === 'DatoCmsContent') {
 					return (
-						<ContentImage
+						<Content
 							key={index}
-							image={detail.images}
-							imagesToShow={detail.imagesToShow}
+							contentHeading={detail.contentHeading}
+							contentBody={detail.contentBody}
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsDetailSquare') {
@@ -118,6 +123,31 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 								content={detail.detail}
 							/>
 						</div>
+					)
+				} else if (detail.__typename === 'DatoCmsEmbed') {
+					return (
+						<ContentEmbed
+							key={index}
+							embedCode={detail.embedCode}
+						/>
+					)
+				} else if (detail.__typename === 'DatoCmsFeaturedStoryTag') {
+					return null
+				} else if (detail.__typename === 'DatoCmsHeading') {
+					return (
+						<ContentHeading
+							key={index}
+							heading={detail.heading}
+							level={detail.headingLevel}
+						/>
+					)
+				} else if (detail.__typename === 'DatoCmsImage') {
+					return (
+						<ContentImage
+							key={index}
+							image={detail.images}
+							imagesToShow={detail.imagesToShow}
+						/>
 					)
 				} else if (detail.__typename === 'DatoCmsResourceList') {
 					if (detail.displayAsCarousel) {
@@ -156,21 +186,14 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 							/>
 						)
 					}
-				} else if (detail.__typename === 'DatoCmsAudio') {
-					return <ContentAudio key={index} audio={detail.audio} />
-				} else if (detail.__typename === 'DatoCmsHeading') {
+				} else if (detail.__typename === 'DatoCmsTable') {
+					const table = JSON.parse(detail.table)
 					return (
-						<ContentHeading
+						<ContentGrid
 							key={index}
-							heading={detail.heading}
-							level={detail.headingLevel}
-						/>
-					)
-				} else if (detail.__typename === 'DatoCmsEmbed') {
-					return (
-						<ContentEmbed
-							key={index}
-							embedCode={detail.embedCode}
+							table={table}
+							hideHeader={detail.hideHeader}
+							tableHeader={detail.tableHeader}
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsTweet') {
@@ -180,18 +203,6 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 							tweet={detail.tweet}
 							navigation={navigation}
 						/>
-					)
-				} else if (detail.__typename === 'DatoCmsFeaturedStoryTag') {
-					return null
-				} else if (detail.__typename === 'DatoCmsActionButton') {
-					return (
-						<a
-							key={index}
-							className="secondary-button"
-							href={detail.buttonLink}
-						>
-							{detail.buttonText}
-						</a>
 					)
 				}
 				return ''

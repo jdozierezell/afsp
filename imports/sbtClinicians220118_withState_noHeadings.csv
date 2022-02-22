@@ -1,0 +1,1301 @@
+﻿a,name,address,addressFormatted,state,phone,email,telehealth,specialties,"TRIM(SUBSTITUTE(SUBSTITUTE(C2,CHAR(13),""""),CHAR(10),"", ""))",,,,,,,,
+,"Abby Drinen, BSW","2187 N. Vicky St, Flagstaff, AZ 86004","2187 N. Vicky St, Flagstaff, AZ 86004",AZ,916-714-5303,adrinen@tgcaz.org,,Case Management,,,,,,,,,
+,"Ann Iverson, M.A., LAC","2187 N. Vickey St
+  Flagstaff, AZ 86004","2187 N. Vickey St, Flagstaff, AZ 86004",AZ,928-714-6444,aiverson@tgcaz.org,,"Adult, Trauma",,,,,,,,,
+,"Bennett Edgerly, PhD, LPC","2920 N 4th Street, Flagstaff AZ 86004","2920 N 4th Street, Flagstaff AZ 86004",AZ,928-522-9400,bedgerly@nchaz.org,,"CBT,Mindfulness, Adolescent/Adult",,,,,,,,,
+,"Brenda Manthei, M.S., M.A., LAC, NCC","2717 N. Steves Blvd
+  Suite #11
+  Flagstaff, AZ 86004","2717 N. Steves Blvd, Suite #11, Flagstaff, AZ 86004",AZ,928-526-2968,bmanthei@nacainc.org,,"Adult, Child/Adolescent, Family/Couple, EFT, CBT, EMDR",,,,,,,,,
+,"Brigitte Steinken, M.A., L.A.C, R-DMT","2532 N 4th St #506, Flagstaff AZ 86004","2532 N 4th St #506, Flagstaff AZ 86004",AZ,928-233-2204,bsteinken@northlandfamily.org,,"Children/Adolescents, Family, Trauma",,,,,,,,,
+,"Caitlin Hegwood, BHT","2187 N Vickey, St, Flagstaff AZ 86004","2187 N Vickey, St, Flagstaff AZ 86004",AZ,928-714-6487,chegwood@ygcaz.org,,Addiction,,,,,,,,,
+,"Chris Gunn, PhD","222 N. Verde St, Flagstaff AZ 86001","222 N. Verde St, Flagstaff AZ 86001",AZ,928-779-5118,csgunn@earthlink.net,,"Adolescents, Couples, Families",,,,,,,,,
+,"Corrina Thinn, LMSW","Hopi Health Care Center
+  P.O. Box 4000
+  Polacca, AZ 86042","Hopi Health Care Center, P.O. Box 4000, Polacca, AZ 86042",AZ,928-737-6188,corrina.thinn@ihs.gov,,"Crisis Intervention, Critical Incident Management",,,,,,,,,
+,"Dazhani E. Scott, M.A., L.A.C, C.R.C","1500 E Ecdar Ave. #26, Flagstaff AZ 86004","1500 E Ecdar Ave. #26, Flagstaff AZ 86004",AZ,928-773-145 ext. 264,dscott@nacainc.org,,"Adults, Career, Disabilities, Subtance Abuse, Native Americamn Populations",,,,,,,,,
+,"Erica Upshaw-Crank, MS, LAC","1001 E. Sawmill Rd, Flagstaff, AZ 86001","1001 E. Sawmill Rd, Flagstaff, AZ 86001",AZ,928-226-5444,eupshawcrank@courts.az.gov,,"Adolescents, Children, Juvenile probationers & their families",,,,,,,,,
+,"Eve Coffman, LPCC/LPC","2187 N Vickey St
+  Flagstaff, AZ 86004","2187 N Vickey St, Flagstaff, AZ 86004",AZ,928-714-6459,ecoffman@tgcaz.org,,Adult,,,,,,,,,
+,"Kae Rehma, LPC","549 S. Navajo Dr, Page, AZ 86040","549 S. Navajo Dr, Page, AZ 86040",AZ,928-679-8132,krehma@courts.az.gov,,Adolescents,,,,,,,,,
+,"Karen Custer Thurston, M.S.","11220 N Desert View Lane, Flagstaff, AZ 86004","11220 N Desert View Lane, Flagstaff, AZ 86004",AZ,828-814-3888,gypsykct@yahoo.com,,,,,,,,,,,
+,"Laura Clark, M.S., LAC","2187 N. Vickey St
+  Flagstaff, AZ 86004","2187 N. Vickey St, Flagstaff, AZ 86004",AZ,928-714-6428,lclark@tgcaz.org,,,,,,,,,,,
+,"Lauren Timmermans, MSC, NCC, LAC, CSAT","519 N Leroux
+  Flagstaff, AZ 86001","519 N Leroux, Flagstaff, AZ 86001",AZ,602-617-5655,laurenismytherapist@gmail.com,,"Adult, Child/Adolescent, Family/Couple, Certified Sex Addiction Therapist",,,,,,,,,
+,"Levon Hatathlie MSW, LCSW, PhD(fall 2019)",,,AZ,928-725-9747,levon.hatathlie@ihs.gov,,"Adolescent, Individual, Group, End of Life",,,,,,,,,
+,Marty Cassadore,,,AZ,928-475-1518,marty.cassadore@scatwellness.net,,"All age groups presenting suicidal ideations, self-harm, attempt survivors",,,,,,,,,
+,"Rose Wall, LAC, Masters in Mental Health Counseling","2187 N Vickey St, Flagstaff AZ 86004","2187 N Vickey St, Flagstaff AZ 86004",AZ,928-714-5256,rwall@tgcaz.org,,"Substance abuse, DBT, provides a person-centered focus",,,,,,,,,
+,"Teri Sisulak,MA LAC","2187 N Vickey St, Flagstaff, AZ 86004","2187 N Vickey St, Flagstaff, AZ 86004",AZ,928-714-5327,tsisulak@tgcaz.org,,,,,,,,,,,
+,"Trudy Woodard, M.S., LAC","2100 N. Walgreens
+  Flagstaff, AZ 86001","2100 N. Walgreens, Flagstaff, AZ 86001",AZ,928-233-2204,twoodard@northlandfamily.org,,"Trauma, EMDR",,,,,,,,,
+,"Veronica Duncan, LCSW-R",,,AZ,928-200-7739,veronica.duncan@va.gov,,"Veterans, Military Families, Native Americans, Adults",,,,,,,,,
+,"Amy Muse, LPC, MS","10515 West Markham St, Suite B1, Little Rock, AR 72005","10515 West Markham St, Suite B1, Little Rock, AR 72005",AR,501-823-0629,ammusenyder@gmail.com,,"Adults, couples",,,,,,,,,
+,"Angela Campagna, LCSW, MSW",,,AR,501-514-0417,Face2FaceTherapyUSA@yahoo.com,,"Adults, adolescents, children, family",,,,,,,,,
+,"Angela K Etchison, MS, LPE-I","8 Shackleford Plaza Rd Ste 201, Little Rock, AR 72211","8 Shackleford Plaza Rd Ste 201, Little Rock, AR 72211",AR,501-868-4900,angela@aboundpsych.com,,"Children, teens, adults",,,,,,,,,
+,"April McSpadden, MS, LPC","224 Shakerag Rd, Clinton, AR 72031","224 Shakerag Rd, Clinton, AR 72031",AR,501-745-8001,april@conwaycwc.com,"Phone
+ Virtual (Zoom, Skype, etc.)","Children, seniors",,,,,,,,,
+,"Beth Petz, LCSW, ACSW","11001 Charlotte, Maselvale, AR 72103","11001 Charlotte, Maselvale, AR 72103",AR,501-213-1395,beth.sgsg@gmail.com,,"Couples, foster parents",,,,,,,,,
+,"Carole Baxter, MS","1201 River Road, North Little Rock, AR 72114","1201 River Road, North Little Rock, AR 72114",AR,501-614-4900,cbaxter@rcofa.org,,,,,,,,,,,
+,"Catrina Horn, LMSW","16609 Cantrell Rd Ste 14, Little Rock, AR 72223","16609 Cantrell Rd Ste 14, Little Rock, AR 72223",AR,501-825-0189,catray99@yahoo.com,,"Adolescents, children, couples",,,,,,,,,
+,"Charles Cole, LPC","855 S Germano Ln, Conway, AR 72034","855 S Germano Ln, Conway, AR 72034",AR,501-358-6606q,charles@conwayCPS.com,,"Adult, young adult",,,,,,,,,
+,"Charmaine Beasley, LPC","2504 McCain Blvd Ste 118, North Little Rock, AR 72116","2504 McCain Blvd Ste 118, North Little Rock, AR 72116",AR,501-812-6655,charmaine.beasley@pcmc-ar.com,,"Children, adults, adolescents",,,,,,,,,
+,"Chasity Jiles, LCSW, LADAC, ADC","8 Shackleford Plz. Ste. 316 Little Rock, AR 72211","8 Shackleford Plz. Ste. 316 Little Rock, AR 72211",AR,501-222-7330,info@prospercounselingservices.com,"Phone, Virtual ",www.prospercounselingservices.com ,,,,,,,,,
+,"Chelsie Scarberry, LCSW","201 S. Rose St, Sheridan, AR 72150","201 S. Rose St, Sheridan, AR 72150",AR,870-917-2171,chelsie.scarberry@uhsinc.com,,"Adolescents, children",,,,,,,,,
+,"Christina Couch, PsyD","2621 W Main St Suite 6, Russellville, AR 72801","2621 W Main St Suite 6, Russellville, AR 72801",AR,479-219-5041,psychologycenterrsvl@aol.com,,"Adults, women, LGBTQ",,,,,,,,,
+,"Craig Jones, LCSW","4301 W Markham St
+ University of Arkansas for Medical Sciences, Psychiatric Research Institute
+ Little Rock, AR 72205","4301 W Markham St, University of Arkansas for Medical Sciences, Psychiatric Research Institute, Little Rock, AR 72205",AR,501-526-8722,csjones@uams.edu,,"Adults, couples",,,,,,,,,
+,"Dana Ingram, MA, LPC, NCC","31 School Drive Suite B, Melbourne, AR 72556","31 School Drive Suite B, Melbourne, AR 72556",AR,870-291-1963,danaingramlpc@gmail.com,,,,,,,,,,,
+,"David G. Bradshaw, LCSW","14913 Cooper Orbit Rd, Little Rock, AR 72223","14913 Cooper Orbit Rd, Little Rock, AR 72223",AR,,dbradshaw@rcofa.org,,Drug addiction,,,,,,,,,
+,"Donna Hathcock, LPC","10025 W Markham, Little Rock, AR 72205","10025 W Markham, Little Rock, AR 72205",AR,501-663-5463,donnah@lhsoutheast.com,,All age groups,,,,,,,,,
+,"Doris Hudson, LCSW","1000 E Main, Lamar, AR 72846","1000 E Main, Lamar, AR 72846",AR,479-733-0400,doris.hudson@pfh.com,,"School based, family therapy",,,,,,,,,
+,"Elizabeth Gibson, LPE-I","3604 Central Ave Suite C, Hot Springs, AR 71913","3604 Central Ave Suite C, Hot Springs, AR 71913",AR,501-623-9220,elizabethg@lhsoutheast.com,,"Children, adolescents, adults, families",,,,,,,,,
+,"Faneisha Mosley, LPC","10025 West Markham, Little Rock, AR 72205","10025 West Markham, Little Rock, AR 72205",AR,501-663-5473 ext. 415,faneisham@lhsoutheast.com,,Everyone except small children,,,,,,,,,
+,"Glenda Eversole, LCSW","500 E Mountain Springs Rd, Cabot, AR, 72023","500 E Mountain Springs Rd, Cabot, AR, 72023",AR,501-286-6118,growinghopecounseling@gmail.com,,"Adults, couples",,,,,,,,,
+,"Greta Sweesy, LCSW","301 Hale, Prescott, AR 71857","301 Hale, Prescott, AR 71857",AR,870-703-5740,greta@gretadsweenylcsw.com,,"Life changes, adults, older adults, LGBTQA",,,,,,,,,
+,"Jan Dean, PhD","210 S Pulaski County Ln, Little Rock, AR 72202","210 S Pulaski County Ln, Little Rock, AR 72202",AR,501-240-8869,drjandean@hotmail.com,,"Adolescents, adults",,,,,,,,,
+,"Jennifer Heard, LPC","203B Westport Dr, Cabot, AR 72023","203B Westport Dr, Cabot, AR 72023",AR,501-843-9233,jennifer.heard@whsinc.com,,"Children, adolescents, adults",,,,,,,,,
+,"Jennifer Henry, LPC, LMFT","1304 Cherry Street, Van Burden, AR 72936","1304 Cherry Street, Van Burden, AR 72936",AR,479-222-1883,jhenry@theforgingplace.com,,trauma,,,,,,,,,
+,Jennifer Montgomery,"1340 S Waldron, Fort Smith, AR 72903","1340 S Waldron, Fort Smith, AR 72903",AR,479-926-9139,jmont1022@gmail.com,,"Adolescents, children, trauma, adults",,,,,,,,,
+,"Jessica Henry, LCSW","7816 Hwy 107, Sherwood, AR 72120","7816 Hwy 107, Sherwood, AR 72120",AR,501-392-5285,jhenryLCSW@gmail.com,,"Couples, adolescents, children, adults",,,,,,,,,
+,"Jillian Carlan, LCSW","2504 McCain Blv, North Little Rock, AR 72116","2504 McCain Blv, North Little Rock, AR 72116",AR,501-781-2230,jillian@chenaltherapy.com,,"Children, adolescents, families, couples, adults",,,,,,,,,
+,"JoBeth Casados, LCSW","4701 Fairway Avenue, North Little Rock, AR 72116","4701 Fairway Avenue, North Little Rock, AR 72116",AR,501-771-8261,jcasados2@uams.edu,,"Adolescents, children",,,,,,,,,
+,"Jodi Pearson, MA, LPC","2215 East Oak St, Conway, AR 72035","2215 East Oak St, Conway, AR 72035",AR,501-336-0511,jodi.pearson@uhsinc.com,,"Children, adolescents, adults",,,,,,,,,
+,"Juliana J Kniep, LMSW","112 Pearson St, Benton, AR 72015","112 Pearson St, Benton, AR 72015",AR,501-315-4224,jkniep@cciar.org,,"Adolescents, children, family",,,,,,,,,
+,Julie R Moore,"1340 S Waldron, Fort Smith, AR 72903","1340 S Waldron, Fort Smith, AR 72903",AR,479-783-5353,juliemoore0309@gmail.com,,"Children, adolescents",,,,,,,,,
+,"Karla Gentry, LPC","3604 Central Ave Suite C, Hot Springs, AR 71913","3604 Central Ave Suite C, Hot Springs, AR 71913",AR,501-623-9223,karlag@lhsoutheast.com,,"Family, school aged, individuals, LGBT",,,,,,,,,
+,"Kasey Jones, LCSW","100 E. University MSC 9425, Magnolia, AR 71753.","100 E. University MSC 9425, Magnolia, AR 71753.",AR,870-235-4911,,,"Adults, individual",,,,,,,,,
+,"Kathy Brownlee, MS, LPC","3604 Central Ave Suite C, Hot Springs, AR 71913","3604 Central Ave Suite C, Hot Springs, AR 71913",AR,501-623-9220,kathyb@lhsoutheast.com,,"Children, adolescents, adults",,,,,,,,,
+,"Kimberlee Sartain, MNSc, APRN, PMHNP-BC","2001 Club Manor Dr, Maumelle, AR, 72113","2001 Club Manor Dr, Maumelle, AR, 72113",AR,501-687-0488,,,All age groups,,,,,,,,,
+,"Ladeana Bell, LPE-I","1501 N. University Ave., Suite 700 1501 N. University Ave., Suite 700
+ Little Rock, AR 72207","1501 N. University Ave., Suite 700 1501 N. University Ave., Suite 700, Little Rock, AR 72207",AR,501-940-6135,ladeanaautry@gmailcom,,Adults,,,,,,,,,
+,"Laura Huff, LMSW","100 Rivendell Dr, Benton, AR 72019","100 Rivendell Dr, Benton, AR 72019",AR,501-316-1255 ext 320,laura.huff@uhsinc.com,,,,,,,,,,,
+,"Loretta Cochran, PhD","1818 N Taylor 34, Little Rock, AR 72207","1818 N Taylor 34, Little Rock, AR 72207",AR,479-567-9037,lfcochran@gmail.com,,"Groups, individuals, adults",,,,,,,,,
+,"Mary Linda Davis, LMSW, RN, LCSW","2001 Club Manor Dr, Maumelle, AR, 72113","2001 Club Manor Dr, Maumelle, AR, 72113",AR,501-687-0488,l.davis12@comcast.net,,"Couples, individuals, families, adults",,,,,,,,,
+,"Mary M Ekdahl, PhD","4004 McCain Blvd Ste 203, North Little Rock, AR 72116","4004 McCain Blvd Ste 203, North Little Rock, AR 72116",AR,501-812-4268,mekdahl@ourfamiliesfirst.com,,"Child, adolescents, parents",,,,,,,,,
+,"Megan Colclasure, LCSW","500 E Mountain Springs Rd, Cabot, AR, 72023","500 E Mountain Springs Rd, Cabot, AR, 72023",AR,501-286-6118,megancloclasure3@gmail.com,,"Adolescents, adults, families, couples",,,,,,,,,
+,"Melissa Baker, MS, LPC","3302 E. Moore Ave, Seary, AR, 72143","3302 E. Moore Ave, Seary, AR, 72143",AR,501-268-4181,melissa.baker@pfh.org,,"Adolescents, adults, individual, group, counseling",,,,,,,,,
+,"Molly Telford, LCSW",,,AR,501-791-6686,mollytelford@yahoo.com,,"PTSD, substance abuse",,,,,,,,,
+,"Nicki S Kinley, LCSW","2213 N Reynolds Rd, Bryant, AR 72022","2213 N Reynolds Rd, Bryant, AR 72022",AR,501-847-0081,nicki.kinley@UHSinc.com,,"Marriage, family, early childhood, children, adolescents",,,,,,,,,
+,"Pamela J Randolph, MPA, CRS","4815 West Markham St Suite 33, Little Rock, AR 72205","4815 West Markham St Suite 33, Little Rock, AR 72205",AR,501-682-6990,pamela.randolph@arkansas.gov,,"Family therapy, youth",,,,,,,,,
+,"Patricia Glascock, EdS, LPC, NCC","P.O. Box 795, State University, AR 72467","P.O. Box 795, State University, AR 72467",AR,870-972-2318,pglascock@astate.edu,,College students,,,,,,,,,
+,"Robin Jackson, LCSW","2126 North First Street, Jacksonville, AR 72076","2126 North First Street, Jacksonville, AR 72076",AR,501-982-5000,Robin0074@sbcglobal.net,,,,,,,,,,,
+,"Rose Brand, LCSW","6601 W 12th st, Little Rock, AR 72204","6601 W 12th st, Little Rock, AR 72204",AR,501-666-4949 ext 3103,rbreand@cfyf.org,,"Children, adolescents, family",,,,,,,,,
+,"Ryan Owens Sorey, LCSW","510 W Church St, Sheridan, AR 72150","510 W Church St, Sheridan, AR 72150",AR,870-942-9861,ryansorey@sheridanschools.org,,"Children, adolescents",,,,,,,,,
+,"Sandra Billie, PhD","3604 Central Ave Suite C, Hot Springs, AR 71913","3604 Central Ave Suite C, Hot Springs, AR 71913",AR,501-623-9220,sandra_billie@yahoo.com,,"Children, adolescents",,,,,,,,,
+,"Silvia Fernandez, LAC","10025 W Markham, Little Rock, AR, 72205","10025 W Markham, Little Rock, AR, 72205",AR,501-663-5473,silviaf@lhsoutheast.com,,"Children, couples, adolescents, bilingual (spanish)",,,,,,,,,
+,"Stephanie Johnston, LCSW","14710 Cantull Rd Suite A7, Little Rock, AR 72223","14710 Cantull Rd Suite A7, Little Rock, AR 72223",AR,501-902-5250,stephanie@thestudioLR.space,,,,,,,,,,,
+,"The Legacy for Children and Families, LLC","190 Jan Drive #10, Sherwood, AR 72124","190 Jan Drive #10, Sherwood, AR 72124",AR,501-590-5121,,,Childhood behavioral,,,,,,,,,
+,"Tisha Jenkins, LCSW",,,AR,501-786-9308,tisharjenkins@gmail.com,,"Adults, geriatrics",,,,,,,,,
+,"William Sweetwood, MRC, LPC","503 SE Lindsey, Hoxie, AR 72443","503 SE Lindsey, Hoxie, AR 72443",AR,870-886-1333,williamsweetwood@gmail.com,,"Substance abuse, trauma",,,,,,,,,
+,"Amy Sargent, LMFT","1690 Woodside Road, Suite 210
+  Redwood City, CA 94601","1690 Woodside Road, Suite 210, Redwood City, CA 94601",CA,650-815-9910,Amy@AmySargent.com,,"Families, Adults/Elders, Grief, Abuse, Women’s Issues",,,,,,,,,
+,"Arian Rice O'Day, MA, LMFT","6001 Butler Lane, Suite 201, Scotts Valley ,CA 95066","6001 Butler Lane, Suite 201, Scotts Valley ,CA 95066",CA,510-853-9195,ariana@kairoscw.com,,"Trauma (EMDR, TF-CBT), Codependency, Adults",,,,,,,,,
+,"Beila Krow, MFT","4141 Fairway Dr, Soquel, CA 95073","4141 Fairway Dr, Soquel, CA 95073",CA,831-477-1232,beilakrow@gmail.com,,LGBTQ,,,,,,,,,
+,"Beverly Anderson, LMFT","502 Willis
+  Visalia, CA 93277","502 Willis, Visalia, CA 93277",CA,559-735-9584,visaliapsycho@sbcglobal.net,,"Adolescents/Children, Families, Couples, Abuse",,,,,,,,,
+,"Bryan Ride, PhD","1400 Emelina Ave, Santa Cruz, CA 95060","1400 Emelina Ave, Santa Cruz, CA 95060",CA,831-454-7503,bryan.ride@santacruzcounty.us,,Santa Cruz Behavioral Health Clients only.,,,,,,,,,
+,"Carly Perlman, LMFT","555 Soquel Ave, Suite 335, Santa Cruz, 95062","555 Soquel Ave, Suite 335, Santa Cruz, 95062",CA,831-477-0772,carly.perlman@gmail.com,,"Grief & loss, Depression, Anxiety, Life Transitions",,,,,,,,,
+,"Christina Agda, LCSW","530 E. Tulare Ave
+  Visalia, CA 93291","530 E. Tulare Ave, Visalia, CA 93291",CA,559-623-0986,cagda@tularehhsa.org,,"Adolescents/Children, Adults/Elders",,,,,,,,,
+,"Christine Evans, Ph.D.",,,CA,831-818-4569,christineevansphd@protonmail.com,,"Adults, EMDR, Chronic Illness or Pain, Art Therapy",,,,,,,,,
+,"Cindy Parlin, LCSW-C",,,CA,410-474-9482,cindy9482@hotmail.com,"Phone
+ Text or Chat","Adults, Children and Families",,,,,,,,,
+,"Claudia Arias, LMFT","Tulare Youth Service Bureau
+  327 S. K St.
+  Tulare, CA 93274","Tulare Youth Service Bureau, 327 S. K St., Tulare, CA 93274",CA,559-786-1125,claudia@tysb.org,,"Adolescents/Children, Families, Abuse",,,,,,,,,
+,"Claudia Gonzales, LMFT","3130 W. Main St., Suite C
+  Visalia, CA 93291","3130 W. Main St., Suite C, Visalia, CA 93291",CA,559-737-2115,crgonzo@sbcglobal.net,,"Adolescents/Children, Couples, Women’s Issues, Addiction",,,,,,,,,
+,"Cyndi McDonald, MA; LMFT; LPCC","353 Park Marina Circle
+  Redding, CA 96001","353 Park Marina Circle, Redding, CA 96001",CA,530-941-1835,cyndimcdonald@outlook.com,,Adolescents/Children,,,,,,,,,
+,"Deb McNeil, MS; LMFT","700 E. Blithedale
+  Mill Valley, CA 94941","700 E. Blithedale, Mill Valley, CA 94941",CA,415-328-9038,debmcneil.mft@gmail.com,,"Adolescents/Children, Adults/Elders, Grief, Suicide Bereavement",,,,,,,,,
+,"Deborah Abbott, MA, LMFT",,,CA,831-345-1925,debabbott.lmft@gmail.com,,"LGBTQ+, Aging- End of Life",,,,,,,,,
+,"Deborah Corey, LMFT-Segal Telepsychiatry",,,CA,866-247-4292,deborahcorey@me.com,,"Adults, couples, Adolescents, LGBTQ, ADHD, Depression, Grief/Loss",,,,,,,,,
+,Deborah Valentino Mitchell. LMFT,,,CA,831-325-7641,Dmitchellmft@gmail.com,,"Adolescents, Family",,,,,,,,,
+,"Edwin G. Harris, MA; LMFT","3031 Telegraph Ave.
+  Oakland, CA 94609","3031 Telegraph Ave., Oakland, CA 94609",CA,510-596-8127,edharris@lacheim.org,,"Adolescents/Children, Co-occurring Disorders",,,,,,,,,
+,"Elizabeth Lee, PsyD","501 Mission Street, Suite 2C, Santa Cruz 95060","501 Mission Street, Suite 2C, Santa Cruz 95060",CA,831-459-7301,,,"Adolescent, Trauma, Adults in Crisis",,,,,,,,,
+,"Ellen Garfield, LMFT","6233 Soquel Dr, Ste C, Aptos, CA 95003","6233 Soquel Dr, Ste C, Aptos, CA 95003",CA,831-854-7543,ellen@santacruzcountytherapy.com,,"Children, Teens, Adults, EMDR, LGBTQ+",,,,,,,,,
+,"Frances Raeside, MFT","La Cheim
+  3031 Telegraph Ave.
+  Oakland, CA 94609","La Cheim, 3031 Telegraph Ave., Oakland, CA 94609",CA,510-596-8129,frances@lacheim.org,,,,,,,,,,,
+,"Gail Bengard, MA, LMFT","30 Maple St, Salinas, CA 93901","30 Maple St, Salinas, CA 93901",CA,831-521-1401,gbengard@razzolink.com,,"Adolescents/Children, Couples",,,,,,,,,
+,Hanna Hammerli,,,CA,831-461-4327,hihanna831@gmail.com,,Expressive Arts Therapist,,,,,,,,,
+,"Heather Franks, LMFT","5521 Scotts Valley Dr, Suite 250, Scotts Valley CA 95066","5521 Scotts Valley Dr, Suite 250, Scotts Valley CA 95066",CA,831-435-6316,heather@heatherfrankstherapy.com,,"Couples, Adolescents, Family, Young Adults",,,,,,,,,
+,"Isabel Amancio, LMFT","113 N. Church St., M-9
+  Visalia, CA 93291","113 N. Church St., M-9, Visalia, CA 93291",CA,559-734-9565,isabel_ama@yahoo.com,,"Adolescents/Children, Adults/Elders",,,,,,,,,
+,"Isabel Stenzel, LCSW, MPH","1670 S. Amphlett Blvd.- Suite 300
+  San Mateo, CA 94402","1670 S. Amphlett Blvd.- Suite 300, San Mateo, CA 94402",CA,650-753-4938,istenzel@missionhospice.org,"Phone
+ Virtual (Zoom, Skype, etc.)","Adult, Child/Adolescent, Family/Couple, Grief",,,,,,,,,
+,"Jeanne Courtney, MFT",,,CA,510-516-4662,jeannecourtneymft@gmail.com,,"Co-occurring Disorders, LGBT+",,,,,,,,,
+,"Jill Maze, LCSW","1616 W. Main St.
+  Visalia, CA 93277","1616 W. Main St., Visalia, CA 93277",CA,559-786-5277,jillm@cos.edu,,,,,,,,,,,
+,"JO Romaniello, MS, LMFT",,,CA,831-246-1512,cre-8@connectives.net,,"Adolescents, Military, Couples, Christian Counseling, Anxiety, Dpression, PTSD",,,,,,,,,
+,"Johnny Blackmon, MA; LMFT","1200 S. Woodland Ave., Suite C
+  Visalia, CA 93277","1200 S. Woodland Ave., Suite C, Visalia, CA 93277",CA,559-597-3104,johnny-blackmon@att.net,,"Adolescents/Children, Families, Couples, Addiction",,,,,,,,,
+,Kara Bowman,"5321 Scotss Valley Drive, Suite 109, scotts Valley, CA 95066","5321 Scotss Valley Drive, Suite 109, scotts Valley, CA 95066",CA,831-219-8522,bowmantherapy@gmail.com,,"Certified in Thanatology, Grief Counseling, and Trauma",,,,,,,,,
+,"Kathleen Cromwell, LCSW, CT","2490 W. Shaw, Fresno, CA 93711","2490 W. Shaw, Fresno, CA 93711",CA,559-248-8579,kcromwell@hindshospice.org,,EMDR,,,,,,,,,
+,"Kathy Looper, MA; MFT",,,CA,559-303-3029,kathy@kathylooper.com,,"Grief, Addiction",,,,,,,,,
+,"Keith Britany, LMFT",,,CA,831-566-3728,keithbritanymft@gmail.com,,"Adoloscents, Couples, Divorce",,,,,,,,,
+,"Kimberly DeSerpa, LCSW",,,CA,831-588-7388,kimdeserpa@cruzio.com,,,,,,,,,,,
+,"Leslie Baker, MFT; NCC","Therapy2Thrive
+  4460 Black Ave., Suite G
+  Pleasanton, CA 94566","Therapy2Thrive, 4460 Black Ave., Suite G, Pleasanton, CA 94566",CA,925-426-1575,Leslie@LeslieBakerMFT.com,,"Adolescents/Children, Families, Couples, Adults/Elders",,,,,,,,,
+,"Lisa Lifrak, MA, LMFT","8054 Valencia St, Suite A, CA 95003","8054 Valencia St, Suite A, CA 95003",CA,831-479-1736,llifrak@rocketmail.com,,"Children, Couples, EFT, NLP Certified, TAT",,,,,,,,,
+,"Lizbeth Lerma, LMFT","310 N. Irwin St. #7
+  Handford, CA 93230","310 N. Irwin St. #7, Handford, CA 93230",CA,559-492-9511,lizbethlerma@ymail.com,,Adolescents/Children,,,,,,,,,
+,"Lydia Santiago, PhD","SFGH/CASARC
+  995 Potrero Ave., Bldg 80
+  San Francisco, CA 94110","SFGH/CASARC, 995 Potrero Ave., Bldg 80, San Francisco, CA 94110",CA,415-206-8386,lydia.santiago@ucsf.edu,,"Adolescents/Children, Families",,,,,,,,,
+,"Martha Aguilar, LMFT",,,CA,831-854-7912,martha.aguilar.lmft@gmail.com,,"Adolescents, Young Adults, Bilingual/Bicultural, Spanish-Speaking Households",,,,,,,,,
+,"Martha Hill, LMFT","Tulare Youth Service Bureau
+  327 S. K St.
+  Tulare, CA 93274","Tulare Youth Service Bureau, 327 S. K St., Tulare, CA 93274",CA,559-688-2043,mhill@tysb.org,,"Adolescents/Children, Families, Couples, Grief",,,,,,,,,
+,"Martha Schein, LCSW","2230 W. Sunnyside Ave, Suite 3
+  Visalia, CA 93277","2230 W. Sunnyside Ave, Suite 3, Visalia, CA 93277",CA,559-553-5085,1day.1month@gmail.com,,"Adolescents/Children, Co-occurring Disorders, Abuse",,,,,,,,,
+,"Melissa Anderson, MFT; PhD","925 The Alameda, Suite 15
+  San Jose, CA 95216","925 The Alameda, Suite 15, San Jose, CA 95216",CA,510-459-9669,melissacandersonmft@gmail.com,,"Adults/Elders, Co-occurring Disorders",,,,,,,,,
+,"Melissa Hagan, PhD",,,CA,415-405-3555,mjhagan@sfsu.edu,,"Adolescents/Children, Grief",,,,,,,,,
+,"Michelle Forsyth, LMFT","1055 W. Henderson, #2
+  Porterville, CA 93257","1055 W. Henderson, #2, Porterville, CA 93257",CA,559-788-1200,mforsyth@tularehhsa.org,,Adolescents/Children,,,,,,,,,
+,"Molly Friedman, PsyD",,,CA,831-454-5269,molly.friedman@santacruzcounty.us,,,,,,,,,,,
+,"Myriam Coppens, MA, LMFT","FSA, 104 Walnut Ave, Santa Cruz, CA 95060","FSA, 104 Walnut Ave, Santa Cruz, CA 95060",CA,831-483-9444 ext. 315,coppens95060@yahoo.com,,"Adult, Individuals, Suicide Loss",,,,,,,,,
+,"Nicholas Ross, PhD","1395 41st Ave, Suite E, Capitola, CA 95014","1395 41st Ave, Suite E, Capitola, CA 95014",CA,831-477-7050,,,"Children & Adults, Complicated Grief, Life-Threatening Illnesses, First Responders",,,,,,,,,
+,"Pam Moriarty, Grief Counselor, Educator","555 Soquel Ace, Suite 260C, Santa Cruz CA 95056","555 Soquel Ace, Suite 260C, Santa Cruz CA 95056",CA,831-818-7984,pam@juniperpath.org,,"Grief, Suicide Loss, Meditation, Buddhist Philosophy",,,,,,,,,
+,"Pamela Harder, LCSW","1019 N. Demaree, Suite A
+  Visalia, CA 93291","1019 N. Demaree, Suite A, Visalia, CA 93291",CA,559-284-8555,pah29@sbcglobal.net,,Adolescents/Children,,,,,,,,,
+,"Peter Carpentieri, LMFT","2315 Prince Street
+  Berkeley, CA 94705","2315 Prince Street, Berkeley, CA 94705",CA,510-463-1150,peterc.mft@gmail.com,,"Adolescents/Children, Suicide Bereavement, Addiction",,,,,,,,,
+,"Robert K. Stohr, M.F.T.","11500 West Olympic BLVD. #420 Los Angeles, CA 90064","11500 West Olympic BLVD. #420 Los Angeles, CA 90064",CA,562-810-1040,rstohr2015@gmail.com,,"Adolescents, Couples, CBT",,,,,,,,,
+,"Rose Rubio, LMFT","734 W. Oak Ave.
+  Visalia, CA 93290","734 W. Oak Ave., Visalia, CA 93290",CA,559-802-2674,beyondtherain@ymail.com,,"Adolescents/Children, Adults/Elders",,,,,,,,,
+,"Rosie Rodarte, LMFT",,,CA,559-936-8442,inhisgrace@yahoo.com,,"Adolescents/Children, Families, Adults/Elders",,,,,,,,,
+,"Sandra Ruiz, NA","327 S. K St.
+  Tulare, CA 93274","327 S. K St., Tulare, CA 93274",CA,559-688-2043,sandrar@tysb.org,,Adolescents/Children,,,,,,,,,
+,"Sarah Ashbrook, MS","2955 Shattuck Ave. Suite 14
+  Berkeley, CA 94705","2955 Shattuck Ave. Suite 14, Berkeley, CA 94705",CA,510-809-7844,sashbrook.psychotherapy@gmail.com,,"Co-occurring Disorders, Addiction",,,,,,,,,
+,"Saundra Akridge, LMFT","81 Gregory Lane, Suite 220
+  Pleasant Hill, CA 94523","81 Gregory Lane, Suite 220, Pleasant Hill, CA 94523",CA,925-360-4143,saundraakridge@icloud.com,,"Adolescents/Children, Adults/Elders",,,,,,,,,
+,"Sheilah Siegel, Ph. D","100 Doyle St, Suite D, Santa Cruz, CA 95062","100 Doyle St, Suite D, Santa Cruz, CA 95062",CA,831-430-0376,siegelsheilah@gmail.com,,"Adolescents, Families, Couples, Adults",,,,,,,,,
+,Shelly Gillan,"457 Kinglsey Ave, Palo Alto, CA 94301","457 Kinglsey Ave, Palo Alto, CA 94301",CA,650-321-5272,shelly@kara-grief.org,,"Grief, Trauma, End of Life, First Reponders, Loss by suicide, child loss",,,,,,,,,
+,"Sidney Zisook, NA",,,CA,858-534-4040,szisook@ucsd.edu,,Adults/Elders,,,,,,,,,
+,"Steve Amerine, LMFT","Kings View Counseling
+  1393 Bailey Dr
+  Visalia, CA 93230","Kings View Counseling, 1393 Bailey Dr, Visalia, CA 93230",CA,559-582-4481,samerine@kingsview.org,,"Adolescents/Children, Adults/Elders",,,,,,,,,
+,"Sue Linville Shaffer. Ed D, MFT","1840 Camino de los Robles, Menlo Park, CA 94025","1840 Camino de los Robles, Menlo Park, CA 94025",CA,650-840-4442,drsuishaffer@gmail.com,,"Grief, Young Widows & Widowers, Trauma, Couples",,,,,,,,,
+,"Terry Taylor, NP; RN","La Cheim
+  3031 Telegraph Ave.
+  Oakland, CA 94609","La Cheim, 3031 Telegraph Ave., Oakland, CA 94609",CA,510-596-8125,,,Adults/Elders,,,,,,,,,
+,"Theb Manivanh, LCSW","314 N. Main St.
+  Porterville, CA 93257","314 N. Main St., Porterville, CA 93257",CA,559-202-3363,theb64@gmail.com,,"Adolescents/Children, Families, Co-occurring Disorders, Addiction",,,,,,,,,
+,"Tom Taylor, LCSW","Kings View Counseling
+  1393 Bailey Dr
+  Hanford, CA 93230","Kings View Counseling, 1393 Bailey Dr, Hanford, CA 93230",CA,559-582-4481,ttaylor@kingsview.org,,Co-occurring Disorders,,,,,,,,,
+,"Zoe Newman, MFT","1201 Solano Ave, #201
+  Albany, CA 94706","1201 Solano Ave, #201, Albany, CA 94706",CA,510-527-9061,znewman.thework@gmail.com,,"Couples, Adults/Elders",,,,,,,,,
+,"Ashley R Corbett, MSW, LCSW","75 West St, Danbury, CT 06810","75 West St, Danbury, CT 06810",CT,203-205-2741,ashley.corbett@fcaweb.org,,"Children, adolescents, family therapy",,,,,,,,,
+,"Barbara Grover, LPC, NCC","62 Broadway, Norwich, CT 06360","62 Broadway, Norwich, CT 06360",CT,860-886-2836,barbara-grover@sbcglobal.net,,"16+ adults, trauma",,,,,,,,,
+,"Cara Lattizori Nguyen, Psy. D","85 River Rd Suite A, Collinsville, CT 06019","85 River Rd Suite A, Collinsville, CT 06019",CT,860-307-0379,nguyen_cara@yahoo.com,,"Family, adult, children, autism",,,,,,,,,
+,"Cindy Jo Olsen, MS, LPC, LLC, DBA","17 Meriden Ave Suite 1A, Southington, CT 06489","17 Meriden Ave Suite 1A, Southington, CT 06489",CT,203-233-0568,cjocounseling@gmail.com,,"Children, adults, adolescents, couples",,,,,,,,,
+,"Colleen Portn, LCSW","333 Bloomfield Avenue Suite A, West Hartford, CT 06117","333 Bloomfield Avenue Suite A, West Hartford, CT 06117",CT,860-236-1927 ext. 7139,cportn@jfshartford.org,,"Young adults, adults, older adults",,,,,,,,,
+,"Deborah Pausig, LMFT, CT","5 Roger Ave, North Haven, CT 06473","5 Roger Ave, North Haven, CT 06473",CT,203-985-8246,debbiepausig.mft@gmail.com,,"End of life, loss, adults, couples",,,,,,,,,
+,"Deborah Ranilla, LCSW","130 Division St, Derby, CT 06418","130 Division St, Derby, CT 06418",CT,203-732-7580,Dranilla@griffinhealth.org,,Adults,,,,,,,,,
+,"Denise M Casavant, LCSW","519 Heritage Road St 101, Southbury, CT 06488","519 Heritage Road St 101, Southbury, CT 06488",CT,203-512-2229,newsongct@gmail.com,,Adults,,,,,,,,,
+,"Diane Lafferty, LCSW, OSW-C","27 Siemon Company Drive Suite 111W, Watertown, CT 06795","27 Siemon Company Drive Suite 111W, Watertown, CT 06795",CT,203-592-4483,dlafferty4@gmail.com,,,,,,,,,,,
+,"Elizabeth Murdoch, LCSW","128 East Ave, Norwalk, CT 06851","128 East Ave, Norwalk, CT 06851",CT,203-249-5047,ebmlcsw@yahoo.com,,"Families, adolescents, adults",,,,,,,,,
+,"Ellen Wright, LCSW, RN","649 Amity Road, Bethany, CT 06524","649 Amity Road, Bethany, CT 06524",CT,203-444-1439,ellen.wrightlcsw@gmail.com,,"Children, adolescents, trauma, animal assisted therapy",,,,,,,,,
+,"Erin Boothby, LCSW","10 Main St, New Preston, CT 06777","10 Main St, New Preston, CT 06777",CT,860-946-9292,,,Gerentology,,,,,,,,,
+,"Esther Serkin-Morgan, LCSW","285 Main St, West Haven, CT 06516","285 Main St, West Haven, CT 06516",CT,203-503-5168,eserkin@cornellscott.org,,Adults,,,,,,,,,
+,"Jennifer Giustra-Kozek, LPC","787 Main St S Unit A5, Woodbury, CT, 06798","787 Main St S Unit A5, Woodbury, CT, 06798",CT,203-403-6853,onyourpathtohealing@gmail.com,,Hypnosis,,,,,,,,,
+,"Jennifer Kosanke-Kamp, LMFT","4 Main St, New Milford, CT 06776","4 Main St, New Milford, CT 06776",CT,203-470-2902,,,"High school and older, couples therapy",,,,,,,,,
+,"John Labieniec, LCSW","370 Boston Post Road, Orange, CT 06477","370 Boston Post Road, Orange, CT 06477",CT,203-804-0200,jlabieniec@gmail.com,,"Substance abuse, crisis intervention",,,,,,,,,
+,"Julia Israelkski, LCSW","11 Wildwood Medical Center, Essex CT 06424","11 Wildwood Medical Center, Essex CT 06424",CT,860-575-8074,julia@juliaisraelski.com,,"Older adolescents, adults",,,,,,,,,
+,"Kelly Badyrka, LPC","79 Mill St, Middletown, CT 06457","79 Mill St, Middletown, CT 06457",CT,860-258-6060 ext. 5,,,Substance abuse,,,,,,,,,
+,"Kim Sauter, LCSW","2911 Dixwell Avenue, Hamden, CT 06518","2911 Dixwell Avenue, Hamden, CT 06518",CT,203-654-5231,,,"Children, adolescent, adults",,,,,,,,,
+,"Laura Coffin, LCSW","126 Main St, Cheshire, CT 06410","126 Main St, Cheshire, CT 06410",CT,203-927-6761,lbcoffin77@gmail.com,,"Adolescents, family",,,,,,,,,
+,"Lynn Walker, LCSW","189 Orange St, New Haven, CT 06460","189 Orange St, New Haven, CT 06460",CT,203-314-1455,lms1054@gmail.com,,"Young adult, adult, addiction",,,,,,,,,
+,"Marjorie Lafex, LPC","1 Evergreen Ave, Hamden, CT 06518","1 Evergreen Ave, Hamden, CT 06518",CT,203-927-8588,,,"Adults, some adolescents, trauma",,,,,,,,,
+,"Mary Low Oates, LCSW","250 Seymour Avenue, Derby, CT 06418","250 Seymour Avenue, Derby, CT 06418",CT,203-732-7580,moates@griffinhealth.org,,Adults,,,,,,,,,
+,"Michael A Rivera, MSW, LCSW","291 Collins St, Hartford, CT 06195","291 Collins St, Hartford, CT 06195",CT,860-752-4249,cfc.mike@yahoo.com,,"Couples, parents, Pastoral / Christian",,,,,,,,,
+,"Michelle A Lawler, LPC, WCC","501 Crescent Street, New Haven, CT 06515","501 Crescent Street, New Haven, CT 06515",CT,203-392-5475,lawlerm1@southernct.edu,,College enviornment,,,,,,,,,
+,Patty Giannattasio,"461 Main St, Niantic, CT 06357","461 Main St, Niantic, CT 06357",CT,860-799-1100,into@pattygtherapy.com,"Phone
+ Video Call (Zoom, Skype, etc.)",Loss & grief; suicide prevention and awareness education,,,,,,,,,
+,"Rachel Gilbert, LPC","432 Main St Unit 2, Danbury, CT 06810","432 Main St Unit 2, Danbury, CT 06810",CT,475-289-3996,rachel.gilbertLPC@gmail.com,,"LGBT, trauma, young adults",,,,,,,,,
+,"Renee Cummings, LCSW","70 Cottage St, Danielson, CT 06239","70 Cottage St, Danielson, CT 06239",CT,860-774-0215,,,,,,,,,,,,
+,"Robin K Katzman, MA, LPC, NBCC","2911 Dixwell Avenue, Suite 300B, Hamden, CT 06518","2911 Dixwell Avenue, Suite 300B, Hamden, CT 06518",CT,203-889-2902,robink.katzman@gmail.com,,"Couples, 18-65. trauma, substance abuse",,,,,,,,,
+,"Sharon Baxley, LCSW","10 Fort Hill Suite One, Groton, CT, 06340","10 Fort Hill Suite One, Groton, CT, 06340",CT,860-501-6065,sharon@baxleycounseling.com,,"Adults, adolescents, couples, children over 10",,,,,,,,,
+,"Sheryl Renne, LCSW","940 Danbury Rd.
+ Wilton, CT 06897","940 Danbury Rd., Wilton, CT 06897",CT,203-984-0369,,,Grief,,,,,,,,,
+,"Stacey A Cartier, LCSW, MPH",,,CT,203-675-9823,cartier.journeys@gmail.com,,"Adults, couples, meditation",,,,,,,,,
+,"Stacia Heller, LCSW","33 Pleasant St, Middletown, CT 06457","33 Pleasant St, Middletown, CT 06457",CT,860-358-8821,stacia.heller@midhusp.org,,"Adolescents, geriatrics, group therapy, substance abuse",,,,,,,,,
+,"Susan Plutzer, LMSW #929 CT","52 Upland Rd, Stamford, CT 06906","52 Upland Rd, Stamford, CT 06906",CT,203-912-1500,sueplutzer@gmail.com,,End of Life/Palliative Care; Grief and Bereavement,,,,,,,,,
+,"Barry Gaynor, M.Div, MSW, LCSW","119 L. Beech St.
+ Wilmington, DE 19805","119 L. Beech St., Wilmington, DE 19805",DE,302-683-8444,barry.gaynor@state.de.us,,"Child/Adolescent, Family/Couple",,,,,,,,,
+,"Calvin E. Woodland, PsyD, EdD, DE Lic#- PC-000043",,,DE,302-396-0677,woodlandc@magellanfederal.com,,"Specialization include adults, adolescents, LGBTQ community, clients dealing with anxiety, depression, social phobia, etc.  Professional affiliations:
+Delaware Licensed Professional Counselor for Mental Health #PC-0000423
+District of Columbia  Licensed Professional Counselor #PC 13932
+Florida Licensed Mental Health Counselor #MH3304
+National Board of Certified Counselors -#24065
+American Board of Certified Forensic Counselors #18943",,,,,,,,,
+,"Harry Hiltner, MAMS","18917 Palomino Trail, Harbeson DE 19951","18917 Palomino Trail, Harbeson DE 19951",DE,302-604-3011,harryhiltner@aol.com,,"Veterans, Hopsice, LGBTQ, Spiritual Direction",,,,,,,,,
+,"Malia Boone, LPCMH","103 Mont Blanc Blvd.
+ Dover, DE 19904","103 Mont Blanc Blvd., Dover, DE 19904",DE,302-678-3020,mboone@delawareguidance.org,,"Child/Adolescent, Family/Couple",,,,,,,,,
+,"Ruth Robinson-Nelson, PhD","300 Creek View Rdg.- Ste 101
+ Newark, DE 19711","300 Creek View Rdg.- Ste 101, Newark, DE 19711",DE,302-307-3702,robinsonnelson.phd@gmail.com,,"Adult, Family/Couple, Grief",,,,,,,,,
+,"Alisha W. Singh, LMHC, MH15383","2500 Quantum Lakes Drive, Suite 203, Boynton Beach FL 33426","2500 Quantum Lakes Drive, Suite 203, Boynton Beach FL 33426",FL,561-475-5089,alisha@compassionfocuscounseling.com,Video Call,"I work with First Responders, LGBTQ+, Adults 18 and older.
+ 
+ I use an eclectic approach to counseling and include the following methods of therapy: EMDR, Cognitive Behavior therapy, Dialectical Behavior therapy, and Client Centered.
+ 
+ I see clients who are struggling with work related issues, depression, anxiety, career change, life challenges, early childhood trauma, PTSD and more.",,,,,,,,,
+,"Amy Shaffer, LMHC, RPT-S, BCBA
+","8461 Lake Worth Rd. Ste 106 Lake Worth, FL 33467","8461 Lake Worth Rd. Ste 106 Lake Worth, FL 33467",FL,"561-377-2123
+",shaffer.amy@icloud.com,Video Call,Registered Play Therapist,,,,,,,,,
+,"Karen Gouws, LMHC 13192","840 US Highway 1 Suite 304 Palm Beach Gardens, FL 33408","840 US Highway 1 Suite 304 Palm Beach Gardens, FL 33408",FL,"561-543-0946
+","creativecounseling@aol.com
+",Video Call,"Licensed Mental Health Counselor, Certified Clinical Trauma Professional, EMDR therapist, Certified Clinical Hypnotherapist, Registered Play therapist - Supervisor
+
+Work with children from age 3 using play and sand play therapy and with adults.",,,,,,,,,
+,Marsha M. Mena,"8127 Hook Circle Orlando, FL 32836","8127 Hook Circle Orlando, FL 32836",FL,407-473-5484,marshamena@hotmail.com,Video Call,"Adults/ Teens, Bilingual- Spanish/English, Grief/Loss, Life Transitions, Depression, Anxiety, LGBTQ+ Ally",,,,,,,,,
+,"Sara Dochterman, LCSW","550 SE 6th Ave. Suite 200T Delray Beach, FL 33483","550 SE 6th Ave. Suite 200T Delray Beach, FL 33483",FL,"561-533-0948
+",sara@saradochterman.com,Video Call,"Adults - Trauma, Addiction Recovery, EMDR, Anxiety, Depression",,,,,,,,,
+,"Sara Dochterman, LCSW","550 SE 6th Ave. Suite 200T, Delray Beahch
+ Delray Beach, FL, 33483","550 SE 6th Ave. Suite 200T, Delray Beahch, Delray Beach, FL, 33483",FL,561-533-0948,sara@saradochterman.com,Video Call,"Adults - Trauma, Addiction Recovery, EMDR, Anxiety, Depression",,,,,,,,,
+,"Rebecca, SW17144","5655 Coral Ridge Dr.
+ Coral Springs, FL, 33076","5655 Coral Ridge Dr., Coral Springs, FL, 33076",FL,954-257-2950,rebecca@eagleshaven.org,,Trauma,,,,,,,,,
+,"Alesia Layne, LCSW; CT","1766 Lakewood Ave. SE
+ Atlanta, GA 30315","1766 Lakewood Ave. SE, Atlanta, GA 30315",GA,404-207-9980,alesialcsw@comcast.net,,"Adolescents/Children, Grief",,,,,,,,,
+,Dr. Monica Gray,"3782 Lawrenceville Hwy, Tucker, GA 30084","3782 Lawrenceville Hwy, Tucker, GA 30084",GA,404-432-2924,monica.wherewestand@mail.com,"Phone
+ Virtual (Zoom, Skype, etc.)","All Ages. Trauma, Anxiety, Focused Practice.",,,,,,,,,
+,"Dr. Rena’ Glass-Dixon, PhD, LCSW","990 Iris Drive, SW, Conyers GA 30094","990 Iris Drive, SW, Conyers GA 30094",GA,770-369-9984,rglassdixon@gmail.com,"Virtual (Zoom, Skype, etc.)",Adults and Teens,,,,,,,,,
+,"Jennifer Dunn, MT#2211","400 S Pinetree Blvd, Thomasville GA 31792","400 S Pinetree Blvd, Thomasville GA 31792",GA,229-977-4885,Jennifer.Dunn@dbhdd.ga.gov,,,,,,,,,,,
+,Kathy Brown-Bragg LCSW csw005504,"3400 Chapel Hill Road, Douglasville, GA, 30135","3400 Chapel Hill Road, Douglasville, GA, 30135",GA,404-973-8920,kebrownb@gmail.com,"Phone
+ Virtual (Zoom, Skype, etc.)","Certified Grief Specialist, Child Parent Psychotherapy, and Advance Perinatal Mental Health Specialist ,Couples -Gottman Trained Level 1 and Brief Strategic Family Therapist",,,,,,,,,
+,"Kiona Dunn, Licensed Professional Counselor, LPC010269","135 Eagles Walk Ste. 150, Stockbridge GA 30281","135 Eagles Walk Ste. 150, Stockbridge GA 30281",GA,678-905-8681,simpletruthcounseling@aol.com,"Virtual (Zoom, Skype, etc.)","Trained EMDR Clinician, CAMS II, and Prepare and Enrich facilitator",,,,,,,,,
+,"LaNiña Mompremier, Ph.D","1227 Rockbridge Rd., Stone Mountain, GA 30087","1227 Rockbridge Rd., Stone Mountain, GA 30087",GA,844-308-3006,dr.m@creatingsustainingjoy.com,"Virtual (Zoom, Skype, etc.)",Adults; Proficient in American Sign Language for Deaf and Hard-of-Hearing clients,,,,,,,,,
+,License Professional Counselor,"2365 Wall St SE, Conyers, GA 30013","2365 Wall St SE, Conyers, GA 30013",GA,678-658-0592,info@creativetouchcounseling.com,"Phone
+ Virtual (Zoom, Skype, etc.)","I work with both children, adults and families",,,,,,,,,
+,LPC010319,"233 Peachtree Street NE, Atlanta GA 30303","233 Peachtree Street NE, Atlanta GA 30303",GA,912-661-7104,ahall@ihrcorp.com,,,,,,,,,,,
+,"Sallie Galyean, LCSW CSW0339092","4499 HWY 40 East, Suite A, Conyers GA 30094","4499 HWY 40 East, Suite A, Conyers GA 30094",GA,912-674-1130,salliegalyean@tds.net,"Virtual (Zoom, Skype, etc.)","Adults, Teens and Children (age 3 and verbal) Trauma. Military and First Responders",,,,,,,,,
+,"Samara Harris, Licensed Master Social Worker","4217 Whithorn Way, Douglasville GA 30134","4217 Whithorn Way, Douglasville GA 30134",GA,229-251-0430,sharris@pcsasc.com,Phone,Adults with Developmental and Intellectual Disabilities,,,,,,,,,
+,"Shevander Dykes, LPC, LPC007614","8336 Office Park Drive, Suite E, Saint MArys GA 31558","8336 Office Park Drive, Suite E, Saint MArys GA 31558",GA,678-796-6174,sdykes@survivingtransitions.com,"Phone
+ Virtual (Zoom, Skype, etc.)","Teens, Adults",,,,,,,,,
+,"Tatiana Villarreal-otalora
+","Powder Springs, GA 30127","Powder Springs, GA 30127",GA,770-609-4741,tati8819@gmail.com,Video Call,"Spanish, Families with adolescents, LCSW, PhD",,,,,,,,,
+,Andrea Ilima DeCosta,"11-4001 Old Volcano Rd, Volcano, HI 96785","11-4001 Old Volcano Rd, Volcano, HI 96785",HI,808-365-2611,nameaola@gmail.com,,Survivor Therapy,,,,,,,,,
+,Celeste Leonani Sagarang LMHC,,,HI,808-592-2500,info@counselinghawaii.org,,"Child/Adolescents, Women, ADHD, Depression, Trauma, Abuse",,,,,,,,,
+,Donnamae Lee,,,HI,,,,"Adolescents, Teenagers",,,,,,,,,
+,"Franziska (Ziska) Von Almasy, PsyD","45-549 Plumeria St, Honoka'a, HI 96727","45-549 Plumeria St, Honoka'a, HI 96727",HI,808-769-9522,,,"Adolescents, Children, Families, Trauma, Grief & Loss, Addiction, Women's Health, Cultural Humility & Culturally Informed Treatment",,,,,,,,,
+,"Gavin Takenaka, PsyD","919 Ala Moana Blvd, #407, Honolulu, HI 96814","919 Ala Moana Blvd, #407, Honolulu, HI 96814",HI,808-587-1250,gavin.k.takenaka@hawaii.gov,,,,,,,,,,,
+,Gina Kaulukukui Certified Grief Counselor,"Lihue Plantation Bldg. 2970 Kele St 112B, Lihue, HI 96766","Lihue Plantation Bldg. 2970 Kele St 112B, Lihue, HI 96766",HI,808- 651- 6673,lifes_bridges@yahoo.com,,suicide survivor,,,,,,,,,
+,"Hale Akamine, PhD Clinical Psychology",,,HI,808-291-5977,familyministriescenter@gmail.com,,"Christians, Adolescents, Couples, Individuals",,,,,,,,,
+,Joyce Parkhurst LCSW CSAL,,,HI,808-599-7508,joyceparkhurstawa@gmail.com,,"Individual Mental Health, Substance Use,",,,,,,,,,
+,"Maria Lloyd, LCSW","460 Ena Rd Suite 5505, Honolulu, HI 96815","460 Ena Rd Suite 5505, Honolulu, HI 96815",HI,415-320-6697,marisaklloyd@gmail.com,,"Adolescent, Family Therapy",,,,,,,,,
+,Shannon Hickman M.S LPC,,,HI,,shannon.hickman.ms@gmail.com,,"DBT, CBT, Brief-Solution Focused Therapy, Positive Psychology",,,,,,,,,
+,"Yvonne Yim, LCSW",,,HI,808-841-7981,yyim@kpho.org,,"Adolescents, Adults, Multilingual Translations Available",,,,,,,,,
+,"Alice Virgil, Ph.D., LCSW","222 E. Wisconsin, Suite 207B. Lake Forest IL 60044","222 E. Wisconsin, Suite 207B. Lake Forest IL 60044",IL,773-919-9170,avirgil@gmail.com,,"Couples, Families",,,,,,,,,
+,"Amanda Hofbauer, LMFT","3139 N. Lincoln Suite 202, Chicago, IL 60657","3139 N. Lincoln Suite 202, Chicago, IL 60657",IL,312-857-6270,ahofbauermft@gmail.com,,Couples Therapy; Mind/Body/Spirit Connection; Family Therapy,,,,,,,,,
+,"Amelia Justice, PsyD",,,IL,773-359-3307,drjustice@awarenesspsych.com,,"Adolescents/Children, Families, Autism, College Transitions",,,,,,,,,
+,Anna Padron Sikora,"6918 Windsor Ave, Berwyn, IL 60402","6918 Windsor Ave, Berwyn, IL 60402",IL,312-919-1982,apadronsikora@pchcares.org,,"Children and Families, Latino Community",,,,,,,,,
+,"Annie Arnold, LCPC and Art Therapist","8311 W Roosevelt Rd, Forest Park, IL 60130","8311 W Roosevelt Rd, Forest Park, IL 60130",IL,708-771-7000 ext. 3603,annie.arnold@uhsinc.com,,"Adolescent, Adults, PTSD, Borderline Personality Disorder, LGBTQ, DBT & Relational/Attachment Theory",,,,,,,,,
+,"Brittany Trauthwein PsyD, FT","5547 N. Ravenswood Ave
+ #107 Chicago IL 60640","5547 N. Ravenswood Ave, #107 Chicago IL 60640",IL,773-349-2466,drtrauthwein@bridgepointpsychology.com,"Phone
+ Virtual (Zoom, Skype, etc.)",Grief and loss,,,,,,,,,
+,"Brittany Wilson, LPC","46 Raupp Blvd
+  Buffalo Grove, IL 60089","46 Raupp Blvd, Buffalo Grove, IL 60089",IL,847-777-6210,bwilson@vbg.org,,"Adults/Elders, Co-occurring Disorders",,,,,,,,,
+,"Carla Marquez Ripley, LCPC, RPT","1737 Napaville Rd, Suite 200, Wheaton, IL 60189","1737 Napaville Rd, Suite 200, Wheaton, IL 60189",IL,630- 325-5300 x 310,cripley@heritageprofessional.com,,"Adolescents, children, families, play therapist",,,,,,,,,
+,"Carrie J. Stelnicki, LCSW","1718 Sherman, Suite 203, Evantson, IL 60202","1718 Sherman, Suite 203, Evantson, IL 60202",IL,773-386-3859,leadficarrie@yahoo.com,,"Adolescents, Sexual Assault, Adjustment to chronic/terminal illness",,,,,,,,,
+,"Cheryl Joseph-Lukz, M.A., LCPC","1717 Rand Rd, Des Plaines, IL 60016","1717 Rand Rd, Des Plaines, IL 60016",IL,847-376-2139,clukz@catholiccharities.net,,"Depression, Anxiety, Stress, Grief, Phase of Life Transitions",,,,,,,,,
+,"Christine Vinci, MA, LCPC, CCTP, NCC","1023 Burlington Ave, Western Psrings, IL 60558","1023 Burlington Ave, Western Psrings, IL 60558",IL,708-745-5277,cvinci@pchcares.org,,"All ages, Families, Trauma, DBT, CBT, ADHD, Women's Health, Autism, Grief/loss, Crisis Intervention",,,,,,,,,
+,"Cynthia Waderlow, MSE, LCSW","721 N. LaSalle, Chicago, IL 60615","721 N. LaSalle, Chicago, IL 60615",IL,312-651-2002,cwaderlow@catholiccharities.net,"Phone
+ Virtual (Zoom, Skype, etc.)","teens, children, families",,,,,,,,,
+,"Deborah K. Mestas, M.A., LCPC",,,IL,708-945-1928,debbie.mestas@gmail.com,,"Depression, Trauma, Grief & Loss",,,,,,,,,
+,"Debra Dubin, AM, LCSW","3255 N. Arlington Heights Rd, Arlington Heights, IL 60004","3255 N. Arlington Heights Rd, Arlington Heights, IL 60004",IL,847-219-2182,debradubin@gmail.com,,Individual Adult Psychotherapy,,,,,,,,,
+,"Diane McDonald, LCPC","822 Hillgrove Ave, Western Springs, IL 60558","822 Hillgrove Ave, Western Springs, IL 60558",IL,708-997-0267,diane.mcdonald525@gmail.com,,"Adult, Individual, Couples, EMDR",,,,,,,,,
+,"Donna Livesay, LCSW",,,IL,312-809-7016,donna@peoplepsych.com,,"Substance Use, Complex Trauma, Individual & Couples, ACOA",,,,,,,,,
+,"Elia Fabian, MA, LCPC","3245 Grove Ave, Suite 104, Berwyn, IL 60402","3245 Grove Ave, Suite 104, Berwyn, IL 60402",IL,773-945-1437,elia@cervantescounseling.sprucecare.com,,"Adolescents, Adults, Parents, Families, TFCBT, DBT trained, EMDR trained, Sexual Assult & Domestic Violence",,,,,,,,,
+,"Georgina Corona, LCSW","6415 Stanley Ave., Berwyn, IL 60402","6415 Stanley Ave., Berwyn, IL 60402",IL,708-995-3835,gcorona@pchcares.org,,"Adolescents/Children, Adult Crisis Work, Trama, Bilingual Spanish",,,,,,,,,
+,"Helen Alex, PsyD","1300 W Belmont Ave Chicago, IL 6057 #401","1300 W Belmont Ave Chicago, IL 6057 #401",IL,773-217-0660,dralex@bridgepointpsychology.com,,,,,,,,,,,
+,"Isaac Lopez, LCSW","1010 Lake St, Suite 614, Oak Park, IL 60301","1010 Lake St, Suite 614, Oak Park, IL 60301",IL,708-665-6500,info@ourfamilytherapy.com,,"Adolescents, Adults, Family",,,,,,,,,
+,"Jamie Pasquale, Psy D",,,IL,312-909-3032,jlpasquale@gmail.com,,"Loss, Substance use in families",,,,,,,,,
+,"Jennifer Batza , LCSW","564 W. Randolh, Suite 200, Chicago 60661","564 W. Randolh, Suite 200, Chicago 60661",IL,312-375-4953,jenniferbatzalcsw@gmail.com,,"Couples & Individuals, Spanish Speakers, Immigrants",,,,,,,,,
+,"Joan Faier- Routman, Ph. D.","900 Skokie Blvd, Suite 123, Northbrook, IL 60062","900 Skokie Blvd, Suite 123, Northbrook, IL 60062",IL,847-568-1056,info@chicagoanxietycounseling.com,,"Children, Adults, Couples, Family Therapy, Anxiety, OCD, Transitions",,,,,,,,,
+,"JoAnn Carlson, LCSW","3001 Green Bay Rd.
+  North Chicago, IL 60064","3001 Green Bay Rd., North Chicago, IL 60064",IL,224-610-2016,jacarlson@att.net,,,,,,,,,,,
+,John Anderson,"155 N. Michigan Ave.
+  Suite 760
+  Chicago, IL 60601","155 N. Michigan Ave., Suite 760, Chicago, IL 60601",IL,312-371-9795,john60637@me.com,,"Adult, CBT",,,,,,,,,
+,"Judith H. Hanson, LCSW",,,IL,630-254-9027,juyo46@gmail.com,,,,,,,,,,,
+,"Julia Gelchter, LSW",,,IL,847-338-8401,juliagelchter450@gmail.com,,,,,,,,,,,
+,"Julie Tevenan, LCSW","Lovell Federal Health Care
+  3001 Green Bay Rd.
+  North Chicago, IL 60064","Lovell Federal Health Care, 3001 Green Bay Rd., North Chicago, IL 60064",IL,224-610-4849,julie.tevenan@va.gov,,Adults/Elders,,,,,,,,,
+,"Karen Greenberg, LCSW","800 Custer #5, Evanston, IL 60202","800 Custer #5, Evanston, IL 60202",IL,312-278-3416,karengreenberglcsw@gmail.com,,"Adults, Couples",,,,,,,,,
+,"Karen Haggard, MSW; LCSW","164 Division St., Suite 203
+  Elgin, IL 60120","164 Division St., Suite 203, Elgin, IL 60120",IL,847-409-9498,karenhaggardlcsw@gmail.com,,,,,,,,,,,
+,"Karen Liebold, MA, LCPC",,,IL,,karen@help4grief.com,,"Hospice, Ambiguous Loss, Adoption",,,,,,,,,
+,"Laura Vecchiolla, PsyD",,,IL,815-661-5868,drvecchiolla@bridgepointpsychology.com,,"Children and Play Therapy, Adolescents, Adults, Family",,,,,,,,,
+,"Lola Ladinier, LCSW","130 Harrison St, Barrington, IL, 60010","130 Harrison St, Barrington, IL, 60010",IL,847-382-5688,info@psychone.org,,"Adolescents, Adults, EMDR Certified",,,,,,,,,
+,"Mary Jouppi, MS; LPC",,,IL,708-951-6872,serz01@comcast.net,,"Adolescents/Children, Adults/Elders",,,,,,,,,
+,"Meg Eifrig, LCPC","1010 Jorie Blvd. Suite 364, Oak Brook, IL 60543","1010 Jorie Blvd. Suite 364, Oak Brook, IL 60543",IL,773-558-9380,megeifrig@grieftherapycenter.com,,"Adults, Young Adults, Addiction, Grief/Loss, Adoption",,,,,,,,,
+,"Melinda Dworkin, LCSW","1609 Sherman , Suite 300, Evanston 60201","1609 Sherman , Suite 300, Evanston 60201",IL,847-475-0451,mdworkin.lcsw@gmail.com,,"Emerging adults through adulthood, mood disorders, transitions, existential crisis",,,,,,,,,
+,"Meredith Srivatava, LCSW",,,IL,773-245-1200,meredith@chicagocfcl.com,,,,,,,,,,,
+,"Michael Krosinsky, LCSW, CADC","3166 N. Lincoln Ave #207, Chicago IL 60657","3166 N. Lincoln Ave #207, Chicago IL 60657",IL,504-517-5864,michael@examineandquest.org,,"Adults, Addiction, Spirituality, Phase of Life Transitions, Anxiety, Depression",,,,,,,,,
+,"Monica Garcua, LCSW",,,IL,847-343-8108,Monicagarcialcsw@gmail.com,,"Adolescents, Trauma-Informed, Postpartum, anxiety & depression, EMDR",,,,,,,,,
+,"Nabeela Choudy, LCPC","8311 W Roosevelt Rd, Forest Park, IL 60130","8311 W Roosevelt Rd, Forest Park, IL 60130",IL,708-771-7000 ext. 3118,nabeela.choudry@uhsinc.com,,Adolescents/Children,,,,,,,,,
+,"Nicole O'Dea , LCSW","1000 Hart Rd, Barrington, IL 60010","1000 Hart Rd, Barrington, IL 60010",IL,"847-382-4673, ext. 320",nodea@sccnw.org,,Adolescents; Adults; Suicide Prevention,,,,,,,,,
+,"Priscilla Brinkman, LCSW","825 W State St. Geneva, IL 60134","825 W State St. Geneva, IL 60134",IL,630-471-2117,pbrinkmanlcsw@gmail.com,,Grief and loss,,,,,,,,,
+,"Sandra Montes, LCSW",,,IL,708-613-7912,smonteslcsw@gmail.com,,"Adolescents, Adults, Bilingual Spanish",,,,,,,,,
+,"Sarah Thompson, MBA, MA, LPC","711 W Monroe, Chicago, IL 60661","711 W Monroe, Chicago, IL 60661",IL,773-234-9630,saraht@oldstpats.org,,"Adults, Couples",,,,,,,,,
+,"Sharon Dornberg-Lee, LCSW","CJE Senior Life, 3003 W. Touhy Ave., Chicago, IL 60645","CJE Senior Life, 3003 W. Touhy Ave., Chicago, IL 60645",IL,773-508-1000,sharon.dornberg.lee@cje.net,,Older Adults,,,,,,,,,
+,"Siegel Eli- Gers, LCSW","1609 Sherman Ave, Suite 318, Evanston, IL 60201","1609 Sherman Ave, Suite 318, Evanston, IL 60201",IL,847-868-2140,siegaleligerslcsw@gmail.com,,"Adolescents, Young Adults, Transgender & Non-Binary Individuals, College Students",,,,,,,,,
+,"Stephanie Herrera, MA, LCPC",,,IL,708-512-4815,info@voiceofreasoncounseling.com,,"Adolescents, Adults, Elderly, EMDR trained",,,,,,,,,
+,"Tom Favale, DVM, MSW, LSW",,,IL,630-881-8339,tcfdvm@sbcglobal.net,,"Medical, Dental, Veterinary Professionals",,,,,,,,,
+,"Veronica Gulezian, MA, LCPC","1420 Renaissance Dr, Park Ridge, IL 60068","1420 Renaissance Dr, Park Ridge, IL 60068",IL,708-402-8221,veronicagulezian@gmail.com,,18+ individual therapy; Certified Drug & Alcohol Counselor,,,,,,,,,
+,"Vicki Foreman, LCPC, NCC",,,IL,847-730-1365,,,"Adults, Adolescents, Young Adults & Children Programs; Support Groups & 1:1 therapy",,,,,,,,,
+,"Alison Pinkerton, MSW, LCSW","9669 E 146th St Suite 250, Noblesville, IN 46060","9669 E 146th St Suite 250, Noblesville, IN 46060",IN,317-621-1098,apinkerton@ecommunity.com,,"Individuals- Adult & Adolescent, Must see a provider at Community Health Network",,,,,,,,,
+,"Amy Drake Beaulieu, LCSW","2620 N. Walnut St.
+  Suite 1220
+  Bloomington, IN 47404","2620 N. Walnut St., Suite 1220, Bloomington, IN 47404",IN,812-369-4888,amy@amybeaulieulcsw.com,,"Child/Adolescent, Parents/Parenting, College Students/Young Adult",,,,,,,,,
+,"Anny J Maslowski, LMHC","8250 Bash St Suite 34-35, Indianapolis, IN 46250","8250 Bash St Suite 34-35, Indianapolis, IN 46250",IN,317-494-73728,maslowskimentalhealth@gmail.com,,"EMDR, Adults/Adolescents, Bilingual, Hispanic Populations",,,,,,,,,
+,Ashley A Reed-Kimble,"11513 W 500 S  Parker City IN, 47368","11513 W 500 S Parker City IN, 47368",IN,937-726-3950,"areedkim@gmail.com
+",Video Call,"children, teens and adults",,,,,,,,,
+,Brittany L. Cheviron,"9894 E. 121st St.
+  Fishers, IN 46037","9894 E. 121st St., Fishers, IN 46037",IN,317-621-4646,BCheviron@ecommunity.com,,"Child/Adolescent, Grief, Support Group",,,,,,,,,
+,"Charlotte Barton Coombs, LSW  #33008770A","1531 13th St Ste 2540 Columbus, IN 47201","1531 13th St Ste 2540 Columbus, IN 47201",IN,812-314-2962,cbcoombs@familyservicebc.org,Video Call,"Trauma, Suicide Loss/Attempt Survivor, DBT, CBT, Individual - Adult, Child, Teens, Family, Reconciliation, Reunification, ACES, Emotional and mental wellbeing, Mindfulness, Family systems",,,,,,,,,
+,Christina Crist,"P.O. Box 3321
+  Terre Haute, IN 47803","P.O. Box 3321, Terre Haute, IN 47803",IN,855-225-5550,c2crist@gmail.com,,Child/Adolescent,,,,,,,,,
+,"Christine Turo-Shields, LCSW, LCAC, EMDR Certified Therapist","Kenosis Counseling Center, Inc.
+  1678 Fry Rd.
+  Greenwood, IN 46142","Kenosis Counseling Center, Inc., 1678 Fry Rd., Greenwood, IN 46142",IN,317-865-1674,christine@kenosiscenter.com,"Phone
+ Virtual (Zoom, Skype, etc.)","Child/Adolescent, Trauma, EMDR, CISD, Addiction, Women, Gifted Population",,,,,,,,,
+,"Cinnamon Miller, MSW, LSW","831 Dillon Dr Richmond Indiana, 47374","831 Dillon Dr Richmond Indiana, 47374",IN,765-914-4937,cinnamon.miller-duncil@centerstone.org,,"Adolescents, Children & Family, Trauma, Autism/Special Needs",,,,,,,,,
+,Claire Roberts,"9894 E. 121st St.
+  Fishers, IN 46037","9894 E. 121st St., Fishers, IN 46037",IN,317-621-2891,eroberts3@ecommunity.com,,"Child/Adolescent, Grief",,,,,,,,,
+,"Dawn Crossman, LCSW","Center for Hope and Family Solutions
+  8483 Fishers Center Dr.
+  Fishers, IN 46038","Center for Hope and Family Solutions, 8483 Fishers Center Dr., Fishers, IN 46038",IN,317-598-8887,dcrossman@center4hope.com,,Child/Adolescent,,,,,,,,,
+,Dawn Etzel,,,IN,920-427-6737,dawn.revive.counseling@gmail.com,,"Adult, Child/Adolescent, Family/Couple",,,,,,,,,
+,"Deb Mosson, School Counselor",,,IN,574-784-3151,dmosson@unorth.k12.in.us,,Adolescents,,,,,,,,,
+,"Debbie Dukate, LMHCA","Kenosis Counseling Center
+ 1678 Fry Rd, Ste D
+ Greenwood, IN 46142","Kenosis Counseling Center, 1678 Fry Rd, Ste D, Greenwood, IN 46142",IN,317-865-1674,debbie@kenosiscenter.com,,"Couples Therapy, Grief",,,,,,,,,
+,"Denise Cutshaw, LMHC","52 S. 9th St Suite #2, Noblesville, IN 46060","52 S. 9th St Suite #2, Noblesville, IN 46060",IN,317-214-6040,dmcutshaw.lmhc@gmail.com,,"Family, Adolescent, Adults",,,,,,,,,
+,"Emily J Tillman, LCSW","11370 N St Rd 67, Mooresville, IN 46158","11370 N St Rd 67, Mooresville, IN 46158",IN,317-210-4920,emily.tillman@centerstone.org,,"EMDR, Children, Families",,,,,,,,,
+,"Geri Waggle, LCSW","Willow Tree Life Counseling 5660 Caito Dr.
+  Suite 122
+  Indianapolis, IN 46226","Willow Tree Life Counseling 5660 Caito Dr., Suite 122, Indianapolis, IN 46226",IN,317-902-6724,geriwaggle@AH.net,,"Grief, Trauma, Mindfulness, Suicide Survivors, Caregiver Stress, Chronic disease, Depression, Anxiety",,,,,,,,,
+,Heather Thomas,"310 S. 5th Ave. Princeton, IN 47670","310 S. 5th Ave. Princeton, IN 47670",IN,812-385-5275,thomash@southwestern.org,,"Adult, Child/Adolescent",,,,,,,,,
+,"Helen Woods, LCSW","Meridian Health Services 520 South 9th St. RICHMOND Indiana, 47374","Meridian Health Services 520 South 9th St. RICHMOND Indiana, 47374",IN,765-935-5390,helen.woods@meridianhs.org,Video Call,Adults,,,,,,,,,
+,"Janet Schnell, LCSW","P.O. Box 354 Huntingburg Indiana, 47542","P.O. Box 354 Huntingburg Indiana, 47542",IN,812-250-8166,1HopeandHealing@gmail.com,Video Call,"Adults and teens
+ 
+ Suicide ideation and after a suicide
+ 
+ Addiction",,,,,,,,,
+,"Julie Leet, LCSW, CT","9135 N. Meridian St., Indianapolis, N 46260","9135 N. Meridian St., Indianapolis, N 46260",IN,317-679-3316,julieleetlcsw.ct@gmail.com,,Individual and Groups for Adults,,,,,,,,,
+,"Karmin Koelmel, LCSW","5230A East Stop 11 Rd.
+  Indianapolis, IN 46237","5230A East Stop 11 Rd., Indianapolis, IN 46237",IN,317-528-1283,karmin.koelmel@franciscanalliance.org,,"Child/Adolescent, TFCBT Certified",,,,,,,,,
+,"Katherine Smith, Certified Therapeutic Recreation Specialist","1235 Central Park Dr, Carmel IN 46032","1235 Central Park Dr, Carmel IN 46032",IN,317-750-9720,kls@indy.rr.com,,"Developmental Disabilities, Stroke, Neurological Conditions, Psychiatric Conditions",,,,,,,,,
+,"Katheryn Shelton, LMHC, ATR","610 N. Lebanon St, Lebanon, IN 46052","610 N. Lebanon St, Lebanon, IN 46052",IN,765-680-0071,kate.shelton@inwell.org,,"All Ages, Art Therapy",,,,,,,,,
+,Kelly Petersohn,"9894 E. 121st St, Fishers, IN 46037","9894 E. 121st St, Fishers, IN 46037",IN,317-621-4204,kpetersohn@ecommunity.com,,"Adolescents, Children, Family Camp Director, Group Support, Counseling",,,,,,,,,
+,"Lesley Chodowski, MS, LMHC","2020 Brown St. Anderson, IN 46016","2020 Brown St. Anderson, IN 46016",IN,765-622-7472,lesley.chodkowski@aspireindiana.org,,"Children, Adolescent, Adults, Family",,,,,,,,,
+,"Leslie Ruiz, LCSW","445 S. Landmark Ave.
+  Bloomington, IN 47403","445 S. Landmark Ave., Bloomington, IN 47403",IN,812-822-3201,leslie.ruiz@uhsinc.com,,"Adult, Child/Adolescent",,,,,,,,,
+,"Lillie Maze, LCSW, GRS","70 E. Main St, Greenwood, IN 46142","70 E. Main St, Greenwood, IN 46142",IN,317-412-3549,lilliemazegrs@gmail.com,,"Adults, Grief/Loss",,,,,,,,,
+,"Maria Sanchez, MA, LMHCA","8250 Bash St, Suite 34-35, Indianapolis, IN 46250","8250 Bash St, Suite 34-35, Indianapolis, IN 46250",IN,317-654-6114,msanchezmentalhealth@gmail.com,,Work w/ Hispanic Community,,,,,,,,,
+,"Mary Halladay, LCSW","8980 Technology Dr.
+  Suite 201
+  Fishers, IN 46038","8980 Technology Dr., Suite 201, Fishers, IN 46038",IN,317-585-9111,maryhalladay@msn.com,,"Adult, Child/Adolescent, Family/Couple",,,,,,,,,
+,"Mary K Adams, LMHC","10411 N/ College Ave, Indianapolis, 46280","10411 N/ College Ave, Indianapolis, 46280",IN,317-418-7702,mary.k.adams1@gmail.com,,"Trauma Survivors- Adults Only, Cancer, BPD",,,,,,,,,
+,"Melanie B. Johnson, LCSW","6919 Indianapolis Blvd.
+  Hammond, IN 46324","6919 Indianapolis Blvd., Hammond, IN 46324",IN,219-844-4883,,,"Adult, Child/Adolescent, Crisis, Groups",,,,,,,,,
+,"Melisa Sanchez, Licensed Marriage & Family Therapist","6315 Mutual Drive Ste B, Fort Wayne, IN 46825","6315 Mutual Drive Ste B, Fort Wayne, IN 46825",IN,260-515-8318,melisa.sanchezlandgraf@gmail.com,,Couples Therapy,,,,,,,,,
+,"MSW, LSW","831 Dillon Dr, Richmond, IN 47374","831 Dillon Dr, Richmond, IN 47374",IN,765-914-4937,cinnamon.miller-duncil@centerstone.org,,"Adolescents, Children & Family, Trauma, Autism/Special Needs",,,,,,,,,
+,"N. Suzanne Jones, LMHC, Masters Clinical Psychology","952 South Main St, Martinsville, IN 46151//11370 North State Rd 67, Mooresville, IN 46158","952 South Main St, Martinsville, IN 46151//11370 North State Rd 67, Mooresville, IN 46158",IN,765-342-6616 or 765-343-6950,natalie.jones@centerstone.org,,"Adolescents, Child, Family, Trauma, Survivor of Loss of Client Suicide & Friend",,,,,,,,,
+,Norma  J. Chitwood,"739 Booneway Lane Bargersville, IN 46106","739 Booneway Lane Bargersville, IN 46106",IN,630-293-1822,norma@kenosiscenter.com,Video Call,Christian Faith,,,,,,,,,
+,Peter Davies,"1405 Bear St.
+  Madison, IN 47250","1405 Bear St., Madison, IN 47250",IN,812-265-4513,peter.davies@lifespringhealthsystems.org,,"Child/Adolescent, Spiritual Approach (Theology and Ethics)",,,,,,,,,
+,Teri L. Cardwell,"3600 N Prow Rd, Bloomington, IN 47404","3600 N Prow Rd, Bloomington, IN 47404",IN,812-331-8000,teri.cardwell@uhsinc.com,,,,,,,,,,,
+,Terrie English,"5920 Homestead Rd.
+  Fort Wayne, IN 46814","5920 Homestead Rd., Fort Wayne, IN 46814",IN,260-435-3261,terrieenglish@unfw.org,,Grief,,,,,,,,,
+,"William Betts, PhD HSPP ","2000 W University Ave., LU315 Mincie, IN 47306","2000 W University Ave., LU315 Mincie, IN 47306",IN,303-285-1264,wrbetts@bsu.edu,Video Call,"Adults, Children, Adolescents, LGBTQIA+ affirming
+",,,,,,,,,
+,"Amber Dalzell, LCPC, ATR-BC, ATCS","8001 Conser St., Suite 290, Overland Park, KS 66204","8001 Conser St., Suite 290, Overland Park, KS 66204",KS,913-732-0622,amber@artofthematterLLC.com,"Phone
+ Virtual (Zoom, Skype, etc.)","Children, adolescents, adults, families, PTSD, Grief and loss, Attatchment",,,,,,,,,
+,"Charity Clavey, LMSW, LMAC, CRAADS",,,KS,816-616-4103,charity.clavey@gmail.com,,"Substance abuse, LGBTQ, Elderly, Grief and loss",,,,,,,,,
+,"Chelsea Harrington, LMSW","1301 N. 47th St., Kansas City, KS 66102","1301 N. 47th St., Kansas City, KS 66102",KS,913-563-6569,harrington_c@wmhci.org,,,,,,,,,,,
+,"Claire Wimer, LPC, MA","7927 Floyd Street, Overland Park, KS 66204","7927 Floyd Street, Overland Park, KS 66204",KS,913-204-0241,counseling@clairewimer.com,,"Couples, Post partum",,,,,,,,,
+,"Connie Rohde, LSCSW, LCSW","770 Shawnee Mission Parkway, Overland Park, KS 66202","770 Shawnee Mission Parkway, Overland Park, KS 66202",KS,913-954-0675,crhodelcsw@gmail.com,,"Adults, Adolescents",,,,,,,,,
+,"Dee Hudgens, RN, MSW, LSCSW","12351 W 96th Terrace, Suite 108, Lenexa, KS 66215","12351 W 96th Terrace, Suite 108, Lenexa, KS 66215",KS,316-684-3010,msdee2304@gmail.com,,"Couples, Blended families, Adolescents",,,,,,,,,
+,"Devonie Atchison, LMFT","25955 W 327th St., Paola, KS 66071","25955 W 327th St., Paola, KS 66071",KS,913-991-7887,devoniemft@gmail.com,,"Couples, Families, LGBTQ",,,,,,,,,
+,"Dusti Powell, MS, LCMFT, RPT","12710 S. Pflumm Rd, Suite 204, Olathe, KS 66062","12710 S. Pflumm Rd, Suite 204, Olathe, KS 66062",KS,913-244-0648,dpowell.mft@gmail.com,,"Children, Couples",,,,,,,,,
+,"Francie Pollom, LSCSW","10551 Barkley St., Suite 201, Overlook Park, KS 66212","10551 Barkley St., Suite 201, Overlook Park, KS 66212",KS,913-906-9559,fpollom@bhsks.com,,"Adolescents, senior adults, couples, family",,,,,,,,,
+,"Gretchen Wells, MSW, LSCSW in KS (#5160), LCSW in MO (#2019035012)","8575 W 110th St Overland Park KS, 66210","8575 W 110th St Overland Park KS, 66210",KS,816-535-335,helixmentalhealth@gmail.com,"Video Call (Zoom, Skype, etc.)","Adolescents and Adults (ages 14+), Grief + Loss, Suicide Bereavement, Trauma, Pregnancy + Postpartum, Eating Disorders, Depression, Anxiety",Phone,"Video Call (Zoom, Skype, etc.)",,,7,,,,
+,"Heather Bedell, LPC","10925 Antioch Rd, Suite 200, Overland Park, KS 66210","10925 Antioch Rd, Suite 200, Overland Park, KS 66210",KS,913-213-3760,heather@heatherbedell.com,,Adolescents,,,,,,,,,
+,"Jane Sharp, PhD","3210 Mesa Way, Lawrence, KS 66049","3210 Mesa Way, Lawrence, KS 66049",KS,785-550-5765,,,,,,,,,,,,
+,"Jeanene Mall, MSLCMFT","7381 W 133rd, Suite 260, Overland Park, KS 66213","7381 W 133rd, Suite 260, Overland Park, KS 66213",KS,913-647-8092,deercreekclinic@gmail.com,,"Adults, Family of origin issues",,,,,,,,,
+,"Jeremiah Johnson, MA, LPC",,,KS,785-542-9110,jajcounseling@gmail.com,,"Youth, Adults, Attatchment, Spirituality",,,,,,,,,
+,Joanna D. Block,"8826 Santa Fe Dr., Suite 210, Overland Park, KS 66212","8826 Santa Fe Dr., Suite 210, Overland Park, KS 66212",KS,816-506-0705,joannablockmft@aol.com,,"Adults, Couples, Trauma, Dual Diagnosis, Addiction",,,,,,,,,
+,"Kathryn Tolle, PhD","1623 Poyntz Avenue, Manhattan, KS 66502","1623 Poyntz Avenue, Manhattan, KS 66502",KS,785-537-6051,manhattanmhs@att.net,,LGBTQ+ Community,,,,,,,,,
+,"Laura Turner, LCP","7829 E Rockhill #305, Wichita, KS 67206","7829 E Rockhill #305, Wichita, KS 67206",KS,316-869-2888,lauraturnerlcp@gmail.com,,"Adolescents, Children, Family",,,,,,,,,
+,"Laurie Schulte, LCSW, LMSW","425 E 63rd St, Kansas City, MO 64110","425 E 63rd St, Kansas City, MO 64110",KS,816-333-1172,lschulte@jfsuc.org,,Older adult,,,,,,,,,
+,"Loraine Herndon, LSCSW","831 Louisiana St, Lawrece, KS 66044","831 Louisiana St, Lawrece, KS 66044",KS,785-424-7016,Lherndon.therapyservices@outlook.com,,"Couple, Family",,,,,,,,,
+,"Margaret Ragan, MA, LCPC","7700 Shawnee Mission Parkway, Suite 208, Overland Park, KS 66202","7700 Shawnee Mission Parkway, Suite 208, Overland Park, KS 66202",KS,816-519-0835,ragan.margaret@gmail.com,,"Adults, Couples, Relationship, Stress",,,,,,,,,
+,"Marijo Teare Rooney, PhD","208 E 8th St., Suite D, Hays, KS 67601","208 E 8th St., Suite D, Hays, KS 67601",KS,785-258-6100,rooney@clinical-assoc.com,,"Children, Adolescents, Families",,,,,,,,,
+,"Missy Neville, MEd, LPC","8900 State Line Rd, Suite 357, Leawood, KS 66206","8900 State Line Rd, Suite 357, Leawood, KS 66206",KS,913-221-4397,,,"Trauma, Grief Resurgency",,,,,,,,,
+,"Pam Hamilton, LCSW",,,KS,913-449-9300,hcs.pamhamilton@gmail.com,,"Adolescents, trauma, forgiveness",,,,,,,,,
+,"Phelica Glass, LSCSW, GCCA-CCSDTP","1243 Sw Topelus Blvd, Topeka, KS 66614","1243 Sw Topelus Blvd, Topeka, KS 66614",KS,785-246-7703,phelicaglasslscsw@gmail.com,,"Children, adolescents, anger management",,,,,,,,,
+,"Sarah Post, LSCSW","3310 E. Douglas, Wichita, KS 67208","3310 E. Douglas, Wichita, KS 67208",KS,316-272-0077,,,"Adults, Teens",,,,,,,,,
+,"Sarah Schroer, LSCSW","7270 W. 98th Terrace, Suite 230 Building 7, Overland Park, KS 66212","7270 W. 98th Terrace, Suite 230 Building 7, Overland Park, KS 66212",KS,913-669-1805,sarah.L.schroer@gmail.com,,"PTSD, Chronic Illness, Grief and loss",,,,,,,,,
+,"Susan C. Lieberman, PhD","10965 Granada Lane, Suite 102, Overland Park, KS, 66211","10965 Granada Lane, Suite 102, Overland Park, KS, 66211",KS,913-791-1231,liebermansusan39@gmail.com,,"Adolescents, Children, Family",,,,,,,,,
+,Sydney George Therapy Services LLC,"11791 W 112th St, Suite 102, Overland Park, KS 66210","11791 W 112th St, Suite 102, Overland Park, KS 66210",KS,913-636-2454,,,"Adult, Teen, Couple, Relationship, Addiction, Grief and loss, Boundry work",,,,,,,,,
+,"Therese McKechnie, LSCSW","4809 W 117th, Leawood, KS 66211","4809 W 117th, Leawood, KS 66211",KS,913-362-0315,tmckechnie@counselingconnections.org,,"Trauma, Addiction, Seniors",,,,,,,,,
+,"Elizabeth Roberts, LPCC, CCTP (KY License #175117)",,,KY,(502) 334-8865,liz@serenitynow2020.com,"Phone
+ Virtual (Zoom, Skype, etc.)
+ Text or Chat","crisis counseling, trauma, suicide bereavement, infertility and pregnancy loss, and anxiety and mood disorders.adults and adolescents,
+ accepting no insurance, offer a sliding fee scale
+  please visit my website: serenitynow2020.com.",,,,,,,,,
+,"Gabrielle Ebeling-Rodriguez, LPCC, LPAT, ATR-BC, CYT-200","P.O. Box 33331 Louisville KY, 40213","P.O. Box 33331 Louisville KY, 40213",KY,404-769-1202,5ohm2wellness@gmail.com,"Video Call (Zoom, Skype, etc.)","Adult, Teens, Trauma, Mind-Body approach, Art Therapy, Certified 200 hr Yoga Teacher.",,"Video Call (Zoom, Skype, etc.)",,,6,,,,
+,"Lauren Garnier, LCSW #5921 LA","4300 S I-10 Service Road W, Suite 102
+ Metaire, LA, 70001","4300 S I-10 Service Road W, Suite 102, Metaire, LA, 70001",LA,504-302-8232,laurengarnier@gmail.com,Video,"Adults - grief/loss, stress, anxiety, depression, relationship issues, workplace issues",,,,,,,,,
+,"Christine Linnehan, M.S., LCPC, FT",,,ME,(207) 883-7706,linnehan@maine.rr.com,,"Adult, Adolescents, Children, Family, Grief",,,,,,,,,
+,"Amanda Ganoe, MS, MSW, LMSW","1522 Liberty Rd. Unit B Sykesville, MD 21784","1522 Liberty Rd. Unit B Sykesville, MD 21784",MD,443-228-3218,willowland.counseling@gmail.com,Video Call,"Suicide prevention/intervention/Postvention, depression, anxiety, traumatic/complex grief, trauma, crisis intervention, mindfulness, stress management, ages 6+, individuals, families, groups. 
+
+",,,,,,,,,
+,"Amy Dove LCPC, CAC-AD","604 Solarex Court, Suite 201- offsite counseling services Baltimore, MD 21704","604 Solarex Court, Suite 201- offsite counseling services Baltimore, MD 21704",MD,(443) 761-4050,amydove7473@yahoo.com,"Video Call (Zoom, Skype, etc.)","Certified addictions counselor, Anxiety, trauma, Adults, Adults with developmental disabilities. at-risk youth and teen parents",,,,,,,,,
+,"Annette Laugel, MS, LCPC","5901 Falls Road Baltimore MD, 21209","5901 Falls Road Baltimore MD, 21209",MD,443-570-7859,annette@alaugel.com,"Video Call (Zoom, Skype, etc.)","(the above is my business email, but you have been communicating with me via my personal email:annettelaugel@gmail.com).
+ 
+  I am a Pastoral counselor, who specializes in grief counseling, anxiety and depression. I work with adults. I also co-facilitate a suicide loss support group, which is currently run virtually.
+ 
+  I use EFT (Emotional Freedom Technique) to help my clients with emotional regulation, and to deactivate their trauma responses.",Phone,"Video Call (Zoom, Skype, etc.)",Text or Chat,,5 1/2 years,,,,
+,"Dorothy A. Kaplan, Ph.D., Licensed Psychologist MD (2074) and DC (1352)","10216 Garden Way, Potomac, MD, 20854","10216 Garden Way, Potomac, MD, 20854",MD,(301) 335-1954,dannekaplan@gmail.com,"Video Call (Zoom, Skype, etc.)
+ Phone","Teens, Young Adults, Adults, Older Adults",,,,,,,,,
+,"Dr. LaReneque Bartholomew, LCPC (#LC9516)","110 E. Lexington Street, Suite 200, Baltimore, MD 21202","110 E. Lexington Street, Suite 200, Baltimore, MD 21202",MD,(443) 438-4572,familytherapybehavioral@gmail.com,"Video Call (Zoom, Skype, etc.)
+ Phone",Cognitive Behavioral Modification Therapy,,,,,,,,,
+,Heidi A. Marlatt Masters in Psychology with a Specialization in Marriage and Family Therapy LCM629,"23076 Three Notch Road, Suitw 304, California MD, 20619","23076 Three Notch Road, Suitw 304, California MD, 20619",MD,(301) 690-8008,heidi.marlatt@serenityplace.biz,"Video Call (Zoom, Skype, etc.)
+ Phone
+ Text or Chat",Veteran's Trauma,,,,,,,,,
+,"Kaitlin Widerman, LCPC","59 Kate Wagner Road Westminster MD, 21157","59 Kate Wagner Road Westminster MD, 21157",MD,410-848-2500,kwiderman@ccysb.org,"Video Call (Zoom, Skype, etc.)","adults, children, teens",Phone,"Video Call (Zoom, Skype, etc.)",,,8,,,,
+,"Kelley Holloway, MSW, LCSW-C, MD License #20005","12145 Elm Street, Princess Anne, MD 21853","12145 Elm Street, Princess Anne, MD 21853",MD,(410) 651-2204,kholloway@chesapeakehc.org,"Video Call (Zoom, Skype, etc.)
+ Phone",Adults; EMDR trained.,,,,,,,,,
+,"Kim M Friner, LCSW-c","Cedar Ridge Counseling Centers, 10996 Owings Mills Blvd, Suite 214, Owings Mill MD 21117","Cedar Ridge Counseling Centers, 10996 Owings Mills Blvd, Suite 214, Owings Mill MD 21117",MD,(410) 356-9200,kim.friner@cedarridgecounseling.com,"Video Call (Zoom, Skype, etc.)","Adults, Substance Abuse, Depression, Anxiety, PTSD",,,,,,,,,
+,"Kristine Rufenacht, LCSW-C #22463","122 Langley Rd N, Suite B, Glen Burnie, MD 21060","122 Langley Rd N, Suite B, Glen Burnie, MD 21060",MD,(410) 222-0100,hdrufe00@aacounty.org,"Video Call (Zoom, Skype, etc.)
+ Phone",Adults,,,,,,,,,
+,"Maureen Kelly, LCSW-C #07700","7601 York Road 6401 York Road Baltimore Md, 21212","7601 York Road 6401 York Road Baltimore Md, 21212",MD,410-371-7835,mkelly1@baltimorecountymd.gov,,"Adults, Families",,,,I do not offer telehealth at this time.,30,,,,
+,"Megan Kersch LCSW-C, license number 23090,","20826 Waterside Drive, Leonardtown, MD 20650","20826 Waterside Drive, Leonardtown, MD 20650",MD,(757) 617-3423,mekersch@smcps.org,"Video Call (Zoom, Skype, etc.)","Adults, adolescents, children, young children, infant mental health
+  TF-CBT, Eye Movement Integration and Neurolinguistic Programming, Parent-Child Interaction Therapy, attachment based therapies (working with parent-child dyads), and Beck CBT training for depression/anxiety",,,,,,,,,
+,"Melissa Weaver, LCSW-C","Johns Hopkins Student Assistance Program, 550 North Broadway, Suite 403, Baltimore, MD, 21205","Johns Hopkins Student Assistance Program, 550 North Broadway, Suite 403, Baltimore, MD, 21205",MD,(443) 287-7000,mweave32@jhmi.edu,"Video Call (Zoom, Skype, etc.)
+ Phone","Grief and trauma, LGBQIA andTrans Affirming Care, Relationship Issues, Survivors of IPV and Sexual Assault and Abuse, and ADHD Management.",,,,,,,,,
+,Rachel Thomas LMSW 25132,"12145 Elm Street, Princess Anne
+ Maryland, 21853","12145 Elm Street, Princess Anne, Maryland, 21853",MD,410-651-2204,rathomas@chesapeakehc.org,"Video Call (Zoom, Skype, etc.)","Adults and adolescents, EMDR trained",,,,,,,,,
+,Sarah Montgomery LCSW-C,"1009 Frederick Road Catonsville MD, 21228-1908","1009 Frederick Road Catonsville MD, 21228-1908",MD,410-952-3947,sarahmontgomerylcswc@gmail.com,"Video Call (Zoom, Skype, etc.)","I have co- written book on supporting children after suicide loss, I co-lead a SOS group for adults and have trained other clinicians in suicide postvention work. I work with children, teens and adults.
+ 
+ https://www.psychologytoday.com/us/therapists/sarah-s-montgomery-catonsville-md/752900",,"Video Call (Zoom, Skype, etc.)",,,20+,,,,
+,sharon Weiss LCSW-C #05451MD,"2324 W Joppa Rd, Suite 220, Lutherville, MD 21093","2324 W Joppa Rd, Suite 220, Lutherville, MD 21093",MD,(410) 433-9296,shar22w@gmail.com,"Video Call (Zoom, Skype, etc.)
+ Phone",Adults- I do not work with teens or children. I am also not a provider for any insurance company,,,,,,,,,
+,"Sheindel F Rabinowitz, LCPC, CGCS","6202 Biltmore ave Baltimore Maryland, 21215","6202 Biltmore ave Baltimore Maryland, 21215",MD,410-961-2373,faigy410@gmail.com,"Video Call (Zoom, Skype, etc.)",I am certified as a grief counselor specialist through Evergreen Certifications.,,"Video Call (Zoom, Skype, etc.)",,,5,,,,
+,"Sherrye Urtz, LCPC (LC8276)","41650 Courthouse Drive, Suite 301, Leonardtown, MD 20650","41650 Courthouse Drive, Suite 301, Leonardtown, MD 20650",MD,(240) 587-3132,surtz.counselor@gmail.com,"Video Call (Zoom, Skype, etc.)","children/teen, adults",,,,,,,,,
+,"Tammi Ginsberg, LCPC","17810 Cormorant Lane
+ Germantown, Maryland 20874","17810 Cormorant Lane, Germantown, Maryland 20874",MD,301-529-6871,,"Virtual (Zoom, Skype, etc.)","Adolescents, mood disorders, suicide survivor support",,,,,,,,,
+,"Althea Dowd, MSW","543 North St. New Bedford, MA 02740","543 North St. New Bedford, MA 02740",MA,508-742-2263,adowd@cfservices.org,,"Family, Children, Neurodiversity, Trauma-Informed Treatment",,,,,,,,,
+,"Alyssa Taddeo, LMHC",,,MA,774-670-4806,,,"Adults, CBT, Substance Use Disorders and medication",,,,,,,,,
+,"Amy Engel, LICSW",,,MA,781-449-8757,aengel10@gmail.com,,"Adult, Family/Couple, Grief",,,,,,,,,
+,"Angeline Hynes, LICSW","Childrens Charter 77 Rumford Ave Waltham, MA 02453","Childrens Charter 77 Rumford Ave Waltham, MA 02453",MA,781-645-6298,ahynes@key.org,,"Adult, Child/Adolescent, Family/Couple",,,,,,,,,
+,Bruce Arbour,"71 Bradford St Suite 203
+ Northampton, MA 01060","71 Bradford St Suite 203, Northampton, MA 01060",MA,413-219-6412,afdchaplain@gmail.com,"Video Call (Zoom, Skype, etc.)",Trauma Informed Specialist,,,,,,,,,
+,"Jean Haughey, LMFT","232 Riverdale Street
+ West Springfield, MA 01089","232 Riverdale Street, West Springfield, MA 01089",MA,413-262-6593,jean.haughey@gmail.com,"Phone
+ Virtual (Zoom, Skype, etc.)
+ Text or Chat","Children, Adolescents, Families and Parents",,,,,,,,,
+,"Jean Rossner, MA, LMHC","111 Willard St 2-E, Quincy, MA 02171","111 Willard St 2-E, Quincy, MA 02171",MA,617-520-4557,jean@rossner-lmhc.com,,"Adults, Adolescents, Trauma, EMDR",,,,,,,,,
+,"Jen Erbelegget, LICSW",,,MA,857-273-2124,jen@theleggetgrouptherapy.com,,"Perinatal loss, trauma",,,,,,,,,
+,"Joy Yang, LICSW","1105 Massachusetts Ave Suite 2A, Cambridge MA 02139","1105 Massachusetts Ave Suite 2A, Cambridge MA 02139",MA,617-286-4954,jyang.licsw@gmail.com,,"Anxiety, depression, young adults, Family",,,,,,,,,
+,"Kathleen McCarthy, LICSW, CADCII","234 Littleton Rd Suite 1D Westford, MA 01886","234 Littleton Rd Suite 1D Westford, MA 01886",MA,978-496-8079,kathleen@mccarthy.licsw.com,,"Adult, Child/Adolescent, Domestic violence and addiction",,,,,,,,,
+,"Laurie Costigan, Psy. D.","Edward M. Kennedy Community Health Center: 19 Tacoma St, Worcester, MA 01605","Edward M. Kennedy Community Health Center: 19 Tacoma St, Worcester, MA 01605",MA,508-595-0719,laurie.costigan@kennedychc.org,,Patients must have healthcare at the health center,,,,,,,,,
+,"Lisa Sullivan, MA CAGS, LMHC, CBIS","91 Kenberma Rd, Worcester, MA 01604","91 Kenberma Rd, Worcester, MA 01604",MA,508-479-9310,lisasansoucy@hotmail.com,,"Adolescents, Children, Brain Injusy, Addiction, Disabilities, Family, Couples",,,,,,,,,
+,"Lynn Sanford, LICSW","233 Needham St, Suite 300, Newton, MA 02461","233 Needham St, Suite 300, Newton, MA 02461",MA,617-699-1511,lynkochava@aol.com,,"Adolescents, First Responders, Military/Veteran, Homicide Bereavement. Trauma",,,,,,,,,
+,"Maile Munson, LICSW","12 West Central St Natick, MA 01760","12 West Central St Natick, MA 01760",MA,508-720-0731,mailemunsonlicsw@gmail.com,,"Adult, Child/Adolescent, Family/Couple",,,,,,,,,
+,"Marcia Head, LICSW","59 Church St. Suite 4 Cambridge, MA 02438","59 Church St. Suite 4 Cambridge, MA 02438",MA,617-967-7749,mjhead2014@gmail.com,,"Depression, anxiety, life transitions",,,,,,,,,
+,"Mary Marchesani, LMHC","48 Woodbridge St, South Hadley, MA 01075","48 Woodbridge St, South Hadley, MA 01075",MA,413-540-9720 ext. 233,mmarchesani@berkshirehills.org,,"Adults with Intellectual/Developmental Disabilities, Students & Adults with Autism",,,,,,,,,
+,"Meghan Pugach, Ph.D.","41 Garrison Rd Brookline, MA 02445","41 Garrison Rd Brookline, MA 02445",MA,617-221-3020,meghanpugachphd@gmail.com,,"Adult, Child/Adolescent",,,,,,,,,
+,"Melissa Nauman, LICSW",,,MA,617-495-2042,mnauman@huhs.harvard.edu,,"College mental health, eating concerns and eating disorders",,,,,,,,,
+,"Michael McGrath, LMHC","205 School St, Suite 202, Gardner, MA 01440","205 School St, Suite 202, Gardner, MA 01440",MA,978-410-6889,mcgrathm@youinc.org,,Children & Adolescents,,,,,,,,,
+,"Molly Heverling, LCSW","Childrens Charter 77 Rumford Ave Waltham, MA 02453","Childrens Charter 77 Rumford Ave Waltham, MA 02453",MA,781-894-4325,mheverling@key.org,,"Child/Adolescent, Trauma, Play therapy",,,,,,,,,
+,"Nancy Rappaport, MD","256 Concord Ave, Cambridge, MA 02138","256 Concord Ave, Cambridge, MA 02138",MA,617-520-4752,nancy@nancyrappaport.com,,"Children, Adolescents, Families",,,,,,,,,
+,"Nancy Sawyer, LICSW","40 Spruce St Leominster, MA 01453","40 Spruce St Leominster, MA 01453",MA,978-466-8366,nsawyer@communityhealthlink.org,,"Adult, Trauma",,,,,,,,,
+,Natalie Engler,,,MA,857-273-2008,nengler@theleggetgrouptherapy.com,,Adults,,,,,,,,,
+,"Norah Hass, Psy.D","Childrens Charter 77 Rumford Ave Waltham, MA 02453","Childrens Charter 77 Rumford Ave Waltham, MA 02453",MA,781-894-4325,nhass@key.org,,"Adult, Child/Adolescent, Family/Couple, Trauma, Domestic violence",,,,,,,,,
+,"Rebecca Robbins, LICSW",,,MA,617-834-1414,rebecca_robbins220@aol.com,,"Adults, EMDR",,,,,,,,,
+,"Ruth Rosenblatt, MSW, LICSW","64 Eldredge St Newton, MA 02458","64 Eldredge St Newton, MA 02458",MA,617-969-4925,rrosenblatt@riversidecc.org,,"Child/Adolescent, Family/Couple, Trauma",,,,,,,,,
+,"Sue Kingston, LICSW","95 Pleasant St, Lynn, MA 01901","95 Pleasant St, Lynn, MA 01901",MA,781-381-4400,skingston@chs.org,,,,,,,,,,,
+,"Susan Bitensky, LICSW","64 Eldredge St, Newton MA 02458","64 Eldredge St, Newton MA 02458",MA,617-969-4925,sbitensky@riversidecc.org,,"Adolescents, Young Adults, Family/Couples",,,,,,,,,
+,"Abigail Waller, LMSW","831 Huntington Road East Lansing MI, 48823","831 Huntington Road East Lansing MI, 48823",MI,517-579-7727,wallera@msu.edu,"Video Call (Zoom, Skype, etc.)","Work with adults, children and families who have experienced a traumatic death of a loved one. Specialty is in child loss.",Phone,"Video Call (Zoom, Skype, etc.)",,,20 years,,,,
+,"Anne Marie T. Amsler, LMSW","108 Superior Ave, Baraqa, MI 49908","108 Superior Ave, Baraqa, MI 49908",MI,906-353-4532,annmarie.amsler@kbic-nsn.gov,,,,,,,,,,,
+,"Ashleigh Seppala, LMSW","4572 S Hagadorn Rd, Ste 1C
+ East Lansing , MI, 48823","4572 S Hagadorn Rd, Ste 1C, East Lansing , MI, 48823",MI,(517) 410-6434,ash.seppala@gmail.com,"Video Call (Zoom, Skype, etc.)","Adults, Teens
+ 
+ 
+ 
+ Depression
+ 
+ Anxiety
+ 
+ Grief/Bereavment
+ 
+ PTSD
+ 
+ Stress Management",,,,,,,,,
+,"Bob Miller, BSW MDIV","24083 Creekside Drive, Farmington Hills, MI 48336","24083 Creekside Drive, Farmington Hills, MI 48336",MI,248-568-7342,bmiller@suicideloss.org,,Grief Counseling,,,,,,,,,
+,"Jill Platte, MS LLP, 6361000791","4572 Hagadorn Rd. 
+ East Lansing, MI, 48823","4572 Hagadorn Rd. , East Lansing, MI, 48823",MI,(517) 481-2133,jill.platte@therapytodaycc.com,"Phone
+ Virtual (Zoom, Skype, etc.)","Adults. Depression/Bipolar, Anxiety, Trauma, Life Transitions, Grief/Loss. Yoga Instruction, Love your Brain Yoga for those with a TBI.",,,,,,,,,
+,"Jim Hassett, MA LLPC CT/RTC","20801 Moross, Detroit, MI 48236","20801 Moross, Detroit, MI 48236",MI,313-343-9000,info@grace-counseling.org,,"Adolescents, Adults, Couples",,,,,,,,,
+,"Mallory Trumble, LMSW","3899 Okemos Rd, Ste A1
+ Okemos, MI, 48864","3899 Okemos Rd, Ste A1, Okemos, MI, 48864",MI,(517) 798-4894,mallory@inclusivewellnessmi.com,"Video Call (Zoom, Skype, etc.)",Adults,,,,,,,,,
+,"Mandy Buckland, MA, LPC","1903 Wolf Creek Hwy, Adrian, MI, 49221","1903 Wolf Creek Hwy, Adrian, MI, 49221",MI,517-263-2323,,,Hospice,,,,,,,,,
+,"Reid Depowski, LLMSW","Therapy Today: 4572 S Hagadorn Rd, Suite 1c, East Lansing, MI, 48823","Therapy Today: 4572 S Hagadorn Rd, Suite 1c, East Lansing, MI, 48823",MI,517-481-2133,reid.depowski@therapytodaycc.com,,"College Students, Adults, Grief/Loss, Suicidal Ideation, Transitions, Anxiety, Depression",,,,,"Reid Depowski, LLMSW","Therapy Today: 4572 S Hagadorn Rd, Suite 1c, East Lansing, MI, 48823",517-481-2133,reid.depowski@therapytodaycc.com,"College Students, Adults, Grief/Loss, Suicidal Ideation, Transitions, Anxiety, Depression"
+,"Angelica Van Cleef, Paramedic","214 E. Junius, Fergus Falls, MN 56537","214 E. Junius, Fergus Falls, MN 56537",MN,218-736-2819,hvcavc@hotmail.com,,,,,,,,,,,
+,"Becky Lawyer, MA, LPCC, LPC","1403 Silver Lake Rd, New Brighton MN 5512","1403 Silver Lake Rd, New Brighton MN 5512",MN,612-361-9935,beckylawyer@counselingmail.com,,"College, Trauma, EMDR",,,,,,,,,
+,"Deb Semmelroth, DNP, MSW, LGSW","306 W. Superior St Alwoth Bldg Suite 1000, Duluth, MN 55802","306 W. Superior St Alwoth Bldg Suite 1000, Duluth, MN 55802",MN,218-481-7660,deb@insightcounselingduluth.org,,"Adolescents, parents, grandparents",,,,,,,,,
+,"Heather Larson, LSW, CT","1111 US Highway 10, Detroit Lakes, MN 56501","1111 US Highway 10, Detroit Lakes, MN 56501",MN,701-356-1500,heather.larson@hrru.org,,"Grief support, children",,,,,,,,,
+,"Jennifer Keehn, MA, LPCC","659 Bielnberg Drive, Woodbury MN 55125","659 Bielnberg Drive, Woodbury MN 55125",MN,651-259-9710,jkeehn@prairie-care.com,,"Children/Adolescents, Adults",,,,,,,,,
+,"Jerilyn J Fischer-Arnold, MA, LMFT","150 2nd St. SW Arvig Bldg, Perham, MN 56573","150 2nd St. SW Arvig Bldg, Perham, MN 56573",MN,1-800-627-8220,jfischer@thevillagefamily.org,,"Adolescents, couples, families",,,,,,,,,
+,"Kirstina Quast, MSW, LICSW","653 Pillsbury St, N. Pillager MN 56473","653 Pillsbury St, N. Pillager MN 56473",MN,218-894-8852,kirstinaquast@lakewoodhealthsystem.com,,"Children/Adolescents, Families, Trauma, Adoption",,,,,,,,,
+,"Lily Wagner, MSW, LGSW","7251 Excelsior Rd, Baxter MN 56425","7251 Excelsior Rd, Baxter MN 56425",MN,218-454-0878,admin@lakescountrycounseling.com,,"Children/Adolescents, Adult, Geriatric, Adoption, Loss",,,,,,,,,
+,"A. Elizabeth Austin, LPC, R-DMT","745 Craig Rd, Suite 210 or 1278 Jungermann Rd Suite E, Saint Peters 63376","745 Craig Rd, Suite 210 or 1278 Jungermann Rd Suite E, Saint Peters 63376",MO,314-690-5678,beth@affectivemovent.com,,"Dance/Movement Therapy, Adults, Adolescents, Couples, PTSD, Eating Disorders, Life Transitions, Grief",,,,,,,,,
+,"Alex Richards, MSW, LCSW","2388 Schutes Rd, Maryland Hghts, MO 63146","2388 Schutes Rd, Maryland Hghts, MO 63146",MO,314-802-2662,arichards@providentstl.orh,,"Adolescents, Adults",,,,,,,,,
+,"Alicia Polk, PLPC, NCC, GC-C, DCC","605 Cherry St, Belton, MO 64012","605 Cherry St, Belton, MO 64012",MO,816-226-4678,alicia.polk@vitaliscounseling.com,,"Grief, insomnia, nightmares",,,,,,,,,
+,Ashley A. Henry,"14310 East 42nd St S, Independence, MO 64055","14310 East 42nd St S, Independence, MO 64055",MO,816-333-9200,ashley.henry@crossroadshospice.com,,"Children, Veterans, Homeless, Immigrant, Elderly, Hospice",,,,,,,,,
+,"Brianna Langley, MSW","2650 Olive St, St. Louis 63103","2650 Olive St, St. Louis 63103",MO,618-973-2266,blangley@providentstl.org,,"Suicide Prevention, Crisis Intervention",,,,,,,,,
+,"Dorothy Patterson, LCSW, CRAADC","7308 Elm Ave, Raytown, MO 64133","7308 Elm Ave, Raytown, MO 64133",MO,816-820-0599,Dpattersonob@sbcglobal.net,,"Children, Adolescents, Couples, Family",,,,,,,,,
+,"Elizabeth Hanshew, LPC","1780 Old US Highway 50 East, Union, MO 63084","1780 Old US Highway 50 East, Union, MO 63084",MO,636-582-8100,ehanshew@compasshn.org,,"PTSD, CPT",,,,,,,,,
+,"Elizabeth Reinberg, MSW, LCSW","2388 Schutes Rd, Maryland Hghts, MO 63146","2388 Schutes Rd, Maryland Hghts, MO 63146",MO,314-802-2662,ereinberg@providentstl.org,,Adolescents and Adults,,,,,,,,,
+,"Jan Laws, MA, LPC, RCPC","204 A NE Douglas Street, Lees Summit, MO 64063","204 A NE Douglas Street, Lees Summit, MO 64063",MO,816-600-5580,jan@pinnacle3c.com,,"Adolescents, Adults, Couples, Family, Trauma, Professional Burnout",,,,,,,,,
+,"Jane Smith, M. Ed, LPC","1000 Executive Pawrkway, Creve Coeur 63141","1000 Executive Pawrkway, Creve Coeur 63141",MO,314-737-0020,jsmith@lifeworkstl.org,,"Ages 13+, individuals, couples & families",,,,,,,,,
+,"Jessica Mathis, MS, LPC","8801 E. 63rd Stret, Suite 101, Raytown, MO 64133","8801 E. 63rd Stret, Suite 101, Raytown, MO 64133",MO,816-368-2000,jessicam@tcfhar.com,"Virtual (Zoom, Skype, etc.)","Child, Adolescent, Couples",,,,,,,,,
+,"John Paul Hinklin, MSCC, LPC, NCC","3001 Warrior LN, Poplar Bluff 63901","3001 Warrior LN, Poplar Bluff 63901",MO,573-686-1200 ext. 3247,john.hinklin@fccinc.org,,"EMDR, PE Therapy, Suicide Bereavement, ACT Therapy",,,,,,,,,
+,"Keely Finney, LCSW","9191 West Florissant Ave, St Louis 63136","9191 West Florissant Ave, St Louis 63136",MO,314-649-8751,rejuvenatingcs@gmail.com,,"Adults, Adolescents, Family/Couples",,,,,,,,,
+,"Kneshia Lambert, MSW, LMSW","18610 E. 37th Terrace S., Independence, MO 64067","18610 E. 37th Terrace S., Independence, MO 64067",MO,913-732-3564,kneshial21@gmail.com,,"Adolescents, Children",,,,,,,,,
+,"Lisa Gunkel, PLPC","2650 Olive St, St. Louis 63103","2650 Olive St, St. Louis 63103",MO,314-446-2867,lgunkel@providentstl.org,,,,,,,,,,,
+,"Mallory J Price, LMSW","2650 Olive St, St. Louis 63103","2650 Olive St, St. Louis 63103",MO,314-446-2872,mprice@providentstl.org,,,,,,,,,,,
+,"Martha Childers, LPC, EDS","330 W 47th Street, Kansas City, MO 64112","330 W 47th Street, Kansas City, MO 64112",MO,816-892-0803,martha@childerscounselingservice.com,,"Adolescents, Adults, Couples, Seniors, Multicultural, Caregiver",,,,,,,,,
+,"Marty Biggar, MS, LPC","923 Ward Parkway, Kansas City, MO 64114","923 Ward Parkway, Kansas City, MO 64114",MO,913-717-9540,martyb.kcpsychotherapy@gmail.com,,"Adolescents, Adults, Couples, Grief, Trauma",,,,,,,,,
+,"Morgan Brewer, LMSW","607 Teaco Road, Kennett, MO 63857","607 Teaco Road, Kennett, MO 63857",MO,573-888-9828,mbrewer@reflectionsconsultingmo.net,,Adolescents,,,,,,,,,
+,"Nancy Wolff, MSW, LCSW, LSCSW","10918 Elm Ave, Kansas City, MO 64134","10918 Elm Ave, Kansas City, MO 64134",MO,816-986-5224,nswolff@saint-lukes.org,,"Teens, Families, Trauma + stress, Grief + loss",,,,,,,,,
+,"Robin Ewy, LPC","7715 North Oak Traffic Way, Kansas City, MO 64118","7715 North Oak Traffic Way, Kansas City, MO 64118",MO,816-286-7971,robin.ewy@gmail.com,,"Couples, Families, Groups",,,,,,,,,
+,"Robin M Jenks, LPC","2029 Buchanan, North Kansas City, MO","2029 Buchanan, North Kansas City, MO",MO,816-221-0305,,,"Adolescents, Trauma, Court ordered therapy",,,,,,,,,
+,"Roger Goldblatt, LCSW","6247 Brookside Blvd, #245, Kansas City, MO 64113","6247 Brookside Blvd, #245, Kansas City, MO 64113",MO,816-299-5990,rgoldblattlcsw@gmail.com,,EMDR,,,,,,,,,
+,"Sarah Paradise LPC, NCC","11222 Tesson Ferry Rd. Ste 100, St. Louis 63123","11222 Tesson Ferry Rd. Ste 100, St. Louis 63123",MO,314-898-0102,sparadise@providentstl.org,,"LGBT, Children, Adults, Family",,,,,,,,,
+,"Sheby Zurick Beasley, MA, LPC","11222 Tesson Ferry Rd. Ste 100, St. Louis 63123","11222 Tesson Ferry Rd. Ste 100, St. Louis 63123",MO,314-446-2827,szurickbeasley@providentstl.org,,"Adults, Adolescents",,,,,,,,,
+,"Stacy Braiuca, MSW, MPH, LCSW, LSCSW","3737 S. Elizabeth Independence, MO 64057","3737 S. Elizabeth Independence, MO 64057",MO,816-974-8685,stacy.braiuca@gmail.com,,"Adolescents, Children, Bullying",,,,,,,,,
+,"Thomas H. Hernandez, CMPS, MSW, LMSW",,,MO,913-360-9617,tomas@coachtomashernandez.com,,"Adolescents, Veterans",,,,,,,,,
+,"Tim Beauparlant, MSW, LCSW",,,MO,636-795-1233,tabeauparlant@gmail.com,,"Adults, Couples, Family Mediation. Substance Abuse Treatment",,,,,,,,,
+,"Vickie Mears, LSCSW, LCSW","435 Nichols Rd Suite 200
+ Kansas City MO 64112","435 Nichols Rd Suite 200, Kansas City MO 64112",MO,816-333-9200,vickie.mears@crossroadshospice.com,,"Grief, Adults, Seniors, Caregivers, Hospice",,,,,,,,,
+,"Anne Gordon, LCSW, LMFT","101 E. Broadway, Suite 601
+ Missoula, MT 59802","101 E. Broadway, Suite 601, Missoula, MT 59802",MT,406-370-6251,annegordon@annegordontherapy.com,,,,,,,,,,,
+,"Bernadette Miller, MS, LCPC","2001 11th Ave #20
+ Helena, MT 59601","2001 11th Ave #20, Helena, MT 59601",MT,406-495-1122,bajmillerped@bresnan.net,,"Adult, Child/Adolescent, Family/Couple",,,,,,,,,
+,Chantelle Plauche LCSW,"111 North 3rd Street, Livingston, MT 59047","111 North 3rd Street, Livingston, MT 59047",MT,406-223-3621,cplauche@lespritmt.com,,"Adolescents, Children, Adults",,,,,,,,,
+,"Deb Perrigo, MS, LAC","308 E. 1st St.
+ Laurel, MT 59044","308 E. 1st St., Laurel, MT 59044",MT,406-628-2579,dlperrigo@hotmail.com,,"Adolescents/Children, Adults/Elders, Addiction",,,,,,,,,
+,"Hilary Peil, LCPC","699 Farmhouse Lane
+ Bozeman, MT 59718","699 Farmhouse Lane, Bozeman, MT 59718",MT,406-556-6500,hipeil@ummhc.org,,Families,,,,,,,,,
+,"Jack Parrent Jr., M.Ed","129 1st Ave. S.E.
+ Browning, MT 59417","129 1st Ave. S.E., Browning, MT 59417",MT,406-338-2735,jackp@bps.k12.mt.us,,Adolescents/Children,,,,,,,,,
+,"Jeanne Dussault, LCPC","1602 2nd Ave., #650
+ Great Falls, MT 59401","1602 2nd Ave., #650, Great Falls, MT 59401",MT,406-453-5434,jeannedussault@aol.com,,,,,,,,,,,
+,"Jennifer Preble, LCSW","900 N. Jackson St.
+ Helena, MT 59601","900 N. Jackson St., Helena, MT 59601",MT,406-443-7151,jenniferp@center4mh.org,,"Adolescents/Children, Families, Couples, Adults/Elders",,,,,,,,,
+,"Jessica Murray, LCSW","2415 Mullan Rd.
+ Missoula, MT 59802","2415 Mullan Rd., Missoula, MT 59802",MT,406-549-4928,jessica.murray@wallawalla.edu,,"Adolescents/Children, Grief, Trauma",,,,,,,,,
+,"Julie Turunen, LCSW; LMFT","101 E. Broadway, Suite 601
+ Missoula, MT 59802","101 E. Broadway, Suite 601, Missoula, MT 59802",MT,406-543-1541,julesmt@aol.com,,"Adolescents/Children, Families, Couples, Grief, Co-occurring Disorders, Trauma",,,,,,,,,
+,"Kathy Black Broere, LMFT, M.Ed",,,MT,406-336-3021,kathyb@bps.k12.mt.us,,"Adolescents/Children, Families",,,,,,,,,
+,"Kelly Keilman, LCSW","Peace Hospice of Montana
+ 1101 26th St.
+ Great Fall, MT 59405","Peace Hospice of Montana, 1101 26th St., Great Fall, MT 59405",MT,406-455-3040,kellykeilman@benefis.org,,"Grief, Suicide Bereavement",,,,,,,,,
+,"Kimberly Tatsey-McKay, MSW","129 1st Ave. S.E.
+ Browning, MT 59417","129 1st Ave. S.E., Browning, MT 59417",MT,406-338-2715,kimberlyt@bps.k12.mt.us,,Adolescents/Children,,,,,,,,,
+,"Lee Anne Byrne, LCSW","305 1st Ave W
+ Columbia Falls, MT 59912","305 1st Ave W, Columbia Falls, MT 59912",MT,406-270-0790,leeanne@imaginehealth.net,,"Adult, Child/Adolescent, Grief, Biofeedback assisted therapies",,,,,,,,,
+,"Lynda Fichtner, LCSW, LAC","101 E. Broadway, Suite 608
+ Missoula, MT 59802","101 E. Broadway, Suite 608, Missoula, MT 59802",MT,406-360-1946,lyndafichtner@yahoo.com,,Adolescents/Children,,,,,,,,,
+,"Meaghan Lee, LCSW, LMFT","910 Brooks, Suite 101
+ Missoula, MT 59801","910 Brooks, Suite 101, Missoula, MT 59801",MT,406-721-4918,meaghan.lee@va.gov,,"Families, Veterans",,,,,,,,,
+,"Melissa Mitchell, LCPC","205 Haggerty Lane
+ Bozeman, MT 59715","205 Haggerty Lane, Bozeman, MT 59715",MT,406-366-1027,melmmitchell@hotmail.com,,,,,,,,,,,
+,"Rob Terwilliger, MS, LCPC",,,MT,406-541-8472,robt@tamarackgrc.org,,"Adolescents/Children, Couples, Adults/Elders, Grief, Trauma",,,,,,,,,
+,"Shirley Cayko, MSW, LCSW",,,MT,406-453-0088,shirleycaykolcsw@gmail.com,,"Families, Adults/Elders, Abuse, LGBT+",,,,,,,,,
+,"Tammy Ginsburg, LCPC","15732 Crabbs Branch Way
+ Derwood, MD 20855","15732 Crabbs Branch Way, Derwood, MD 20855",MT,301-529-6871,tammi@tmgins.com,,"Child/Adolescent, Addiction, LGBTQ",,,,,,,,,
+,"Tina Barrett, EdD, LCPC","405 S. 1st St W.
+ Missoula, MT 59801","405 S. 1st St W., Missoula, MT 59801",MT,406-541-8472,tinab@tamarackgrc.org,,Families,,,,,,,,,
+,"Wava Goetz, MS, LCPC","410 Central Suite 509
+ Great Falls, MT 59401","410 Central Suite 509, Great Falls, MT 59401",MT,406-761-7079,wavagoetz@gmail.com,,"Adult, Child/Adolescent, Addiction",,,,,,,,,
+,"Zeva Singer, MA, LCPC","120 So 5th St., Suite 101
+ Hamilton, MT 59840","120 So 5th St., Suite 101, Hamilton, MT 59840",MT,406-544-0864,zsinger76@gmail.com,,"Adolescents/Children, Families, Couples, Adults/Elders, Grief, Women’s Issues",,,,,,,,,
+,"Donald Belau, PhD","8630 Lavender Circle
+ Lincoln, NE 68505","8630 Lavender Circle, Lincoln, NE 68505",NE,402-759-0573,dpbelau72@gmail.com,,Adolescents/Children,,,,,,,,,
+,"James Sweeney, MS","229 Cottage Street
+ Littleton, NH 3561","229 Cottage Street, Littleton, NH 3561",NH,603-444-6465,,,,,,,,,,,,
+,"Jessica Schupp, MA; LCMHC","229 Cottage Street
+ Littleton, NH 3561","229 Cottage Street, Littleton, NH 3561",NH,603-444-6465,,,"Families, Co-occurring Disorders",,,,,,,,,
+,"Sandra Marmar, NA","Headrest
+ 14 Church St.
+ Lebanon, NH 3766","Headrest, 14 Church St., Lebanon, NH 3766",NH,603-448-4872,sandy.marmar@headrest.org,,Co-occurring Disorders,,,,,,,,,
+,"Alicia Jennings, LCSW","1 Medical Dr, Morris Plains, NJ 07950","1 Medical Dr, Morris Plains, NJ 07950",NJ,973-298-8620,ajennings2@primehealthcare.com,,,,,,,,,,,
+,"Andrea Wesser-Malmud, LCSW","8 Southwood Dr, Morris Plains NJ 07950","8 Southwood Dr, Morris Plains NJ 07950",NJ,973-865-2077,andreamalmud@gmail.com,,Adults,,,,,,,,,
+,"Brenda Mirly, LCSW","43 Maple Ave, Morris NJ 07960","43 Maple Ave, Morris NJ 07960",NJ,973-615-8494,bgmirly@aol.com,,"Relational Trauma, Couples, Adults",,,,,,,,,
+,"Christine Anderson LPC, LMFT","8 Lamington Rd, Branchburg NJ 08876","8 Lamington Rd, Branchburg NJ 08876",NJ,908-403-7263,cmranderson82@gmail.com,,"Couples, Grief, Family, Crisis Intervention",,,,,,,,,
+,"Deborah New, MSW, LCSW","7 Highland Dr, Kinnelon NJ 07405","7 Highland Dr, Kinnelon NJ 07405",NJ,973-943-6901,deborahnewlcsw@gmail.com,,Integrate Mind/Body Approach,,,,,,,,,
+,Deirdre Comey LCSW CEAP SAP,"222 Kinderkamack Road Suite 102 Oradell NJ, 07649","222 Kinderkamack Road Suite 102 Oradell NJ, 07649",NJ,201-986-6552,deirdrecomeylcsw@gmail.com,"Video Call (Zoom, Skype, etc.)","Suicide Bereavement, Grief, Depression, Anxiety",,,,,,,,,
+,"Dr. Jude Uy, PhD Licensed Psychologist NJ#35SI00542600 and NY#020606",,,NJ,201-632-5833,drjudemontclair@gmail.com,"Phone
+ Video Call (Zoom, Skype, etc.)",Intensively Trained DBT Therapist for young adults and older clients.,,,,,,,,,
+,"Gary Dushkin, PSYD","535 Morris Ave, Springfield NJ 07081","535 Morris Ave, Springfield NJ 07081",NJ,973-379-5116,,,"Couples, Family, Adolescent, Geriatric",,,,,,,,,
+,"Hila Revah, LCSW",,,NJ,201-639-8004,hilarevahlcsw@gmail.com,,"Adolescents, Adults, Couples",,,,,,,,,
+,"Jacqueline Salvatore, LCSW","986 Leonardville Rd.
+ Atlantic Highlands, NJ 07716","986 Leonardville Rd., Atlantic Highlands, NJ 07716",NJ,866-832-6260,info@seaglasscounseling.com,,"Adult, Child/Adolescent, Family/Couple",,,,,,,,,
+,"Jen McLean, MS in Clinical Mental Health Counseling",,,NJ,973-777-7638,j.mclean@jfsclifton.org,,,,,,,,,,,
+,"Judy Toonkel, LCSW","134 Chestnut Dr, Wayne NJ 07470","134 Chestnut Dr, Wayne NJ 07470",NJ,973-696-4016,mjtoonkel@optonline.net,,"Couples, EMDR",,,,,,,,,
+,"Lauren Hennion, MSW, LCSW","256 Columbia Turnpike #1105, Florham Park, NJ 07932","256 Columbia Turnpike #1105, Florham Park, NJ 07932",NJ,973-765-9050,info@jfsmetrowest.org,,"Trauma, Grief/Loss, Adolescent, Adults",,,,,,,,,
+,"Lisa F. Ligammari, LCSW - 44SC04616500","80 Bridge Plaza Dr., Manapalan, NJ 07726","80 Bridge Plaza Dr., Manapalan, NJ 07726",NJ,732-648-6423,lisa.ligammari@aol.com,"Video Call (Zoom, Skype, etc)","Children/teens & Adults Working with Trauma, Grief & anxiety disorders. Psychodynamic, Psychoanalysis.",,,,,,,,,
+,"Marilyn Kaplan, LCSW","185 Broad St, Bloomfield NJ 07003/ 250 Ridsedale Ave, Florham Park NJ 07932","185 Broad St, Bloomfield NJ 07003/ 250 Ridsedale Ave, Florham Park NJ 07932",NJ,201-572-8057,marikaplan@gmail.com,,"Children/Adolescents, Adults , Couples",,,,,,,,,
+,"Melissa Servedio, LPC","2116 Sunset Ave., Westfield, NJ 07090","2116 Sunset Ave., Westfield, NJ 07090",NJ,732-977-7480,mservedio@insightpsychgroup.com,"Video Call (Zoom, Skype, etc)",Adults/Children/Teens,,,,,,,,,
+,"Nick Carter, LCSW","55 Woodland Ave, Summit NJ 07901","55 Woodland Ave, Summit NJ 07901",NJ,973-610-8741,,,"Family, Addiction, Workplace",,,,,,,,,
+,Richard Smith,"305 W Seventh St, Plainfield, NJ 07060","305 W Seventh St, Plainfield, NJ 07060",NJ,908-755-4848,richard.smith@unitedfamily.org,"Video Call (Zoom, Skype, etc)",Adults,,,,,,,,,
+,"Robyn Krugman, LCSW","570 W Mount Pleasant Ave, Livingston NJ 07039","570 W Mount Pleasant Ave, Livingston NJ 07039",NJ,973-637-1749,rkrugman@jfsmetrowest.org,,"Adolescent, Adult, Family, ABFT",,,,,,,,,
+,"Sara Mendez-Emma, LCSW",256 Columbia Turnpike NJ 07932/ 205 Columbia Turnpike NJ 07932,256 Columbia Turnpike NJ 07932/ 205 Columbia Turnpike NJ 07932,NJ,973-637-1752,smendez-emma@jfsmetrowest.org,,"Children/Adolescents, Families, ABFT",,,,,,,,,
+,"Shari Bloomberg, LCSW","570 W. Mt Pleasant Ave, Livingston NJ 07039","570 W. Mt Pleasant Ave, Livingston NJ 07039",NJ,973-637-1745,sbloomberg@jfsmetrowest.org,,"Domestic Violence, Children/Adolescent",,,,,,,,,
+,"Susan M. Cattermole, MSW, LCSW 44SC05195000","2116 Sunset Ave., Suite D, Ocean, NJ 07712","2116 Sunset Ave., Suite D, Ocean, NJ 07712",NJ,732-546-2339,shore.health@yahoo.com,"Video Call (Zoom, Skype, etc)",EMDR Certified; Certified Clinical Trauma Professional; Certified Yoga Teacher (Trauma Sensitive),,,,,,,,,
+,"Susie Wilson, MA, LAC, MHC","22-08 Rte 208, Fairlawn NJ 07430","22-08 Rte 208, Fairlawn NJ 07430",NJ,201-956-6363 ext. 42,wellsprings.nj@gmail.com,,"Adults, Adolescents, Couples, Family, Addiction",,,,,,,,,
+,"Elba Velez True, LPCC, LADAC","1400 Barbara Loop SE Suite H, Rio Rancho NM 87124","1400 Barbara Loop SE Suite H, Rio Rancho NM 87124",NM,505-610-6862,elbatrue@gmail.com,,"Children/Adolescents, Adults, Couple, Family, Substance Abuse",,,,,,,,,
+,"Gerard Uaglio, LMHC","673 Perfecto Lopez Rd, Corrales NM 87048","673 Perfecto Lopez Rd, Corrales NM 87048",NM,415-260-1125,guaglio@live.nmhu.edu,,"Couples, Crisis, Suicide Intervention, Anger Mgmt",,,,,,,,,
+,"Joyce L. MacKinstry, LMFT","903c 5th St, Estancia, NM 87106","903c 5th St, Estancia, NM 87106",NM,505-384-2777,joyce.mackinstry@pmsnm.org,,"Children, Adolescents, Couples, Adults, Trauma, Substance Use, Group",,,,,,,,,
+,"Karen Cobb, LPCC","601 Montano Road NW
+ Albuquerque, NM 87107","601 Montano Road NW, Albuquerque, NM 87107",NM,505-239-2259,cobb.karen@comcast.net,,"Family, Children, Adolescent",,,,,,,,,
+,"Lisa Marie Galles, LPCC, MS Counseling","661 Quantum Rd NE, Rio Rancho NM 87124","661 Quantum Rd NE, Rio Rancho NM 87124",NM,505-218-6383,drgd@gdpyschservices.com,,"Adults, Forensics, Group",,,,,,,,,
+,"Michele M. Donovan, LMSW","707 Boradway Blvd. NE #300, Albuquerque NM 87102","707 Boradway Blvd. NE #300, Albuquerque NM 87102",NM,505-345-8471,micheledo@openskieshealthcare.org,,"Children, Adults, Elderly, Consumers of Medicaid",,,,,,,,,
+,"Nikka Peralta, LCSW","3939 San Pedro Dr NE, Albuquerque NM 87110","3939 San Pedro Dr NE, Albuquerque NM 87110",NM,505-903-5437,mendingheartsnm@gmail.com,,"Adolescents, Children, Family",,,,,,,,,
+,"Rosa Gallegos-Samora, LCSW","1217 1st St NW, Albuequerque NM 87125","1217 1st St NW, Albuequerque NM 87125",NM,505-767-1192,rosagallegos-samora@abqhch.org,,"Trauma, Homelessness, Incarceration",,,,,,,,,
+,"Theresa Seffrin, MA, LPCC",,,NM,505-629-2762,tlseffrin@aol.com,,"Spanish/Bilingual, Adolescents, Individual, Couples",,,,,,,,,
+,"Valerie Griego, LMSW",,,NM,505-999-7290,griego12@hotmail.com,,"Adolescents, Children, Family, Couples",,,,,,,,,
+,"Allison DeMay-Byron, LMSW","Pittsford Youth Services, 4 S. Main St, Pittsford NY 14534","Pittsford Youth Services, 4 S. Main St, Pittsford NY 14534",NY,585-264-0604,info@pittsfordyouthservices.org,,"Children/Adolescents, some adult",,,,,,,,,
+,"Amy L. Lanphere, LMHC","1 Leo Moss Dr, Olean, NY 14760","1 Leo Moss Dr, Olean, NY 14760",NY,716-373-8040,allanphere@cattco.org,,"All Ages, Suicide Grief",,,,,,,,,
+,"Amy Perazzo, LMHC, NCC","200 East River Rd, Fl 3, Rochester, NY 14623","200 East River Rd, Fl 3, Rochester, NY 14623",NY,585-273-4089,amy_perazzo@urmc.rochester.edu,,"Children/Adolescents, Medically Fragile Children, Families and Siblings of children with Medical Complexity",,,,,,,,,
+,"Amy Ruff, LMHC, NCC","531 Washington St., Watertown, NY 13601","531 Washington St., Watertown, NY 13601",NY,315-782-4483,ruffamy025@gmail.com,"Phone
+ Video Call (Zoom, Skype, etc.)","counsel children, teens, adults",,,,,,,,,
+,"Anna Suh, LMSW","1841 Broadway -4th Floor
+  New York, NY 10023","1841 Broadway -4th Floor, New York, NY 10023",NY,212-333-3444,hks2119@columbia.edu,,"Family/Couple, Grief",,,,,,,,,
+,"Brenda L. Black, LMSW","31 Thurber Drive Waterloo, NY 13148","31 Thurber Drive Waterloo, NY 13148",NY,315-539-1980,bblack@co.seneca.ny.us,,"Individual Adults & Adolescents, Suicide Prevention",,,,,,,,,
+,"Bryan Schamberger, LMSW","3020 Bailey Ave, Buffalo, NY 14215","3020 Bailey Ave, Buffalo, NY 14215",NY,716-833-3622,bschamberger@horizon-health.org,,"Depression, Anxiety, SPMI, Adults",,,,,,,,,
+,"Carol B. Carlson, LMHC","490 Cross Keys Office Park, Fairport, NY 14450","490 Cross Keys Office Park, Fairport, NY 14450",NY,585-466-0545,cbcarlsoncounseling@gmail.com,,"Child/Teen, Adults, Attachment, Adoption, Divorce & Coparenting",,,,,,,,,
+,"Chuck Montante, MS, CASAC, LMHC","Westfall Associates, 919 Westfall Rd, Suite B-60, Rochester NY 14618","Westfall Associates, 919 Westfall Rd, Suite B-60, Rochester NY 14618",NY,585-473-1500,cmontante@westfallcd.com,,"Chemical dependency, family intervention",,,,,,,,,
+,"Cody Heath, PhD, LMFT","4601 50th St ,Suite 201, Lubbock, TX 79414","4601 50th St ,Suite 201, Lubbock, TX 79414",NY,806-370-0051,drcodyheath@gmail.com,,"Couples, Families, Individuals",,,,,,,,,
+,"Danielle Figura, LCSW-R","884 Brighton Rd, Tonawanda, NY 14150","884 Brighton Rd, Tonawanda, NY 14150",NY,716-836-9460,,,"Adolescent, Young Adult",,,,,,,,,
+,"Danielle Mandigo, LCSW","3300 James St. Syracuse, NY 13206","3300 James St. Syracuse, NY 13206",NY,317-629-5495,danielle_mandigo@yahoo.com,,"Grief & Loss, Trauma, Children/Adolescents, & Family/Couples",,,,,,,,,
+,"Diane P. Brennan, LMHC, NCC, CCTP","200 W. 57th St.- Suite 1310
+  New York, NY 10019","200 W. 57th St.- Suite 1310, New York, NY 10019",NY,212-204-6586,diane@life-loss.com,"Phone
+ Video Call (Zoom, Skype, etc.)","Grief, Bereavement, Trauma",,,,,,,,,
+,"Diane Sweet, LCSW","26 Ogden Ave.
+  East Williston, NY 11596","26 Ogden Ave., East Williston, NY 11596",NY,516-248-2218,dfslcsw@gmail.com,"Phone
+ Video Call (Zoom, Skype, etc.)","Adult, Child/Adolescent, Family/Couple, Grief",,,,,,,,,
+,"Don Cohen, LCSW","350 Central Park West, Suite 1A
+  New York, NY 10025","350 Central Park West, Suite 1A, New York, NY 10025",NY,212-288-1929,dcohen150@verizon.net,,"Adult, Grief, CBT",,,,,,,,,
+,"Eileen Steinchen, LMHC","277 Alexander St, Suite 306, Rochester NY 14607","277 Alexander St, Suite 306, Rochester NY 14607",NY,585-797-6400,eileensteinchenlmhc@outlook.com,,"Child/Adolescent, Young Adult, Trauma, Grief",,,,,,,,,
+,"Elizabeth Holbein, LMSW",,,NY,315-946-5722,,,"Adults, Mental Health Disorders",,,,,,,,,
+,"Emily Smith, LCSW","210 Church St
+  Saratoga Springs, NY 12866","210 Church St, Saratoga Springs, NY 12866",NY,518-580-0520,Emily_Smith@ecspsychologiral.com,,,,,,,,,,,
+,"Erin Pittinaro, LMSW","95 Allens Creek Rd, Rochester, NY 14618","95 Allens Creek Rd, Rochester, NY 14618",NY,585-705-0144,erinpittinaro.counseling@gmail.com,,"Adults, Children, Anxiety/ADHD",,,,,,,,,
+,"Gillian Rittmaster, LCSW","845 N. Broadway
+  White Plains, NY 10603","845 N. Broadway, White Plains, NY 10603",NY,914-761-0600,gillritt@gmail.com,,Grief,,,,,,,,,
+,"Heather Elston, LMSW",224 Alexander St. Rochester NY 14607,224 Alexander St. Rochester NY 14607,NY,585-922-8040,heather.elston@rochesterregional.org,,,,,,,,,,,
+,Jane M. Fisher. LCSW,"15 Fisher Rd, Suite 214, Pittsford, NY 14534","15 Fisher Rd, Suite 214, Pittsford, NY 14534",NY,585-721-8921,janefisher5@yahoo.com,,"Child & Adolescents, Young Adults, Adults",,,,,,,,,
+,"Janet Kasimis, LCSW","242 East 19th St.
+  New York, NY 10003","242 East 19th St., New York, NY 10003",NY,212-473-6709,,,"Adult, Child/Adolescent, Family/Couple, Grief",,,,,,,,,
+,"Janette Funk, PhD","1577 South Ave, Rochester NY 14620","1577 South Ave, Rochester NY 14620",NY,585-210-3623,jfunk.phd@gmail.com,,"Adults, College/Grad/Medical Students, Grief, Couples",,,,,,,,,
+,"Jenna Cirbus, MS, LMHC","37 Niagara St. Tonawanda, NY 14150","37 Niagara St. Tonawanda, NY 14150",NY,716-831-1850,jcirbus@horizon-health.org,,substance use disorders,,,,,,,,,
+,"Jessica D. Busekist, LMHC","161 W. 54th Street, Suite 602A
+ New York, NY 10019","161 W. 54th Street, Suite 602A, New York, NY 10019",NY,716-945-5211,jdbusekist@cattco.org,,"Adults, Adolescents",,,,,,,,,
+,"Jessica Townsend, MA, LMHC","359 Ballston Ave
+  Saratoga Springs, NY 12866","359 Ballston Ave, Saratoga Springs, NY 12866",NY,518-587-8008,jtownsend@saratogacff.org,,"Adult, Mood disorders, loss, mental illness",,,,,,,,,
+,"Joe Albert, Ph.D","5 Pine West Plaza Suite 508
+  Albany, NY 12205","5 Pine West Plaza Suite 508, Albany, NY 12205",NY,518-452-4232,alberj@rpl.edu,,"Child/Adolescent, Trauma, Bereavement Counseling",,,,,,,,,
+,"Julie Pastro, LCSW","210 Central Park South
+  New York, NY 10019","210 Central Park South, New York, NY 10019",NY,917-940-7755,juliecsw@aol.com,,"Adult, Child/Adolescent, Family/Couple",,,,,,,,,
+,"Julie Stonberg, LCSW","250 East Hartsdale Ave.- Suite 21
+  Hartsdale, NY 10530","250 East Hartsdale Ave.- Suite 21, Hartsdale, NY 10530",NY,914-713-0090,stonberg@msn.com,,"Child/Adolescent, Family/Couple, Women and adolescent girls",,,,,,,,,
+,"Kathleen Lisborg, LMSW",,,NY,716-505-1060,klisborg@horizon-health.org,,"LGBTQ, Grief, Trauma",,,,,,,,,
+,"Kelly Daugherty, LCSW, GC-C","2023 Us Rt 9
+  Round Lake, NY 12151","2023 Us Rt 9, Round Lake, NY 12151",NY,518-219-8625,kelly@kellydaughertylcswr.com,"Video Call (Zoom, Skype, etc.)","Adult, Family/Couple",,,,,,,,,
+,"Kendra A Welch, LCSW","187 Edinburgh Street, Rochester, 14624","187 Edinburgh Street, Rochester, 14624",NY,585-275-2991 ext. 280,kendra_marinucci@urmc.rochester.edu,,"Trauma, Children, Family",,,,,,,,,
+,"Kimberly B. Davis, MS, LMHC, CASAC-T","180 East Union Street, Newark, NY 14513","180 East Union Street, Newark, NY 14513",NY,315-331-4867 ext. 21,kimberly.davis@dor.org,,"Adolescent, Individual, Couples, Grief, Anxiety",,,,,,,,,
+,"Kristen L. Shaffer, LMHC","1 Leo Moss Dr, Olean, NY 14760","1 Leo Moss Dr, Olean, NY 14760",NY,716-373-8040,klshaffer@cattco.org,,Trauma,,,,,,,,,
+,"Laurel Seifert, LCSW-R, CGP","625 Ayrault Rd., Fairport, NY 14450","625 Ayrault Rd., Fairport, NY 14450",NY,585-755-9708,,,"bereavement, grief & loss, complicated grief",,,,,,,,,
+,"Leah Lipton, LCSW","211 West 56th St.
+  New York, NY 10019","211 West 56th St., New York, NY 10019",NY,212-678-4311,leahliptoncsw@yahoo.com,,"Adult, Family/Couple",,,,,,,,,
+,"Linda A. Harrison, LCSW-R","95 Allans Creek Road, Rochester, NY 14618","95 Allans Creek Road, Rochester, NY 14618",NY,585-275-3379,linda_harrison@urmc.rochester.edu,,,,,,,,,,,
+,"Lindsay Lupo, LCSW",,,NY,585-448-0936,lupo.lindsay@gmail.com,,,,,,,,,,,
+,Ljiljana Zecevic,"302 5th Avenue suite 8
+NEW YORK, NY 10001","302 5th Avenue suite 8, NEW YORK, NY 10001",NY,"	(646) 360-0371","	lzecevicnyc@gmail.com","Phone, Video","	
+Individual Therapy (adolescents and adults)
+Couples/Family Therapy
+Consultation Services
+Supervision for pre-licensure professionals and graduate student
+
+
+www.drljiljanazecevic.com",,,,,,,,,
+,"Lois Kroplick, DO, DFAPA","11 Medical Park Dr.- Suite 106
+  Pomena, NY 10970","11 Medical Park Dr.- Suite 106, Pomena, NY 10970",NY,845-362-4215,drkroplick@aol.com,,"Grief, Trauma",,,,,,,,,
+,"Loraine Pirro, LCSW","983 Park Ave.
+  New York, NY 10028","983 Park Ave., New York, NY 10028",NY,914-673-9010,lmpconsulting@gmail.com,,"Grief, Trauma, LGBT friendly, relationship issues, suicide survivors, non-gender conforming children",,,,,,,,,
+,"Manuela Mage, CSW","920 48th St.
+  Brooklyn, NY 11203","920 48th St., Brooklyn, NY 11203",NY,718-283-7887,mmage@maimonidesmed.org,,"Adult, Trauma, Spanish and Portuguese as well as English",,,,,,,,,
+,"Marjorie Norlund, LMHC","2950 West Ridge Rd, Suite 303, Rochester NY 14626","2950 West Ridge Rd, Suite 303, Rochester NY 14626",NY,585-259-9644,marjorienorlund@gmail.com,,"Adolescents, Trauma, Substance Use Disorders",,,,,,,,,
+,"Mary B. Dousharm, LCSW-R","1580 US Highway 11, 
+ Gouverneur, NY 13642","1580 US Highway 11, , Gouverneur, NY 13642",NY,315-723-9258,marydousharmlcsw@gmail.com,"Video Call (Zoom, Skype, etc.)","Grief
+ 
+ Trauma
+ 
+ Phase of Life
+ 
+ Anxiety
+ 
+ Depression
+ 
+ CBT, DBT",,,,,,,,,
+,Mary Beth Musco,"401 New Karner Rd
+  Albany, NY 12205","401 New Karner Rd, Albany, NY 12205",NY,518-292-5456,marybeth.musco@gmail.org,,EMDR,,,,,,,,,
+,"Mary Cullman, LCSW","Bereavement Center of Westchester, NY Presbytarian
+  670 White Plains Rd.
+  Scarsdale, NY 10583","Bereavement Center of Westchester, NY Presbytarian, 670 White Plains Rd., Scarsdale, NY 10583",NY,914-787-6158,pdiscenza@lawrence.org,,"Adult, Family/Couple, Groups- Support After Suicide Group",,,,,,,,,
+,"May Beth Aridiacono, LMSW","5122 Morningside Dr.- #307
+  Houston, TX 77005","5122 Morningside Dr.- #307, Houston, TX 77005",NY,123-456-7891,melarci1@me.com,,"Family/Couple, Grief, Trauma",,,,,,,,,
+,"Melissa Loson, LCSW","1525 Western Ave Suite 2B
+  Albany, NY 12203","1525 Western Ave Suite 2B, Albany, NY 12203",NY,518-429-9611,losonmelissa@gmail.com,,"Child/Adolescent, Family/Couple, Grief, Trauma, anxiety, tf-cbt",,,,,,,,,
+,"Michele Allman, LMSW","2180 Empire Blvd, Webster NY, 14580","2180 Empire Blvd, Webster NY, 14580",NY,585-274-4069,michele_allman@urmc.rochester.edu,,"grief counseling, support groups, grief camp for children",,,,,,,,,
+,"Michele Itskowitch, LCSW","1155 Park Ave.- Medical Suite B
+  New York, NY 10128","1155 Park Ave.- Medical Suite B, New York, NY 10128",NY,212-734-5491,mi37@columbia.edu,,"Adult, Child/Adolescent, Family/Couple",,,,,,,,,
+,"Nancy Turret, LCSW","617 West End Ave.
+  New York, NY 10024","617 West End Ave., New York, NY 10024",NY,914-672-8844,nancyturret@gmail.com,,"Adult, Child/Adolescent, Family/Couple, Grief",,,,,,,,,
+,"Natalia Skritskaya, PhD","124 East 40th St.- Suite 404
+  New York, NY 10016","124 East 40th St.- Suite 404, New York, NY 10016",NY,646-820-6354,ns2712@columbia.edu,,"Adult, Grief, CBT, CGT",,,,,,,,,
+,"Noam Schneck, Ph.D","124 West 79th St. #1B
+  New York, NY 10024","124 West 79th St. #1B, New York, NY 10024",NY,646-774-7624,schneck@nyspi.columbia.edu,,"Adult, Child/Adolescent, Grief, Suicide Loss",,,,,,,,,
+,"Patricia Denhoff, LCSW-R","401 Penbrooke Dr, Bldg 2 Suite K Penfield, NY 14526","401 Penbrooke Dr, Bldg 2 Suite K Penfield, NY 14526",NY,585-705-0944,tmdenhoff5@gmail.com,,"Adolescents, Young Adult, School Social Work, Family",,,,,,,,,
+,"Patricia Ferrandino, MSW,LCSW NY#075038","400 W Main St Riverhead NY, 11901","400 W Main St Riverhead NY, 11901",NY,631-601-4484,dinohart86@gmail.com,"Video Call (Zoom, Skype, etc.)",I am a suicide loss survivor myself with a specialty in addictions.,,,,,,,,,
+,"Rachel Stephenson, LMSW","Horizon Health Services (6520 Naiagra Falls Blvd, Niagara Falls, NY 14304","Horizon Health Services (6520 Naiagra Falls Blvd, Niagara Falls, NY 14304",NY,716-831-1800,rstephenson@horizon-health.org,,Currently only providing telehealth services.,,,,,,,,,
+,"Rebecca Rainstrom, LMHC","359 Ballston Ave
+  Saratoga Springs
+  NY 12866","359 Ballston Ave, Saratoga Springs, NY 12866",NY,518-587-8008,rrainstrom@saratogacff.org,,"Adult, Grief",,,,,,,,,
+,"Robin DeZutter, LMSW","160 Wallace Way, Bldg 9 Rochester, NY 14624","160 Wallace Way, Bldg 9 Rochester, NY 14624",NY,585-617-2300 ext. 1115,rdezutter@monroe2boces.org,,School Social Worker,,,,,,,,,
+,"Rose Latino, PhD","26 Court St.- #1620
+  Brooklyn, NY 11242","26 Court St.- #1620, Brooklyn, NY 11242",NY,347-277-6166,roselatino@gmail.com,,"Adult, Grief",,,,,,,,,
+,"Stephanie Pastore, MSW","2563 Union Rd, Cheektowaga, NY 14227","2563 Union Rd, Cheektowaga, NY 14227",NY,716-668-7622,spastore@horizon-health.org,,substance use,,,,,,,,,
+,"Stephen Gaylord, LCSW",81 Lake Ave. Rochester NY 14608,81 Lake Ave. Rochester NY 14608,NY,585-368-6901 ext. 8932,stephen.gaylord@rochesterregional.org,,Adult,,,,,,,,,
+,"Steve Cooper, LCSW-R, BCD","170 San Gabriel Dr. Rochester, NY 14610","170 San Gabriel Dr. Rochester, NY 14610",NY,585-235-7466,info@coopercounseling.com,,"Adults, Individual, Couples, Crisis work",,,,,,,,,
+,"Susan M. Klemme, LMSW, NYS Bar Association","1 Elk St
+  Albany, NY 12207","1 Elk St, Albany, NY 12207",NY,518-487-5685,sklemme@nysba.org,,"Severely persistantly mentally ill, safeTALK trainer, Not Responsible By Reason of Mental Disease or Defect",,,,,,,,,
+,"Suzanne Catholdi, LMSW","Wayne Co Dept. of Mental Health, 1519 Nye Rd, Lyons, NY 14489","Wayne Co Dept. of Mental Health, 1519 Nye Rd, Lyons, NY 14489",NY,318-946-5722 ext. 3317,scatholdi@co.wayne.ny.us,,"Survivors of Sexual Abuse, Violence, Suicide Prevention",,,,,,,,,
+,"Sylvia Bryant, LMHC","9221 robert Hart Dr. Dansville, NY 14803","9221 robert Hart Dr. Dansville, NY 14803",NY,585-335-3247,sbryant@noyeshealth.org,,"Adults, Couples, Older Adults",,,,,,,,,
+,"Teresa McMahon, LMHC","Alfred Station, NY 14803","Alfred Station, NY 14803",NY,607-382-2099,tm629@cornell.edu,,All Ages,,,,,,,,,
+,"Vanessa McGann, PhD","27 Washington St N,
+  New York, NY 10011","27 Washington St N,, New York, NY 10011",NY,212-645-2533,vlmcgann@gmail.com,,"Adult, Child/Adolescent",,,,,,,,,
+,"Yasmeen Zaidi M.S, LMHC, NCC","Student Health and Counseling Center 
+ Potsdam, NY, 13676","Student Health and Counseling Center , Potsdam, NY, 13676",NY,315-268-4048,yzaidi@clarkson.edu,"Video Call (Zoom, Skype, etc.)",Adults and teens,,,,,,,,,
+,"Amanda McGough, PhD","15720 Brixham Hill Ave Suite 150
+ Charlotte, NC 28277","15720 Brixham Hill Ave Suite 150, Charlotte, NC 28277",NC,704-970-4791,amcgough@southeastpsych.com,,"Grief, Adolescents/Children, Adults/Elders, Family",,,,,,,,,
+,"Bridges Rimpf, LPCC/LPC, LCAS","1145 Executive Circle Suite D
+ Cary, NC 27511","1145 Executive Circle Suite D, Cary, NC 27511",NC,919-526-0443,bridget.kelleycounselingnc@gmail.com,,"Trauma, Suicide Bereavement",,,,,,,,,
+,"Dana M. Cea (she/they) PhD, MS, CPSS, CRC, LCMHC, NCC","2302 Nash St N Ste E #305 Wilson, NC 27896","2302 Nash St N Ste E #305 Wilson, NC 27896",NC,336-606-1862,dana@ccbetterworks.us,Video Call,"Adults, LGBTQ+, Transgender/gender non-binary, Disabilities/chronic illness, Neurodivergence, Couples/relationships",,,,,,,,,
+,"Darlene K Stanley, LPCC/LPC, MA, NCC","2311 W Cone Blvd Suite 145
+ Greensboro, NC 27408","2311 W Cone Blvd Suite 145, Greensboro, NC 27408",NC,336-288-1984,dkstanley@charlottediocese.org,,"Adult, Child/Adolescent, Grief, Trauma, Divorce, ADHD/LD",,,,,,,,,
+,"Deborah Shumate, LPCA","6845 Fairview Rd
+ Charlotte, NC 28210","6845 Fairview Rd, Charlotte, NC 28210",NC,704-593-6925,deb@shumatecounseling.com,,"Adult, Child/Adolescent, Family/Couple, Service Member, Veterans",,,,,,,,,
+,"Diane Reid Lyon, LPCC/LPC, MA, NCC","325 Matthews Mint Hill Rd Suite 104
+ Matthews, NC 28105","325 Matthews Mint Hill Rd Suite 104, Matthews, NC 28105",NC,704-635-6274,diane@lyoncounselingnc.com,,"Grief, Trauma, Domestic Violence, Serious Affective Disorders, Couples Counseling",,,,,,,,,
+,"Eva Nove, LPCC/LPC, MA, MBA, CEAP, NBCC","325 West 7th St.
+ Charlotte, NC 28202","325 West 7th St., Charlotte, NC 28202",NC,704-236-3093,avanove@yahoo.com,,Child/Adolescent,,,,,,,,,
+,"Iris Whitlock, CPCA","310 Statesville Blvd
+ Salisburg, NC 28144","310 Statesville Blvd, Salisburg, NC 28144",NC,704-962-1924,i_whitlock@yahoo.com,,"Adult, Couples",,,,,,,,,
+,"Jane C Patterson, LCSW, MSW","708 East Blvd
+ Charlotte, NC 28203","708 East Blvd, Charlotte, NC 28203",NC,704-334-4300,jpatterson@dilworthpsychotherapy.com,,"Adult, Child/Adolescent, LGBTQ",,,,,,,,,
+,"Jennifer Kolb, MA, LPCA, NCC","5203 Sharom Rd
+ Charlotte, NC 28210","5203 Sharom Rd, Charlotte, NC 28210",NC,704-554-9900,jennifer.kolb@presbypsych.org,,"Adult, Child/Adolescent, Family/Couple",,,,,,,,,
+,"Kathryn Falbo-Woodson, MSW, LCSWA","Thrive Counseling, PLLC
+ 1428-B Ellen St, Monroe, NC 28112","Thrive Counseling, PLLC, 1428-B Ellen St, Monroe, NC 28112",NC,704-438-9901,KFALBOWOODSON@GMAIL.COM,,"Adult, Family/Couple, Grief, Trauma, Patients with chronic illness (especially cancer and blood disorders)",,,,,,,,,
+,"Kim Skelton, LPCS, LCAS/MA in Community Counseling 2005","9B All Souls Cescent
+ Ashville, NC 28803","9B All Souls Cescent, Ashville, NC 28803",NC,828-772-1803,kimberlyleaskelton@gmail.com,,"Child/Adolescent, Family/Couple, Trauma, Addiction, PTSD, EMDR, CBT, PBT, TF-CBT",,,,,,,,,
+,"Kimberly Jackson-Luzader, LPCC/LPC, M. Ed","6716 Six Forks Rd
+ Raleigh, NC 27615","6716 Six Forks Rd, Raleigh, NC 27615",NC,919-996-1276,kimberly.jackson-luzader@raleighnc.gov,,"Adult, Child/Adolescent, Family/Couple",,,,,,,,,
+,"Lily Mudry, LPCC/LPC, LCAS, CCS","1118 Sam Newell Rd Suite D-2
+ Matthews, NC 28105","1118 Sam Newell Rd Suite D-2, Matthews, NC 28105",NC,704-750-1007,eagleeyecounseling@gmail.com,,"Adult, Child/Adolescent, Grief, TF-CBT",,,,,,,,,
+,"Marcia Patterson Vanard, LCSW","HPCG, 2500 Summit Ave
+ Greensboro, NC 27405","HPCG, 2500 Summit Ave, Greensboro, NC 27405",NC,336-621-5565,mvanard@hospicegso.org,,"EMDR, Addictions, Spirituality",,,,,,,,,
+,Meredith NC-8254,"2039 Mecklenburg Highway Mooresville NC, 28115","2039 Mecklenburg Highway Mooresville NC, 28115",NC,704-931-8590,meredith@milkandhoneycounseling.com,"Video Call (Zoom, Skype, etc.)","Trauma Informed Narrative Therapy
+ 
+ Internal Family Systems
+ 
+ Works with adults, teens, children, families
+ 
+ LGBTQ+
+ 
+ Spirituality",Phone,"Video Call (Zoom, Skype, etc.)",,,15,,,,
+,"Merrianne M Leff, MSSA","2709-B Pinedale Rd
+ Greensboro, NC 27408","2709-B Pinedale Rd, Greensboro, NC 27408",NC,336-314-0829,merrianneleff2005@trial.rr.com,,"Adult, Child/Adolescent, Trauma",,,,,,,,,
+,"Michelle Norton, LPCC/LPC, MA, NCC","258 E Garrison Blvd
+ Gastonia, NC 28056","258 E Garrison Blvd, Gastonia, NC 28056",NC,704-861-8405,michelle.norton@caromonthealth.org,,"Adult, Grief, PTSD",,,,,,,,,
+,"Perry Griffin, LPCA","3601 Central Ave
+ Charlotte, NC 28205","3601 Central Ave, Charlotte, NC 28205",NC,704-601-6292,perry.griffin@eculturalcounseling.com,,"Adult, Child/Adolescent,",,,,,,,,,
+,"Rev. Lisa Courtney, MACE, Chaplain, ACA","P.O. Box 286 286 I C C Loop Rd
+ Spindale, NC 28160","P.O. Box 286 286 I C C Loop Rd, Spindale, NC 28160",NC,828-395-1531,lcourtney@isothermal.edu,,"Adult, Trauma, Depression, anxiety, addiction",,,,,,,,,
+,"S. Kelley Ryan, LCSW","101 Hospice Lane Bldg 121
+ Winston Salem, NC 27103","101 Hospice Lane Bldg 121, Winston Salem, NC 27103",NC,336-768-3972,kelley.ryan@hospicecarecenter.org,,"Adult, Grief",,,,,,,,,
+,"Teresa Ray, MA, NCC, LPCS","258 E Garrison Blvd
+ Gastonia, NC 28054","258 E Garrison Blvd, Gastonia, NC 28054",NC,704-861-8405,terri.ray@caromonthealth.org,,,,,,,,,,,
+,"Amanda Logan, MSW, LICSW","1202 Westrac Dr, Fargo, ND, 58103","1202 Westrac Dr, Fargo, ND, 58103",ND,701-551-6344,alogan@pathinc.org,,"Adolescents, children, LGBTQ, trauma",,,,,,,,,
+,"Andi Wheeler, MS, LPC","1201 25th St. S, Fargo, ND 58103","1201 25th St. S, Fargo, ND 58103",ND,701-451-4900,,,"Adults, children",,,,,,,,,
+,"Angell Naslund, MS, LPCC","1308 23rd St. S, Fargo, ND 58103","1308 23rd St. S, Fargo, ND 58103",ND,701-297-7540 ext. 119,angell.naslund@bensonpsych.com,,"Children, adolescents, adults",,,,,,,,,
+,"Connie DeKrey, LSW, CT","1701 38th St. S, Fargo, ND, 58103","1701 38th St. S, Fargo, ND, 58103",ND,701-356-1500,cdekrey@hrrv.org,,Widows,,,,,,,,,
+,"Darren Carter, MS, MED, LAPC, NCC","1201 25th St. S, Fargo, ND 58103","1201 25th St. S, Fargo, ND 58103",ND,701-451-4900,,,Phobias,,,,,,,,,
+,"Denise Hellekson, LAPC, LISW, CEAP","1201 25th St. S, Fargo, ND 58103","1201 25th St. S, Fargo, ND 58103",ND,701-451-4900,dhellekson@thevillagefamily.org,,Mindfulness,,,,,,,,,
+,"Jennifer Messelt, MSW, LCSW","2860 10th Ave N #400, Grand Forks, ND 58203","2860 10th Ave N #400, Grand Forks, ND 58203",ND,701-356-1500,jennifer.messelt@hrrv.org,,"Children, adolescents, adults",,,,,,,,,
+,"Julie Vandrovec, MS, LPC","1201 25th St. S, Fargo, ND 58103","1201 25th St. S, Fargo, ND 58103",ND,701-451-4900,,,"Self-esteem, relationships",,,,,,,,,
+,"Katie Figuerres, MA, LPC","1201 25th St. S, Fargo, ND 58103","1201 25th St. S, Fargo, ND 58103",ND,701-451-4900,,,"Adults, couples",,,,,,,,,
+,"Kristina M Long, MSED, LPC","1006 Lincoln Street, Lisbon, ND 58054","1006 Lincoln Street, Lisbon, ND 58054",ND,701-683-5086,therapy@drtel.net,,,,,,,,,,,
+,"Kriston Wenzel, LSW, CT","1701 38th St. S Suite 101, Fargo, ND, 58103","1701 38th St. S Suite 101, Fargo, ND, 58103",ND,701-356-1500,kwenzel@hrrv.org,,"Children, adolescents",,,,,,,,,
+,"Mark Rohrer, LICSW, ACSW","2101 W. Elm St, Fargo, ND, 58102","2101 W. Elm St, Fargo, ND, 58102",ND,701-239-3700,mark.rohrer@va.gov,,Only see veterans,,,,,,,,,
+,"Monique Pederson, MS, LPC","600 South 2nd St, Suite 201, Bismarck, NC 58504","600 South 2nd St, Suite 201, Bismarck, NC 58504",ND,701-258-3780,mpederson@nuvationhealthservices.com,,"Adolescents, adults, couples",,,,,,,,,
+,"Patty Teagle, LPCC","600 S 2nd St Suite 201, Bismarck, ND 58504","600 S 2nd St Suite 201, Bismarck, ND 58504",ND,701-258-3780,pteagle@nuvationhealthservices.com,,"Older teens, adults, couples",,,,,,,,,
+,"Rachel Blumhardt, MED, LPCC, NCC","Village Family Service Center 1201 25th St S, Fargo, ND 58106","Village Family Service Center 1201 25th St S, Fargo, ND 58106",ND,701-451-4900,www.thevillagefamily.org,,"Couples, individual",,,,,,,,,
+,"Rachel Daigle, PhD, LPCC, LAC/LADC","1323 23rd St. S Suite H, Fargo, ND 58103","1323 23rd St. S Suite H, Fargo, ND 58103",ND,701-232-2886,rrdaigle@dpcounselingservices.com,,"Adolescents, adults, addiction",,,,,,,,,
+,"Renee L. Sandvik, MSW, LAC, UCSW","1201 25th St. S, Fargo, ND 58103","1201 25th St. S, Fargo, ND 58103",ND,701-451-4900,rsandvik@thevillagefamily.org,,13 and up,,,,,,,,,
+,"Ruth M. Denton-Graber, LPCC, LMFT, NCC","1201 25th St. S, Fargo, ND 58103","1201 25th St. S, Fargo, ND 58103",ND,701-451-4900,rdenton-graber@thevillagefamily.org,,,,,,,,,,,
+,"Stephanie Pritchard, LPC, NCC","1240 W. Main St, Valley City, ND 58072","1240 W. Main St, Valley City, ND 58072",ND,701-356-1500,stephanie.pritchard@hrrv.org,,"Children, adolescents, adults, older adults",,,,,,,,,
+,"Stephanie Schafer, MED, LPC, NCC","1201 25th St. S, Fargo, ND 58103","1201 25th St. S, Fargo, ND 58103",ND,701-451-4900,,,"Adults, couples",,,,,,,,,
+,"Tessa Sicble, LPC","311 E Broadway Ave, Bismarck, ND 58501","311 E Broadway Ave, Bismarck, ND 58501",ND,701-334-6242,tessaraes@gmail.com,,Domestic violence,,,,,,,,,
+,Danielle Sharp,"299 Cramer Creek Ct.
+ Dublin, OH 43017","299 Cramer Creek Ct., Dublin, OH 43017",OH,614-889-5722,dsharp@syntero.org,,,,,,,,,,,
+,Kayla Paul,"10701 East Blvd.
+ Cleveland, OH 44106","10701 East Blvd., Cleveland, OH 44106",OH,216-791-3800,kayla.paul2@va.gov,,"Veterans, Military Families",,,,,,,,,
+,"Dana Howard, LCSW","700 SW Penn Ave
+ Bartlesville, OK 74003","700 SW Penn Ave, Bartlesville, OK 74003",OK,918-418-9413,dhoward@glmhc.net,,"Adolescents/Children, Families",,,,,,,,,
+,"Karen Taylor, MSW; LCSW","Samaritan Counseling & Growth Center
+ 245 S Madison Blvd
+ Bartlesville, OK 74006","Samaritan Counseling & Growth Center, 245 S Madison Blvd, Bartlesville, OK 74006",OK,918-336-1463,kgtaylor@cableone.net,,"Adolescents/Children, Families, Couples, Adults/Elders",,,,,,,,,
+,"L. Kathleen Weeden-Armor, LPC","Bartlesville, OK 74003","Bartlesville, OK 74003",OK,918-876-1974,ladyprofessor@cableone.net,,"Adolescents/Children, Families, Adults/Elders",,,,,,,,,
+,"Melissa Hueste LPC-S, RPT-S","10310 N 138 E Ave Ste 104, Owasso, OK 74055","10310 N 138 E Ave Ste 104, Owasso, OK 74055",OK,918-906-2782,melissa@growinghopecounseling.org,"Phone
+ Video Call (Zoom, Skype, etc.)","Children, family, adolescents",,,,,,,,,
+,"Susan Anderson, MS; LPC","1912 Lake Rd.
+ Ponca City, OK 74604","1912 Lake Rd., Ponca City, OK 74604",OK,580-762-2222,susan.anderson.lpc@live.com,,"Adolescents/Children, Families, Couples, Adults/Elders",,,,,,,,,
+,Aimee Frazier Oregon / R6885,"6975 SW Sandburg St Suite 200
+ Tigard, OR, 97217","6975 SW Sandburg St Suite 200, Tigard, OR, 97217",OR,(503) 483-6190,aimee@newspringscounseling.org,"Video Call (Zoom, Skype, etc.)
+ Text or Chat","I specialize in suicide bereavement, complex trauma, adults, teens, sandtray therapy, hiking therapy",,,,,,,,,
+,"Brigett Hollander, LCSW","1950 Waite Street, North Bend, OR, 97459","1950 Waite Street, North Bend, OR, 97459",OR,208-695-7465,bhollander@wfall.org,"Video Call (Zoom, Skype, etc.)","Suicide bereavement specialist, Sudden and traumatic loss, grief and loss clinician, PTSD and trauma related therapy. Population: Adults and Adolescents (no children 12 or under)",,,,,,,,,
+,"Charmagne Westcott, LPC",,,OR,(503) 875-5011,cwestcott@acuitymentalhealth.com,"Phone
+ Video Call (Zoom, Skype, etc.)","IFS (internal family systems or ""parts work""), Accelerated Experiential Dynamic Psychotherapy (AEDP), and using bilateral stimulation to strengthen internal resources.​",,,,,,,,,
+,"MA, LPC","630 B Ave Suite 9
+ Lake Oswego, OR, 97034","630 B Ave Suite 9, Lake Oswego, OR, 97034",OR,(503) 607-7236,kristy@apricity-counseling.com,"Phone
+ Video Call (Zoom, Skype, etc.)
+ Text or Chat","Adults
+ 
+ 
+ 
+ Telehealth available for Washington and Oregon residents.",,,,,,,,,
+,"Lance E. Nelson, LPC","1890 Waite St.
+ North Bend, OR, 97459","1890 Waite St., North Bend, OR, 97459",OR,(541) 435-7025,lnelson@wfall.org,"Phone
+ Video Call (Zoom, Skype, etc.)",Work with all ages. Specialize in working with those on the autism spectrum.,,,,,,,,,
+,"Alison Seponara, MS, LPC","1008 Fayette St.- 2nd Floor
+ Conshohocken, PA 19428","1008 Fayette St.- 2nd Floor, Conshohocken, PA 19428",PA,610-952-4169,alisonseponaralpc@gmail.com,,"Child/Adolescent, Special needs children, women",,,,,,,,,
+,"Arianne Zimmerman, LPCC/LPC","635 Maple Ave.
+ DuBois, PA 15801","635 Maple Ave., DuBois, PA 15801",PA,814-375-6348,alzimmerman@phhealthcare.org,,Other,,,,,,,,,
+,"Autumn Bloom, LCSW","26 S. 2nd St.- Suite 201
+ Clearfield, PA 16830","26 S. 2nd St.- Suite 201, Clearfield, PA 16830",PA,814-762-5548,autumnbloom@verizon.net,,"Child/Adolescent, Registered Play Therapist",,,,,,,,,
+,"Beth Sucro, MS LPC (PA 002830)","51 Market St. Bangor PA, 18013","51 Market St. Bangor PA, 18013",PA,610-588-9109,bsucro@methodistservices.org,"Video Call (Zoom, Skype, etc.)","LGBTQIA, women's issues, adults and teens",,,,,,,,,
+,Cari Herschman,"2223 Linden St. Suit 101 Bethlehem, PA 18017","2223 Linden St. Suit 101 Bethlehem, PA 18017",PA,484-214-2839,cari@thriveworks.com,"Phone, Video Call"," 
+ Teens/Young Adults, Adults, Depression, Anxiety, Suicidal Ideation, Bipolar Disorder, Career Counseling, Chronic Illness, Codependency, Grief, Peer Relationships, Self Esteem, Self-Harming, Stress, Trauma and PTSD, Women's Issues, Mental Health, Mood Disorders",,,,,,,,,
+,"Cindy Perkiss, LCSW","7916-26 Queen St.- Suite 203
+ Wyndmoor, PA 19038","7916-26 Queen St.- Suite 203, Wyndmoor, PA 19038",PA,215-836-2410,cperkiss@aol.com,,"Grief, Trauma",,,,,,,,,
+,"Claire Drexler, LCSW, CT","Center for Loss and Bereavement
+ 3847 Skippack Pike, PO Box 1299
+ Skippack, PA 19474","Center for Loss and Bereavement, 3847 Skippack Pike, PO Box 1299, Skippack, PA 19474",PA,610-222-4110,csd@bereavementcenter.org,,"Adult, Child/Adolescent, Family/Couple",,,,,,,,,
+,"Colleen Lanzoni, LPCC/LPC","70 Second St.
+ Brookville, PA 15825","70 Second St., Brookville, PA 15825",PA,814-849-2844,colleenlanzoni@yahoo.com,,"Child/Adolescent, Trauma",,,,,,,,,
+,"Corinne Ruppert, lpc, NCC","100 Winding Creek Blvd Suite #3 Mechanicsburg, PA 17050","100 Winding Creek Blvd Suite #3 Mechanicsburg, PA 17050",PA,717-590-7283,windingcreekcs@gmail.com,,"Adult, Child/Adolescent",,,,,,,,,
+,Denise Mengak LCSW PA# CW012764,"Cornerstone Counseling & Consulting Specialists, LLC 1172 Twin Stacks Drive Dallas PA, 18612","Cornerstone Counseling & Consulting Specialists, LLC 1172 Twin Stacks Drive Dallas PA, 18612",PA,570-674-1505,denisemengaklcsw@gmail.com,"Video Call (Zoom, Skype, etc.)","adult & family counseling, grief, suicide bereavement, post-abortion syndrome, Christian counseling, compulsive shoplifting.
+ 
+ Facilitated area Suicide Bereavement Support Group for over 25 years. Former board member of Greater Northeast PA Chapter of AFSP. Out-patient counselor with Catholic Social Services for over 35 years. Facilitates Rachel's Vineyard Post-Abortion Healing Retreats.",,,,,,,,,
+,"Ebony Williams, LMT","3215 University Ave.
+ Philadelphia, PA 19104","3215 University Ave., Philadelphia, PA 19104",PA,215-685-7411,ebony.n.williams@phila.edu,,"Adult, Child/Adolescent",,,,,,,,,
+,"Harriet Poechmann, LCSW","355 Broad St.
+ Montoursville, PA 17754","355 Broad St., Montoursville, PA 17754",PA,570-368-2624,,,Adult,,,,,,,,,
+,"Heather Yasulsky, LPCC/LPC","217 Union Ave.- 2nd Floor
+ Altoona, PA 16602","217 Union Ave.- 2nd Floor, Altoona, PA 16602",PA,814-515-9020,heather@ycounseling.com,,"EMDR, ages 14 and up",,,,,,,,,
+,"Jennifer South, LPCC/LPC","111 S. Spring St- Suite 9
+ Bellefonte, PA 16823","111 S. Spring St- Suite 9, Bellefonte, PA 16823",PA,814-424-3638,jsouthma@gmail.com,,LGBTQ,,,,,,,,,
+,"Jessica Dimoff Querry, LCSW","JC Blair Hospital, 1225 Warm Springs Ave.
+ Huntingdon, PA 16652","JC Blair Hospital, 1225 Warm Springs Ave., Huntingdon, PA 16652",PA,814-643-8146,jquerry@jcblair.org,,"Adult, Child/Adolescent",,,,,,,,,
+,"Kendra Stenack, LPC, CH, CT, CCTP","3847 Skippack Pike Skippack, PA 19474","3847 Skippack Pike Skippack, PA 19474",PA,610-222-4110,kns@bereavementcenter.org,,"Child/Adolescent, Grief, Trauma, Terminal illnesses",,,,,,,,,
+,"Kimberly Adams, LCSW","Healing Path Psychology 2527 E. Texas Blvd. Allentown, PA 18103","Healing Path Psychology 2527 E. Texas Blvd. Allentown, PA 18103",PA,610-320-2366,info@healingpathpsych.com,"Phone, Video call","primarily work with adults but I do accept adolescent clients on a case-by-case basis. Regardless of whether you choose to pursue treatment with me or decide to seek another practitioner, I wish you the best in finding the help you need and deserve. ",,,,,,,,,
+,"Lori Greenblatt, LPCC/LPC","70 Second St.
+ Brookville, PA 15825","70 Second St., Brookville, PA 15825",PA,814-849-2844,lorigreenblatt@yahoo.com,,Other,,,,,,,,,
+,"Lyndsey Hrusovsky, LPCC/LPC","500 East Chestnut Ave.
+ Altoona, PA 16601","500 East Chestnut Ave., Altoona, PA 16601",PA,814-940-7428,lmhrusovsky@gmail.com,,"Adult, Substance Abuse, Group and Individual Counseling",,,,,,,,,
+,"Maggie Doby, MSW, LCSW","501 Student Health Center
+ University Park, PA 16802","501 Student Health Center, University Park, PA 16802",PA,814-863-0395,mrd23@psu.edu,,College Age Students,,,,,,,,,
+,"Mariah Goldstine, LCSW","204 East Calder Way- Suite 301
+ State College, PA 16801","204 East Calder Way- Suite 301, State College, PA 16801",PA,814-867-4800,mariahgoldstine@prodigy.net,,"Adult, Family/Couple, Academic, ADHD, High IQ, International clients",,,,,,,,,
+,"Mark Peters, Licensed Psychologist","900 Bryan St- Suite 5
+ Huntingdon, PA 16652","900 Bryan St- Suite 5, Huntingdon, PA 16652",PA,814-643-6300,markmcp@hotmail.com,,"Adult, Family/Couple, CISM, CBT, DBT, EFT, CPT, Attachment Therapy, Co-occurring recovery work",,,,,,,,,
+,"Mary Ellen Doll, LCSW","Geisinger Medical Center, 100 N. Academy Ave.
+ Danville, PA 17822","Geisinger Medical Center, 100 N. Academy Ave., Danville, PA 17822",PA,570-271-6840,medoll@geisinger.org,,Adult,,,,,,,,,
+,"Melissa Whitling-Wise, LPCC/LPC","19 East Front St.
+ Oil City, PA 16301","19 East Front St., Oil City, PA 16301",PA,814-678-6900,office@ruralmentalhealth.com,,TF-CBT,,,,,,,,,
+,"Robin Neville, LSW","1095 Liberty St.
+ Saxton, PA 16678","1095 Liberty St., Saxton, PA 16678",PA,814-635-7356,rneville91@gmail.com,,"Adult, Child/Adolescent, Grief, Trauma, EMDR",,,,,,,,,
+,"Ronald Lingle, Licensed Psychologist","109 E. Locust St.
+ Clearfield, PA 16830","109 E. Locust St., Clearfield, PA 16830",PA,814-765-6941,genesis_x@atlanticbb.net,,"Adult, Child/Adolescent, Family/Couple, Grief, CBT, Mood Disorders, Mindfulness, Stress Management",,,,,,,,,
+,"Ryan Klingensmith, LPCC/LPC","315 PA 66
+ Leechburg, PA 15656","315 PA 66, Leechburg, PA 15656",PA,724-845-6755,,,"Child/Adolescent, Social Media and Technology",,,,,,,,,
+,"Ryoko Ohara, MA, MT-BC, LPC","525 W. Chester Pike- Suite 205
+ Havertown, PA 19083","525 W. Chester Pike- Suite 205, Havertown, PA 19083",PA,610-644-6464,rohara@obhcares.com,,"Adult, Music therapy and verbal counseling",,,,,,,,,
+,"Sharon Schoh, MEd., LPC, CRC","201 Harvest Dr.
+ Boalsburg, PA 16827","201 Harvest Dr., Boalsburg, PA 16827",PA,814-531-5262,hope@lambscrossing.com,,"Adult, Family/Couple, Trauma, Depression, Anxiety, Spiritual",,,,,,,,,
+,"Sherri Klingensmith, LPCC/LPC","530 Marshall Ave.
+ Pittsburgh, PA 15214","530 Marshall Ave., Pittsburgh, PA 15214",PA,412-442-4445,sklingensmith@pressleyridge.org,,"Adult, Child/Adolescent, Trauma, Development Disabilities",,,,,,,,,
+,"Timothy Evans, M.Div., M.S., LPC, CAADC, MAC, NCACII, NCC, ICAADC","1221 West Whitchall Rd.
+ State College, PA 16801","1221 West Whitchall Rd., State College, PA 16801",PA,972-757-4673,transformationcounselingllc@gmail.com,,"Family/Couple, Grief, Addiction, Christian/Pastoral, Mood Disorders",,,,,,,,,
+,"Laurie R Kiely, LICSW","90 Jefferson Boulevard, Warwick, RI 02888","90 Jefferson Boulevard, Warwick, RI 02888",RI,"401-461-2842, ext. 201",,,"Adult, Survivors of Suicide Loss",,,,,,,,,
+,Ashley Maddox Washington ,"202 Highway 28 North McCormick SC, 29835","202 Highway 28 North McCormick SC, 29835",SC,951-956-8100,ashley.maddox-washington@scdmh.org,"Video Call (Zoom, Skype, etc.)","EMDR
+ 
+ Adults and Children",,,,,,,,,
+,"Amanda T. Parrott, MSW, LISW-CP","1012 E. Washington St.
+ Greenville, SC, 29601","1012 E. Washington St., Greenville, SC, 29601",SC,(864) 326-5042,parrott.lisw@gmail.com,"Video Call (Zoom, Skype, etc.)",Adults; college mental health; grief,,,,,,,,,
+,"Amanda Vance Clough, LCSW","205 Piedmont Blvd Suite 100
+ Rock Hill, SC 29732","205 Piedmont Blvd Suite 100, Rock Hill, SC 29732",SC,803-327-2012,amanda.clough@scdmh.org,,"Grief, Trauma",,,,,,,,,
+,"Amanda Verner, MEd, MA, LPC","116 Carter Park Drive,
+ Seneca, SC 29678","116 Carter Park Drive,, Seneca, SC 29678",SC,(864) 885-0157,amanda.verner@scdmh.org,,Adults with serious and persistent mental illness,,,,,,,,,
+,"Amber Allen, MA, LPC SC#5733","61 Hickory Hill Rd., Suite B
+ Varnville, SC, 29944","61 Hickory Hill Rd., Suite B, Varnville, SC, 29944",SC,(803) 730-2783,amber.allen@innerpeacecounselingsc.com,"Video Call (Zoom, Skype, etc.)","Adults, Children/Teens
+ 
+ Certified TF-CBT provider",,,,,,,,,
+,Amy Wessinger LPC #7704,"2414 Bull St,
+ Columbia, SC 29201","2414 Bull St,, Columbia, SC 29201",SC,(803) 596-7089,amy.wessinger@scdmh.org,"Video Call (Zoom, Skype, etc.)","Adults, Teens
+ EMDR, CBT, TFCBT",,,,,,,,,
+,"Anna House, LPC 5180","220 Faison Dr. 
+ Columbia, SC, 29168","220 Faison Dr. , Columbia, SC, 29168",SC,(803) 565-2873,froggyanna89@gmail.com,"Video Call (Zoom, Skype, etc.)","Adults
+ 
+ Personality Disorders
+ 
+ Trauma
+ 
+ Substance Abuse",,,,,,,,,
+,Ashley Maddox 7767,"202 Highway 28 North,
+ McCormick, SC 29835","202 Highway 28 North,, McCormick, SC 29835",SC,(951) 956-8100,ashley.maddox-washington@scdmh.org,"Video Call (Zoom, Skype, etc.)","EMDR
+ Adults and Children",,,,,,,,,
+,"B. H. Boatwright, LPC, LPCS, PHD","1900 DEVONSHIRE DR STE 6
+ COLUMBIA, SC, 29204","1900 DEVONSHIRE DR STE 6, COLUMBIA, SC, 29204",SC,(803) 931-0413,summitcoun@sc.rr.com,"Phone, 
+ Virtual(Zoom, Skype, etc.)
+  Text or chat","Crisis, Communications, Relationships, Children/Teens/Adults, CBT",,,,,,,,,
+,Certified Peer Support,"P.O.Box 929,
+ Dillon, SC 29536","P.O.Box 929,, Dillon, SC 29536",SC,(843) 627-7066,christie.ewing@scdmh.org,"Video Call (Zoom, Skype, etc.)","Certified Peer Support Specialist of South Carolina
+  For adults",,,,,,,,,
+,"Charlotte Chrisp, LMSW, 11354","141 O'Neil Court,
+ Columbia, SC 29223","141 O'Neil Court,, Columbia, SC 29223",SC,(803) 622-5476,charlotteechrisp@djj.sc.gov,"Video Call (Zoom, Skype, etc.)",Work with at-risk children/teens,,,,,,,,,
+,Cindi Weddington Ruhl LISW-CP 11225 SC,"Charleston Mental Health Center, 2100 Charlie Hall Blvd, 
+ Charleston, SC 29414","Charleston Mental Health Center, 2100 Charlie Hall Blvd, , Charleston, SC 29414",SC,(853) 852-4100,cynthia.ruhl@scdmh.org,,Adults,,,,,,,,,
+,"Dana F. Cullum, LPC 7096","410 University Pkwy Suite 2300 Aiken SC, 29801","410 University Pkwy Suite 2300 Aiken SC, 29801",SC,803-226-745,danac@usca.edu,"Video Call (Zoom, Skype, etc.)","Children, Adolescents, Family, and Adults",,,,,,,,,
+,"Danny Beck MA, NCC, LPC 5686","200 McGee Rd.,
+ Anderson, SC 29625","200 McGee Rd.,, Anderson, SC 29625",SC,(864) 314-3496,danny.beck@scdmh.org,"Video Call (Zoom, Skype, etc.)","Motivational Interviewing 
+  EMDR Trained
+  CBT",,,,,,,,,
+,"Emilie Ford, MMFT, LMFT-A","945 E Main St, STE 5
+ Spartanburg, SC, 29302","945 E Main St, STE 5, Spartanburg, SC, 29302",SC,(864) 383-9002,emilie.ford@modernwellnessfc.com,"Video Call (Zoom, Skype, etc.)","Adults & Adolescents (14+), Trained in EMDR, Specialize in working with individuals who identify as a Highly Sensitive Person",,,,,,,,,
+,"Erin Harrison, LISW-CP","150 East Main Street,
+ Duncan, SC 29334","150 East Main Street,, Duncan, SC 29334",SC,(864) 316-4757,erindaltonharrison@gmail.com,"Video Call (Zoom, Skype, etc.)",Children/Teens,,,,,,,,,
+,"Erin Maurer, M.Ed, LPC/S","4121 Clemson Blvd. Anderson SC, 29621","4121 Clemson Blvd. Anderson SC, 29621",SC,864-724-7552,info@inspiringchangesc.com,"Video Call (Zoom, Skype, etc.)","Late Teens/Adults
+ 
+ Survivor of a sibling lost to suicide",,,,,,,,,
+,"Erin P. Holtzclaw, LPC, 6820","115 Carter Park Drive,
+ Seneca, SC 29678","115 Carter Park Drive,, Seneca, SC 29678",SC,(864) 885-0157,erin.holtzclaw@scdmh.org,"Video Call (Zoom, Skype, etc.)",Adults,,,,,,,,,
+,"Felecia Holley, MA, LPC","301 Palmetto Park Blvd,
+ Lexington, SC 29072","301 Palmetto Park Blvd,, Lexington, SC 29072",SC,(803) 359-3545,,"Video Call (Zoom, Skype, etc.)",Please contact our office at the number above to discuss initiating services with our agency.,,,,,,,,,
+,"Hope Wood, LMFTA, MMFT/PC, BSN","917 W. Poinsett St., Greer SC 29650","917 W. Poinsett St., Greer SC 29650",SC,(864) 214-6533,hopewoodmentalhealth@gmail.com,"Video Call (Zoom, Skype, etc.)",Adults 18yo & up; non-religious; suicide loss survivor. SC license #7537,,,,,,,,,
+,"Jennifer Butler, MSW, LISW-CP/S","2414 Bull St, Suite 309,
+ Columbia, SC 29201","2414 Bull St, Suite 309,, Columbia, SC 29201",SC,(803) 896-4740,jennifer.butler@scdmh.org,,"Director of the Office of Suicide Prevention for the SC Department of Mental Health and State Lead for the Governor's Challenge on Prevention Suicide for our Service Members, Veterans and Families.",,,,,,,,,
+,"Jennifer Butler, MSW, LISW-CP/S","2414 Bull St Suite 309 Columbia SC, 29201","2414 Bull St Suite 309 Columbia SC, 29201",SC,803-896-4740,jennifer.butler@scdmh.org,,"Director of the Office of Suicide Prevention for the SC Department of Mental Health and State Lead for the Governor's Challenge on Prevention Suicide for our Service Members, Veterans and Families.",,,,,,,,,
+,"Jennifer Jones, LPC","1 Chick Springs Rd #102,
+ Greenville, SC 29609","1 Chick Springs Rd #102,, Greenville, SC 29609",SC,(864) 561-6830,jennjones@awakenhopecounseling.com,"Video Call (Zoom, Skype, etc.)","Substance Use Disorder Counseling
+ Coping Skills
+ CBT
+  
+  Adolescents",,,,,,,,,
+,"Jessica Clark, M.S., 7309","20 Powderhorn Rd,
+ Simpsonville, SC 29681","20 Powderhorn Rd,, Simpsonville, SC 29681",SC,(602) 354-1562,CounselingBytes@gmail.com,"Video Call (Zoom, Skype, etc.)","Trauma Focused Cognitive Behavioral Therapy
+  Dialectical Behavior Therapy
+  Adults, children, and families",,,,,,,,,
+,"Jewel K.M. Rembert, MA, BSW, LPC #6493","2611 Liberty Hill Road,
+ Camden, SC 29020","2611 Liberty Hill Road,, Camden, SC 29020",SC,(803) 432-5323,jewel.rembert@scdmh.org,"Video Call (Zoom, Skype, etc.)","Adolescents and adults
+ DBT trained",,,,,,,,,
+,John Falls MS LPC PC6178,"215 Ronnie Court suite c
+ Myrtle Beach, SC, 29579","215 Ronnie Court suite c, Myrtle Beach, SC, 29579",SC,(843) 894-0000,john.f@oceaniccounseling.com,"Phone
+ Virtual (Zoom, Skype, etc.)",Adults,,,,,,,,,
+,"Julia Marie Parrish, LPC","6256 Lucille Drive, Apt A
+ North Charleston, SC, 29406","6256 Lucille Drive, Apt A, North Charleston, SC, 29406",SC,(843) 879-4121,jree67@yahoo.com,"Phone
+ Virtual (Zoom, Skype, etc.)","TFCBT, CBT, Children, Teens, Adults",,,,,,,,,
+,"Julia Turner, LPC, LBSW","Spartanburg Area Mental Health Center,
+  250 Dewey Ave,
+ Spartanburg, SC 29303","Spartanburg Area Mental Health Center,, 250 Dewey Ave,, Spartanburg, SC 29303",SC,(864) 585-0366,julia.turner@scdmh.org,,Currently serving adults only (18+);Hospice & Bereavement; client needs to have an open case with Spartanburg Area Mental Health Center to access services,,,,,,,,,
+,Katrina Pressley,"9630 Scipio Lane,
+ Myrtle Beach, SC 29588","9630 Scipio Lane,, Myrtle Beach, SC 29588",SC,(843) 492-2805,katrina.pressley@scdmh.org,"Video Call (Zoom, Skype, etc.)","CBT for PTSD
+  DBT",,,,,,,,,
+,"Kellie Weathers, MA, LPC #7404","2100 Charlie Hall Blvd,
+ Charleston, SC 29414","2100 Charlie Hall Blvd,, Charleston, SC 29414",SC,(843) 953-4235,kbrabham@citadel.edu,"Video Call (Zoom, Skype, etc.)",Adults,,,,,,,,,
+,"Kellie Weathers, MA, LPC #7404","2100 Charlie Hall Blvd Charleston SC, 29414","2100 Charlie Hall Blvd Charleston SC, 29414",SC,843-953-4235,kbrabham@citadel.edu,"Video Call (Zoom, Skype, etc.)",Adults,,,,,,,,,
+,Kerrick Breen,"129 Rollingwood Dr,
+ Lexington, SC 29072","129 Rollingwood Dr,, Lexington, SC 29072",SC,(803) 600-0717,kwbreen1959@gmail.com,"Video Call (Zoom, Skype, etc.)",CBT,,,,,,,,,
+,"LaCinda McCormack, MA SC license 5484","916 Reynolds Road,
+ Barnwell, SC, 29812","916 Reynolds Road,, Barnwell, SC, 29812",SC,(803) 259-7170,lacinda.mccormack@scdmh.org,"Video Call (Zoom, Skype, etc.)","TFCBT rostered-children
+ MAC",,,,,,,,,
+,"Laura Borell, MD","205 Piedmont Blvd Suite 100
+ Rock Hill, SC 29732","205 Piedmont Blvd Suite 100, Rock Hill, SC 29732",SC,803-327-2012,llb33@scdmh.org,,"Adult, Family/Couple, Grief, Trauma, 14+, Eating Disorders",,,,,,,,,
+,"Lori W. Pruitt, LPC/S","2043 Medical Park Drive
+ Newberry, SC, 29108","2043 Medical Park Drive, Newberry, SC, 29108",SC,(803) 276-8789,lori.pruitt@scdmh.org,,"EMDR trained, Certified Addiction Counselor",,,,,,,,,
+,LPC #7704,"2414 Bull St Columbia SC, 29201","2414 Bull St Columbia SC, 29201",SC,803-596-7089,amy.wessinger@scdmh.org,"Video Call (Zoom, Skype, etc.)","Adults, Teens
+ 
+ EMDR, CBT, TFCBT",,,,,,,,,
+,LPC 6703,"2715 Colonial Drive suite 100a columbia sc, 29223","2715 Colonial Drive suite 100a columbia sc, 29223",SC,803-898-4777,stephanie.mcmillan@scdmh.org,"Video Call (Zoom, Skype, etc.)","Multidimensional Family Therapy
+ 
+ Play Therapy
+ 
+ Attachment Based Family Therapy
+ 
+ TF-CBT",,,,,,,,,
+,MA COUNSELING,"1035 CHERAW STREET, 
+ Bennettsville, SC 29512","1035 CHERAW STREET, , Bennettsville, SC 29512",SC,(843) 544-4079,brenda.foster@scdmh.org,"Video Call (Zoom, Skype, etc.)","ADULTS, CHILDREN/TEENS",,,,,,,,,
+,"Maggie Poandl, MA, #6558","2210 Sunstone Ct
+ Charleston, SC, 29412","2210 Sunstone Ct, Charleston, SC, 29412",SC,(703) 470-6655,maggie@magnoliacounselingchs.com,"Phone, 
+ Virtual(Zoom, Skype, etc.)
+  Text or chat",EMDR trained,,,,,,,,,
+,"MARVIN M BRYANT, MSW, ACSW, LISW-CP","MMB COUNSELING, LLC
+ 1113 BELLEVIEW STREET, SUITE 101
+ COLUMBIA, SC, 29201","MMB COUNSELING, LLC, 1113 BELLEVIEW STREET, SUITE 101, COLUMBIA, SC, 29201",SC,(803) 764-5377,mmbcounseling@outlook.com,,"Providing services to adults. Depression, Anxiety, Anger Management
+ Couples/Marital Therapy, Grief Therapy ,Homicide Survivors",,,,,,,,,
+,"Molly McCurley, MMFT, LMFT License number 6982","6715 State Park Rd
+ Traveler's Rest, SC, 29690","6715 State Park Rd, Traveler's Rest, SC, 29690",SC,(864) 245-0077,montaree.mccurley@prismahealth.org,"Phone, 
+ Virtual(Zoom, Skype, etc.)
+  Text or chat","Grief
+ 
+ Adults
+ 
+ Adolescents (15+)",,,,,,,,,
+,"Mona Saylor, MSW, LISW-AP/S & CP/S","23 Surrey Court,
+ Columbia, SC 29210","23 Surrey Court,, Columbia, SC 29210",SC,(803) 261-8091,Pistolpacknmo@aol.com,"Video Call (Zoom, Skype, etc.)","Provide services to children, adolescents, and adults.",,,,,,,,,
+,"Patrice Felder, MA, LPC #7061","222 Varnfield Drive
+ Summerville, SC, 29483","222 Varnfield Drive, Summerville, SC, 29483",SC,(843) 925-9503,plantingaseedtherapy@gmail.com,"Video Call (Zoom, Skype, etc.)","Children, teens, adolescents, adults young adults (8-40)",,,,,,,,,
+,RAEJEAN LIPSCOMB,"101 N. PINE STREET SUITE 303 SPARTANBURG SC, 29302","101 N. PINE STREET SUITE 303 SPARTANBURG SC, 29302",SC,864-586-5353,lipscomb.livingstonesfs@gmail.com,"Video Call (Zoom, Skype, etc.)",Board Certified NBCC,,,,,,,,,
+,Rosalind Pinkney MA LPC,"Safe Homes
+ 236 Union St, 
+ Spartanburg , SC, 29306","Safe Homes, 236 Union St, , Spartanburg , SC, 29306",SC,(864) 583-9803,rosalind.pinkney@shrcc.org,"Video Call (Zoom, Skype, etc.)",I am an LPC specializing in children and trauma,,,,,,,,,
+,Sandra Moffitt MSW,"124 Mallard Street,
+  Greenville, SC, 29601","124 Mallard Street,, Greenville, SC, 29601",SC,(864) 320-1589,sandra.moffitt@scdmh.org,,"TF-CBT in child and adolescent
+ 
+ CAMS with adults",,,,,,,,,
+,Sarah Simmons,"P. O. Box 205, 
+ SPARTANBURG, SC, 29304","P. O. Box 205, , SPARTANBURG, SC, 29304",SC,(864) 621-6443,akasimmons1@gmail.com,,License in Social Work/ Victim Advocate/Guardian Litem,,,,,,,,,
+,"Stacy Cretzmeyer, Ph.D., N.C.C., L.P.C., #2325, SC","671 Jamestown Drive, Suite 202B
+ Murrells Inlet, SC, 29576","671 Jamestown Drive, Suite 202B, Murrells Inlet, SC, 29576",SC,(843) 357-8577,Coastlinecurrents@gmail.com,,"Individuals, ages 12 and above",,,,,,,,,
+,Stephanie McMillan LPC 6703,"2715 Colonial Drive, Suite 100A,
+ Columbia SC 29223","2715 Colonial Drive, Suite 100A,, Columbia SC 29223",SC,(803) 898-4777,stephanie.mcmillan@scdmh.org,"Video Call (Zoom, Skype, etc.)","Multidimensional Family Therapy
+ Play Therapy; Attachment Based Family Therapy
+ TF-CBT",,,,,,,,,
+,"Tacey A. Perillo MA, LMFT","1547 Parkway,
+ Greenwood, SC 29646","1547 Parkway,, Greenwood, SC 29646",SC,(864) 229-7120,tacey.perillo@scdmh.org,"Video Call (Zoom, Skype, etc.)","I work with adults, children and families.",,,,,,,,,
+,"Tamara Houston, LISW-CP","123 Commons Way Greenville SC, 29611","123 Commons Way Greenville SC, 29611",SC,864-416-4560,info@renewallifecounseling.com,"Video Call (Zoom, Skype, etc.)","Adults, grief/bereavement, trauma, anxiety, EMDR, Grief Specialist",,,,,,,,,
+,"Tara Bennett, LPC #5350","3231 Old Furnace Rd.
+ Spartanburg County School District Two
+ Chesnee, SC, 29323","3231 Old Furnace Rd., Spartanburg County School District Two, Chesnee, SC, 29323",SC,(864) 303-7762,tara.bennett@spart2.org,,Children & Adolescents,,,,,,,,,
+,"Terri Talley, LPCS","455 St Andrews Rd. Suite D1
+Columbia, SC 29210","455 St Andrews Rd. Suite D1, Columbia, SC 29210",SC,(803) 638-4688,terri@imh.solutions,Video Call,"Somatic Experiencing, EMDR, First Responders, Thanatology, Grief",,,,,,,,,
+,Thomas Walsh MSW LISW-CP,"South Carolina Department of Mental Health 2100 Charlie Hall Blvd. Charleston, SC, 29414","South Carolina Department of Mental Health 2100 Charlie Hall Blvd. Charleston, SC, 29414",SC,843-852-4100,Thomas.Walsh@scdmh.org,,Adults,,,,,,,,,
+,"Tina Gaudiano, SC LPC4268","84 Groce Rd
+ Lyman, SC, 29365","84 Groce Rd, Lyman, SC, 29365",SC,(864) 439-7760,tina.gaudiano@spart5.net,,"Parenting, Adolescents",,,,,,,,,
+,"Amanda Esquivel, LPC; LCDC","675 Town Square, Suite 200
+ Garland, TX 75040","675 Town Square, Suite 200, Garland, TX 75040",TX,940-230-3381,amanda@counseloramanda.com,,"Adolescents/Children, Families, Couples, Adults/Elders",,,,,,,,,
+,"Angela Guinn, MA; LPC","5100 Plano Parkway West
+ Plano, TX 75093","5100 Plano Parkway West, Plano, TX 75093",TX,972-380-2100,agwinn2@popplano.org,,"Couples, Addiction",,,,,,,,,
+,"Celeste Miller, MA, LPC","1919 Oakwell Farms Pkwy #138, San Antonio TX 78218","1919 Oakwell Farms Pkwy #138, San Antonio TX 78218",TX,210-286-6744,celestemiller@live.com,,"Grief, Loss, Life Transitions",,,,,,,,,
+,"Christine Smith, MSW","3136 W. 4th St.
+ Ft. Worth, TX 76107","3136 W. 4th St., Ft. Worth, TX 76107",TX,682-215-1543,christine.smith@mhmrtc.org,,Suicide Prevention/Postvention,,,,,,,,,
+,"Claudia Ospina, MS; LCSW; ACSW","4144 N. Central Expressway, #530
+ Dallas, TX 75004","4144 N. Central Expressway, #530, Dallas, TX 75004",TX,214-821-5393 x 249,claudiao@mosaicservices.org,,Trauma,,,,,,,,,
+,"Cynthia Kearney, M.Ed; LPC","1452 Hughes Rd
+ Grapevine, TX 76015","1452 Hughes Rd, Grapevine, TX 76015",TX,940-222-6055,cbbkearney217@gmail.com,,"Adolescents/Children, Women’s Issues",,,,,,,,,
+,"Danny Ross, NA","1104 West Pioneer Pkwy, Suite 300
+ Arlington, TX 76013","1104 West Pioneer Pkwy, Suite 300, Arlington, TX 76013",TX,817-989-6332,danny@dlrcounselinggroup.org,,"Adolescents/Children, Adults/Elders",,,,,,,,,
+,"Diana Garza-Martinez, LPC","2-9 E. 6th St, Mission TX 78572","2-9 E. 6th St, Mission TX 78572",TX,956-401-5361,dmartinez@mhm.org,,,,,,,,,,,
+,"Diane Manley, MS LPC","1000 E F Lowry Expressway Suite 1220
+ Texas City, TX 77591","1000 E F Lowry Expressway Suite 1220, Texas City, TX 77591",TX,346- 266- 4863,dianem@gilfcoastcenter.org,,"Disaster Mental Health, Victim Services, Traumatic Grief & Loss, Yoga & Mindfulness",,,,,,,,,
+,"Enedina Enriquez, LCSW","908 E. Ferguson Ave
+ Pharr, TX 78577","908 E. Ferguson Ave, Pharr, TX 78577",TX,956-342-4354,kindred.spiritscs@gmail.com,"Phone
+ Virtual (Zoom, Skype, etc.)","Young Adult, Older Adult, Family, Couples, General Loss Support Group LCSW-S, Certified Grief Counseling Therapist",,,,,,,,,
+,"Eugenia Curet, PhD, LCSW","515 S Sugar Rd. #13, Edinburg TX 78539","515 S Sugar Rd. #13, Edinburg TX 78539",TX,956-371-9797,eugenia1226@hotmail.com,,"Adolescents, Adults, Families",,,,,,,,,
+,"Fay H. Green, LPC, LMFT, FT","19206 Huebner Rd #104, San Antonio TX 78259","19206 Huebner Rd #104, San Antonio TX 78259",TX,210-602-7488,fay@sacenterforhopeandhealing.com,,"Grief and Loss, Family, Couples",,,,,,,,,
+,"Francine Lalande, M.Ed; LPC","203 Lorine St.
+ Keller, TX 76248","203 Lorine St., Keller, TX 76248",TX,817-637-8841,fralala@att.net,,"Adolescents/Children, Grief, Women’s Issues",,,,,,,,,
+,"Hadley Simmonds, LPC 81804","3824 N University Dr
+ Nacogdoches, TX 75965","3824 N University Dr, Nacogdoches, TX 75965",TX,931-636-8499,hadley.simmonds@myburke.org,"Virtual (Zoom, Skype, etc.)","EMDR, CPT, CBT, TF- CBT
+ trained and certified yoga therapist",,,,,,,,,
+,"Izerial Toles, LPC, LCDC","701 E California St Suite 205
+ Gainesville, TX, 76240","701 E California St Suite 205, Gainesville, TX, 76240",TX,940- 222- 5146,izerialtoles@outlook.com,"Virtual (Zoom, Skype, etc.)","Adults, Adolescents, Grief, Work Stress, Substance use, Trauma, Relationships, Depression, Anxiety",,,,,,,,,
+,"Jeannie Whitman, PhD","12830 Hillcrest Rd, Suite D218
+ Dallas, TX 75230","12830 Hillcrest Rd, Suite D218, Dallas, TX 75230",TX,214-676-9662,dr@jeanniewhitman.com,,"Couples, Adults/Elders, Grief, Veterans",,,,,,,,,
+,"Jennie Bullard, MA; LPC","1751 Broad Park Cir S #207
+ Mansfield, TX 76063","1751 Broad Park Cir S #207, Mansfield, TX 76063",TX,817-291-4564,jenniebullard@hotmail.com,,"Adolescents/Children, Families, Couples, Adults/Elders, Grief",,,,,,,,,
+,Jennifer Thielke,,,TX,210-565-1212,jenniferthielke@us.af.mil,,,,,,,,,,,
+,"Jim Denning, MA","10615 Perrin Beitel Rd #802, San Antonio TX 78217","10615 Perrin Beitel Rd #802, San Antonio TX 78217",TX,210-369-8368,jim@makeittomidnight.org,,"Adolescents, Adults, Couples, Addiction, Suicidal Ideation",,,,,,,,,
+,"Kaitlin Cox, LCSW, 62518","2800 Lyle Ave
+ Waco, TX 76708","2800 Lyle Ave, Waco, TX 76708",TX,254-297-7178,kaitlin.cox@hotrmhmr.org,"Phone
+ Virtual (Zoom, Skype, etc.)",Adults,,,,,,,,,
+,"Linda Brown, MA, LPC-Intern, LCDC-Intern",133300 Old Blanco Rd. #145 S.A. TX 78216,133300 Old Blanco Rd. #145 S.A. TX 78216,TX,210-430-3989,linbrown1962@gmail.com,,"Adults, Elderly, Trauma, PTSD",,,,,,,,,
+,Linda V. Meyer,"6946 Raintree Path, San Antonio TX 78233","6946 Raintree Path, San Antonio TX 78233",TX,210-240-8198,meyer.linda2@yahoo.com,,Chaplain/Pastorial Counseling,,,,,,,,,
+,"Maria Tapia, LPC, MS in Counseling",,,TX,830-421-9058,tapia7573@yahoo.com,,"Adolescents, Family, Children",,,,,,,,,
+,"Marie Axley, LPC",,,TX,936-538-1163,marieax@tcbhc.org,,"Addiction, Suicide Prevention/Postvention",,,,,,,,,
+,"Maria Cazares, LCSW","1706 Treasure Hills Blvd, Harlingen, TX 78550","1706 Treasure Hills Blvd, Harlingen, TX 78550",TX,956-365-6000,mcazares@suclinica.org,"Phone
+ Virtual (Zoom, Skype, etc.)","Adults, children/teens, bilingual",,,,,,,,,
+,Melody McCurdy - LPC - #68824,"9401 SW FWY, Houston, TX 77074","9401 SW FWY, Houston, TX 77074",TX,832-942-9413,melody.mccurdy@theharriscenter.org,"Phone, 
+ Virtual(Zoom, Skype, etc.)
+  Text or chat",Grief groups,,,,,,,,,
+,"Michelle Ramirez, MS; CT","Summit Grief Care Ministry
+ 2575 Marshall Rd.
+ San Antonio, TX 78258","Summit Grief Care Ministry, 2575 Marshall Rd., San Antonio, TX 78258",TX,210-402-0565,griefcare@summitsa.com,,Grief,,,,,,,,,
+,"Robert Chapa, LPC","209 E 6th St., Mission TX 78572","209 E 6th St., Mission TX 78572",TX,956-655-4619,rchapa@mhm.org,,,,,,,,,,,
+,"Ron Flores, MS, LMSW-IPR","702 San Pedro Ave, San Antonio TX 78212","702 San Pedro Ave, San Antonio TX 78212",TX,210-299-2430,rflores@family-service.org,,"Adolescents, Couples, Individuals",,,,,,,,,
+,"Rosalva Washington, LMSW","4502 Medical Dr., San Antonio TX 78229","4502 Medical Dr., San Antonio TX 78229",TX,210-743-3170,rosalva.washington@uhs-sa.com,,"Adolescents, Children, Maternal/Fetal Loss, Trauma",,,,,,,,,
+,"Sandra Stillo, MS; LPC","5646 Milton St., Suite 231
+ Dallas, TX 75206","5646 Milton St., Suite 231, Dallas, TX 75206",TX,214-718-8341,sandy@playtherapydallas.com,,"Adolescents/Children, Grief",,,,,,,,,
+,"Shahidrah Cowgill, MA; LPC","2770 Main St., Suite 280
+ Frisco, TX 75033","2770 Main St., Suite 280, Frisco, TX 75033",TX,214-475-0345,scowgirll@theffccenter.com,,"Adolescents/Children, Families, Couples, Adults/Elders, Veterans",,,,,,,,,
+,"Tiffany Bynum, LPC-S","2626 South Loop West, Suite 318
+ Houston, TX 77054","2626 South Loop West, Suite 318, Houston, TX 77054",TX,713- 742- 2965,tdcservices@tenderdevotions.com,"Virtual (Zoom, Skype, etc.)","Mood disorders, TF- CBT, Grief",,,,,,,,,
+,"Valerie Woodard, PhD","918 Justin Terrace, San Antonio TX 78251","918 Justin Terrace, San Antonio TX 78251",TX,281-690-0259,vwoodard55@yahoo.com,,Adolescents/Single Parents,,,,,,,,,
+,"Vanessa C. Cantú, PhD",,,TX,956-243-0162,dr.vanessacantu@gmail.com,,"All Age Groups, Crisis Intervention",,,,,,,,,
+,"Allie Diamond, LCSW",,,UT,,alliediamondlcsw@gmail.com,,"Adult, Grief",,,,,,,,,
+,"April L. Bennett, LMFT","32 West Winchester St, Suite 101, Salt Lake City, UT 84107","32 West Winchester St, Suite 101, Salt Lake City, UT 84107",UT,801-263-6367,a3frog@gmail.com,,"Grief, Trauma",,,,,,,,,
+,Carolyn Henry Kruger,"388 W 100 N, Vernal, UT 84078","388 W 100 N, Vernal, UT 84078",UT,435-790-5209,krugerc51@gmail.com,,,,,,,,,,,
+,"Chris Adams Richards, LCSW","8783 S. Redwood Rd. Ste. B
+ West Jordan, UT 84088","8783 S. Redwood Rd. Ste. B, West Jordan, UT 84088",UT,385-204-6709,chris@southvalleytherapy.com,,"Adult, Grief, Trauma",,,,,,,,,
+,"Christie Howes, LCSW",,,UT,435-669-1275,mycows06@yahoo.com,,"Adult, Child/Adolescent",,,,,,,,,
+,"Cybele Blood, LCSW","Ascendant Behavioral Health 
+ 5383 South 900 East Suite #103
+ Salt Lake City, UT 84117","Ascendant Behavioral Health , 5383 South 900 East Suite #103, Salt Lake City, UT 84117",UT,(801) 872-5516,cblood@asu.edu,,"Adult, Grief",,,,,,,,,
+,"Diana King, MSW, LCSW",,,UT,801-694-0020,dianaklcsw@msn.com,,"Adult, War Veterans, Substance Abuse",,,,,,,,,
+,"Gayle Wyner, LCSW","10815 S 700 E, Sandy, UT 84070","10815 S 700 E, Sandy, UT 84070",UT,801-867-3472,gayle@sunrisesolutionsutah.com,,"Adult, Adolescent, Family/Couple, EMDR",,,,,,,,,
+,"Gina Hemma, LCSW","10815 S 700 E, Sandy, UT 84070","10815 S 700 E, Sandy, UT 84070",UT,801-702-3062,gina@sunrisesolutionsutah.com,,"Trauma, Women's Issues, EMDR",,,,,,,,,
+,"Jennifer Howard, Clinical Mental Health Counselor","1410 West State Rd, Ste D, Pleasant Grove, UT 84062","1410 West State Rd, Ste D, Pleasant Grove, UT 84062",UT,801-885-9632,jen.mindfulliving@gmail.com,,"Adult, Adolescent, Family/Couple, Trauma",,,,,,,,,
+,"John Selfridge, LCSW","4505 S Wasatch Blvd #320, Holladay, UT 84124","4505 S Wasatch Blvd #320, Holladay, UT 84124",UT,801-706-1467,john@selfridgecounseling.com,,"Adolescent, Couples, Men",,,,,,,,,
+,"Julie Mathewson, LCSW","880 E 9400 S, Sandy, UT 84094","880 E 9400 S, Sandy, UT 84094",UT,801-864-4027,juliemath712@gmail.com,,"Grief and Loss, Life Transitions",,,,,,,,,
+,Katie Jubander LCSW,"189 S. State Street Suite 245, Clearfield, UT 84015","189 S. State Street Suite 245, Clearfield, UT 84015",UT,385-298-7185,katie@julanderisp.com,,"Adults, Trauma Therapist (EMDR, PE)",,,,,,,,,
+,"Katie Stiel, CSW","1399 S 700 E, Ste 2, Salt Lake City, UT 84105","1399 S 700 E, Ste 2, Salt Lake City, UT 84105",UT,385-355-1061,katie.a.stiel@gmail.com,,"Adult, Adolescent, Grief, Life Transitions",,,,,,,,,
+,"Kendell Passey, LCSW","663 W 950 S, Brigham City, UT 84302","663 W 950 S, Brigham City, UT 84302",UT,435-734-9449,,,"Adult, Child/Adolescent, Trauma",,,,,,,,,
+,"Kip Landon, LCSW","1175 E 300 N, Provo, UT 84601","1175 E 300 N, Provo, UT 84601",UT,801-373-7393,klandon@wasatch.org,,"Adult, Family/Couple",,,,,,,,,
+,"Lisa Araujo, MSW, LCSW","2610 Washington Blvd., Ogden, UT 84401","2610 Washington Blvd., Ogden, UT 84401",UT,801-683-6040,lisa.araujo.lcsw@gmail.com,,"Adolescent, LGBTQ+, Anxiety/OCD",,,,,,,,,
+,"Meagan Roberts, RN","2163 E. 110 N Circle, St. George, UT 84790","2163 E. 110 N Circle, St. George, UT 84790",UT,435-313-5222,meagan_riddle@yahoo.com,,,,,,,,,,,
+,"Melissa Huber, LCSW","388 W 100 N, Vernal, UT 84078","388 W 100 N, Vernal, UT 84078",UT,435-828-8379,mlssahuber@gmail.com,,"Couples, Grief, Trauma",,,,,,,,,
+,"Michael B Jensen, LCSW","5770 S 1500 W, Taylorsville, UT 84123","5770 S 1500 W, Taylorsville, UT 84123",UT,801-313-7770,mike.jensen2@imail.org,,"Adolescent, Trauma, Cognitive Behavioral Therapy",,,,,,,,,
+,"Michelle Manwaring, RN, LCSW","1174 E Greystone Way, #6, Salt Lake City, UT 84103","1174 E Greystone Way, #6, Salt Lake City, UT 84103",UT,801-718-9206,michelle@safehouse.care,,"Adult, Child/Adolescent, Trauma",,,,,,,,,
+,"Nancy Sutton, LMFT",,,UT,435-513-5708,suttonnancy20@gmail.com,,"Adolescent, Family",,,,,,,,,
+,"Penelope Scow, CMHC","2785 W 9000 S, Ste 120, West Jordan, UT 84088","2785 W 9000 S, Ste 120, West Jordan, UT 84088",UT,801-884-6779,penelope.scow@yahoo.com,,"Adult, Adolescent",,,,,,,,,
+,"Russ Talbot, M.Ed, LCSW, MAC","561 E. Tabernacle, St George, UT 84770","561 E. Tabernacle, St George, UT 84770",UT,435-673-2899,info@stghighdesert.com,,"Adult, Tauma, Couples",,,,,,,,,
+,"Steven C. Vigil, LCSW","3903 Harrison Blvd #300, Ogden, UT 84403","3903 Harrison Blvd #300, Ogden, UT 84403",UT,801-387-5600,steven.vigil@imail.org,,"Couples, LGBTQ",,,,,,,,,
+,"Terri Iman- Miles, MSW, LCSW","18 N 200 E Ste 311. Tremonton, UT 84337","18 N 200 E Ste 311. Tremonton, UT 84337",UT,435-452-2025,terri@milescounselingservices.com,,"Couples, Anxiety/Depression",,,,,,,,,
+,"Tim McCreary, MS","475 N 500 W, Vernal, UT 84078","475 N 500 W, Vernal, UT 84078",UT,435-781-6634,,,"Adult, Child/Adolescent",,,,,,,,,
+,"Vicky Westmoreland, EDDCP","1345 E 3900 S, Ste 102D, Salt Lake City, UT 84124","1345 E 3900 S, Ste 102D, Salt Lake City, UT 84124",UT,801-542-0933,vwestmoreland@centerforresiliencyandrecovery.com,,Trauma,,,,,,,,,
+,"Ann La Rocque, LCMHC","1 Nickwackett St.
+ Rutland, VT 5701","1 Nickwackett St., Rutland, VT 5701",VT,802-672-1891,alarocque@vermontel.net,,"Adults/Elders, Grief, Co-occurring Disorders",,,,,,,,,
+,"Carolyn Rushford, PhD","366 Dorset, Suite 10
+ Burlington, VT 5403","366 Dorset, Suite 10, Burlington, VT 5403",VT,,,,,,,,,,,,,
+,"Jennifer Chambers, MSW","390 River Street
+ Springfield, VT 5143","390 River Street, Springfield, VT 5143",VT,802-886-4567 x 2124,jchamber@hcrs.org,,,,,,,,,,,
+,"Kelli Wilson-Young, LMFT","128 Merchants Row
+ Rutland, VT 5701","128 Merchants Row, Rutland, VT 5701",VT,802-773-3620,klwyoung@therapist.net,,"Families, Couples, Addiction",,,,,,,,,
+,"Adrienne Winiecki, MSW",,,WI,608-756-5555,awiniecki@mhemail.org,,"Substance Abuse, Adults, Adolescents",,,,,,,,,
+,"Alison Heintz, MS, LPC, ATR","517 Court Street Room 503, Neillsville, WI 54456","517 Court Street Room 503, Neillsville, WI 54456",WI,715-743-5208,alison.heintz@co.clark.wi.us,,"all ages: art therapist, school based counseling",,,,,,,,,
+,"Amanda Eskola, MSW; LCSW; CSAC","3070 N. 51st Stt.
+  Milwaukee, WI 53210","3070 N. 51st Stt., Milwaukee, WI 53210",WI,414-874-1171,amanda.eskola@ascension.org,,"Couples, Adults/Elders",,,,,,,,,
+,"Amy Anderson, LCSW, CSAC","4109 67th Street
+  Kenosha, WI 53412","4109 67th Street, Kenosha, WI 53412",WI,262-652-9830,info@oakwoodclinical.com,,"Adolescents/Children, Addiction",,,,,,,,,
+,"Andrew Bailey, LCSW","3601 30th Ave.
+  Kenosha, WI 53144","3601 30th Ave., Kenosha, WI 53144",WI,262-654-0487,ppckenosha@live.com,,Adolescents/Children,,,,,,,,,
+,"Andrew Schramm, PhD","8701 W Watertown Plank Road Medical College of WI / Froedtert Hospital
+Milwaukee, WI 53226","8701 W Watertown Plank Road Medical College of WI / Froedtert Hospital, Milwaukee, WI 53226",WI,"	(414) 955-1743","	aschramm@mcw.edu","Phone, Video Call","	
+PTSD treatment among adults",,,,,,,,,
+,"Caitin Baldauff, LPC, SAS","1100 Lake View Dr., Wausau, WI 54403","1100 Lake View Dr., Wausau, WI 54403",WI,715-848-4600,cbaldauff@norcen.org,,"Family Therapy, Couples Therapy, Family Systems Theory, Substance Abuse Treatment, Individual Therapy",,,,,,,,,
+,"Carrie Kelly, LPC","10201 W. Lincoln Ave., Suite 308
+  West Allis, WI 53227","10201 W. Lincoln Ave., Suite 308, West Allis, WI 53227",WI,262-806-6722,mindfulsolutions2u@gmail.com,,"Co-occurring Disorders, Abuse, Women’s Issues",,,,,,,,,
+,"Cheri S. Milton, LMFT","2906 Marketplace Dr. Fitchburg, WI 53719","2906 Marketplace Dr. Fitchburg, WI 53719",WI,608-327-7110,cheri.milton@agrace.org,,"Grief, loss, transitions",,,,,,,,,
+,"Deborah Black Ignace, LPC, License #5539-125","930 W Historic Mitchell St.
+Milwaukee, Wisconsin 53204","930 W Historic Mitchell St., Milwaukee, Wisconsin 53204",WI,(414) 316-5004,dblack@gliihc.net,"Phone, Video","Working with Native American communities; Trauma/PTSD; Domestic & Sexual Violence; Depression, Anxiety",,,,,,,,,
+,"Donald Matthews, MA; LPC","199 Country Rd.
+  Juneau, WI 53039","199 Country Rd., Juneau, WI 53039",WI,920-386-4094,dmatthews@dodge.co.wi.us,,Adolescents/Children,,,,,,,,,
+,"Brad Munger, MA, LPC","1 W. Wilson St., Madison WI 53703","1 W. Wilson St., Madison WI 53703",WI,608-266-2754,brad.munger@wisconsin.gov,,"Crisis Intervention, Serious & Persistent Mental Illness, Suicide Prevention & Survivorship, Family Support, Adverse Childhood Experiences (ACE), Gerontology & Dementia, Existential Therapy",,,,,,,,,
+,"Elaine Schachelmayer, MA; LPC","Pathways Consulting
+  6929 Mariner Dr., Suite C
+  Racine, WI 53406","Pathways Consulting, 6929 Mariner Dr., Suite C, Racine, WI 53406",WI,262-456-4056,eschachelmayer@pathwaysconsultingllc.com,,"Adults/Elders, Grief",,,,,,,,,
+,"Emely M Verba, Ph.D, Clinical Psychologist","2001 W. Beltline Hwy, Suite 105, Madison, WI 53713","2001 W. Beltline Hwy, Suite 105, Madison, WI 53713",WI,608-288-1555,verba@growingroom.com,,All areas of Bereavement,,,,,,,,,
+,"Emily Lock, MSW; LCSW","Family Service of Racine
+  420 7th Street
+  Racine, WI 53403","Family Service of Racine, 420 7th Street, Racine, WI 53403",WI,262-634-2391,emily@fsracine.org,,"Adolescents/Children, Families, Grief",,,,,,,,,
+,"Jena Roscizewski, CASPW; MSW","Family Service of Racine
+  420 7th Street
+  Racine, WI 53403","Family Service of Racine, 420 7th Street, Racine, WI 53403",WI,262-634-2391,jena@fsracine.org,,"Adolescents/Children, Families, Couples, Adults/Elders",,,,,,,,,
+,"Jennifer Brau, MSW; LCSW","4633 Washington Road
+  Kenosha, WI 53144","4633 Washington Road, Kenosha, WI 53144",WI,262-652-7222,jbrau@pathwaysconsultingllc.com,,"Adolescents/Children, Adults/Elders",,,,,,,,,
+,"Jennifer L. Smith, Psy D, LPC","17100 W. North Avenue, Suite 100 Brookfield, WI 53005","17100 W. North Avenue, Suite 100 Brookfield, WI 53005",WI,262-786-9184,drjlsmith17@gmail.com,,"Adults, couples, survivors of suicide support group-NAMI-Waukesha",,,,,,,,,
+,"Jessica Dorner, MA; LPC","Pathways Consulting
+  4633 Washington Road
+  Racine, WI 53406","Pathways Consulting, 4633 Washington Road, Racine, WI 53406",WI,262-456-4056,,,"Adolescents/Children, Couples",,,,,,,,,
+,"Katie Lohre, MSc","Gateway Technical College
+  1001 S. Main St.
+  Racine, WI 53403","Gateway Technical College, 1001 S. Main St., Racine, WI 53403",WI,262-619-6586,lohrek@gtc.edu,,,,,,,,,,,
+,"Kim Lewis LCSW, CSAC","P.O. Box 482, 140 W. Main Street, Winneconne, WI 54986","P.O. Box 482, 140 W. Main Street, Winneconne, WI 54986",WI,920-582-4000,klewistgt@protonmail.com,,"Adolescents, Adults, Couples",,,,,,,,,
+,"Lillian Carroll, LPC","1320 Wisconsin Ave.
+  Racine, WI 53403","1320 Wisconsin Ave., Racine, WI 53403",WI,262-687-2558,lillian.carroll@wfhc.org,,"Adolescents/Children, Families, Couples, Adults/Elders, LGBT+",,,,,,,,,
+,"Lisa DeFazio, LCSW","3601 30th Ave.
+  Kenosha, WI 53144","3601 30th Ave., Kenosha, WI 53144",WI,262-654-0487,ppckenosha@live.com,,"Adolescents/Children, Couples",,,,,,,,,
+,"Lora Reinders, MSW; LCSW","Pathways Consulting
+  4633 Washington Road
+  Kenosha, WI 53144","Pathways Consulting, 4633 Washington Road, Kenosha, WI 53144",WI,262-652-7222,lreinders@pathwaysconsultingllc.com,,Adolescents/Children,,,,,,,,,
+,"M. Rachel Burton, MSE; Sp. Ed.","7101 53rd St.
+  Kenosha, WI 53144","7101 53rd St., Kenosha, WI 53144",WI,262-654-9622,rburton@kenoshaymca.org,,"Adolescents/Children, Families",,,,,,,,,
+,"Marie Stafford, LPC","444 N. Westhill Blvd, Appleton, WI 54914","444 N. Westhill Blvd, Appleton, WI 54914",WI,920-750-7000,marie.stafford@catalpahealth.org,,"Children, Adolescents, and Teens ages 6-18",,,,,,,,,
+,"Marloes Verhoeven, Psy.D.","1900 Ogden Ave Suite 106
+Aurora, IL 60504","1900 Ogden Ave Suite 106, Aurora, IL 60504",WI,(630) 256-8007,marloes.verhoeven@oasis-mental-health.com,"Phone, Video Call","	
+I treat adults who have experienced trauma and/or are experiencing traumatic grief and loss. I have an attachment focused orientation and am trained in EMDR (Eye Movement Desensitization and Reprocessing) and IFS (Internal Family Systems).",,,,,,,,,
+,"Maureen Callahan, LCSW","Center for Change, Suite 2 East 93 W. Geneva St., Williams Bay, WI 53191","Center for Change, Suite 2 East 93 W. Geneva St., Williams Bay, WI 53191",WI,262-607-2770,centerforchangecounseling.com,,Crisis Intervention,,,,,,,,,
+,"Megan Wolf, MBA, MSE, LPC, SAC","WKM Psychology 6058 Chestnut #100 Platteville, WI 53818","WKM Psychology 6058 Chestnut #100 Platteville, WI 53818",WI,608-342-4853,,,"Substance Abuse Counselor, Mental Health",,,,,,,,,
+,"Michelle Matthews, LCSW","4109 67th Street
+  Kenosha, WI 53142","4109 67th Street, Kenosha, WI 53142",WI,262-652-9830,info@oakwoodclinical.com,,"Adolescents/Children, Families, Adults/Elders",,,,,,,,,
+,"Nancy Habrel, LCSW; LMFT","1120 Main St.
+  Union Grove, WI 53182","1120 Main St., Union Grove, WI 53182",WI,262-687-6287,nancy.habrel@wfhc.org,,"Adolescents/Children, Families, Couples, Adults/Elders, Co-occurring Disorders, Women’s Issues",,,,,,,,,
+,"Nicole Gustafson-Binger, MS; LPC","3520 30th Ave.
+  Kenosha, WI 53144","3520 30th Ave., Kenosha, WI 53144",WI,262-564-2332,gustafsonbingern@gtc.edu,,,,,,,,,,,
+,"Paul DeFazio, LCSW","3601 30th Ave.
+  Kenosha, WI 53144","3601 30th Ave., Kenosha, WI 53144",WI,262-654-0487,ppckenosha@live.com,,"Couples, Co-occurring Disorders",,,,,,,,,
+,"Roberta Corlson, MS, CSW, CMFT","100 Polk County Plaza, Suite 50, Balsom Lake, WI 54810","100 Polk County Plaza, Suite 50, Balsom Lake, WI 54810",WI,715-485-8465,robertac@co.polk.wi.us,,"For all ages and systems: EMDR, TF-CBT, Anger Management, DBT",,,,,,,,,
+,"Sandra Lardinois, LMFT, MSW","101Broadway, Waukesha, WI 53186","101Broadway, Waukesha, WI 53186",WI,262-547-5567,slardiniois@fswaukesha.org,,"Completed Grief Specialist Program, Work with inidviduals, couples, families from systemic perspective",,,,,,,,,
+,"Sarah Danahy, LCSW","1370 S. Commercial St. Neenah, WI 54956","1370 S. Commercial St. Neenah, WI 54956",WI,920-486-6188,danahy.lcsw@gmail.com,,"Children, Adolescents, and Families",,,,,,,,,
+,"Sheryl Hemp, MA","North Central Health Care, 1100 Lakeview Dr., Wausau, WI 54403","North Central Health Care, 1100 Lakeview Dr., Wausau, WI 54403",WI,715-848-4469,shemp@norcen.org,,MH + AODA- adults,,,,,,,,,
+,"Stacey Wright, LMFT","3807 Spring St.
+  Racine, WI 53405","3807 Spring St., Racine, WI 53405",WI,262-687-2222,stacey.wright@wfhc.org,,"Adolescents/Children, Couples",,,,,,,,,
+,"Suzanne Gizim, MA, LMFT","631 Forest St, Wausau, WI 54403","631 Forest St, Wausau, WI 54403",WI,715-842-0944,,,"Grief, Loss, Couples Therapy, Women",,,,,,,,,
+,"Theodore Mall, M.Ed; M.R.E.","7101 53rd St.
+  Kenosha, WI 53144","7101 53rd St., Kenosha, WI 53144",WI,262-654-9622,tedmall1@gmail.com,,,,,,,,,,,
+,"Theresa Bruner Leydens, LPC","4039 80TH St.
+  Kenosha, WI 53142","4039 80TH St., Kenosha, WI 53142",WI,262-657-5026,childbehavior@msn.com,,"Adolescents/Children, Adults/Elders",,,,,,,,,
+,"Thomas Carroll, MA; LPC","3732 West Wisconsin Ave., Suite 200
+  Milwaukee, WI 53208","3732 West Wisconsin Ave., Suite 200, Milwaukee, WI 53208",WI,414-290-0440,tcaroll@wiscs.org,,"Couples, Co-occurring Disorders, Abuse",,,,,,,,,
+,"Tria Braun, MSW; LCSW","441 Milwaukee Ave.
+  Burlington, WI 53105","441 Milwaukee Ave., Burlington, WI 53105",WI,262-342-4357,,,"Adolescents/Children, Couples, Adults/Elders",,,,,,,,,
+,"Wendy Trefz, LCSW, CSAC","4109 67th Street
+  Kenosha, WI 53412","4109 67th Street, Kenosha, WI 53412",WI,262-652-9830,scheduling@oakwoodclinical.com,,"Adolescents/Children, Addiction",,,,,,,,,

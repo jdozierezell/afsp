@@ -10,6 +10,7 @@ import { styles } from '../css/css'
 import FormDisclaimer from '../components/Forms/FormDisclaimer'
 import FormQuilt from '../components/Forms/FormQuilt'
 import FormSupportGroup from '../components/Forms/FormSupportGroup'
+import FormSBTClinician from '../components/Forms/FormSBTClinician'
 
 const mainCSS = css`
 	padding: ${styles.scale.px50} ${styles.scale.px24};
@@ -52,6 +53,7 @@ const NewRecord = ({ data: { newRecord } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${newRecord.slug}`,
 	}
+	console.log(newRecord.recordType)
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
@@ -67,6 +69,10 @@ const NewRecord = ({ data: { newRecord } }) => {
 				{newRecord.recordType === 'Support Group' && (
 					<FormSupportGroup />
 				)}
+				{newRecord.recordType ===
+					'Suicide Bereavement Trained Clinician' && (
+					<FormSBTClinician />
+				)}
 			</main>
 		</Layout>
 	)
@@ -75,7 +81,7 @@ const NewRecord = ({ data: { newRecord } }) => {
 export default NewRecord
 
 export const query = graphql`
-	query($slug: String) {
+	query ($slug: String) {
 		newRecord: datoCmsNewRecord(slug: { eq: $slug }) {
 			title
 			seoMetaTags {

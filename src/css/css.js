@@ -80,6 +80,7 @@ export const styles = {
 		px44: '2.75rem',
 		px45: '2.8125rem',
 		px46: '2.875rem',
+		px48: '3rem',
 		px50: '3.125rem',
 		px52: '3.25rem',
 		px54: '3.375rem',
