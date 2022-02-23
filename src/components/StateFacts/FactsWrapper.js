@@ -39,35 +39,38 @@ const cta = {
 const ContentFacts = ({ stateFacts }) => {
 	return (
 		<section css={factsWrapperCSS}>
-			<div>
-				<GatsbyImage
-					image={stateFacts.stateFactSheetImage.gatsbyImageData}
-					alt={stateFacts.stateFactSheetImage.alt}
-					css={css`
-						border: ${styles.scale.px5} solid ${styles.colors.white};
-						max-width: 623px;
-					`}
-				></GatsbyImage>
-				<a
-					className="secondary-button"
-					href={stateFacts.stateFactSheetUrl}
-				>
-					Download fact sheet
-				</a>
-			</div>
-			{stateFacts.initiativesAndPlans && (
-				<div css={initiativesAndPlansCSS}>
-					<h2>
-						{stateFacts.stateName} suicide prevention plans and
-						initiatives
-					</h2>
-					<div
-						dangerouslySetInnerHTML={{
-							__html: stateFacts.initiativesAndPlans,
-						}}
-					></div>
+			<div css={initiativesAndPlansCSS}>
+				<div>
+					<GatsbyImage
+						image={stateFacts.stateFactSheetImage.gatsbyImageData}
+						alt={stateFacts.stateFactSheetImage.alt}
+						css={css`
+							border: ${styles.scale.px5} solid
+								${styles.colors.white};
+							max-width: 623px;
+						`}
+					></GatsbyImage>
+					<a
+						className="secondary-button"
+						href={stateFacts.stateFactSheetUrl}
+					>
+						Download fact sheet
+					</a>
 				</div>
-			)}
+				{stateFacts.initiativesAndPlans && (
+					<div>
+						<h2>
+							{stateFacts.stateName} suicide prevention plans and
+							initiatives
+						</h2>
+						<div
+							dangerouslySetInnerHTML={{
+								__html: stateFacts.initiativesAndPlans,
+							}}
+						></div>
+					</div>
+				)}
+			</div>
 			<Facts
 				state={stateFacts.stateName}
 				facts={stateFacts.facts}
