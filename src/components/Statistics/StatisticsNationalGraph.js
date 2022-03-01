@@ -46,10 +46,79 @@ const StatisticsNationalGraph = ({
 	brief,
 	title,
 	graphType,
-	width,
-	tabWidth,
 	itemWidth,
+	rows,
 }) => {
+	rows = rows ? rows : 1
+	console.log(rows)
+	let legendProps = []
+	let lineData
+
+	for (let i = 0; i < rows; i++) {
+		if (i === 0) {
+			lineData = data
+				.slice(0, Math.floor(data.length / rows))
+				.map((cur, index) => ({
+					id: cur.id,
+					label: cur.id,
+					color: styles.ageRaceMethodGraphColors.slice(
+						0,
+						Math.floor(data.length / rows)
+					)[index],
+				}))
+		} else if (i < rows - 1) {
+			lineData = data
+				.slice(
+					Math.floor(data.length / rows) * i,
+					Math.floor(data.length / rows) * (i + 1)
+				)
+				.map((cur, index) => ({
+					id: cur.id,
+					label: cur.id,
+					color: styles.ageRaceMethodGraphColors.slice(
+						Math.floor(data.length / rows) * i,
+						Math.floor(data.length / rows) * (i + 1)
+					)[index],
+				}))
+		} else {
+			lineData = data
+				.slice(Math.floor(data.length / rows) * i)
+				.map((cur, index) => ({
+					id: cur.id,
+					label: cur.id,
+					color: styles.ageRaceMethodGraphColors.slice(
+						Math.floor(data.length / rows) * i
+					)[index],
+				}))
+		}
+
+		legendProps.push({
+			anchor: 'bottom',
+			direction: 'row',
+			justify: false,
+			translateX: 0,
+			translateY: 65 + 20 * i,
+			itemsSpacing: 0,
+			itemDirection: 'left-to-right',
+			itemWidth: itemWidth,
+			itemHeight: 20,
+			itemOpacity: 0.75,
+			symbolSize: 12,
+			symbolShape: 'circle',
+			symbolBorderColor: 'rgba(0, 0, 0, .5)',
+			effects: [
+				{
+					on: 'hover',
+					style: {
+						itemBackground: 'rgba(0, 0, 0, .03)',
+						itemOpacity: 1,
+					},
+				},
+			],
+			data: lineData,
+		})
+	}
+	console.log(legendProps)
 	return (
 		<div css={statisticsNationalGraphCSS}>
 			<div dangerouslySetInnerHTML={{ __html: brief }}></div>
@@ -62,7 +131,7 @@ const StatisticsNationalGraph = ({
 							margin={{
 								top: 10,
 								right: 20,
-								bottom: 75,
+								bottom: 25 + 50 * rows,
 								left: 50,
 							}}
 							xScale={{ type: 'point' }}
@@ -100,33 +169,7 @@ const StatisticsNationalGraph = ({
 							pointLabel="y"
 							pointLabelYOffset={-12}
 							enableSlices={'x'}
-							legends={[
-								{
-									anchor: 'bottom',
-									direction: 'row',
-									justify: false,
-									translateX: 0,
-									translateY: 65,
-									itemsSpacing: 0,
-									itemDirection: 'left-to-right',
-									itemWidth: itemWidth,
-									itemHeight: 20,
-									itemOpacity: 0.75,
-									symbolSize: 12,
-									symbolShape: 'circle',
-									symbolBorderColor: 'rgba(0, 0, 0, .5)',
-									effects: [
-										{
-											on: 'hover',
-											style: {
-												itemBackground:
-													'rgba(0, 0, 0, .03)',
-												itemOpacity: 1,
-											},
-										},
-									],
-								},
-							]}
+							legends={legendProps}
 							theme={{
 								tooltip: {
 									container: {
@@ -150,7 +193,7 @@ const StatisticsNationalGraph = ({
 							cornerRadius={3}
 							colors={styles.ageRaceMethodGraphColors}
 							borderWidth={0}
-							radialLabel={function(e) {
+							radialLabel={function (e) {
 								return `${e.id} (${e.percent})`
 							}}
 							radialLabelsSkipAngle={10}

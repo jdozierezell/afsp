@@ -45,7 +45,7 @@ const menuListCSS = css`
 	position: relative;
 	background-color: ${styles.colors.blue};
 	border-top: solid ${styles.scale.px2} ${styles.colors.white};
-	@media(min-width:${styles.screens.tablet}px) {
+	@media (min-width: ${styles.screens.tablet}px) {
 		display: none;
 	}
 	button {
@@ -55,7 +55,7 @@ const menuListCSS = css`
 		font-size: ${styles.scale.px17};
 		font-family: ${styles.fonts.avenirBold};
 		margin-bottom: ${styles.scale.px30};
-        cursor: pointer;
+		cursor: pointer;
 	}
 `
 
@@ -84,15 +84,9 @@ const menuTabsCSS = css`
 	}
 `
 
-const StatisticsNationalContainer = ({
-	csv,
-	brief,
-	width,
-	height,
-	tabWidth,
-}) => {
-	const age = 'Suicide rates by age'
-	const race = 'Suicide rates by race/ethnicity'
+const StatisticsNationalContainer = ({ csv, brief }) => {
+	const age = 'Suicide rates by age range'
+	const race = 'Suicide rates by race/ethnicity and gender'
 	const method = 'Suicide methods'
 
 	const [isCaretFlipped, setCaretFlipped] = useState(false)
@@ -173,7 +167,7 @@ const StatisticsNationalContainer = ({
 			raceButtonRef.current.setAttribute('style', ``)
 			ageButtonRef.current.setAttribute('style', ``)
 		}
-	}, [listRef, focusedArea, width])
+	}, [listRef, focusedArea])
 
 	return (
 		<div css={statisticsNationalGraphCSS}>
@@ -257,8 +251,6 @@ const StatisticsNationalContainer = ({
 					title={age}
 					brief={brief.ageBrief}
 					data={csv.ageData}
-					width={width}
-					tabWidth={tabWidth}
 					itemWidth={100}
 				/>
 			)}
@@ -268,9 +260,8 @@ const StatisticsNationalContainer = ({
 					title={race}
 					brief={brief.raceBrief}
 					data={csv.raceData}
-					width={width}
-					tabWidth={tabWidth}
-					itemWidth={140}
+					itemWidth={180}
+					rows={2}
 				/>
 			)}
 			{focusedArea === method && (
@@ -279,8 +270,6 @@ const StatisticsNationalContainer = ({
 					title={method}
 					brief={brief.methodBrief}
 					data={csv.methodData}
-					width={width}
-					tabWidth={tabWidth}
 				/>
 			)}
 		</div>

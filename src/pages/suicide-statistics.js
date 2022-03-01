@@ -46,16 +46,16 @@ const SuicideStatistics = ({ data: { statistics } }) => {
 		url: `https://afsp.org/${statistics.slug}`,
 	}
 	statistics.stateData = {
-		url: 'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2019-suicide-state.csv',
+		url: 'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2020-suicide-state.csv',
 	}
 	statistics.ageData = {
-		url: 'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2019-ratesbyage.csv',
+		url: 'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2020-ratesbyage.csv',
 	}
 	statistics.raceData = {
-		url: 'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2019-ratesbyethnicity.csv',
+		url: 'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2020-ratesbyethnicity.csv',
 	}
 	statistics.methodData = {
-		url: 'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2019-ratesbymethod.csv',
+		url: 'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2020-ratesbymethod.csv',
 	}
 
 	return (
