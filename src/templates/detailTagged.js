@@ -45,7 +45,11 @@ const Detail = ({ data: { tagged, stories }, pageContext }) => {
 	useEffect(() => {
 		stories.edges.forEach(story => {
 			story.node.tags.forEach(tag => {
-				if (tag.tag === pageContext.tag) {
+				if (
+					tag.tag === pageContext.tag &&
+					story.node.publicationDate !== null
+				) {
+					console.log(story)
 					story.node['type'] = 'story'
 					setTaggedStories(taggedStories => [...taggedStories, story])
 				}
@@ -180,6 +184,7 @@ export const query = graphql`
 					__typename
 					title
 					slug
+					publicationDate
 					id
 					seo {
 						description
