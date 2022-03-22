@@ -49,7 +49,6 @@ const Detail = ({ data: { tagged, stories }, pageContext }) => {
 					tag.tag === pageContext.tag &&
 					story.node.publicationDate !== null
 				) {
-					console.log(story)
 					story.node['type'] = 'story'
 					setTaggedStories(taggedStories => [...taggedStories, story])
 				}

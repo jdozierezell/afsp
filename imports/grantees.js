@@ -6,18 +6,6 @@ const fs = require('fs')
 
 const client = new SiteClient('c59da171a82e4feb314339a6e4cc24')
 
-// client.itemTypes.all().then(models => console.log(models))
-
-// client.fields.all('176621').then(fields => console.log(fields)) // quilt model
-// client.fields
-// 	.find('770003')
-// 	.then(field => {
-// 		console.log(field.validators.richTextBlocks.itemTypes)
-// 	})
-// 	.catch(error => {
-// 		console.log(error)
-// 	})
-
 const data = []
 fs.createReadStream('grantees_12-25-19-3.csv')
 	.pipe(csv())
@@ -25,7 +13,6 @@ fs.createReadStream('grantees_12-25-19-3.csv')
 		data.push(row)
 	})
 	.on('end', () => {
-		// console.log('CSV file successfully processed')
 		data.forEach((row, index) => {
 			let slug = row.Title
 			slug = slug.replace(/[^A-Za-z0-9]/g, '-').toLowerCase()
@@ -36,10 +23,6 @@ fs.createReadStream('grantees_12-25-19-3.csv')
 			}
 			if (slug.lastIndexOf('-') === slug.length - 1) {
 				slug = slug.slice(0, -1)
-			}
-			// console.log(slug, index)
-			if (slug.indexOf('--') !== -1) {
-				console.log(slug, index)
 			}
 			const grantees = []
 			const areas = []

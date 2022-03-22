@@ -272,7 +272,6 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			],
 		},
 	]
-	console.log(stateFacts)
 	useEffect(() => {
 		setFactsTop(
 			document.getElementById('factsContainer').getBoundingClientRect()

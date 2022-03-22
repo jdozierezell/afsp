@@ -50,7 +50,6 @@ const StatisticsNationalGraph = ({
 	rows,
 }) => {
 	rows = rows ? rows : 1
-	console.log(rows)
 	let legendProps = []
 	let lineData
 
@@ -118,7 +117,6 @@ const StatisticsNationalGraph = ({
 			data: lineData,
 		})
 	}
-	console.log(legendProps)
 	return (
 		<div css={statisticsNationalGraphCSS}>
 			<div dangerouslySetInnerHTML={{ __html: brief }}></div>

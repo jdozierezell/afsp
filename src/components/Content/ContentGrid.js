@@ -73,10 +73,6 @@ const ContentGrid = ({ hideHeader, table, tableHeader }) => {
 					rowContents.push(mobile, desktop)
 				}
 
-				// if (rowIndex + 1 === table.data.length) {
-				// 	console.log(data)
-				// }
-
 				if (rowContents.length > 2) {
 					rowContents[rowContents.length - 3].hasLastValue = false
 					rowContents[rowContents.length - 4].hasLastValue = false

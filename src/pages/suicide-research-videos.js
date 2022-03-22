@@ -59,7 +59,6 @@ const SuicideResearchVideos = ({ data: { search } }) => {
 
 	const [searchState, setSearchState] = useState(query)
 	const handleSearchChange = event => {
-		console.log(event.target)
 		let tempSearch = searchState
 		let attribute = event.target.attribute
 		let value = event.target.value
