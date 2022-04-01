@@ -24,9 +24,6 @@ fs.createReadStream('grantees_12-25-19-3.csv')
 			if (slug.lastIndexOf('-') === slug.length - 1) {
 				slug = slug.slice(0, -1)
 			}
-			if (slug.indexOf('--') !== -1) {
-				console.log(slug, index)
-			}
 			const grantees = []
 			const areas = []
 			const contents = []

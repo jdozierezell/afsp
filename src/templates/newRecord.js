@@ -53,7 +53,6 @@ const NewRecord = ({ data: { newRecord } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${newRecord.slug}`,
 	}
-	console.log(newRecord.recordType)
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}

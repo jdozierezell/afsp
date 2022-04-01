@@ -238,7 +238,7 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 									You can also
 									<br />
 									<Link to={'/state-fact-sheets'}>
-										view all of our state fact sheets
+										view all our state fact sheets
 									</Link>
 									.
 								</label>
@@ -249,7 +249,8 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 										aria-describedby="stateInputLabel"
 										onKeyPress={e => {
 											if (e.key === 'Enter') {
-												const value = e.target.value.toLowerCase()
+												const value =
+													e.target.value.toLowerCase()
 												if (
 													!selection.some(
 														e => e.state === value

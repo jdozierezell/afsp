@@ -13,7 +13,6 @@ fs.createReadStream('imports/sbtClinicians220118_withState_noHeadings.csv')
 		data.push(row)
 	})
 	.on('end', () => {
-		// console.log('CSV file successfully processed')
 		data.forEach((row, index) => {
 			const name = row.name
 			const email = row.email
@@ -40,16 +39,6 @@ fs.createReadStream('imports/sbtClinicians220118_withState_noHeadings.csv')
 				.slice(0, lastSpace2)
 				.trim()
 				.replace(',', '')
-			// console.log(row)
-			// console.log(name)
-			// console.log(street)
-			// console.log(city)
-			// console.log(state)
-			// console.log(zip)
-			// console.log(email)
-			// console.log(phone)
-			// console.log(specialties)
-			// console.log(telehealth)
 			setTimeout(() => {
 				client.items
 					.create({
@@ -64,7 +53,6 @@ fs.createReadStream('imports/sbtClinicians220118_withState_noHeadings.csv')
 						specialties: specialties,
 						telehealth: telehealth,
 					})
-					// .then(record => console.log(record))
 					.catch(error => console.log(error.message))
 			}, index * 1000)
 		})
