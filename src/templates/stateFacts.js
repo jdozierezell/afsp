@@ -245,6 +245,12 @@ const StateFacts = ({ data: { stateFacts } }) => {
 			],
 		},
 	]
+
+	const stateFactHeadingsForNav = {
+		slug: `facts/${stateFacts.slug}`,
+		details: stateFacts.facts,
+	}
+
 	useEffect(() => {
 		setFactsTop(
 			document.getElementById('factsContainer').getBoundingClientRect()
