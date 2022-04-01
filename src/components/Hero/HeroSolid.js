@@ -53,7 +53,7 @@ const logoCSS = css`
 
 const HeroSolid = ({ data, programLogo, addCSS }) => {
 	const { title, brief, parentPage } = data
-	const sectionWidth = !data.overrideWidth ? `calc(100vw - 555px)` : `auto`
+	const sectionWidth = !data.overrideWidth ? `calc(100vw - 575px)` : `auto`
 	return (
 		<div
 			css={css`
