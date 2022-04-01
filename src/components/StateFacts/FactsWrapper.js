@@ -17,6 +17,9 @@ const initiativesAndPlansCSS = css`
 
 const factsWrapperCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24};
+	> div:first-child {
+		display: grid;
+	}
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin: ${styles.scale.px50} ${styles.scale.px50} 0;
 	}
@@ -48,12 +51,14 @@ const ContentFacts = ({ stateFacts }) => {
 						max-width: 623px;
 					`}
 				></GatsbyImage>
-				<a
-					className="secondary-button"
-					href={stateFacts.stateFactSheetUrl}
-				>
-					Download fact sheet
-				</a>
+				<div>
+					<a
+						className="secondary-button"
+						href={stateFacts.stateFactSheetUrl}
+					>
+						Download fact sheet
+					</a>
+				</div>
 			</div>
 			{stateFacts.initiativesAndPlans && (
 				<div css={initiativesAndPlansCSS}>
