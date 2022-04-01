@@ -55,6 +55,7 @@ export const styles = {
 		avenirBold: 'AvenirNextLTPro-Bold, Arial, sans-serif',
 		avenirBoldIt: 'AvenirNextLTPro-BoldIt, Arial, sans-serif',
 		paul: 'PaulGroteskSoft-Bold, Arial, sans-serif',
+		gravity: 'Gravity, Arial, sans-serif',
 	},
 	scale: {
 		npx10: '-0.625rem',
