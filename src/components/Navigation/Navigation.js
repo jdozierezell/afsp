@@ -123,7 +123,7 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 			css={css`
 				${navTopCSS};
 				background-color: ${navBackground};
-				> nav > ul > li {
+				> nav > ul > li > a {
 					color: ${navColor};
 				}
 			`}
