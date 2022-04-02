@@ -19,15 +19,6 @@ const menuCSS = css`
 	margin: 0;
 	padding: 0;
 	flex-grow: 1;
-	& > li {
-		line-height: 6rem;
-		height: 105px;
-		margin: 0;
-		:hover {
-			background-color: ${styles.colors.blue};
-			color: ${styles.colors.white};
-		}
-	}
 	a {
 		font-size: ${styles.scale.px16};
 		font-family: ${styles.fonts.avenirBold};

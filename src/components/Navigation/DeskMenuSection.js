@@ -8,6 +8,18 @@ import createAnchor from '../../utils/createAnchor'
 
 import { styles } from '../../css/css'
 
+const navLink = css`
+	line-height: 6rem;
+	height: 105px;
+	margin: 0;
+	:hover {
+		background-color: ${styles.colors.blue};
+		a {
+			color: ${styles.colors.white};
+		}
+	}
+`
+
 const megaCSS = css`
 	width: 100%;
 	position: relative;
@@ -92,6 +104,7 @@ const DeskMenuSection = ({ menuItem, id, overrideLight }) => {
 					setShowMenu(false)
 				}}
 				css={css`
+					${navLink};
 					/* pointer-events: ${currentPath === anchor
 						? 'none'
 						: 'auto'}; */
