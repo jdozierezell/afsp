@@ -59,13 +59,6 @@ const ContentFacts = ({ state, facts }) => {
 	const [position, setPosition] = useState('relative')
 	const [top, setTop] = useState(0)
 	const [width, setWidth] = useState('100%')
-	const [hasScrolled, setHasScrolled] = useState(false)
-
-	let hash
-
-	if (typeof window !== `undefined`) {
-		hash = window.location.hash.substring(1)
-	}
 
 	let exceptions = 0
 	let exceptionArray = []
@@ -73,22 +66,11 @@ const ContentFacts = ({ state, facts }) => {
 	const handleScroll = () => {
 		if (
 			keyElement.current.getBoundingClientRect().y <= 50 &&
-			factElement.current.getBoundingClientRect().y <= 340 &&
-			hasScrolled
+			factElement.current.getBoundingClientRect().y <= 340
 		) {
-			console.log(`after scrolling, hasScrolled is ${hasScrolled}`)
 			setPosition('fixed')
 			setTop(`${keyElement.current.getBoundingClientRect().height}px`)
 			setWidth(`${factElement.current.getBoundingClientRect().width}px`)
-		} else if (
-			keyElement.current.getBoundingClientRect().y <= 50 &&
-			factElement.current.getBoundingClientRect().y <= 340
-		) {
-			console.log(`on load, hasScrolled is ${hasScrolled}`)
-			setPosition('fixed')
-			setTop(`${keyElement.current.getBoundingClientRect().height * 2}px`)
-			setWidth(`${factElement.current.getBoundingClientRect().width}px`)
-			setHasScrolled(true)
 		} else {
 			setPosition('relative')
 			setTop(0)
@@ -97,6 +79,7 @@ const ContentFacts = ({ state, facts }) => {
 	}
 
 	useEffect(() => {
+		handleScroll()
 		window.addEventListener('scroll', handleScroll)
 		return () => window.removeEventListener('scroll', handleScroll)
 	})
@@ -156,7 +139,13 @@ const ContentFacts = ({ state, facts }) => {
 							`}
 							ref={index === 0 ? factElement : null}
 						>
-							<h3 id={fact.anchor} css={subSectionCSS}>
+							<h3
+								id={fact.anchor}
+								css={css`
+									${subSectionCSS};
+									scroll-margin-top: ${top};
+								`}
+							>
 								{fact.display}
 							</h3>
 							<ul css={factListCSS}>
