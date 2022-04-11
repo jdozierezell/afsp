@@ -299,6 +299,7 @@ export const query = graphql`
 				alt
 				gatsbyImageData(width: 768)
 			}
+			stateFactSheetUrl
 			addresses988InfrastructureAndProvidesForTelecom
 			addresses988InfrastructureAndProvidesForTelecomException
 			addresses988InfrastructureButNotProvideForTelecom

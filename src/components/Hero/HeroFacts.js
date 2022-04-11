@@ -35,6 +35,7 @@ const stateCSS = css`
 		color: ${styles.colors.white};
 		font-family: ${styles.fonts.avenirRegular};
 		line-height: ${styles.scale.px24};
+		max-width: 623px;
 		@media (min-width: ${styles.screens.video}px) {
 			width: calc(100vw - 575px);
 		}

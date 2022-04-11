@@ -44,7 +44,7 @@ const formatStatisticsCard = (data, state) => {
 			},
 		},
 		cardButtonCta: 'View fact sheet',
-		cardButtonUrl: `https://aws-fetch.s3.amazonaws.com/state-fact-sheets/${factSheetYear}/${factSheetYear}-state-fact-sheets-${factSheetState}.pdf`,
+		cardButtonUrl: `/facts/${factSheetState}`,
 	}
 	return card
 }
