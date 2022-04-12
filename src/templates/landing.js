@@ -422,6 +422,29 @@ export const query = graphql`
 								}
 							}
 						}
+						... on DatoCmsStateFactsPage {
+							__typename
+							id
+							title
+							slug
+							seo {
+								description
+								image {
+									url
+									gatsbyImageData(
+										width: 600
+										placeholder: NONE
+										imgixParams: {
+											auto: "format"
+											fit: "fill"
+											fill: "blur"
+											w: "600"
+											h: "370"
+										}
+									)
+								}
+							}
+						}
 						... on DatoCmsCustomShareable {
 							__typename
 							id
