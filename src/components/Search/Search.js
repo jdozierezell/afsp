@@ -55,7 +55,7 @@ const searchCSS = css`
 const Search = () => {
 	return (
 		<div css={searchCSS}>
-			<InstantSearch indexName="afsporg-page" searchClient={searchClient}>
+			<InstantSearch indexName="AFSP" searchClient={searchClient}>
 				<SearchBox
 					searchAsYouType={false}
 					translations={{ placeholder: 'What are you looking for?' }}
