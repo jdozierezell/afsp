@@ -39,7 +39,9 @@ const FactsListContainer = ({ stateFacts }) => {
 				return (
 					<div key={index} css={imageWrapperCSS}>
 						<div>
-							<a href={`facts/${fact.node.slug}`}>
+							<a
+								href={`https://afsp.org/facts/${fact.node.slug}`}
+							>
 								<GatsbyImage
 									image={
 										fact.node.stateFactSheetImage
