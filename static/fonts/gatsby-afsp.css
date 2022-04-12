@@ -1,48 +1,48 @@
 @font-face {
 	font-family: 'AvenirNextLTPro-Regular';
-	src: url('webfonts/3A4A6D_0_0.woff2') format('woff2'),
-		url('webfonts/3A4A6D_0_0.woff') format('woff');
+	src: url('webfonts/AvenirNextLTPro-Regular.woff2') format('woff2'),
+		url('webfonts/AvenirNextLTPro-Regular.woff') format('woff');
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'AvenirNextLTPro-BoldIt';
-	src: url('webfonts/3A4A6D_1_0.woff2') format('woff2'),
-		url('webfonts/3A4A6D_1_0.woff') format('woff');
+	src: url('webfonts/AvenirNextLTPro-BoldIt.woff2') format('woff2'),
+		url('webfonts/AvenirNextLTPro-BoldIt.woff') format('woff');
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'AvenirNextLTPro-Demi';
-	src: url('webfonts/3A4A6D_2_0.woff2') format('woff2'),
-		url('webfonts/3A4A6D_2_0.woff') format('woff');
+	src: url('webfonts/AvenirNextLTPro-Demi.woff2') format('woff2'),
+		url('webfonts/AvenirNextLTPro-Demi.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'AvenirNextLTPro-It';
-	src: url('webfonts/3A4A6D_3_0.woff2') format('woff2'),
-		url('webfonts/3A4A6D_3_0.woff') format('woff');
+	src: url('webfonts/AvenirNextLTPro-It.woff2') format('woff2'),
+		url('webfonts/AvenirNextLTPro-It.woff') format('woff');
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'AvenirNextLTPro-DemiIt';
-	src: url('webfonts/3A4A6D_4_0.woff2') format('woff2'),
-		url('webfonts/3A4A6D_4_0.woff') format('woff');
+	src: url('webfonts/AvenirNextLTPro-DemiIt.woff2') format('woff2'),
+		url('webfonts/AvenirNextLTPro-DemiIt.woff') format('woff');
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'AvenirNextLTPro-Bold';
-	src: url('webfonts/3A4A6D_5_0.woff2') format('woff2'),
-		url('webfonts/3A4A6D_5_0.woff') format('woff');
+	src: url('webfonts/AvenirNextLTPro-Bold.woff2') format('woff2'),
+		url('webfonts/AvenirNextLTPro-Bold.woff') format('woff');
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'PaulGroteskSoft-Bold';
-	src: url('webfonts/3A4A6D_6_0.woff2') format('woff2'),
-		url('webfonts/3A4A6D_6_0.woff') format('woff');
+	src: url('webfonts/PaulGroteskSoft-Bold.woff2') format('woff2'),
+		url('webfonts/PaulGroteskSoft-Bold.woff') format('woff');
 	font-display: swap;
 }
 
