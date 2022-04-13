@@ -16,7 +16,7 @@ import { styles } from '../../css/css'
 const konvaContainerCSS = css`
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-gap: ${styles.scale.px46};
+	grid-gap: ${styles.scale.px64};
 	margin: ${styles.scale.px24};
 	@media (min-width: 768px) {
 		grid-template-columns: repeat(2, minmax(300px, 623px));
@@ -135,12 +135,12 @@ const ShareableContainer = ({
 		if (window.innerWidth < 768) {
 			setWidth((window.innerWidth - 48 - 24) / 2)
 			setHeight((window.innerWidth - 48 - 24) / 2)
-		} else if (window.innerWidth < 1200) {
+		} else if (window.innerWidth < 1500) {
 			setWidth(window.innerWidth / 3)
 			setHeight(window.innerWidth / 3)
 		} else {
-			setWidth(1200 - 648)
-			setHeight(1200 - 648)
+			setWidth(1300 - 648)
+			setHeight(1300 - 648)
 		}
 	}
 
