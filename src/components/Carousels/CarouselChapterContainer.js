@@ -81,12 +81,14 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 				setDisplayChapters(chapters)
 			} else {
 				const endpoint =
-					'https://pro.ip-api.com/json/?fields=zip&key=kk9BWBSYqm9ZTDj'
+					'https://pro.ip-api.com/json/?fields=zip,query&key=kk9BWBSYqm9ZTDj'
 				axios.get(endpoint).then(res => {
+					console.log(res.data.query)
 					axios
 						.post(
 							'https://serene-dusk-44738.herokuapp.com/zip-lookup',
 							{
+								query: res.data.query,
 								zip: res.data.zip,
 								radius: 100,
 								source: 'carouselSearch',

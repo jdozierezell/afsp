@@ -4,6 +4,7 @@ import qs from 'qs'
 import Layout from '../components/Layout'
 import HeroSearch from '../components/Hero/HeroSearch'
 import SearchDetail from '../components/Search/SearchDetail'
+import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 
 import { styles } from '../css/css'
 
@@ -46,8 +47,7 @@ const SearchResults = () => {
 		'@type': 'SearchAction',
 		about: 'site search',
 		description: 'Displays search results from afsp.org',
-		image:
-			'https://www.datocms-assets.com/12810/1565360975-stackedlogocolor.jpg?w=1000&fit=max&fm=jpg',
+		image: 'https://www.datocms-assets.com/12810/1565360975-stackedlogocolor.jpg?w=1000&fit=max&fm=jpg',
 		accessibilityAPI: 'ARIA',
 		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
 		name: `Search results for ${searchState.query} | AFSP`,
@@ -82,6 +82,7 @@ const SearchResults = () => {
 				searchState={searchState}
 				handleSearchChange={handleSearchChange}
 			/>
+			<CarouselChapterContainer></CarouselChapterContainer>
 		</Layout>
 	)
 }
