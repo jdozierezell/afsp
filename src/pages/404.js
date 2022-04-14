@@ -27,7 +27,7 @@ const Redirect404 = () => {
 	// 	pathString = pathString.replace(/-/g, '+') // the regex replacement string matches all occurrences
 
 	// 	navigate(
-	// 		`/search-results/?query=${pathString}&source=${window.location}`
+	// 		`/search_results/?query=${pathString}&source=${window.location}`
 	// 	)
 	// }, [])
 	// return null

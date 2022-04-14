@@ -62,7 +62,7 @@ const Search = () => {
 					onSubmit={event => {
 						event.preventDefault()
 						window.location.assign(
-							`/search-results?query=${event.currentTarget[0].value}`
+							`/search_results?query=${event.currentTarget[0].value}`
 						)
 					}}
 				/>

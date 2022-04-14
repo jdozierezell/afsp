@@ -52,7 +52,7 @@ const SearchResults = () => {
 		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
 		name: `Search results for ${searchState.query} | AFSP`,
 		publisher: 'American Foundation for Suicide Prevention',
-		url: 'https://afsp.org/search-results',
+		url: 'https://afsp.org/search_results',
 	}
 
 	return (
