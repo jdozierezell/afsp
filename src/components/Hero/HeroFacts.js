@@ -3,6 +3,7 @@ import { css } from '@emotion/react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { styles } from '../../css/css'
+import { sitewide } from '../../utils/sitewideVariables'
 
 const solidFactsCSS = css`
 	background-color: ${styles.colors.blue};
@@ -47,7 +48,7 @@ const HeroFacts = ({ stateFacts }) => {
 		<div css={solidFactsCSS}>
 			<div css={stateCSS}>
 				<h1>{`${stateFacts.stateName} State Facts`}</h1>
-				<h4>{`Learn more about suicide and prevention efforts in ${stateFacts.stateName}, including a list of laws enacted in AFSP's top priority areas (updated as of ${stateFacts.meta.updatedAt}).`}</h4>
+				<h4>{`Learn more about suicide and prevention efforts in ${stateFacts.stateName}, including a list of laws enacted in AFSP's top priority areas.  Updated: ${sitewide.stateFactsUpdate}.`}</h4>
 			</div>
 		</div>
 	)

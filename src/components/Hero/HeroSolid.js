@@ -81,6 +81,7 @@ const HeroSolid = ({ data, programLogo, addCSS }) => {
 			{!programLogo && (
 				<h1 dangerouslySetInnerHTML={{ __html: title }}></h1>
 			)}
+			{console.log(brief)}
 			{brief !== '&nbsp;' && (
 				<div
 					dangerouslySetInnerHTML={{

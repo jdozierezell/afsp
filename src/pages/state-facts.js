@@ -6,6 +6,7 @@ import HeroSolid from '../components/Hero/HeroSolid'
 import FactsListContainer from '../components/StateFacts/FactsListContainer'
 
 import { styles } from '../css/css'
+import { sitewide } from '../utils/sitewideVariables'
 
 const StateFacts = ({ data: { stateFactsPage, stateFacts } }) => {
 	let metaImage,
@@ -39,6 +40,9 @@ const StateFacts = ({ data: { stateFactsPage, stateFacts } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${stateFactsPage.slug}`,
 	}
+
+	stateFactsPage.brief = `${stateFactsPage.brief} Updated: ${sitewide.stateFactsUpdate}.`
+
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
