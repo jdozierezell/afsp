@@ -41,8 +41,8 @@ const solidHeroCSS = css`
 const HeroSearch = ({
 	data: { title, source, handleHeroClick, visibility },
 }) => {
-	if (source && source.includes('/searchresults/')) {
-		source = source.replace('/searchresults/', '')
+	if (source && source.includes('/search-results/')) {
+		source = source.replace('/search-results/', '')
 	}
 	return (
 		<div css={solidHeroCSS}>
