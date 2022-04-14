@@ -12,6 +12,12 @@ const bannerCSS = css`
 	font-size: ${styles.scale.px60};
 	line-height: ${styles.scale.px52};
 	text-align: center;
+	display: grid;
+	justify-items: center;
+	grid-row-gap: ${styles.scale.px24};
+	> div {
+		max-width: 1000px;
+	}
 	span:nth-of-type(1) {
 		font-variation-settings: 'wdth' 96;
 		color: #00ffff;
@@ -65,10 +71,6 @@ const bannerCSS = css`
 		font-size: ${styles.scale.px90};
 		line-height: ${styles.scale.px80};
 		padding-bottom: ${styles.scale.px30};
-		a {
-			position: relative;
-			bottom: ${styles.scale.px18};
-		}
 	}
 	@media (min-width: ${styles.screens.wide}px) {
 	}
