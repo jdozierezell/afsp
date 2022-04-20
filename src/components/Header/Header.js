@@ -25,13 +25,13 @@ const skipCSS = css`
 	}
 `
 
-const Header = ({ nav, theme, overrideLight }) => {
+const Header = ({ nav, theme, overrideLight, showCampaign }) => {
 	return (
 		<header>
 			<a css={skipCSS} href="#main" tabIndex="0">
 				Skip to content
 			</a>
-			<HeaderAside />
+			<HeaderAside showCampaign={showCampaign} />
 			<div css={navCSS}>
 				<Navigation
 					nav={nav}

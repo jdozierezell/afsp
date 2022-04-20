@@ -46,7 +46,8 @@ const headerAsideCSS = css`
 	}
 `
 
-const HeaderAside = () => {
+const HeaderAside = ({ showCampaign }) => {
+	console.log(showCampaign)
 	return (
 		<>
 			<aside
@@ -79,7 +80,9 @@ const HeaderAside = () => {
 					<Recite />
 				</div>
 			</aside>
-			<MoreForMentalHealthheader></MoreForMentalHealthheader>
+			{showCampaign && (
+				<MoreForMentalHealthheader></MoreForMentalHealthheader>
+			)}
 		</>
 	)
 }
