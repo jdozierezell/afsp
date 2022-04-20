@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from '@emotion/react'
 
 import Recite from '../Recite/Recite'
+import MoreForMentalHealthheader from '../Campaigns/MoreForMentalHealth/MoreForMentalHealthHeader'
 
 import { styles } from '../../css/css'
 
@@ -47,36 +48,39 @@ const headerAsideCSS = css`
 
 const HeaderAside = () => {
 	return (
-		<aside
-			id="crisisResources"
-			css={headerAsideCSS}
-			aria-label="crisis resources"
-		>
-			<div>
-				<strong>Are you in a crisis?</strong> Call{' '}
-				<a
-					href="https://suicidepreventionlifeline.org"
-					target="_blank"
-					rel="noopener noreferrer"
-					aria-label="lifeline website link and phone number: 800-273-8255"
-				>
-					800-273-8255
-				</a>{' '}
-				or text{' '}
-				<a
-					href="https://crisistextline.org"
-					target="_blank"
-					rel="noopener noreferrer"
-					aria-label="crisis text line website link and text information: TALK to 741741"
-				>
-					TALK to 741741
-				</a>
-				.
-			</div>
-			<div>
-				<Recite />
-			</div>
-		</aside>
+		<>
+			<aside
+				id="crisisResources"
+				css={headerAsideCSS}
+				aria-label="crisis resources"
+			>
+				<div>
+					<strong>Are you in a crisis?</strong> Call{' '}
+					<a
+						href="https://suicidepreventionlifeline.org"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="lifeline website link and phone number: 800-273-8255"
+					>
+						800-273-8255
+					</a>{' '}
+					or text{' '}
+					<a
+						href="https://crisistextline.org"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="crisis text line website link and text information: TALK to 741741"
+					>
+						TALK to 741741
+					</a>
+					.
+				</div>
+				<div>
+					<Recite />
+				</div>
+			</aside>
+			<MoreForMentalHealthheader></MoreForMentalHealthheader>
+		</>
 	)
 }
 
