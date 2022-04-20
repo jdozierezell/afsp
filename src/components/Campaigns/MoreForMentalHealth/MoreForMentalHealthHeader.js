@@ -7,35 +7,31 @@ const bannerCSS = css`
 	background-color: #342f7f;
 	position: relative;
 	color: ${styles.colors.white};
-	padding: ${styles.scale.px36} ${styles.scale.px50};
+	padding: ${styles.scale.px24} ${styles.scale.px50};
 	font-family: ${styles.fonts.gravity};
-	font-size: ${styles.scale.px60};
-	line-height: ${styles.scale.px52};
+	font-size: ${styles.scale.px24};
 	text-align: center;
 	display: grid;
 	justify-items: center;
-	grid-row-gap: ${styles.scale.px24};
+	align-items: center;
+	grid-template-columns: 1fr;
+	grid-row-gap: ${styles.scale.px12};
 	> div {
-		max-width: 1000px;
+		max-width: 350px;
 	}
 	span:nth-of-type(1) {
-		font-variation-settings: 'wdth' 96;
 		color: #00ffff;
 	}
 	span:nth-of-type(2) {
-		font-variation-settings: 'wdth' 150;
 		color: #ff66ff;
 	}
 	span:nth-of-type(3) {
-		font-variation-settings: 'wdth' 73;
 		color: #ffff00;
 	}
 	span:nth-of-type(4) {
-		font-variation-settings: 'wdth' 73;
 		color: #a2ff00;
 	}
 	span:nth-of-type(5) {
-		font-variation-settings: 'wdth' 110;
 		color: #ff396d;
 	}
 	a {
@@ -43,8 +39,7 @@ const bannerCSS = css`
 		background-color: #00ffff;
 		color: #3347ff;
 		text-decoration: none;
-		line-height: ${styles.scale.px52};
-		font-size: ${styles.scale.px24};
+		font-size: ${styles.scale.px20};
 		padding: 0 ${styles.scale.px16};
 		box-shadow: ${styles.scale.px5} ${styles.scale.px5} 0px #3347ff;
 		transition: transform 100ms ease, box-shadow 100ms ease;
@@ -58,21 +53,22 @@ const bannerCSS = css`
 		text-decoration: none;
 	}
 	@media (min-width: ${styles.screens.tablet}px) {
-		top: -${styles.scale.px50};
-		margin-bottom: -${styles.scale.px50};
+		> div {
+			max-width: none;
+		}
 	}
 	@media (min-width: ${styles.screens.video}px) {
-		font-size: ${styles.scale.px75};
-		line-height: ${styles.scale.px60};
+		grid-template-columns: 1fr max-content max-content 1fr;
+		> div {
+			max-width: 350px;
+			grid-column: 2 / 3;
+		}
 	}
 	@media (min-width: ${styles.screens.footer}px) {
-	}
-	@media (min-width: ${styles.screens.navigation}px) {
-		font-size: ${styles.scale.px90};
-		line-height: ${styles.scale.px80};
-		padding-bottom: ${styles.scale.px30};
-	}
-	@media (min-width: ${styles.screens.wide}px) {
+		grid-column-gap: ${styles.scale.px12};
+		> div {
+			max-width: none;
+		}
 	}
 `
 
