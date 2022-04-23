@@ -4,6 +4,7 @@ import { css } from '@emotion/react'
 
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
+import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 
 import { styles } from '../css/css'
 
@@ -73,6 +74,7 @@ const Redirect404 = () => {
 				use our search bar in the upper navigation to find the content
 				you're looking for.
 			</section>
+			<CarouselChapterContainer />
 		</Layout>
 	)
 }
