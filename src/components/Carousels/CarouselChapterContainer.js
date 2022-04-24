@@ -76,45 +76,44 @@ const CarouselChapterContainer = ({ carouselCSS }) => {
 	useEffect(() => {
 		// ipapi.co and ipregistry.co are also nice options if pro.ip-api.com fails
 		if (displayChapters.length === 0) {
-			// if (sessionStorage.chapters) {
-			// 	const chapters = JSON.parse(sessionStorage.chapters)
-			// 	setDisplayChapters(chapters)
-			// } else {
-			const endpoint =
-				'https://pro.ip-api.com/json/?fields=zip,query,city,region&key=kk9BWBSYqm9ZTDj'
-			axios.get(endpoint).then(res => {
-				const path = window.location.pathname
-				const data = {
-					query: res.data.query,
-					path: path,
-					city: res.data.city,
-					region: res.data.region,
-					zip: res.data.zip,
-					radius: 100,
-					source: 'carouselSearch',
-					type: 'chapter',
-				}
-				console.log(data)
-				axios
-					.post(
-						'https://serene-dusk-44738.herokuapp.com/zip-lookup',
-						data
-					)
-					.then(res => {
-						setDisplayChapters(res.data.chapterArray)
-						return res.data.chapterArray
-					})
-					.then(chapters => {
-						chapters.forEach(chapter => {
-							delete chapter[0].zips
-						})
-						sessionStorage.setItem(
-							'chapters',
-							JSON.stringify(chapters)
+			if (sessionStorage.chapters) {
+				const chapters = JSON.parse(sessionStorage.chapters)
+				setDisplayChapters(chapters)
+			} else {
+				const endpoint =
+					'https://pro.ip-api.com/json/?fields=zip,query,city,region&key=kk9BWBSYqm9ZTDj'
+				axios.get(endpoint).then(res => {
+					// const path = window.location.pathname
+					const data = {
+						// query: res.data.query,
+						// path: path,
+						// city: res.data.city,
+						// region: res.data.region,
+						zip: res.data.zip,
+						radius: 100,
+						source: 'carouselSearch',
+						type: 'chapter',
+					}
+					axios
+						.post(
+							'https://serene-dusk-44738.herokuapp.com/zip-lookup',
+							data
 						)
-					})
-			})
-			// }
+						.then(res => {
+							setDisplayChapters(res.data.chapterArray)
+							return res.data.chapterArray
+						})
+						.then(chapters => {
+							chapters.forEach(chapter => {
+								delete chapter[0].zips
+							})
+							sessionStorage.setItem(
+								'chapters',
+								JSON.stringify(chapters)
+							)
+						})
+				})
+			}
 		}
 	}, [displayChapters.length])
 
