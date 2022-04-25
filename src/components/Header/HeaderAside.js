@@ -47,7 +47,6 @@ const headerAsideCSS = css`
 `
 
 const HeaderAside = ({ showCampaign }) => {
-	console.log(showCampaign)
 	return (
 		<>
 			<aside
