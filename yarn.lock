@@ -7446,10 +7446,10 @@ gatsby-sharp@^0.7.0:
     "@types/sharp" "^0.30.0"
     sharp "^0.30.3"
 
-gatsby-source-datocms@^3.0.19:
-  version "3.0.19"
-  resolved "https://registry.yarnpkg.com/gatsby-source-datocms/-/gatsby-source-datocms-3.0.19.tgz#b70bd336829b39d157df9b0dd070c04a64ee73ef"
-  integrity sha512-DaIuKs4hKEaqUhbF9NMTw39njqm67wJW/+Fccro/6boucU9NKcrEcVoqB5FIcH5E4Ox9pkiBzCt5aN1XSgCffA==
+gatsby-source-datocms@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-source-datocms/-/gatsby-source-datocms-4.0.1.tgz#b85a3d103d2afe5e808481f8dd910816d23b6bac"
+  integrity sha512-YOdboIdK4zNvOOGC/16I51+Z+81MEw5jTE+4Cc441Kt1h66TvjPB8nGjgCB/QytuERNItfejSqZ6WTi62jLraA==
   dependencies:
     core-js "^3.2.1"
     datocms-client "^3.5.16"
