@@ -19,6 +19,7 @@ module.exports = {
 		`gatsby-plugin-playground`,
 		`gatsby-plugin-image`,
 		`gatsby-plugin-sharp`,
+		`gatsby-plugin-netlify`,
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-use-query-params`,
 		{
