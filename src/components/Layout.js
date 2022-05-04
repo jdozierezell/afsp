@@ -45,9 +45,6 @@ const Layout = ({
 				<html lang="en" />
 				<meta property="og:url" content={`${structuredData.url}/`} />
 				<meta property="fb:app_id" content="925475567867156" />
-				{structuredData.url === 'https://afsp.org/search_results' && (
-					<meta name="robots" content="noindex" />
-				)}
 				<script type="application/ld+json">
 					{JSON.stringify(structuredData)}
 				</script>
