@@ -230,7 +230,7 @@ const StatisticsStatesContainer = ({ width, height, data }) => {
 									your state. <br />
 									<br />
 									Download our{' '}
-									<a href="https://www.datocms-assets.com/12810/1616589783-14155afspnationalfactsheet2021m1v2.pdf">
+									<a href="https://www.datocms-assets.com/12810/1649682186-14296_afsp_2022_national_fact_sheet_update_m1_v4.pdf">
 										Suicide Facts &amp; Figures
 									</a>{' '}
 									national fact sheet <br />
