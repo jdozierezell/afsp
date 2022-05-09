@@ -14,6 +14,9 @@ const imageListCSS = css`
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin: ${styles.scale.px56} ${styles.scale.px24};
 	}
+	@media (min-width: ${styles.screens.video}px) {
+		width: calc(100% - ${styles.scale.px24} * 2 - 500px);
+	}
 `
 
 const imageHeaderCSS = css`

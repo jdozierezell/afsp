@@ -67,7 +67,7 @@ const ImageList = ({ data: { imageList } }) => {
 export default ImageList
 
 export const query = graphql`
-	query($slug: String) {
+	query ($slug: String) {
 		imageList: datoCmsImageList(slug: { eq: $slug }) {
 			title
 			slug
