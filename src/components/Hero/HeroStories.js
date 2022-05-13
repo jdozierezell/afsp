@@ -36,7 +36,7 @@ const storyMetaCSS = css`
 			font-size: ${styles.scale.px44};
 		}
 	}
-	h3,
+	aside.tags,
 	li,
 	a {
 		font-size: ${styles.scale.px18};
@@ -46,7 +46,7 @@ const storyMetaCSS = css`
 			color: ${styles.colors.white};
 		}
 	}
-	h3 {
+	aside.tags {
 		margin-bottom: ${styles.scale.px50};
 		@media (min-width: ${styles.screens.tablet}px) {
 			color: ${styles.colors.white};
@@ -181,7 +181,7 @@ const HeroStories = ({ data, prev, next }) => {
 						})}
 					</p>
 				)}
-				<h3>
+				<aside className="tags">
 					Tagged{' '}
 					<ul>
 						{tags &&
@@ -196,7 +196,7 @@ const HeroStories = ({ data, prev, next }) => {
 								)
 							})}
 					</ul>
-				</h3>
+				</aside>
 				<GatsbyImage
 					css={mobileImageCSS}
 					image={data.coverImage.gatsbyImageData}
