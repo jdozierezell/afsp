@@ -15,7 +15,6 @@ module.exports = {
 	plugins: [
 		`gatsby-plugin-emotion`,
 		`gatsby-plugin-react-helmet`,
-		`gatsby-plugin-sitemap`,
 		`gatsby-plugin-playground`,
 		`gatsby-plugin-image`,
 		`gatsby-plugin-sharp`,
@@ -79,6 +78,12 @@ module.exports = {
 				apiToken: process.env.DATOCMS_API,
 				previewMode: previewMode,
 				disableLiveReload: false,
+			},
+		},
+		{
+			resolve: `gatsby-plugin-sitemap`,
+			options: {
+				excludes: ['/author/**', '/quilt_square/**', '/tag/**'],
 			},
 		},
 		// {
