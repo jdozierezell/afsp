@@ -291,7 +291,7 @@ const SupportGroupForm = () => {
 		setLoading(true)
 		axios
 			.post(
-				'http://serene-dusk-44738.herokuapp.com/create-support-group',
+				'https://serene-dusk-44738.herokuapp.com/create-support-group',
 				formData,
 				{
 					headers: {
