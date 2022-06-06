@@ -8,6 +8,7 @@ import ContentGeneric from '../components/Content/ContentGeneric'
 import StoriesContainer from '../components/Stories/StoriesContainer'
 
 import { styles } from '../css/css'
+import customImageSize from '../utils/customImageSize'
 
 const Detail = ({ data: { tagged, stories }, pageContext }) => {
 	let metaImage,
@@ -41,6 +42,25 @@ const Detail = ({ data: { tagged, stories }, pageContext }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${tagged.slug}`,
 	}
+	Detail.details.forEach(detail => {
+		if (detail.__typename === 'DatoCmsImage') {
+			if (
+				detail.images.length === 1 &&
+				detail.createCustomImageSize &&
+				detail.customImageWidth &&
+				detail.customImageHeight
+			) {
+				detail.images[0].gatsbyImageData = customImageSize(
+					detail.images[0].gatsbyImageData,
+					{ width: 623, height: 384 },
+					{
+						width: detail.customImageWidth,
+						height: detail.customImageHeight,
+					}
+				)
+			}
+		}
+	})
 	const [taggedStories, setTaggedStories] = useState([])
 	useEffect(() => {
 		stories.edges.forEach(story => {
@@ -146,6 +166,9 @@ export const query = graphql`
 							}
 						)
 					}
+					createCustomImageSize
+					customImageWidth
+					customImageHeight
 				}
 				... on DatoCmsAudio {
 					__typename

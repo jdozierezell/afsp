@@ -8,6 +8,7 @@ import ContentStory from '../components/Content/ContentStory'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 
 import { styles } from '../css/css'
+import customImageSize from '../utils/customImageSize'
 
 const carouselCSS = css`
 	@media (min-width: ${styles.screens.mobile}px) {
@@ -52,6 +53,27 @@ const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: pageUrl,
 	}
+	story.article.forEach(article => {
+		if (article.__typename === 'DatoCmsImage') {
+			if (
+				article.images.length === 1 &&
+				article.createCustomImageSize &&
+				article.customImageWidth &&
+				article.customImageHeight
+			) {
+				console.log(article.images[0])
+				article.images[0].gatsbyImageData = customImageSize(
+					article.images[0].gatsbyImageData,
+					{ width: 623, height: 384 },
+					{
+						width: article.customImageWidth,
+						height: article.customImageHeight,
+					}
+				)
+				console.log(article.images[0].gatsbyImageData)
+			}
+		}
+	})
 	return (
 		<Layout
 			theme={styles.logo.mobileDarkDesktopLight}
@@ -138,6 +160,9 @@ export const query = graphql`
 							}
 						)
 					}
+					createCustomImageSize
+					customImageWidth
+					customImageHeight
 				}
 				... on DatoCmsAudio {
 					__typename

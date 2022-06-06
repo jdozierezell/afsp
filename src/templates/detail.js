@@ -8,6 +8,7 @@ import ContentGeneric from '../components/Content/ContentGeneric'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 
 import { styles } from '../css/css'
+import customImageSize from '../utils/customImageSize'
 
 const Detail = ({ data: { detail } }) => {
 	let metaImage,
@@ -41,6 +42,27 @@ const Detail = ({ data: { detail } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${detail.slug}`,
 	}
+	detail.details.forEach(detail => {
+		if (detail.__typename === 'DatoCmsImage') {
+			if (
+				detail.images.length === 1 &&
+				detail.createCustomImageSize &&
+				detail.customImageWidth &&
+				detail.customImageHeight
+			) {
+				console.log(detail.images[0])
+				detail.images[0].gatsbyImageData = customImageSize(
+					detail.images[0].gatsbyImageData,
+					{ width: 623, height: 384 },
+					{
+						width: detail.customImageWidth,
+						height: detail.customImageHeight,
+					}
+				)
+				console.log(detail.images[0].gatsbyImageData)
+			}
+		}
+	})
 	let navigation = false
 	detail.details.map(detail => {
 		if (
@@ -201,6 +223,9 @@ export const query = graphql`
 							}
 						)
 					}
+					createCustomImageSize
+					customImageWidth
+					customImageHeight
 					imagesToShow
 				}
 				... on DatoCmsHeading {
