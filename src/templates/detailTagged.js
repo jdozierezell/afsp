@@ -10,7 +10,7 @@ import StoriesContainer from '../components/Stories/StoriesContainer'
 import { styles } from '../css/css'
 import customImageSize from '../utils/customImageSize'
 
-const d = ({ data: { tagged, stories }, pageContext }) => {
+const DetailTagged = ({ data: { tagged, stories }, pageContext }) => {
 	let metaImage,
 		metaDescription = ''
 	tagged.seoMetaTags.tags.forEach(tag => {
@@ -42,7 +42,7 @@ const d = ({ data: { tagged, stories }, pageContext }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${tagged.slug}`,
 	}
-	detail.details.forEach(detail => {
+	tagged.details.forEach(detail => {
 		if (detail.__typename === 'DatoCmsImage') {
 			if (
 				detail.images.length === 1 &&
@@ -95,11 +95,11 @@ const d = ({ data: { tagged, stories }, pageContext }) => {
 	)
 }
 
-export default d
+export default DetailTagged
 
 export const query = graphql`
 	query ($slug: String, $tag: String) {
-		tagged: datoCmsdTagged(slug: { eq: $slug }) {
+		tagged: datoCmsDetailTagged(slug: { eq: $slug }) {
 			title
 			slug
 			seoMetaTags {
