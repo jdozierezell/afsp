@@ -99,7 +99,7 @@ const FooterSocials = () => {
 				/>
 			</a>
 			<a
-				href="https://themighty.com/partner/AmericanFoundationforSuicidePrevention/"
+				href="https://themighty.com/u/americanfoundationforsuicideprevention/"
 				target="_blank"
 				rel="noopener noreferrer"
 				aria-label="AFSP partner page on themighty.com"
