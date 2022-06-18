@@ -12,7 +12,8 @@ import CarouselDetail from './CarouselDetail'
 const carouselCSS = css`
 	background-color: ${styles.colors.blue};
 	padding: ${styles.scale.px50} ${styles.scale.px24} ${styles.scale.px25};
-	overflow: hidden;
+	overflow: initial;
+	z-index: 10;
 	width: 100vw;
 	position: relative;
 	border-top: ${styles.scale.px5} solid ${styles.colors.white};
@@ -38,6 +39,9 @@ const carouselCSS = css`
 	}
 	.secondary-button {
 		margin-bottom: ${styles.scale.px56};
+	}
+	.react-multi-carousel-list {
+		overflow: initial;
 	}
 `
 
@@ -131,7 +135,6 @@ const CarouselDetailContainer = ({
 									buttonText={section.buttonText}
 									anchor={section.url}
 									eventCode={section.eventCode}
-									featured={section.featured}
 									addCSS={addCSS}
 									eventTitleSize={eventTitleSize}
 								/>
