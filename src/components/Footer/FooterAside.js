@@ -28,18 +28,18 @@ const FooterAside = ({ aria }) => {
 			<p>
 				Please call the{' '}
 				<a
-					href="https://suicidepreventionlifeline.org"
+					href="https://988lifeline.org"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					National Suicide Prevention Lifeline
+					Suicide and Crisis Lifeline
 				</a>{' '}
 				at{' '}
 				<a
-					aria-label="lifeline website link and phone number: 800-273-8255"
-					href="tel:+18002738255"
+					aria-label="Suicide and Crisis Lifeline website link and phone number: 988"
+					href="tel:988"
 				>
-					800-273-8255
+					988
 				</a>
 				.
 			</p>

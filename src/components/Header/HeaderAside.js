@@ -57,18 +57,14 @@ const HeaderAside = ({ showCampaign }) => {
 				<div>
 					<strong>Are you in a crisis?</strong> Call{' '}
 					<a
-						href="https://suicidepreventionlifeline.org"
-						target="_blank"
-						rel="noopener noreferrer"
-						aria-label="lifeline website link and phone number: 800-273-8255"
+						href="tel:988"
+						aria-label="Suicide and Crisis Lifeline website link and phone number: 988"
 					>
-						800-273-8255
+						988
 					</a>{' '}
 					or text{' '}
 					<a
-						href="https://crisistextline.org"
-						target="_blank"
-						rel="noopener noreferrer"
+						href="sms:741741&body=TALK"
 						aria-label="crisis text line website link and text information: TALK to 741741"
 					>
 						TALK to 741741
