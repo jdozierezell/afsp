@@ -149,7 +149,10 @@ const App = ({ data: { home } }) => {
 							resources={item.resource}
 						/>
 					)
-				} else if (item.__typename === 'DatoCmsEventsList') {
+				} else if (
+					item.__typename === 'DatoCmsEventsList' &&
+					item.events.length > 0
+				) {
 					item.events.forEach(e => {
 						let start, end
 						let eventObject = {

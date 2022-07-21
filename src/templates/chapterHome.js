@@ -13,8 +13,6 @@ import CTAContainer from '../components/CTAs/CTAContainer'
 import StoriesContainer from '../components/Stories/StoriesContainer'
 import ChapterSocials from '../components/Social/ChapterSocials'
 
-import MoreForMentalHealthBanner from '../components/Campaigns/MoreForMentalHealth/MoreForMentalHealthBanner'
-
 import { styles } from '../css/css'
 
 const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
@@ -252,7 +250,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				circleOfHopeUrl={chapterInformation.circleOfHopeUrl}
 				slug={slug}
 			/>
-			<MoreForMentalHealthBanner></MoreForMentalHealthBanner>
 			<ChapterAboutContact
 				title={title}
 				about={aboutTheChapterNode.internal.content}
@@ -266,16 +263,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			<CarouselDetailContainer
 				content={events}
 				eventInsert={true}
-				addContainerCSS={css`
-					background-color: #342f7f;
-					> h2 {
-						font-family: ${styles.fonts.gravity};
-						text-transform: uppercase;
-						color: #ffff00;
-						letter-spacing: ${styles.scale.px2};
-						font-weight: 400;
-					}
-				`}
 				id="events"
 			/>
 			<FeaturedResourcesContainer

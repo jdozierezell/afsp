@@ -53,7 +53,7 @@ const Layout = ({
 				nav={headerNav}
 				theme={theme}
 				overrideLight={overrideLight}
-				showCampaign={true}
+				showCampaign={false}
 			/>
 			<main id="main">{children}</main>
 			{!hideEmailLayout && <EmailSignupBar></EmailSignupBar>}
