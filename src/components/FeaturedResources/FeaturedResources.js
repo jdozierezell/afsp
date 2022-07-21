@@ -8,6 +8,8 @@ import buildUrl from '../../utils/buildUrl'
 
 const featuredCSS = css`
 	position: relative;
+	background-color: ${styles.colors.white};
+	padding: ${styles.scale.px16};
 	img {
 		margin: 0;
 	}

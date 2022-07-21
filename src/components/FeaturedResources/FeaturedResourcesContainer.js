@@ -37,7 +37,7 @@ const FeaturedResourcesContainer = ({ heading, resources, addCSS, id }) => {
 			id={id}
 			css={css`
 				${containerCSS};
-				${addCSS}
+				${addCSS};
 			`}
 		>
 			{heading && <p id={createAnchor(heading)}>{heading}</p>}
