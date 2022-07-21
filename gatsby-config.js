@@ -18,6 +18,14 @@ module.exports = {
 		`gatsby-plugin-playground`,
 		`gatsby-plugin-image`,
 		`gatsby-plugin-sharp`,
+		{
+			resolve: `gatsby-plugin-netlify`,
+			options: {
+				// merge headers deactivated to improve site build time
+				mergeSecurityHeaders: false, // boolean to turn off the default security headers
+				mergeCachingHeaders: false, // boolean to turn off the default caching headers
+			},
+		},
 		`gatsby-plugin-netlify`,
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-use-query-params`,

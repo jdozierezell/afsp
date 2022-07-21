@@ -50,7 +50,6 @@ const Detail = ({ data: { detail } }) => {
 				detail.customImageWidth &&
 				detail.customImageHeight
 			) {
-				console.log(detail.images[0])
 				detail.images[0].gatsbyImageData = customImageSize(
 					detail.images[0].gatsbyImageData,
 					{ width: 623, height: 384 },
@@ -59,7 +58,6 @@ const Detail = ({ data: { detail } }) => {
 						height: detail.customImageHeight,
 					}
 				)
-				console.log(detail.images[0].gatsbyImageData)
 			}
 		}
 	})

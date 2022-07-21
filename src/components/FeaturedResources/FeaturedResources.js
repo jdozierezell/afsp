@@ -39,9 +39,7 @@ const FeaturedResources = ({ data }) => {
 
 	if (data.resourceLink) {
 		const resource = data.resourceLink[0]
-		console.log(data.resourceLink)
 		if (typeof resource !== 'undefined') {
-			console.log(resource)
 			if (resource.__typename === 'DatoCmsExternalUrl') {
 				url = resource.externalUrl
 			} else if (resource.__typename === 'DatoCmsDownload') {

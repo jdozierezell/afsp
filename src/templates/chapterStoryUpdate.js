@@ -59,7 +59,6 @@ const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 				article.customImageWidth &&
 				article.customImageHeight
 			) {
-				console.log(article.images[0])
 				article.images[0].gatsbyImageData = customImageSize(
 					article.images[0].gatsbyImageData,
 					{ width: 623, height: 384 },
@@ -68,7 +67,6 @@ const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 						height: article.customImageHeight,
 					}
 				)
-				console.log(article.images[0].gatsbyImageData)
 			}
 		}
 	})
