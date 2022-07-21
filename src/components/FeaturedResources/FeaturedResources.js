@@ -39,10 +39,14 @@ const FeaturedResources = ({ data }) => {
 
 	if (data.resourceLink) {
 		const resource = data.resourceLink[0]
-		if (resource.__typename === 'DatoCmsExternalUrl') {
-			url = resource.externalUrl
-		} else if (resource.__typename === 'DatoCmsDownload') {
-			url = resource.download.url
+		console.log(data.resourceLink)
+		if (typeof resource !== 'undefined') {
+			console.log(resource)
+			if (resource.__typename === 'DatoCmsExternalUrl') {
+				url = resource.externalUrl
+			} else if (resource.__typename === 'DatoCmsDownload') {
+				url = resource.download.url
+			}
 		}
 	} else {
 		url = data.slug
@@ -56,7 +60,7 @@ const FeaturedResources = ({ data }) => {
 					__html: description,
 				}}
 			></p>
-			{data.resourceLink && (
+			{data.resourceLink && typeof resource !== 'undefined' && (
 				<a
 					className="featured-link"
 					href={url}
