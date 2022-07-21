@@ -17,6 +17,7 @@ import FeaturedResourcesContainer from '../FeaturedResources/FeaturedResourcesCo
 
 const storyContentCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24};
+	position: relative;
 	@media (min-width: ${styles.screens.mobile}px) {
 		margin: ${styles.scale.px50} ${styles.scale.px50} 0;
 	}
@@ -139,6 +140,7 @@ const ContentGeneric = ({ setEvents, data, navigation }) => {
 							key={index}
 							heading={detail.heading}
 							level={detail.headingLevel}
+							coverNav={detail.coverNav}
 						/>
 					)
 				} else if (detail.__typename === 'DatoCmsImage') {

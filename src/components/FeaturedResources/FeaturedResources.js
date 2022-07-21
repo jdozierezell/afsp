@@ -58,7 +58,7 @@ const FeaturedResources = ({ data }) => {
 					__html: description,
 				}}
 			></p>
-			{data.resourceLink && typeof resource !== 'undefined' && (
+			{data.resourceLink && (
 				<a
 					className="featured-link"
 					href={url}

@@ -93,6 +93,7 @@ export const styles = {
 		px75: '4.6875rem',
 		px80: '5rem',
 		px90: '5.625rem',
+		px100: '6.5rem',
 		px126: '7.875rem',
 		px150: '9.375rem',
 		px160: '10rem',

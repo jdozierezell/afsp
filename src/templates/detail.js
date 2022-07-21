@@ -230,6 +230,7 @@ export const query = graphql`
 					__typename
 					headingLevel
 					heading
+					coverNav
 				}
 				... on DatoCmsTable {
 					__typename

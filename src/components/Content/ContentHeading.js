@@ -13,18 +13,35 @@ const levelTwoHeadingCSS = css`
 		margin: ${styles.scale.px80} 0 ${styles.scale.px40};
 	}
 `
+const coverNavCSS = css`
+	@media (min-width: ${styles.screens.mobile}px) {
+		width: calc(100vw - ${styles.scale.px100});
+		background-color: ${styles.colors.white};
+		padding-top: ${styles.scale.px80};
+		margin-top: 0;
+		margin-bottom: 0;
+		margin-left: 0;
+		margin-right: 0;
+		& + section {
+			margin-top: 0;
+		}
+	}
+`
 
 const headingCSS = css`
 	margin-top: ${styles.scale.px24};
 `
 
-const ContentHeading = ({ heading, level }) => {
+const ContentHeading = ({ heading, level, coverNav }) => {
 	return (
 		<>
 			{level === 'Level 2 (will be included in sidebar)' && (
 				<h2
 					id={createAnchor(heading)}
-					css={levelTwoHeadingCSS}
+					css={css`
+						${levelTwoHeadingCSS};
+						${coverNav ? coverNavCSS : ''};
+					`}
 					dangerouslySetInnerHTML={{ __html: heading }}
 				></h2>
 			)}
