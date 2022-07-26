@@ -36,6 +36,7 @@
 		"gatsby-plugin-netlify": "^4.3.1",
 		"gatsby-plugin-playground": "^1.0.6",
 		"gatsby-plugin-react-helmet": "^5.13.0",
+		"gatsby-plugin-remove-fingerprints": "^0.0.2",
 		"gatsby-plugin-robots-txt": "^1.7.1",
 		"gatsby-plugin-sharp": "^4.13.0",
 		"gatsby-plugin-sitemap": "^5.13.0",
