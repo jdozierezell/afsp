@@ -4,7 +4,6 @@ command = "npm run build"
 
 [build.environment]
 PREVIEW_MODE = 'false'
-GATSBY_CONCURRENT_DOWNLOAD = 15
 
 [context.staging.environment]
 PREVIEW_MODE = 'true'
