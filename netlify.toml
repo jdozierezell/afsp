@@ -14,5 +14,3 @@ command = "npm run noIndex"
 package = "@netlify/plugin-sitemap"
 [[plugins]]
 package = "@netlify/plugin-gatsby"
-[[plugins]]
-package = "gatsby-plugin-remove-fingerprints"
