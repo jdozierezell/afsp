@@ -171,7 +171,6 @@ export const query = graphql`
 						gatsbyImageData(
 							width: 768
 							imgixParams: {
-								auto: "format"
 								fit: "crop"
 								crop: "faces"
 								w: "768"

@@ -356,7 +356,6 @@ export const query = graphql`
 						width: 200
 						placeholder: NONE
 						imgixParams: {
-							auto: "format"
 							fit: "crop"
 							crop: "faces"
 							w: "200"
@@ -412,7 +411,6 @@ export const query = graphql`
 										width: 600
 										placeholder: NONE
 										imgixParams: {
-											auto: "format"
 											fit: "fill"
 											fill: "blur"
 											w: "600"
@@ -435,7 +433,6 @@ export const query = graphql`
 										width: 600
 										placeholder: NONE
 										imgixParams: {
-											auto: "format"
 											fit: "fill"
 											fill: "blur"
 											w: "600"
@@ -458,7 +455,6 @@ export const query = graphql`
 										width: 600
 										placeholder: NONE
 										imgixParams: {
-											auto: "format"
 											fit: "fill"
 											fill: "blur"
 											w: "600"
@@ -481,7 +477,6 @@ export const query = graphql`
 										width: 600
 										placeholder: NONE
 										imgixParams: {
-											auto: "format"
 											fill: "blur"
 											fit: "fill"
 											w: "600"
@@ -504,7 +499,6 @@ export const query = graphql`
 										width: 600
 										placeholder: NONE
 										imgixParams: {
-											auto: "format"
 											fill: "blur"
 											fit: "fill"
 											w: "600"
@@ -527,7 +521,6 @@ export const query = graphql`
 										width: 600
 										placeholder: NONE
 										imgixParams: {
-											auto: "format"
 											fill: "blur"
 											fit: "fill"
 											w: "600"
@@ -550,7 +543,6 @@ export const query = graphql`
 										width: 600
 										placeholder: NONE
 										imgixParams: {
-											auto: "format"
 											fill: "blur"
 											fit: "fill"
 											w: "600"
@@ -573,7 +565,6 @@ export const query = graphql`
 										width: 600
 										placeholder: NONE
 										imgixParams: {
-											auto: "format"
 											fill: "blur"
 											fit: "fill"
 											w: "600"
@@ -596,7 +587,6 @@ export const query = graphql`
 										width: 600
 										placeholder: NONE
 										imgixParams: {
-											auto: "format"
 											fill: "blur"
 											fit: "fill"
 											w: "600"
@@ -618,7 +608,6 @@ export const query = graphql`
 									width: 600
 									placeholder: NONE
 									imgixParams: {
-										auto: "format"
 										fill: "blur"
 										fit: "fill"
 										w: "600"
@@ -654,7 +643,6 @@ export const query = graphql`
 										width: 600
 										placeholder: NONE
 										imgixParams: {
-											auto: "format"
 											fill: "blur"
 											fit: "fill"
 											w: "600"

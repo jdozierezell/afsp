@@ -217,7 +217,6 @@ export const query = graphql`
 								width: 600
 								placeholder: NONE
 								imgixParams: {
-									auto: "format"
 									fit: "crop"
 									crop: "faces"
 									w: "600"

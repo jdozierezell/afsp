@@ -19,7 +19,6 @@ export const CTAs = graphql`
 							width: 1920
 							placeholder: NONE
 							imgixParams: {
-								auto: "format"
 								fit: "crop"
 								crop: "faces"
 								w: "1920"

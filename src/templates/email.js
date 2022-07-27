@@ -74,7 +74,7 @@ export const query = graphql`
 				gatsbyImageData(
 					width: 1080
 					placeholder: NONE
-					imgixParams: { auto: "format", w: "1080" }
+					imgixParams: { w: "1080" }
 				)
 			}
 			embedHtml

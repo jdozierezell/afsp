@@ -67,7 +67,7 @@ const Bio = ({ data: { bio } }) => {
 export default Bio
 
 export const query = graphql`
-	query($slug: String) {
+	query ($slug: String) {
 		bio: datoCmsBio(slug: { eq: $slug }) {
 			name
 			slug
@@ -82,7 +82,6 @@ export const query = graphql`
 					width: 768
 					placeholder: NONE
 					imgixParams: {
-						auto: "format"
 						fit: "crop"
 						crop: "faces"
 						w: "768"

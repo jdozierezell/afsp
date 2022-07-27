@@ -221,7 +221,6 @@ export const query = graphql`
 								width: 600
 								placeholder: NONE
 								imgixParams: {
-									auto: "format"
 									fill: "blur"
 									fit: "fill"
 									h: "370"

@@ -15,7 +15,6 @@ export const ChapterSearch = graphql`
 							width: 1080
 							placeholder: NONE
 							imgixParams: {
-								auto: "format"
 								fit: "fill"
 								fill: "blur"
 								w: "1080"
@@ -31,7 +30,6 @@ export const ChapterSearch = graphql`
 						width: 600
 						placeholder: NONE
 						imgixParams: {
-							auto: "format"
 							fit: "crop"
 							crop: "faces"
 							w: "600"

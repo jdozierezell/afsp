@@ -92,7 +92,7 @@ const CustomShareable = ({ data: { customShareables } }) => {
 export default CustomShareable
 
 export const query = graphql`
-	query($slug: String) {
+	query ($slug: String) {
 		customShareables: datoCmsCustomShareable(slug: { eq: $slug }) {
 			title
 			slug
@@ -118,7 +118,7 @@ export const query = graphql`
 					gatsbyImageData(
 						width: 1080
 						placeholder: NONE
-						imgixParams: { auto: "format", w: "1080" }
+						imgixParams: { w: "1080" }
 					)
 				}
 				useDarkText
