@@ -4,6 +4,7 @@ command = "npm run build"
 
 [build.environment]
 PREVIEW_MODE = 'false'
+GATSBY_CONCURRENT_DOWNLOAD = 15
 
 [context.staging.environment]
 PREVIEW_MODE = 'true'
@@ -13,3 +14,5 @@ command = "npm run noIndex"
 package = "@netlify/plugin-sitemap"
 [[plugins]]
 package = "@netlify/plugin-gatsby"
+[[plugins]]
+package = "gatsby-plugin-remove-fingerprints"
