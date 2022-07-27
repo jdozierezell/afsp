@@ -11,5 +11,3 @@ command = "npm run noIndex"
 
 [[plugins]]
 package = "@netlify/plugin-sitemap"
-[[plugins]]
-package = "@netlify/plugin-gatsby"
