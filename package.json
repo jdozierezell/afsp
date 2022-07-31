@@ -81,7 +81,7 @@
 	"scripts": {
 		"bs": "gatsby build && gatsby serve",
 		"build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build",
-		"develop": "set NODE_ENV=development&&gatsby develop",
+		"develop": "set NODE_ENV=development&&gatsby develop -- --https",
 		"clean": "gatsby clean && rm yarn.lock && rm -rf node_modules && yarn",
 		"lighthouse": "npm run lighthousea && npm run lighthouses",
 		"lighthousea": "cd lighthouse && lighthouse https://afsp.org --view true --output html",
@@ -90,7 +90,6 @@
 		"noIndex": "npm run build && echo 'User-agent: *\nDisallow: /' > dist/robots.txt",
 		"format": "prettier --write src/**/*.{js,jsx}",
 		"profile": "gatsby build -- --profile",
-		"secure": "set NODE_ENV=development&&gatsby develop -- --https",
 		"serve": "set NODE_ENV=production&&gatsby serve",
 		"stage": "set NODE_ENV=development&&gatsby build",
 		"start": "npm run develop",
