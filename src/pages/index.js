@@ -97,7 +97,7 @@ const App = ({ data: { home } }) => {
 
 	useEffect(() => {
 		fetch(
-			'https://www.addevent.com/api/v1/oe/events/list/?token=api1597763535vAb4iZ7xahkIFj5zRDWY95036&calendar_id=1597763535284712&upcoming=now'
+			'https://www.addevent.com/api/v1/oe/events/list/?token=api1597763535vAb4iZ7xahkIFj5zRDWY95036&calendar_id=1659478767486686&upcoming=now'
 		)
 			.then(response => response.json())
 			.then(result => {
