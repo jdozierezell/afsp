@@ -55,10 +55,10 @@ const HeaderAside = ({ showCampaign }) => {
 				aria-label="crisis resources"
 			>
 				<div>
-					<strong>Are you in a crisis?</strong> Call{' '}
+					<strong>Are you in a crisis?</strong> Call or text{' '}
 					<a
 						href="tel:988"
-						aria-label="Suicide and Crisis Lifeline website link and phone number: 988"
+						aria-label="Suicide & Crisis Lifeline website link and phone number: 988"
 					>
 						988
 					</a>{' '}

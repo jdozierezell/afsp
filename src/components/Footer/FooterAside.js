@@ -26,7 +26,7 @@ const FooterAside = ({ aria }) => {
 				<strong>Are you in a crisis?</strong>
 			</p>
 			<p>
-				Please call the{' '}
+				Please call or text the{' '}
 				<a
 					href="https://988lifeline.org"
 					target="_blank"
