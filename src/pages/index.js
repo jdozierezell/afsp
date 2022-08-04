@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/react'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 import Script from 'react-load-script'
-import fetch from 'isomorphic-fetch'
 
 import Layout from '../components/Layout'
 import HeroVideo from '../components/Hero/HeroVideo'
@@ -43,11 +42,6 @@ const walkBar = css`
 `
 
 const App = ({ data: { home } }) => {
-	console.log('homepage loaded')
-	const [addEvent, setAddEvent] = useState({
-		title: 'AFSP national events',
-		details: [],
-	})
 	let metaImage,
 		metaDescription = ''
 	home.seoMetaTags.tags.forEach(tag => {
@@ -95,51 +89,6 @@ const App = ({ data: { home } }) => {
 		title: 'AFSP national events',
 		details: [],
 	}
-
-	useEffect(() => {
-		fetch(
-			'https://www.addevent.com/api/v1/oe/events/list/?token=api1597763535vAb4iZ7xahkIFj5zRDWY95036&calendar_id=1659478767486686&upcoming=now'
-		)
-			.then(response => response.json())
-			.then(result => {
-				const events = result.events
-				console.log(events)
-				return events.map(event => {
-					const startDate = dayjs
-						.unix(event.date_start_unix)
-						.tz('Etc/Greenwich')
-						.format(
-							event.all_day_event === 'true' ||
-								event.date_end > event.date_start
-								? 'MMMM D'
-								: 'MMMM D @ h:mm a ET'
-						)
-					const endDate =
-						event.date_end > event.date_start
-							? dayjs(event.date_end, 'MM/DD/YYYY').format(
-									'MMMM D'
-							  )
-							: ''
-					return {
-						__typename: 'Event',
-						buttonText: 'Add to calendar',
-						date:
-							endDate !== ''
-								? `${startDate} – ${endDate}`
-								: startDate,
-						endDate,
-						eventCode: event.uniquekey,
-						startDate,
-						title: event.title,
-						url: '',
-					}
-				})
-			})
-			.then(results =>
-				setAddEvent(prevState => ({ ...prevState, details: results }))
-			)
-			.catch(error => console.log('error', error))
-	}, [])
 
 	return (
 		<Layout
@@ -200,17 +149,76 @@ const App = ({ data: { home } }) => {
 							resources={item.resource}
 						/>
 					)
-				} else if (item.__typename === 'DatoCmsEventsList') {
-					console.log(item.__typename)
-					// return (
-					// 	<CarouselDetailContainer
-					// 		key={index}
-					// 		content={addEvent}
-					// 		eventTitleSize="1.4em"
-					// 		id="national-events"
-					// 	/>
-					// )
-					return ''
+				} else if (
+					item.__typename === 'DatoCmsEventsList' &&
+					item.events.length > 0
+				) {
+					item.events.forEach(e => {
+						let start, end
+						let eventObject = {
+							__typename: 'Event',
+							title: e.title,
+							startDate: e.startDateAndTime
+								? dayjs(e.startDateAndTime)
+										.tz('America/New_York')
+										.format('MMMM D @ h:mm a ET')
+								: null,
+							endDate: e.endDateAndTime
+								? dayjs(e.endDateAndTime)
+										.tz('America/New_York')
+										.format('MMMM D @ h:mm a ET')
+								: null,
+							buttonText: e.buttonText,
+							url: e.url,
+							eventCode: e.eventCode,
+						}
+						// format start date and time
+						if (e.startDateAndTime.indexOf('00:00:00') !== -1) {
+							start = dayjs(e.startDateAndTime)
+								.tz('America/New_York')
+								.format('MMMM D')
+						} else if (
+							e.startDateAndTime.indexOf(':00:00') === -1
+						) {
+							start = dayjs(e.startDateAndTime)
+								.tz('America/New_York')
+								.format('MMMM D @ h:mm a ET')
+						} else {
+							start = dayjs(e.startDateAndTime)
+								.tz('America/New_York')
+								.format('MMMM D @ h a ET')
+						}
+						// format end date and time
+						if (e.endDateAndTime) {
+							if (e.endDateAndTime.indexOf('00:00:00') !== -1) {
+								end = dayjs(e.endDateAndTime)
+									.tz('America/New_York')
+									.format('MMMM D')
+							} else if (
+								e.endDateAndTime.indexOf(':00:00') === -1
+							) {
+								end = dayjs(e.endDateAndTime)
+									.tz('America/New_York')
+									.format('MMMM D @ h:mm a ET')
+							} else {
+								end = dayjs(e.endDateAndTime)
+									.tz('America/New_York')
+									.format('MMMM D @ h a ET')
+							}
+						}
+						eventObject.date = e.endDateAndTime
+							? `${start} – ${end}`
+							: start
+						events.details.push(eventObject)
+					})
+					return (
+						<CarouselDetailContainer
+							key={index}
+							content={events}
+							eventTitleSize="1.4em"
+							id="national-events"
+						/>
+					)
 				}
 				return ''
 			})}
