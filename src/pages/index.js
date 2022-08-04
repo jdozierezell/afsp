@@ -201,72 +201,16 @@ const App = ({ data: { home } }) => {
 						/>
 					)
 				} else if (item.__typename === 'DatoCmsEventsList') {
-					// item.events.forEach(e => {
-					// 	let start, end
-					// 	let eventObject = {
-					// 		__typename: 'Event',
-					// 		title: e.title,
-					// 		startDate: e.startDateAndTime
-					// 			? dayjs(e.startDateAndTime)
-					// 					.tz('America/New_York')
-					// 					.format('MMMM D @ h:mm a ET')
-					// 			: null,
-					// 		endDate: e.endDateAndTime
-					// 			? dayjs(e.endDateAndTime)
-					// 					.tz('America/New_York')
-					// 					.format('MMMM D @ h:mm a ET')
-					// 			: null,
-					// 		buttonText: e.buttonText,
-					// 		url: e.url,
-					// 		eventCode: e.eventCode,
-					// 	}
-					// 	// format start date and time
-					// 	if (e.startDateAndTime.indexOf('00:00:00') !== -1) {
-					// 		start = dayjs(e.startDateAndTime)
-					// 			.tz('America/New_York')
-					// 			.format('MMMM D')
-					// 	} else if (
-					// 		e.startDateAndTime.indexOf(':00:00') === -1
-					// 	) {
-					// 		start = dayjs(e.startDateAndTime)
-					// 			.tz('America/New_York')
-					// 			.format('MMMM D @ h:mm a ET')
-					// 	} else {
-					// 		start = dayjs(e.startDateAndTime)
-					// 			.tz('America/New_York')
-					// 			.format('MMMM D @ h a ET')
-					// 	}
-					// 	// format end date and time
-					// 	if (e.endDateAndTime) {
-					// 		if (e.endDateAndTime.indexOf('00:00:00') !== -1) {
-					// 			end = dayjs(e.endDateAndTime)
-					// 				.tz('America/New_York')
-					// 				.format('MMMM D')
-					// 		} else if (
-					// 			e.endDateAndTime.indexOf(':00:00') === -1
-					// 		) {
-					// 			end = dayjs(e.endDateAndTime)
-					// 				.tz('America/New_York')
-					// 				.format('MMMM D @ h:mm a ET')
-					// 		} else {
-					// 			end = dayjs(e.endDateAndTime)
-					// 				.tz('America/New_York')
-					// 				.format('MMMM D @ h a ET')
-					// 		}
-					// 	}
-					// 	eventObject.date = e.endDateAndTime
-					// 		? `${start} – ${end}`
-					// 		: start
-					// 	events.details.push(eventObject)
-					// })
-					return (
-						<CarouselDetailContainer
-							key={index}
-							content={addEvent}
-							eventTitleSize="1.4em"
-							id="national-events"
-						/>
-					)
+					console.log(item.__typename)
+					// return (
+					// 	<CarouselDetailContainer
+					// 		key={index}
+					// 		content={addEvent}
+					// 		eventTitleSize="1.4em"
+					// 		id="national-events"
+					// 	/>
+					// )
+					return ''
 				}
 				return ''
 			})}
