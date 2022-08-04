@@ -43,6 +43,7 @@ const walkBar = css`
 `
 
 const App = ({ data: { home } }) => {
+	console.log('homepage loaded')
 	const [addEvent, setAddEvent] = useState({
 		title: 'AFSP national events',
 		details: [],
