@@ -80,6 +80,13 @@ const copyrightCSS = css`
 	}
 `
 const Footer = ({ nav, customPadding }) => {
+	const is404 =
+		typeof window !== `undefined` &&
+		(window.location.pathname === '/404/' ||
+			window.location.pathname === '/404')
+			? true
+			: false
+
 	const footerPadding =
 		customPadding !== undefined
 			? customPadding
@@ -138,14 +145,16 @@ const Footer = ({ nav, customPadding }) => {
 					</small>
 				</div>
 			</footer>
-			<Script
-				attributes={{
-					id: 'siteimprove',
-					type: 'text/javascript',
-					async: '',
-				}}
-				url="//siteimproveanalytics.com/js/siteanalyze_6019066.js"
-			/>
+			{!is404 && (
+				<Script
+					attributes={{
+						id: 'siteimprove',
+						type: 'text/javascript',
+						async: '',
+					}}
+					url="//siteimproveanalytics.com/js/siteanalyze_6019066.js"
+				/>
+			)}
 			{/* <Script
 				attributes={{
 					async: '',
