@@ -41,7 +41,7 @@ const carouselCSS = css`
 		margin-bottom: ${styles.scale.px56};
 	}
 	.react-multi-carousel-list {
-		overflow: initial;
+		overflow: hidden;
 	}
 `
 

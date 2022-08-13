@@ -28,6 +28,7 @@ const tickerWrap = css`
 const tickerContainer = css`
 	display: inline-block;
 	height: ${styles.scale.px46};
+	width: 100vw;
 	line-height: ${styles.scale.px46};
 	white-space: nowrap;
 	padding-top: 9px;

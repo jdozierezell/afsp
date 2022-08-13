@@ -18,7 +18,7 @@ const navTopCSS = css`
 	flex-flow: row wrap;
 	padding: ${styles.scale.px24} 0 ${styles.scale.px16};
 	justify-content: space-between;
-	align-items: flex-start;
+	align-items: center;
 	min-height: 70px;
 	position: absolute;
 	left: 0;
@@ -33,7 +33,7 @@ const logoCSS = css`
 	min-width: 110px;
 	max-width: 150px;
 	padding-left: ${styles.scale.px24};
-	@media (min-width: ${styles.screens.mobile}px) {
+	@media (min-width: ${styles.screens.navigation}px) {
 		margin: ${styles.scale.px28} ${styles.scale.px50} ${styles.scale.px16};
 		padding-left: 0;
 		width: 126px;
@@ -45,8 +45,9 @@ const navButtons = css`
 	min-width: 100px;
 	max-width: 250px;
 	justify-content: space-between;
+	gap: ${styles.scale.px24};
 	padding-right: ${styles.scale.px24};
-	@media (min-width: ${styles.screens.mobile}px) {
+	@media (min-width: ${styles.screens.navigation}px) {
 		padding-right: ${styles.scale.px50};
 		height: 105px;
 	}
@@ -58,9 +59,6 @@ const searchCSS = css`
 	width: ${styles.scale.px24};
 	background: transparent;
 	border: none;
-	@media (min-width: ${styles.screens.navigation}px) {
-		padding: 0;
-	}
 `
 
 const hamburgerCSS = css`
@@ -75,9 +73,7 @@ const hamburgerCSS = css`
 `
 
 const donateCSS = css`
-	display: none;
 	@media (min-width: ${styles.screens.navigation}px) {
-		display: initial;
 		margin-top: ${styles.scale.px24};
 	}
 `
@@ -143,6 +139,9 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 			</div>
 			<DeskMenu items={nav} overrideLight={overrideLight} />
 			<div css={navButtons}>
+				<div css={donateCSS}>
+					<MenuCTA />
+				</div>
 				<button
 					css={searchCSS}
 					onClick={() => setSearchActive(!isSearchActive)}
@@ -173,9 +172,6 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 						/>
 					)}
 				</button>
-				<div css={donateCSS}>
-					<MenuCTA />
-				</div>
 			</div>
 			{isSearchActive && <Search />}
 			{isMenuActive && <MobileMenu items={nav} />}
