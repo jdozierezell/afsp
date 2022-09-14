@@ -8,6 +8,7 @@ import { styles } from '../../css/css'
 import 'react-multi-carousel/lib/styles.css'
 
 const singleCSS = css`
+	margin-top: ${styles.scale.px24};
 	margin-bottom: ${styles.scale.px24};
 `
 
