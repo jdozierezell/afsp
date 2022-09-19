@@ -201,9 +201,9 @@ const HeroChapter = ({
 					</Link>
 				</span>
 				{circleOfHopeUrl &&
-					customButtons.map(button => {
+					customButtons.map((button, index) => {
 						return (
-							<span>
+							<span key={index}>
 								<a
 									className="secondary-button"
 									href={button.buttonUrl}

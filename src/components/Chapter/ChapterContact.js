@@ -25,7 +25,12 @@ const chapterContactCSS = css`
 		font-family: ${styles.fonts.avenirRegular};
 		font-style: normal;
 		line-height: ${styles.scale.px30};
-		margin: 0;
+		padding: 0 0 1rem 0;
+		border-bottom: solid 1px black;
+		:last-of-type {
+			border-bottom: none;
+			padding: 0;
+		}
 		a {
 			color: ${styles.colors.white};
 			@media (min-width: ${styles.screens.tablet}px) {
@@ -39,7 +44,6 @@ const chapterContactCSS = css`
 `
 
 const ChapterSignup = ({ contact, addCSS }) => {
-	const { name, title, email, phone } = contact
 	return (
 		<div
 			css={css`
@@ -48,27 +52,31 @@ const ChapterSignup = ({ contact, addCSS }) => {
 			`}
 		>
 			<h3>Chapter contact:</h3>
-			<address>
-				{name && <strong>{name}</strong>}
-				{title && (
-					<>
-						<br />
-						{title}
-					</>
-				)}
-				{email && (
-					<>
-						<br />
-						<a href={`mailto:${email}`}>{email}</a>
-					</>
-				)}
-				{phone && (
-					<>
-						<br />
-						<a href={`tel:${phone}`}>{phone}</a>
-					</>
-				)}
-			</address>
+			{contact.map((contact, index) => (
+				<address key={index}>
+					{contact.name && <strong>{contact.name}</strong>}
+					{contact.title && (
+						<>
+							<br />
+							{contact.title}
+						</>
+					)}
+					{contact.email && (
+						<>
+							<br />
+							<a href={`mailto:${contact.email}`}>
+								{contact.email}
+							</a>
+						</>
+					)}
+					{contact.phone && (
+						<>
+							<br />
+							<a href={`tel:${contact.phone}`}>{contact.phone}</a>
+						</>
+					)}
+				</address>
+			))}
 		</div>
 	)
 }

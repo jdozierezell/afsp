@@ -29,6 +29,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 		staffTitle,
 		staffEmail,
 		staffPhone,
+		chapterStaff,
 		featuredPrograms,
 		volunteerSignupUrl,
 		chapterStoriesAndUpdates,
@@ -250,15 +251,22 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				circleOfHopeUrl={chapterInformation.circleOfHopeUrl}
 				slug={slug}
 			/>
+			{console.log(chapterStaff)}
 			<ChapterAboutContact
 				title={title}
 				about={aboutTheChapterNode.internal.content}
-				contact={{
-					name: staffName,
-					title: staffTitle,
-					email: staffEmail,
-					phone: staffPhone,
-				}}
+				contact={
+					chapterStaff.length > 0
+						? chapterStaff
+						: [
+								{
+									name: staffName,
+									title: staffTitle,
+									email: staffEmail,
+									phone: staffPhone,
+								},
+						  ]
+				}
 			/>
 			<CarouselDetailContainer
 				content={events}
@@ -338,6 +346,12 @@ export const query = graphql`
 			staffTitle
 			staffEmail
 			staffPhone
+			chapterStaff {
+				title
+				phone
+				name
+				email
+			}
 			aboutTheChapterNode {
 				internal {
 					content
