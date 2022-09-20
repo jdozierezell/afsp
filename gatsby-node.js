@@ -7,6 +7,21 @@
 // You can delete this file if you're not using it
 const path = require('path')
 
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+	if (stage === 'build-html' || stage === 'develop-html') {
+		actions.setWebpackConfig({
+			module: {
+				rules: [
+					{
+						test: /canvas/,
+						use: loaders.null(),
+					},
+				],
+			},
+		})
+	}
+}
+
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage, createRedirect } = actions
 	const { data } = await graphql(`
