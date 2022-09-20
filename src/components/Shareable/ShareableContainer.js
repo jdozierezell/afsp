@@ -258,7 +258,6 @@ const ShareableContainer = ({
 							onMouseDown={() => {
 								setSelected(true)
 							}}
-							draggable
 						/>
 						<KonvaImage
 							image={imageOverlay}
