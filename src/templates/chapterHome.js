@@ -251,7 +251,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				circleOfHopeUrl={chapterInformation.circleOfHopeUrl}
 				slug={slug}
 			/>
-			{console.log(chapterStaff)}
 			<ChapterAboutContact
 				title={title}
 				about={aboutTheChapterNode.internal.content}
