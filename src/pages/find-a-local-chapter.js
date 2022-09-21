@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import qs from 'qs'
 import { graphql } from 'gatsby'
-import { useQueryParams, NumberParam } from 'use-query-params'
 import axios from 'axios'
 
 import Layout from '../components/Layout'
@@ -12,7 +10,7 @@ import CTAContainer from '../components/CTAs/CTAContainer'
 
 import { styles } from '../css/css'
 
-const FindALocalChapter = ({ data: { search } }) => {
+const FindALocalChapter = ({ data: { search }, location }) => {
 	let metaImage,
 		metaDescription = ''
 	search.seoMetaTags.tags.forEach(tag => {
@@ -44,22 +42,14 @@ const FindALocalChapter = ({ data: { search } }) => {
 		url: `https://afsp.org/${search.slug}`,
 	}
 
-	const existingSearch =
-		typeof window !== `undefined`
-			? qs.parse(window.location.search.slice(1))
-			: {}
+	const queryString = location.search
+	const query = new URLSearchParams(queryString)
 	const [radius, setRadius] = useState(
-		existingSearch.radius ? existingSearch.radius : 15
+		query.get('radius') ? query.get('radius') : 15
 	)
-	const [zip, setZip] = useState(existingSearch.zip ? existingSearch.zip : '')
+	const [zip, setZip] = useState(query.get('zip') ? query.get('zip') : '')
 	const [noResults, setNoResults] = useState(false)
 	const [searchResults, setSearchResults] = useState([])
-	// eslint-disable-next-line no-unused-vars
-	const [query, setQuery] = useQueryParams({
-		zip: NumberParam,
-		radius: NumberParam,
-	})
-
 	const [firstRun, setFirstRun] = useState(true)
 
 	const updateRadius = newRadius => setRadius(newRadius)
@@ -69,10 +59,6 @@ const FindALocalChapter = ({ data: { search } }) => {
 	}
 
 	const handleSearchClick = () => {
-		setQuery({
-			zip: zip,
-			radius: radius,
-		})
 		if (/^[0-9]{5}-?([0-9]{4})?$/g.test(zip)) {
 			axios
 				.post('https://serene-dusk-44738.herokuapp.com/zip-lookup', {
@@ -92,6 +78,13 @@ const FindALocalChapter = ({ data: { search } }) => {
 						setNoResults(false)
 					}
 				})
+			window.history.replaceState(
+				{ radius: radius, zip: zip },
+				`Find a chapter near ${zip} | AFSP`,
+				`${
+					location.origin + location.pathname
+				}?radius=${radius}&zip=${zip}`
+			)
 		}
 	}
 

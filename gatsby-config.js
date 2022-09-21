@@ -28,7 +28,7 @@ module.exports = {
 		},
 		`gatsby-plugin-remove-fingerprints`,
 		`gatsby-transformer-sharp`,
-		`gatsby-plugin-use-query-params`,
+		// `gatsby-plugin-use-query-params`,
 		{
 			resolve: `gatsby-plugin-google-analytics`,
 			options: {

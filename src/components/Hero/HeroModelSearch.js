@@ -205,7 +205,6 @@ const HeroModelSearch = ({
 					updateCountry={updateCountry}
 					countryList={countryList}
 					dropDownCSS={dropDownCSS}
-					countryList={countryList}
 				/>
 			)}
 		</div>
