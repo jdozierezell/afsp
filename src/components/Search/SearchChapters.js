@@ -77,18 +77,30 @@ const searchMapCSS = css`
 const ChapterSearchResult = ({ chapter }) => {
 	const heroBackgroundImg = `${chapter[0].image.url}?format=auto&w=1080&h=1080&crop=faces&fit=crop`
 	const chapterBackgroundImg = chapter[0].map.url
-	const chapterStaff =
-		chapter[0].chapter_staff.length > 0
-			? chapter[0].chapter_staff
-			: [
-					{
-						email: chapter[0].staff_email,
-						name: chapter[0].staff_name,
-						phone: chapter[0].staff_phone,
-						title: chapter[0].staff_title,
-					},
-			  ]
-
+	let chapterStaff = []
+	const holdChanges = true
+	if (!holdChanges) {
+		chapterStaff =
+			chapter[0].chapter_staff.length > 0
+				? chapter[0].chapter_staff
+				: [
+						{
+							email: chapter[0].staff_email,
+							name: chapter[0].staff_name,
+							phone: chapter[0].staff_phone,
+							title: chapter[0].staff_title,
+						},
+				  ]
+	} else {
+		chapterStaff = [
+			{
+				email: chapter[0].staffEmail,
+				name: chapter[0].staffName,
+				phone: chapter[0].staffPhone,
+				title: chapter[0].staffTitle,
+			},
+		]
+	}
 	return (
 		<div css={searchResultCSS}>
 			<div
