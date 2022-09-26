@@ -244,7 +244,9 @@ const AFSPCalendar = ({ data }) => {
 
 	useEffect(() => {
 		if (allEvents.length === 0 && allEvents[0] !== 'no events') {
-			fetch(`//aws-fetch.s3.amazonaws.com/events/merged-programs.json`)
+			fetch(
+				`//aws-fetch.s3.amazonaws.com/events-cache-bust/merged-programs.json`
+			)
 				.then(response => {
 					if (response.status >= 400) {
 						throw new Error('Bad response from server')

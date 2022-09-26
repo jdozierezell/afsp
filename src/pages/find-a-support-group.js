@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import qs from 'qs'
 import { graphql } from 'gatsby'
-import axios from 'axios'
 import {
 	useQueryParams,
 	NumberParam,
 	StringParam,
 	BooleanParam,
 } from 'use-query-params'
+import axios from 'axios'
 
 import Layout from '../components/Layout'
 import HeroModelSearch from '../components/Hero/HeroModelSearch'
@@ -16,7 +15,10 @@ import CTAContainer from '../components/CTAs/CTAContainer'
 
 import { styles } from '../css/css'
 
-const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
+const FindASupportGroup = ({
+	data: { search, datoSupportGroups },
+	location,
+}) => {
 	let metaImage,
 		metaDescription = ''
 	search.seoMetaTags.tags.forEach(tag => {
@@ -48,36 +50,25 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 		url: `https://afsp.org/${search.slug}`,
 	}
 
-	const existingSearch =
-		typeof window !== `undefined`
-			? qs.parse(window.location.search.slice(1))
-			: {}
+	const queryString = location.search
+	const query = new URLSearchParams(queryString)
+
 	const [radius, setRadius] = useState(
-		existingSearch.radius ? existingSearch.radius : 15
+		query.get('radius') ? query.get('radius') : 15
 	)
-	const [zip, setZip] = useState(existingSearch.zip ? existingSearch.zip : '')
+	const [zip, setZip] = useState(query.get('zip') ? query.get('zip') : '')
 	const [nonus, setNonus] = useState(
-		existingSearch.nonus === '1' ? true : false
+		query.get('nonus') === '1' ? true : false
 	)
 	const [virtual, setVirtual] = useState(
-		existingSearch.virtual === '1' ? true : false
+		query.get('virtual') === '1' ? true : false
 	)
 	const [country, setCountry] = useState(
-		existingSearch.country ? existingSearch.country : ''
+		query.get('country') ? query.get('country') : ''
 	)
 	const [supportGroups, setSupportGroups] = useState([])
 	const [countryGroups, setCountryGroups] = useState([])
 	const [virtualGroups, setVirtualGroups] = useState([])
-	// eslint-disable-next-line no-unused-vars
-	const [query, setQuery] = useQueryParams({
-		zip: NumberParam,
-		radius: NumberParam,
-		nonus: BooleanParam,
-		virtual: BooleanParam,
-		country: StringParam,
-		yPos: NumberParam,
-	})
-
 	const [firstRun, setFirstRun] = useState(true)
 
 	const countryList = []
@@ -98,37 +89,16 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 		setNonus(e.target.checked)
 		setCountryGroups([])
 		setSupportGroups([])
-		// setQuery({
-		// 	nonus: e.target.checked,
-		// 	virtual: virtual,
-		// 	zip: !nonus ? zip : '',
-		// 	radius: !nonus ? radius : '',
-		// 	country: nonus ? country : '',
-		// })
 	}
 
 	const updateVirtual = e => {
 		setVirtual(e.target.checked)
 		setCountryGroups([])
 		setSupportGroups([])
-		// setQuery({
-		// 	nonus: nonus,
-		// 	virtual: e.target.checked,
-		// 	zip: zip,
-		// 	radius: radius,
-		// 	country: country,
-		// })
 	}
 
 	const updateCountry = e => {
 		setCountry(e.target.value)
-		// setQuery({
-		// 	nonus: nonus,
-		// 	virtual: virtual,
-		// 	zip: zip,
-		// 	radius: radius,
-		// 	country: e.target.value,
-		// })
 	}
 
 	const handleUSSearchClick = () => {
@@ -145,6 +115,13 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 					setVirtualGroups(res.data.arraysToSend.virtual)
 					setSupportGroups(res.data.arraysToSend.group)
 				})
+			window.history.replaceState(
+				{ radius: radius, zip: zip },
+				`Find a support group near ${zip} | AFSP`,
+				`${
+					location.origin + location.pathname
+				}?radius=${radius}&zip=${zip}`
+			)
 		}
 	}
 
@@ -203,9 +180,10 @@ const FindASupportGroup = ({ data: { search, datoSupportGroups } }) => {
 					setVirtualGroups(virtualGroupArray)
 				})
 			}
-			if (typeof window !== `undefined`) {
-				window.scroll(0, existingSearch.yPos)
-			}
+			// if (typeof window !== `undefined`) {
+			// 	window.scroll(0, existingSearch.yPos)
+			// }
+			console.log(location)
 			setFirstRun(false)
 		}
 	}, [firstRun, nonus, radius, zip, datoSupportGroups])

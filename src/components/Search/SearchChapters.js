@@ -77,7 +77,30 @@ const searchMapCSS = css`
 const ChapterSearchResult = ({ chapter }) => {
 	const heroBackgroundImg = `${chapter[0].image.url}?format=auto&w=1080&h=1080&crop=faces&fit=crop`
 	const chapterBackgroundImg = chapter[0].map.url
-
+	let chapterStaff = []
+	const holdChanges = true
+	if (!holdChanges) {
+		chapterStaff =
+			chapter[0].chapter_staff.length > 0
+				? chapter[0].chapter_staff
+				: [
+						{
+							email: chapter[0].staff_email,
+							name: chapter[0].staff_name,
+							phone: chapter[0].staff_phone,
+							title: chapter[0].staff_title,
+						},
+				  ]
+	} else {
+		chapterStaff = [
+			{
+				email: chapter[0].staffEmail,
+				name: chapter[0].staffName,
+				phone: chapter[0].staffPhone,
+				title: chapter[0].staffTitle,
+			},
+		]
+	}
 	return (
 		<div css={searchResultCSS}>
 			<div
@@ -89,19 +112,32 @@ const ChapterSearchResult = ({ chapter }) => {
 			<div css={searchInfoCSS}>
 				<h2>AFSP {chapter[0].title}</h2>
 				<h3>Community contact:</h3>
-				<address>
-					<strong>{chapter[0].staffName}</strong>
-					<br />
-					{chapter[0].staffTitle}
-					<br />
-					<a href={`mailto:${chapter[0].staffEmail}`}>
-						{chapter[0].staffEmail}
-					</a>
-					<br />
-					<a href={`tel:${chapter[0].staffPhone}`}>
-						{chapter[0].staffPhone}
-					</a>
-				</address>
+				{chapterStaff.map((staff, index) => (
+					<address key={index}>
+						{staff.name && <strong>{staff.name}</strong>}
+						{staff.title && (
+							<>
+								<br />
+								{staff.title}
+							</>
+						)}
+						{staff.email && (
+							<>
+								<br />
+								<a href={`mailto:${staff.email}`}>
+									{staff.email}
+								</a>
+							</>
+						)}
+						{staff.phone && (
+							<>
+								<br />
+								<a href={`tel:${staff.phone}`}>{staff.phone}</a>
+							</>
+						)}
+					</address>
+				))}
+
 				<Link
 					className="secondary-button"
 					to={`/chapter/${chapter[0].slug}`}
