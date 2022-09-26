@@ -47,7 +47,7 @@ const ContentEvent = ({ setEvents, programName }) => {
 
 	useEffect(() => {
 		fetch(
-			`//aws-fetch.s3.amazonaws.com/events/merged-events-${awsProgramName}.json`
+			`//aws-fetch.s3.amazonaws.com/events-cache-bust/merged-events-${awsProgramName}.json`
 		)
 			.then(response => {
 				if (response.status >= 400) {
@@ -72,10 +72,11 @@ const ContentEvent = ({ setEvents, programName }) => {
 					{programEvents.map((event, index) => {
 						let chapterArray = []
 						chapters.info.edges.forEach(chapter => {
-							chapter.node.chapterDonorDriveId = chapter.node.chapterDonorDriveId.replace(
-								' ',
-								''
-							)
+							chapter.node.chapterDonorDriveId =
+								chapter.node.chapterDonorDriveId.replace(
+									' ',
+									''
+								)
 							if (typeof event.chapterCode === 'string') {
 								event.chapterCode = event.chapterCode.replace(
 									' ',

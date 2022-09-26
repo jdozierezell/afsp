@@ -159,7 +159,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 		}
 		if (events.details.length === 0 && events.details[0] !== 'no events') {
 			fetch(
-				`//aws-fetch.s3.amazonaws.com/events/merged-events-${chapterDonorDriveId}.json`
+				`//aws-fetch.s3.amazonaws.com/events-cache-bust/merged-events-${chapterDonorDriveId}.json`
 			)
 				.then(response => {
 					if (response.status >= 400) {
