@@ -26,7 +26,7 @@ module.exports = {
 				mergeCachingHeaders: false, // boolean to turn off the default caching headers
 			},
 		},
-		`gatsby-plugin-remove-fingerprints`,
+		// `gatsby-plugin-remove-fingerprints`,
 		`gatsby-transformer-sharp`,
 		// `gatsby-plugin-use-query-params`,
 		{
