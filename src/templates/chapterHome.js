@@ -349,6 +349,11 @@ export const query = graphql`
 				phone
 				name
 				email
+				address1
+				address2
+				city
+				state
+				zipCode
 			}
 			aboutTheChapterNode {
 				internal {
