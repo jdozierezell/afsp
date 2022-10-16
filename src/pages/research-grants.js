@@ -58,22 +58,24 @@ const ResearchGrants = ({ data: { grantsPage } }) => {
 	const [searchState, setSearchState] = useState(query)
 	const handleSearchChange = event => {
 		let tempSearch = searchState
-		let attribute = event.target.attribute
-		let value = event.target.value
-		if (event.target.className === 'ais-SearchBox-input') {
-			tempSearch.query = value
-		} else if (attribute) {
-			if (!tempSearch.refinementList) {
-				tempSearch.refinementList = {}
+		if (event.target[0]) {
+			if (event.target[0].className === 'ais-SearchBox-input') {
+				tempSearch.query = event.target[0].value
 			}
-			tempSearch.refinementList[attribute] = value
+		} else {
+			let attribute = event.target.attribute
+			if (attribute) {
+				if (!tempSearch.refinementList) {
+					tempSearch.refinementList = {}
+				}
+				tempSearch.refinementList[attribute] = event.target.value
+			}
 		}
-
+		console.log(tempSearch)
 		setSearchState({
 			...searchState,
 			...tempSearch,
 		})
-
 		searchURL(tempSearch)
 	}
 	return (
@@ -85,6 +87,7 @@ const ResearchGrants = ({ data: { grantsPage } }) => {
 			<HeroSolid data={grantsPage} />
 			<SearchResearch
 				searchState={searchState}
+				setSearchState={setSearchState}
 				handleSearchChange={handleSearchChange}
 				indexName="afsporg-grant"
 				placeholder="Start your search"
