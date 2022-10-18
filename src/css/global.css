@@ -13,6 +13,7 @@ th,
 td,
 button,
 span,
+caption,
 div {
 	font-display: swap;
 }
@@ -36,7 +37,8 @@ p,
 label,
 input,
 textarea,
-li {
+li,
+caption {
 	font-family: AvenirNextLTPro-Regular, Arial, sans-serif;
 }
 
