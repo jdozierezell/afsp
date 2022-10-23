@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import dayjs from 'dayjs'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroVideo from '../components/Hero/HeroVideo'
 import CarouselVideoContainer from '../components/Carousels/CarouselVideoContainer'
@@ -26,11 +27,7 @@ const RealStories = ({ data: { real, stories } }) => {
 	})
 
 	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={real.seoMetaTags}
-			structuredData={structuredData}
-		>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HeroVideo
 				videoUrl={
 					real.heroVideo.video
@@ -76,11 +73,11 @@ const RealStories = ({ data: { real, stories } }) => {
 
 export default RealStories
 
-export const Head = ({ data: { home } }) => {
+export const Head = ({ data: { real } }) => {
 	let metaImage,
 		metaDescription = ''
 
-	home.seoMetaTags.tags.forEach(tag => {
+	real.seoMetaTags.tags.forEach(tag => {
 		if (tag.attributes) {
 			if (
 				tag.attributes.property &&
@@ -110,7 +107,7 @@ export const Head = ({ data: { home } }) => {
 		url: `https://afsp.org/${real.slug}`,
 	}
 
-	return <SEO structuredData={structuredData} meta={home.seoMetaTags} />
+	return <SEO structuredData={structuredData} meta={real.seoMetaTags} />
 }
 
 export const query = graphql`
