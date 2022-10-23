@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import Script from 'react-load-script'
 import { css } from '@emotion/react'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
 
@@ -21,8 +22,36 @@ const actionCenterCSS = css`
 `
 
 const ActionCenter = ({ data: { actionCenter } }) => {
+	const scriptLoaded = () => {
+		const congressWeb = document.getElementById('congressWeb')
+		const congressScript = document.createElement('script')
+		const congressCode = document.createTextNode(
+			`$cweb(function(){ $cweb('#iframe').congressweb({ url:'//www.congressweb.com/AFSP', responsive: true }) })`
+		)
+		congressScript.appendChild(congressCode)
+		congressWeb.insertAdjacentElement('afterend', congressScript)
+	}
+	return (
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
+			<HeroSolid data={actionCenter} />
+			<div css={actionCenterCSS} id="iframe"></div>
+			<Script
+				attributes={{
+					id: 'congressWeb',
+				}}
+				url="//www.congressweb.com/cweb/js/jquery.congressweb.iframe.js"
+				onLoad={scriptLoaded}
+			/>
+		</Layout>
+	)
+}
+
+export default ActionCenter
+
+export const Head = ({ data: { actionCenter } }) => {
 	let metaImage,
 		metaDescription = ''
+
 	actionCenter.seoMetaTags.tags.forEach(tag => {
 		if (tag.attributes) {
 			if (
@@ -39,6 +68,7 @@ const ActionCenter = ({ data: { actionCenter } }) => {
 			}
 		}
 	})
+
 	const structuredData = {
 		'@content': 'https://schema.org',
 		'@type': 'WebPage',
@@ -53,35 +83,10 @@ const ActionCenter = ({ data: { actionCenter } }) => {
 		url: `https://afsp.org/${actionCenter.slug}`,
 	}
 
-	const scriptLoaded = () => {
-		const congressWeb = document.getElementById('congressWeb')
-		const congressScript = document.createElement('script')
-		const congressCode = document.createTextNode(
-			`$cweb(function(){ $cweb('#iframe').congressweb({ url:'//www.congressweb.com/AFSP', responsive: true }) })`
-		)
-		congressScript.appendChild(congressCode)
-		congressWeb.insertAdjacentElement('afterend', congressScript)
-	}
 	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={actionCenter.seoMetaTags}
-			structuredData={structuredData}
-		>
-			<HeroSolid data={actionCenter} />
-			<div css={actionCenterCSS} id="iframe"></div>
-			<Script
-				attributes={{
-					id: 'congressWeb',
-				}}
-				url="//www.congressweb.com/cweb/js/jquery.congressweb.iframe.js"
-				onLoad={scriptLoaded}
-			/>
-		</Layout>
+		<SEO structuredData={structuredData} meta={actionCenter.seoMetaTags} />
 	)
 }
-
-export default ActionCenter
 
 export const query = graphql`
 	query {
