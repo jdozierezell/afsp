@@ -4,14 +4,14 @@ import lifesaver from '../SVGs/Lifesaver.svg'
 export const SEO = ({ meta, structuredData, children }) => {
 	return (
 		<>
-			{meta.tags.map(tag => {
+			{meta.tags.map((tag, index) => {
 				if (tag.tagName === 'title') {
-					return <title>{tag.content}</title>
+					return <title key={index}>{tag.content}</title>
 				} else {
-					console.log(tag.attributes)
 					if (tag.attributes.name) {
 						return (
 							<meta
+								key={index}
 								name={tag.attributes.name}
 								content={tag.attributes.content}
 							/>
@@ -19,6 +19,7 @@ export const SEO = ({ meta, structuredData, children }) => {
 					} else if (tag.attributes.property) {
 						return (
 							<meta
+								key={index}
 								property={tag.attributes.property}
 								content={tag.attributes.content}
 							/>
