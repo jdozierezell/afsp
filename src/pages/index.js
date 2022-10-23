@@ -6,6 +6,7 @@ import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 import Script from 'react-load-script'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroVideo from '../components/Hero/HeroVideo'
 import InstagramFeed from '../components/Social/InstagramFeed'
@@ -238,6 +239,8 @@ const App = ({ data: { home } }) => {
 }
 
 export default App
+
+export const Head = () => <SEO />
 
 export const query = graphql`
 	query {

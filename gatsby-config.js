@@ -6,7 +6,7 @@ module.exports = {
 	siteMetadata: {
 		title: `American Foundation for Suicide Prevention`,
 		description: `Save Lives and Bring Hope to Those Affected by Suicide`,
-		author: `@jdozierezell`,
+		twitterUsername: `@afspnational`,
 		siteUrl:
 			process.env.NODE_ENV === 'development'
 				? `http://localhost:8000`

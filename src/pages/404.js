@@ -1,5 +1,4 @@
 import React from 'react'
-import { graphql } from 'gatsby'
 import { css } from '@emotion/react'
 
 import Layout from '../components/Layout'
@@ -7,9 +6,6 @@ import HeroSolid from '../components/Hero/HeroSolid'
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 
 import { styles } from '../css/css'
-
-// import { useEffect } from 'react'
-// import { navigate } from 'gatsby'
 
 const storyContentCSS = css`
 	margin: ${styles.scale.px50} ${styles.scale.px24};
@@ -20,19 +16,6 @@ const storyContentCSS = css`
 `
 
 const Redirect404 = () => {
-	// useEffect(() => {
-	// 	let pathString
-	// 	const pathArray = window.location.pathname.split('/')
-	// 	pathArray.shift()
-	// 	pathString = pathArray.join('+')
-	// 	pathString = pathString.replace(/-/g, '+') // the regex replacement string matches all occurrences
-
-	// 	navigate(
-	// 		`/search_results/?query=${pathString}&source=${window.location}`
-	// 	)
-	// }, [])
-	// return null
-
 	const structuredData = {
 		'@content': 'https://schema.org',
 		'@type': 'SearchAction',

@@ -11,7 +11,6 @@ const Layout = ({
 	overrideLight,
 	children,
 	seo,
-	facebook,
 	structuredData,
 	hideEmailLayout,
 	customPadding,
@@ -41,14 +40,14 @@ const Layout = ({
 
 	return (
 		<>
-			<HelmetDatoCms seo={seo} favicon={data.site.faviconMetaTags}>
+			{/* <HelmetDatoCms seo={seo} favicon={data.site.faviconMetaTags}>
 				<html lang="en" />
 				<meta property="og:url" content={`${structuredData.url}/`} />
 				<meta property="fb:app_id" content="925475567867156" />
 				<script type="application/ld+json">
 					{JSON.stringify(structuredData)}
 				</script>
-			</HelmetDatoCms>
+			</HelmetDatoCms> */}
 			<Header
 				nav={headerNav}
 				theme={theme}
