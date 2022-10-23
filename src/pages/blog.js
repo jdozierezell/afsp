@@ -12,36 +12,6 @@ import CarouselChapterContainer from '../components/Carousels/CarouselChapterCon
 import { styles } from '../css/css'
 
 const RealStories = ({ data: { real, stories } }) => {
-	let metaImage,
-		metaDescription = ''
-	real.seoMetaTags.tags.forEach(tag => {
-		if (tag.attributes) {
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:image'
-			) {
-				metaImage = tag.attributes.content
-			}
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:description'
-			) {
-				metaDescription = tag.attributes.content
-			}
-		}
-	})
-	const structuredData = {
-		'@content': 'https://schema.org',
-		'@type': 'Blog',
-		about: 'suicide',
-		description: metaDescription,
-		image: metaImage,
-		accessibilityAPI: 'ARIA',
-		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
-		name: real.title,
-		publisher: 'American Foundation for Suicide Prevention',
-		url: `https://afsp.org/${real.slug}`,
-	}
 	stories.edges.forEach(story => {
 		story.node.type = 'story'
 	})
@@ -105,6 +75,43 @@ const RealStories = ({ data: { real, stories } }) => {
 }
 
 export default RealStories
+
+export const Head = ({ data: { home } }) => {
+	let metaImage,
+		metaDescription = ''
+
+	home.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'Blog',
+		about: 'suicide',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: real.title,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${real.slug}`,
+	}
+
+	return <SEO structuredData={structuredData} meta={home.seoMetaTags} />
+}
 
 export const query = graphql`
 	query {

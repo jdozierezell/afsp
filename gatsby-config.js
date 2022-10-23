@@ -14,7 +14,6 @@ module.exports = {
 	},
 	plugins: [
 		`gatsby-plugin-emotion`,
-		`gatsby-plugin-react-helmet`,
 		`gatsby-plugin-playground`,
 		`gatsby-plugin-image`,
 		`gatsby-plugin-sharp`,

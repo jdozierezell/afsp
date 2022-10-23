@@ -1,36 +1,36 @@
 import React from 'react'
-import { useSiteMetadata } from '../../hooks/useSiteMetadata'
 import lifesaver from '../SVGs/Lifesaver.svg'
 
-export const SEO = ({ title, description, pathname, children }) => {
-	const {
-		title: defaultTitle,
-		description: defaultDescription,
-		image,
-		siteUrl,
-		twitterUsername,
-	} = useSiteMetadata()
-
-	const seo = {
-		title: title || defaultTitle,
-		description: description || defaultDescription,
-		image: `${siteUrl}${image}`,
-		url: `${siteUrl}${pathname || ``}`,
-		twitterUsername,
-	}
-
+export const SEO = ({ meta, structuredData, children }) => {
 	return (
 		<>
-			<title>{seo.title}</title>
-			<meta name="description" content={seo.description} />
-			{/* <meta name="image" content={seo.image} /> */}
-			<meta name="twitter:card" content="summary_large_image" />
-			<meta name="twitter:title" content={seo.title} />
-			<meta name="twitter:url" content={seo.url} />
-			<meta name="twitter:description" content={seo.description} />
-			{/* <meta name="twitter:image" content={seo.image} /> */}
-			<meta name="twitter:creator" content={seo.twitterUsername} />
+			{meta.tags.map(tag => {
+				if (tag.tagName === 'title') {
+					return <title>{tag.content}</title>
+				} else {
+					console.log(tag.attributes)
+					if (tag.attributes.name) {
+						return (
+							<meta
+								name={tag.attributes.name}
+								content={tag.attributes.content}
+							/>
+						)
+					} else if (tag.attributes.property) {
+						return (
+							<meta
+								property={tag.attributes.property}
+								content={tag.attributes.content}
+							/>
+						)
+					}
+				}
+			})}
+			<meta name="twitter:creator" content="@afspnational" />
 			<link rel="icon" href={lifesaver} />
+			<script type="application/ld+json">
+				{JSON.stringify(structuredData)}
+			</script>
 			{children}
 		</>
 	)

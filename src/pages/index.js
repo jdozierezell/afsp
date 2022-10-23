@@ -43,49 +43,6 @@ const walkBar = css`
 `
 
 const App = ({ data: { home } }) => {
-	let metaImage,
-		metaDescription = ''
-	home.seoMetaTags.tags.forEach(tag => {
-		if (tag.attributes) {
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:image'
-			) {
-				metaImage = tag.attributes.content
-			}
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:description'
-			) {
-				metaDescription = tag.attributes.content
-			}
-		}
-	})
-	const structuredData = {
-		'@context': 'https://schema.org',
-		'@type': 'NGO',
-		address: {
-			'@type': 'PostalAddress',
-			addressLocality: 'New York',
-			addressRegion: 'NY',
-			postalCode: '10038',
-			streetAddress: '199 Water St., 11th Floor',
-		},
-		contactPoint: [
-			{
-				'@type': 'ContactPoint',
-				telephone: '(212) 363-3500',
-				email: 'info@afsp.org',
-				contactType: 'office manager',
-			},
-		],
-		description: metaDescription,
-		image: metaImage,
-		accessibilityAPI: 'ARIA',
-		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
-		legalName: 'American Foundation for Suicide Prevention',
-		alternateName: 'AFSP',
-	}
 	let events = {
 		title: 'AFSP national events',
 		details: [],
@@ -94,8 +51,6 @@ const App = ({ data: { home } }) => {
 	return (
 		<Layout
 			theme={styles.logo.mobileLightDesktopLight}
-			seo={home.seoMetaTags}
-			structuredData={structuredData}
 			customPadding={`${styles.scale.px50} ${styles.scale.px50} ${styles.scale.px90}`}
 		>
 			<HeroVideo
@@ -240,7 +195,55 @@ const App = ({ data: { home } }) => {
 
 export default App
 
-export const Head = () => <SEO />
+export const Head = ({ data: { home } }) => {
+	let metaImage,
+		metaDescription = ''
+
+	home.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+
+	const structuredData = {
+		'@context': 'https://schema.org',
+		'@type': 'NGO',
+		address: {
+			'@type': 'PostalAddress',
+			addressLocality: 'New York',
+			addressRegion: 'NY',
+			postalCode: '10038',
+			streetAddress: '199 Water St., 11th Floor',
+		},
+		contactPoint: [
+			{
+				'@type': 'ContactPoint',
+				telephone: '(212) 363-3500',
+				email: 'info@afsp.org',
+				contactType: 'office manager',
+			},
+		],
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		legalName: 'American Foundation for Suicide Prevention',
+		alternateName: 'AFSP',
+	}
+
+	return <SEO structuredData={structuredData} meta={home.seoMetaTags} />
+}
 
 export const query = graphql`
 	query {
