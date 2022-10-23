@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
 
@@ -120,6 +121,43 @@ const Partners = ({ data: { partners } }) => {
 }
 
 export default Partners
+
+export const Head = ({ data: { partners } }) => {
+	let metaImage,
+		metaDescription = ''
+	partners.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'partnerships',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: partners.title,
+		author: 'American Foundation for Suicide Prevention',
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${partners.slug}`,
+	}
+
+	return <SEO structuredData={structuredData} meta={partners.seoMetaTags} />
+}
 
 export const query = graphql`
 	query {

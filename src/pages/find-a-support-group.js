@@ -226,6 +226,7 @@ export const Head = ({ data: { search } }) => {
 			}
 		}
 	})
+
 	const structuredData = {
 		'@content': 'https://schema.org',
 		'@type': 'SearchAction',
