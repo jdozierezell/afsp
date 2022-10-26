@@ -90,27 +90,20 @@ const SearchGrants = ({
 				<h3 id="search-box-label" htmlFor="search-box">
 					Search for a Grant
 				</h3>
-				<SearchBox
-					searchAsYouType={false}
-					id="search-box"
-					css={searchBoxCSS}
-					translations={{ placeholder: 'What are you looking for?' }}
-					onSubmit={event => {
-						event.preventDefault()
-						handleSearchChange(event)
-					}}
-					// 	event.preventDefault()
-					// 	let tempSearch = searchState
-					// 	let attribute = 'query'
-					// 	let value = event.currentTarget[0].value
-					// 	setSearchState({
-					// 		...searchState,
-					// 		...tempSearch,
-					// 	})
-					// 	searchURL(tempSearch)
-					// 	console.log(tempSearch)
-					// }}
-				/>
+				{indexName === 'afsporg-grant' && (
+					<SearchBox
+						searchAsYouType={false}
+						id="search-box"
+						css={searchBoxCSS}
+						translations={{
+							placeholder: 'What are you looking for?',
+						}}
+						onSubmit={event => {
+							event.preventDefault()
+							handleSearchChange(event)
+						}}
+					/>
+				)}
 				<div>
 					<div css={refinementCSS}>
 						{refinements.map((refinement, index) => (
