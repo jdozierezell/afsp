@@ -1,2 +1,17 @@
-# alias destination
+# All redirects should be entered in order with alias first, a space, and destination after.
+
+# To prevent duplication and routing errors, add aliases in alphabetical order.
+
+# For destinations on afsp.org, you can begin with a '/'. Destinations outside of afsp.org should begin with 'https://'.
+
 /advocacyresources /advocacy-resources
+/LowerMoreland https://supporting.afsp.org/event/LowerMoreland
+/VACampus https://supporting.afsp.org/event/VACampus
+/ASU https://supporting.afsp.org/event/ASU
+/rogersschools https://supporting.afsp.org/event/rogersschools
+/SLO https://supporting.afsp.org/event/SLO
+/AndersonUniversity https://supporting.afsp.org/event/AndersonUniversity
+/CCHS https://supporting.afsp.org/event/CCHS
+/UWMad https://supporting.afsp.org/event/UWMad
+/Cornell https://supporting.afsp.org/event/Cornell
+/UND https://supporting.afsp.org/event/UND
