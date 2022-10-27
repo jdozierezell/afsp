@@ -5,10 +5,8 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
-
-import { styles } from '../css/css'
-
 import ChannelContainer from '../components/Channel/ChannelContainer'
 import CTAContainer from '../components/CTAs/CTAContainer'
 import CarouselResourceContainer from '../components/Carousels/CarouselResourceContainer'
@@ -16,6 +14,8 @@ import CarouselDetailContainer from '../components/Carousels/CarouselDetailConta
 import CarouselChapterContainer from '../components/Carousels/CarouselChapterContainer'
 import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
 import EmailSignupBar from '../components/EmailSignup/EmailSignupBar'
+
+import { styles } from '../css/css'
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -64,37 +64,6 @@ const readMoreCSS = css`
 `
 
 const Landing = ({ data: { landing } }) => {
-	let metaImage,
-		metaDescription = ''
-	landing.seoMetaTags.tags.forEach(tag => {
-		if (tag.attributes) {
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:image'
-			) {
-				metaImage = tag.attributes.content
-			}
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:description'
-			) {
-				metaDescription = tag.attributes.content
-			}
-		}
-	})
-	const structuredData = {
-		'@content': 'https://schema.org',
-		'@type': 'WebPage',
-		about: 'suicide',
-		description: metaDescription,
-		image: metaImage,
-		accessibilityAPI: 'ARIA',
-		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
-		name: landing.title,
-		lastReviewed: landing.meta.publishedAt,
-		publisher: 'American Foundation for Suicide Prevention',
-		url: `https://afsp.org/${landing.slug}`,
-	}
 	const [readMore, setReadMore] = useState(false)
 	let adjacent = 0
 	let events = {
@@ -176,8 +145,6 @@ const Landing = ({ data: { landing } }) => {
 	return (
 		<Layout
 			theme={styles.logo.mobileDarkDesktopDark}
-			seo={landing.seoMetaTags}
-			structuredData={structuredData}
 			hideEmailLayout={hideEmailLayout}
 		>
 			<h1 css={landingTitle}>{landing.title}</h1>
@@ -331,6 +298,42 @@ const Landing = ({ data: { landing } }) => {
 }
 
 export default Landing
+
+export const Head = ({ data: { landing } }) => {
+	let metaImage,
+		metaDescription = ''
+	landing.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'suicide',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: landing.title,
+		lastReviewed: landing.meta.publishedAt,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${landing.slug}`,
+	}
+
+	return <SEO structuredData={structuredData} meta={landing.seoMetaTags} />
+}
 
 export const query = graphql`
 	query ($slug: String) {

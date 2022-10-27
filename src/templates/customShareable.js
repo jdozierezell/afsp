@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/react'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
 import ShareableContainer from '../components/Shareable/ShareableContainer'
@@ -18,9 +19,47 @@ const addCSS = css`
 `
 
 const CustomShareable = ({ data: { customShareables } }) => {
+	let fontLink
+	if (customShareables.textBoxValues) {
+		if (customShareables.textBoxValues.fontFamily) {
+			if (
+				customShareables.textBoxValues.fontFamily ===
+				"'Marck Script', cursive"
+			) {
+				fontLink =
+					'https://fonts.googleapis.com/css2?family=Marck+Script&display=swap'
+			} else if (
+				customShareables.textBoxValues.fontFamily !==
+				'AvenirNextLTPro-Regular, Arial, sans-serif'
+			) {
+				customShareables.textBoxValues.fontFamily =
+					'AvenirNextLTPro-Regular, Arial, sans-serif'
+			}
+		}
+	}
+	return (
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
+			{fontLink && <link href={fontLink} rel="stylesheet" />}
+			<HeroSolid data={customShareables} addCSS={addCSS} />
+			<ShareableContainer
+				instructions={customShareables.instructions}
+				fileName={customShareables.fileName}
+				customText={{
+					isCustom: customShareables.customText,
+					customValues: customShareables.textBoxValues,
+				}}
+				overlays={customShareables.shareableOverlays}
+				backgroundImage={customShareables.backgroundImage.url}
+			/>
+		</Layout>
+	)
+}
+
+export default CustomShareable
+
+export const Head = ({ data: { customShareables } }) => {
 	let metaImage,
 		metaDescription = ''
-	let fontLink
 	customShareables.seoMetaTags.tags.forEach(tag => {
 		if (tag.attributes) {
 			if (
@@ -50,46 +89,14 @@ const CustomShareable = ({ data: { customShareables } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${customShareables.slug}`,
 	}
-	if (customShareables.textBoxValues) {
-		if (customShareables.textBoxValues.fontFamily) {
-			if (
-				customShareables.textBoxValues.fontFamily ===
-				"'Marck Script', cursive"
-			) {
-				fontLink =
-					'https://fonts.googleapis.com/css2?family=Marck+Script&display=swap'
-			} else if (
-				customShareables.textBoxValues.fontFamily !==
-				'AvenirNextLTPro-Regular, Arial, sans-serif'
-			) {
-				customShareables.textBoxValues.fontFamily =
-					'AvenirNextLTPro-Regular, Arial, sans-serif'
-			}
-		}
-	}
+
 	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={customShareables.seoMetaTags}
+		<SEO
 			structuredData={structuredData}
-		>
-			{fontLink && <link href={fontLink} rel="stylesheet" />}
-			<HeroSolid data={customShareables} addCSS={addCSS} />
-			<ShareableContainer
-				instructions={customShareables.instructions}
-				fileName={customShareables.fileName}
-				customText={{
-					isCustom: customShareables.customText,
-					customValues: customShareables.textBoxValues,
-				}}
-				overlays={customShareables.shareableOverlays}
-				backgroundImage={customShareables.backgroundImage.url}
-			/>
-		</Layout>
+			meta={customShareables.seoMetaTags}
+		/>
 	)
 }
-
-export default CustomShareable
 
 export const query = graphql`
 	query ($slug: String) {
