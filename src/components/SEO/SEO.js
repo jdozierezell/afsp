@@ -28,6 +28,8 @@ export const SEO = ({ meta, structuredData, children }) => {
 				}
 			})}
 			<meta name="twitter:creator" content="@afspnational" />
+			<meta property="og:url" content={`${structuredData.url}/`} />
+			<meta property="fb:app_id" content="925475567867156" />
 			<link rel="icon" href={lifesaver} />
 			<script type="application/ld+json">
 				{JSON.stringify(structuredData)}

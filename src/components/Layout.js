@@ -1,6 +1,5 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import Header from './Header/Header'
 import EmailSignupBar from './EmailSignup/EmailSignupBar'
@@ -10,8 +9,6 @@ const Layout = ({
 	theme,
 	overrideLight,
 	children,
-	seo,
-	structuredData,
 	hideEmailLayout,
 	customPadding,
 }) => {

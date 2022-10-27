@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/react'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroBio from '../components/Hero/HeroBio'
 
@@ -19,6 +20,20 @@ const biographyCSS = css`
 `
 
 const Bio = ({ data: { bio } }) => {
+	return (
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
+			<HeroBio name={bio.name} title={bio.title} image={bio.photo} />
+			<main
+				css={biographyCSS}
+				dangerouslySetInnerHTML={{ __html: bio.biography }}
+			></main>
+		</Layout>
+	)
+}
+
+export default Bio
+
+export const Head = ({ data: { bio } }) => {
 	let metaImage,
 		metaDescription = ''
 	bio.seoMetaTags.tags.forEach(tag => {
@@ -49,22 +64,9 @@ const Bio = ({ data: { bio } }) => {
 		jobTitle: bio.title,
 		url: `https://afsp.org/bio/${bio.slug}`,
 	}
-	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={bio.seoMetaTags}
-			structuredData={structuredData}
-		>
-			<HeroBio name={bio.name} title={bio.title} image={bio.photo} />
-			<main
-				css={biographyCSS}
-				dangerouslySetInnerHTML={{ __html: bio.biography }}
-			></main>
-		</Layout>
-	)
-}
 
-export default Bio
+	return <SEO structuredData={structuredData} meta={bio.seoMetaTags} />
+}
 
 export const query = graphql`
 	query ($slug: String) {

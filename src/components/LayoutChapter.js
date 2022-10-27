@@ -1,6 +1,5 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import Header from './Header/Header'
 import InstagramFeed from '../components/Social/InstagramFeed'
@@ -13,8 +12,6 @@ const LayoutChapter = ({
 	instagram,
 	email,
 	children,
-	seo,
-	structuredData,
 }) => {
 	const data = useStaticQuery(graphql`
 		query {
@@ -40,14 +37,6 @@ const LayoutChapter = ({
 	})
 	return (
 		<>
-			<HelmetDatoCms seo={seo} favicon={data.site.faviconMetaTags}>
-				<html lang="en" />
-				<meta property="og:url" content={`${structuredData.url}/`} />
-				<meta property="fb:app_id" content="925475567867156" />
-				<script type="application/ld+json">
-					{JSON.stringify(structuredData)}
-				</script>
-			</HelmetDatoCms>
 			<Header
 				nav={headerNav}
 				theme={theme}
