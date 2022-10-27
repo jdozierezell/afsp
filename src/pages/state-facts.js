@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
 import FactsListContainer from '../components/StateFacts/FactsListContainer'
@@ -56,6 +57,48 @@ const StateFacts = ({ data: { stateFactsPage, stateFacts } }) => {
 }
 
 export default StateFacts
+
+export const Head = ({ data: { stateFactsPage } }) => {
+	let metaImage,
+		metaDescription = ''
+
+	stateFactsPage.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'Blog',
+		about: 'suicide',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: stateFactsPage.title,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${stateFactsPage.slug}`,
+	}
+
+	return (
+		<SEO
+			structuredData={structuredData}
+			meta={stateFactsPage.seoMetaTags}
+		/>
+	)
+}
 
 export const query = graphql`
 	query {
