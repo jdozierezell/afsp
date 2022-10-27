@@ -9,11 +9,12 @@ import CarouselChapterContainer from '../components/Carousels/CarouselChapterCon
 
 import { styles } from '../css/css'
 
+const urlParams =
+	typeof window !== `undefined`
+		? qs.parse(window.location.search.slice(1))
+		: null
+
 const SearchResults = () => {
-	const urlParams =
-		typeof window !== `undefined`
-			? qs.parse(window.location.search.slice(1))
-			: null
 	const [searchState, setSearchState] = useState(
 		urlParams ? { query: urlParams.query } : { query: '' }
 	)
@@ -67,6 +68,7 @@ const SearchResults = () => {
 export default SearchResults
 
 export const Head = () => {
+	const searchState = urlParams ? { query: urlParams.query } : { query: '' }
 	const structuredData = {
 		'@content': 'https://schema.org',
 		'@type': 'SearchAction',
