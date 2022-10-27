@@ -2,7 +2,6 @@ import React from 'react'
 import lifesaver from '../SVGs/Lifesaver.svg'
 
 export const SEO = ({ meta, structuredData, children }) => {
-	console.log(meta)
 	return (
 		<>
 			{meta.tags.map((tag, index) => {
