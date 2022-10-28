@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
 import Embed from '../components/Embed/Embed'
@@ -8,6 +9,18 @@ import Embed from '../components/Embed/Embed'
 import { styles } from '../css/css'
 
 const EmbedPage = ({ data: { embed } }) => {
+	embed.brief = embed.seo.description
+	return (
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
+			<HeroSolid data={embed} />
+			<Embed embed={embed.embed} />
+		</Layout>
+	)
+}
+
+export default EmbedPage
+
+export const Head = ({ data: { embed } }) => {
 	let metaImage,
 		metaDescription = ''
 	embed.seoMetaTags.tags.forEach(tag => {
@@ -39,23 +52,12 @@ const EmbedPage = ({ data: { embed } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${embed.slug}`,
 	}
-	embed.brief = embed.seo.description
-	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={embed.seoMetaTags}
-			structuredData={structuredData}
-		>
-			<HeroSolid data={embed} />
-			<Embed embed={embed.embed} />
-		</Layout>
-	)
+
+	return <SEO structuredData={structuredData} meta={embed.seoMetaTags} />
 }
 
-export default EmbedPage
-
 export const query = graphql`
-	query($slug: String) {
+	query ($slug: String) {
 		embed: datoCmsEmbedPage(slug: { eq: $slug }) {
 			title
 			slug

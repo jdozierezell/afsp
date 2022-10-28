@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import qs from 'qs'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroSearch from '../components/Hero/HeroSearch'
 import SearchDetail from '../components/Search/SearchDetail'
@@ -8,11 +9,12 @@ import CarouselChapterContainer from '../components/Carousels/CarouselChapterCon
 
 import { styles } from '../css/css'
 
+const urlParams =
+	typeof window !== `undefined`
+		? qs.parse(window.location.search.slice(1))
+		: null
+
 const SearchResults = () => {
-	const urlParams =
-		typeof window !== `undefined`
-			? qs.parse(window.location.search.slice(1))
-			: null
 	const [searchState, setSearchState] = useState(
 		urlParams ? { query: urlParams.query } : { query: '' }
 	)
@@ -42,32 +44,8 @@ const SearchResults = () => {
 		)
 	}
 
-	const structuredData = {
-		'@content': 'https://schema.org',
-		'@type': 'SearchAction',
-		about: 'site search',
-		description: 'Displays search results from afsp.org',
-		image: 'https://www.datocms-assets.com/12810/1565360975-stackedlogocolor.jpg?w=1000&fit=max&fm=jpg',
-		accessibilityAPI: 'ARIA',
-		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
-		name: `Search results for ${searchState.query} | AFSP`,
-		publisher: 'American Foundation for Suicide Prevention',
-		url: 'https://afsp.org/search_results',
-	}
-
 	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={{
-				tags: [
-					{
-						tagName: 'title',
-						content: `Search results for ${searchState.query} | AFSP`,
-					},
-				],
-			}}
-			structuredData={structuredData}
-		>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HeroSearch
 				data={{
 					title: searchState.query,
@@ -88,3 +66,33 @@ const SearchResults = () => {
 }
 
 export default SearchResults
+
+export const Head = () => {
+	const searchState = urlParams ? { query: urlParams.query } : { query: '' }
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'SearchAction',
+		about: 'site search',
+		description: 'Displays search results from afsp.org',
+		image: 'https://www.datocms-assets.com/12810/1565360975-stackedlogocolor.jpg?w=1000&fit=max&fm=jpg',
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: `Search results for ${searchState.query} | AFSP`,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: 'https://afsp.org/search_results',
+	}
+
+	return (
+		<SEO
+			structuredData={structuredData}
+			meta={{
+				tags: [
+					{
+						tagName: 'title',
+						content: `Search results for ${searchState.query} | AFSP`,
+					},
+				],
+			}}
+		/>
+	)
+}

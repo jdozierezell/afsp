@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
 import NavigationSide from '../components/Navigation/NavigationSide'
@@ -11,37 +12,6 @@ import { styles } from '../css/css'
 import customImageSize from '../utils/customImageSize'
 
 const Detail = ({ data: { detail } }) => {
-	let metaImage,
-		metaDescription = ''
-	detail.seoMetaTags.tags.forEach(tag => {
-		if (tag.attributes) {
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:image'
-			) {
-				metaImage = tag.attributes.content
-			}
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:description'
-			) {
-				metaDescription = tag.attributes.content
-			}
-		}
-	})
-	const structuredData = {
-		'@content': 'https://schema.org',
-		'@type': 'WebPage',
-		about: 'suicide',
-		description: metaDescription,
-		image: metaImage,
-		accessibilityAPI: 'ARIA',
-		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
-		name: detail.title,
-		lastReviewed: detail.meta.publishedAt,
-		publisher: 'American Foundation for Suicide Prevention',
-		url: `https://afsp.org/${detail.slug}`,
-	}
 	detail.details.forEach(detail => {
 		if (detail.__typename === 'DatoCmsImage') {
 			if (
@@ -80,11 +50,7 @@ const Detail = ({ data: { detail } }) => {
 		return true
 	})
 	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={detail.seoMetaTags}
-			structuredData={structuredData}
-		>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HeroSolid data={detail} programLogo={detail.programLogo} />
 			<NavigationSide data={detail} />
 			<ContentGeneric data={detail} navigation={navigation} />
@@ -94,6 +60,42 @@ const Detail = ({ data: { detail } }) => {
 }
 
 export default Detail
+
+export const Head = ({ data: { detail } }) => {
+	let metaImage,
+		metaDescription = ''
+	detail.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'suicide',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: detail.title,
+		lastReviewed: detail.meta.publishedAt,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${detail.slug}`,
+	}
+
+	return <SEO structuredData={structuredData} meta={detail.seoMetaTags} />
+}
 
 export const query = graphql`
 	query ($slug: String) {

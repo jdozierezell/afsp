@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/react'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroGrant from '../components/Hero/HeroGrant'
-
-import { styles } from '../css/css'
-
 import NavigationSide from '../components/Navigation/NavigationSide'
 import Content from '../components/Content/Content'
 import ContentHeading from '../components/Content/ContentHeading'
 import ContentModal from '../components/Content/ContentModal'
+
+import { styles } from '../css/css'
 
 const grantCSS = css`
 	@media (min-width: ${styles.screens.mobile}px) {
@@ -42,37 +42,7 @@ const Grant = ({ data: { grant } }) => {
 	const closeModal = () => {
 		setIsOpen(false)
 	}
-	let metaImage,
-		metaDescription = ''
-	grant.seoMetaTags.tags.forEach(tag => {
-		if (tag.attributes) {
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:image'
-			) {
-				metaImage = tag.attributes.content
-			}
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:description'
-			) {
-				metaDescription = tag.attributes.content
-			}
-		}
-	})
-	const structuredData = {
-		'@content': 'https://schema.org',
-		'@type': 'WebPage',
-		about: 'suicide',
-		description: metaDescription,
-		image: metaImage,
-		accessibilityAPI: 'ARIA',
-		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
-		name: grant.title,
-		lastReviewed: grant.meta.publishedAt,
-		publisher: 'American Foundation for Suicide Prevention',
-		url: `https://afsp.org/grant/${grant.slug}`,
-	}
+
 	grant.details = grant.grantDetails
 	useEffect(() => {
 		setGrantTop(
@@ -84,11 +54,7 @@ const Grant = ({ data: { grant } }) => {
 		)
 	}, [grantTop])
 	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={grant.seoMetaTags}
-			structuredData={structuredData}
-		>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<section css={grantCSS}>
 				<div id="grantContainer" css={heroCSS}>
 					<HeroGrant grant={grant} />
@@ -148,6 +114,42 @@ const Grant = ({ data: { grant } }) => {
 }
 
 export default Grant
+
+export const Head = ({ data: { grant } }) => {
+	let metaImage,
+		metaDescription = ''
+	grant.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'suicide',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: grant.title,
+		lastReviewed: grant.meta.publishedAt,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/grant/${grant.slug}`,
+	}
+
+	return <SEO structuredData={structuredData} meta={grant.seoMetaTags} />
+}
 
 export const query = graphql`
 	query ($slug: String) {

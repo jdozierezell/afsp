@@ -1,6 +1,5 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 import Header from './Header/Header'
 import EmailSignupBar from './EmailSignup/EmailSignupBar'
@@ -10,9 +9,6 @@ const Layout = ({
 	theme,
 	overrideLight,
 	children,
-	seo,
-	facebook,
-	structuredData,
 	hideEmailLayout,
 	customPadding,
 }) => {
@@ -41,14 +37,6 @@ const Layout = ({
 
 	return (
 		<>
-			<HelmetDatoCms seo={seo} favicon={data.site.faviconMetaTags}>
-				<html lang="en" />
-				<meta property="og:url" content={`${structuredData.url}/`} />
-				<meta property="fb:app_id" content="925475567867156" />
-				<script type="application/ld+json">
-					{JSON.stringify(structuredData)}
-				</script>
-			</HelmetDatoCms>
 			<Header
 				nav={headerNav}
 				theme={theme}

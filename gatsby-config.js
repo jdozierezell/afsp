@@ -6,7 +6,7 @@ module.exports = {
 	siteMetadata: {
 		title: `American Foundation for Suicide Prevention`,
 		description: `Save Lives and Bring Hope to Those Affected by Suicide`,
-		author: `@jdozierezell`,
+		twitterUsername: `@afspnational`,
 		siteUrl:
 			process.env.NODE_ENV === 'development'
 				? `http://localhost:8000`
@@ -14,7 +14,6 @@ module.exports = {
 	},
 	plugins: [
 		`gatsby-plugin-emotion`,
-		`gatsby-plugin-react-helmet`,
 		`gatsby-plugin-playground`,
 		`gatsby-plugin-image`,
 		`gatsby-plugin-sharp`,

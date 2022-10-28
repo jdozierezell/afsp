@@ -10,6 +10,7 @@ import parse from 'date-fns/parse'
 import startOfWeek from 'date-fns/startOfWeek'
 import getDay from 'date-fns/getDay'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import CalendarFilter from '../components/Calendar/CalendarFilter'
 import CalendarProgramDescriptions from '../components/Calendar/CalendarProgramDescriptions'
@@ -311,11 +312,7 @@ const AFSPCalendar = ({ data }) => {
 	}, [chapterFilter, programFilter, allEvents, focusedEvents])
 
 	return (
-		<Layout
-			theme={styles.logo.mobileDarkDesktopDark}
-			seo={data.calendar.seoMetaTags}
-			structuredData={structuredData}
-		>
+		<Layout theme={styles.logo.mobileDarkDesktopDark}>
 			<section css={calendarCSS}>
 				<p>
 					The program calendar provides information about programs
@@ -397,6 +394,44 @@ const AFSPCalendar = ({ data }) => {
 }
 
 export default AFSPCalendar
+
+export const Head = ({ data: { calendar } }) => {
+	let metaImage,
+		metaDescription = ''
+
+	calendar.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'suicide events',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: calendar.title,
+		lastReviewed: calendar.meta.publishedAt,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${calendar.slug}`,
+	}
+
+	return <SEO structuredData={structuredData} meta={calendar.seoMetaTags} />
+}
 
 export const query = graphql`
 	query {

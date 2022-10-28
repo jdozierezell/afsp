@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/react'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroStatistics from '../components/Hero/HeroStatistics'
 import StatisticsSummary from '../components/Statistics/StatisticsSummary'
@@ -14,37 +15,6 @@ import RecommendationsContentStories from '../components/Recommendations/Recomme
 import FeaturedResourcesContainer from '../components/FeaturedResources/FeaturedResourcesContainer'
 
 const SuicideStatistics = ({ data: { statistics } }) => {
-	let metaImage,
-		metaDescription = ''
-	statistics.seoMetaTags.tags.forEach(tag => {
-		if (tag.attributes) {
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:image'
-			) {
-				metaImage = tag.attributes.content
-			}
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:description'
-			) {
-				metaDescription = tag.attributes.content
-			}
-		}
-	})
-	const structuredData = {
-		'@content': 'https://schema.org',
-		'@type': 'WebPage',
-		specialty: 'suicide',
-		description: metaDescription,
-		image: metaImage,
-		accessibilityAPI: 'ARIA',
-		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
-		name: statistics.title,
-		lastReviewed: statistics.meta.publishedAt,
-		publisher: 'American Foundation for Suicide Prevention',
-		url: `https://afsp.org/${statistics.slug}`,
-	}
 	statistics.stateData = {
 		url: 'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2020-suicide-state.csv',
 	}
@@ -59,11 +29,7 @@ const SuicideStatistics = ({ data: { statistics } }) => {
 	}
 
 	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={statistics.seoMetaTags}
-			structuredData={structuredData}
-		>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HeroStatistics data={statistics} />
 			<StatisticsSummary data={statistics} />
 			<StatisticsContainer data={statistics} />
@@ -102,6 +68,42 @@ const SuicideStatistics = ({ data: { statistics } }) => {
 }
 
 export default SuicideStatistics
+
+export const Head = ({ data: { statistics } }) => {
+	let metaImage,
+		metaDescription = ''
+	statistics.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		specialty: 'suicide',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: statistics.title,
+		lastReviewed: statistics.meta.publishedAt,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${statistics.slug}`,
+	}
+
+	return <SEO structuredData={structuredData} meta={statistics.seoMetaTags} />
+}
 
 export const query = graphql`
 	query {

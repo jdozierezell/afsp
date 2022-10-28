@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import axios from 'axios'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroModelSearch from '../components/Hero/HeroModelSearch'
 import SearchModelContainer from '../components/Search/SearchModelContainer'
@@ -11,37 +12,6 @@ import CTAContainer from '../components/CTAs/CTAContainer'
 import { styles } from '../css/css'
 
 const FindALocalChapter = ({ data: { search }, location }) => {
-	let metaImage,
-		metaDescription = ''
-	search.seoMetaTags.tags.forEach(tag => {
-		if (tag.attributes) {
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:image'
-			) {
-				metaImage = tag.attributes.content
-			}
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:description'
-			) {
-				metaDescription = tag.attributes.content
-			}
-		}
-	})
-	const structuredData = {
-		'@content': 'https://schema.org',
-		'@type': 'SearchAction',
-		about: 'find a local chapter of AFSP',
-		description: metaDescription,
-		image: metaImage,
-		accessibilityAPI: 'ARIA',
-		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
-		name: search.title,
-		publisher: 'American Foundation for Suicide Prevention',
-		url: `https://afsp.org/${search.slug}`,
-	}
-
 	const queryString = location.search
 	const query = new URLSearchParams(queryString)
 	const [radius, setRadius] = useState(
@@ -110,11 +80,7 @@ const FindALocalChapter = ({ data: { search }, location }) => {
 	}, [firstRun, radius, zip])
 
 	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={search.seoMetaTags}
-			structuredData={structuredData}
-		>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HeroModelSearch
 				title={search.title}
 				description={search.brief}
@@ -145,6 +111,43 @@ const FindALocalChapter = ({ data: { search }, location }) => {
 }
 
 export default FindALocalChapter
+
+export const Head = ({ data: { search } }) => {
+	let metaImage,
+		metaDescription = ''
+
+	search.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'SearchAction',
+		about: 'find a local chapter of AFSP',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: search.title,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${search.slug}`,
+	}
+
+	return <SEO structuredData={structuredData} meta={search.seoMetaTags} />
+}
 
 export const query = graphql`
 	query {

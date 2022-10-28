@@ -8,6 +8,7 @@ import {
 } from 'use-query-params'
 import axios from 'axios'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroModelSearch from '../components/Hero/HeroModelSearch'
 import SearchModelContainer from '../components/Search/SearchModelContainer'
@@ -19,37 +20,6 @@ const FindASupportGroup = ({
 	data: { search, datoSupportGroups },
 	location,
 }) => {
-	let metaImage,
-		metaDescription = ''
-	search.seoMetaTags.tags.forEach(tag => {
-		if (tag.attributes) {
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:image'
-			) {
-				metaImage = tag.attributes.content
-			}
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:description'
-			) {
-				metaDescription = tag.attributes.content
-			}
-		}
-	})
-	const structuredData = {
-		'@content': 'https://schema.org',
-		'@type': 'SearchAction',
-		about: 'find a support group',
-		description: metaDescription,
-		image: metaImage,
-		accessibilityAPI: 'ARIA',
-		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
-		name: search.title,
-		publisher: 'American Foundation for Suicide Prevention',
-		url: `https://afsp.org/${search.slug}`,
-	}
-
 	const queryString = location.search
 	const query = new URLSearchParams(queryString)
 
@@ -189,11 +159,7 @@ const FindASupportGroup = ({
 	}, [firstRun, nonus, radius, zip, datoSupportGroups])
 
 	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={search.seoMetaTags}
-			structuredData={structuredData}
-		>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HeroModelSearch
 				title={search.title}
 				description={search.brief}
@@ -239,6 +205,43 @@ const FindASupportGroup = ({
 }
 
 export default FindASupportGroup
+
+export const Head = ({ data: { search } }) => {
+	let metaImage,
+		metaDescription = ''
+
+	search.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'SearchAction',
+		about: 'find a local chapter of AFSP',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: search.title,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${search.slug}`,
+	}
+
+	return <SEO structuredData={structuredData} meta={search.seoMetaTags} />
+}
 
 export const query = graphql`
 	query {

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import qs from 'qs'
 import { graphql } from 'gatsby'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
 import SearchResearch from '../components/Search/SearchResearch'
@@ -11,37 +12,6 @@ import searchURL from '../utils/searchURL'
 import { styles } from '../css/css'
 
 const ResearchGrants = ({ data: { grantsPage } }) => {
-	let metaImage,
-		metaDescription = ''
-	grantsPage.seoMetaTags.tags.forEach(tag => {
-		if (tag.attributes) {
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:image'
-			) {
-				metaImage = tag.attributes.content
-			}
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:description'
-			) {
-				metaDescription = tag.attributes.content
-			}
-		}
-	})
-	const structuredData = {
-		'@content': 'https://schema.org',
-		'@type': 'SearchAction',
-		about: 'suicide research grants',
-		description: metaDescription,
-		image: metaImage,
-		accessibilityAPI: 'ARIA',
-		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
-		name: grantsPage.title,
-		publisher: 'American Foundation for Suicide Prevention',
-		url: `https://afsp.org/${grantsPage.slug}`,
-	}
-
 	let query =
 		typeof window !== `undefined`
 			? qs.parse(window.location.search.slice(1))
@@ -79,11 +49,7 @@ const ResearchGrants = ({ data: { grantsPage } }) => {
 		searchURL(tempSearch)
 	}
 	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={grantsPage.seoMetaTags}
-			structuredData={structuredData}
-		>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HeroSolid data={grantsPage} />
 			<SearchResearch
 				searchState={searchState}
@@ -102,6 +68,43 @@ const ResearchGrants = ({ data: { grantsPage } }) => {
 }
 
 export default ResearchGrants
+
+export const Head = ({ data: { grantsPage } }) => {
+	let metaImage,
+		metaDescription = ''
+
+	grantsPage.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'SearchAction',
+		about: 'suicide research grants',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: grantsPage.title,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${grantsPage.slug}`,
+	}
+	console.log(grantsPage.seoMetaTags)
+	return <SEO structuredData={structuredData} meta={grantsPage.seoMetaTags} />
+}
 
 export const query = graphql`
 	query {

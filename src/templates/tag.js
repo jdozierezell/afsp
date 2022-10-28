@@ -6,11 +6,28 @@ import HeroSolid from '../components/Hero/HeroSolid'
 import StoriesContainer from '../components/Stories/StoriesContainer'
 
 import { styles } from '../css/css'
+import { SEO } from '../components/SEO/SEO'
 
 const Tag = ({ data: { stories }, pageContext: { title, slug } }) => {
 	const heroData = {
 		title: `Tagged: ${title}`,
 	}
+
+	return (
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
+			<HeroSolid data={heroData} />
+			<StoriesContainer
+				stories={stories.edges}
+				more={true}
+				initialDisplay="3"
+			/>
+		</Layout>
+	)
+}
+
+export default Tag
+
+export const Head = ({ pageContext: { title, slug } }) => {
 	const seoTags = {
 		tags: [
 			{
@@ -170,23 +187,9 @@ const Tag = ({ data: { stories }, pageContext: { title, slug } }) => {
 		affiliation: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/tag/${slug}`,
 	}
-	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={seoTags}
-			structuredData={structuredData}
-		>
-			<HeroSolid data={heroData} />
-			<StoriesContainer
-				stories={stories.edges}
-				more={true}
-				initialDisplay="3"
-			/>
-		</Layout>
-	)
-}
 
-export default Tag
+	return <SEO structuredData={structuredData} meta={seoTags} />
+}
 
 export const query = graphql`
 	query ($slug: String) {

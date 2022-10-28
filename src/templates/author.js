@@ -1,17 +1,33 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
 import StoriesContainer from '../components/Stories/StoriesContainer'
 
 import { styles } from '../css/css'
 
-const Tag = ({ data: { stories }, pageContext: { title, slug } }) => {
+const Tag = ({ data: { stories }, pageContext: { title } }) => {
 	const heroData = {
 		title: `Stories written by ${title}`,
 	}
 
+	return (
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
+			<HeroSolid data={heroData} />
+			<StoriesContainer
+				stories={stories.edges}
+				more={`${title}s`}
+				initialDisplay="3"
+			/>
+		</Layout>
+	)
+}
+
+export default Tag
+
+export const Head = ({ pageContext: { title, slug } }) => {
 	const seoTags = {
 		tags: [
 			{
@@ -172,24 +188,7 @@ const Tag = ({ data: { stories }, pageContext: { title, slug } }) => {
 		affiliation: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/author/${slug}`,
 	}
-
-	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={seoTags}
-			structuredData={structuredData}
-		>
-			<HeroSolid data={heroData} />
-			<StoriesContainer
-				stories={stories.edges}
-				more={`${title}s`}
-				initialDisplay="3"
-			/>
-		</Layout>
-	)
 }
-
-export default Tag
 
 export const query = graphql`
 	query ($slug: String) {

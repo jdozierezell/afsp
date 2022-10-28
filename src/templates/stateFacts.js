@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/react'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroFacts from '../components/Hero/HeroFacts'
 import NavigationSide from '../components/Navigation/NavigationSide'
@@ -16,37 +17,7 @@ const carouselCSS = css`
 
 const StateFacts = ({ data: { stateFacts } }) => {
 	const [factsTop, setFactsTop] = useState(null)
-	let metaImage,
-		metaDescription = ''
-	stateFacts.seoMetaTags.tags.forEach(tag => {
-		if (tag.attributes) {
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:image'
-			) {
-				metaImage = tag.attributes.content
-			}
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:description'
-			) {
-				metaDescription = tag.attributes.content
-			}
-		}
-	})
-	const structuredData = {
-		'@content': 'https://schema.org',
-		'@type': 'WebPage',
-		about: 'suicide public policy',
-		description: metaDescription,
-		image: metaImage,
-		accessibilityAPI: 'ARIA',
-		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
-		name: stateFacts.state,
-		lastReviewed: stateFacts.meta.publishedAt,
-		publisher: 'American Foundation for Suicide Prevention',
-		url: `https://afsp.org/facts/${stateFacts.slug}`,
-	}
+
 	stateFacts.facts = [
 		{
 			__typename: 'stateFactCategory',
@@ -262,11 +233,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 	}, [factsTop])
 
 	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={stateFacts.seoMetaTags}
-			structuredData={structuredData}
-		>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<div id="factsContainer">
 				<HeroFacts stateFacts={stateFacts}></HeroFacts>
 			</div>
@@ -280,6 +247,42 @@ const StateFacts = ({ data: { stateFacts } }) => {
 }
 
 export default StateFacts
+
+export const Head = ({ data: { stateFacts } }) => {
+	let metaImage,
+		metaDescription = ''
+	stateFacts.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'suicide public policy',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: stateFacts.state,
+		lastReviewed: stateFacts.meta.publishedAt,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/facts/${stateFacts.slug}`,
+	}
+
+	return <SEO structuredData={structuredData} meta={stateFacts.seoMetaTags} />
+}
 
 export const query = graphql`
 	query ($slug: String) {

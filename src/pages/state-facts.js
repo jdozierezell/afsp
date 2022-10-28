@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
 import FactsListContainer from '../components/StateFacts/FactsListContainer'
@@ -9,8 +10,22 @@ import { styles } from '../css/css'
 import { sitewide } from '../utils/sitewideVariables'
 
 const StateFacts = ({ data: { stateFactsPage, stateFacts } }) => {
+	stateFactsPage.brief = `${stateFactsPage.brief} Updated: ${sitewide.stateFactsUpdate}.`
+
+	return (
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
+			<HeroSolid data={stateFactsPage} />
+			<FactsListContainer stateFacts={stateFacts.edges} />
+		</Layout>
+	)
+}
+
+export default StateFacts
+
+export const Head = ({ data: { stateFactsPage } }) => {
 	let metaImage,
 		metaDescription = ''
+
 	stateFactsPage.seoMetaTags.tags.forEach(tag => {
 		if (tag.attributes) {
 			if (
@@ -27,6 +42,7 @@ const StateFacts = ({ data: { stateFactsPage, stateFacts } }) => {
 			}
 		}
 	})
+
 	const structuredData = {
 		'@content': 'https://schema.org',
 		'@type': 'WebPage',
@@ -41,21 +57,13 @@ const StateFacts = ({ data: { stateFactsPage, stateFacts } }) => {
 		url: `https://afsp.org/${stateFactsPage.slug}`,
 	}
 
-	stateFactsPage.brief = `${stateFactsPage.brief} Updated: ${sitewide.stateFactsUpdate}.`
-
 	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={stateFactsPage.seoMetaTags}
+		<SEO
 			structuredData={structuredData}
-		>
-			<HeroSolid data={stateFactsPage} />
-			<FactsListContainer stateFacts={stateFacts.edges} />
-		</Layout>
+			meta={stateFactsPage.seoMetaTags}
+		/>
 	)
 }
-
-export default StateFacts
 
 export const query = graphql`
 	query {

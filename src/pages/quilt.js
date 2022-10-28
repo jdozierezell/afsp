@@ -3,6 +3,7 @@ import qs from 'qs'
 import { css } from '@emotion/react'
 import { graphql } from 'gatsby'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroImage from '../components/Hero/HeroImage'
 import SearchQuilts from '../components/Search/SearchQuilts'
@@ -21,38 +22,6 @@ const containerCSS = css`
 `
 
 const Quilt = ({ data: { quiltQuery } }) => {
-	let metaImage,
-		metaDescription = ''
-	quiltQuery.seoMetaTags.tags.forEach(tag => {
-		if (tag.attributes) {
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:image'
-			) {
-				metaImage = tag.attributes.content
-			}
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:description'
-			) {
-				metaDescription = tag.attributes.content
-			}
-		}
-	})
-	const structuredData = {
-		'@content': 'https://schema.org',
-		'@type': 'WebPage',
-		about: 'suicide loss memory quilt',
-		description: metaDescription,
-		image: metaImage,
-		accessibilityAPI: 'ARIA',
-		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
-		name: quiltQuery.title,
-		author: 'American Foundation for Suicide Prevention',
-		publisher: 'American Foundation for Suicide Prevention',
-		url: `https://afsp.org/${quiltQuery.slug}`,
-	}
-
 	const urlParams =
 		typeof window !== `undefined`
 			? qs.parse(window.location.search.slice(1))
@@ -79,11 +48,7 @@ const Quilt = ({ data: { quiltQuery } }) => {
 		)
 	}
 	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={quiltQuery.seoMetaTags}
-			structuredData={structuredData}
-		>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HeroImage
 				title={quiltQuery.title}
 				heroImage={quiltQuery.heroImage}
@@ -101,6 +66,44 @@ const Quilt = ({ data: { quiltQuery } }) => {
 }
 
 export default Quilt
+
+export const Head = ({ data: { quiltQuery } }) => {
+	let metaImage,
+		metaDescription = ''
+
+	quiltQuery.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'suicide loss memory quilt',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: quiltQuery.title,
+		author: 'American Foundation for Suicide Prevention',
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${quiltQuery.slug}`,
+	}
+
+	return <SEO structuredData={structuredData} meta={quiltQuery.seoMetaTags} />
+}
 
 export const query = graphql`
 	query {

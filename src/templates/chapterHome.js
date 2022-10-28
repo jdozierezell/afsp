@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import fetch from 'isomorphic-fetch'
 import dayjs from 'dayjs'
-import { css } from '@emotion/react'
 
+import { SEO } from '../components/SEO/SEO'
 import LayoutChapter from '../components/LayoutChapter'
 import HeroChapter from '../components/Hero/HeroChapter'
 import ChapterAboutContact from '../components/Chapter/ChapterAboutContact'
@@ -39,38 +39,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 		chapterInformation,
 		trackingCode,
 	} = chapter
-
-	let metaImage,
-		metaDescription = ''
-	chapter.seoMetaTags.tags.forEach(tag => {
-		if (tag.attributes) {
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:image'
-			) {
-				metaImage = tag.attributes.content
-			}
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:description'
-			) {
-				metaDescription = tag.attributes.content
-			}
-		}
-	})
-	const structuredData = {
-		'@content': 'https://schema.org',
-		'@type': 'WebPage',
-		about: 'suicide',
-		description: metaDescription,
-		image: metaImage,
-		accessibilityAPI: 'ARIA',
-		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
-		name: chapter.title,
-		lastReviewed: chapter.meta.publishedAt,
-		publisher: 'American Foundation for Suicide Prevention',
-		url: `https://afsp.org/chapter/${chapter.slug}`,
-	}
 
 	const chapterDonorDriveId = chapterInformation.chapterDonorDriveId
 		.replace(' ', '')
@@ -238,8 +206,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			theme={styles.logo.mobileLightDesktopLight}
 			instagram={chapterInformation.instagramClass}
 			email={chapterInformation.chapterEmailApiKey}
-			seo={chapter.seoMetaTags}
-			structuredData={structuredData}
 		>
 			<HeroChapter
 				title={title}
@@ -307,6 +273,42 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 }
 
 export default Chapter
+
+export const Head = ({ data: { chapter } }) => {
+	let metaImage,
+		metaDescription = ''
+	chapter.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'suicide',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: chapter.title,
+		lastReviewed: chapter.meta.publishedAt,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/chapter/${chapter.slug}`,
+	}
+
+	return <SEO structuredData={structuredData} meta={chapter.seoMetaTags} />
+}
 
 export const query = graphql`
 	query ($slug: String, $tag: String) {

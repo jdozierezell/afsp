@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/react'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroStories from '../components/Hero/HeroStories'
 import ContentStory from '../components/Content/ContentStory'
@@ -20,39 +21,7 @@ const carouselCSS = css`
 	}
 `
 
-const Story = ({ data: { story }, pageContext: { prev, next } }) => {
-	let metaImage,
-		metaDescription = ''
-	story.seoMetaTags.tags.forEach(tag => {
-		if (tag.attributes) {
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:image'
-			) {
-				metaImage = tag.attributes.content
-			}
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:description'
-			) {
-				metaDescription = tag.attributes.content
-			}
-		}
-	})
-	const pageUrl = `https://afsp.org/story/${story.slug}`
-	const structuredData = {
-		'@context': 'https://schema.org',
-		'@type': 'Article',
-		image: metaImage,
-		accessibilityAPI: 'ARIA',
-		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
-		headline: story.title,
-		datePublished: story.meta.firstPublishedAt,
-		dateModified: story.meta.publishedAt,
-		abstract: metaDescription,
-		publisher: 'American Foundation for Suicide Prevention',
-		url: pageUrl,
-	}
+const Story = ({ data: { story }, pageContext: { prev, next }, location }) => {
 	story.article.forEach(article => {
 		if (article.__typename === 'DatoCmsImage') {
 			if (
@@ -73,21 +42,51 @@ const Story = ({ data: { story }, pageContext: { prev, next } }) => {
 		}
 	})
 	return (
-		<Layout
-			theme={styles.logo.mobileDarkDesktopLight}
-			overrideLight={true}
-			seo={story.seoMetaTags}
-			facebook={true}
-			structuredData={structuredData}
-		>
+		<Layout theme={styles.logo.mobileDarkDesktopLight} overrideLight={true}>
 			<HeroStories data={story} prev={prev} next={next} />
-			<ContentStory data={story} pageUrl={pageUrl} />
+			<ContentStory data={story} pageUrl={location.href} />
 			<CarouselChapterContainer carouselCSS={carouselCSS} />
 		</Layout>
 	)
 }
 
 export default Story
+
+export const Head = ({ data: { story } }) => {
+	let metaImage,
+		metaDescription = ''
+	story.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@context': 'https://schema.org',
+		'@type': 'Article',
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		headline: story.title,
+		datePublished: story.meta.firstPublishedAt,
+		dateModified: story.meta.publishedAt,
+		abstract: metaDescription,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/story/${story.slug}`,
+	}
+
+	return <SEO structuredData={structuredData} meta={story.seoMetaTags} />
+}
 
 export const query = graphql`
 	query ($slug: String) {

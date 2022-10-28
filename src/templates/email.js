@@ -1,12 +1,30 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import EmailLanding from '../components/EmailSignup/EmailLanding'
 
 import { styles } from '../css/css'
 
 const Email = ({ data: { email } }) => {
+	return (
+		<Layout
+			theme={styles.logo.mobileDarkDesktopDark}
+			hideEmailLayout={true}
+		>
+			<EmailLanding
+				callToAction={email.callToAction}
+				callToActionImage={email.callToActionImage}
+				embedHtml={email.embedHtml}
+			/>
+		</Layout>
+	)
+}
+
+export default Email
+
+export const Head = ({ data: { email } }) => {
 	let metaImage,
 		metaDescription = ''
 	email.seoMetaTags.tags.forEach(tag => {
@@ -38,23 +56,9 @@ const Email = ({ data: { email } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${email.slug}`,
 	}
-	return (
-		<Layout
-			theme={styles.logo.mobileDarkDesktopDark}
-			seo={email.seoMetaTags}
-			structuredData={structuredData}
-			hideEmailLayout={true}
-		>
-			<EmailLanding
-				callToAction={email.callToAction}
-				callToActionImage={email.callToActionImage}
-				embedHtml={email.embedHtml}
-			/>
-		</Layout>
-	)
-}
 
-export default Email
+	return <SEO structuredData={structuredData} meta={email.seoMetaTags} />
+}
 
 export const query = graphql`
 	query ($slug: String) {

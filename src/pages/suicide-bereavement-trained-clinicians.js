@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import qs from 'qs'
 import { graphql } from 'gatsby'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
 import SearchSbtClinicians from '../components/Search/SearchSbtClinicians'
@@ -13,37 +14,6 @@ import { styles } from '../css/css'
 import CTAContainer from '../components/CTAs/CTAContainer'
 
 const SuicideBereavementTrainedClinicians = ({ data: { search } }) => {
-	let metaImage,
-		metaDescription = ''
-	search.seoMetaTags.tags.forEach(tag => {
-		if (tag.attributes) {
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:image'
-			) {
-				metaImage = tag.attributes.content
-			}
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:description'
-			) {
-				metaDescription = tag.attributes.content
-			}
-		}
-	})
-	const structuredData = {
-		'@content': 'https://schema.org',
-		'@type': 'SearchAction',
-		about: 'suicide bereavement trained clinicians',
-		description: metaDescription,
-		image: metaImage,
-		accessibilityAPI: 'ARIA',
-		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
-		name: search.title,
-		publisher: 'American Foundation for Suicide Prevention',
-		url: `https://afsp.org/${search.slug}`,
-	}
-
 	let query =
 		typeof window !== `undefined`
 			? qs.parse(window.location.search.slice(1))
@@ -79,11 +49,7 @@ const SuicideBereavementTrainedClinicians = ({ data: { search } }) => {
 	}
 
 	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={search.seoMetaTags}
-			structuredData={structuredData}
-		>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HeroSolid data={search} />
 			<SearchSbtClinicians
 				searchState={searchState}
@@ -101,6 +67,41 @@ const SuicideBereavementTrainedClinicians = ({ data: { search } }) => {
 }
 
 export default SuicideBereavementTrainedClinicians
+
+export const Head = ({ data: { search } }) => {
+	let metaImage,
+		metaDescription = ''
+	search.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'SearchAction',
+		about: 'suicide bereavement trained clinicians',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: search.title,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${search.slug}`,
+	}
+
+	return <SEO structuredData={structuredData} meta={search.seoMetaTags} />
+}
 
 export const query = graphql`
 	query {

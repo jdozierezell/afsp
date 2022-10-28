@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
 import NavigationSide from '../components/Navigation/NavigationSide'
@@ -11,37 +12,6 @@ import { styles } from '../css/css'
 import customImageSize from '../utils/customImageSize'
 
 const DetailTagged = ({ data: { tagged, stories }, pageContext }) => {
-	let metaImage,
-		metaDescription = ''
-	tagged.seoMetaTags.tags.forEach(tag => {
-		if (tag.attributes) {
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:image'
-			) {
-				metaImage = tag.attributes.content
-			}
-			if (
-				tag.attributes.property &&
-				tag.attributes.property === 'og:description'
-			) {
-				metaDescription = tag.attributes.content
-			}
-		}
-	})
-	const structuredData = {
-		'@content': 'https://schema.org',
-		'@type': 'WebPage',
-		about: 'suicide',
-		description: metaDescription,
-		image: metaImage,
-		accessibilityAPI: 'ARIA',
-		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
-		name: tagged.title,
-		lastReviewed: tagged.meta.publishedAt,
-		publisher: 'American Foundation for Suicide Prevention',
-		url: `https://afsp.org/${tagged.slug}`,
-	}
 	tagged.details.forEach(detail => {
 		if (detail.__typename === 'DatoCmsImage') {
 			if (
@@ -76,11 +46,7 @@ const DetailTagged = ({ data: { tagged, stories }, pageContext }) => {
 		})
 	}, [stories, pageContext.tag])
 	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={tagged.seoMetaTags}
-			structuredData={structuredData}
-		>
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HeroSolid data={tagged} />
 			<NavigationSide data={tagged} />
 			<ContentGeneric data={tagged} />
@@ -96,6 +62,42 @@ const DetailTagged = ({ data: { tagged, stories }, pageContext }) => {
 }
 
 export default DetailTagged
+
+export const Head = ({ data: { tagged } }) => {
+	let metaImage,
+		metaDescription = ''
+	tagged.seoMetaTags.tags.forEach(tag => {
+		if (tag.attributes) {
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:image'
+			) {
+				metaImage = tag.attributes.content
+			}
+			if (
+				tag.attributes.property &&
+				tag.attributes.property === 'og:description'
+			) {
+				metaDescription = tag.attributes.content
+			}
+		}
+	})
+	const structuredData = {
+		'@content': 'https://schema.org',
+		'@type': 'WebPage',
+		about: 'suicide',
+		description: metaDescription,
+		image: metaImage,
+		accessibilityAPI: 'ARIA',
+		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
+		name: tagged.title,
+		lastReviewed: tagged.meta.publishedAt,
+		publisher: 'American Foundation for Suicide Prevention',
+		url: `https://afsp.org/${tagged.slug}`,
+	}
+
+	return <SEO structuredData={structuredData} meta={tagged.seoMetaTags} />
+}
 
 export const query = graphql`
 	query ($slug: String, $tag: String) {

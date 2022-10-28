@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
 import NavigationSide from '../components/Navigation/NavigationSide'
@@ -9,6 +10,29 @@ import ImageListContainer from '../components/ImageList/ImageListContainer'
 import { styles } from '../css/css'
 
 const ImageList = ({ data: { imageList } }) => {
+	imageList.details = imageList.images
+	let navigation = false
+	imageList.details.forEach(detail => {
+		if (detail.__typename === 'DatoCmsImageSectionHeader' && !navigation) {
+			navigation = true
+		}
+	})
+	return (
+		<Layout theme={styles.logo.mobileLightDesktopLight}>
+			<HeroSolid data={imageList} />
+			{navigation && <NavigationSide data={imageList} />}
+			<ImageListContainer
+				images={imageList.images}
+				crop={imageList.croppedImage}
+				navigation={navigation}
+			/>
+		</Layout>
+	)
+}
+
+export default ImageList
+
+export const Head = ({ data: { imageList } }) => {
 	let metaImage,
 		metaDescription = ''
 	imageList.seoMetaTags.tags.forEach(tag => {
@@ -40,31 +64,9 @@ const ImageList = ({ data: { imageList } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${imageList.slug}`,
 	}
-	imageList.details = imageList.images
-	let navigation = false
-	imageList.details.forEach(detail => {
-		if (detail.__typename === 'DatoCmsImageSectionHeader' && !navigation) {
-			navigation = true
-		}
-	})
-	return (
-		<Layout
-			theme={styles.logo.mobileLightDesktopLight}
-			seo={imageList.seoMetaTags}
-			structuredData={structuredData}
-		>
-			<HeroSolid data={imageList} />
-			{navigation && <NavigationSide data={imageList} />}
-			<ImageListContainer
-				images={imageList.images}
-				crop={imageList.croppedImage}
-				navigation={navigation}
-			/>
-		</Layout>
-	)
-}
 
-export default ImageList
+	return <SEO structuredData={structuredData} meta={imageList.seoMetaTags} />
+}
 
 export const query = graphql`
 	query ($slug: String) {
