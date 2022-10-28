@@ -162,6 +162,28 @@ export const ResourceList = graphql`
 					}
 				}
 			}
+			... on DatoCmsRealStory {
+				__typename
+				id
+				title
+				slug
+				seo {
+					description
+					image {
+						url
+						gatsbyImageData(
+							width: 600
+							placeholder: NONE
+							imgixParams: {
+								fill: "blur"
+								fit: "fill"
+								w: "600"
+								h: "370"
+							}
+						)
+					}
+				}
+			}
 			... on DatoCmsStory {
 				__typename
 				id
