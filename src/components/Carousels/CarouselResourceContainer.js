@@ -77,22 +77,25 @@ const CarouselResourceContainer = ({
 			<p>{listHeading}</p>
 			<Carousel responsive={responsive}>
 				{resources.map((resource, index) => {
+					console.log(resource)
 					let title, image, imageFallback, link, linkText, external
 					title = resource.title
-					if (resource.__typename === 'DatoCmsStory') {
+					if (resource.__typename === 'DatoCmsBio') {
+						title = `${resource.name}, ${title}`
 						image = resource.seo.image
-						link = `/story/${resource.slug}`
-						linkText = 'Learn more'
+						link = `/bio/${resource.slug}`
+						const titleWords = title.split(' ')
+						linkText = `Meet ${titleWords[0]}`
 						external = false
 					} else if (
+						resource.__typename === 'DatoCmsCustomShareable' ||
 						resource.__typename === 'DatoCmsDetail' ||
 						resource.__typename === 'DatoCmsDetailTagged' ||
-						resource.__typename === 'DatoCmsLanding' ||
-						resource.__typename === 'DatoCmsCustomShareable' ||
-						resource.__typename === 'DatoCmsStatistic' ||
 						resource.__typename === 'DatoCmsImageList' ||
+						resource.__typename === 'DatoCmsLanding' ||
 						resource.__typename === 'DatoCmsQuilt' ||
-						resource.__typename === 'DatoCmsStateFactsPage'
+						resource.__typename === 'DatoCmsStateFactsPage' ||
+						resource.__typename === 'DatoCmsStatistic'
 					) {
 						image = resource.seo.image
 						link = `/${resource.slug}`
@@ -123,6 +126,11 @@ const CarouselResourceContainer = ({
 								linkText = 'Learn more'
 								external = true
 							}
+						} else if (resource.__typename === 'DatoCmsStory') {
+							image = resource.seo.image
+							link = `/story/${resource.slug}`
+							linkText = 'Learn more'
+							external = false
 						} else {
 							image = resource.coverImage
 						}
