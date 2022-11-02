@@ -155,6 +155,7 @@ export const query = graphql`
 	query ($slug: String) {
 		grant: datoCmsGrant(slug: { eq: $slug }) {
 			title
+			slug
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}

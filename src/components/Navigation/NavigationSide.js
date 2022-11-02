@@ -101,7 +101,7 @@ const NavigationSide = ({
 			return ''
 		})
 	}
-
+	console.log(headings)
 	const asideRef = useRef(null)
 	const [position, setPosition] = useState('absolute')
 	const [top, setTop] = useState(topStart ? `${topStart}px` : '220px')
@@ -142,6 +142,7 @@ const NavigationSide = ({
 						<li key={index}>
 							{navRoot ? (
 								<a href={`${navRoot}#${heading.anchor}`}>
+									{console.log(navRoot)}
 									<span
 										dangerouslySetInnerHTML={{
 											__html: heading.heading,
