@@ -124,7 +124,16 @@ const NavigationSide = ({
 		window.addEventListener('scroll', handleScroll)
 		return () => window.removeEventListener('scroll', handleScroll)
 	})
+
 	if (headings.length > 1) {
+		let slug = ''
+		console.log(slug)
+		if (data.__typename === 'DatoCmsGrant') {
+			slug = `grant/${data.slug}`
+		} else {
+			slug = data.slug
+		}
+		console.log(slug)
 		return (
 			<aside
 				css={css`
@@ -142,7 +151,6 @@ const NavigationSide = ({
 						<li key={index}>
 							{navRoot ? (
 								<a href={`${navRoot}#${heading.anchor}`}>
-									{console.log(navRoot)}
 									<span
 										dangerouslySetInnerHTML={{
 											__html: heading.heading,
@@ -150,7 +158,7 @@ const NavigationSide = ({
 									/>
 								</a>
 							) : (
-								<a href={`/${data.slug}#${heading.anchor}`}>
+								<a href={`/${slug}#${heading.anchor}`}>
 									<span
 										dangerouslySetInnerHTML={{
 											__html: heading.heading,
