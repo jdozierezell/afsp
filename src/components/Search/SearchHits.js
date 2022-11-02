@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { css } from '@emotion/react'
 import { connectInfiniteHits, Configure } from 'react-instantsearch-dom'
 
+import IconStarResearch from '../SVGs/IconStarResearch'
+
 import { styles } from '../../css/css'
 
 const hitCSS = css`
@@ -50,17 +52,34 @@ const videoWrapperCSS = css`
 	}
 `
 
+const hitImageWrapperCSS = css`
+	position: relative;
+	img {
+		display: block;
+	}
+`
+
 const CustomHits = data => {
 	const [display, setDisplay] = useState(20)
 	return (
 		<>
 			<Configure hitsPerPage={display} />
-			{data.indexName !== 'afsporg-research-videos' && (
+			{data.indexName === 'afsporg-grant' && (
 				<ul css={data.customHitsCSS}>
 					{data.hits.map(hit => (
 						<li key={hit.objectID} data-type={hit.type}>
 							<a href={hit.url} css={hitCSS}>
-								<img src={hit.image} alt="result thumbnail" />
+								<div css={hitImageWrapperCSS}>
+									<img
+										src={hit.image}
+										alt="result thumbnail"
+									/>
+									{hit.featured && (
+										<IconStarResearch
+											color={styles.colors.blue}
+										/>
+									)}
+								</div>
 								<p
 									dangerouslySetInnerHTML={{
 										__html: hit.title,
@@ -100,6 +119,26 @@ const CustomHits = data => {
 					))}
 				</ul>
 			)}
+			{data.indexName !== 'afsporg-research-videos' &&
+				data.indexName !== 'afsporg-grant' && (
+					<ul css={data.customHitsCSS}>
+						{data.hits.map(hit => (
+							<li key={hit.objectID} data-type={hit.type}>
+								<a href={hit.url} css={hitCSS}>
+									<img
+										src={hit.image}
+										alt="result thumbnail"
+									/>
+									<p
+										dangerouslySetInnerHTML={{
+											__html: hit.title,
+										}}
+									></p>
+								</a>
+							</li>
+						))}
+					</ul>
+				)}
 			{data.hasMore && (
 				<button
 					className="secondary-button"

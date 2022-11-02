@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import HeroSolid from '../components/Hero/HeroSolid'
-import SearchResearch from '../components/Search/SearchResearch'
+import { SearchResearchGrants } from '../components/Search/SearchResearchGrants'
 
 import searchURL from '../utils/searchURL'
 
@@ -51,7 +51,7 @@ const ResearchGrants = ({ data: { grantsPage } }) => {
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HeroSolid data={grantsPage} />
-			<SearchResearch
+			<SearchResearchGrants
 				searchState={searchState}
 				setSearchState={setSearchState}
 				handleSearchChange={handleSearchChange}
@@ -61,6 +61,10 @@ const ResearchGrants = ({ data: { grantsPage } }) => {
 					{ attribute: 'area', displayAttribute: 'Research Area' },
 					{ attribute: 'grantType', displayAttribute: 'Grant Type' },
 					{ attribute: 'year', displayAttribute: 'Grant Year' },
+					{
+						attribute: 'dateFeatured',
+						displayAttribute: 'Research Roundup',
+					},
 				]}
 			/>
 		</Layout>
@@ -102,7 +106,6 @@ export const Head = ({ data: { grantsPage } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${grantsPage.slug}`,
 	}
-	console.log(grantsPage.seoMetaTags)
 	return <SEO structuredData={structuredData} meta={grantsPage.seoMetaTags} />
 }
 

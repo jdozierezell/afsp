@@ -54,8 +54,11 @@ const refinementCSS = css`
 	border-bottom: 1px solid ${styles.colors.darkGray};
 	@media (min-width: ${styles.screens.tablet}px) {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 		grid-gap: ${styles.gridGap.desktop};
+	}
+	@media (min-width: ${styles.screens.navigation}px) {
+		grid-template-columns: repeat(4, 1fr);
 	}
 `
 const customHitsCSS = css`
@@ -66,20 +69,20 @@ const customHitsCSS = css`
 	grid-gap: ${styles.gridGap.desktop};
 	align-items: stretch;
 	@media (min-width: ${styles.screens.tablet}px) {
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 	}
 	li {
 		width: 100%;
 	}
 `
 
-const SearchGrants = ({
+export const SearchResearchGrants = ({
 	searchState,
-	setSearchState,
 	handleSearchChange,
 	indexName,
 	refinements,
 }) => {
+	console.log(refinements)
 	return (
 		<div css={searchDetailCSS}>
 			<InstantSearch
@@ -134,5 +137,3 @@ const SearchGrants = ({
 		</div>
 	)
 }
-
-export default SearchGrants

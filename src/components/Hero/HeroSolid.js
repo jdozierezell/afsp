@@ -8,9 +8,9 @@ import Breadcrumbs from '../Breadcrumbs/Breadcrumbs'
 
 const solidHeroCSS = css`
 	background-color: ${styles.colors.blue};
-	padding: ${styles.scale.px150} ${styles.scale.px24} ${styles.scale.px50};
+	padding: ${styles.scale.px126} ${styles.scale.px24} ${styles.scale.px50};
 	@media (min-width: ${styles.screens.mobile}px) {
-		padding: ${styles.scale.px150} ${styles.scale.px50} ${styles.scale.px50};
+		padding: ${styles.scale.px126} ${styles.scale.px50} ${styles.scale.px50};
 	}
 	li,
 	h1,
@@ -29,7 +29,7 @@ const solidHeroCSS = css`
 		max-width: 700px;
 		@media (min-width: ${styles.screens.mobile}px) {
 			font-size: ${styles.scale.px44};
-			margin: ${styles.scale.px40} 0;
+			margin: ${styles.scale.px24} 0;
 		}
 	}
 	.gatsby-image-wrapper {
