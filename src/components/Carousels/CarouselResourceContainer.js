@@ -81,7 +81,6 @@ const CarouselResourceContainer = ({
 					title = resource.title
 
 					if (resource.__typename === 'DatoCmsStory') {
-						console.log(resource)
 						image = resource.seo.image
 						link = `/story/${resource.slug}`
 						linkText = 'Learn more'
@@ -136,8 +135,6 @@ const CarouselResourceContainer = ({
 							image = resource.coverImage
 						}
 					}
-					// console.log(resource.__typename)
-					// console.log(image)
 					return (
 						<CarouselResource
 							key={index}
