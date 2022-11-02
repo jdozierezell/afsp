@@ -101,7 +101,6 @@ const NavigationSide = ({
 			return ''
 		})
 	}
-	console.log(headings)
 	const asideRef = useRef(null)
 	const [position, setPosition] = useState('absolute')
 	const [top, setTop] = useState(topStart ? `${topStart}px` : '220px')
@@ -133,7 +132,6 @@ const NavigationSide = ({
 		} else {
 			slug = data.slug
 		}
-		console.log(slug)
 		return (
 			<aside
 				css={css`
