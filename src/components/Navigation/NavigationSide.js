@@ -126,7 +126,6 @@ const NavigationSide = ({
 
 	if (headings.length > 1) {
 		let slug = ''
-		console.log(slug)
 		if (data.__typename === 'DatoCmsGrant') {
 			slug = `grant/${data.slug}`
 		} else {

@@ -41,7 +41,6 @@ const ResearchGrants = ({ data: { grantsPage } }) => {
 				tempSearch.refinementList[attribute] = event.target.value
 			}
 		}
-		console.log(tempSearch)
 		setSearchState({
 			...searchState,
 			...tempSearch,
@@ -102,7 +101,6 @@ export const Head = ({ data: { grantsPage } }) => {
 		publisher: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/${grantsPage.slug}`,
 	}
-	console.log(grantsPage.seoMetaTags)
 	return <SEO structuredData={structuredData} meta={grantsPage.seoMetaTags} />
 }
 

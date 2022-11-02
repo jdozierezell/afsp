@@ -77,10 +77,16 @@ const CarouselResourceContainer = ({
 			<p>{listHeading}</p>
 			<Carousel responsive={responsive}>
 				{resources.map((resource, index) => {
-					console.log(resource)
 					let title, image, imageFallback, link, linkText, external
 					title = resource.title
-					if (resource.__typename === 'DatoCmsBio') {
+
+					if (resource.__typename === 'DatoCmsStory') {
+						console.log(resource)
+						image = resource.seo.image
+						link = `/story/${resource.slug}`
+						linkText = 'Learn more'
+						external = false
+					} else if (resource.__typename === 'DatoCmsBio') {
 						title = `${resource.name}, ${title}`
 						image = resource.seo.image
 						link = `/bio/${resource.slug}`
@@ -126,15 +132,12 @@ const CarouselResourceContainer = ({
 								linkText = 'Learn more'
 								external = true
 							}
-						} else if (resource.__typename === 'DatoCmsStory') {
-							image = resource.seo.image
-							link = `/story/${resource.slug}`
-							linkText = 'Learn more'
-							external = false
 						} else {
 							image = resource.coverImage
 						}
 					}
+					// console.log(resource.__typename)
+					// console.log(image)
 					return (
 						<CarouselResource
 							key={index}

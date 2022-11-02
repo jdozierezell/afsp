@@ -153,7 +153,6 @@ const FindASupportGroup = ({
 			// if (typeof window !== `undefined`) {
 			// 	window.scroll(0, existingSearch.yPos)
 			// }
-			console.log(location)
 			setFirstRun(false)
 		}
 	}, [firstRun, nonus, radius, zip, datoSupportGroups])
