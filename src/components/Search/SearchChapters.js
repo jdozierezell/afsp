@@ -45,9 +45,14 @@ const searchInfoCSS = css`
 		margin: ${styles.scale.px35} 0;
 	}
 	address {
-		margin-bottom: ${styles.scale.px40};
 		font-family: ${styles.fonts.avenirRegular};
 		font-style: normal;
+		border-bottom: solid 1px black;
+		padding: 1rem 0;
+		:last-of-type {
+			border-bottom: none;
+			padding: 0;
+		}
 		a {
 			color: ${styles.colors.darkGray};
 			:hover {
@@ -75,32 +80,10 @@ const searchMapCSS = css`
 `
 
 const ChapterSearchResult = ({ chapter }) => {
-	const heroBackgroundImg = `${chapter[0].image.url}?format=auto&w=1080&h=1080&crop=faces&fit=crop`
-	const chapterBackgroundImg = chapter[0].map.url
-	let chapterStaff = []
-	const holdChanges = true
-	if (!holdChanges) {
-		chapterStaff =
-			chapter[0].chapter_staff.length > 0
-				? chapter[0].chapter_staff
-				: [
-						{
-							email: chapter[0].staff_email,
-							name: chapter[0].staff_name,
-							phone: chapter[0].staff_phone,
-							title: chapter[0].staff_title,
-						},
-				  ]
-	} else {
-		chapterStaff = [
-			{
-				email: chapter[0].staffEmail,
-				name: chapter[0].staffName,
-				phone: chapter[0].staffPhone,
-				title: chapter[0].staffTitle,
-			},
-		]
-	}
+	const chapterResult = chapter[0]
+	const heroBackgroundImg = `${chapterResult.image.url}?format=auto&w=1080&h=1080&crop=faces&fit=crop`
+	const chapterBackgroundImg = chapterResult.map.url
+	let chapterStaff = chapterResult.chapterStaff
 	return (
 		<div css={searchResultCSS}>
 			<div
@@ -110,7 +93,7 @@ const ChapterSearchResult = ({ chapter }) => {
 				`}
 			></div>
 			<div css={searchInfoCSS}>
-				<h2>AFSP {chapter[0].title}</h2>
+				<h2>AFSP {chapterResult.title}</h2>
 				<h3>Community contact:</h3>
 				{chapterStaff.map((staff, index) => (
 					<address key={index}>
@@ -140,7 +123,7 @@ const ChapterSearchResult = ({ chapter }) => {
 
 				<Link
 					className="secondary-button"
-					to={`/chapter/${chapter[0].slug}`}
+					to={`/chapter/${chapterResult.slug}`}
 				>
 					More info
 				</Link>
