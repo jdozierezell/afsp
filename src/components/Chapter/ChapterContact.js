@@ -61,7 +61,7 @@ const ChapterSignup = ({ contact, addCSS }) => {
 				mapQuery = mapQuery.replace(/ /g, '+')
 				const mapLink = `https://www.google.com/maps?q=${mapQuery}`
 				return (
-					<address address key={index}>
+					<address key={index}>
 						{contact.name && <strong>{contact.name}</strong>}
 						{contact.title && (
 							<>

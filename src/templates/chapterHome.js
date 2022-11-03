@@ -25,10 +25,6 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 		aboutTheChapterNode,
 		customButtons,
 		customEvents,
-		staffName,
-		staffTitle,
-		staffEmail,
-		staffPhone,
 		chapterStaff,
 		featuredPrograms,
 		volunteerSignupUrl,
@@ -219,18 +215,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 			<ChapterAboutContact
 				title={title}
 				about={aboutTheChapterNode.internal.content}
-				contact={
-					chapterStaff.length > 0
-						? chapterStaff
-						: [
-								{
-									name: staffName,
-									title: staffTitle,
-									email: staffEmail,
-									phone: staffPhone,
-								},
-						  ]
-				}
+				contact={chapterStaff}
 			/>
 			<CarouselDetailContainer
 				content={events}
@@ -342,10 +327,6 @@ export const query = graphql`
 				eventUrl
 				dateToRemove
 			}
-			staffName
-			staffTitle
-			staffEmail
-			staffPhone
 			chapterStaff {
 				title
 				phone
