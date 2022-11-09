@@ -188,6 +188,14 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
+			redirects: allDatoCmsRedirect {
+				edges {
+					node {
+						alias
+						destination
+					}
+				}
+			}
 		}
 	`)
 
@@ -207,6 +215,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	const stateFacts = data.stateFacts.edges
 	const stories = data.stories.edges
 	const tags = data.tags.edges
+	const redirects = data.redirects.edges
 
 	authors.forEach(({ node }) => {
 		createPage({
@@ -401,6 +410,14 @@ exports.createPages = async ({ graphql, actions }) => {
 				title: node.tag,
 				id: node.id,
 			},
+		})
+	})
+
+	redirects.forEach(({ node }) => {
+		createRedirect({
+			fromPath: node.alias,
+			toPath: node.destination,
+			isPermanent: true,
 		})
 	})
 }
