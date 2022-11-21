@@ -1,6 +1,6 @@
 import React from 'react'
 import lifesaver from '../SVGs/Lifesaver.svg'
-
+// test
 export const SEO = ({ meta, structuredData, children }) => {
 	return (
 		<>
