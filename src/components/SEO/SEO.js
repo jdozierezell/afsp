@@ -5,7 +5,23 @@ import lifesaver from '../SVGs/Lifesaver.svg'
 export const SEO = ({ meta, structuredData, children }) => {
 	return (
 		<>
-			<Script src="https://cmp.osano.com/AzqSHrT3nT9b72sZY/7f1727dd-94d7-47d2-834c-a78ee90e83c7/osano.js"></Script>
+			<script src="https://cmp.osano.com/AzqSHrT3nT9b72sZY/7f1727dd-94d7-47d2-834c-a78ee90e83c7/osano.js"></script>
+			<Script
+				src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GTAG}`}
+				strategy="off-main-thread"
+			/>
+			<Script
+				id="gtag-config"
+				strategy="off-main-thread"
+				forward={[`gtag`]}
+			>
+				{`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)};
+                    gtag('js', new Date());
+                    gtag('config', ${process.env.GTAG}, { page_path: location ? location.pathname + location.search + location.hash : undefined })
+                `}
+			</Script>
 			{meta.tags.map((tag, index) => {
 				if (tag.tagName === 'title') {
 					return <title key={index}>{tag.content}</title>
@@ -33,9 +49,9 @@ export const SEO = ({ meta, structuredData, children }) => {
 			<meta property="og:url" content={`${structuredData.url}/`} />
 			<meta property="fb:app_id" content="925475567867156" />
 			<link rel="icon" href={lifesaver} />
-			<Script type="application/ld+json">
+			<script type="application/ld+json">
 				{JSON.stringify(structuredData)}
-			</Script>
+			</script>
 			{children}
 		</>
 	)
