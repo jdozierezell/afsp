@@ -1,27 +1,10 @@
 import React from 'react'
-import { Script } from 'gatsby'
 import lifesaver from '../SVGs/Lifesaver.svg'
 
 export const SEO = ({ meta, structuredData, children }) => {
 	return (
 		<>
 			<script src="https://cmp.osano.com/AzqSHrT3nT9b72sZY/7f1727dd-94d7-47d2-834c-a78ee90e83c7/osano.js"></script>
-			<Script
-				src={`https://www.googletagmanager.com/gtag/js?id=GTM-WPNNQJK`}
-				strategy="off-main-thread"
-			/>
-			<Script
-				id="gtag-config"
-				strategy="off-main-thread"
-				forward={[`gtag`]}
-			>
-				{`
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments)};
-                    gtag('js', new Date());
-                    gtag('config', GTM-WPNNQJK, { page_path: location ? location.pathname + location.search + location.hash : undefined })
-                `}
-			</Script>
 			{meta.tags.map((tag, index) => {
 				if (tag.tagName === 'title') {
 					return <title key={index}>{tag.content}</title>
