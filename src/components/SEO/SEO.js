@@ -5,10 +5,7 @@ import lifesaver from '../SVGs/Lifesaver.svg'
 export const SEO = ({ meta, structuredData, children }) => {
 	return (
 		<>
-			<script
-				type="osano-blocking"
-				src="https://cmp.osano.com/AzqSHrT3nT9b72sZY/7f1727dd-94d7-47d2-834c-a78ee90e83c7/osano.js"
-			></script>
+			<Script src="https://cmp.osano.com/AzqSHrT3nT9b72sZY/7f1727dd-94d7-47d2-834c-a78ee90e83c7/osano.js"></Script>
 			{meta.tags.map((tag, index) => {
 				if (tag.tagName === 'title') {
 					return <title key={index}>{tag.content}</title>
