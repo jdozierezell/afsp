@@ -5,7 +5,10 @@ import lifesaver from '../SVGs/Lifesaver.svg'
 export const SEO = ({ meta, structuredData, children }) => {
 	return (
 		<>
-			<Script src="https://cmp.osano.com/AzqSHrT3nT9b72sZY/7f1727dd-94d7-47d2-834c-a78ee90e83c7/osano.js"></Script>
+			<script
+				type="osano-blocking"
+				src="https://cmp.osano.com/AzqSHrT3nT9b72sZY/7f1727dd-94d7-47d2-834c-a78ee90e83c7/osano.js"
+			></script>
 			{meta.tags.map((tag, index) => {
 				if (tag.tagName === 'title') {
 					return <title key={index}>{tag.content}</title>
@@ -33,9 +36,9 @@ export const SEO = ({ meta, structuredData, children }) => {
 			<meta property="og:url" content={`${structuredData.url}/`} />
 			<meta property="fb:app_id" content="925475567867156" />
 			<link rel="icon" href={lifesaver} />
-			<script type="application/ld+json">
+			<Script type="application/ld+json">
 				{JSON.stringify(structuredData)}
-			</script>
+			</Script>
 			{children}
 		</>
 	)

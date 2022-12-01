@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/react'
-import Script from 'react-load-script'
+import { Script } from 'gatsby'
 
 import { styles } from '../../css/css'
 
@@ -35,7 +35,7 @@ const Embed = ({ embed, embedCSS }) => {
 				`}
 				dangerouslySetInnerHTML={{ __html: embed }}
 			></div>
-			{scriptSrc && <Script url={scriptSrc} />}
+			{scriptSrc && <Script src={scriptSrc} />}
 		</div>
 	)
 }

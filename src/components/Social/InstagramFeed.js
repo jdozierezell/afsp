@@ -1,13 +1,13 @@
 import React from 'react'
-import Script from 'react-load-script'
+import { Script } from 'gatsby'
 
 const InstagramFeed = ({ instaClass }) => {
 	return (
 		<>
 			<div className={instaClass} data-elfsight-app-lazy></div>
 			<Script
-				url="https://apps.elfsight.com/p/platform.js"
-				attributes={{ id: 'elfsight' }}
+				src="https://apps.elfsight.com/p/platform.js"
+				id="elfsight"
 			/>
 		</>
 	)
