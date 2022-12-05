@@ -146,6 +146,12 @@ export const query = graphql`
 					slug
 				}
 			}
+			featuredVideo {
+				... on DatoCmsVimeoVideo {
+					vimeoId
+					title
+				}
+			}
 			callsToAction {
 				... on DatoCmsCallToAction {
 					__typename
