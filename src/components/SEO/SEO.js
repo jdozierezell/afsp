@@ -5,6 +5,16 @@ export const SEO = ({ meta, structuredData, children }) => {
 	return (
 		<>
 			<script src="https://cmp.osano.com/AzqSHrT3nT9b72sZY/7f1727dd-94d7-47d2-834c-a78ee90e83c7/osano.js"></script>
+			{/* <script
+				dangerouslySetInnerHTML={{
+					__html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WPNNQJK');`,
+				}}
+			></script> */}
+
 			{meta.tags.map((tag, index) => {
 				if (tag.tagName === 'title') {
 					return <title key={index}>{tag.content}</title>

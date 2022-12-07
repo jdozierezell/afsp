@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/react'
-import Script from 'react-load-script'
+import { Script } from 'gatsby'
 
 import FooterAside from './FooterAside'
 import FooterSocials from './FooterSocials'
@@ -147,20 +147,16 @@ const Footer = ({ nav, customPadding }) => {
 			</footer>
 			{!is404 && (
 				<Script
-					attributes={{
-						id: 'siteimprove',
-						type: 'text/javascript',
-						async: '',
-					}}
-					url="//siteimproveanalytics.com/js/siteanalyze_6019066.js"
+					id="siteimprove"
+					src="//siteimproveanalytics.com/js/siteanalyze_6019066.js"
 				/>
 			)}
-			{/* <Script
-				attributes={{
-					async: '',
-					type: 'text/javascript',
+			{/* <noscript
+				dangerouslySetInnerHTML={{
+					__html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPNNQJK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        `,
 				}}
-				url="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=JXzNvL"
 			/> */}
 		</>
 	)

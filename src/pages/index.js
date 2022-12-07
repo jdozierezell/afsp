@@ -4,7 +4,7 @@ import { css } from '@emotion/react'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
-import Script from 'react-load-script'
+import { Script } from 'gatsby'
 
 import { SEO } from '../components/SEO/SEO'
 import Layout from '../components/Layout'
@@ -182,13 +182,7 @@ const App = ({ data: { home } }) => {
 			{home.ticker && home.ticker.length > 0 && (
 				<Ticker ticker={home.ticker} />
 			)}
-			<Script
-				attributes={{
-					async: '',
-					type: 'text/javascript',
-				}}
-				url="//addevent.com/libs/atc/1.6.1/atc.min.js"
-			/>
+			<Script src="//addevent.com/libs/atc/1.6.1/atc.min.js" />
 		</Layout>
 	)
 }
