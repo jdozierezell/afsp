@@ -151,13 +151,13 @@ const Footer = ({ nav, customPadding }) => {
 					src="//siteimproveanalytics.com/js/siteanalyze_6019066.js"
 				/>
 			)}
-			{/* <noscript
+			<noscript
 				dangerouslySetInnerHTML={{
 					__html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPNNQJK"
 height="0" width="0" style="display:none;visibility:hidden"></iframe>
         `,
 				}}
-			/> */}
+			/>
 		</>
 	)
 }
