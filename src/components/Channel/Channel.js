@@ -33,12 +33,18 @@ const channelCSS = css`
 			display: block;
 		}
 		:hover span,
-		:hover p:last-of-type {
+		&:hover > p:last-of-type {
 			text-decoration: underline;
 		}
-		p:last-of-type {
+		> p:last-of-type {
 			color: ${styles.colors.poppy};
 		}
+	}
+`
+const channelBriefCSS = css`
+	text-align: left !important;
+	ul {
+		margin-top: ${styles.scale.px7};
 	}
 `
 
@@ -76,7 +82,12 @@ const Channel = ({ slug, channel }) => {
 							__html: heading,
 						}}
 					></span>
-					<p>{brief}</p>
+					<div
+						dangerouslySetInnerHTML={{
+							__html: brief,
+						}}
+						css={channelBriefCSS}
+					></div>
 					<p>Learn more</p>
 				</Link>
 			)}
@@ -96,7 +107,12 @@ const Channel = ({ slug, channel }) => {
 								__html: heading,
 							}}
 						></span>
-						<p>{brief}</p>
+						<div
+							dangerouslySetInnerHTML={{
+								__html: brief,
+							}}
+							css={channelBriefCSS}
+						></div>
 						<p>Learn more</p>
 					</a>
 				</>
