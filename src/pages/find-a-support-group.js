@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
-import {
-	useQueryParams,
-	NumberParam,
-	StringParam,
-	BooleanParam,
-} from 'use-query-params'
 import axios from 'axios'
 
 import { SEO } from '../components/SEO/SEO'

@@ -145,7 +145,6 @@ const FormSBTClinician = () => {
 						fullWidth
 						onChange={formik.handleChange}
 						select
-						onChange={formik.handleChange}
 						error={
 							formik.touched.state && Boolean(formik.errors.state)
 						}

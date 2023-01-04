@@ -2,7 +2,6 @@ import React from 'react'
 import { css } from '@emotion/react'
 
 import MobileMenuSection from './MobileMenuSection'
-import MenuCTA from './MenuCTA'
 
 import { styles } from '../../css/css'
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import { css } from '@emotion/react'
-import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { styles } from '../../css/css'
 import { sitewide } from '../../utils/sitewideVariables'
