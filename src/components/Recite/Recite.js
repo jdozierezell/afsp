@@ -99,25 +99,26 @@ const ReciteComponent = () => {
 				document.addEventListener
 					? document.addEventListener(
 							'DOMContentLoaded',
-							function (c) {
-								loadService()
-							}
+							serviceFunction
 					  )
 					: loadService()
 			}
 			const serviceFunction = (i, e) => {
 				loadService()
-				return false
 			}
 			document
 				.getElementById('reciteme')
 				.addEventListener('click', serviceFunction)
 			setFirstRun(false)
-			setInterval(() => {
+			const updateA11yText = setInterval(() => {
 				const arrayItem = Math.floor(Math.random() * 10)
 				setA11yText(a11y[arrayItem].a11y)
 			}, 2000)
-			return () => window.removeEventListener('click', serviceFunction)
+			return () => {
+				window.removeEventListener('click', serviceFunction)
+				window.removeEventListener('DOMContentLoaded', serviceFunction)
+				// clearInterval(updateA11yText)
+			}
 		}
 	}, [a11y, firstRun])
 	return (
