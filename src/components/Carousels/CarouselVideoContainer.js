@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/react'
 import Carousel from 'react-multi-carousel'
-import { Script } from 'gatsby'
+import Script from 'react-load-script'
 
 import CarouselVideo from './CarouselVideo'
 
@@ -65,7 +65,7 @@ const CarouselVideoContainer = ({ videos }) => {
 					)
 				})}
 			</Carousel>
-			<Script src="https://player.vimeo.com/api/player.js" />
+			<Script url="https://player.vimeo.com/api/player.js" />
 		</section>
 	)
 }

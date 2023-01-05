@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Script } from 'gatsby'
+import Script from 'react-load-script'
 import { css } from '@emotion/react'
 
 import { SEO } from '../components/SEO/SEO'
@@ -36,8 +36,10 @@ const ActionCenter = ({ data: { actionCenter } }) => {
 			<HeroSolid data={actionCenter} />
 			<div css={actionCenterCSS} id="iframe"></div>
 			<Script
-				id="congressWeb"
-				src="//www.congressweb.com/cweb/js/jquery.congressweb.iframe.js"
+				attributes={{
+					id: 'congressWeb',
+				}}
+				url="//www.congressweb.com/cweb/js/jquery.congressweb.iframe.js"
 				onLoad={scriptLoaded}
 			/>
 		</Layout>
