@@ -110,10 +110,10 @@ const ReciteComponent = () => {
 				.getElementById('reciteme')
 				.addEventListener('click', serviceFunction)
 			setFirstRun(false)
-			const updateA11yText = setInterval(() => {
-				const arrayItem = Math.floor(Math.random() * 10)
-				setA11yText(a11y[arrayItem].a11y)
-			}, 2000)
+			// const updateA11yText = setInterval(() => {
+			// 	const arrayItem = Math.floor(Math.random() * 10)
+			// 	setA11yText(a11y[arrayItem].a11y)
+			// }, 2000)
 			return () => {
 				window.removeEventListener('click', serviceFunction)
 				window.removeEventListener('DOMContentLoaded', serviceFunction)
@@ -123,7 +123,7 @@ const ReciteComponent = () => {
 	}, [a11y, firstRun])
 	return (
 		<button id="reciteme" className="reciteme" css={reciteButtonCSS}>
-			{a11yText}
+			Accessibility
 		</button>
 	)
 }
