@@ -145,19 +145,6 @@ const AFSPCalendar = ({ data }) => {
 		}
 	})
 
-	const structuredData = {
-		'@content': 'https://schema.org',
-		'@type': 'WebPage',
-		about: 'suicide events',
-		description: metaDescription,
-		image: metaImage,
-		accessibilityAPI: 'ARIA',
-		accessibilityControl: ['fullKeyboardControl', 'fullMouseControl'],
-		name: data.calendar.title,
-		lastReviewed: data.calendar.meta.publishedAt,
-		publisher: 'American Foundation for Suicide Prevention',
-		url: `https://afsp.org/${data.calendar.slug}`,
-	}
 	const openModal = () => {
 		setIsOpen(true)
 	}

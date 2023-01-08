@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { connectRefinementList } from 'react-instantsearch-dom'
 import Select from 'react-select'
 import { css } from '@emotion/react'

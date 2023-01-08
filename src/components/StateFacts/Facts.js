@@ -22,13 +22,6 @@ const subSectionCSS = css`
 		margin: ${styles.scale.px46} 0 ${styles.scale.px36};
 	}
 `
-const subSubCSS = css`
-	font-size: ${styles.scale.px20};
-	margin: ${styles.scale.px24} 0 ${styles.scale.px24};
-	@media (min-width: ${styles.screens.mobile}px) {
-		margin: ${styles.scale.px36} 0 ${styles.scale.px36};
-	}
-`
 const keyCSS = css`
 	list-style: none;
 	margin: 0;

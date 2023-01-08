@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/react'
-import { Script } from 'gatsby'
+import Script from 'react-load-script'
 
 import FooterAside from './FooterAside'
 import FooterSocials from './FooterSocials'
@@ -147,8 +147,12 @@ const Footer = ({ nav, customPadding }) => {
 			</footer>
 			{!is404 && (
 				<Script
-					id="siteimprove"
-					src="//siteimproveanalytics.com/js/siteanalyze_6019066.js"
+					attributes={{
+						id: 'siteimprove',
+						type: 'text/javascript',
+						async: '',
+					}}
+					url="//siteimproveanalytics.com/js/siteanalyze_6019066.js"
 				/>
 			)}
 			<noscript

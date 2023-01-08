@@ -78,7 +78,7 @@
 	"scripts": {
 		"bs": "gatsby build && gatsby serve",
 		"build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build",
-		"develop": "set NODE_ENV=development&&gatsby develop -- --https",
+		"dev": "set NODE_ENV=development&&gatsby develop -- --https",
 		"clean": "gatsby clean && rm yarn.lock && rm -rf node_modules && yarn",
 		"lighthouse": "npm run lighthousea && npm run lighthouses",
 		"lighthousea": "cd lighthouse && lighthouse https://afsp.org --view true --output html",

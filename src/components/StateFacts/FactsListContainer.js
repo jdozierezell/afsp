@@ -2,8 +2,6 @@ import React from 'react'
 import { css } from '@emotion/react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
-import createAnchor from '../../utils/createAnchor'
-
 import { styles } from '../../css/css'
 
 const imageListCSS = css`
