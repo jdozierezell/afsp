@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
+import Script from 'react-load-script'
 import { css } from '@emotion/react'
 
 import { SEO } from '../components/SEO/SEO'
@@ -9,39 +10,38 @@ import HeroSolid from '../components/Hero/HeroSolid'
 import { styles } from '../css/css'
 
 const actionCenterCSS = css`
-	margin: 0;
-	display: block;
-	border-radius: 4px;
-	border: 1px solid #3928bd;
-	width: 100%;
-	height: 2600px;
+	margin: calc(${styles.scale.px50} - 3%) calc(${styles.scale.px24} - 3%);
+	@media (min-width: ${styles.screens.mobile}px) {
+		margin: calc(${styles.scale.px80} - 3%) calc(${styles.scale.px50} - 3%);
+	}
 	@media (min-width: ${styles.screens.footer}px) {
-		max-width: 1200px;
+		max-width: 1040px;
 		margin-left: auto;
 		margin-right: auto;
 	}
 `
 
 const ActionCenter = ({ data: { actionCenter } }) => {
-	// useEffect(() => {
-	// 	const quorum = document.getElementById('quorum')
-	// 	console.log(quorum.contentWindow.document.body.scrollHeight)
-	// 	if (quorum) {
-	// 		// here you can make the height, I delete it first, then I make it again
-	// 		quorum.height = ''
-	// 		quorum.height =
-	// 			quorum.contentWindow.document.body.scrollHeight + 'px'
-	// 	}
-	// })
-
+	const scriptLoaded = () => {
+		const congressWeb = document.getElementById('congressWeb')
+		const congressScript = document.createElement('script')
+		const congressCode = document.createTextNode(
+			`$cweb(function(){ $cweb('#iframe').congressweb({ url:'//www.congressweb.com/AFSP', responsive: true }) })`
+		)
+		congressScript.appendChild(congressCode)
+		congressWeb.insertAdjacentElement('afterend', congressScript)
+	}
 	return (
 		<Layout theme={styles.logo.mobileLightDesktopLight}>
 			<HeroSolid data={actionCenter} />
-			<iframe
-				id="quorum"
-				src="https://afsp.quorum.us/?embedded=true"
-				css={actionCenterCSS}
-			></iframe>
+			<div css={actionCenterCSS} id="iframe"></div>
+			<Script
+				attributes={{
+					id: 'congressWeb',
+				}}
+				url="//www.congressweb.com/cweb/js/jquery.congressweb.iframe.js"
+				onLoad={scriptLoaded}
+			/>
 		</Layout>
 	)
 }
