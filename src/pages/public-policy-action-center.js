@@ -15,28 +15,14 @@ const actionCenterCSS = css`
 	border: 1px solid #3928bd;
 	width: 100%;
 	height: 2600px;
-	@media (min-width: ${styles.screens.footer}px) {
-		max-width: 1200px;
-		margin-left: auto;
-		margin-right: auto;
-	}
 `
 
 const ActionCenter = ({ data: { actionCenter } }) => {
-	// useEffect(() => {
-	// 	const quorum = document.getElementById('quorum')
-	// 	console.log(quorum.contentWindow.document.body.scrollHeight)
-	// 	if (quorum) {
-	// 		// here you can make the height, I delete it first, then I make it again
-	// 		quorum.height = ''
-	// 		quorum.height =
-	// 			quorum.contentWindow.document.body.scrollHeight + 'px'
-	// 	}
-	// })
-
 	return (
-		<Layout theme={styles.logo.mobileLightDesktopLight}>
-			<HeroSolid data={actionCenter} />
+		<Layout
+			theme={styles.logo.mobileDarkDesktopDark}
+			overrideAbsolute={true}
+		>
 			<iframe
 				id="quorum"
 				src="https://afsp.quorum.us/?embedded=true"
