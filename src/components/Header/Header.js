@@ -25,7 +25,13 @@ const skipCSS = css`
 	}
 `
 
-const Header = ({ nav, theme, overrideLight, showCampaign }) => {
+const Header = ({
+	nav,
+	theme,
+	overrideLight,
+	overrideAbsolute,
+	showCampaign,
+}) => {
 	return (
 		<header>
 			<a css={skipCSS} href="#main" tabIndex="0">
@@ -37,6 +43,7 @@ const Header = ({ nav, theme, overrideLight, showCampaign }) => {
 					nav={nav}
 					theme={theme}
 					overrideLight={overrideLight}
+					overrideAbsolute={overrideAbsolute}
 				/>
 			</div>
 		</header>

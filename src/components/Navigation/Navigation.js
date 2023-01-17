@@ -20,9 +20,6 @@ const navTopCSS = css`
 	justify-content: space-between;
 	align-items: center;
 	min-height: 70px;
-	position: absolute;
-	left: 0;
-	right: 0;
 	@media (min-width: ${styles.screens.navigation}px) {
 		padding: 0;
 		margin: 0;
@@ -78,7 +75,7 @@ const donateCSS = css`
 	}
 `
 
-const Navigation = ({ nav, theme, overrideLight }) => {
+const Navigation = ({ nav, theme, overrideLight, overrideAbsolute }) => {
 	const [isMobileLight, setMobileLight] = useState(theme.mobile === 'light')
 	const [isDesktopLight, setDesktopLight] = useState(
 		theme.desktop === 'light'
@@ -122,6 +119,9 @@ const Navigation = ({ nav, theme, overrideLight }) => {
 				> nav > ul > li > a {
 					color: ${navColor};
 				}
+				position: ${overrideAbsolute ? 'relative' : 'absolute'};
+				left: 0;
+				right: 0;
 			`}
 			role="navigation"
 			onMouseEnter={() => setHover(true)}
