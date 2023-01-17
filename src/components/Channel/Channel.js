@@ -9,6 +9,7 @@ import buildUrl from '../../utils/buildUrl'
 
 const channelCSS = css`
 	text-align: center;
+	margin-bottom: 4rem;
 	@media (min-width: ${styles.screens.tablet}px) {
 		text-align: left;
 	}
@@ -24,7 +25,7 @@ const channelCSS = css`
 		font-size: ${styles.scale.px20};
 		text-decoration: none;
 		width: 100%;
-		@media (min-width: ${styles.screens.tablet}px) {
+		@media (min-width: ${styles.screens.video}px) {
 			text-align: left;
 		}
 		span,
@@ -52,7 +53,7 @@ const channelImageCSS = css`
 	min-width: 125px;
 	max-width: 150px;
 	margin: 0 auto;
-	@media (min-width: ${styles.screens.tablet}px) {
+	@media (min-width: ${styles.screens.video}px) {
 		margin: 0;
 	}
 `

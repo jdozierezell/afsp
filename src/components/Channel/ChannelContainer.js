@@ -8,13 +8,12 @@ import { styles } from '../../css/css'
 const containerCSS = css`
 	padding: ${styles.scale.px50} ${styles.scale.px24};
 	background-color: ${styles.colors.lightGray};
-	display: grid;
 	grid-template-columns: 1fr;
 	grid-row-gap: ${styles.scale.px90};
 	grid-column-gap: ${styles.scale.px44};
 	max-width: 1680px;
 	margin: 0 auto;
-	@media (min-width: ${styles.screens.tablet}px) {
+	@media (min-width: ${styles.screens.video}px) {
 		padding: ${styles.scale.px80} ${styles.scale.px50};
 		background-color: ${styles.colors.white};
 	}
@@ -38,7 +37,8 @@ const ChannelContainer = ({ slug, channelList, addCSS }) => {
 		<section
 			css={css`
 				${containerCSS};
-				@media (min-width: ${styles.screens.tablet}px) {
+				@media (min-width: ${styles.screens.video}px) {
+					display: grid;
 					grid-template-columns: repeat(${columns}, 1fr);
 				}
 				${addCSS};
