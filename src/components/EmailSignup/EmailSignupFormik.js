@@ -1,4 +1,4 @@
-import React from 'react'
+˝import React from 'react'
 import * as yup from 'yup'
 import { css } from '@emotion/react'
 import { useFormik } from 'formik'
@@ -34,7 +34,7 @@ const validationSchema = yup.object({
 	}),
 })
 
-const EmailSignupForm = ({ formSubmit, submitted }) => {
+const EmailSignupFormik = ({ formSubmit, submitted }) => {
 	const formik = useFormik({
 		initialValues: {
 			firstName: '',
@@ -126,4 +126,4 @@ const EmailSignupForm = ({ formSubmit, submitted }) => {
 	)
 }
 
-export default EmailSignupForm
+export default EmailSignupFormik
