@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
 import Header from './Header/Header'
@@ -13,6 +13,7 @@ const Layout = ({
 	customPadding,
 	overrideAbsolute,
 }) => {
+	const [isIframe, setIsIframe] = useState(false)
 	const data = useStaticQuery(graphql`
 		query {
 			nav: allDatoCmsNavigation(sort: { fields: position, order: ASC }) {
@@ -35,16 +36,26 @@ const Layout = ({
 			footerNav.push(node)
 		}
 	})
+	useEffect(() => {
+		if (typeof window !== `undefined`) {
+			if (window.location !== window.parent.location) {
+				// The page is in an iframe
+				setIsIframe(true)
+			}
+		}
+	})
 
 	return (
 		<>
-			<Header
-				nav={headerNav}
-				theme={theme}
-				overrideLight={overrideLight}
-				overrideAbsolute={overrideAbsolute}
-				showCampaign={false}
-			/>
+			{!isIframe && (
+				<Header
+					nav={headerNav}
+					theme={theme}
+					overrideLight={overrideLight}
+					overrideAbsolute={overrideAbsolute}
+					showCampaign={false}
+				/>
+			)}
 			<main id="main">{children}</main>
 			{!hideEmailLayout && <EmailSignupBar></EmailSignupBar>}
 			<Footer nav={footerNav} customPadding={customPadding} />
