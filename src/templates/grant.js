@@ -154,7 +154,9 @@ export const Head = ({ data: { grant } }) => {
 export const query = graphql`
 	query ($slug: String) {
 		grant: datoCmsGrant(slug: { eq: $slug }) {
+			__typename
 			title
+			slug
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}

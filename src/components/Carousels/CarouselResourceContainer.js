@@ -84,6 +84,13 @@ const CarouselResourceContainer = ({
 						link = `/story/${resource.slug}`
 						linkText = 'Learn more'
 						external = false
+					} else if (resource.__typename === 'DatoCmsBio') {
+						title = `${resource.name}, ${title}`
+						image = resource.seo.image
+						link = `/bio/${resource.slug}`
+						const titleWords = title.split(' ')
+						linkText = `Meet ${titleWords[0]}`
+						external = false
 					} else if (
 						resource.__typename === 'DatoCmsDetail' ||
 						resource.__typename === 'DatoCmsDetailTagged' ||

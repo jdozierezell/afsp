@@ -336,6 +336,29 @@ export const query = graphql`
 					displayAsCarousel
 					randomize
 					resource {
+						... on DatoCmsBio {
+							__typename
+							id
+							name
+							slug
+							title
+							seo {
+								description
+								image {
+									url
+									gatsbyImageData(
+										width: 600
+										placeholder: NONE
+										imgixParams: {
+											fill: "blur"
+											fit: "fill"
+											w: "600"
+											h: "370"
+										}
+									)
+								}
+							}
+						}
 						... on DatoCmsCustomShareable {
 							__typename
 							id

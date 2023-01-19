@@ -188,6 +188,7 @@ export const Head = ({ pageContext: { title, slug } }) => {
 		affiliation: 'American Foundation for Suicide Prevention',
 		url: `https://afsp.org/author/${slug}`,
 	}
+	return <SEO structuredData={structuredData} meta={seoTags} />
 }
 
 export const query = graphql`

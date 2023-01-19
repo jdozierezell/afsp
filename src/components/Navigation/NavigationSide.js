@@ -125,6 +125,12 @@ const NavigationSide = ({
 		return () => window.removeEventListener('scroll', handleScroll)
 	})
 	if (headings.length > 1) {
+		let slug = ''
+		if (data.__typename === 'DatoCmsGrant') {
+			slug = `grant/${data.slug}`
+		} else {
+			slug = data.slug
+		}
 		return (
 			<aside
 				css={css`

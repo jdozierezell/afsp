@@ -11,6 +11,7 @@ const Layout = ({
 	children,
 	hideEmailLayout,
 	customPadding,
+	overrideAbsolute,
 }) => {
 	const data = useStaticQuery(graphql`
 		query {
@@ -41,6 +42,7 @@ const Layout = ({
 				nav={headerNav}
 				theme={theme}
 				overrideLight={overrideLight}
+				overrideAbsolute={overrideAbsolute}
 				showCampaign={false}
 			/>
 			<main id="main">{children}</main>

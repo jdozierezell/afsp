@@ -9,6 +9,7 @@ import buildUrl from '../../utils/buildUrl'
 
 const channelCSS = css`
 	text-align: center;
+	margin-bottom: 4rem;
 	@media (min-width: ${styles.screens.tablet}px) {
 		text-align: left;
 	}
@@ -24,7 +25,7 @@ const channelCSS = css`
 		font-size: ${styles.scale.px20};
 		text-decoration: none;
 		width: 100%;
-		@media (min-width: ${styles.screens.tablet}px) {
+		@media (min-width: ${styles.screens.video}px) {
 			text-align: left;
 		}
 		span,
@@ -33,12 +34,18 @@ const channelCSS = css`
 			display: block;
 		}
 		:hover span,
-		:hover p:last-of-type {
+		&:hover > p:last-of-type {
 			text-decoration: underline;
 		}
-		p:last-of-type {
+		> p:last-of-type {
 			color: ${styles.colors.poppy};
 		}
+	}
+`
+const channelBriefCSS = css`
+	text-align: left !important;
+	ul {
+		margin-top: ${styles.scale.px7};
 	}
 `
 
@@ -46,7 +53,7 @@ const channelImageCSS = css`
 	min-width: 125px;
 	max-width: 150px;
 	margin: 0 auto;
-	@media (min-width: ${styles.screens.tablet}px) {
+	@media (min-width: ${styles.screens.video}px) {
 		margin: 0;
 	}
 `
@@ -76,7 +83,12 @@ const Channel = ({ slug, channel }) => {
 							__html: heading,
 						}}
 					></span>
-					<p>{brief}</p>
+					<div
+						dangerouslySetInnerHTML={{
+							__html: brief,
+						}}
+						css={channelBriefCSS}
+					></div>
 					<p>Learn more</p>
 				</Link>
 			)}
@@ -96,7 +108,12 @@ const Channel = ({ slug, channel }) => {
 								__html: heading,
 							}}
 						></span>
-						<p>{brief}</p>
+						<div
+							dangerouslySetInnerHTML={{
+								__html: brief,
+							}}
+							css={channelBriefCSS}
+						></div>
 						<p>Learn more</p>
 					</a>
 				</>
