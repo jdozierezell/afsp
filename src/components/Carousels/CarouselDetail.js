@@ -76,10 +76,10 @@ const CarouselDetail = ({
 	let internalSrc, externalSrc, eventSrc
 	console.log(anchor)
 	if (type === 'Event') {
-		if (anchor && anchor.length < 1) {
-			eventSrc = `https://www.addevent.com/event/${eventCode}`
-		} else {
+		if (anchor && anchor.length) {
 			externalSrc = anchor
+		} else {
+			eventSrc = `https://www.addevent.com/event/${eventCode}`
 		}
 	} else {
 		internalSrc = anchor
