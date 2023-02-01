@@ -13,7 +13,7 @@ const actionCenterCSS = css`
 	border-radius: 4px;
 	border: 1px solid #3928bd;
 	width: 100%;
-	height: 2600px;
+	height: 1400px;
 `
 
 const ActionCenter = () => {
