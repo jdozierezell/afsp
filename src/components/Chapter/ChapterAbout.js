@@ -19,7 +19,7 @@ const aboutCSS = css`
 	}
 `
 
-const ChapterAbout = ({ title, about, addCSS }) => {
+const ChapterAbout = ({ aboutHeading, about, addCSS }) => {
 	return (
 		<div
 			css={css`
@@ -27,7 +27,7 @@ const ChapterAbout = ({ title, about, addCSS }) => {
 				${addCSS};
 			`}
 		>
-			<h2>About the AFSP {title} Chapter</h2>
+			<h2>{aboutHeading}</h2>
 			<div dangerouslySetInnerHTML={{ __html: about }}></div>
 		</div>
 	)

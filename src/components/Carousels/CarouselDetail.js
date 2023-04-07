@@ -74,7 +74,6 @@ const CarouselDetail = ({
 	eventTitleSize,
 }) => {
 	let internalSrc, externalSrc, eventSrc
-	console.log(anchor)
 	if (type === 'Event') {
 		if (anchor && anchor.length) {
 			externalSrc = anchor

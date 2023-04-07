@@ -47,7 +47,7 @@ const chapterContactCSS = css`
 	}
 `
 
-const ChapterSignup = ({ contact, addCSS }) => {
+const ChapterSignup = ({ contact, contactHeading, addCSS }) => {
 	return (
 		<div
 			css={css`
@@ -55,7 +55,7 @@ const ChapterSignup = ({ contact, addCSS }) => {
 				${addCSS};
 			`}
 		>
-			<h3>Chapter contact:</h3>
+			<h3>{contactHeading}</h3>
 			{contact.map((contact, index) => {
 				let mapQuery = `${contact.address1} ${contact.address2} ${contact.state} ${contact.zipCode}`
 				mapQuery = mapQuery.replace(/ /g, '+')

@@ -115,6 +115,7 @@ const buttonWrapperCSS = css`
 
 const HeroChapter = ({
 	title,
+	buttonsAndAnchors,
 	video,
 	poster,
 	brief,
@@ -143,17 +144,17 @@ const HeroChapter = ({
 				<span>
 					<Link
 						className="secondary-button"
-						to={`/chapter/${slug}#volunteer`}
+						to={`/chapter/${slug}#${buttonsAndAnchors.volunteer.link}`}
 					>
-						Volunteer
+						{buttonsAndAnchors.volunteer.text}
 					</Link>
 				</span>
 				<span>
 					<Link
 						className="secondary-button"
-						to={`/chapter/${slug}#events`}
+						to={`/chapter/${slug}#${buttonsAndAnchors.events.link}`}
 					>
-						Events
+						{buttonsAndAnchors.events.text}
 					</Link>
 				</span>
 				{circleOfHopeUrl && (
@@ -187,17 +188,17 @@ const HeroChapter = ({
 				<span>
 					<Link
 						className="secondary-button"
-						to={`/chapter/${slug}#programs`}
+						to={`/chapter/${slug}#${buttonsAndAnchors.programs.link}`}
 					>
-						Programs
+						{buttonsAndAnchors.programs.text}
 					</Link>
 				</span>
 				<span>
 					<Link
 						className="secondary-button"
-						to={`/chapter/${slug}#updates`}
+						to={`/chapter/${slug}#${buttonsAndAnchors.updates.link}`}
 					>
-						Updates
+						{buttonsAndAnchors.updates.text}
 					</Link>
 				</span>
 				{circleOfHopeUrl &&

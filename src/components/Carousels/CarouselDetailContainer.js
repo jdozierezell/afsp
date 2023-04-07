@@ -102,7 +102,6 @@ const CarouselDetailContainer = ({
 					if (!section) {
 						return ''
 					} else {
-						console.log(section)
 						if (section.contentHeading || section.heading) {
 							let anchor, content
 							if (section.contentHeading) {

@@ -19,6 +19,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 	const {
 		title,
 		slug,
+		translateIntoSpanish,
 		heroVideo,
 		heroPoster,
 		heroBrief,
@@ -197,6 +198,42 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 		stories,
 		events,
 	])
+	let aboutHeading,
+		contactHeading,
+		programsHeading,
+		volunteerHeading,
+		volunteerCTA,
+		storiesHeading,
+		buttonsAndAnchors
+
+	if (translateIntoSpanish) {
+		events.title = 'Próximos eventos'
+		aboutHeading = `Acerca de la sede de la AFSP en ${title}`
+		contactHeading = `Contacto de la sede:`
+		programsHeading = 'Programas destacados'
+		volunteerHeading = `Unirse a la sede de la AFSP en ${title}`
+		volunteerCTA = 'Unirse'
+		storiesHeading = 'Noticias e historias de la sede'
+		buttonsAndAnchors = {
+			volunteer: { text: 'Voluntariado', link: 'voluntariado' },
+			events: { text: 'Eventos', link: 'eventos' },
+			programs: { text: 'Programas', link: 'programas' },
+			updates: { text: 'Noticias', link: 'noticias' },
+		}
+	} else {
+		aboutHeading = `About the AFSP ${title} Chapter`
+		contactHeading = `Chapter contact:`
+		programsHeading = 'Featured Programs'
+		volunteerHeading = `Join the AFSP ${title} Chapter`
+		volunteerCTA = 'Volunteer'
+		storiesHeading = 'Chapter updates and stories'
+		buttonsAndAnchors = {
+			volunteer: { text: 'Volunteer', link: 'volunteer' },
+			events: { text: 'Events', link: 'events' },
+			programs: { text: 'Programs', link: 'programs' },
+			updates: { text: 'Updates', link: 'updates' },
+		}
+	}
 	return (
 		<LayoutChapter
 			theme={styles.logo.mobileLightDesktopLight}
@@ -205,6 +242,7 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 		>
 			<HeroChapter
 				title={title}
+				buttonsAndAnchors={buttonsAndAnchors}
 				video={heroVideoUrl}
 				poster={heroPosterUrl}
 				brief={heroBrief}
@@ -213,40 +251,41 @@ const Chapter = ({ data: { chapter, realStories, chapterStoriesUpdates } }) => {
 				slug={slug}
 			/>
 			<ChapterAboutContact
-				title={title}
+				aboutHeading={aboutHeading}
+				contactHeading={contactHeading}
 				about={aboutTheChapterNode.internal.content}
 				contact={chapterStaff}
 			/>
 			<CarouselDetailContainer
 				content={events}
 				eventInsert={true}
-				id="events"
+				id={buttonsAndAnchors.events.link}
 			/>
 			<FeaturedResourcesContainer
-				heading="Featured Programs"
+				heading={programsHeading}
 				resources={featuredPrograms}
-				id="programs"
+				id={buttonsAndAnchors.programs.link}
 			/>
 			<CTAContainer
 				cta={{
 					__typename: 'DatoCmsCtaWithDescription',
-					heading: `Join the AFSP ${title} Chapter`,
-					linkText: 'Volunteer',
+					heading: volunteerHeading,
+					linkText: volunteerCTA,
 					linkUrl: volunteerSignupUrl,
 					external: true,
 				}}
-				id="volunteer"
+				id={buttonsAndAnchors.volunteer.link}
 			/>
 			{socialAccounts && (
 				<ChapterSocials socialAccounts={socialAccounts} title={title} />
 			)}
 			{stories[0] !== 'no stories' && (
 				<StoriesContainer
-					header="Chapter updates and stories"
+					header={storiesHeading}
 					first={true}
 					stories={stories}
 					more={true}
-					id="updates"
+					id={buttonsAndAnchors.updates.link}
 					initialDisplay="6"
 				/>
 			)}
@@ -300,6 +339,7 @@ export const query = graphql`
 		chapter: datoCmsChapterHomePage(slug: { eq: $slug }) {
 			title
 			slug
+			translateIntoSpanish
 			seoMetaTags {
 				...GatsbyDatoCmsSeoMetaTags
 			}

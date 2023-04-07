@@ -57,6 +57,7 @@ const ContentGrid = ({ hideHeader, table, tableHeader }) => {
 			table.columns.forEach((column, columnIndex) => {
 				let mobile, desktop
 				if (data.hasOwnProperty(column)) {
+					console.log(data)
 					mobile = {
 						isHeader: true,
 						value: column,
