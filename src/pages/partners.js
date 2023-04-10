@@ -17,11 +17,14 @@ const partnerContainerCSS = css`
 `
 
 const partnerCSS = css`
-	display: flex;
-	flex-flow: row wrap;
+	display: grid;
+	grid-template-columns: 1fr;
 	margin-bottom: ${styles.scale.px60};
-	justify-content: flex-start;
-	align-items: flex-start;
+	justify-content: start;
+	align-items: start;
+	@media (min-width: ${styles.screens.tablet}px) {
+		grid-template-columns: 400px 1fr;
+	}
 `
 
 const partnerImageCSS = css`
@@ -31,10 +34,11 @@ const partnerImageCSS = css`
 `
 
 const partnerInfoCSS = css`
-	flex: 1 1 300px;
+	grid-column-start: 1;
 	max-width: 623px;
 	@media (min-width: ${styles.screens.tablet}px) {
 		margin-left: ${styles.scale.px36};
+		grid-column-start: 2;
 	}
 	h3 {
 		margin-top: ${styles.scale.px24};
@@ -88,14 +92,16 @@ const Partners = ({ data: { partners } }) => {
 				{partners.partnerList.map((partner, index) => {
 					return (
 						<div key={index} css={partnerCSS}>
-							<GatsbyImage
-								image={partner.partnerLogo.gatsbyImageData}
-								css={partnerImageCSS}
-								style={{
-									display: 'block',
-								}}
-								alt={partner.partnerLogo.alt}
-							/>
+							{partner.partnerLogo && (
+								<GatsbyImage
+									image={partner.partnerLogo.gatsbyImageData}
+									css={partnerImageCSS}
+									style={{
+										display: 'block',
+									}}
+									alt={partner.partnerLogo.alt}
+								/>
+							)}
 							<div css={partnerInfoCSS}>
 								<h3>{partner.partnerName}</h3>
 								<div
