@@ -1,3 +1,3 @@
 export const sitewide = {
-	stateFactsUpdate: 'February 4, 2022',
+	stateFactsUpdate: 'February 2023',
 }
