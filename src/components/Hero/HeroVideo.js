@@ -13,7 +13,7 @@ const videoHeroCSS = css`
 	background-size: cover;
 	@media (min-width: ${styles.screens.tablet}px) {
 		overflow: hidden;
-		max-height: 600px;
+		max-height: 840px;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 200px repeat(3, auto);
 	}
