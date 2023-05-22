@@ -105,7 +105,7 @@ const StatisticsContainer = ({ data }) => {
 					methods.push({
 						id: result.Method,
 						label: result.Method,
-						value: Number(result.Deaths),
+						value: result.Deaths,
 						percent: Number(result.Percent),
 					})
 				})

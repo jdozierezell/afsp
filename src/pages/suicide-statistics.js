@@ -16,16 +16,16 @@ import FeaturedResourcesContainer from '../components/FeaturedResources/Featured
 
 const SuicideStatistics = ({ data: { statistics } }) => {
 	statistics.stateData = {
-		url: 'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2020-suicide-state.csv',
+		url: 'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2021-suicide-state.csv',
 	}
 	statistics.ageData = {
-		url: 'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2020-ratesbyage.csv',
+		url: 'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2021-ratesbyage.csv',
 	}
 	statistics.raceData = {
-		url: 'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2020-ratesbyethnicity.csv',
+		url: 'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2021-ratesbyethnicity.csv',
 	}
 	statistics.methodData = {
-		url: 'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2020-ratesbymethod.csv',
+		url: 'https://aws-fetch.s3.us-east-1.amazonaws.com/statistics/2021-ratesbymethod.csv',
 	}
 
 	return (
