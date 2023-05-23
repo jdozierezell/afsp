@@ -7,7 +7,7 @@ import { styles } from '../../css/css'
 
 const statisticsNationalGraphCSS = css`
 	margin: ${styles.scale.px40} ${styles.scale.px24} ${styles.scale.px36};
-	@media (min-width: ${styles.screens.tablet}px) {
+	@media (min-width: ${styles.screens.navigation}px) {
 		margin: ${styles.scale.px40} ${styles.scale.px50} ${styles.scale.px36};
 		display: grid;
 		grid-template-columns: 1fr 2fr 100px;
@@ -34,6 +34,12 @@ const statisticsNationalGraphContainerCSS = css`
 		width: auto;
 		position: initial;
 		padding: 0;
+		height: calc(100vw / 2);
+	}
+	@media (min-width: ${styles.screens.footer}px) {
+		height: calc(100vw / 3);
+	}
+	@media (min-width: ${styles.screens.navigation}px) {
 		height: calc(100vw / 3.5);
 	}
 	svg {

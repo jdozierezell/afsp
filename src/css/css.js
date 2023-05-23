@@ -36,17 +36,7 @@ export const styles = {
 		green,
 		fuchsia,
 	],
-	ageRaceMethodGraphColors: [
-		darkGray,
-		blue,
-		yellow,
-		poppy,
-		darkBlue,
-		green,
-		fuchsia,
-		brown,
-		orange,
-	],
+	ageRaceMethodGraphColors: [orange, yellow, green, fuchsia],
 	fonts: {
 		avenirRegular: 'AvenirNextLTPro-Regular, Arial, sans-serif',
 		avenirRegularIt: 'AvenirNextLTPro-It, Arial, sans-serif',
