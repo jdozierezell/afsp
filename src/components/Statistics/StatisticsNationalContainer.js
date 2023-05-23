@@ -86,7 +86,7 @@ const menuTabsCSS = css`
 
 const StatisticsNationalContainer = ({ csv, brief }) => {
 	const age = 'Suicide rates by age range'
-	const race = 'Suicide rates by race/ethnicity and gender'
+	const race = 'Suicide rates by race/ethnicity and sex'
 	const method = 'Suicide methods'
 
 	const [isCaretFlipped, setCaretFlipped] = useState(false)
