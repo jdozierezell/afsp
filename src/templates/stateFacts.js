@@ -27,21 +27,21 @@ const StateFacts = ({ data: { stateFacts } }) => {
 				{
 					display:
 						'Addresses 988 infrastructure and provides for telecom user fee',
-					value: stateFacts.addresses988InfrastructureAndProvidesForTelecom,
+					value: stateFacts.addresses988InfrastructureAndProvidesForTelecom1,
 					exception:
 						stateFacts.addresses988InfrastructureAndProvidesForTelecomException,
 				},
 				{
 					display:
 						'Addresses 988 infrastructure but does not include telecom user fee',
-					value: stateFacts.addresses988InfrastructureButNotProvideForTelecom,
+					value: stateFacts.addresses988InfrastructureButNotProvideForTelecom1,
 					exception:
 						stateFacts.addresses988InfrastructureButNotProvideForTelecomException,
 				},
 				{
 					display:
 						'988 law limited to creating an exploratory commission, advisory committee, or task force',
-					value: stateFacts.lawLimitedToCreatingCommissionCommitteeTaskForce,
+					value: stateFacts.lawLimitedToCreatingCommissionCommitteeTaskForce1,
 					exception:
 						stateFacts.lawLimitedToCreatingCommissionCommitteeTaskForceException,
 				},
@@ -74,20 +74,20 @@ const StateFacts = ({ data: { stateFacts } }) => {
 				{
 					display:
 						'Inclusion of the National Suicide Prevention Lifeline and/or other crisis line(s) on student ID cards',
-					value: stateFacts.nationalSuicidePreventionLifeline,
+					value: stateFacts.nationalSuicidePreventionLifeline1,
 					exception:
 						stateFacts.nationalSuicidePreventionLifelineException,
 				},
 				{
 					display:
 						'Student allowances for excused mental health absences',
-					value: stateFacts.excusedMentalHealthAbsences,
+					value: stateFacts.excusedMentalHealthAbsences1,
 					exception: stateFacts.excusedMentalHealthAbsencesException,
 				},
 				{
 					display:
 						'School personnel must report student suicide risk to a parent and/or guardian',
-					value: stateFacts.mustReportStudentSuicideRisk,
+					value: stateFacts.mustReportStudentSuicideRisk1,
 					exception: stateFacts.mustReportStudentSuicideRiskException,
 				},
 				{
@@ -167,21 +167,21 @@ const StateFacts = ({ data: { stateFacts } }) => {
 				{
 					display:
 						'Prohibits licensed/board certified mental health providers from engaging in conversion therapy with minors under 18 years of age',
-					value: stateFacts.prohibitsProvidersConversionTherapyWithMinors,
+					value: stateFacts.prohibitsProvidersConversionTherapyWithMinors1,
 					exception:
 						stateFacts.prohibitsProvidersConversionTherapyWithMinorsException,
 				},
 				{
 					display:
 						'Prohibits licensed/board certified mental health providers from engaging in conversion therapy with vulnerable adults',
-					value: stateFacts.prohibitsProvidersConversionTherapyWithVulnerableAdults,
+					value: stateFacts.prohibitsProvidersConversionTherapyWithVulnerableAdults1,
 					exception:
 						stateFacts.prohibitsProvidersConversionTherapyWithVulnerableAdultsException,
 				},
 				{
 					display:
 						'Prohibits use of state funds for any purpose related to conversion therapy (e.g., conducting, making a referral for, or extending health benefits coverage for)',
-					value: stateFacts.prohibitsStateFundsConversionTherapy,
+					value: stateFacts.prohibitsStateFundsConversionTherapy1,
 					exception:
 						stateFacts.prohibitsStateFundsConversionTherapyException,
 				},
@@ -196,7 +196,7 @@ const StateFacts = ({ data: { stateFacts } }) => {
 				{
 					display:
 						'Inclusion of the National Suicide Prevention Lifeline and/or other crisis line(s) on student ID cards',
-					value: stateFacts.unicolNationalSuicidePreventionLifeline,
+					value: stateFacts.unicolNationalSuicidePreventionLifeline1,
 					exception:
 						stateFacts.unicolNationalSuicidePreventionLifelineException,
 				},
@@ -304,13 +304,17 @@ export const query = graphql`
 			}
 			stateFactSheetUrl
 			addresses988InfrastructureAndProvidesForTelecom
+			addresses988InfrastructureAndProvidesForTelecom1
 			addresses988InfrastructureAndProvidesForTelecomException
 			addresses988InfrastructureButNotProvideForTelecom
+			addresses988InfrastructureButNotProvideForTelecom1
 			addresses988InfrastructureButNotProvideForTelecomException
 			excusedMentalHealthAbsences
+			excusedMentalHealthAbsences1
 			excusedMentalHealthAbsencesException
 			initiativesAndPlans
 			lawLimitedToCreatingCommissionCommitteeTaskForce
+			lawLimitedToCreatingCommissionCommitteeTaskForce1
 			lawLimitedToCreatingCommissionCommitteeTaskForceException
 			medicalSurgicalProfessionalsOneTime
 			medicalSurgicalProfessionalsOneTimeException
@@ -321,18 +325,23 @@ export const query = graphql`
 			mentalHealthProfessionalsRegular
 			mentalHealthProfessionalsRegularException
 			mustReportStudentSuicideRisk
+			mustReportStudentSuicideRisk1
 			mustReportStudentSuicideRiskException
 			nationalSuicidePreventionLifeline
+			nationalSuicidePreventionLifeline1
 			nationalSuicidePreventionLifelineException
 			preventionInterventionPostvention
 			preventionInterventionPostventionException
 			privateHealthPlans
 			privateHealthPlansException
 			prohibitsProvidersConversionTherapyWithMinors
+			prohibitsProvidersConversionTherapyWithMinors1
 			prohibitsProvidersConversionTherapyWithMinorsException
 			prohibitsProvidersConversionTherapyWithVulnerableAdults
+			prohibitsProvidersConversionTherapyWithVulnerableAdults1
 			prohibitsProvidersConversionTherapyWithVulnerableAdultsException
 			prohibitsStateFundsConversionTherapy
+			prohibitsStateFundsConversionTherapy1
 			prohibitsStateFundsConversionTherapyException
 			publicHealthPlans
 			publicHealthPlansException
@@ -348,6 +357,7 @@ export const query = graphql`
 			unicolAdoptionPolicy
 			unicolAdoptionPolicyException
 			unicolNationalSuicidePreventionLifeline
+			unicolNationalSuicidePreventionLifeline1
 			unicolNationalSuicidePreventionLifelineException
 			unicolStudentsReceiveInformation
 			unicolStudentsReceiveInformationException

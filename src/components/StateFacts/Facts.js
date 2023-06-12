@@ -47,6 +47,7 @@ const factListCSS = css`
 `
 
 const ContentFacts = ({ state, facts }) => {
+	console.log(facts)
 	const keyElement = useRef(null)
 	const factElement = useRef(null)
 	const [position, setPosition] = useState('relative')
