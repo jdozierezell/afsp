@@ -192,11 +192,6 @@ const ContentStory = ({ data, pageUrl }) => {
 					return ''
 				})}
 			</div>
-			<Script url="https://apps.elfsight.com/p/platform.js" defer />
-			<aside css={commentCSS} aria-labelledby="commentLabel">
-				<h2 id="commentLabel">Comments</h2>
-				<div className="elfsight-app-009de5eb-b07f-41f5-9d7e-26c5c9f96d27 fb-comments data-elfsight-app-lazy"></div>
-			</aside>
 		</section>
 	)
 }
