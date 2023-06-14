@@ -123,7 +123,7 @@ const ReciteComponent = () => {
 	}, [a11y, firstRun])
 	return (
 		<button id="reciteme" className="reciteme" css={reciteButtonCSS}>
-			Accessibility
+			Accessibility/Select Language
 		</button>
 	)
 }
