@@ -374,11 +374,6 @@ export const query = graphql`
 			}
 			brief
 			ctaChapterResourceDetailList {
-				... on DatoCmsEmailBar {
-					__typename
-					id
-					showEmail
-				}
 				... on DatoCmsCampaignEventCalendar {
 					__typename
 					id
