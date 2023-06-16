@@ -72,11 +72,6 @@ const Landing = ({ data: { landing } }) => {
 	}
 	let hideEmailLayout
 	let eventCalendarNumber = 0
-	landing.ctaChapterResourceDetailList.forEach(item => {
-		if (item.__typename === 'DatoCmsEmailBar') {
-			hideEmailLayout = true
-		}
-	})
 	if (landing.ctaChapterResourceDetailList.length > 0) {
 		landing.ctaChapterResourceDetailList.forEach(resource => {
 			if (
@@ -198,7 +193,7 @@ const Landing = ({ data: { landing } }) => {
 				/>
 			)}
 			{landing.ctaChapterResourceDetailList.map((item, index) => {
-				const itemsToCheck = ['DatoCmsResourceList', 'DatoCmsEmailBar']
+				const itemsToCheck = ['DatoCmsResourceList']
 				const prevIndex = index > 0 ? index - 1 : null
 				if (
 					prevIndex !== null &&
@@ -219,19 +214,6 @@ const Landing = ({ data: { landing } }) => {
 				} else if (item.__typename === 'DatoCmsChapterConnection') {
 					if (item.showChapterConnection === true) {
 						return <CarouselChapterContainer key={index} />
-					}
-				} else if (item.__typename === 'DatoCmsEmailBar') {
-					if (item.showEmail === true) {
-						return (
-							<EmailSignupBar
-								addCSS={css`
-									background-color: ${adjacent % 2 === 1
-										? styles.colors.lightGray
-										: styles.colors.white};
-								`}
-								key={index}
-							></EmailSignupBar>
-						)
 					}
 				} else if (item.__typename === 'DatoCmsCampaignEventCalendar') {
 					return (
